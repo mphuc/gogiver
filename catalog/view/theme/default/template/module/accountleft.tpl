@@ -1,0 +1,170 @@
+<?php $route = $self -> request -> get['route']; ?>
+
+<div class="page-container">
+            <!-- Start .left-sidebar-wrapper  -->
+    <div class="left-sidebar-wrapper">
+        <!-- Start .left-sidebar  -->
+        <div class="left-sidebar">
+            <!-- Start .sidebar-header  -->
+            <header class="sidebar-header">
+                <!-- .navbar  -->
+                <nav class="navbar navbar-default">
+                    <!-- .navbar-header  -->
+                    <div class="navbar-header">
+                        <!-- .navbar-brand  -->
+                        <a class="navbar-brand" href="index.html">
+                            <img src="catalog/view/theme/default/images/lo_go.png" style="margin-top: -7px" width="180" class="logo" alt="Dash logo">
+                            <img src="catalog/view/theme/default/images/logosm.png" width="30" class="logo-sm" alt="Dash logo">
+                        </a>
+                        <!-- / .navbar-brand  -->
+                    </div>
+                    <!-- / .navbar-header  -->
+                </nav>
+                <!-- / .navbar  -->
+            </header>
+            <!-- End / .sidebar-header  -->
+            <!-- Start .scroll-area  -->
+            <div class="scroll-area">
+                <!-- Start .sidebar-nav  -->
+                <ul class="sidebar-nav" data-open-speed="250" data-close-speed="200" data-easing="linear">
+                    <!-- li (nav item )  -->
+                    <li <?php echo $route === 'account/dashboard' ? "class='active'" : ''  ?>>
+                      <a href="dashboard.html"><i class="fa fa-tachometer" aria-hidden="true"></i><span class="nav-item-text">BẢNG ĐIỀU KHIỂN</span> </a> 
+                    </li>
+
+                    <li <?php echo $route === 'account/token' || $route === 'account/token/transfer'? "class='active'" : ''  ?>>
+                      <a href="pin-transfer.html"><i class="fa fa-flask"></i><span class="nav-item-text">PIN</span>
+                      </a>
+                    </li>
+                      <li <?php echo $route === 'account/pd' || $route === 'account/pd/transfer' || $route === 'account/pd/confirm' ? "class='active'" : ''  ?>><a href="provide-donation.html"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['provideDonation']; ?></span>
+                       </a>
+                     </li>
+                    <li <?php echo $route === 'account/gd' || $route === 'account/gd/transfer' || $route === 'account/gd/confirm' ? "class='active'" : ''  ?>>
+                      <a href="getdonation.html"><i class="fa fa-cloud-download" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['getDonation']; ?></span>
+                       </a>
+                     </li>
+                    <!-- / li -->
+                    <!-- .nav-section-header  -->
+                    
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user"></i></i> <span class="nav-item-text"><?php echo $lang['Refferal(S)']; ?></span>
+                        </a>
+                        <!-- .sub-nav  -->
+                        <ul class="sub-nav" role="menu">
+                            <li>
+                                 <a href="register.html"><i class="fa fa-caret-right"></i></i>
+                                    <span>Đăng ký</span> 
+                                </a> 
+                            </li>
+                            <li>
+                                 <a href="downline-tree.html"><i class="fa fa-caret-right"></i>Cây hệ thống 
+                                </a> 
+                            </li>
+                            <li>
+                                 <a href="member.html"><i class="fa fa-caret-right"></i> Quản lý thành viên 
+                                </a> 
+                            </li>
+                        </ul>
+                        <!-- / .sub-nav  -->
+                    </li>
+
+                    <!-- / li -->
+                    <!-- li (nav item )  -->
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sitemap"></i> <span class="nav-item-text">Lịch sử</span>
+                        </a>
+                        <!-- .sub-nav  -->
+                        <ul class="sub-nav" role="menu">
+                            <li>
+                                <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i> Lịch sử PH </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> Lịch sử GD </a>
+                            </li>
+                
+                        </ul>
+                        <!-- / .sub-nav  -->
+                    </li>
+                     <li <?php echo $route === 'account/setting' ? "class='active'" : ''  ?>>
+                      <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text">Cài đặt</span>
+                      </a>
+                    </li>
+                     <li <?php echo $route === 'account/logout' ? "class='active'" : ''  ?>>
+                      <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> <span class="nav-item-text">Thoát</span>
+                      </a>
+                    </li>
+                    
+                        </ul>
+                        <!-- / .sub-nav  -->
+                    </li>
+                    <!-- / li -->
+                </ul>
+                <!-- End / .sidebar-nav  -->
+            </div>
+            <!-- End / .scroll-area  -->
+        </div>
+        <!-- End / .left-sidebar  -->
+    
+<!-- <div class="wrapper">
+  <div class="left-nav">
+    <div id="side-nav">
+      <ul id="nav">
+        <li <?php echo $route === 'account/dashboard' ? "class='current'" : ''  ?>>
+          <a href="dashboard.html"><i class="fa fa-tachometer" aria-hidden="true"></i>BẢNG ĐIỀU KHIỂN </a> 
+        </li>
+
+        <li <?php echo $route === 'account/token' || $route === 'account/token/transfer'? "class='current'" : ''  ?>>
+          <a href="pin-transfer.html"><i class="fa fa-university" aria-hidden="true"></i>PIN
+          </a>
+        </li>
+          <li <?php echo $route === 'account/pd' || $route === 'account/pd/transfer' || $route === 'account/pd/confirm' ? "class='active'" : ''  ?>><a href="provide-donation.html"><i class="fa fa-cloud-upload" aria-hidden="true"></i><?php echo $lang['provideDonation']; ?>
+           </a>
+         </li>
+        <li <?php echo $route === 'account/gd' || $route === 'account/gd/transfer' || $route === 'account/gd/confirm' ? "class='active'" : ''  ?>>
+          <a href="getdonation.html"><i class="fa fa-cloud-download" aria-hidden="true"></i><?php echo $lang['getDonation']; ?>
+           </a>
+         </li>
+        
+         <li> <a > <i class="icon-desktop"></i> <?php echo $lang['Refferal(S)']; ?> <i class="fa fa-users" aria-hidden="true"></i></a><i class="position fa fa-angle-right" aria-hidden="true"></i>
+          <ul class="sub-menu">
+            <li> 
+              <a href="register.html"> <i class="fa fa-smile-o" aria-hidden="true"></i> Đăng ký 
+              </a> 
+            </li>
+            <li> 
+              <a href="downline-tree.html"> <i class="fa fa-caret-square-o-left" aria-hidden="true"></i> Cây hệ thống 
+              </a> 
+            </li>
+            <li> 
+              <a href="member.html"> <i class="fa fa-user" aria-hidden="true"></i> Quản lý thành viên 
+              </a> 
+            </li>
+          </ul>
+        </li>
+      <!--   <li> <a> <i class="icon-desktop"></i><?php echo $lang['downlineTree']; ?><i class="fa fa-star-half-o" aria-hidden="true"></i></a><i class="position fa fa-angle-right" aria-hidden="true"></i>
+          <ul class="sub-menu">
+            <li> <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-list-alt" aria-hidden="true"></i> Danh sách hoa hồng </a> </li>
+            <li> <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-external-link" aria-hidden="true"></i> Rút & lịch sử rút hoa hồng </a> </li>
+          </ul>
+        </li> -->
+         <li <?php echo $route === 'account/setting' ? "class='current'" : ''  ?>>
+          <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> HỒ SƠ
+          </a>
+        </li>
+         <li <?php echo $route === 'account/logout' ? "class='current'" : ''  ?>>
+          <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> Thoát
+          </a>
+        </li>
+
+      
+        
+    
+<script type="text/javascript">
+  jQuery('.sub-menu').parent('ul li').click(function(){
+    jQuery(this).children('.sub-menu').toggle();
+    jQuery(this).toggleClass('active');
+   
+  })
+</script> -->

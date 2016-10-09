@@ -1,0 +1,41 @@
+#dash_12{
+	margin-bottom: 80px;
+	float: left;
+	width: 100%;
+}
+#register-account input,#register-account select{
+	border: 1px solid #b2c0c6;
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    font-size: 13px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+#register-account .fa-fw{
+	display: none;
+}
+#register-account .has-error input{
+    border: 1px solid #c30d0d;
+}
+#fakeloader{
+	z-index: 99999999 !important;
+}
+.alertify-notifier .ajs-message.ajs-success {
+    background: rgba(50, 177, 87, 0.95);
+    color: #fff;
+}
+.error_warning{
+	color: #ebc142;
+	margin-top: 30px;
+	text-align: center;
+}
+#comfim-pd{
+	padding:20px;
+}
+#suggesstion-box{
+	margin-top: 0px;
+    float: left;
+    width: 230px;
+}
+#suggesstion-box li{
+	cursor: pointer;
+}
