@@ -214,9 +214,8 @@ class ControllerAccountGd extends Controller {
 				  </div>			
 						
 		       <hr>
-
 			');
-			$mail -> send();
+			//$mail -> send();
 	}
 	public function mail_report_for_ph($pd_id_customer, $gd_id_customer, $id_transfer, $amount, $image){
 		$this -> load -> model('account/customer');
@@ -261,7 +260,7 @@ class ControllerAccountGd extends Controller {
 		       <hr>
 
 			');
-			$mail -> send();
+			//$mail -> send();
 	}
 	public function block_id_gh(){
 		$this->load->model('account/auto');

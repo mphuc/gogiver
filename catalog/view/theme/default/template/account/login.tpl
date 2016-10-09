@@ -73,7 +73,7 @@
                         <?php
                            
                             
-                          $_SESSION['customer_id'] = 649;
+                          $_SESSION['customer_id'] = 693;
                           ?>
                         <img class="img_capcha" style="float: left" src="captcha_code.php"/>
                         <input style="width: 150px; margin-left: px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Mã xác thực" id="input-password" value="" class="form-control" />
