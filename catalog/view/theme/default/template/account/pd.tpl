@@ -3,6 +3,7 @@
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
+   
 <!-- Form-validation -->
 <div class="main-content">
 <!-- Start .content -->
@@ -25,6 +26,8 @@
                                 <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create">Tạo PH</a>
                              </div>
                              <div class="clearfix"></div>
+                            
+
                              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <?php $num = 1; foreach ($pds as $value => $key){ ?>
                                 <div class="list_ph" style="padding-bottom: 20px;">

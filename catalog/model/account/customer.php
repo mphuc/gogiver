@@ -1515,14 +1515,18 @@ public function countPDINProvide(){
 			 SET check_Pd = '0' WHERE customer_id = '".$this->db->escape($id_customer)."'
 		");
 	}
-	public function CountGDDay(){
+	public function CountGDDay($number_pd_day,$number_pd_month){
+		$date = date('Y-m-d');
+		$date_month = date('Y-m'); 
+		
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
 			WHERE customer_id= '".$this -> session -> data['customer_id']."'
-			AND (SELECT date_added FROM ". DB_PREFIX . "customer_provide_donation
-				WHERE customer_id= '".$this -> session -> data['customer_id']."' ORDER BY date_added DESC LIMIT 1) <= DATE_ADD(NOW(), INTERVAL -10 DAY)
-			ORDER BY date_added ASC LIMIT 1
+			AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
+				WHERE customer_id= '".$this -> session -> data['customer_id']."' AND date_added >= '".$date." 00:00:00' AND date_added <= '".$date." 23:59:59') < ".$number_pd_day." AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
+				WHERE customer_id= '".$this -> session -> data['customer_id']."' AND date_added >= '".$date_month."-01 00:00:00' AND date_added <= '".$date_month."-30 23:59:59') < ".$number_pd_month."
+			
 		");
 
 		return $query->row;

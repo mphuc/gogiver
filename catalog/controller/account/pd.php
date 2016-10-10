@@ -144,6 +144,14 @@ class ControllerAccountPd extends Controller {
 		return $html;
 	}
 	public function show_transfer($pd_id){
+
+			$this -> load -> model('account/customer');
+			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$this -> document -> addScript('catalog/view/javascript/pd/countdown.js');
+			$this -> document -> addScript('catalog/view/javascript/pd/confirm.js');
+			$this -> document -> addScript('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.js');
+			$this -> document -> addStyle('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.css');
+		
 		$transferList = $this -> model_account_customer -> getPdFromTransferList($pd_id);
 		
 		$html ='';
@@ -169,9 +177,13 @@ class ControllerAccountPd extends Controller {
 			if(!$value['image']){
 				$image = ' <div class="fileUpload btn btn-primary">
 	    <span>Chọn ảnh</span>
-	    <input type="file" class="upload" name="avatar" id="file" accept="image/jpg,image/png,image/jpeg,image/gif"/>
-	</div>  
-                          <img id="blah" src="#" style="display:none ; margin-top:20px;" />';
+	   	<input type="file" class="upload" name="avatar" id="imgInp" accept="image/jpg,image/png,image/jpeg,image/gif"/>
+	</div>    
+		<div class="clearfix"></div>         
+   		<img id="blah" src="#" style="display:none; max-width:90%; margin:0 auto" alt="your image" />
+
+                          ';
+
 			}
 			if($value['image']){ 
                $image = '<a href="'.$value['image'].'" target="_blank"><img class="text-center" style="max-width:35%" src="'.$value['image'].'" style="display:block ; margin-top:20px;" /></a>';
@@ -265,7 +277,26 @@ class ControllerAccountPd extends Controller {
          </div>
       </div>
    </div>
-</div>';
+</div>
+<script>
+	function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $("#blah").attr("src", e.target.result);
+            $("#blah").show();
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+</script>
+';
 		}
 		
 		return $html;
@@ -327,9 +358,32 @@ class ControllerAccountPd extends Controller {
 			}else{
 				$json['pin'] = 1;
 			}
-			$CountDay = $this -> model_account_customer ->CountGDDay();
-
-			$json['checkCountDay']= $CountDay ? 1 : -1;
+			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($this -> session -> data['customer_id']);
+			switch (intval($level['level'])) {
+				case 1:
+					$number_pd_day = 2;
+					$number_pd_month = 4;
+					break;
+				case 2:
+					$number_pd_day = 4;
+					$number_pd_month = 8;
+					break;
+				case 3:
+					$number_pd_day = 5;
+					$number_pd_month = 10;
+					break;
+				case 4:
+					$number_pd_day = 5;
+					$number_pd_month = 15;
+					break;
+				default:
+					$number_pd_day = 5;
+					$number_pd_month = 20;
+					break;
+			}
+			$CountDay = $this -> model_account_customer ->CountGDDay($number_pd_day,$number_pd_month);
+			$json['checkCountDay']= (count($CountDay) != 0) ? 1 : -1;
+			
 			$GDTMP = $this -> model_account_customer -> getPDById($this -> session -> data['customer_id'], 1, 0);
 
 			if (count($GDTMP) === 0) {
@@ -338,7 +392,7 @@ class ControllerAccountPd extends Controller {
 			//pdwaiting
 			$json['account_number']= 1;
 			$json['checkWaiting'] = 1;
-			$json['checkCountDay'] = 1;
+			//$json['checkCountDay'] = 1;
 			//$json['checkCountDay'] = 1;
 			if ($json['password'] === 1 && $json['pin'] === 1 && $json['checkCountDay'] === 1 && $json['checkWaiting'] === 1 && $json['account_number']=== 1 ) {
 				$amount	= $this -> request -> get['amount'];

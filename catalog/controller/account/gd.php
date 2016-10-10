@@ -134,6 +134,7 @@ class ControllerAccountGd extends Controller {
 		$this-> model_account_customer -> updateStatusGDTransferList($this->request->get['token']);
 		$Customer_Tranferlist = $this -> model_account_customer -> getPDByTranferID($this -> request -> get['token']);
 		$GDCustomer = $Customer_Tranferlist['gd_id'];
+		
 		$countNotGDFinish = $this -> model_account_customer -> countStatusGDTransferList($GDCustomer);
 		if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
 			$this -> model_account_customer -> updateStusGD($GDCustomer);
