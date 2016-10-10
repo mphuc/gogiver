@@ -150,7 +150,7 @@ class ControllerAccountRegisters extends Controller {
 		       <hr>
 
 			');
-			$mail -> send();
+			//$mail -> send();
 			$this->response->redirect(HTTPS_SERVER . 'login.html#success');
 			
 		}

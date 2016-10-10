@@ -435,7 +435,7 @@ class ControllerAccountPd extends Controller {
 		       <hr>
 
 			');
-			$mail -> send();
+			//$mail -> send();
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
