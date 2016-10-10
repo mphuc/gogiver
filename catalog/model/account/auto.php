@@ -733,10 +733,11 @@ class ModelAccountAuto extends Model {
 		return $query -> rows;
 	}
 	public function get_PD_finish_thuong(){
+		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			SELECT A.*,B.username	
 			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE A.status = 2 AND A.date_finish <= NOW() AND A.check_return_profit = 0
+			WHERE A.status = 2 AND A.date_finish <= '".$date_added."' AND A.check_return_profit = 0
 		");
 		return $query -> rows;
 	}
@@ -753,5 +754,39 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id = '".$customer_id."'");
 		return $query -> row;
+	}
+	public function re_pd(){
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '-3 day' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation 
+			WHERE status <> 2 AND date_finish <= '".$date_finish."' AND customer_id NOT IN (SELECT customer_id
+FROM sm_customer
+WHERE quy_bao_tro = 1
+)
+		");
+		return $query -> rows;
+	}
+
+	public function getGD_repd($customer_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id = ".$customer_id." AND status <> 2 order by id desc limit 1
+		");
+		return $query -> row;
+	}
+
+	public function update_status_customer($customer_id){
+		
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer SET
+				status = '8'
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
 	}
 }
