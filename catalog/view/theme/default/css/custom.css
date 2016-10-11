@@ -1,7 +1,9 @@
 #dash_12{
-	margin-bottom: 80px;
 	float: left;
 	width: 100%;
+}
+#dash_15{
+	margin-bottom: 80px;
 }
 #register-account input,#register-account select{
 	border: 1px solid #b2c0c6;
@@ -38,4 +40,11 @@
 }
 #suggesstion-box li{
 	cursor: pointer;
+}
+.item_level{
+	text-align: center;
+	font-size: 15px;
+	padding: 15px 0;
+	line-height: 28px;
+	border-radius: 5px;
 }

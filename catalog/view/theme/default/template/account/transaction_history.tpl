@@ -3,22 +3,31 @@
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
-<div class="wraper container-fluid">
-   <div class="page-title">
-      <h3 class="title"><?php echo $lang['heading_title'] ?></h3>
-   </div>
-   <!-- Form-validation -->
-   <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><?php echo $lang['heading_title'] ?></h3>
-                            </div>
+<div class="main-content">
+<!-- Start .content -->
+  <div class="content" style="">
+     <div class="row">
+        <!-- .row start -->
+        <div class="col-md-12">
+           <!-- col-md-12 start here -->
+           <div class="panel panel-default" id="dash_0">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Lịch sử</h4>
+              </div>
+              <div class="panel-body form-horizontal group-border stripped">
+                 <div class="form-group">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="input-group input-icon file-upload">
+                        <div class="widget-content" style="padding:10px">
+                           <div class="">
+                              <div class="">
+                            
                             <?php if(count($histotys) > 0){ ?>
-                            <div class="panel-body">
+                            <div class="">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
-                                        <table id="datatable" class="table table-striped table-bordered">
+                                        <table id="" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
                                                    <th class="text-center"><?php echo $lang['column_no'] ?></th>
@@ -49,7 +58,11 @@
                            <?php } ?>
                         </div>
                     </div>
-                    
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
                 </div> <!-- End Row -->
    <!-- End row -->
 </div>

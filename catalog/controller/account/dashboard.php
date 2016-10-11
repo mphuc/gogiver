@@ -62,7 +62,8 @@ class ControllerAccountDashboard extends Controller {
 		} else {
 			$server = $this -> config -> get('config_url');
 		}
-
+		$data['customer_code'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
+		$data['customer_code'] = $data['customer_code']['username'];
 		$data['base'] = $server;
 		$data['self'] = $this;
 		$data['regulations'] = $this -> config -> get('config_regulations');

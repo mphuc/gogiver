@@ -13,7 +13,7 @@
                     <div class="navbar-header">
                         <!-- .navbar-brand  -->
                         <a class="navbar-brand" href="index.html">
-                            <img src="catalog/view/theme/default/images/lo_go.png" style="margin-top: -7px" width="180" class="logo" alt="Dash logo">
+                            <img src="catalog/view/theme/default/images/lo_go.png" style="margin-top: -2px" width="200" class="logo" alt="Dash logo">
                             <img src="catalog/view/theme/default/images/logosm.png" width="30" class="logo-sm" alt="Dash logo">
                         </a>
                         <!-- / .navbar-brand  -->
@@ -83,7 +83,9 @@
                             <li>
                                 <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> Lịch sử GD </a>
                             </li>
-                
+                            <li>
+                                <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> Lịch sử hoa hồng </a>
+                            </li>
                         </ul>
                         <!-- / .sub-nav  -->
                     </li>

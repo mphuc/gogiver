@@ -166,160 +166,17 @@
             <!-- col-md-4 end here -->
          </div>
          <!-- / .row -->
-         <div class="row no-padding">
-            <!-- .row start -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-               <!-- col-md-3 start here -->
-               <div class="panel panel-default plain brad0 matchSparkStats" id="dash_9">
-                  <!-- Start .panel -->
-                  <div class="panel-body">
-                     <div class="sparkline-stats">
-                        <div class="row padding">
-                           <!-- .row start -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <h5 class="uppercase text-muted sparkline-title mb5">Members</h5>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-4">
-                              <!-- col-md-4 start here -->
-                              <div class="stats-number s24 strong" data-from="0" data-to="12750">0</div>
-                           </div>
-                           <!-- col-md-4 end here -->
-                           <div class="col-lg-8 col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div id="sparkline-members" class="sparkline"></div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div class="change color-green strong s16">+5% <i class="glyphicon glyphicon-circle-arrow-up"></i>
-                              </div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                        </div>
-                        <!-- / .row -->
-                     </div>
+         <div class="row">
+            <?php for ($i=0; $i < 6; $i++) { ?>
+             <div class="col-md-2 col-sm-2 col-xs-2">
+               <div class="panel panel-default item_level">
+                  <div ><code>Vip <?php echo $i ?></code></div>
+                  <div data-level="<?php echo $i + 1 ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/analytics', '', 'SSL'); ?>" class="analytics-tree analytics-tree-loading">loading ...
                   </div>
                </div>
-               <!-- End .panel -->
-            </div>
-            <!-- col-md-3 end here -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-               <!-- col-md-3 start here -->
-               <div class="panel panel-default plain brad0 matchSparkStats" id="dash_10">
-                  <!-- Start .panel -->
-                  <div class="panel-body">
-                     <div class="sparkline-stats">
-                        <div class="row padding">
-                           <!-- .row start -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <h5 class="uppercase text-muted sparkline-title mb5">Sales</h5>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-4">
-                              <!-- col-md-4 start here -->
-                              <div class="stats-number dolar s24 strong" data-from="0" data-to="8500">0</div>
-                           </div>
-                           <!-- col-md-4 end here -->
-                           <div class="col-lg-8 col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div id="sparkline-sales" class="sparkline"></div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div class="change color-green strong s16">+2% <i class="glyphicon glyphicon-circle-arrow-up"></i>
-                              </div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                        </div>
-                        <!-- / .row -->
-                     </div>
-                  </div>
-               </div>
-               <!-- End .panel -->
-            </div>
-            <!-- col-md-3 end here -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-               <!-- col-md-3 start here -->
-               <div class="panel panel-default plain brad0 matchSparkStats" id="dash_11">
-                  <!-- Start .panel -->
-                  <div class="panel-body">
-                     <div class="sparkline-stats">
-                        <div class="row padding">
-                           <!-- .row start -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <h5 class="uppercase text-muted sparkline-title mb5">advertising costs</h5>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-4">
-                              <!-- col-md-4 start here -->
-                              <div class="stats-number dolar s24 strong" data-from="0" data-to="1250">0</div>
-                           </div>
-                           <!-- col-md-4 end here -->
-                           <div class="col-lg-8 col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div id="sparkline-advert" class="sparkline"></div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div class="change color-red strong s16">-17% <i class="glyphicon glyphicon-circle-arrow-down"></i>
-                              </div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                        </div>
-                        <!-- / .row -->
-                     </div>
-                  </div>
-               </div>
-               <!-- End .panel -->
-            </div>
-            <!-- col-md-3 end here -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-               <!-- col-md-3 start here -->
-               <div class="panel panel-default panel-tile plain brad0 matchSparkStats" id="dash_12">
-                  <!-- Start .panel -->
-                  <div class="panel-body">
-                     <div class="sparkline-stats">
-                        <div class="row padding">
-                           <!-- .row start -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <h5 class="uppercase text-muted sparkline-title mb5">engagements</h5>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-4">
-                              <!-- col-md-4 start here -->
-                              <div class="stats-number s24 strong" data-from="0" data-to="5.28" data-decimals="2">0</div>
-                           </div>
-                           <!-- col-md-4 end here -->
-                           <div class="col-lg-8 col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div id="sparkline-eng" class="sparkline"></div>
-                           </div>
-                           <!-- col-md-12 end here -->
-                           <div class="col-md-12">
-                              <!-- col-md-12 start here -->
-                              <div class="change color-red strong s16">-1% <i class="glyphicon glyphicon-circle-arrow-down"></i>
-                              </div>
-                           </div>
-                           <!-- col-md-12 end here -->
+              </div>
+          <?php } ?>
 
-                        </div>
-
-                        <!-- / .row -->
-                     </div>
-
-                  </div>
-               </div>
-
-               <!-- End .panel -->
-            </div>
-            <!-- col-md-3 end here -->
             <div class="col-md-12">
                <div class="panel panel-default panel-tile">
                   <div class="panel-body">
@@ -339,6 +196,27 @@
                      </div>
                   </div>
                </div>
+
+               <div class=" rule" style="margin-top:0;"></div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h3 class="panel-title"><?php echo $lang['introduct']; ?></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="media-body innerAnnounce">
+                                <h4 class="heading" style="margin-bottom: 0px;"> <i class="fa fa-link">
+                                  </i>Liên kết giới thiệu <small>(sao chép và chia sẻ cho bạn bè của bạn): </small>
+                              </h4>
+                                <span><u><a style="word-break: break-word; font-weight:700; color:cyan" href="signup&ref=<?php echo $customer_code;  ?>" target="_blank"><?php echo HTTPS_SERVER ?>signup&ref=<?php echo $customer_code;  ?></a></u></span>
+                              </div>
+                            
+                        </div>
+                     </div>
+                  </div>
+            </div>
+
             </div>
 
 
