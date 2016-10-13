@@ -10,7 +10,11 @@ class ControllerCommonHeader extends Controller {
 			$data['date_auto'] =  $data['date_auto']['date_auto'];
 			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
 		}
-
+		if (!isset($this -> session->data['language_id']))
+		{
+			$this -> session->data['language_id'] = "vietnamese";
+		}
+		
 		if ($this->request->server['HTTPS']) {
 			$server = $this->config->get('config_ssl');
 		} else {

@@ -2,7 +2,7 @@
 class ControllerAccountDashboard extends Controller {
 
 	public function index() {
-		$_SESSION['language_id'] == "english";
+		
 		// $mail = new Mail();	
 		// $mail->protocol = $this->config->get('config_mail_protocol');
 		// $mail->parameter = $this->config->get('config_mail_parameter');
@@ -30,6 +30,7 @@ class ControllerAccountDashboard extends Controller {
 			$self -> load -> model('simple_blog/article');
 		};
 		
+		
 		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		call_user_func_array("myConfig", array($this));
 
@@ -53,7 +54,7 @@ class ControllerAccountDashboard extends Controller {
 		$data['date'] = $time['date'];
 		//method to call function
 
-
+		
 		//data render website
 		//start load country model
 
