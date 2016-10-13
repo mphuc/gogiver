@@ -17,7 +17,7 @@
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
-                    <div class="col-lg-12 col-md-12">
+                    <div class="">
                       <div class="input-group input-icon file-upload">
                         <div class="widget-content">
 
@@ -103,18 +103,24 @@
                                        </div>
                                        <!-- .form -->
                                     </div>
+
                                     <!-- panel-body -->
                                  </div>
+
                                  <!-- panel -->
                               </div>
                            </div>
+
                            <!-- col -->
                         </div>
+
                       </div>
                  </div>
+
               </div>
            </div>
         </div>
+        <div class="clearfix" style="margin-top: 100px;"></div>
      </div>
   </div>
 </div>

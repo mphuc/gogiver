@@ -59,11 +59,11 @@
                             $i++;
                           ?>
                           <tr>
-                            <td data-column="TT"><?php echo $i;?></td>
-                            <td data-column="Ngày"><?php echo $value['pd_number'];?></td>
-                            <td data-column="Nội dung"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
-                            <td data-column="ID PH"><?php echo number_format($value['amount']);?> VNĐ</td>
-                            <td data-column="Hoa hồng"><?php if ($value['status'] == 0) echo "Chưa khớp lệnh"; 
+                            <td data-title="<?php echo $lang['NO'] ?>"><?php echo $i;?></td>
+                            <td data-title="PH code"><?php echo $value['pd_number'];?></td>
+                            <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
+                            <td data-title="<?php echo $lang['amount'] ?>"><?php echo number_format($value['amount']);?> VNĐ</td>
+                            <td data-title="<?php echo $lang['STATUS'] ?>"><?php if ($value['status'] == 0) echo "Chưa khớp lệnh"; 
                             if ($value['status'] == 1) echo "Khớp lệnh";
                             if ($value['status'] == 2) echo "Finish";
                             ?></td>

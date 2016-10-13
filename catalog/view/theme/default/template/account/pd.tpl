@@ -35,7 +35,7 @@
                                       
                                       <h4><?php echo $lang['PD_NUMBER'];?> : <strong>PH<?php echo $key['pd_number'] ?></strong></h4>
                                       <table  class="table">
-                                        <tbody>
+                                        <thead>
                                           <tr>
                                             <td><?php echo $lang['DATE_CREATED'] ?></td>
                                             <td>UserID PH</td>
@@ -49,16 +49,18 @@
                                             <?php echo $lang['detail'] ?>
                                             </a></td>
                                           </tr>
+                                        </thead>
+                                        <tbody>
                                           <tr>
-                                            <td><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
-                                            <td><strong><?php echo $key['username'] ?></strong></td>
-                                            <td><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td><strong><?php echo number_format($key['max_profit']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
+                                            <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
+                                            <td data-title="UserID PH"><strong><?php echo $key['username'] ?></strong></td>
+                                            <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
+                                            <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><strong><?php echo number_format($key['max_profit']); ?> <?php echo $lang['VND'] ?></strong></td>
+                                            <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
                                          </span> </strong></td>
-                                            <td><strong><span class=""><?php switch ($key['status']) {
+                                            <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
-                                             echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
+                                             echo '<span class="label label-warning">'.$lang['dangcho'].'</span>';
                                              break;
                                          case 1:
                                              echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
@@ -70,9 +72,12 @@
                                              echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
                                              break;
                                          } ?></span></strong></td>
-                                         
+                                            <td class="click_pd"><a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">
+                                            <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
+                                            <?php echo $lang['detail'] ?>
+                                            </a></td>
                                           </tr>
-                                         
+                                          
                                             
                                          
                                         </tbody>

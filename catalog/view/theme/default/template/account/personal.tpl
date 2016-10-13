@@ -265,5 +265,5 @@ function click(d) {
 
 </script>
 
-
+<div class="clearfix" style="margin-bottom: 100px;"></div>
 <?php echo $footer; ?>
