@@ -29,11 +29,11 @@
                 <ul class="sidebar-nav" data-open-speed="250" data-close-speed="200" data-easing="linear">
                     <!-- li (nav item )  -->
                     <li <?php echo $route === 'account/dashboard' ? "class='active'" : ''  ?>>
-                      <a href="dashboard.html"><i class="fa fa-tachometer" aria-hidden="true"></i><span class="nav-item-text">BẢNG ĐIỀU KHIỂN</span> </a> 
+                      <a href="dashboard.html"><i class="fa fa-tachometer" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['dashboard']; ?></span> </a> 
                     </li>
 
                     <li <?php echo $route === 'account/token' || $route === 'account/token/transfer'? "class='active'" : ''  ?>>
-                      <a href="pin-transfer.html"><i class="fa fa-flask"></i><span class="nav-item-text">PIN</span>
+                      <a href="pin-transfer.html"><i class="fa fa-flask"></i><span class="nav-item-text"><?php echo $lang['pin']; ?></span>
                       </a>
                     </li>
                       <li <?php echo $route === 'account/pd' || $route === 'account/pd/transfer' || $route === 'account/pd/confirm' ? "class='active'" : ''  ?>><a href="provide-donation.html"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['provideDonation']; ?></span>
@@ -54,15 +54,15 @@
                         <ul class="sub-nav" role="menu">
                             <li>
                                  <a href="register.html"><i class="fa fa-caret-right"></i></i>
-                                    <span>Đăng ký</span> 
+                                    <span><?php echo $lang['Register_user']; ?></span> 
                                 </a> 
                             </li>
                             <li>
-                                 <a href="downline-tree.html"><i class="fa fa-caret-right"></i>Cây hệ thống 
+                                 <a href="downline-tree.html"><i class="fa fa-caret-right"></i><?php echo $lang['System_tree']; ?>
                                 </a> 
                             </li>
                             <li>
-                                 <a href="member.html"><i class="fa fa-caret-right"></i> Quản lý thành viên 
+                                 <a href="member.html"><i class="fa fa-caret-right"></i> <?php echo $lang['Manage_member']; ?>
                                 </a> 
                             </li>
                         </ul>
@@ -73,28 +73,28 @@
                     <!-- li (nav item )  -->
                     <li>
                         <a href="#">
-                            <i class="fa fa-sitemap"></i> <span class="nav-item-text">Lịch sử</span>
+                            <i class="fa fa-sitemap"></i> <span class="nav-item-text"><?php echo $lang['History']; ?></span>
                         </a>
                         <!-- .sub-nav  -->
                         <ul class="sub-nav" role="menu">
                             <li>
-                                <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i> Lịch sử PH </a>
+                                <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['History'] ?> PH </a>
                             </li>
                             <li>
-                                <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> Lịch sử GD </a>
+                                <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> <?php echo $lang['History'] ?> GD </a>
                             </li>
                             <li>
-                                <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> Lịch sử hoa hồng </a>
+                                <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i><?php echo $lang['Historical_commission'] ?>  </a>
                             </li>
                         </ul>
                         <!-- / .sub-nav  -->
                     </li>
                      <li <?php echo $route === 'account/setting' ? "class='active'" : ''  ?>>
-                      <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text">Cài đặt</span>
+                      <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Setting']; ?></span>
                       </a>
                     </li>
                      <li <?php echo $route === 'account/logout' ? "class='active'" : ''  ?>>
-                      <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> <span class="nav-item-text">Thoát</span>
+                      <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['logout']; ?></span>
                       </a>
                     </li>
                     

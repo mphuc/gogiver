@@ -11,11 +11,11 @@ $_['NO']            = 'STT';
 
 $_['AMOUNT']            = 'SỐ LƯỢNG';
 
-
+$_['danhnhan']            = 'ĐÃ NHẬN';
 $_['DATE_CREATED']            = 'NGÀY TẠO';
 
 $_['GD_NUMBER']            = 'MÃ GD';
-
+$_['detail']            = 'Chi tiết';
 $_['STATUS']            = 'TRẠNG THÁI';
 $_['t_view_btc'] ='Xem thông tin về giao dịch Bitcoin:';
 $_['TRANSFER']            = 'CHUYỂN KHOẢN';
@@ -65,3 +65,7 @@ $_['c_infoAccount']        = 'Thông tin tài khoản được nhận';
 $_['c_infoTranfer']        = 'Thông tin chuyển khoản';
 $_['c_accountTranfer']     = 'Tài khoản chuyển';
 $_['c_accountAmount']      = 'Số lượng';
+$_['khoplenh']            = 'Khớp lệnh';
+$_['dangcho']            = 'Đang chờ';
+$_['ketthuc']            = 'Kết thúc';
+$_['baocao']            = 'Báo cáo';

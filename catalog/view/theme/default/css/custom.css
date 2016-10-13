@@ -48,3 +48,19 @@
 	line-height: 28px;
 	border-radius: 5px;
 }
+.languages{
+	
+	line-height: 40px;
+}
+.language-selector{
+	margin-top: 13px;
+    list-style: none;
+    margin-right: 20px;
+}
+.language-selector img{
+	width: 25px;
+}
+.pull-right > .dropdown-menu {
+    right: -87px;
+    left: auto;
+}	

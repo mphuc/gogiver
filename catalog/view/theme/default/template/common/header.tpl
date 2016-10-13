@@ -193,6 +193,29 @@
                         </ul>
                     </li>
                 </ul>
+
+               <li class="dropdown language-selector pull-right">
+                  Language:  
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                    <img src="assets/images/flag-uk.png" />
+                  </a>
+                  <ul class="dropdown-menu pull-right">
+                    <li>
+                      <a id="vn" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
+                        <img src="catalog/view/theme/default/img/flags/af.png" />
+                        <span>Deutsch</span>
+                      </a>
+                    </li>
+                    <li class="active">
+                      <a id="en" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
+                        <img src="catalog/view/theme/default/img/flags/ae.png" />
+                        <span>English</span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </li>
+                   
             </nav>
         </header>
 

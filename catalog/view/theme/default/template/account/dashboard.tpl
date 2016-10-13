@@ -12,7 +12,7 @@
             <div class="col-md-12">
             <?php if(count($chu_ky) > 0 && intval($chu_ky['number']) > 0) { ?>
                <div class="col-md-12 alert" style="margin:0px 0px; color:red; font-size:18px; font-weight:700">
-                  Vòng quay PH - Cho của bản đã kết thúc, vui lòng nạp thêm 3 Pin để bắt đầu vòng quy mới
+                  <?php echo $lang['vongquayketthuc'];?>
                </div>
             <?php } ?>
                <!-- col-md-8 start here -->
@@ -28,7 +28,7 @@
                               <span class="stats-icon">
                               <i class="fa fa-money color-green"></i>
                               </span>
-                              <h5>C - Wallet</h5>
+                              <h5><?php echo $lang['c_wallet'];?></h5>
                            </a>
                         </div>
                      </div>
@@ -46,7 +46,7 @@
                               <span class="stats-icon">
                               <i class="fa fa-money color-yellow-dark"></i>
                               </span>
-                              <h5>R - Wallet</h5>
+                              <h5><?php echo $lang['r_wallet'];?></h5>
                            </a>
                         </div>
                      </div>
@@ -117,7 +117,7 @@
                               <span class="stats-icon">
                               <i class="fa fa-users color-green-light"></i>
                               </span>
-                              <h5>Thành Viên Tuyến Dưới</h5>
+                              <h5><?php echo $lang['accounttree']; ?></h5>
                            </a>
                         </div>
                      </div>
@@ -135,7 +135,7 @@
                               <span class="stats-icon">
                               <i class="fa fa-university color-red"></i>
                               </span>
-                              <h5>Qũy Cộng Đồng</h5>
+                              <h5><?php echo $lang['insurance_fund']; ?></h5>
                            </a>
                         </div>
                      </div>
@@ -151,7 +151,7 @@
                               <span class="stats-icon">
                               <i class="fa fa-smile-o color-blue"></i>
                               </span>
-                              <h5>Thành viên đang hoạt động</h5>
+                              <h5><?php echo $lang['member_online']; ?></h5>
                            </a>
                         </div>
                      </div>
@@ -182,11 +182,11 @@
                   <div class="panel-body">
                      <div class="widget-header">
                         <i class="icon-check"></i>
-                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> Thông báo hệ thống</h3>
+                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $lang['Notification_System']; ?></h3>
                      </div>
                      <div class="widget-content">
                         <div class="blog-item">
-                           <p class="blog-title"><a href="blog&token=53">Gogiver Thông báo <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
+                           <p class="blog-title"><a href="blog&token=53">Gogiver <?php echo $lang['Notification']; ?> <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
                            <p>
                               HELLO ! Tháng 10 , tháng của những yêu thương…!!!
                            </p>
@@ -207,7 +207,7 @@
                         <div class="panel-body">
                             <div class="media-body innerAnnounce">
                                 <h4 class="heading" style="margin-bottom: 0px;"> <i class="fa fa-link">
-                                  </i>Liên kết giới thiệu <small>(sao chép và chia sẻ cho bạn bè của bạn): </small>
+                                  </i> <?php echo $lang['url_link']; ?>
                               </h4>
                                 <span><u><a style="word-break: break-word; font-weight:700; color:cyan" href="signup&ref=<?php echo $customer_code;  ?>" target="_blank"><?php echo HTTPS_SERVER ?>signup&ref=<?php echo $customer_code;  ?></a></u></span>
                               </div>

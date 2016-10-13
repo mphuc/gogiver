@@ -1,5 +1,5 @@
 <?php
-   $self -> document -> setTitle('DANH SÁCH PH');
+   $self -> document -> setTitle($lang['heading_title']);
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
@@ -15,7 +15,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Danh Sách PH</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_register_user'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -23,7 +23,7 @@
                        <div class="input-group input-icon file-upload">
                         <div class="widget-content" style="padding:10px">
                              <div style="margin-bottom: 20px; float:right;" class="col-md-12">
-                                <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create">Tạo PH</a>
+                                <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create"><?php echo $lang['createPD'] ?></a>
                              </div>
                              <div class="clearfix"></div>
                             
@@ -33,20 +33,20 @@
                                 <div class="list_ph" style="padding-bottom: 20px;">
                                    <div class="Head" role="tab" id="headingOne<?php echo $key['pd_number'] ?>">
                                       
-                                      <h4>PH : <strong>PH<?php echo $key['pd_number'] ?></strong></h4>
+                                      <h4><?php echo $lang['PD_NUMBER'];?> : <strong>PH<?php echo $key['pd_number'] ?></strong></h4>
                                       <table  class="table">
                                         <tbody>
                                           <tr>
-                                            <td>Ngày tạo</td>
+                                            <td><?php echo $lang['DATE_CREATED'] ?></td>
                                             <td>UserID PH</td>
-                                            <td>Số tiền</td>
-                                            <td>Lợi nhuận</td>
-                                            <td>Thời gian chờ </td>
-                                            <td>Trạng thái</td>
+                                            <td><?php echo $lang['FILLED'] ?></td>
+                                            <td><?php echo $lang['MAX_PROFIT'] ?></td>
+                                            <td><?php echo $lang['TIME_REMAIN'] ?></td>
+                                            <td><?php echo $lang['STATUS'] ?></td>
                                             <td rowspan="2">
                                             <a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">
                                             <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
-                                            Chi tiết
+                                            <?php echo $lang['detail'] ?>
                                             </a></td>
                                           </tr>
                                           <tr>
@@ -58,16 +58,16 @@
                                          </span> </strong></td>
                                             <td><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
-                                             echo '<span class="label label-inverse">Đang chờ</span>';
+                                             echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
                                              break;
                                          case 1:
-                                             echo '<span class="label label-info">Khớp lệnh</span>';
+                                             echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
                                              break;
                                          case 2:
-                                             echo '<span class="label label-success">Kết thúc</span>';
+                                             echo '<span class="label label-success">'.$lang['ketthuc'].'</span>';
                                              break;
                                          case 3:
-                                             echo '<span class="label label-danger">Báo cáo</span>';
+                                             echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
                                              break;
                                          } ?></span></strong></td>
                                          

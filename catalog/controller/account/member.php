@@ -16,10 +16,11 @@ class ControllerAccountMember extends Controller {
 //die('Sever Update');
 
 		//language
+		$this -> load -> language('account/personal');
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$language = new Language($getLanguage);
-		$language -> load('account/register');
+		$language -> load('account/personal');
 		$data['lang'] = $language -> data;
 
 		//start load country model

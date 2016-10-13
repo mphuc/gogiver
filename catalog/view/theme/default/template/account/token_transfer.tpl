@@ -1,5 +1,5 @@
 <?php
-   $self -> document -> setTitle('Chuyển Pin');
+   $self -> document -> setTitle( $lang["text_button"]);
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
@@ -15,7 +15,7 @@
                             <div class="panel panel-default" id="dash_0">
                                 <!-- Start .panel -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="fa fa-align-justify"></i> Chuyển Pin</h4>
+                                    <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang["text_button"] ?></h4>
                                </div>
                                 <div class="panel-body form-horizontal group-border stripped">
                                    
@@ -49,7 +49,7 @@
                                                         </div>
                                                         <div class="col-md-3 col-sm-12 col-xs-12">
                                                            <button type="submit" class="btn btn-primary"><?php echo $lang['text_ok'] ?></button>
-                                                            <a href="buypin.html" class="btn btn-info"><i class="fa fa-fw fa-exchange "></i>Mua Pin</a>
+                                                            <a href="buypin.html" class="btn btn-info"><i class="fa fa-fw fa-exchange "></i><?php echo $lang['text_ok_buy'] ?></a>
                                                         </div>
                                                      </div>
                                                    
@@ -64,7 +64,7 @@
                            <div class="panel panel-default" id="dash_0">
                                 <!-- Start .panel -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="fa fa-align-justify"></i> Lịch sử giao dịch</h4>
+                                    <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
                                </div>
                                 <div class="panel-body">
                                     
@@ -144,6 +144,6 @@
    window.err_text_pin = '<?php echo $lang['err_text_pin'] ?>';
 
    window.err_text_account = '<?php echo $lang['err_text_account'] ?>';
-   jQuery('#title_page').html('Giao dịch pin');
+   // jQuery('#title_page').html('Giao dịch pin');
 </script>
 <?php echo $self->load->controller('common/footer') ?>

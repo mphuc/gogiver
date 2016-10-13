@@ -16,7 +16,7 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$server = $this->config->get('config_url');
 		}
-
+		$data['changelanguage'] = $this->url->link('account/dashboard/changeLange', '', 'SSL');
 		$data['base'] = $server;
 		$data['self'] = $this;
 		$data['description'] = $this->document->getDescription();

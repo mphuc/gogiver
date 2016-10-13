@@ -1,5 +1,5 @@
 <?php
-   $self -> document -> setTitle('Quản lý thành viên');
+   $self -> document -> setTitle($lang['member_manager']);
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Quản lý thành viên</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['member_manager'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -27,12 +27,12 @@
                <div class="">
                   <div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
                     <select name="" id="Floor" class="form-control" required="required" style="width:200px;margin-bottom: 10px;">
-                     <option value="null">Thành Viên</option>
+                     <option value="null"><?php echo $lang['member'] ?></option>
                      <?php 
     $totalFloor = intval($self -> sumFloor());
     for ($i=1; $i <= $totalFloor; $i++) { 
       
-        echo "<option value='floor".$i."'>Thành Viên F".$i."</option>";
+        echo "<option value='floor".$i."'>".$lang['member']." F".$i."</option>";
     
     } ?>
                      
@@ -53,15 +53,15 @@
                        <table id="" class="table table-bordered">
                       <thead>
                         <tr class="header">
-                           <th>STT</th>
-                           <th>ID Hệ Thống</th>
-                           <th>Họ Tên</th>
-                           <th>Số Tài Khoản</th>
-                           <th>Số Điện Thoại</th>
+                           <th><?php echo $lang['No'] ?></th>
+                           <th><?php echo $lang['id_hethong'] ?></th>
+                           <th><?php echo $lang['full_name'] ?></th>
+                           <th><?php echo $lang['bank_number'] ?></th>
+                           <th><?php echo $lang['telephone'] ?></th>
                            
                            <th>Pin</th>
-                           <th>Người Bảo Trợ</th>
-                           <th>Trạng Thái PH</th>
+                           <th><?php echo $lang['Guardian'] ?></th>
+                           <th><?php echo $lang['status'] ?></th>
                         </tr>
                         
                       </thead>
@@ -69,15 +69,15 @@
                       <?php //echo "<pre>"; print_r($data['member_f1']);echo "</pre>"; ?>
                       <?php $Num = 0; foreach ($data['member_f1'] as $value) { ?>
                         <tr>
-                             <td data-title="No" align="center"><?php echo $Num;  ?></td>
-                             <td data-title="ID Hệ Thống"><?php echo $value['username']; ?></td>
-                             <td data-title="Họ Tên"><?php echo $value['account_holder'] ?></td>
-                             <td data-title="Số Tài Khoản"><?php echo $value['account_number'] ?></td>
-                             <td data-title="Điện Thoại"><?php echo $value['telephone'] ?></td>
+                             <td data-title="<?php echo $lang['No'] ?>" align="center"><?php echo $Num;  ?></td>
+                             <td data-title="<?php echo $lang['id_hethong'] ?>"><?php echo $value['username']; ?></td>
+                             <td data-title="<?php echo $lang['full_name'] ?>"><?php echo $value['account_holder'] ?></td>
+                             <td data-title="<?php echo $lang['bank_number'] ?>"><?php echo $value['account_number'] ?></td>
+                             <td data-title="<?php echo $lang['telephone'] ?>"><?php echo $value['telephone'] ?></td>
                            
                              <td data-title="Pin"><?php echo $value['ping'] ?></td>
-                             <td data-title="Người Bảo Trợ"><?php echo $self -> getParrent($value['p_node']) ?></td>
-                             <td data-title="Trạng Thái PH"><span class="text-warning"><?php echo (intval($self -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">Kích hoạt</span>' : '<span class="text-warning">Đang chờ</span>') ?></span></td>
+                             <td data-title="<?php echo $lang['Guardian'] ?>"><?php echo $self -> getParrent($value['p_node']) ?></td>
+                             <td data-title="<?php echo $lang['status'] ?>"><span class="text-warning"><?php echo (intval($self -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">Kích hoạt</span>' : '<span class="text-warning">Đang chờ</span>') ?></span></td>
                           </tr>
 
                         <!--  <tr <?php echo $value['check_Newuser'] > 0 ? 'style="color:#0000ff"' : 'style="color:#ff0000"' ?> >

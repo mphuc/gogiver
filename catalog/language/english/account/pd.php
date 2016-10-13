@@ -13,7 +13,7 @@ $_['ACCOUNT']            = 'ACCOUNT';
 
 $_['ACCOUNT_RECEIVED']            = 'ACCOUNT RECEIVED';
 $_['DATE_CREATED']            = 'DATE CREATED	';
-
+$_['detail']            = 'DETAIL';
 $_['PD_NUMBER']            = 'PD NUMBER';
 
 $_['FILLED']            = 'FILLED';
@@ -79,3 +79,7 @@ $_['C_titleBank_Branch']            = 'Branch Bank';
 $_['C_titleBank_Transfer']            = 'Transfer';
 $_['C_titleUpload']            = 'Please chosen image with';
 
+$_['khoplenh']            = 'Matched';
+$_['dangcho']            = 'Waiting';
+$_['ketthuc']            = 'Finish';
+$_['baocao']            = 'Report';

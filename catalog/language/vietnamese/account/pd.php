@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']     = 'Cho Đi (PD)';
+$_['heading_title']     = 'Cho Đi (PH)';
 // Text
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh sách cho đi';
@@ -27,8 +27,8 @@ $_['TRANSFER']            = 'Danh sách chuyển';
 $_['VND']            = 'VNĐ';
 $_['TIME_REMAIN']            = 'THỜI GIAN CHỜ';
 $_['action']            = 'HÀNH ĐỘNG';
-$_['createPD']            = 'Thêm (PD)';
-
+$_['createPD']            = 'Tạo (PH)';
+$_['detail']            = 'Chi Tiết';
 $_['amount']            = 'Số lượng';
 
 $_['password']            = 'Mật khẩu giao dịch';
@@ -77,3 +77,7 @@ $_['C_titleBank_Number']            = 'Mã Tài Khoản';
 $_['C_titleBank_Branch']            = 'Chi Nhánh Ngân Hàng';
 $_['C_titleBank_Transfer']            = 'Chuyển Khoản';
 $_['C_titleUpload']            = 'Xin vui lòng chọn hình ảnh với';
+$_['khoplenh']            = 'Khớp lệnh';
+$_['dangcho']            = 'Đang chờ';
+$_['ketthuc']            = 'Kết thúc';
+$_['baocao']            = 'Báo cáo';

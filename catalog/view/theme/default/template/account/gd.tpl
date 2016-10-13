@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('DANH SÁCH GH'); 
+   $self -> document -> setTitle($lang['heading_title']); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Danh Sách GH</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_register_user'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -38,16 +38,16 @@
                                     <table  class="table">
                                         <tbody>
                                           <tr>
-                                            <td>Ngày tạo</td>
+                                            <td><?php echo $lang['DATE_CREATED'] ?></td>
                                             <td>UserID GH</td>
-                                            <td>Số tiền</td>
-                                            <td>Đã Nhận</td>
-                                            <td>Thời gian chờ </td>
-                                            <td>Trạng thái</td>
+                                            <td><?php echo $lang['AMOUNT'] ?></td>
+                                            <td><?php echo $lang['danhnhan'] ?></td>
+                                            <td><?php echo $lang['transferTime'] ?></td>
+                                            <td><?php echo $lang['STATUS'] ?></td>
                                             <td rowspan="2">
                                               <a style="margin-top:15px;" class="pull-right btn btn-primary " role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['gd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['gd_number'] ?>">
                                               <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
-                                              Chi tiết
+                                              <?php echo $lang['detail'] ?>
                                               </a>
                                             </td>
                                           </tr>
@@ -60,16 +60,16 @@
                                        </span> </strong></td>
                                             <td><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
-                                           echo '<span class="label label-inverse">Đang chờ</span>';
+                                           echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
                                            break;
                                        case 1:
-                                           echo '<span class="label label-info">Khớp lệnh</span>';
+                                           echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
                                            break;
                                        case 2:
-                                           echo '<span class="label label-success">Kết thúc</span>';
+                                           echo '<span class="label label-success">'.$lang['ketthuc'].'</span>';
                                            break;
                                        case 3:
-                                           echo '<span class="label label-danger">Báo cáo</span>';
+                                           echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
                                            break;
                                        } ?></span></strong></td>
                                           </tr>

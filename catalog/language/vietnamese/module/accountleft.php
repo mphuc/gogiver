@@ -4,3 +4,4 @@ $_['heading_title']    = 'Tài khoản bên trái';
 
 // Text
 $_['title_account']    = 'Trang cá nhân';
+$_['History']    = 'Lịch sử';

@@ -11,11 +11,11 @@ $_['NO']            = 'NO';
 
 $_['AMOUNT']            = 'AMOUNT';
 
-
+$_['danhnhan']            = 'Received';
 $_['DATE_CREATED']            = 'DATE CREATED	';
 
 $_['GD_NUMBER']            = 'GD NUMBER';
-
+$_['detail']            = 'DETAIL';
 $_['STATUS']            = 'STATUS';
 
 $_['TRANSFER']            = 'Transfer list';
@@ -68,3 +68,7 @@ $_['c_infoAccount']        = 'Received Member Information';
 $_['c_infoTranfer']        = 'Tranfer Information';
 $_['c_accountTranfer']     = 'Account Transfer';
 $_['c_accountAmount']      = 'Amount';
+$_['khoplenh']            = 'Matched';
+$_['dangcho']            = 'Waiting';
+$_['ketthuc']            = 'Finish';
+$_['baocao']            = 'Report';
