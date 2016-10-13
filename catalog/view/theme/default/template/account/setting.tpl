@@ -39,7 +39,7 @@
                             </li>
 
                             <li>
-                                <a data-toggle="tab" href="#BitcoinWallet">Ngân hàng</a>
+                                <a data-toggle="tab" href="#BitcoinWallet"><?php echo $lang['text_bank'] ?></a>
                             </li>
 
                         </ul>
@@ -256,14 +256,14 @@
                                                     <div class="col-lg-6">
 
                                                             <div style="margin-bottom:20px">
-                                                                <label for="Accountholders">Chủ tài khoản</label>
+                                                                <label for="Accountholders"><?php echo $lang['text_account_holder'] ?></label>
                                                                 <input <?php echo $banks['account_holder'] ? 'readonly="true"' : ''?> class="form-control" id="Accountholders" name="account_holder" value="<?php echo $banks['account_holder'] ?>" type="text"/>
                                                                 <span id="Accountholders-error" class="field-validation-error">
                                                                     <span></span>
                                                                 </span>
                                                             </div>
                                                             <div style="margin-bottom:20px">
-                                                                <label for="Accountnumber">Mã số tài khoản</label>
+                                                                <label for="Accountnumber"><?php echo $lang['text_account_number'] ?></label>
                                                                 <input <?php echo $banks['account_number'] ? 'readonly="true"' : ''?> value="<?php echo $banks['account_number'] ?>" class="form-control" id="Accountnumber" name="account_number" type="text"/>
                                                                 <span id="Accountnumber-error" class="field-validation-error">
                                                                     <span></span>
@@ -271,7 +271,7 @@
                                                             </div>
 
                                                             <div style="margin-bottom:20px">
-                                                                <label for="Accountnumber">Ngân hàng</label>
+                                                                <label for="Accountnumber"><?php echo $lang['text_bank_name'] ?></label>
                                                     
                                                                 <input <?php echo $banks['account_number'] ? 'readonly="true"' : ''?> value="Vietcombank" class="form-control" type="text"/>
                                                                 

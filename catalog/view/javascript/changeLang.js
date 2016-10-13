@@ -2,6 +2,9 @@ $(function() {
     $("a#en").on("click", function() {
         window.funLazyLoad.start(), window.funLazyLoad.show();
         var a = $(this).data("link");
+        var img = $(this).find('img').attr('src');
+        
+       
         $.ajax({
             url: a,
             type: "GET",

@@ -1,5 +1,5 @@
 <?php
-   $self -> document -> setTitle($lang['heading_title']);
+   $self -> document -> setTitle($lang['heading_title_com_his']);
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Rút và lịch sử hoa hồng</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title_com_his'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -25,18 +25,7 @@
                              <div class="">
                                 <div class="border_">
                                    <div class="">
-                                     
-                                     <!--  <form action="">
-                                        <div class="col-md-2 col-xs-6  pull-right">
-                                          <input type="submit" value="Yêu cầu rút">
-                                        </div>
-                                        <div class="col-md-4 col-xs-6  pull-right">
-                                          <select name="" id="">
-                                            <option value="">2000000</option>
-                                          </select>
-                                        </div>
-
-                                      </form> -->
+                                
                                    </div>
 
 
@@ -45,11 +34,11 @@
                                           <table class="table display dataTable table-bordered table_member">
                                           <thead>
                                             <tr class="header">
-                                              <th>TT</th>
-                                              <th>GD code</th>
-                                              <th>Thời gian tạo</th>
-                                              <th>Số tiền</th>
-                                              <th>Trạng thái</th>
+                                               <th><?php echo $lang['NO'] ?></th>
+                                              <th>GH code</th>
+                                              <th><?php echo $lang['DATE_CREATED'] ?></th>
+                                              <th><?php echo $lang['amount'] ?></th>
+                                              <th><?php echo $lang['STATUS'] ?></th>
                                           </tr>
                                           </thead>
                                           <tbody>

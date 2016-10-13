@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('Transaction History'); 
+   $self -> document -> setTitle($lang['heading_title']); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Lịch sử</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang["$lang['heading_title']"] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">

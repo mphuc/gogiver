@@ -197,16 +197,16 @@
                <li class="dropdown language-selector pull-right">
                   Language:  
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img src="assets/images/flag-uk.png" />
+                    <img id="img" src="<?php if ($lang=="en") echo "catalog/view/theme/default/img/flags/ae.png"; else "catalog/view/theme/default/img/flags/af.png"?>" />
                   </a>
                   <ul class="dropdown-menu pull-right">
-                    <li>
+                    <li  class="<?php if ($lang=="vn") echo "active" ?>">
                       <a id="vn" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/af.png" />
-                        <span>Deutsch</span>
+                        <span>Việt Nam</span>
                       </a>
                     </li>
-                    <li class="active">
+                    <li  class="<?php if ($lang=="en") echo "active" ?>">
                       <a id="en" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/ae.png" />
                         <span>English</span>
@@ -219,42 +219,3 @@
             </nav>
         </header>
 
-<!-- <div class="top_home">
-  <div class="top-navbar header b-b"> <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left"><i class="fa fa-list-ul click_show_menu" aria-hidden="true"></i> </a>
-    <div class="brand pull-left"> <a href="dashboard.html"><img src="catalog/view/theme/default/img/hplogo.png" alt="logo" style=" width:260px;"> </a></div>
-    <ul class="nav navbar-nav pull-right">
-    	<li><div class="thetimenow-embeddable-clock" data-type="clock" data-font-color="#be00d6" data-border-color="none" data-background-color="none" data-font-size="20" > </div> 
-<script type="text/javascript" src="http://www.thetimenow.com/ttn-embed.min.js"></script></li>
-      <li class="dropdown user  hidden-xs"> <a style="color: #FFF" data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username"><?php if($self -> request -> get['route'] !== 'account/registers' ) {?>
-	<?php if(isset($self -> session -> data['customer_id'])){ ?>
-		<?php if(intval($customer['cycle']) > 0 && $customer['quy_bao_tro'] == 0 ) { ?>
-			<span class="text-danger countdown" data-zone="US/Central" data-countdown="<?php echo $date_auto;?>">
-	        </span> |
-			<?php }?> 
-			<i class="fa fa-user" aria-hidden="true"></i>
-			<span href="<?php echo $self -> url -> link('account/setting', '', 'SSL'); ?>" title="<?php echo $customer['username'] ?>"><?php echo $customer['username'] ?>
-			</span>
-		<?php } ?>
-	<?php }?>
-</span> <i class="icon-caret-down small"></i> </a>
-        <ul class="dropdown-menu">
-          <li><a href="index.php?route=account/logout"><i class="icon-key"></i> Log Out</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<style type="text/css">
-	.embed-clock-copyright {
-    display: none;
-}
-.ttn-thetimenow-clock-date {
-    font-size: 19px !important;
-    text-align: center;
-    margin-top: 0 !important;
-    float: left;
-    margin-right: 11px;
-    color: #ff2c00;
-}
-</style> -->

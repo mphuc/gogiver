@@ -1,5 +1,5 @@
 <?php
-   $self -> document -> setTitle($lang['heading_title']);
+   $self -> document -> setTitle($lang['heading_title_comis']);
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Danh sách hoa hồng</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title_comis'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -45,11 +45,11 @@
                       <table class="table display dataTable table-bordered table_member">
                         <thead>
                           <tr class="header">
-                            <th>TT</th>
+                            <th><?php echo $lang['NO'] ?></th>
                             <th>PH code</th>
-                            <th>Thời gian tạo</th>
-                            <th>Số tiền</th>
-                            <th>Trạng thái</th>
+                            <th><?php echo $lang['DATE_CREATED'] ?></th>
+                            <th><?php echo $lang['amount'] ?></th>
+                            <th><?php echo $lang['STATUS'] ?></th>
                         </tr>
                         </thead>
                         <tbody>
