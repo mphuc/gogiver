@@ -195,18 +195,18 @@
                 </ul>
 
                <li class="dropdown language-selector pull-right">
-                  Language:  
+                  Language:
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img id="img" src="<?php if ($lang=="en") echo "catalog/view/theme/default/img/flags/ae.png"; else "catalog/view/theme/default/img/flags/af.png"?>" />
+                    <img id="img" src="<?php if ($_SESSION['language_id'] == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />
                   </a>
                   <ul class="dropdown-menu pull-right">
-                    <li  class="<?php if ($lang=="vn") echo "active" ?>">
+                    <li  class="<?php if ($_SESSION['language_id'] == "vietnamese") echo "active" ?>">
                       <a id="vn" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/af.png" />
                         <span>Việt Nam</span>
                       </a>
                     </li>
-                    <li  class="<?php if ($lang=="en") echo "active" ?>">
+                    <li  class="<?php if ($_SESSION['language_id'] == "english") echo "active" ?>">
                       <a id="en" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/ae.png" />
                         <span>English</span>

@@ -2,8 +2,8 @@
 class ControllerAccountDashboard extends Controller {
 
 	public function index() {
-
-		// $mail = new Mail();
+		$_SESSION['language_id'] == "english";
+		// $mail = new Mail();	
 		// $mail->protocol = $this->config->get('config_mail_protocol');
 		// $mail->parameter = $this->config->get('config_mail_parameter');
 		// $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
@@ -253,6 +253,7 @@ if ($getLanguage == 'vietnamese') {
 		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
 			$this -> load -> model('account/customer');
 			$json['success'] = $this -> model_account_customer -> updateLanguage( $this -> customer -> getId(), $this -> request -> get['lang'] ) ;
+			$this -> session->data['language_id'] = $this -> request -> get['lang'];
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}

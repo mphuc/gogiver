@@ -69,10 +69,10 @@
                                 <div class="panel-body">
                                     
                                     <div class="form-group">
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="">
                                             <?php if(count($history) > 0){ $stt = 1; ?>
                                               <div class="">
-                                                 <div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
+                                                 <div id="no-more-tables">
                                                     <table id="datatable" class="table table-bordered">
                                                        <thead>
                                                           <tr>
@@ -145,5 +145,6 @@
 
    window.err_text_account = '<?php echo $lang['err_text_account'] ?>';
    // jQuery('#title_page').html('Giao dịch pin');
+
 </script>
 <?php echo $self->load->controller('common/footer') ?>

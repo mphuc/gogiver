@@ -171,45 +171,45 @@
    }
    
    function upload(id){
-     $('.id_tranfer').val(id);
+     jQuery('.id_tranfer').val(id);
    
-     $('.ajs-button.ajs-ok').hide();
-     alertify.confirm('Tìm hóa đơn', $('.content_upload').html(), function(){  }, function(){ });
+     jQuery('.ajs-button.ajs-ok').hide();
+     alertify.confirm('Tìm hóa đơn', jQuery('.content_upload').html(), function(){  }, function(){ });
      function readURL(input) {
          if (input.files && input.files[0]) {
              var reader = new FileReader();
    
              reader.onload = function (e) {
-                 $('.blah').attr('src', e.target.result).show().css({'width': '100%'});
+                 jQuery('.blah').attr('src', e.target.result).show().css({'width': '100%'});
              }
    
              reader.readAsDataURL(input.files[0]);
          }else{
-             $('.blah').hide();
+             jQuery('.blah').hide();
          }
      }
-     $(".file").on('change' , function (env) {
+     jQuery(".file").on('change' , function (env) {
          readURL(this);
          var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-         if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-             if($(".file").val()){
-                $('.error-file').show();
+         if ($.inArray(jQuery(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+             if(jQuery(".file").val()){
+               jQuery('.error-file').show();
             }else{
-                 $('.error-file').hide();
+                 jQuery('.error-file').hide();
             }
-             $('#comfim-pd').resetForm();
-             $(".blah").css({'display':'none'});
-             $(".file").val('');
-             $('.error-file').show();
+             jQuery('#comfim-pd').resetForm();
+             jQuery(".blah").css({'display':'none'});
+             jQuery(".file").val('');
+             jQuery('.error-file').show();
          }else{
-             $('.error-file').hide();
+             jQuery('.error-file').hide();
          }
      });
    }
-   $('.show_image').click(function(){
+   jQuery('.show_image').click(function(){
    
-      var id = $(this).data('id');
-       $('.id_tranfer').val(id);
+      var id = jQuery(this).data('id');
+       jQuery('.id_tranfer').val(id);
    
        $.ajax({
          url : '<?php echo $show_image;?>',
