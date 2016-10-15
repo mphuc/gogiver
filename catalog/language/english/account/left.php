@@ -16,3 +16,6 @@ $_['Setting']    = 'Setting';
 $_['System_tree'] = 'System tree';
 $_['Manage_member'] = 'Manage member';
 $_['Historical_commission'] = 'Historical commission';
+$_['f1pd']    = 'F1 PH';
+$_['f1gh']    = 'F1 GH';
+$_['Transaction_Management'] = 'Transaction';

@@ -68,14 +68,37 @@
                         </ul>
                         <!-- / .sub-nav  -->
                     </li>
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-outdent" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Transaction_Management']; ?></span>
+                        </a>
+                        <!-- .sub-nav  -->
+                        <ul class="sub-nav" role="menu">
+                            <li>
+                                 <a href="<?php echo $self -> url -> link('account/ghf', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i></i>
+                                    <span><?php echo $lang['f1gh']; ?></span> 
+                                </a> 
+                            </li>
+                            <li>
+                                 <a href="<?php echo $self -> url -> link('account/phf', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['f1pd']; ?>
+                                </a> 
+                            </li>
+                        </ul>
+                        <!-- / .sub-nav  -->
+                    </li>
                     <!-- / li -->
                     <!-- li (nav item )  -->
-                    <li>
+                    <li <?php echo $route === 'account/gd1' ? "class='active'" : ''  ?>>
+                      <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"><i class="fa fa-sitemap"></i><span class="nav-item-text"><?php echo $lang['Historical_commission'] ?></span>
+                       </a>
+
+                    </li>
+
+                    <!-- <li>
                         <a href="#">
                             <i class="fa fa-sitemap"></i> <span class="nav-item-text"><?php echo $lang['History']; ?></span>
                         </a>
-                        <!-- .sub-nav  -->
+                       
                         <ul class="sub-nav" role="menu">
                             <li>
                                 <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['History'] ?> PH </a>
@@ -87,8 +110,8 @@
                                 <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i><?php echo $lang['Historical_commission'] ?>  </a>
                             </li>
                         </ul>
-                        <!-- / .sub-nav  -->
-                    </li>
+                       
+                    </li> -->
                      <li <?php echo $route === 'account/setting' ? "class='active'" : ''  ?>>
                       <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Setting']; ?></span>
                       </a>

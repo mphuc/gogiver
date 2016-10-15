@@ -90,6 +90,7 @@ $( document ).ready(function() {
                         $('#Quantity').val('').parent().removeClass('has-success');
                         $('#TransferPassword').val('').parent().removeClass('has-success');
                         $('#Description').val('').parent().removeClass('has-success');
+                        $('.alertsuccess').show();
                     }
 
                     window.funLazyLoad.reset();

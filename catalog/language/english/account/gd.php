@@ -72,3 +72,4 @@ $_['khoplenh']            = 'Matched';
 $_['dangcho']            = 'Waiting';
 $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
+$_['heading_title_com_his'] = "History GH F1";

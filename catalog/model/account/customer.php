@@ -622,7 +622,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> row;
 	}
-public function countPDINProvide(){
+	public function countPDINProvide(){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_provide_donation
@@ -2162,5 +2162,40 @@ public function countPDINProvide(){
 		");
 		return $query;
 	}
+	public function tatol_GD_child($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+		");
 
+		return $query -> row;
+	}
+	public function get_GD_child($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.gd_id_customer
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> rows;
+	}
+	public function tatol_PD_child($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> row;
+	}
+	public function get_PD_child($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.pd_id_customer
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> rows;
+	}
 }

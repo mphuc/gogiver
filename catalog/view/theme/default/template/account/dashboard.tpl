@@ -188,7 +188,7 @@
                         <div class="blog-item">
                            <p class="blog-title"><a href="blog&token=53">Gogiver <?php echo $lang['Notification']; ?> <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
                            <p>
-                              HELLO ! Tháng 10 , tháng của những yêu thương…!!!
+                              Mình vì mọi người và mọi người vì mình !!!
                            </p>
                            <p>Mùa Đông se lạnh ùa về khắp mọi miền Tổ Quốc. Đâu đó đã lenlõi từng cơn gió lạnh se buốt từng hơi thở của những ngày đầu Đông !</p>
                            <p>...............</p>

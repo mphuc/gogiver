@@ -81,6 +81,7 @@ class ControllerAccountAuto extends Controller {
 		$loop = true;
 		// $count = 0;
 		$i=1;
+
 		while ($loop) {
 
 			$gdList = $this -> model_account_auto -> getGD7Before();
@@ -99,6 +100,7 @@ class ControllerAccountAuto extends Controller {
 				//create GD cho inventory
 				$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
 				// continue;
+
 				
 			}
 			if(count($pdList) === 0 && count($gdList) > 0){
@@ -267,8 +269,8 @@ class ControllerAccountAuto extends Controller {
 			
 			$this->updateLevel($value['customer_id']);
 
-			$this -> model_account_customer -> update_C_Wallet(8800000*0.05, $p_node['p_node'], $add = true);
-			$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format(8800000*0.05)) . ' VNĐ', "10% từ PH ".$p_node['username']." (".number_format(8800000)." VNĐ)");
+			$this -> model_account_customer -> update_C_Wallet(8800000*0.1, $p_node['p_node'], $add = true);
+			$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format(8800000*0.1)) . ' VNĐ', "10% từ PH ".$p_node['username']." (".number_format(8800000)." VNĐ)");
 			// lãi tĩnh lãi động
 			// Tầng 1
 			$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($p_node['p_node']);
@@ -291,7 +293,7 @@ class ControllerAccountAuto extends Controller {
 				        $percent = 7;
 				        break;
 				    default:
-				        $percent = 0;
+				        $percent = 0.1;
 				}
 				if ($getlevel_child['level'] >= $getlevel['level']){
 					$percent = 0.5;
@@ -459,3 +461,5 @@ class ControllerAccountAuto extends Controller {
 		}
 	}
 }
+
+

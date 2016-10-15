@@ -83,3 +83,4 @@ $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
 $_['heading_title_comis'] = 'Lịch sử PH';
 $_['heading_title_com_his'] = 'Lịch sử GH';
+$_['heading_title_comisf1'] = 'Lịch sử PH F1';

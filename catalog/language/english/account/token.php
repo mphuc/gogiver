@@ -45,3 +45,5 @@ $_['err_text_account_notexit'] = 'Received account not exit';
 
 $_['err_text_pin'] = 'Wrong amount, please try again';
 $_['err_text_account_passwd'] = 'Wrong transaction password, please try again';
+$_['success'] = 'Success';
+$_['complete_transpin'] = 'Transfer successful Pin';

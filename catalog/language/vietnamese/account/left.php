@@ -16,3 +16,6 @@ $_['Setting']    = 'Cài đặt';
 $_['System_tree'] = 'Cây hệ thống';
 $_['Manage_member'] = 'Quản lý thành viên';
 $_['Historical_commission'] = 'Lịch sử hoa hồng';
+$_['f1pd']    = 'F1 PH';
+$_['f1gh']    = 'F1 GH';
+$_['Transaction_Management'] = 'Giao dịch';

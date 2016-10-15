@@ -50,3 +50,5 @@ $_['err_text_account_passwd'] = 'Mật khẩu giao dịch sai, xin vui lòng th�
 $_['err_text_pin'] = 'Số Pin sai, xin vui lòng thử lại';
 
 $_['btn_search'] = 'Tìm Kiếm';
+$_['success'] = 'Thành công';
+$_['complete_transpin'] = 'Chuyển pin thành công';

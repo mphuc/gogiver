@@ -85,3 +85,4 @@ $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
 $_['heading_title_comis'] = 'History PH';
 $_['heading_title_com_his'] = 'History GH';
+$_['heading_title_comisf1'] = 'History PH F1';

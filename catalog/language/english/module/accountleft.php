@@ -19,3 +19,6 @@ $_['profileSetting']    = 'Profile Setting';
 $_['logout']    = 'Logout';
 $_['refferal']    = 'Refferal(S)';
 $_['History']    = 'History';
+$_['f1pd']    = 'F1 PH';
+$_['f1gh']    = 'F1 GH';
+$_['Transaction_Management'] = 'Transaction Management';
