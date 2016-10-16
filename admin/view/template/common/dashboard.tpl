@@ -130,7 +130,74 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total PD <span class="label label-success">Finish</span> today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_PD_Current_Finish; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total PD <span class="label label-info">March</span> today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_PD_Current_March; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total PD <span class="label label-default">Waiting</span> today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_PD_Current_Waiting; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <a href="<?php echo $pd; ?>"><div class="tile-heading">Total GD <span class="label label-success">Finish</span> today</div>
+                        <div class="tile-body">
+                            <i class="fa fa-eye"></i>
+                            <h2 class="pull-right">
+                                <?php echo $total_GD_Current_Finish; ?>
+                            </h2>
+                        </div></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total GD <span class="label label-info">March</span> today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_GD_Current_March; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total GD <span class="label label-default">Waitng</span> today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_GD_Current_Waiting; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+           
+            </div>
     </div>
 </div>
 <?php echo $footer; ?>

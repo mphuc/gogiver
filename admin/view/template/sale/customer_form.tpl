@@ -34,13 +34,17 @@
                   <!--        <li><a href="#tab-hoiphi" data-toggle="tab">Hội viên phí</a></li> -->
                   <!-- <li><a id="ac-tab-transaction" href="#tab-transaction" data-toggle="tab">Lịch sử công tác phí</a></li> -->
                   <!-- <li><a id="ac-tab-tabletransaction" href="#tab-tabletransaction" data-toggle="tab">Bảng công tác phí</a></li> -->
-                  <li><a id="ac-tab-personal" href="#tab-personal" data-toggle="tab">Chart System</a></li>
-                  <li><a href="#tab-pin" data-toggle="tab">Pin</a></li>
-                  <li><a href="#tab-c-wallet" data-toggle="tab">C - Wallet</a></li>
-                  <li><a href="#tab-r-wallet" data-toggle="tab">R - Wallet</a></li>
+                  <!-- <li><a id="ac-tab-personal" href="#tab-personal" data-toggle="tab">Chart System</a></li> -->
+                
                   <li><a href="#tab-pd" data-toggle="tab">Provide Donation</a></li>
                   <li><a href="#tab-gd" data-toggle="tab">Get Donation</a></li>
-                  <li><a href="#tab-creategd" data-toggle="tab">Create GD</a></li>
+                  <?php if ($_SESSION['user_id'] == 1) { ?>
+                    <li><a href="#tab-pin" data-toggle="tab">Pin</a></li>
+                  <li><a href="#tab-c-wallet" data-toggle="tab">C - Wallet</a></li>
+                  <li><a href="#tab-r-wallet" data-toggle="tab">R - Wallet</a></li>
+                    <li><a href="#tab-creategd" data-toggle="tab">Create GD</a></li>
+                  <button type="button" id="exportgdmarch" data-toggle="tooltip" title="Export" class="btn btn-info" >Xuất Pin</i></button>
+                <?php  } ?>
                   
                   <!-- <li><a id="ac-tab-binary" href="#tab-binary" data-toggle="tab">Biểu đồ nhị phân</a></li> -->
                   <?php /* ?>
@@ -100,7 +104,7 @@
 
 
                                  </div>
-                                 <code><?php echo $customer_id; ?> </code>
+                                 
                                  <div class="form-group ">
                                     <div class="col-sm-5 ">
                                        <label class=" control-label" for="input-cmnd">Citizenship Card/Passport No</label>                                       
@@ -166,7 +170,7 @@
                                        <input  type="text" name="ma_thue" value="<?php echo $ma_thue; ?>" placeholder="Mã số thuế"  id="ma_thue" class="form-control" />
                                        </div> -->
                                  </div>
-                                   <div class="form-group ">
+                                <div class="form-group ">
                                        <div class="col-sm-5">
                                           <label class=" control-label" for="input-wallet">Account holder</label>
                                           <input type="text" name="account_holder" value="<?php echo $account_holder; ?>" id="input-wallet" class="form-control" />
@@ -176,31 +180,39 @@
                                        </div>
                                        <div class="col-sm-1"></div>
                                        <div class="col-sm-6">
-                                          <label class=" control-label" for="input-p_node">Bank name</label>
-                                         <input type="text" name="bank_name" value="<?php echo $bank_name; ?>"  id="input-wallet" class="form-control" />
-                                          <?php if ($error_wallet) { ?>
-                                          <div class="text-danger"><?php echo $error_wallet; ?></div>
-                                          <?php  } ?>
-                                       </div>
-                                    
-                                    </div>
-                                    <div class="form-group ">
-                                       <div class="col-sm-5">
+                                          
                                           <label class=" control-label" for="input-wallet">Account number</label>
                                          <input type="text" name="account_number" value="<?php echo $account_number; ?>"  id="input-wallet" class="form-control" />
                                           <?php if ($error_wallet) { ?>
                                           <div class="text-danger"><?php echo $error_wallet; ?></div>
                                           <?php  } ?>
+                                    
+
+                                          <!-- <label class=" control-label" for="input-p_node">Bank name</label>
+                                         <input type="text" name="bank_name" value="<?php echo $bank_name; ?>"  id="input-wallet" class="form-control" />
+                                          <?php if ($error_wallet) { ?>
+                                          <div class="text-danger"><?php echo $error_wallet; ?></div>
+                                          <?php  } ?> -->
                                        </div>
+                                    
+                                    </div>
+                                    <div class="form-group ">
+                                       <!-- <div class="col-sm-5">
+                                          <label class=" control-label" for="input-wallet">Account number</label>
+                                         <input type="text" name="account_number" value="<?php echo $account_number; ?>"  id="input-wallet" class="form-control" />
+                                          <?php if ($error_wallet) { ?>
+                                          <div class="text-danger"><?php echo $error_wallet; ?></div>
+                                          <?php  } ?>
+                                       </div> -->
                                        <div class="col-sm-1"></div>
-                                       <div class="col-sm-6">
+                                      <!--  <div class="col-sm-6">
                                           <label class=" control-label" for="input-p_node">Branch bank</label>
                                          <input type="text" name="branch_bank" value="<?php echo $branch_bank; ?>" id="input-wallet" class="form-control" />
                                           <?php if ($error_wallet) { ?>
                                           <div class="text-danger"><?php echo $error_wallet; ?></div>
                                           <?php  } ?>
-                                       </div>
-                                    </div>
+                                       </div> -->
+                                    </div> 
                                  <div class="form-group">
                                     <div class="col-sm-5" style="display: none;">
                                        <label class=" control-label" for="input">The monthly membership</label>
@@ -655,6 +667,9 @@
                   <div class="tab-pane" id="tab-personal">
                      <div id="personal"></div>
                   </div>
+                  <div class="tab-pane" id="tab-binary">
+                     <div id="binary"></div>
+                  </div>
                    </form>
                     
                    <div class="tab-pane" id="tab-pin">                     
@@ -815,8 +830,8 @@
                                                 <td class= "xedit" id="<?php echo $key['id'] ?>" data-title="DATE CREATED">                                                
                                                    <?php echo $key['date_added'] ?></td>
                                                 <td data-title="PD NUMBER">PD<?php echo $key['pd_number'] ?></td>
-                                                <td data-title="MAX PROFIT"><?php echo number_format($key['filled']); ?></td>
-                                                <td data-title="ACCOUNT"><?php echo number_format($key['max_profit']); ?></td>
+                                                <td data-title="MAX PROFIT"><?php echo number_format($key['filled']); ?> VND</td>
+                                                <td data-title="ACCOUNT"><?php echo number_format($key['max_profit']); ?> VND</td>
                                                 <td data-title="STATUS" class="status"> 
                                                 <?php
                                                    switch ($key['status']) {
@@ -858,7 +873,9 @@
                                                     <thead>
                                                         <tr>
                                                           <?php foreach ($transferList as $key => $value) { ?>
-                                                       
+                                                        <?php if ($value['image']):  ?>
+                                                             <th>IMAGE</th>    
+                                                         <?php endif; }?>
                                                                                          
                                                             <th>TRANSACTION</th>
                                                             <th>DATE</th>
@@ -867,20 +884,16 @@
                                                             <th>AMOUNT</th>
                                                             <th>PD STATUS</th>
                                                             <th>GD STATUS</th>
-                                                             <?php if ($value['image']):  ?>
-                                                             <th>IMAGE</th>    
-                                                         <?php endif; }?>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                         <?php foreach ($transferList as $key => $value) { ?>
-                                                         <?php if ($value['gd_status'] == 0) { ?>
-                                                   <td data-title="CONFIRM"><a class="btn btn-primary" href="index.php?route=sale/customer/confirmPD&token=<?php echo $token; ?>&customer_id=<?php echo $value['pd_id_customer'] ?>&idtransfer=<?php echo $value['id'] ?>">Confirm</a></td>
-                                               <?php } else { ?>
- <td data-title="CONFIRM"><span>true</span></td>
-                                               <?php } ?>
-                                                       
+                                                        <?php if ($value['image']):  ?>
+                                                            <td data-title="TIME REMAIN">
+                                                               <img src="<?php echo $value['image']  ?>" style="max-width:300px;">
+                                                            </td>
+                                                         <?php endif;?>
                                                             
                                                             <td data-title="TRANSACTION">TC<?php echo $value['transfer_code']  ?></td>
                                                             <td data-title="DATE"><?php echo date("d/m/Y H:i A", strtotime($value['date_added'])); ?>
@@ -921,11 +934,6 @@
                                                              <td data-title="TIME REMAIN" class="countdown" data-countdown="<?php echo $value['date_finish'] ?>">
                                                             </td>
 
-                                                             <?php if ($value['image']):  ?>
-                                                            <td data-title="TIME REMAIN">
-                                                               <img src="<?php echo $value['image']  ?>" style="max-width:300px;">
-                                                            </td>
-                                                         <?php endif;?>
                                                             
 
                                                         </tr>
@@ -1131,6 +1139,7 @@
       </div>
    </div>
    <script type="text/javascript"><!--
+
       $('select[name=\'customer_group_id\']').on('change', function() {
         $.ajax({
           url: 'index.php?route=sale/customer/customfield&token=<?php echo $token; ?>&customer_group_id=' + this.value,
@@ -1771,7 +1780,13 @@
           $('input[name=\'p_node\']').attr("value",item['value']);
         } 
       });
+      $('#exportgdmarch').on('click', function() {
+    url = 'index.php?route=report/exportCustomer/exportGdMarch&token=<?php echo $token; ?>&customer_id=<?php echo $idUser; ?>';
+   
+    location = url;
+  });
       //--></script>
 </div>
 <?php echo $footer; ?>
+
 

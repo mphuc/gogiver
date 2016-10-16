@@ -31,6 +31,7 @@ class ControllerCommonDashboard extends Controller {
 			$data['error_install'] = '';
 		}
 
+		$data['pd'] = $this->url->link('pd/pd', 'token=' . $this->session->data['token'], 'SSL');
 		$data['token'] = $this->session->data['token'];
 
 		$data['header'] = $this->load->controller('common/header');
@@ -52,6 +53,14 @@ class ControllerCommonDashboard extends Controller {
 		$data['totalFinish'] = $this->model_report_activity->getTotalProvide(2);
 		$data['totalCTP'] = $this->model_report_activity->getAllProfitByType(2);
 		
+		$data['total_GD_Current_Waiting'] = $this->model_report_activity->get_total_gd_current_date(0);
+		$data['total_GD_Current_Finish'] = $this->model_report_activity->get_total_gd_current_date(2);
+		$data['total_GD_Current_March'] = $this->model_report_activity->get_total_gd_current_date(1);
+		$data['total_PD_Current_Waiting'] = $this->model_report_activity->get_total_pd_current_date(0);
+		$data['total_PD_Current_Finish'] = $this->model_report_activity->get_total_pd_current_date(2);
+		$data['total_PD_Current_March'] = $this->model_report_activity->get_total_pd_current_date(1);
+		$data['total_btc'] = $this->model_report_activity->total_btc();
+
 		$data['totalHP'] = $this->model_report_activity->getAllProfitByType(1);
 		
 		$data['totalNewLast'] = $this->model_report_activity->getTotalCustomersNewLast();

@@ -615,6 +615,46 @@ class ControllerSettingSetting extends Controller {
 			$data['config_date_gd'] = $this->config->get('config_date_gd');
 		}
 
+		if (isset($this->request->post['config_percentcommission1'])) {
+			$data['config_percentcommission1'] = $this->request->post['config_percentcommission1'];
+		} else {
+			$data['config_percentcommission1'] = $this->config->get('config_percentcommission1');
+		}
+		if (isset($this->request->post['config_percentcommission'])) {
+			$data['config_percentcommission'] = $this->request->post['config_percentcommission'];
+		} else {
+			$data['config_percentcommission'] = $this->config->get('config_percentcommission');
+		}
+		if (isset($this->request->post['config_percentcommission2'])) {
+			$data['config_percentcommission2'] = $this->request->post['config_percentcommission2'];
+		} else {
+			$data['config_percentcommission2'] = $this->config->get('config_percentcommission2');
+		}
+
+		//config custom============================================================
+
+		if (isset($this->request->post['config_regulations'])) {
+			$data['config_regulations'] = $this->request->post['config_regulations'];
+		} else {
+			$data['config_regulations'] = $this->config->get('config_regulations');
+		}
+		if (isset($this->request->post['config_regulations_1'])) {
+			$data['config_regulations_1'] = $this->request->post['config_regulations_1'];
+		} else {
+			$data['config_regulations_1'] = $this->config->get('config_regulations_1');
+		}
+		if (isset($this->request->post['config_regulations_2'])) {
+			$data['config_regulations_2'] = $this->request->post['config_regulations_2'];
+		} else {
+			$data['config_regulations_2'] = $this->config->get('config_regulations_2');
+		}
+		if (isset($this->request->post['config_regulations_3'])) {
+			$data['config_regulations_3'] = $this->request->post['config_regulations_3'];
+		} else {
+			$data['config_regulations_3'] = $this->config->get('config_regulations_3');
+		}
+		//config custom============================================================
+
 		if (isset($this->request->post['config_name'])) {
 			$data['config_name'] = $this->request->post['config_name'];
 		} else {

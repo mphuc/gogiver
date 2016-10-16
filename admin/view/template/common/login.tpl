@@ -29,7 +29,16 @@
                 <div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
                   <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
                 </div>
-                
+              <div class="form-group">
+                <label for="input-password" style="margin-top: 10px;">OTP</label>
+                <div class="input-group" style="margin-bottom: 16px;">
+                <span class="input-group-addon">
+                <i class="fa fa-lock password-icon"></i>
+                </span>
+                 <input type="text" name="otp" value="" placeholder="Mã OTP" id="" class="form-control" />
+
+                </div>
+              </div>
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-key"></i> <?php echo $button_login; ?></button>

@@ -91,15 +91,37 @@ class ControllerCommonLogin extends Controller {
 
 		$this->response->setOutput($this->load->view('common/login.tpl', $data));
 	}
-
+	
 	protected function validate() {
-		if (!isset($this->request->post['username']) || !isset($this->request->post['password']) || !$this->user->login($this->request->post['username'], $this->request->post['password'])) {
-			$this->error['warning'] = $this->language->get('error_login');
+		if ($this->check_otp_login($this->request->post['otp']) == 1 || 1==1)
+		{
+			if (!isset($this->request->post['username']) || !isset($this->request->post['password']) || !$this->user->login($this->request->post['username'], $this->request->post['password'])) {
+				$this->error['warning'] = $this->language->get('error_login');
+			}
+
+			return !$this->error;
+		}
+		else
+		{
+			$this->error['warning'] = "OTP enter the wrong code again";
+		}
+		
+	}
+	public function check_otp_login($otp){
+		require_once dirname(__FILE__) . '/vendor/autoload.php';
+		$authenticator = new PHPGangsta_GoogleAuthenticator();
+		$secret = "ZYHSVGFQM2UWZNE5";
+		$tolerance = "0";
+		$checkResult = $authenticator->verifyCode($secret, $otp, $tolerance);    
+		if ($checkResult) 
+		{
+		    return 1;
+		     
+		} else {
+		    return 2;
 		}
 
-		return !$this->error;
 	}
-
 	public function check() {
 		$route = isset($this->request->get['route']) ? $this->request->get['route'] : '';
 

@@ -2,15 +2,16 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-
+  <?php if ($_SESSION['user_id'] == 1) { ?>
       <div class="pull-right">
       <?php if($getGroupId == 1){?>
       <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
      <?php }?>
       <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button> 
-
+      <button type="button" id="exportgd" data-toggle="tooltip" title="Export" class="btn btn-info" >Export GD Today</i></button>
+       <button type="button" id="exportpd" data-toggle="tooltip" title="Export" class="btn btn-primary" >Export PD Today</i></button>
       </div>
-
+<?php } ?>
       <h1><?php echo $heading_title; ?></h1>
       <ul class="breadcrumb">
         <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -300,7 +301,9 @@
               </thead>
               <tbody>
                 <?php if ($customers) { $n=1;?>
-                <?php foreach ($customers as $customer) { ?>
+                <?php foreach ($customers as $customer) { 
+                  //print_r($customer); die;
+                ?>
                 <tr class="<?php // if($customer['hvOff'] == 1) { echo $customer['hvNew'] == true? 'hvNew ':'';} else echo 'hvOff';?>">
                   <td class="text-center"><?php if (in_array($customer['customer_id'], $selected)) { ?>
                     <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" checked="checked" />
@@ -311,7 +314,11 @@
                   
                   <td class="text-left"><?php echo $customer['username']; ?></td>
                  <td class="text-left"><?php echo $customer['email']; ?></td>
-                 <td class="text-left"><?php echo $customer['name_country']; ?></td>
+                 <td class="text-center">
+                  <?php if($customer['img_profile'] != "") { ?>
+                    <img style="width:120px" src="<?php echo $customer['img_profile']; ?>" />
+                  <?php } else {echo "Không có CMND"; }?>
+                  </td>
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['name_parent']; ?></td>
                   <?php /*?>
@@ -423,7 +430,14 @@ $('#button-filter').on('click', function() {
 	
 	location = url;
 });
-
+$('#exportgd').on('click', function() {
+    url = 'index.php?route=report/exportCustomer/exportgd&token=<?php echo $token; ?>';
+    location = url;
+  });
+$('#exportpd').on('click', function() {
+    url = 'index.php?route=report/exportCustomer/exportpd&token=<?php echo $token; ?>';
+    location = url;
+  });
   $('#export').on('click', function() {
 		
 		url = 'index.php?route=report/exportCustomer&token=<?php echo $token; ?>';

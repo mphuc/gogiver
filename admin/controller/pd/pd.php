@@ -1,7 +1,7 @@
 <?php
 class ControllerPdPd extends Controller {
 	public function index() {
-		$this->document->setTitle('Provide Donation');
+		$this->document->setTitle('Get Help');
 		$this->load->model('pd/pd');
 	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {

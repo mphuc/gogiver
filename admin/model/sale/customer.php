@@ -805,9 +805,9 @@ class ModelSaleCustomer extends Model {
 			id_customer = '" .$customer_id. "',
 			amount ='".$pinadd."',
 			date_added = NOW(),
-			user_description = '" .'wegroup.help'. "',
+			user_description = '" .'Happymoney.us'. "',
 			type = '" .'Transfer'. "',
-			system_description = '" .'wegroup.help'. "'
+			system_description = '" .'Happymoney.us'. "'
 			
 		");
 		return $query;
@@ -835,7 +835,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer_c_wallet SET 
 			customer_id = '".$id_customer."',
-			amount = '0'
+			amount = '0.0'
 		");
 		return $query ? true : false;
 	}
@@ -870,7 +870,7 @@ class ModelSaleCustomer extends Model {
 		if(!$add){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_r_wallet SET 
-				amount =".floatval($amount)."
+				amount =".($amount)."
 				WHERE customer_id = '".$customer_id."'
 			");
 		}
@@ -880,7 +880,7 @@ class ModelSaleCustomer extends Model {
 		if(!$add){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_c_wallet SET 
-				amount = ".floatval($amount)."
+				amount = ".($amount)."
 				WHERE customer_id = '".$customer_id."'
 			");
 		}
@@ -2744,8 +2744,8 @@ class ModelSaleCustomer extends Model {
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_get_donation SET 
 			customer_id = '".$customer_id."',
-			date_added = NOW(),
-			amount = '".floatval($amount)."',
+			date_added = DATE_ADD(NOW(),INTERVAL -30 DAY),
+			amount = '".$amount."',
 			status = 0
 		");
 
@@ -2761,7 +2761,7 @@ class ModelSaleCustomer extends Model {
 		if($query){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET 
-				date_added = NOW()
+				date_added = DATE_ADD(NOW(),INTERVAL -30 DAY),
 				WHERE customer_id = '".$customer_id."'
 			");
 		}
@@ -2780,11 +2780,7 @@ class ModelSaleCustomer extends Model {
 		return $query === true ? true : false;
 	}
 	public function update_date_finish($customer_id,$data){	
-	echo "
-		UPDATE ". DB_PREFIX ."customer_transfer_list SET 
-			date_finish ='".$data."'
-			WHERE id = '".$customer_id."'
-		"; die();
+
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_transfer_list SET 
 			date_finish ='".$data."'
@@ -2794,85 +2790,212 @@ class ModelSaleCustomer extends Model {
 		return $query === true ? true : false;
 	}
 	
-	public function updateStatusPDTransferList($transferID, $linkImage){
-		$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_transfer_list SET
-				pd_satatus = 1,
-				gd_status = 1,
-				image = '".$linkImage."'
-				WHERE id = '".$this->db->escape($transferID)."'
-		");
-		return $query;
+	public function get_pd_current_date(){
+		$query = $this->db->query("SELECT pd.*, c.username as username,c.telephone, c.email,c.wallet FROM ".DB_PREFIX."customer_provide_donation pd 
+			LEFT JOIN ". DB_PREFIX . "customer c on pd.customer_id = c.customer_id WHERE date(pd.date_added)=CURRENT_DATE");
+		return $query -> rows;
 	}
-	public function getPDByTranferID($transacion_id){
+	public function get_gd_current_date(){
+		$query = $this->db->query("SELECT gd.*, c.username as username,c.telephone, c.email,c.wallet
+			FROM ".DB_PREFIX."customer_get_donation gd 
+			LEFT JOIN ". DB_PREFIX . "customer c on gd.customer_id = c.customer_id WHERE date(gd.date_added)=CURRENT_DATE");
+		return $query->rows;
+	}
+
+	public function get_all_pd($limit, $offset){
 		$query = $this -> db -> query("
-			SELECT pd_id, gd_id
-			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE id = ".$transacion_id."
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			ORDER BY A.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_all_gd($limit, $offset){
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			ORDER BY A.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_all_pd_waiting($limit, $offset){
+$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '-1 day' , strtotime ( $date_added ) ) ;
+			$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."customer_provide_donation_tmp A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			WHERE date_finish >= '".$date_finish."' ORDER BY A.date_added ASC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_count_code(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_invoice_pin 
 		");
 		return $query -> row;
 	}
-	public function updateStusPDActive($pd_id,$status){
+
+	public function get_count_ph(){
+
 		$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				status = '".$status."',
-				date_finish = DATE_ADD(NOW(),INTERVAL + 14 DAY)
-				WHERE id = '".$pd_id."'
-			");
-		return $query;
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_provide_donation 
+		");
+		return $query -> row;
 	}
-	public function updateCheck_R_WalletPD($pd_id){
+	public function get_count_gh(){
+
 		$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				check_R_Wallet = 1
-				WHERE id = '".$pd_id."'
-			");
-		return $query;
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_get_donation 
+		");
+		return $query -> row;
 	}
-	public function updateStusGD($gd_id){
+	public function get_count_ph_waiting(){
+
 		$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_get_donation SET
-				status = 2
-				WHERE id = '".$gd_id."'
-			");
-		return $query;
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_provide_donation_tmp
+		");
+		return $query -> row;
 	}
-	public function getPD_byid($id){
+	public function get_all_pin($date){
+
 		$query = $this -> db -> query("
 			SELECT *
-			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE id = '".$this->db->escape($id)."'
+			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id WHERE date(date_created) = '".$date."'
+			ORDER BY A.invoice_id DESC
 		");
-		return $query -> row;
+		
+		return $query -> rows;
 	}
-	public function getCustomerfr($customer_id) {
-		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id = '" . (int)$customer_id . "'");
-		return $query -> row;
-	}
-	public function update_C_Walletfr($amount , $customer_id){
+
+	public function load_pin_date($date)
+	{
 		$query = $this -> db -> query("
-		UPDATE " . DB_PREFIX . "customer_c_wallet SET
-			amount = amount + ".intval($amount)."
-			WHERE customer_id = '".$customer_id."'
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id WHERE date_created >= '".$date." 00:00:00' AND date_created <= '".$date." 23:59:59'
+			ORDER BY A.invoice_id DESC
 		");
+		
+		return $query -> rows;
 	}
-	public function saveTranstionHistoryfr($customer_id, $wallet, $text_amount, $system_decsription){
+	public function get_all_code($limit, $offset){
+
 		$query = $this -> db -> query("
-			INSERT INTO ".DB_PREFIX."customer_transaction_history SET
-			customer_id = '".$customer_id."',
-			wallet = '".$wallet."',
-			text_amount = '".$text_amount."',
-			system_decsription = '".$system_decsription."',
-			date_added = NOW()
+			SELECT *
+			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			ORDER BY A.invoice_id DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
 		");
-		return $query;
+		
+		return $query -> rows;
 	}
-	public function getCustomerCustom($customer_id) {
-		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node 
-			FROM ". DB_PREFIX ."customer AS c
-				JOIN ". DB_PREFIX ."customer_ml AS ml
-				ON ml.customer_id = c.customer_id
-				WHERE c.customer_id = '" . (int)$customer_id . "'");
-		return $query -> row;
+	public function load_ph_date($date)
+	{
+		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder
+			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$date." 00:00:00' AND A.date_added <= '".$date." 23:59:59'
+			ORDER BY A.date_added DESC
+		");
+		
+		return $query -> rows;
+	}
+	public function load_gh_date($date)
+	{
+		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$date." 00:00:00' AND A.date_added <= '".$date." 23:59:59'
+			ORDER BY A.date_added DESC
+		");
+		
+		return $query -> rows;
+	}
+	public function getall_gd_date($start_date,$end_date)
+	{
+		if ($start_date == $end_date)
+		{
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$start_date." 23:59:59'
+			ORDER BY A.date_added DESC
+		");
+		}
+		else
+		{
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59'
+			ORDER BY A.date_added DESC
+		");
+		}
+		return $query -> rows;
+	}
+	public function show_gh_username($username)
+	{
+		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE B.username = '".$username."'
+			ORDER BY A.date_added DESC
+		");
+		
+		return $query -> rows;
+	}
+	public function show_ph_username($username)
+	{
+		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder
+			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE B.username = '".$username."'
+			ORDER BY A.date_added DESC
+		");
+		
+		return $query -> rows;
+	}
+	public function getCustomLikes($name) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT username AS name, customer_id, account_holder FROM ". DB_PREFIX ."customer
+			WHERE (username Like '%".$this->db->escape($name)."%' OR firstname LIKE '%".$this->db->escape($name)."%') 
+			LIMIT 12
+		") ;
+		$array_id = $query -> rows;
+
+		return $array_id;
+	}
+	public function getCustomOfNode($id_user) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT c.username AS name, c.customer_id AS code FROM ". DB_PREFIX ."customer AS c
+			JOIN ". DB_PREFIX ."customer_ml AS ml
+			ON ml.customer_id = c.customer_id
+			WHERE ml.p_node = ". $id_user."");
+		$array_id = $query -> rows;
+		foreach ($array_id as $item) {
+			$listId .= ',' . $item['code'];
+			$listId .= $this -> getCustomOfNode($item['code']);
+		}
+		return $listId;
+	}
+	public function get_buy_pin($customer_id)
+	{
+		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder
+			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B
+			 ON B.customer_id = A.customer_id WHERE A.confirmations = 3 ORDER BY A.date_created DESC
+		");
+		
+		return $query -> rows;
 	}
 }

@@ -31,7 +31,7 @@
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-setting" class="form-horizontal">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+           <!--  <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-store" data-toggle="tab"><?php echo $tab_store; ?></a></li>
             <li><a href="#tab-local" data-toggle="tab"><?php echo $tab_local; ?></a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li> 
@@ -40,14 +40,14 @@
             <li><a href="#tab-mail" data-toggle="tab"><?php echo $tab_mail; ?></a></li>
             <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
             <li><a href="#tab-google" data-toggle="tab"><?php echo $tab_google; ?></a></li>
-            <li><a href="#tab-account" data-toggle="tab"><?php echo $tab_account; ?></a></li>
-             <li><a href="#tab-account" data-toggle="tab">Config</a></li>
+            <li><a href="#tab-account" data-toggle="tab"><?php echo $tab_account; ?></a></li> -->
+             <!-- <li><a href="#tab-account" data-toggle="tab">Config</a></li> -->
           </ul>
             <div class="tab-content">
             <div class="tab-pane active" id="tab-config">
            
             
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-meta-title">Date PD</label>
                 <div class="col-sm-10">
                   <input type="text" name="config_date_pd" value="<?php echo $config_date_pd; ?>" placeholder="pd" id="input-meta-title" class="form-control" />         
@@ -59,7 +59,61 @@
                   <input type="text" name="config_date_gd" value="<?php echo $config_date_gd; ?>" placeholder="gd" id="input-meta-title" class="form-control" />
                 
                 </div>
+              </div> -->
+              <fieldset>
+                <legend>PH</legend>
+                <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-description">Số PH / Ngày</label>
+                <div class="col-sm-6">
+                  <input type="text" name="config_percentcommission" id="input" class="form-control" value="<?php echo $config_percentcommission; ?>"> 
+                
+                </div>
               </div>
+              
+              <div class="form-group" style="display:none">
+                <label class="col-sm-2 control-label" for="input-meta-description">Percent Commission Package 2</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_percentcommission1" id="input" class="form-control" value="<?php echo $config_percentcommission1; ?>" > 
+                
+                </div>
+              </div>
+              
+              <div class="form-group" style="display:none">
+                <label class="col-sm-2 control-label" for="input-meta-description">Percent Commission Package 3</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_percentcommission2" id="input" class="form-control" value="<?php echo $config_percentcommission2; ?>" > 
+                
+                </div>
+              </div>
+            </fieldset>
+              <fieldset style="display:none">
+                <legend>Regulations</legend>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">Regulations</label>
+                <div class="col-sm-10">
+                  <textarea name="config_regulations" id="input" class="form-control" rows="3" required="required"><?php echo $config_regulations; ?></textarea>        
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">Regulations 1</label>
+                <div class="col-sm-10">
+                  <textarea name="config_regulations_1" id="input" class="form-control" rows="3" required="required"><?php echo $config_regulations_1; ?></textarea>    
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">Regulations 2</label>
+                <div class="col-sm-10">
+                  <textarea name="config_regulations_2" id="input" class="form-control" rows="3" required="required"><?php echo $config_regulations_2; ?></textarea>     
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">Regulations 3</label>
+                <div class="col-sm-10">
+                  <textarea name="config_regulations_3" id="input" class="form-control" rows="3" required="required"><?php echo $config_regulations_3; ?></textarea>   
+                </div>
+              </div>
+              </fieldset> 
             </div>
 
             </div>

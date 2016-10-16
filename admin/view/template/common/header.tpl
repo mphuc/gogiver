@@ -37,8 +37,11 @@
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
 <?php } ?>
+<script type="text/javascript" src="view/javascript/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="view/javascript/pd/countdown.js"></script>
 </head>
 <body >
+<div class="loading"></div>
 <div id="container">
   
 <header id="header" class="navbar navbar-static-top">

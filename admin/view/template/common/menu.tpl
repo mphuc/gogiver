@@ -2,6 +2,9 @@
   <li id="dashboard"><a href="<?php echo $home; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_dashboard; ?></span></a></li>
 
   <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_simple_blog_article; ?></span></a></li>
+  <li id="pin" ><a href="index.php?route=pd/pin&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Quản lý pin</span></a></li>
+  <li id="pin" ><a href="<?php echo $phmenu;?>"><i class="fa fa-dashboard fa-fw"></i> <span>Danh sách PH</span></a></li>
+  <li id="pin" ><a href="<?php echo $ghmenu;?>"><i class="fa fa-dashboard fa-fw"></i> <span>Danh sách GH</span></a></li>
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
     <ul>
@@ -95,7 +98,8 @@
     </ul>
   </li>
   <?php */?>
-  <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a>
+  <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a></li>
+   <li id="sale"><a href="<?php echo $gd_menu; ?>"><i class="fa fa-user fa-fw"></i> <span>Get Donation</span></a></li>
      <?php /*?>
     <ul>
    

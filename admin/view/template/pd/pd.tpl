@@ -2,14 +2,14 @@
 <div id="content">
 <div class="page-header">
   <div class="container-fluid">
-    <h1>Provide Donation</h1>
+    <h1>Danh Sách GH</h1>
 
   </div>
 </div>
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Provide Donation</h3>
+      <h3 class="panel-title">Danh Sách GH</h3>
     </div>
     <div class="panel-body">
         <div class="navbar-form">
@@ -27,10 +27,12 @@
      			<tr>
      				<th>NO</th>
      				<th>Username</th>
-     				<th>Wallet</th>
+     				<th>Account Holder</th>
      				<th>Amount</th>
                     <th>Status</th>
+                    <th>Date_added</th>
      				<th>User</th>
+                    <th>Time-Remain</th>
      			</tr>
      		</thead>
      		<tbody>
@@ -39,8 +41,8 @@
      			<tr>
                     <td><?php echo $stt; ?></td>
      				<td><?php echo $value['username'] ?></td>
-     				<td><?php echo $value['wallet'] ?></td>
-     				<td><?php echo doubleval($value['amount']/100000000) ?> BTC</td>
+     				<td><?php echo $value['account_holder'] ?></td>
+     				<td><?php echo number_format(doubleval($value['amount'])) ?> VND</td>
      				<?php if ($value['status'] == 0) {
                        echo '<td><span class="label label-default">Waiting</span></td>';
                     } ?>
@@ -50,7 +52,10 @@
                     <?php if ($value['status'] == 2) {
                        echo '<td><span class="label label-success">Finish</span></td>';
                     } ?>
-                    <td><?php echo intval($value['cstatus'] == 9) ? '<span class="text-danger">Admin</span>' : 'Normal' ?></td>
+                     <td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></td>
+                    <td><?php echo intval($value['cstatus'] == 1) ? '<span class="text-danger">Pro</span>' : 'Normal' ?></td>
+                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
+                     </span> </td>
      			</tr>
                 <?php $sum = $sum + $value['amount'];  ?>
                  
@@ -59,7 +64,7 @@
                     <td colspan="3" style="text-align: right; color:red; font-size:20px">
                         Total:
                     </td>
-                    <td colspan="3"> <span style="color:red; font-size:20px"><?php echo $sum/100000000; ?> BTC </span></td>
+                    <td colspan="3"> <span style="color:red; font-size:20px"><?php echo number_format($sum); ?> VND </span></td>
                 </tr>
                
      		</tbody>
