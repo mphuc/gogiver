@@ -145,12 +145,12 @@ class ControllerAccountPd extends Controller {
 	}
 	public function show_transfer($pd_id){
 
-			$this -> load -> model('account/customer');
+			/*$this -> load -> model('account/customer');
 			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
 			$this -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$this -> document -> addScript('catalog/view/javascript/pd/confirm.js');
 			$this -> document -> addScript('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.js');
-			$this -> document -> addStyle('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.css');
+			$this -> document -> addStyle('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.css');*/
 		
 		$transferList = $this -> model_account_customer -> getPdFromTransferList($pd_id);
 		
@@ -177,7 +177,8 @@ class ControllerAccountPd extends Controller {
 			if(!$value['image']){
 				$image = ' <div class="fileUpload btn btn-primary">
 	    <span>Chọn ảnh</span>
-	   	<input type="file" class="upload" name="avatar" id="imgInp" accept="image/jpg,image/png,image/jpeg,image/gif"/>
+	   	
+	   	<input type="file" class="upload" name="avatar" id="file" accept="image/jpg,image/png,image/jpeg,image/gif"/>
 	</div>    
 		<div class="clearfix"></div>         
    		<img id="blah" src="#" style="display:none; max-width:90%; margin:0 auto" alt="your image" />
@@ -292,7 +293,7 @@ class ControllerAccountPd extends Controller {
     }
 }
 
-$("#imgInp").change(function(){
+$("#file").change(function(){
     readURL(this);
 });
 </script>
@@ -594,7 +595,7 @@ $("#imgInp").change(function(){
 	public function confirmSubmit() {
 		$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
 		$json['ok'] = -1;
-
+		
 		if ($this -> customer -> isLogged() && $this -> request -> post['token'] && $this->request->files['avatar']['name']) {
 			$this -> load -> model('account/customer');
 	
@@ -638,38 +639,22 @@ $("#imgInp").change(function(){
 				// $this -> model_account_customer -> updateStusPDActive($PDCustomer, 1);
 				$this -> model_account_customer -> updateStusPD($PDCustomer);
 				$this -> model_account_customer -> updateCheck_R_WalletPD($PDCustomer);
-				//=======================
-			// 	$customer = $this -> model_account_customer ->getCustomer($pd_detail['customer_id']);
-			// 	$partent = $this->model_account_customer->getCustomer($customer['p_node']);
-			// $checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($partent['customer_id']);
-
-			// if (intval($checkC_Wallet['number']) === 0) {
-			// 	if (!$this -> model_account_customer -> insertC_Wallet($partent['customer_id'])) {
-			// 		die();
-			// 	}
-			// }	
-
-			// $price = ($pd_detail['filled'] * 10) / 100;
-			// $this -> load -> model('account/auto');
-			// $this -> model_account_auto -> update_C_Wallet($price, $partent['customer_id']);
-			// $this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "".$partent['username']." Sponsor 10% for F1 ".$customer['username']." finish PD" . $pd_detail['pd_number']." (".number_format($pd_detail['filled'])." VND)");
-			
-			// $this -> updatePercent($pd_detail['customer_id'], $pd_detail['filled'], $pd_detail['pd_number']);
-				//======================
+				
 			}
 			if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
 				$this -> model_account_customer -> updateStusGD($GDCustomer);
 			}
 			$json['ok'] = 1;
-			$this->response->redirect(HTTPS_SERVER . 'provide-donation.html');
+			//$this->response->redirect(HTTPS_SERVER . 'provide-donation.html');
 		} else{
 			$this -> load -> model('account/customer');
 			if (!empty($this->request->post['message'])) {
 
 				$this-> model_account_customer-> saveMessage($this->session->data['customer_id'], $this->request->post['token'],$this->request->post['message']);
 			}
-			$this->response->redirect(HTTPS_SERVER . 'provide-donation.html');
+			//$this->response->redirect(HTTPS_SERVER . 'provide-donation.html');
 		}
+
 		$this -> response -> setOutput(json_encode($json));
 	}
 	public function updatePercent($customer_id, $amount, $pd_number)

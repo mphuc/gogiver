@@ -19,10 +19,7 @@ body.loaded {
 body.loaded.boxed-layout {
   background: #cfd8dc;
 }
-body.login-page {
-  background: url("../../images/2-wallpapers-888.jpg") center center no-repeat;
-  background-size: cover !important;
-}
+
 body.login-page:before {
     content: "";
     position: absolute;

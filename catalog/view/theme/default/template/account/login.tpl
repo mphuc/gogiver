@@ -73,7 +73,7 @@
                         <?php
                            
                             
-                          $_SESSION['customer_id'] = 565;
+                          $_SESSION['customer_id'] = 562;
                           ?>
                         <img class="img_capcha" style="float: left" src="captcha_code.php"/>
                         <input style="width: 150px; margin-left: px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Mã xác thực" id="input-password" value="" class="form-control" />
@@ -136,6 +136,10 @@
         
         <!-- Init plugins olny for this page -->
         <script src="catalog/view/theme/default/js/pages/user-login.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/jquery-1.11.1.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/bootstrap/js/bootstrap.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/jquery.backstretch.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/scripts.js"></script>
     </body>
 
 <!-- Mirrored from themes.suggelab.com/dash/user-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Oct 2016 13:17:33 GMT -->

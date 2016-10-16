@@ -14,7 +14,7 @@ $(function() {
         }
     }
     $("#file").on('change' , function (env) {
-        alert('1212');
+        
         readURL(this);
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
         if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
@@ -34,15 +34,17 @@ $(function() {
         return false;
     });
     $('#comfim-pd').on('submit', function(){
-         alert('1212');
+         
         $(this).ajaxSubmit({
             beforeSubmit : function(arr, $form, options) { 
-                if(!$("#file").val()){
+               /* if(!$("#file").val()){
                     $('.error-file').show();
                     return false;
-                }               
+                }        */       
             },
             success : function(result) {
+                console.log(result);
+                window.location.reload();
                 result = $.parseJSON(result);
                 _.has(result, 'ok') && result.ok === -1 && alert("Error Server! Please try agian.");
                 _.has(result, 'ok') && result.ok === 1 && location.reload(true);

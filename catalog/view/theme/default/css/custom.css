@@ -67,6 +67,9 @@
 .click_pd{
   display: none;
 }
+table thead tr td{
+  line-height: 40px !important;
+}
 @media screen and (max-width: 768px) {
 	.page-container .main-content .content{
 		padding-left: 15px;
