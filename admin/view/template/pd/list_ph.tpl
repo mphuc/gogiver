@@ -19,15 +19,34 @@
                  <input style="margin-top: 5px;" type="text" id="username" class="form-control">
                  <ul id="suggesstion-box" class="list-group"></ul>
             </div>
-            <div class="col-sm-3 input-group date">
+            <div class="col-sm-2 input-group date">
                  <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
                  <span class="input-group-btn">
                  <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                  </span>
               </div>
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Lọc</button>
+              </div>
+            
+            <div class="col-sm-2 input-group date">
+                 <label class=" control-label" for="input-date_create">Start Data</label>
+                 <input style="margin-top: 5px;" type="text" id="start_date" name="date_create" value="<?php echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
+              <div class="col-sm-2 input-group date">
+                 <label class=" control-label" for="input-date_create">End Data</label>
+                 <input style="margin-top: 5px;" type="text" id="end_date" name="date_create" value="<?php echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
+              <div class="col-sm-1">
+                <button id="submit_fillter" style="margin-top: 28px;" type="button" class="btn btn-success">Export</button>
+                
               </div>
             </div>
         </div>
@@ -138,7 +157,9 @@
                 }
             });
     }
-
+    jQuery('#submit_fillter').click(function(){
+        window.location.replace("<?php echo $export; ?>&start_date="+jQuery('#start_date').val()+"&end_date="+jQuery('#end_date').val());
+    });
 </script>
 <?php echo $footer; ?>
 <style type="text/css">

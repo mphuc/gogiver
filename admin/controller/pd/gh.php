@@ -163,7 +163,7 @@ class ControllerPdGh extends Controller {
 		$this->load->model('sale/customer');
 		//update time show button
 		$results = $this -> model_sale_customer -> getall_gd_date($start_date,$end_date);
-		print_r($results); die;
+		//print_r($results); die;
 		!count($results) > 0 && die('no data!');
 
 		$objPHPExcel = new PHPExcel();
@@ -184,7 +184,7 @@ class ControllerPdGh extends Controller {
 		->setCellValue('F1', 'Status')
 		->setCellValue('G1', 'Amount')
 		->setCellValue('H1', 'Date Add');
-         $objPHPExcel->getActiveSheet()->getStyle('A1:F1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -229,7 +229,7 @@ class ControllerPdGh extends Controller {
 			}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('N'.$n.':'.'H'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'H'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,
@@ -249,7 +249,7 @@ class ControllerPdGh extends Controller {
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		// Redirect output to a client’s web browser (Excel5)
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="LISH_PH'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
+		header('Content-Disposition: attachment;filename="LISH_GH'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
 		header('Cache-Control: max-age=0');
 		// If you're serving to IE 9, then the following may be needed
 		header('Cache-Control: max-age=1');
