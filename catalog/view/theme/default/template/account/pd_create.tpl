@@ -44,7 +44,21 @@
                         <div class="col-md-8">
                           <select class="form-control valid" id="amount" name="amount">
                                              <option value=""><?php echo $lang['choise']?></option>
+                                             <?php if ($level['level'] == 1) {?>
                                              <option value="8800000"><?php echo number_format("8800000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
+                                             <?php if ($level['level'] == 2) {?>
+                                             <option value="17600000"><?php echo number_format("17600000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
+                                             <?php if ($level['level'] == 3) {?>
+                                             <option value="26400000"><?php echo number_format("26400000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
+                                             <?php if ($level['level'] == 4) {?>
+                                             <option value="35200000"><?php echo number_format("35200000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
+                                             <?php if ($level['level'] >= 5) {?>
+                                             <option value="44000000"><?php echo number_format("44000000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
                                              
       
                                           </select>

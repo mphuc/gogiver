@@ -764,6 +764,13 @@ public function getCustomerFloor($arrId, $limit, $offset){
 					GROUP BY customer_id");
 		return $query -> rows;
 	}
+	public function getLevel_by_customerid($customer_id){
+		$query =  $this -> db -> query("
+			SELECT level
+			FROM " . DB_PREFIX . "customer_ml
+			WHERE customer_id = '".$customer_id."'");
+		return $query -> row;
+	}
 
 	public function updateLevel($customer_id, $level){
 		$query =  $this -> db -> query("

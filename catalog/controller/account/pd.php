@@ -325,7 +325,7 @@ $("#file").change(function(){
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
-	
+		
 		$CheckPDUpdate = $this -> model_account_customer -> getCheckPD($this -> session -> data['customer_id']);			
 		
 		$data['count'] = $CheckPDUpdate['check_PD'];
@@ -335,6 +335,7 @@ $("#file").change(function(){
 		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
 		$data['base'] = $server;
 		$data['self'] = $this;
+		$data['level'] = $this -> model_account_customer ->getLevel_by_customerid($this -> session -> data['customer_id']);
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/pd_create.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/pd_create.tpl', $data));
@@ -398,7 +399,26 @@ $("#file").change(function(){
 			if ($json['password'] === 1 && $json['pin'] === 1 && $json['checkCountDay'] === 1 && $json['checkWaiting'] === 1 && $json['account_number']=== 1 ) {
 				$amount	= $this -> request -> get['amount'];
 				$this -> model_account_customer ->updatePin_sub($this -> session -> data['customer_id'], 1 );
-				$max_profit = 11440000;
+				switch ($amount) {
+					case 8800000:
+						$max_profit = 11440000;
+						break;
+					case 17600000:
+						$max_profit = 22800000;
+						break;
+					case 26400000:
+						$max_profit = 34320000;
+						break;
+					case 35200000:
+						$max_profit = 45760000;
+						break;
+					case 44000000:
+						$max_profit = 57200000;
+						break;
+					default:
+						$max_profit = 57200000;
+						break;
+				}
 				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);							
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  

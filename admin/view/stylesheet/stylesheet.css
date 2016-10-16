@@ -570,7 +570,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 	margin-bottom: 15px;
 	border-radius: 3px;
 	/*background-color: #279FE0;*/
-	background-color: #e27226;
+	background-color: #801818;
 	color: #FFFFFF;
 	transition: all 1s;
 }
@@ -585,7 +585,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 	padding: 5px 8px;
 	text-transform: uppercase;
 	/*background-color: #1E91CF;*/
-	background-color: #ae5c25;
+	background-color: #4d0808;
 	color: #FFF;
 }
 .tile .tile-heading .pull-right {
