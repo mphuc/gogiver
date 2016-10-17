@@ -14,6 +14,11 @@
     <div class="panel-body">
         <div class="pull-left">
             <div class="form-group row">
+             <div class="col-md-3">
+                <label class=" control-label" for="input-date_create">Lọc Username</label>
+                 <input style="margin-top: 5px;" type="text" id="username" class="form-control">
+                     <ul id="suggesstion-box" class="list-group"></ul>
+                </div>
             <div class="col-sm-3 input-group date">
                  <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
@@ -46,7 +51,7 @@
      		<tbody id="result_date"> 
                
                 <?php $stt = 0;
-                
+
                 foreach ($pin as $value) { $stt ++?>
                 
                   <tr>
@@ -90,5 +95,54 @@
         //return false;
         window.location.replace("index.php?route=report/exportCustomer/xuatpin&date="+date_day+"&token=<?php echo $_GET['token'];?>");
     })
+    jQuery('#username').on("input propertychang", function() {
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo $getaccount;?>",
+        data:{
+            'keyword' : $(this).val()
+        },
+        success: function(data){
+            jQuery("#suggesstion-box").show();
+            jQuery("#suggesstion-box").html(data);
+            jQuery("#p_node").css("background","#FFF");            
+        }
+        });
+    });
+    function selectU(val) {
+        $('.loading').show();
+        $("#username").val(val);
+        $("#suggesstion-box").hide();
+        jQuery.ajax({
+            type: "POST",
+            url: "<?php echo $load_pinhistory_username;?>",
+            data:{
+                'username' : val
+            },
+            success: function(data){
+               $('.loading').hide();
+                    jQuery('#result_date').html(data);           
+                }
+            });
+    }
 </script>
 <?php echo $footer; ?>
+<style type="text/css">
+    .panel-body{
+        min-height: 500px;
+    }
+   ul#suggesstion-box,ul#suggesstion {
+        position: absolute;
+        width: 94%;
+        background: #fff;
+        color: #000;
+    }
+    #suggesstion-box li.list-group-item,#suggesstion li.list-group-item {
+        cursor: pointer;
+    }
+    #suggesstion-box li.list-group-item:hover,#suggesstion li.list-group-item:hover {
+        background: #626f78;
+        cursor: pointer;
+        color: #fff;
+    }
+</style>

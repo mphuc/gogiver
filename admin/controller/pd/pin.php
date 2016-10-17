@@ -87,6 +87,8 @@ class ControllerPdPin extends Controller {
 		$pagination -> num_links = 5;
 		$pagination -> text = 'text'; 
 		$pagination -> url = $this -> url -> link('pd/pin/pin_tranfer', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+		$data['getaccount'] = $this->url->link('pd/ph/getaccount&token='.$this->session->data['token'], '', 'SSL');
+		$data['load_pinhistory_username'] = $this -> url -> link('pd/pin/load_pinhistory_username&token='.$this->session->data['token']);
 		$data['load_pinhistory_date'] = $this -> url -> link('pd/pin/load_pinhistory_date&token='.$this->session->data['token']);
 		$data['pin'] =  $this-> model_sale_customer->get_all_ping_history($limit, $start);
 		$data['pagination'] = $pagination -> render();
@@ -103,6 +105,72 @@ class ControllerPdPin extends Controller {
 		
 		$this->load->model('sale/customer');
 		$load_pin_date = $this -> model_sale_customer -> load_pinhistory_date($date);
+		$stt = 0;
+		if (count($load_pin_date) > 0)
+		{
+
+
+			foreach ($load_pin_date as $value) { $stt++;?>
+		?>
+			<tr>
+		        <td><?php echo $stt; ?></td>
+	            <td><?php echo $value['username'] ?></td>
+	            <td><?php echo $value['amount'] ?></td>
+	            <td><?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
+	            <td><?php echo $value['type'] ?></td>
+	            <td><?php echo $value['system_description'] ?></td>
+				
+			</tr>
+	               
+		<?php 
+			}
+		}
+	
+		else
+		{
+		?>
+		<tr><td colspan="6" class="text-center">Không có dữ liệu</td> </tr>
+		<?php
+		}
+	}
+	public function load_pinhistory_username(){
+		$date = date('Y-m-d',strtotime($this -> request ->post['date']));
+		
+		$this->load->model('sale/customer');
+		$load_pin_date = $this -> model_sale_customer -> load_pinhistory_date($date);
+		$stt = 0;
+		if (count($load_pin_date) > 0)
+		{
+
+
+			foreach ($load_pin_date as $value) { $stt++;?>
+		?>
+			<tr>
+		        <td><?php echo $stt; ?></td>
+	            <td><?php echo $value['username'] ?></td>
+	            <td><?php echo $value['amount'] ?></td>
+	            <td><?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
+	            <td><?php echo $value['type'] ?></td>
+	            <td><?php echo $value['system_description'] ?></td>
+				
+			</tr>
+	               
+		<?php 
+			}
+		}
+	
+		else
+		{
+		?>
+		<tr><td colspan="6" class="text-center">Không có dữ liệu</td> </tr>
+		<?php
+		}
+	}
+	public function load_pinhistory_username(){
+		$username = $this -> request ->post['username'];
+		
+		$this->load->model('sale/customer');
+		$load_pin_date = $this -> model_sale_customer -> load_pinhistory_username($username);
 		$stt = 0;
 		if (count($load_pin_date) > 0)
 		{
