@@ -37,41 +37,26 @@
      			<tr>
      				<th>TT</th>
      				<th>Username</th>
-     				<th>Địa chỉ ví</th>
-     				<th>Số pin</th>
-                    <th>Trạng thái</th>
-                    <th>Thời gian</th>
+     				<th>Amount</th>
+     				<th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
      			</tr>
      		</thead>
      		<tbody id="result_date"> 
                
                 <?php $stt = 0;
+                
                 foreach ($pin as $value) { $stt ++?>
-                <?php if ($value['confirmations'] == 0) { ?>
+                
                   <tr>
                     <td><?php echo $stt; ?></td>
                     <td><?php echo $value['username'] ?></td>
-                    <td><?php echo $value['input_address'] ?></td>
-                    <td><?php echo $value['pin'] ?></td>
-                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Đang chờ</span>" : "<span class='label label-success'>Đã Chuyển</span>" ?></td>
-                   
-                    <td><?php echo date('d/m/Y H:i',strtotime($value['date_created'])) ?></td>
-                    
+                    <td><?php echo $value['amount'] ?></td>
+                    <td><?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
+                    <td><?php echo $value['type'] ?></td>
+                    <td><?php echo $value['system_description'] ?></td>
                 </tr>  
-               <?php  } else{ ?>
-     			<tr style="
-    background: #c1e893; */
-">
-                    <td><?php echo $stt; ?></td>
-     				<td><?php echo $value['username'] ?></td>
-     				<td><?php echo $value['input_address'] ?></td>
-                    <td><?php echo $value['pin'] ?></td>
-                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Đang chờ</span>" : "<span class='label label-success'>Đã Chuyển</span>" ?></td>
-                   
-     				<td><?php echo date('d/m/Y H:i',strtotime($value['date_created'])) ?></td>
-     				
-     			</tr>
-                <?php } ?>
                 <?php } ?>
                 
                
@@ -85,7 +70,7 @@
     $('#submit_date').click(function(){
         var date_day = $('#date_day').val();
         $.ajax({
-            url : "<?php echo $load_pin_date ?>",
+            url : "<?php echo $load_pinhistory_date ?>",
             type : "post",
             dataType:"text",
             data : {

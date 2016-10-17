@@ -2847,6 +2847,15 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
+	public function get_history_pin(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."ping_history 
+		");
+		return $query -> row;
+	}
+
 	public function get_count_ph(){
 
 		$query = $this -> db -> query("
@@ -2892,12 +2901,34 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		return $query -> rows;
 	}
+	public function load_pinhistory_date($date)
+	{
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE A.date_added >= '".$date." 00:00:00' AND A.date_added <= '".$date." 23:59:59'
+			ORDER BY A.id DESC
+		");
+		
+		return $query -> rows;
+	}
 	public function get_all_code($limit, $offset){
 
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
 			ORDER BY A.invoice_id DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_all_ping_history($limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer
+			ORDER BY A.id DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");
