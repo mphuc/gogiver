@@ -2911,11 +2911,11 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		return $query -> rows;
 	}
-	public function load_pinhistory_username($date)
+	public function load_pinhistory_username($username)
 	{
 		$query = $this -> db -> query("
 			SELECT A.*,B.username
-			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE A.date_added >= '".$date." 00:00:00' AND A.date_added <= '".$date." 23:59:59'
+			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE B.username = '".$username."'
 			ORDER BY A.id DESC
 		");
 		

@@ -133,39 +133,7 @@ class ControllerPdPin extends Controller {
 		<?php
 		}
 	}
-	public function load_pinhistory_username(){
-		$date = date('Y-m-d',strtotime($this -> request ->post['date']));
-		
-		$this->load->model('sale/customer');
-		$load_pin_date = $this -> model_sale_customer -> load_pinhistory_date($date);
-		$stt = 0;
-		if (count($load_pin_date) > 0)
-		{
-
-
-			foreach ($load_pin_date as $value) { $stt++;?>
-		?>
-			<tr>
-		        <td><?php echo $stt; ?></td>
-	            <td><?php echo $value['username'] ?></td>
-	            <td><?php echo $value['amount'] ?></td>
-	            <td><?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
-	            <td><?php echo $value['type'] ?></td>
-	            <td><?php echo $value['system_description'] ?></td>
-				
-			</tr>
-	               
-		<?php 
-			}
-		}
 	
-		else
-		{
-		?>
-		<tr><td colspan="6" class="text-center">Không có dữ liệu</td> </tr>
-		<?php
-		}
-	}
 	public function load_pinhistory_username(){
 		$username = $this -> request ->post['username'];
 		
