@@ -2901,6 +2901,27 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		return $query -> rows;
 	}
+	public function load_pin_username($username)
+	{
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_invoice_pin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id WHERE B.username = '".$username."'
+			ORDER BY A.invoice_id DESC
+		");
+		
+		return $query -> rows;
+	}
+	public function get_all_pinht($date){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE date(A.date_added) = '".$date."'
+			ORDER BY A.id DESC
+		");
+		
+		return $query -> rows;
+	}
+
 	public function load_pinhistory_date($date)
 	{
 		$query = $this -> db -> query("
@@ -2945,6 +2966,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		return $query -> rows;
 	}
+
 	public function load_ph_date($date)
 	{
 		$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder

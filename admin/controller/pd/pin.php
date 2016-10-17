@@ -23,8 +23,9 @@ class ControllerPdPin extends Controller {
 		$data['load_pin_date'] = $this -> url -> link('pd/pin/load_pin_date&token='.$this->session->data['token']);
 		$data['pin'] =  $this-> model_sale_customer->get_all_code($limit, $start);
 		$data['pagination'] = $pagination -> render();
-		
+		$data['getaccount'] = $this->url->link('pd/ph/getaccount&token='.$this->session->data['token'], '', 'SSL');
 		$data['token'] = $this->session->data['token'];
+		$data['load_pin_username'] = $this -> url -> link('pd/pin/load_pin_username&token='.$this->session->data['token']);
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -38,6 +39,41 @@ class ControllerPdPin extends Controller {
 		
 		$this->load->model('sale/customer');
 		$load_pin_date = $this -> model_sale_customer -> load_pin_date($date);
+		$stt = 0;
+		if (count($load_pin_date) > 0)
+		{
+
+
+			foreach ($load_pin_date as $value) { $stt++;?>
+		?>
+			<tr>
+		        <td><?php echo $stt; ?></td>
+				<td><?php echo $value['username'] ?></td>
+				<td><?php echo $value['input_address'] ?></td>
+		        <td><?php echo $value['pin'] ?></td>
+		        <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Đang chờ</span>" : "<span class='label label-success'>Đã Chuyển</span>" ?></td>
+		       
+				<td><?php echo date('d/m/Y H:i',strtotime($value['date_created'])) ?></td>
+				
+			</tr>
+	               
+		<?php 
+			}
+		}
+	
+		else
+		{
+		?>
+		<tr><td colspan="6" class="text-center">Không có dữ liệu</td> </tr>
+		<?php
+		}
+	}
+	public function load_pin_username()
+	{
+		$username = $this -> request ->post['username'];
+		
+		$this->load->model('sale/customer');
+		$load_pin_date = $this -> model_sale_customer -> load_pin_username($username);
 		$stt = 0;
 		if (count($load_pin_date) > 0)
 		{

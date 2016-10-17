@@ -3,7 +3,7 @@
 <div class="page-header">
   <div class="container-fluid">
     <h1>Pin</h1>
-
+  
   </div>
 </div>
 <div class="container-fluid">
@@ -18,7 +18,7 @@
                 <label class=" control-label" for="input-date_create">Lọc Username</label>
                  <input style="margin-top: 5px;" type="text" id="username" class="form-control">
                      <ul id="suggesstion-box" class="list-group"></ul>
-                </div>
+              </div>
             <div class="col-sm-3 input-group date">
                  <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
@@ -93,7 +93,7 @@
         var date_day = $('#date_day').val();
         //alert(date_day);
         //return false;
-        window.location.replace("index.php?route=report/exportCustomer/xuatpin&date="+date_day+"&token=<?php echo $_GET['token'];?>");
+        window.location.replace("index.php?route=report/exportCustomer/xuatpinht&date="+date_day+"&token=<?php echo $_GET['token'];?>");
     })
     jQuery('#username').on("input propertychang", function() {
         jQuery.ajax({

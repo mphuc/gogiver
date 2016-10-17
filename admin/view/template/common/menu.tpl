@@ -100,7 +100,7 @@
   </li>
   <?php */?>
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a></li>
-   <li id="sale"><a href="<?php echo $gd_menu; ?>"><i class="fa fa-user fa-fw"></i> <span>Get Donation</span></a></li>
+   <!-- <li id="sale"><a href="<?php echo $gd_menu; ?>"><i class="fa fa-user fa-fw"></i> <span>Get Donation</span></a></li> -->
      <?php /*?>
     <ul>
    
