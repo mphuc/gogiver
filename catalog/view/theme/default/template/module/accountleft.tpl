@@ -88,30 +88,27 @@
                     </li>
                     <!-- / li -->
                     <!-- li (nav item )  -->
-                    <li <?php echo $route === 'account/gd1' ? "class='active'" : ''  ?>>
+                    <!-- <li <?php echo $route === 'account/gd1' ? "class='active'" : ''  ?>>
                       <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"><i class="fa fa-sitemap"></i><span class="nav-item-text"><?php echo $lang['Historical_commission'] ?></span>
                        </a>
 
-                    </li>
+                    </li> -->
 
-                    <!-- <li>
+                    <li>
                         <a href="#">
-                            <i class="fa fa-sitemap"></i> <span class="nav-item-text"><?php echo $lang['History']; ?></span>
+                            <i class="fa fa-sitemap"></i> <span class="nav-item-text"><?php echo $lang['Historical_commission']; ?></span>
                         </a>
                        
                         <ul class="sub-nav" role="menu">
                             <li>
-                                <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['History'] ?> PH </a>
+                                <a href="<?php echo $self -> url -> link('account/commission', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['History_Commission'] ?> </a>
                             </li>
                             <li>
-                                <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> <?php echo $lang['History'] ?> GD </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i><?php echo $lang['Historical_commission'] ?>  </a>
+                                <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> <?php echo $lang['History_Refferal'] ?> </a>
                             </li>
                         </ul>
                        
-                    </li> -->
+                    </li> 
                      <li <?php echo $route === 'account/setting' ? "class='active'" : ''  ?>>
                       <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Setting']; ?></span>
                       </a>

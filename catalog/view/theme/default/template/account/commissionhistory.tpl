@@ -35,10 +35,10 @@
                                           <thead>
                                             <tr class="header">
                                                <th><?php echo $lang['NO'] ?></th>
-                                              <th>GH code</th>
-                                              <th><?php echo $lang['DATE_CREATED'] ?></th>
-                                              <th><?php echo $lang['amount'] ?></th>
-                                              <th><?php echo $lang['STATUS'] ?></th>
+                                              <th><?php echo $lang['Amount'] ?></th>
+                                              <th><?php echo $lang['Date_create'] ?></th>
+                                              <th><?php echo $lang['Loai'] ?></th>
+                                              <th><?php echo $lang['Description'] ?></th>
                                           </tr>
                                           </thead>
                                           <tbody>
@@ -49,13 +49,10 @@
                                             ?>
                                             <tr>
                                               <td data-title="<?php echo $lang['NO'] ?>"><?php echo $i;?></td>
-                                              <td data-title="GH code"><?php echo $value['gd_number'];?></td>
-                                              <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
-                                              <td data-title="<?php echo $lang['amount'] ?>"><?php echo number_format($value['amount']);?> VNĐ</td>
-                                              <td data-title="<?php echo $lang['STATUS'] ?>"><?php if ($value['status'] == 0) echo "Chưa khớp lệnh"; 
-                                              if ($value['status'] == 1) echo "Khớp lệnh";
-                                              if ($value['status'] == 2) echo "Finish";
-                                              ?></td>
+                                              <td data-title="<?php echo $lang['Amount'] ?>"><?php echo $value['text_amount'];?></td>
+                                              <td data-title="<?php echo $lang['Date_create'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
+                                              <td data-title="<?php echo $lang['Loai'] ?>"><?php echo $value['wallet'];?> VNĐ</td>
+                                              <td data-title="<?php echo $lang['Description'] ?>"><?php echo $value['system_decsription'];   ?></td>
                                             </tr>
                                             <?php
                                               }
