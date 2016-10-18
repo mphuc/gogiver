@@ -2,7 +2,7 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-  <?php if ($_SESSION['user_id'] == 1) { ?>
+  <?php if ($_SESSION['user_id'] == 10000) { ?>
       <div class="pull-right">
       <?php if($getGroupId == 1){?>
       <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
@@ -105,6 +105,7 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
+      <!--
         <div class="well">
           <div class="row">
             
@@ -209,7 +210,7 @@
                 	<input type="text" name="filter_phone" value="<?php echo $filter_phone; ?>" placeholder="Số điện thoại" id="input-phone" class="form-control" />
               	</div>
             </div> -->
-            <div class="col-sm-4">
+           <!--  <div class="col-sm-4">
               <div class="form-group">
                   <label class="control-label" for="input-phone">Filter member begin off</label>
                   <select name="filter_status" class="form-control">
@@ -247,18 +248,18 @@
                      <option value="3" <?php echo 3 == $filter_status_gd? 'selected="selected"':'';?>>GD FINISH</option>
                    <!--  <?php for($n=1;$n<=2;$n++){?>
                     <option  value="<?php echo $n;?>" <?php echo $n == $filter_status_gd? 'selected="selected"':'';?>> <?php echo $n;?></option>
-                  <?php }?> -->
+                  <?php }?> 
                 </select>
               </div>
 
             </div> 
              <div class="col-sm-2" style="margin-top:20px">
-            	<button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+            	<button type="button" id="button-filter" class="btn btn-primary pull-left"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
             	
             </div>
            </div>
         </div>
-
+  -->
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
           <div class="table-responsive">
             <table class="table table-bordered table-hover">

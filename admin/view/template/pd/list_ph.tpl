@@ -2,32 +2,32 @@
 <div id="content">
 <div class="page-header">
   <div class="container-fluid">
-    <h1>Danh Sách PH</h1>
+    <h1>List PH</h1>
 
   </div>
 </div>
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Danh Sách PH</h3>
+      <h3 class="panel-title">List PH</h3>
     </div>
     <div class="panel-body">
         <div class="pull-left row">
             <div class="form-group">
             <div class="col-md-3">
-                <label class=" control-label" for="input-date_create">Lọc Username</label>
-                 <input style="margin-top: 5px;" type="text" id="username" class="form-control">
+                <label class=" control-label" for="input-date_create">Username</label>
+                 <input style="margin-top: 5px;" type="text" id="username" class="form-control" placeholder="Username">
                  <ul id="suggesstion-box" class="list-group"></ul>
             </div>
             <div class="col-sm-2 input-group date">
-                 <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
+                 <label class=" control-label" for="input-date_create">Date</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
                  <span class="input-group-btn">
                  <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                  </span>
               </div>
               <div class="col-sm-2">
-                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Lọc</button>
+                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Filter</button>
               </div>
             
             <div class="col-sm-2 input-group date">
@@ -60,10 +60,10 @@
      				<th>TT</th>
                     <!-- <th>ID</th> -->
      				<th>Username</th>
-     				<th>Họ Tên</th>
-     				<th>Số tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Thời gian</th>
+     				<th>Full name</th>
+     				<th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
                      <th>Time-Remain</th>
      			</tr>
      		</thead>
@@ -81,16 +81,16 @@
                     <td><?php 
 
                     if ($value['status'] == 0) {
-                        echo "<span class='label label-default'>Đang chờ</span>";
+                        echo "<span class='label label-default'>Watiing</span>";
                     }
                     if ($value['status'] == 1) {
-                        echo "<span class='label label-info'>Khớp lệnh</span>";
+                        echo "<span class='label label-info'>Matched</span>";
                     }
                     if ($value['status'] == 2) {
-                        echo "<span class='label label-success'>Hoàn thành</span>";
+                        echo "<span class='label label-success'>Finish</span>";
                     }
                     if ($value['status'] == 3) {
-                        echo "<span class='label label-danger'>Báo cáo</span>";
+                        echo "<span class='label label-danger'>Report</span>";
                     }
                     ?> </td>
                     

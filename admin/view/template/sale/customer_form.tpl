@@ -43,7 +43,7 @@
                   <li><a href="#tab-c-wallet" data-toggle="tab">C - Wallet</a></li>
                   <li><a href="#tab-r-wallet" data-toggle="tab">R - Wallet</a></li>
                     <li><a href="#tab-creategd" data-toggle="tab">Create GD</a></li>
-                  <button type="button" id="exportgdmarch" data-toggle="tooltip" title="Export" class="btn btn-info" >Xuất Pin</i></button>
+                  <!--<button type="button" id="exportgdmarch" data-toggle="tooltip" title="Export" class="btn btn-info" >Xuất Pin</i></button>-->
                 <?php  } ?>
                   
                   <!-- <li><a id="ac-tab-binary" href="#tab-binary" data-toggle="tab">Biểu đồ nhị phân</a></li> -->

@@ -15,23 +15,23 @@
         <div class="pull-left">
             <div class="form-group row">
              <div class="col-md-3">
-                <label class=" control-label" for="input-date_create">Lọc Username</label>
-                 <input style="margin-top: 5px;" type="text" id="username" class="form-control">
+                <label class=" control-label" for="input-date_create">Username</label>
+                 <input style="margin-top: 5px;" type="text" id="username" class="form-control"  placeholder="Username">
                      <ul id="suggesstion-box" class="list-group"></ul>
               </div>
             <div class="col-sm-3 input-group date">
-                 <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
+                 <label class=" control-label" for="input-date_create">Date</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
                  <span class="input-group-btn">
                  <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                  </span>
               </div>
               <div class="col-sm-3">
-                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Lọc</button>
+                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Filter</button>
               </div>
               <div class="col-md-2">
               <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
-                    <div class="btn btn-success pull-right">Xuất Excel</div>
+                    <div class="btn btn-success pull-right">Export Excel</div>
                 </span>
               </div>
             </div>
@@ -42,10 +42,10 @@
      			<tr>
      				<th>TT</th>
      				<th>Username</th>
-     				<th>Địa chỉ ví</th>
-     				<th>Số pin</th>
-                    <th>Trạng thái</th>
-                    <th>Thời gian</th>
+     				<th>Wallet</th>
+     				<th>Pin</th>
+                    <th>Status</th>
+                    <th>Date</th>
      			</tr>
      		</thead>
      		<tbody id="result_date"> 
@@ -58,7 +58,7 @@
                     <td><?php echo $value['username'] ?></td>
                     <td><?php echo $value['input_address'] ?></td>
                     <td><?php echo $value['pin'] ?></td>
-                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Đang chờ</span>" : "<span class='label label-success'>Đã Chuyển</span>" ?></td>
+                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Watting</span>" : "<span class='label label-success'>Delivered</span>" ?></td>
                    
                     <td><?php echo date('d/m/Y H:i',strtotime($value['date_created'])) ?></td>
                     
@@ -71,7 +71,7 @@
      				<td><?php echo $value['username'] ?></td>
      				<td><?php echo $value['input_address'] ?></td>
                     <td><?php echo $value['pin'] ?></td>
-                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Đang chờ</span>" : "<span class='label label-success'>Đã Chuyển</span>" ?></td>
+                    <td><?php echo ($value['confirmations'] == 0) ? "<span class='label label-warning'>Watting</span>" : "<span class='label label-success'>Delivered</span>" ?></td>
                    
      				<td><?php echo date('d/m/Y H:i',strtotime($value['date_created'])) ?></td>
      				

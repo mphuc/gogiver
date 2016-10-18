@@ -15,23 +15,23 @@
         <div class="pull-left">
             <div class="form-group row">
              <div class="col-md-3">
-                <label class=" control-label" for="input-date_create">Lọc Username</label>
-                 <input style="margin-top: 5px;" type="text" id="username" class="form-control">
+                <label class=" control-label" for="input-date_create">Username</label>
+                 <input style="margin-top: 5px;" type="text" id="username" class="form-control" placeholder="Username">
                      <ul id="suggesstion-box" class="list-group"></ul>
               </div>
             <div class="col-sm-3 input-group date">
-                 <label class=" control-label" for="input-date_create">Lọc theo ngày</label>
+                 <label class=" control-label" for="input-date_create">Date</label>
                  <input style="margin-top: 5px;" type="text" id="date_day" name="date_create" value="<?php echo date('d-m-Y')?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
                  <span class="input-group-btn">
                  <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                  </span>
               </div>
               <div class="col-sm-3">
-                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Lọc</button>
+                <button id="submit_date" style="margin-top: 28px;" type="button" class="btn btn-success">Filter</button>
               </div>
               <div class="col-md-2">
               <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
-                    <div class="btn btn-success pull-right">Xuất Excel</div>
+                    <div class="btn btn-success pull-right">Export Excel</div>
                 </span>
               </div>
             </div>
