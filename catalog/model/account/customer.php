@@ -294,7 +294,36 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> rows;
 	}
+	public function getallcommision($id_customer, $limit, $offset){
 
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."customer_transaction_history AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'Thưởng trực tiếp'
+			ORDER BY pd.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+	public function getallcommision_history($id_customer, $limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."customer_transaction_history AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'hjhffhjjhjhjh'
+			ORDER BY pd.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
 	public function getPDByCustomerIDAndToken($customer_id, $token){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
@@ -431,6 +460,25 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> row;
+	}
+	public function getTotalcommission($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_transaction_history
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Thưởng trực tiếp'
+		");
+
+		return $query -> row;
+	}
+
+	public function getTotalcommission_history($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_transaction_history
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'asdasda'
 		");
 
 		return $query -> row;

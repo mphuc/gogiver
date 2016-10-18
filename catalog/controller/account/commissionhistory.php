@@ -34,7 +34,7 @@ class ControllerAccountCommissionhistory extends Controller {
 
 		$limit = 10;
 		$start = ($page - 1) * 10;
-		$pd_total = $this -> model_account_customer -> getTotalGD($this -> customer -> getId());
+		$pd_total = $this -> model_account_customer -> getTotalcommission_history($this -> customer -> getId());
 
 		$pd_total = $pd_total['number'];
 
@@ -46,7 +46,7 @@ class ControllerAccountCommissionhistory extends Controller {
 		$pagination -> text = 'text';
 		$pagination -> url = $this -> url -> link('account/commissionhistory', 'page={page}', 'SSL');
 
-		$data['pds'] = $this -> model_account_customer -> getGDById($this -> customer -> getId(), $limit, $start);
+		$data['pds'] = $this -> model_account_customer -> getallcommision_history($this -> customer -> getId(), $limit, $start);
 		$data['pagination'] = $pagination -> render();
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/commissionhistory.tpl')) {

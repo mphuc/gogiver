@@ -19,3 +19,5 @@ $_['Historical_commission'] = 'Lịch sử hoa hồng';
 $_['f1pd']    = 'F1 PH';
 $_['f1gh']    = 'F1 GH';
 $_['Transaction_Management'] = 'Giao dịch';
+$_['History_Commission'] = 'Lịch sử trực tiếp';
+$_['History_Refferal'] = 'Lịch sử thành viên';
