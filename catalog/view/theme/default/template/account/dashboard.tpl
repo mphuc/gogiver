@@ -3,7 +3,7 @@
    echo $self->load->controller('common/header'); echo $self->load->controller('common/column_left');
 
    ?>
-  
+
    <div class="main-content">
    
       <div class="content" style="">
@@ -16,7 +16,20 @@
                </div>
             <?php } ?>
                <!-- col-md-8 start here -->
+               <?php 
+                  if (count($getPDfinish_child) > 0) {
+                     foreach ($getPDfinish_child as $value) {
+                  ?>
+                     <div class="alert alert-danger">
+                       <strong><?php echo $value['username'];?> chưa chuyển tiền</strong> Bạn vui lòng tạo PD với số tiền <?php echo number_format($value['amount']); ?> VNĐ để không bị phạt <a class="btn btn-success" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PD</a>
+                     </div>
+
+                  <?php
+                     }
+                  }
+               ?>
                <div class="row">
+                  
                   <!-- .row start -->
                   <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                      <!-- col-md-6 start here -->
@@ -237,6 +250,10 @@
       alertify.set('notifier','position', 'top-right');
       alertify.success('Create user successfull !!!');
    }
-
+   if (location.hash === '#createPD') {
+      alertify.set('notifier','delay', 100000000);
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('Create PD successfull !!!');
+   }
 </script>  
 <?php echo $self->load->controller('common/footer') ?>

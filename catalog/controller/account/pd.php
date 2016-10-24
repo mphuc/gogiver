@@ -1521,5 +1521,22 @@ $("#file").change(function(){
 	        }	        
         }      
     }
+    public function createpd_child(){
+    	$transfer_code = $this -> request ->get['token'];
+    	$this ->load->model('account/customer');
+    	$select_tranfer = $this -> model_account_customer ->getTransferList($transfer_code);
+    	//print_r($select_tranfer); die;
+    	$pd_query = $this -> model_account_customer -> createPD_pnode($select_tranfer['amount'] ,$select_tranfer['amount']*1.3);							
+		$id_history = $this->model_account_customer->saveHistoryPin(
+			$this -> session -> data['customer_id'],  
+			'- 1',
+			'Sủ dụng Pin cho PH'.$pd_query['pd_number'],
+			'PD',
+			'Sủ dụng Pin cho PH'.$pd_query['pd_number']
+		);
 
+		$this->model_account_customer->createTransferList($pd_query['pd_id'],$select_tranfer['gd_id'],$this->session->data['customer_id'],$select_tranfer['gd_id_customer'],$select_tranfer['amount']);
+		$this -> model_account_customer ->update_status_pnode_pd($select_tranfer['id']);
+    	$this -> response -> redirect($this -> url -> link('account/dashboard#createPD', '', 'SSL'));
+    }
 }

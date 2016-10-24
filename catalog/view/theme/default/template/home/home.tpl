@@ -278,7 +278,7 @@
                               <a href="index.php?route=home/page/media">MEDIA</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                              <a href="index.php?route=home/page/media">LOGIN</a>
+                              <a href="login.html">LOGIN</a>
                            </li>
                         </ul>
                      </div>

@@ -2253,4 +2253,72 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> rows;
 	}
+	public function getPDfinish_child($id_customer){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username,B.account_number
+			FROM  ".DB_PREFIX."customer_transfer_list A INNER JOIN ".DB_PREFIX."customer B ON A.pd_id_customer = B.customer_id
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND A.pd_satatus = 0 AND A.date_finish <= '".$date_added."' AND A.status_pnode_pd = 0
+		");
+
+		return $query -> rows;
+	}
+	public function createPD_pnode($amount, $max_profit){
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
+			customer_id = '".$this -> session -> data['customer_id']."',
+			date_added = '".$date_added."',
+			filled = '".$amount."',
+			date_finish = '".$date_finish."',
+			date_finish_forAdmin = '".$date_finish."',
+			status = 1,
+			check_R_Wallet = 1
+		");
+		//update max_profit and pd_number
+		$pd_id = $this->db->getLastId();
+
+		//$max_profit = (float)($amount * $this->config->get('config_pd_profit')) / 100;
+
+		$pd_number = hexdec( crc32($pd_id) );
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_provide_donation SET
+				max_profit = '".$max_profit."',
+				pd_number = '".$pd_number."'
+				WHERE id = '".$pd_id."'
+			");
+		$data['query'] = $query ? true : false;
+		$data['pd_number'] = $pd_number;
+		$data['pd_id'] = $pd_id;
+		return $data;
+	}
+	public function createTransferList($pd_id,$gd_id,$pd_id_customer,$gd_id_customer,$amount){
+		$this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_transfer_list SET
+			pd_id = '".$pd_id."',
+			gd_id = '".$gd_id."',
+			pd_id_customer = '".$pd_id_customer."',
+			gd_id_customer = '".$gd_id_customer."',
+			transfer_code = '".hexdec( crc32($gd_id) )."',
+			date_added = NOW(),
+			date_finish = DATE_ADD(NOW() , INTERVAL + 36 HOUR),
+			amount = '".$amount."',
+			pd_satatus = 0,
+			gd_status = 0
+		");
+	}
+
+	public function update_status_pnode_pd($transferID){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_transfer_list SET
+				
+				status_pnode_pd = 1
+				
+				WHERE id = '".$this->db->escape($transferID)."'
+		");
+		return $query;
+	}
+
 }

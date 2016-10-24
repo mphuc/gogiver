@@ -185,7 +185,7 @@ class ControllerAccountAuto extends Controller {
 			$this->model_account_auto->updatePDcheck_R_Wallet($value_gd['id']);
 			switch (floatval($value_gd['filled'])) {
 				case 8800000:
-					$amount_gd = 114400000;
+					$amount_gd = 11400000;
 					break;
 				case 17600000:
 					$amount_gd = 22880000;
