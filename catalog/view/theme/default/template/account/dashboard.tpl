@@ -31,7 +31,7 @@
 
                <?php 
                   if (count($repd) > 0) {
-                     if (count($pd_user) == 0) {
+                    
                     
                   ?>
                      <div class="alert alert-danger">
@@ -39,7 +39,7 @@
                      </div>
 
                   <?php
-                    }
+                   
                   }
                ?>
                <div class="row">

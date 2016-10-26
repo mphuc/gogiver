@@ -70,3 +70,5 @@ $_['dangcho']            = 'Đang chờ';
 $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
 $_['heading_title_com_his'] = "Lịch sử GH F1";
+$_['support'] = "Hỗ trợ";
+

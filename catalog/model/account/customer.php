@@ -2383,4 +2383,25 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row['num'];
 	}
+	public function update_check_gd($id){
+		
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_get_donation SET
+				check_gd = '1'
+				WHERE id = '".$id."'
+			");
+		return $query;
+	}
+	public function check_GD_customer($customer_id){
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '-48 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation 
+			WHERE customer_id = '".$customer_id."' AND status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 ORDER BY date_finish ASC LIMIT 1
+			
+		");
+		return $query -> row;
+	}
 }

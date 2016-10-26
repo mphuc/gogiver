@@ -331,8 +331,8 @@ $("#file").change(function(){
 		$CheckPDUpdate = $this -> model_account_customer -> getCheckPD($this -> session -> data['customer_id']);			
 		
 		$data['count'] = $CheckPDUpdate['check_PD'];
-	$rows =  $this -> model_account_customer ->countPD($this -> session -> data['customer_id']);
-		count($rows) >= 1 && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+	//$rows =  $this -> model_account_customer ->countPD($this -> session -> data['customer_id']);
+		//count($rows) >= 1 && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 
 		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
 		$data['base'] = $server;
@@ -399,6 +399,14 @@ $("#file").change(function(){
 			//$json['checkCountDay'] = 1;
 			//$json['checkCountDay'] = 1;
 			if ($json['password'] === 1 && $json['pin'] === 1 && $json['checkCountDay'] === 1 && $json['checkWaiting'] === 1 && $json['account_number']=== 1 ) {
+				$check_GD_customer = $this -> model_account_customer -> check_GD_customer($this->session->data['customer_id']);
+				
+				if (count($check_GD_customer) > 0)
+				{
+					$this -> model_account_customer -> update_check_gd($check_GD_customer['id']);
+					
+				}
+				
 				$amount	= $this -> request -> get['amount'];
 				$this -> model_account_customer ->updatePin_sub($this -> session -> data['customer_id'], 1 );
 				switch ($amount) {

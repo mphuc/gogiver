@@ -106,7 +106,7 @@ class ControllerAccountDashboard extends Controller {
 		if (count($getGD_user) > 0 ){
 			$data['repd'] = $this->model_account_customer->repd($this->session->data['customer_id']);
 		}
-		$data['pd_user'] =  $this->model_account_customer->pd_user($this->session->data['customer_id']);
+		
 			
 		//get thong bao het chu ky (3)
 

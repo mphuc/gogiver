@@ -21,3 +21,4 @@ $_['f1gh']    = 'F1 GH';
 $_['Transaction_Management'] = 'Giao dịch';
 $_['History_Commission'] = 'Lịch sử trực tiếp';
 $_['History_Refferal'] = 'Lịch sử thành viên';
+$_['support'] = 'Hỗ trợ';

@@ -113,6 +113,10 @@
                       <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Setting']; ?></span>
                       </a>
                     </li>
+                    <li <?php echo $route === 'account/support' ? "class='active'" : ''  ?>>
+                      <a href="support.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['support']; ?></span>
+                      </a>
+                    </li>
                      <li <?php echo $route === 'account/logout' ? "class='active'" : ''  ?>>
                       <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['logout']; ?></span>
                       </a>

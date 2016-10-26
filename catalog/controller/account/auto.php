@@ -382,12 +382,11 @@ class ControllerAccountAuto extends Controller {
 	public function re_pd(){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
-		print_r($re_pd);
+		
 		foreach ($re_pd as $value) {
-			$getGD_repd = $this -> model_account_auto ->getGD_repd($value['customer_id']);
-			if (count($getGD_repd) == 0){
-				$this -> model_account_auto -> update_status_customer($value['customer_id']);
-			}
+
+			$this -> model_account_auto -> update_status_customer($value['customer_id']);
+			
 		}
 	}
 

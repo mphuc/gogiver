@@ -73,3 +73,4 @@ $_['dangcho']            = 'Waiting';
 $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
 $_['heading_title_com_his'] = "History GH F1";
+$_['support'] = "Support";

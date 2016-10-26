@@ -150,7 +150,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE date_finish <= NOW()
+			WHERE date_finish <= NOW() AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND status = 0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -187,7 +187,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id , amount , filled
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= NOW()
+			WHERE date_finish <= NOW() AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND STATUS =0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -756,25 +756,24 @@ class ModelAccountAuto extends Model {
 	}
 	public function re_pd(){
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '-3 day' , strtotime ( $date_added ) ) ;
+		$date_finish = strtotime ( '-48 hour' , strtotime ( $date_added ) ) ;
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_get_donation 
-			WHERE status <> 2 AND date_finish <= '".$date_finish."' AND customer_id NOT IN (SELECT customer_id
-FROM sm_customer
-WHERE quy_bao_tro = 1
-)
+			WHERE status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 
+			
 		");
 		return $query -> rows;
 	}
 
 	public function getGD_repd($customer_id){
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE customer_id = ".$customer_id." AND status <> 2 order by id desc limit 1
+			WHERE customer_id = ".$customer_id." AND status <> 2 AND date_finish >= '".$date_added."'  order by id desc limit 1
 		");
 		return $query -> row;
 	}

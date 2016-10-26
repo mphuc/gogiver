@@ -21,3 +21,4 @@ $_['f1gh']    = 'F1 GH';
 $_['Transaction_Management'] = 'Transaction';
 $_['History_Commission'] = 'History Commission';
 $_['History_Refferal'] = 'History Refferal';
+$_['support'] = 'Support';
