@@ -4181,3 +4181,6 @@ hr {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
+.ph_collapse .row {
+    margin-bottom: 15px;
+}
