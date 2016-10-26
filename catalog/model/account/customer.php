@@ -140,7 +140,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getPNode($customer_id){
 		$query = $this -> db -> query("
 			SELECT * FROM sm_customer_provide_donation pd JOIN sm_customer_get_donation gd on pd.customer_id = gd.customer_id WHERE pd.customer_id in
-			(SELECT customer_id FROM sm_customer WHERE p_node = ".$customer_id.") AND pd.status = 2 AND gd.status = 2 GROUP BY pd.customer_id		");
+			(SELECT customer_id FROM sm_customer WHERE p_node = ".$customer_id.") AND pd.status = 2 AND gd.status = 2 GROUP BY pd.customer_id");
 		return $query -> rows;
 	}
 
@@ -1067,7 +1067,8 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function getCustomerCustom($customer_id) {
-		$query = $this -> db -> query("SELECT c.username, c.telephone, c.customer_id , ml.level FROM ". DB_PREFIX ."customer AS c
+		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node 
+			FROM ". DB_PREFIX ."customer AS c
 				JOIN ". DB_PREFIX ."customer_ml AS ml
 				ON ml.customer_id = c.customer_id
 				WHERE c.customer_id = '" . (int)$customer_id . "'");

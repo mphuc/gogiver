@@ -409,7 +409,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <=  NOW() AND status = 1 AND check_withdrawal = 0
+			WHERE date_finish <=  NOW() AND status = 2 AND check_return_profit = 0
 		");
 
 		return $query -> rows;
@@ -786,5 +786,28 @@ class ModelAccountAuto extends Model {
 				WHERE customer_id = '".$customer_id."'
 			");
 		return $query;
+	}
+	public function getCustomOfNode($id_user) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT c.username AS name, c.p_node AS code FROM ". DB_PREFIX ."customer AS c
+			JOIN ". DB_PREFIX ."customer_ml AS ml
+			ON ml.customer_id = c.customer_id
+			WHERE ml.customer_id = ". $id_user."");
+		$array_id = $query -> rows;
+		foreach ($array_id as $item) {
+			$listId .= ',' . $item['code'];
+			$listId .= $this -> getCustomOfNode($item['code']);
+		}
+		return $listId;
+	}
+	public function get_customer_update_level($customer_id){
+		
+		$query = $this -> db -> query("
+			SELECT customer_id
+			FROM ". DB_PREFIX . "customer
+			WHERE customer_id IN (".$customer_id.")
+		");
+		return $query -> rows;
 	}
 }

@@ -230,7 +230,69 @@ class ControllerAccountAuto extends Controller {
 
 
 	}
+public function updateLevel_listID($customer_id){	
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/auto');
+		$customer_level = $this -> model_account_auto -> get_customer_update_level($customer_id);
 
+		foreach ($customer_level as $key => $value) {
+			$customer_id = $value['customer_id'];
+			$customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
+			//level 0 
+			if(intval($customer['level']) === 1){
+			
+			$rows =  $this -> model_account_customer ->getPNode($customer_id);
+
+			if(count($rows) >= 6){
+					//uupdate level 2;
+					$this -> model_account_customer ->updateLevel($customer_id, 2);
+					
+				}
+			}
+			//level 1
+			if(intval($customer['level']) === 2){
+			
+				$getLevel = $this -> model_account_customer ->getLevel($customer_id, 2);
+			
+				if(count($getLevel) >= 4){
+
+					$this -> model_account_customer ->updateLevel($customer_id, 3);
+					
+				}
+			}
+			//level 2
+			if(intval($customer['level']) === 3){
+				$getLevel = $this -> model_account_customer ->getLevel($customer_id, 3);
+
+				if(count($getLevel) >= 4){
+					$this -> model_account_customer ->updateLevel($customer_id, 4);
+					
+				}
+			}
+			//level 3
+			if(intval($customer['level']) === 4){
+				$getLevel = $this -> model_account_customer ->getLevel($customer_id, 4);
+				if(count($getLevel) >= 4){
+					$this -> model_account_customer ->updateLevel($customer_id, 5);
+					
+				}
+			}
+			//level 4
+			if(intval($customer['level']) === 5){
+				$getLevel = $this -> model_account_customer ->getLevel($customer_id, 5);
+				if(count($getLevel) >= 4){
+					$this -> model_account_customer ->updateLevel($customer_id, 6);
+				}
+			}
+			//level 5
+			if(intval($customer['level']) === 6){
+				$getLevel = $this -> model_account_customer ->getLevel($customer_id, 6);
+				if(count($getLevel) >= 4){
+					$this -> model_account_customer ->updateLevel($customer_id, 7);
+				}
+			}
+		}
+	}
 	public function updateLevel($customer_id){
 	
 		$this -> load -> model('account/customer');
@@ -290,14 +352,55 @@ class ControllerAccountAuto extends Controller {
 			}
 		}
 	}
+	public function get_p_node($customer_id){
 
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
+		$CustomerOfNode = $this -> model_account_auto -> getCustomOfNode($customer_id);
+		
+	
+		$arrId = $customer_id.','.substr($CustomerOfNode, 1);
+		
+		$this -> updateLevel_listID($arrId);
+	 	 // $this -> model_account_customer -> DeleteCustomer($arrUsername);
+	 	 // $this -> model_account_customer -> DeleteCustomerML($arrUsername);
+			
+		
+		
+	}
+	public function autoAdd_R_walet() {
+
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
+
+		$allPD = $this -> model_account_auto -> getDayFnPD();
+		
+
+		$tmp = null;
+		$tmp_count = 1;
+		
+		foreach ($allPD as $key => $value) {
+				//check and update level
+		
+			$this -> get_p_node($value['customer_id']);
+				$this->model_account_auto->update_PD_finish_thuong($value['id']);
+				if ($tmp != $value['customer_id']) {
+
+					$this -> model_account_auto -> update_R_Wallet($value['max_profit'], $value['customer_id']);
+					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Finish PD" . $value['pd_number']);
+				}
+					$this -> update_commission($value['customer_id'], $value['filled'], $value['pd_number']);
+
+
+		}
+		// echo $tmp_count;
+	}
 	public function update_commission($customer_id, $amount, $pd_number){
 		
 		$this->load->model('account/customer');
    		$this->load->model('account/auto');
         $customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
         $partent = $this -> model_account_customer -> getCustomerCustom($customer['p_node']);
-       
         $checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($partent['customer_id']);
 
 			if (intval($checkC_Wallet['number']) === 0) {
@@ -326,7 +429,7 @@ class ControllerAccountAuto extends Controller {
 						switch (intval($customer_p_node['level'])) {
 							case 2 :
 								$percent = 0.2;
-								$percentcommission =0.1/100;
+								$percentcommission =0.2/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
 								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
 								break;
@@ -366,7 +469,7 @@ class ControllerAccountAuto extends Controller {
 						}
 
 					}
-					if(intval($customer_p_node['customer_id']) === 2){
+					if(intval($customer_p_node['customer_id']) === 1){
 						break;
 					}
 					//lay tiep customer de chay len tren lay thang cha
