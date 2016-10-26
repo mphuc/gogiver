@@ -82,7 +82,7 @@ class ControllerAccountPd extends Controller {
 		$this->load->model('account/customer');
 		$message = $this-> model_account_customer -> getMessage($transfer_id);
 		$html ='';
-		foreach ($message as $key => $value) {
+		foreach ($message as $value) {
 			$html .= '<h5 class="text-warning">
 '.$this->getParrent($value['customer_id']).'
 <span class="text-muted pull-right" style="font-size:12px;"><i class="fa fa-calendar-o"> </i> '.$value['date_added'].'</span>
@@ -156,6 +156,7 @@ class ControllerAccountPd extends Controller {
 		
 		$html ='';
 		foreach ($transferList as $key => $value) {
+			
 			if (intval($value['pd_satatus']) === 0){
 			$status = '<span class="label label-warning">Đang chờ</span>';
 		}
@@ -174,6 +175,7 @@ class ControllerAccountPd extends Controller {
 		if (intval($value['gd_status']) === 2){
 			$status_gd = '<span class="label label-danger">Báo cáo</span>';
 		}
+
 			if(!$value['image']){
 				$image = ' <div class="fileUpload btn btn-primary">
 	    <span>Chọn ảnh</span>
@@ -1537,6 +1539,7 @@ $("#file").change(function(){
 
 		$this->model_account_customer->createTransferList($pd_query['pd_id'],$select_tranfer['gd_id'],$this->session->data['customer_id'],$select_tranfer['gd_id_customer'],$select_tranfer['amount']);
 		$this -> model_account_customer ->update_status_pnode_pd($select_tranfer['id']);
+		$this -> model_account_customer -> updateStatustranfer($select_tranfer['id']);
     	$this -> response -> redirect($this -> url -> link('account/dashboard#createPD', '', 'SSL'));
     }
 }

@@ -2302,7 +2302,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			gd_id = '".$gd_id."',
 			pd_id_customer = '".$pd_id_customer."',
 			gd_id_customer = '".$gd_id_customer."',
-			transfer_code = '".hexdec( crc32($gd_id) )."',
+			transfer_code = '".hexdec( crc32($gd_id) ).rand(10,100)"',
 			date_added = NOW(),
 			date_finish = DATE_ADD(NOW() , INTERVAL + 36 HOUR),
 			amount = '".$amount."',
@@ -2321,5 +2321,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query;
 	}
+	public function updateStatustranfer($transferID){
 
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_transfer_list SET
+				pd_satatus = 2,
+				gd_status = 2
+				WHERE id = '".$this->db->escape($transferID)."'
+		");
+		return $query;
+	}
 }

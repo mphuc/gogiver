@@ -93,7 +93,7 @@ class ControllerCommonLogin extends Controller {
 	}
 
 	protected function validate() {
-		if ($this->check_otp_login($this->request->post['otp']) == 1 || 1==1)
+		if ($this->check_otp_login($this->request->post['otp']) == 1)
 		{
 			if (!isset($this->request->post['username']) || !isset($this->request->post['password']) || !$this->user->login($this->request->post['username'], $this->request->post['password'])) {
 				$this->error['warning'] = $this->language->get('error_login');

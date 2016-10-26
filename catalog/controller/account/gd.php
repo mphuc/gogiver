@@ -85,7 +85,7 @@ class ControllerAccountGd extends Controller {
 		}else{
 			$cus_id = $customer_id;
 		}
-		$parrent = $this -> model_account_customer ->getParrent($cus_id);
+		return $parrent = $this -> model_account_customer ->getParrent($cus_id);
 	}
 	public function getPhone($customer_id){
 		$this -> load -> model('account/customer');
@@ -318,7 +318,6 @@ class ControllerAccountGd extends Controller {
       		$btnconfirm .= "<button type='button' data-value='".$value['id']."' class='gh_report btn btn-xs btn-danger' style='margin-left:5px;' >Báo cáo</i></button>";
 		}
 
-
 		if (intval($value['pd_satatus']) === 0){
 			$status = '<span class="label label-warning">Đang chờ</span>';
 		}
@@ -340,8 +339,15 @@ class ControllerAccountGd extends Controller {
 		if (intval($value['gd_status']) === 3){
 			$status_gd = '<span class="label label-danger">Báo cáo</span>';
 		}
+		/*if (intval($value['status_pnode_pd']) === 1){
+			$status = '<span class="label label-danger">Báo cáo</span>';
+		}
+		if (intval($value['status_pnode_pd']) === 1){
+			$status_gd = '<span class="label label-danger">Báo cáo</span>';
+		}*/
                $image = '<a href="'.$value['image'].'" target="_blank"><img style="max-width:35%" src="'.$value['image'].'" style="display:block ; margin-top:20px;" /></a>';
         
+
 			$html .= '<div class="row">
    <div class="col-lg-12 col-sm-12 col-xs-12 height">
       <i class="fa fa-code-fork" aria-hidden="true"></i> Mã giao dịch: </i> 
@@ -375,7 +381,6 @@ class ControllerAccountGd extends Controller {
 
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
       <span class="pull-left">
-  
       <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Hóa đơn</a>
       <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">Chi tiết </a>
       </span>

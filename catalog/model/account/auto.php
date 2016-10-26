@@ -189,7 +189,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id , amount , filled
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_added <= '".$date_finish."'
+			WHERE date_finish <= '".$date_added."'
 			AND STATUS =0
 			ORDER BY date_added ASC
 			LIMIT 1

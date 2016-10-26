@@ -181,8 +181,8 @@ error_reporting(-1);
 		->setCellValue('C1', 'Name bank account')
 		->setCellValue('D1', 'Account number')
 		->setCellValue('E1', 'Telephone')
-		->setCellValue('F1', 'Status')
-		->setCellValue('G1', 'Amount')
+		->setCellValue('F1', 'Amount')
+		->setCellValue('G1', 'Status')
 		->setCellValue('H1', 'Date Add');
          $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
@@ -213,13 +213,14 @@ error_reporting(-1);
 		$n = 2;
 		$i=0;
 		foreach ($results as $customer) {
+			//print_r($customer); die;
 			$i++;
 			$objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$i);
 			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$customer['username']);
 			$objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$customer['account_holder']);
 			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$customer['account_number']);
 			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$customer['telephone']);
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,number_format($customer['amount']));
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,number_format($customer['filled']));
 			if ($customer['status'] == 0) $status = "Watting";
 			if ($customer['status'] == 1) $status = "Matched";
 			if ($customer['status'] == 2) $status = "Finish";
