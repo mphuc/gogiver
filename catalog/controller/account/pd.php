@@ -252,7 +252,7 @@ class ControllerAccountPd extends Controller {
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                <h4 class="modal-title">Tin Nhắn</h4>
             </div>
-            <form id="comfim-pd" action="'.$this -> url -> link('account/pd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
+            <form class="comfim-pd" action="'.$this -> url -> link('account/pd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
     text-align: left;
 ">
                <input type="hidden" value="'.$value['id'].'" name="token" />
@@ -616,9 +616,9 @@ $("#file").change(function(){
 
 	public function confirmSubmit() {
 		$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
-		$json['ok'] = -1;
+		//$json['ok'] = -1;
 		
-		if ($this -> customer -> isLogged() && $this -> request -> post['token'] && $this->request->files['avatar']['name']) {
+		if ($this -> customer -> isLogged() && $this -> request -> post['token'] && isset($this->request->files['avatar']['name'])) {
 			$this -> load -> model('account/customer');
 	
 			$filename = html_entity_decode($this->request->files['avatar']['name'], ENT_QUOTES, 'UTF-8');

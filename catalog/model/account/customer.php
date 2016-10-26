@@ -600,12 +600,26 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 		return $query === true ? true : false;
 	}
-
+	public function updateRWallet($amount , $customer_id){
+			
+			$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_r_wallet SET
+				amount = amount - ".floatval($amount)."
+				WHERE customer_id = '".$customer_id."'
+			");
+			
+		return $query === true ? true : false;
+	}
 	public function createGD($amount){
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+48 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;	
+
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_get_donation SET
 			customer_id = '".$this -> session -> data['customer_id']."',
-			date_added = NOW(),
+			date_added = '".$date_added."',
+			date_finish = '".$date_finish."',
 			amount = '".$amount."',
 			status = 0
 		");
@@ -852,10 +866,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 
 	public function saveHistoryPin($id_customer, $amount, $user_description, $type , $system_description){
+		$date_added= date('Y-m-d H:i:s');
 		$this -> db -> query("INSERT INTO " . DB_PREFIX . "ping_history SET
 			id_customer = '" . $this -> db -> escape($id_customer) . "',
 			amount = '" . $this -> db -> escape( $amount ) . "',
-			date_added = NOW(),
+			date_added = '".$date_added."',
 			user_description = '" .$this -> db -> escape($user_description). "',
 			type = '" .$this -> db -> escape($type). "',
 			system_description = '" .$this -> db -> escape($system_description). "'
@@ -2302,7 +2317,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			gd_id = '".$gd_id."',
 			pd_id_customer = '".$pd_id_customer."',
 			gd_id_customer = '".$gd_id_customer."',
-			transfer_code = '".hexdec( crc32($gd_id) ).rand(10,100)"',
+			transfer_code = '".hexdec( crc32($gd_id) ).rand(10,100)."',
 			date_added = NOW(),
 			date_finish = DATE_ADD(NOW() , INTERVAL + 36 HOUR),
 			amount = '".$amount."',
@@ -2330,5 +2345,42 @@ public function getCustomerFloor($arrId, $limit, $offset){
 				WHERE id = '".$this->db->escape($transferID)."'
 		");
 		return $query;
+	}
+	public function getGDweekday($customer_id){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("SELECT sum(amount) as sum
+		FROM " . DB_PREFIX . "customer_get_donation
+		WHERE YEARWEEK(date_added)=YEARWEEK('".$date_added."')
+		");
+		return $query->row['sum'];
+	}
+
+	public function getGD_user($customer_id){
+		$query = $this -> db -> query("
+			SELECT count(*) as num
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE customer_id = ".$customer_id."
+		");
+		return $query -> row['num'];
+	}
+
+	public function repd($customer_id){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT count(*) as num
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE status = 2 AND date_finish <= '".$date_added."' AND check_gd = 0 AND customer_id = ".$customer_id."
+		");
+		return $query -> row['num'];
+	}
+
+	public function pd_user($customer_id){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT count(*) as num
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE status = 0 OR status = 1 OR status = 1 AND customer_id = ".$customer_id." AND date_finish <= '".$date_added."'
+		");
+		return $query -> row['num'];
 	}
 }

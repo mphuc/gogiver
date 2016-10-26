@@ -34,6 +34,16 @@
                      <div id="err-c-wallet" class="alert alert-dismissable alert-danger" style="display:none">
                         Bạn chỉ rút được trên 5,000,000 VNĐ.
                      </div>
+                      <div id="err-c-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
+                        Bạn chỉ rút được dưới <?php echo number_format($c_wallet) ?> VNĐ.
+                     </div>
+                     <div id="err-r-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
+                        Bạn chỉ rút được dưới <?php echo number_format($r_wallet) ?> VNĐ.
+                     </div>
+                     <div id="err-weekday" class="alert alert-dismissable alert-danger" style="display:none">
+                        Số lượng rút của bạn đã vượt quá giới hạn trong 1 tuần.
+                     </div>
+                     
                      <div id="err-passs" class="alert alert-dismissable alert-danger" style="display:none">
                         You password transction error. Please try agin !
                      </div>
@@ -47,13 +57,14 @@
                      <div class="form-group">
                         <label class="col-md-4 control-label"><?php echo $lang['Receivable'] ?>:</label>
                         <div class="col-md-8">
-                           <input class="form-control" id="amount" type="text" readonly="true" disabled="true" />
+
+                           <input class="form-control" id="amount" type="number" value="" name="amount" />
                            <span id="amount-error" class="field-validation-error" style="display: none;">
                            <span><?php echo $lang['err_Receivable'] ?></span>
                            </span>
                            <br/>
                            <p class="help-none" id="c-wallet" data-value="<?php echo $c_wallet ?>"><?php echo $lang['c_wallet'] ?>: <code> <?php echo (number_format(doubleval($c_wallet))) ; ?> VNĐ </code></p>
-                           <!-- <p class="help-none" id="r-wallet" data-value="<?php echo $r_wallet ?>"><?php echo $lang['r_wallet'] ?>: <code> <?php echo (number_format(doubleval($r_wallet))); ?> VNĐ </code></p> -->
+                           <p class="help-none" id="r-wallet" data-value="<?php echo $r_wallet ?>"><?php echo $lang['r_wallet'] ?>: <code> <?php echo (number_format(doubleval($r_wallet))); ?> VNĐ </code></p>
                         </div>
                      </div>
                      <div class="form-group">
@@ -62,8 +73,10 @@
                            <!-- Please check the type of wallet -->
                            <!-- <label class="radio"></label> -->
                            <span style="float: left; margin-left: 35px;"><?php echo $lang['c_wallet'] ?></span>
-                           <input id="C_Wallet" name="FromWallet" type="radio" value="1"/>
-                           
+                           <input checked="true" id="C_Wallet" name="FromWallet" type="radio" value="1"/>
+                           <br>
+                           <span style="float: left; margin-left: 35px;"><?php echo $lang['r_wallet'] ?></span>
+                           <input id="R_Wallet" name="FromWallet" type="radio" value="2"/>
                            
                            </label>
                          

@@ -21,11 +21,25 @@
                      foreach ($getPDfinish_child as $value) {
                   ?>
                      <div class="alert alert-danger">
-                       <strong><?php echo $value['username'];?> chưa chuyển tiền</strong> Bạn vui lòng tạo PD với số tiền <?php echo number_format($value['amount']); ?> VNĐ để không bị phạt <a class="btn btn-success" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PD</a>
+                       <strong><?php echo $value['username'];?> chưa chuyển tiền</strong> Bạn vui lòng tạo PD với số tiền <?php echo number_format($value['amount']); ?> VNĐ để không bị phạt <a class="btn btn-success" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PH</a>
                      </div>
 
                   <?php
                      }
+                  }
+               ?>
+
+               <?php 
+                  if (count($repd) > 0) {
+                     if (count($pd_user) == 0) {
+                    
+                  ?>
+                     <div class="alert alert-danger">
+                       <strong>Thông báo! </strong> Bạn vui lòng tạo PH để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
+                     </div>
+
+                  <?php
+                    }
                   }
                ?>
                <div class="row">

@@ -147,12 +147,10 @@ class ModelAccountAuto extends Model {
 
 	public function getGD7Before(){
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
-		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$query = $this -> db -> query("
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE date_added <= '".$date_finish."'
+			WHERE date_finish <= NOW()
 			AND status = 0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -189,7 +187,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id , amount , filled
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= '".$date_added."'
+			WHERE date_finish <= NOW()
 			AND STATUS =0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -226,7 +224,7 @@ class ModelAccountAuto extends Model {
 
 	public function updateStatusPD($pd_id , $status){
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_provide_donation SET
-			status = '".$status."',date_finish = DATE_ADD(NOW(),INTERVAL + 36 HOUR)
+			status = '".$status."',date_finish = DATE_ADD(NOW(),INTERVAL + 72 HOUR)
 			WHERE id = '".$pd_id."'
 		");
 	}
@@ -288,7 +286,8 @@ class ModelAccountAuto extends Model {
 
 	public function updateStatusGD($gd_id , $status){
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_get_donation SET
-			status = '".$status."'
+			status = '".$status."',
+			date_finish = DATE_ADD(NOW() , INTERVAL + 72 HOUR),
 			WHERE id = '".$gd_id."'
 		");
 	}
@@ -302,7 +301,7 @@ class ModelAccountAuto extends Model {
 			gd_id_customer = '".$data["gd_id_customer"]."',
 			transfer_code = '".hexdec( crc32($data["gd_id"]) )."',
 			date_added = NOW(),
-			date_finish = DATE_ADD(NOW() , INTERVAL + 36 HOUR),
+			date_finish = DATE_ADD(NOW() , INTERVAL + 72 HOUR),
 			amount = '".$data["amount"]."',
 			pd_satatus = 0,
 			gd_status = 0

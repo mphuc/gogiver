@@ -2141,7 +2141,7 @@ p {
   clear: both;
 }
 .lead-stats .stats-number {
-  font-size: 32px;
+  font-size: 28px;
   line-height: 32px;
   font-weight: bold;
   display: inline-block;

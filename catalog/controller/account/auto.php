@@ -179,7 +179,7 @@ class ControllerAccountAuto extends Controller {
 			
 		}
 
-		$get_PD_finish = $this->model_account_auto->get_PD_finish();
+		/*$get_PD_finish = $this->model_account_auto->get_PD_finish();
 		
 		foreach ($get_PD_finish as $value_gd) {
 			$this->model_account_auto->updatePDcheck_R_Wallet($value_gd['id']);
@@ -226,7 +226,7 @@ class ControllerAccountAuto extends Controller {
 			}
 			$this -> model_account_auto -> createPD($amount_pd,$value['customer_id']);
 			$this -> model_account_auto -> update_check_gd($value['id']);
-		}
+		}*/
 
 
 	}

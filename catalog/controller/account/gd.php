@@ -476,6 +476,7 @@ class ControllerAccountGd extends Controller {
 		$data['c_wallet'] = $this -> model_account_customer -> getC_Wallet($this -> session -> data['customer_id']);
 		$data['c_wallet'] = count($data['c_wallet']) > 0 ? $data['c_wallet']['amount'] : 0.0;
 
+
 		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
 		$data['base'] = $server;
 		$data['self'] = $this;
@@ -500,7 +501,6 @@ class ControllerAccountGd extends Controller {
 		
 	}
 	public function submit() {
-
 		if ($this -> customer -> isLogged() && $this -> request -> get['Password2']) {
 			$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
 			$this -> load -> model('account/customer');
@@ -522,20 +522,51 @@ class ControllerAccountGd extends Controller {
 				}else{
 					$json['pin'] = 1;
 				}
-				if($json['pin'] === -1){
+				$level = $this -> model_account_customer ->getLevel_by_customerid($this -> session -> data['customer_id']);
+
+				switch (intval($level['level'])) {
+					case 1:
+						$amount_gd = 26400000;
+						break;
+					case 2:
+						$amount_gd = 57200000;
+						break;
+					case 3:
+						$amount_gd = 79200000;
+						break;
+					case 4:
+						$amount_gd = 136400000;
+						break;
+					case 5:
+						$amount_gd = 215600000;
+						break;
+					case 6:
+						$amount_gd = 272800000;
+						break;
+				}
+
+				$getGDweekday = $this->model_account_customer->getGDweekday($this -> session -> data['customer_id']);
+				//echo $getGDweekday; die;
+				if (floatval($getGDweekday + floatval($this->request->get['amount']) > $amount_gd)){
+					$json['weekday'] = -1;
+				}
+				else
+				{
+					$json['weekday'] = 1;
+				}
+				if($json['pin'] === -1 || $json['weekday'] == -1){
 					$json['ok'] = -1;
 					$this -> response -> setOutput(json_encode($json));
 				}else{
-
+/*
 					$pd_total = $this -> model_account_customer -> getStatusPD();
 						$pd_total=$pd_total['pdtotal'];
 						$gd_total = $this -> model_account_customer -> getStatusGD();
-						$gd_total=$gd_total['gdtotal'];
+						$gd_total=$gd_total['gdtotal'];*/
 
 					$formWallet = $this -> request -> get['FromWallet'];
 					$amount = $this -> request -> get['amount'];
 
-					
 					/*$getC_Wallet = $this -> model_account_customer ->getC_Wallet($this -> session -> data['customer_id']);
 					print_r($getC_Wallet);
 					print_r($get_level['level'] );die;*/
@@ -547,22 +578,51 @@ class ControllerAccountGd extends Controller {
 						$c_wallet = $this -> model_account_customer -> getC_Wallet($this -> session -> data['customer_id']);
 						
 						$c_wallet = floatval($c_wallet['amount']);
-						if(($c_wallet < $amount) && ($amount < 3000000)){
+						if(($c_wallet < $amount) && ($amount < 5000000)){
 							die();
 						}
 						//get level customer
-						$get_level = $this -> model_account_customer -> getCustomerCustomFormSetting($this -> session -> data['customer_id']);
-						if ($get_level['level'] == 1)
-						{
-							
-						}
-
+						
 						$amount = $this->request->get['amount'];
 						
 						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'C-wallet', '- ' . number_format($amount) . ' VND', "Rút ví C");
 						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
 						$returnDate = $this -> model_account_customer -> update_C_Wallet($this->request->get['amount'], $this -> session -> data['customer_id']);
-						$this -> model_account_customer -> createGD($amount);
+						$gd_query = $this -> model_account_customer -> createGD($amount);
+						$id_history = $this->model_account_customer->saveHistoryPin(
+							$this -> session -> data['customer_id'],  
+							'- 1',
+							'Sủ dụng Pin cho GH'.$gd_query['gd_number'],
+							'GD',
+							'Sủ dụng Pin cho GH'.$gd_query['gd_number']
+						);
+					}
+					else
+					{
+						$json['checkWaiting'] = 2;
+						
+
+						$c_wallet = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
+						
+						$c_wallet = floatval($c_wallet['amount']);
+						if(($c_wallet < $amount) && ($amount < 5000000)){
+							die();
+						}
+						//get level customer
+						
+						$amount = $this->request->get['amount'];
+						
+						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'R-wallet', '- ' . number_format($amount) . ' VND', "Rút ví R");
+						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
+						$returnDate = $this -> model_account_customer -> updateRWallet($this->request->get['amount'], $this -> session -> data['customer_id']);
+						$gd_query = $this -> model_account_customer -> createGD($amount);
+						$id_history = $this->model_account_customer->saveHistoryPin(
+							$this -> session -> data['customer_id'],  
+							'- 1',
+							'Sủ dụng Pin cho GH'.$gd_query['gd_number'],
+							'GD',
+							'Sủ dụng Pin cho GH'.$gd_query['gd_number']
+						);
 					}
 					$json['ok'] = $returnDate === true && $json['password'] === 1 ? 1 : -1;
 					

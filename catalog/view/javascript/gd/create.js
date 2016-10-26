@@ -8,7 +8,8 @@ $(function() {
 	var r_wallet_current = $('#r-wallet').data('value');
 
 	
-	$('#createGD input[type=radio][name=FromWallet]').change(function(){
+	/*$('#createGD input[type=radio][name=FromWallet]').change(function(){
+		alert(c_wallet_current);
 		$('#amount').val('');
 		var valRadio = parseInt($(this).val());
 		var valBTC = null;
@@ -23,7 +24,7 @@ $(function() {
 			window.value =  parseFloat($('#r-wallet').data('value')),
 			$('#amount').val(parseFloat(window.value) + ' VNĐ')
 		);
-	});
+	});*/
 
 
 	$('#createGD').on('submit', function() {
@@ -34,15 +35,38 @@ $(function() {
 				$('#err-c-wallet').hide();
 				$('#sucess-alert').hide();
 				$('#err-pin').hide();
-				
+				$('#err-r-wallet_max').hide();
+				$('#err-c-wallet_max').hide();
 				$('#createGD button').attr('disabled', true);
 
-				if(window.choise === 1 && window.value < 5000000){
+				if($('#amount').val() < 5000000){
 					window.funLazyLoad.reset();
 					$('#err-c-wallet').show();
+					$('#err-r-wallet_max').hide();
+					$('#err-c-wallet_max').hide();
+					$('#createGD button').attr('disabled', false);
 					return false;
-				}
 
+				}
+				if ($("#C_Wallet").is(":checked")){
+					if ($('#amount').val() > c_wallet_current){
+						$('#err-c-wallet_max').show();
+						window.funLazyLoad.reset();
+						
+						$('#createGD button').attr('disabled', false);
+						return false;
+					}
+				}
+				if ($("#R_Wallet").is(":checked")){
+					if ($('#amount').val() > r_wallet_current){
+						$('#err-r-wallet_max').show();
+						window.funLazyLoad.reset();
+						
+						$('#createGD button').attr('disabled', false);
+						return false;
+					}
+				}
+				
 				/*if(window.choise === 2 && window.value === 0){
 					window.funLazyLoad.reset();
 					return false;
@@ -58,7 +82,7 @@ $(function() {
 			},
 			type : 'GET',
 			data : {
-				'amount' : window.value
+				
 			},
 			success : function(result) {
 				$('#createGD button').attr('disabled', false);
@@ -67,7 +91,7 @@ $(function() {
 				_.has(result, 'password') && result['password'] === -1 && $('#err-passs').show() && window.funLazyLoad.reset();
 				_.has(result, 'checkConfirmPD') && result['checkConfirmPD'] === -1 && $('#err-checkConfirmPD').show() && window.funLazyLoad.reset();
 				_.has(result, 'pin') && result['pin'] === -1 && $('#err-pin').show() && window.funLazyLoad.reset();
-
+				_.has(result, 'weekday') && result['weekday'] === -1 && $('#err-weekday').show() && window.funLazyLoad.reset();
 				if(_.has(result, 'ok') && result['ok'] === 1){
 					if(location.hash === ''){
 						location.href = location.href+'#success';

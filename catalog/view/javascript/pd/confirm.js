@@ -23,7 +23,7 @@ $(function() {
            }else{
                 $('.error-file').hide(); 
            }
-            $('#comfim-pd').resetForm();
+            $('.comfim-pd').resetForm();
         }else{
             $('.error-file').hide();
         }
@@ -33,8 +33,7 @@ $(function() {
         history.back();
         return false;
     });
-    $('#comfim-pd').on('submit', function(){
-         
+    $('.comfim-pd').on('submit', function(){
         $(this).ajaxSubmit({
             beforeSubmit : function(arr, $form, options) { 
                /* if(!$("#file").val()){
