@@ -53,7 +53,8 @@ class ModelAccountCustomer extends Model {
 	public function getParrent($customer_id){
 		$query = $this->db->query("SELECT username
 			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
-		return $query -> row['username'];
+		
+		return $query->row['username'];
 	}
 	public function getPDLimit1($iod_customer){
 		$query = $this -> db -> query("

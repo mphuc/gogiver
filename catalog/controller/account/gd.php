@@ -86,7 +86,6 @@ class ControllerAccountGd extends Controller {
 			$cus_id = $customer_id;
 		}
 		$parrent = $this -> model_account_customer ->getParrent($cus_id);
-		return $parrent;
 	}
 	public function getPhone($customer_id){
 		$this -> load -> model('account/customer');
