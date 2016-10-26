@@ -291,185 +291,93 @@ class ControllerAccountAuto extends Controller {
 		}
 	}
 
-	public function thuongtructiep(){
-		$this -> load -> model('account/auto');
-		$this -> load -> model('account/customer');
-		$get_PD_finish = $this->model_account_auto -> get_PD_finish_thuong();
-		print_r($get_PD_finish);
-		foreach ($get_PD_finish as $key => $value) {
-			$this->model_account_auto->update_PD_finish_thuong($value['id']);
+	public function update_commission($customer_id, $amount, $pd_number){
+		
+		$this->load->model('account/customer');
+   		$this->load->model('account/auto');
+        $customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
+        $partent = $this -> model_account_customer -> getCustomerCustom($customer['p_node']);
+       
+        $checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($partent['customer_id']);
 
-			$p_node = $this -> model_account_auto -> getusername($value['customer_id']);
-			
-			$this->updateLevel($value['customer_id']);
-
-			$this -> model_account_customer -> update_C_Wallet($value['filled']*0.1, $p_node['p_node'], $add = true);
-			$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format($value['filled']*0.1)) . ' VNĐ', "10% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-			// lãi tĩnh lãi động
-			// Tầng 1
-			$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($p_node['p_node']);
-			$getlevel_child = $this -> model_account_customer -> getTableCustomerMLByUsername($value['customer_id']);
-			if (intval(count($getlevel)) > 0) {
-				switch (intval($getlevel['level'])) {
-				    case 2:
-				        $percent = 0.1;
-				        break;
-				    case 3:
-				        $percent = 0.5;
-				        break;
-				    case 4:
-				        $percent = 3; 
-				        break;
-				   	case 5:
-				        $percent = 5;
-				        break;
-				    case 6:
-				        $percent = 7;
-				        break;
-				    default:
-				        $percent = 0.1;
+			if (intval($checkC_Wallet['number']) === 0) {
+				if (!$this -> model_account_customer -> insertC_Wallet($partent['customer_id'])) {
+					die();
 				}
-				if ($getlevel_child['level'] >= $getlevel['level']){
-					$percent = 0.5;
-				}
-				//print_r( $customer_pd); die;
-				if ($percent > 0)
-				{
-					$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $p_node['p_node'], $add = true);
-					$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng quản lý', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-				}
-				// lãi tĩnh lãi động
+			}	
 
+			$price = ($amount * 10) / 100;
 
-				// thưởng liên tầng
-				$p_binary = $p_node['customer_id']; // get user gd
-				$customer_p_binary = $this -> model_account_customer -> get_customer_by_binary($p_binary);
-				
-				// Tầng 2
+			$this -> model_account_auto -> update_C_Wallet($price, $partent['customer_id']);
+			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Sponsor 10% for ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+	        $priceCurrent = $amount; 
+	        $levelCustomer = intval($customer['level']);
+	        $pNode_ID = $partent['customer_id'];
+	        //F1
+	        $customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
+			$customer_first = true ;
+			if(intval($customerGET['p_node']) !== 0){
+				while (true) {
+					//lay thang cha trong ban Ml
+					$customer_p_node = $this -> model_account_customer -> getCustomerCustom($pNode_ID);
 
-				$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($customer_p_binary['p_node']);
-				//print_r($getlevel); die;
-				if (intval(count($getlevel)) > 0) {
-					switch (intval($getlevel['level'])) {
-					    case 2:
-					        $percent = 0.1;
-					        break;
-					    case 3:
-					        $percent = 0.5;
-					        break;
-					    case 4:
-					        $percent = 0.3; 
-					        break;
-					   	case 5:
-					        $percent = 0.5;
-					        break;
-					    case 6:
-					        $percent = 0.7;
-					        break;
-					    default:
-					        $percent = 0.1;
-					}
-					
-					if ($percent > 0){
-						$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $getlevel['customer_id'], $add = true);
-							$this -> model_account_customer -> saveTranstionHistory($getlevel['customer_id'], 'Thưởng liên tầng', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-					}
-					
-					// Tầng 3
-
-					$customer_p_binary = $this -> model_account_customer -> get_customer_by_binary($customer_p_binary['p_node']);
-					$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($getlevel['p_node']);
+					if (intval($customer_p_node['level']) >= 2) {
 							
-					//print_r($customer_p_binary); die;
-					if (intval(count($getlevel)) > 0) {
-						switch (intval($getlevel['level'])) {
-						    case 3:
-						        $percent = 0.5;
-						        break;
-						    case 4:
-						        $percent = 0.3; 
-						        break;
-						   	case 5:
-						        $percent = 0.5;
-						        break;
-						    case 6:
-						        $percent = 0.7;
-						        break;
-						    default:
-						        $percent = 0.1;
+						switch (intval($customer_p_node['level'])) {
+							case 2 :
+								$percent = 0.2;
+								$percentcommission =0.1/100;
+								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								break;
+							case 3 :	
+								
+								$percent = 0.5;
+								$percentcommission =0.5/100;
+								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								
+								break;
+							case 4 :	
+								
+								$percent = 3;
+								$percentcommission =3/100;
+								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+							
+								break;
+							case 5 :	
+								
+								$percent = 5;
+								$percentcommission =5/100;
+								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								
+								break;
+							case 6 :	
+								
+								$percent = 7;
+								$percentcommission =7/100;
+								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								
+								break;
+							
 						}
-						if ($percent > 0){
-							$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $getlevel['customer_id'], $add = true);
-						$this -> model_account_customer -> saveTranstionHistory($getlevel['customer_id'], 'Thưởng liên tầng', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-						}
-						
-						//Tang 4
-						
-						$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($getlevel['p_node']);
 
-						if (intval(count($getlevel)) > 0) {
-							switch (intval($getlevel['level'])) {
-							    case 4:
-							        $percent = 0.3; 
-							        break;
-							   	case 5:
-							        $percent = 0.5;
-							        break;
-							    case 6:
-							        $percent = 0.7;
-							        break;
-							    default:
-							        $percent = 0.1;
-							}
-							if ($percent > 0){
-								$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $getlevel['customer_id'], $add = true);
-								$this -> model_account_customer -> saveTranstionHistory($getlevel['customer_id'], 'Thưởng liên tầng', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-							}
-							
-							//Tang 5
-							$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($getlevel['p_node']);
-								
-							if (intval(count($getlevel)) > 0) {
-								switch (intval($getlevel['level'])) {
-								   	case 5:
-								        $percent = 0.5;
-								        break;
-								    case 6:
-								        $percent = 0.7;
-								        break;
-								    default:
-								        $percent = 0.1;
-								}
-								if ($percent > 0){
-									$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $getlevel['customer_id'], $add = true);
-									$this -> model_account_customer -> saveTranstionHistory($getlevel['customer_id'], 'Thưởng liên tầng', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-								}
-								
-								//Tang 6
-								
-								$getlevel = $this -> model_account_customer -> getTableCustomerMLByUsername($getlevel['p_node']);
-								
-								if (intval(count($getlevel)) > 0 && $percent >= 4) {
-									switch (intval($getlevel['level'])) {
-									    case 6:
-									        $percent = 0.7;
-									        break;
-									    default:
-									        $percent = 0.1;
-									}
-									if ($percent > 0){
-										$this -> model_account_customer -> update_C_Wallet($value['filled']*$percent/100, $getlevel['customer_id'], $add = true);
-									$this -> model_account_customer -> saveTranstionHistory($getlevel['customer_id'], 'Thưởng liên tầng', '+ ' . (number_format($value['filled']*$percent/100)) . ' VNĐ', "".$percent."% từ PH ".$p_node['username']." (".number_format($value['filled'])." VNĐ)");
-									}
-							
-								}
-							}
-						}
 					}
-				}
+					if(intval($customer_p_node['customer_id']) === 2){
+						break;
+					}
+					//lay tiep customer de chay len tren lay thang cha
+					$pNode_ID = $customerGET['p_node'];
+					$customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
+
+
+				} 
 			}
-		}
 	}
+	
 	// sau 3 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
 	public function re_pd(){
 		$this -> load -> model('account/auto');
