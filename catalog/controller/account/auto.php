@@ -76,22 +76,24 @@ class ControllerAccountAuto extends Controller {
 	public function autoPDGD() {
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
-		
-		//get first GD
+		$this -> load -> model('account/pd');
+		$this -> load -> model('account/customer');
+
 		$loop = true;
+		
 		// $count = 0;
 		$i=1;
-
 		while ($loop) {
 
 			$gdList = $this -> model_account_auto -> getGD7Before();
-			
+			//echo "<pre>"; print_r($gdList); echo "</pre>"; die();
 			$pdList = $this -> model_account_auto -> getPD7Before();
-
+		 //echo "<pre>"; print_r($pdList); echo "</pre>"; die();
 			if(count($gdList) === 0 && count($pdList) > 0){
 
 				//get customer in inventory
 				$inventory = $this -> model_account_auto ->getCustomerInventory();
+				
 				
 				$pdSend = floatval($pdList['filled'] - $pdList['amount']);
 
@@ -100,9 +102,9 @@ class ControllerAccountAuto extends Controller {
 				//create GD cho inventory
 				$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
 				// continue;
-
 				
 			}
+
 			if(count($pdList) === 0 && count($gdList) > 0){
 
 				$gdResiver = floatval($gdList['amount'] - $gdList['filled']);
@@ -134,7 +136,9 @@ class ControllerAccountAuto extends Controller {
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
 					$data['amount'] = $pdSend;
-					$this -> model_account_auto -> createTransferList($data);
+					$id_transfer = $this -> model_account_auto -> createTransferList($data);
+					$this -> model_account_auto -> updateTransferList($id_transfer);
+					
 					$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
 					$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
@@ -148,7 +152,8 @@ class ControllerAccountAuto extends Controller {
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
 					$data['amount'] = $pdSend;
-					$this -> model_account_auto -> createTransferList($data);
+					$id_transfer = $this -> model_account_auto -> createTransferList($data);
+					$this -> model_account_auto -> updateTransferList($id_transfer);
 					$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
@@ -164,7 +169,8 @@ class ControllerAccountAuto extends Controller {
 					$data['gd_id_customer'] = $gdList['customer_id'];
 					$data['amount'] = $gdResiver;
 
-					$this -> model_account_auto -> createTransferList($data);
+					$id_transfer = $this -> model_account_auto -> createTransferList($data);
+					$this -> model_account_auto -> updateTransferList($id_transfer);
 
 					$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $gdResiver);
@@ -173,60 +179,11 @@ class ControllerAccountAuto extends Controller {
 					continue;
 				}
 			}
-
+			die();
 			echo $i.'<br>';
 			$i++;
 			
 		}
-
-		/*$get_PD_finish = $this->model_account_auto->get_PD_finish();
-		
-		foreach ($get_PD_finish as $value_gd) {
-			$this->model_account_auto->updatePDcheck_R_Wallet($value_gd['id']);
-			switch (floatval($value_gd['filled'])) {
-				case 8800000:
-					$amount_gd = 11400000;
-					break;
-				case 17600000:
-					$amount_gd = 22880000;
-					break;
-				case 26400000:
-					$amount_gd = 34320000;
-					break;
-				case 35200000:
-					$amount_gd = 45760000;
-					break;
-				default:
-					$amount_gd = 57200000;
-					break;
-			}
-			$this->model_account_auto->createGD($value_gd['customer_id'],$amount_gd);
-		}
-		//get GB_PD
-		$getPD_GD = $this->model_account_auto -> getPD_GD();
-		//print_r($getPD_GD); die;
-		// create PD
-		foreach ($getPD_GD as $value) {
-			switch (floatval($value['amount'])) {
-				case 114400000:
-					$amount_pd = 8800000;
-					break;
-				case 22880000:
-					$amount_pd = 17600000;
-					break;
-				case 34320000:
-					$amount_pd = 26400000;
-					break;
-				case 45760000:
-					$amount_pd = 35200000;
-					break;
-				default:
-					$amount_pd = 44000000;
-					break;
-			}
-			$this -> model_account_auto -> createPD($amount_pd,$value['customer_id']);
-			$this -> model_account_auto -> update_check_gd($value['id']);
-		}*/
 
 
 	}
@@ -387,7 +344,7 @@ public function updateLevel_listID($customer_id){
 				if ($tmp != $value['customer_id']) {
 
 					$this -> model_account_auto -> update_R_Wallet($value['max_profit'], $value['customer_id']);
-					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Finish PD" . $value['pd_number']);
+					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number'])." finish", "Finish PD";
 				}
 					$this -> update_commission($value['customer_id'], $value['filled'], $value['pd_number']);
 
@@ -412,7 +369,7 @@ public function updateLevel_listID($customer_id){
 			$price = ($amount * 10) / 100;
 
 			$this -> model_account_auto -> update_C_Wallet($price, $partent['customer_id']);
-			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Sponsor 10% for ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Direct Bonus");
 	        $priceCurrent = $amount; 
 	        $levelCustomer = intval($customer['level']);
 	        $pNode_ID = $partent['customer_id'];
@@ -431,14 +388,14 @@ public function updateLevel_listID($customer_id){
 								$percent = 0.2;
 								$percentcommission =0.2/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								break;
 							case 3 :	
 								
 								$percent = 0.5;
 								$percentcommission =0.5/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								
 								break;
 							case 4 :	
@@ -446,7 +403,7 @@ public function updateLevel_listID($customer_id){
 								$percent = 3;
 								$percentcommission =3/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 							
 								break;
 							case 5 :	
@@ -454,7 +411,7 @@ public function updateLevel_listID($customer_id){
 								$percent = 5;
 								$percentcommission =5/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								
 								break;
 							case 6 :	
@@ -462,7 +419,7 @@ public function updateLevel_listID($customer_id){
 								$percent = 7;
 								$percentcommission =7/100;
 								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)");
+								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								
 								break;
 							
@@ -493,17 +450,17 @@ public function updateLevel_listID($customer_id){
 		}
 	}
 
-	public function thuongtructiep_bk(){
-		$this -> load -> model('account/auto');
-		$this -> load -> model('account/customer');
-		$get_PD_finish = $this->model_account_auto -> get_PD_finish_thuong();
-		foreach ($get_PD_finish as $key => $value) {
-			$this->model_account_auto->update_PD_finish_thuong($value['id']);
-			$p_node = $this -> model_account_auto -> getusername($value['customer_id']);
-			$this -> model_account_customer -> update_C_Wallet(8800000*0.1, $p_node['p_node'], $add = true);
-			$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format(8800000*0.1)) . ' VNĐ', "10% từ PD ".$p_node['username']." (".number_format(8800000)." VNĐ)");
-		}
-	}
+	// public function thuongtructiep_bk(){
+	// 	$this -> load -> model('account/auto');
+	// 	$this -> load -> model('account/customer');
+	// 	$get_PD_finish = $this->model_account_auto -> get_PD_finish_thuong();
+	// 	foreach ($get_PD_finish as $key => $value) {
+	// 		$this->model_account_auto->update_PD_finish_thuong($value['id']);
+	// 		$p_node = $this -> model_account_auto -> getusername($value['customer_id']);
+	// 		$this -> model_account_customer -> update_C_Wallet(8800000*0.1, $p_node['p_node'], $add = true);
+	// 		$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format(8800000*0.1)) . ' VNĐ', "10% từ PD ".$p_node['username']." (".number_format(8800000)." VNĐ)");
+	// 	}
+	// }
 }
 
 

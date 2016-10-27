@@ -78,7 +78,7 @@
                      </div>
                      <div class="control-group form-group">
                         <div class="controls">
-                           <div class=" ">
+                           <div class="col-md-offset-4">
                               <div class="loading"></div>
                               <button type="submit" class="btn-register btn btn-primary"> <?php echo $lang['text_button_create'] ?></button>
                            </div>

@@ -65,7 +65,7 @@
                                        </span> </strong></td>
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
-                                           echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
+                                           echo '<span class="label label-default">'.$lang['dangcho'].'</span>';
                                            break;
                                        case 1:
                                            echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';

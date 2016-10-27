@@ -433,9 +433,9 @@ $("#file").change(function(){
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- 1',
-					'Sủ dụng Pin cho PH'.$pd_query['pd_number'],
+					'Use Pin for PD'.$pd_query['pd_number'],
 					'PD',
-					'Sủ dụng Pin cho PH'.$pd_query['pd_number']
+					'Use Pin for PD'.$pd_query['pd_number']
 				);
 
 				$json['data_link']= $this->url->link('account/pd/');
@@ -1540,9 +1540,9 @@ $("#file").change(function(){
 		$id_history = $this->model_account_customer->saveHistoryPin(
 			$this -> session -> data['customer_id'],  
 			'- 1',
-			'Sủ dụng Pin cho PH'.$pd_query['pd_number'],
+			'Use Pin for PD'.$pd_query['pd_number'],
 			'PD',
-			'Sủ dụng Pin cho PH'.$pd_query['pd_number']
+			'Use Pin for PD'.$pd_query['pd_number']
 		);
 
 		$this->model_account_customer->createTransferList($pd_query['pd_id'],$select_tranfer['gd_id'],$this->session->data['customer_id'],$select_tranfer['gd_id_customer'],$select_tranfer['amount']);

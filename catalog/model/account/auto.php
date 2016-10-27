@@ -41,18 +41,22 @@ class ModelAccountAuto extends Model {
 		");
 		return $query -> row;
 	}
+public function updateTransferList($transfer_id){
+		$query = $this -> db -> query("
+			UPDATE ". DB_PREFIX . "customer_transfer_list SET 
+			transfer_code = '".hexdec( crc32($transfer_id) )."'
+			WHERE id = ".$transfer_id."
+		");
 
+		return $query;
+	}
 	public function createGDInventory($amount, $customer_id){
-		$date_added= date('Y-m-d H:i:s');
-		$date_finish_gd = strtotime ( '- 30 day' , strtotime ($date_added));
-		$date_gd= date('Y-m-d H:i:s',$date_finish_gd) ;
-		$datefinish = strtotime ( '+ 72 hour' , strtotime ($date_added));
-		$date_finish = date('Y-m-d H:i:s',$datefinish) ;
+
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_get_donation SET
 			customer_id = '".$customer_id."',
-			date_added = '".$date_gd."',
-			date_finish = '".$date_finish."',
+			date_added = NOW(),
+			date_finish = DATE_ADD(NOW(),INTERVAL - 144 HOUR),
 			amount = '".$amount."',
 			status = 0
 		");
@@ -80,12 +84,13 @@ class ModelAccountAuto extends Model {
 
 	public function createPDInventory($filled, $customer_id){
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
+		$date_finish = strtotime ( '- 40 day' , strtotime ($date_added));
 		$date= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
 			customer_id = '".$customer_id."',
-			date_added = '".$date."',
+			date_added = '".$date_finish."',
+			date_finish = '".$date."',
 			filled = '".$filled."',
 			amount = 0,
 			status = 0
@@ -150,7 +155,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE date_finish <= NOW() AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND status = 0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -166,14 +171,16 @@ class ModelAccountAuto extends Model {
 		");
 		return $query -> row;
 	}
-	public function getPD_for_admin(){
-
+	public function getGD_for_admin(){
+		$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '-36 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 
 		$query = $this -> db -> query("
-			SELECT id , customer_id , amount , filled
-			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_added <= DATE_ADD( NOW() , INTERVAL -1 DAY )
-			AND STATUS =0
+			SELECT id , customer_id, amount , filled
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE date_finish <= '".$date_added."'  AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR quy_bao_tro = 1)
+				  AND status = 0
 			ORDER BY date_added ASC
 			
 		");
@@ -187,7 +194,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id , amount , filled
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= NOW() AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND STATUS =0
 			ORDER BY date_added ASC
 			LIMIT 1
@@ -200,6 +207,16 @@ class ModelAccountAuto extends Model {
 			SELECT *
 			FROM ". DB_PREFIX . "customer
 			WHERE quy_bao_tro = 1
+			ORDER BY date_added ASC
+			LIMIT 1
+		");
+		return $query -> row;
+	}
+	public function get_customer_earn_insurance_fund(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer
+			WHERE status = 9
 			ORDER BY date_added ASC
 			LIMIT 1
 		");
@@ -223,8 +240,11 @@ class ModelAccountAuto extends Model {
 	}
 
 	public function updateStatusPD($pd_id , $status){
+		$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '+72 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_provide_donation SET
-			status = '".$status."',date_finish = DATE_ADD(NOW(),INTERVAL + 72 HOUR)
+			status = '".$status."',date_finish = '".$date_finish."'
 			WHERE id = '".$pd_id."'
 		");
 	}
@@ -285,14 +305,21 @@ class ModelAccountAuto extends Model {
 	}
 
 	public function updateStatusGD($gd_id , $status){
+		$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '+72 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_get_donation SET
-			status = '".$status."',
-			date_finish = DATE_ADD(NOW() , INTERVAL + 72 HOUR),
+			status = '".$status."',date_finish = '".$date_finish."'
 			WHERE id = '".$gd_id."'
 		");
+		
 	}
 
+
 	public function createTransferList($data){
+		$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '+72 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_transfer_list SET
 			pd_id = '".$data["pd_id"]."',
@@ -300,12 +327,13 @@ class ModelAccountAuto extends Model {
 			pd_id_customer = '".$data["pd_id_customer"]."',
 			gd_id_customer = '".$data["gd_id_customer"]."',
 			transfer_code = '".hexdec( crc32($data["gd_id"]) )."',
-			date_added = NOW(),
-			date_finish = DATE_ADD(NOW() , INTERVAL + 72 HOUR),
+			date_added = '".$date_added."',
+			date_finish = '".$date_finish."',
 			amount = '".$data["amount"]."',
 			pd_satatus = 0,
 			gd_status = 0
 		");
+		return $this->db->getLastId();
 	}
 	public function getAllPD(){
 		$query = $this -> db -> query("

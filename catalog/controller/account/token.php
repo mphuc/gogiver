@@ -321,10 +321,10 @@ class ControllerAccountToken extends Controller {
 
 				//save history cho user chuyen di
 
-				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Giao Dịch Pin', 'ID được nhận '. $customerReceived['username']);
+				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer Pin', 'ID Receive '. $customerReceived['username']);
 
 				//save history cho user nhan token
-				$id_history = $this -> model_account_customer -> saveHistoryPin($customerReceived['customer_id'], '+ ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Giao Dịch Pin', 'ID chuyển '. $customerSend['username']);
+				$id_history = $this -> model_account_customer -> saveHistoryPin($customerReceived['customer_id'], '+ ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer Pin', 'ID Give '. $customerSend['username']);
 				//update 3840000 VND
 				//get r-wallet of user received
 				$checkR_Wallet = $this -> model_account_customer -> checkR_Wallet($customerReceived['customer_id']);

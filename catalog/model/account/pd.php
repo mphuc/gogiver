@@ -22,7 +22,11 @@ class ModelAccountPd extends Model {
 		");
 		return $query -> rows;
 	}
-	public function createTransferList10Percent($data, $transferAdmin){
+	public function createTransferList10Percent($data){
+		$date_added= date('Y-m-d H:i:s') ;
+		$date_finish = strtotime ( '+ 72 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
 		$this -> db -> query("
 				INSERT INTO ". DB_PREFIX . "customer_transfer_list SET 
 				pd_id = '".$data["pd_id"]."',
@@ -31,7 +35,7 @@ class ModelAccountPd extends Model {
 				gd_id_customer = '".$data["gd_id_customer"]."',
 				
 				date_added = NOW(),
-				date_finish = DATE_ADD(NOW() , INTERVAL +36 HOUR),
+				date_finish = ''".$date_finish."'',
 				amount = '".$data["amount"]."',
 				pd_satatus = 0,
 				gd_status = 0

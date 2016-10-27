@@ -504,6 +504,7 @@ class ControllerAccountGd extends Controller {
 		if ($this -> customer -> isLogged() && $this -> request -> get['Password2']) {
 			$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
 			$this -> load -> model('account/customer');
+			$this -> load -> model('account/auto');
 
 				
 
@@ -585,17 +586,27 @@ class ControllerAccountGd extends Controller {
 						
 						$amount = $this->request->get['amount'];
 						
-						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'C-wallet', '- ' . number_format($amount) . ' VND', "Rút ví C");
+						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'C-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from C-Wallet", "Cash Out");
 						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
 						$returnDate = $this -> model_account_customer -> update_C_Wallet($this->request->get['amount'], $this -> session -> data['customer_id']);
-						$gd_query = $this -> model_account_customer -> createGD($amount);
+						$gd_query = $this -> model_account_customer -> createGD($amount*0.9);
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
-							'Sủ dụng Pin cho GH'.$gd_query['gd_number'],
+							'Use Pin for GD'.$gd_query['gd_number'],
 							'GD',
-							'Sủ dụng Pin cho GH'.$gd_query['gd_number']
+							'Use Pin for cho GD'.$gd_query['gd_number']
 						);
+						//get 10 Percent for funds
+						$inventory = $this -> model_account_auto ->get_customer_earn_insurance_fund();
+				
+				
+						$pdSend = $amount*0.1;
+
+						$inventoryID = $inventory['customer_id'];
+
+						//create GD cho inventory
+						$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
 					}
 					else
 					{
@@ -612,17 +623,30 @@ class ControllerAccountGd extends Controller {
 						
 						$amount = $this->request->get['amount'];
 						
-						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'R-wallet', '- ' . number_format($amount) . ' VND', "Rút ví R");
+						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'R-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from R-Wallet", "Cash Out");
 						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
 						$returnDate = $this -> model_account_customer -> updateRWallet($this->request->get['amount'], $this -> session -> data['customer_id']);
-						$gd_query = $this -> model_account_customer -> createGD($amount);
+						$gd_query = $this -> model_account_customer -> createGD($amount*0.9);
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
-							'Sủ dụng Pin cho GH'.$gd_query['gd_number'],
+							'Use Pin for GD'.$gd_query['gd_number'],
 							'GD',
-							'Sủ dụng Pin cho GH'.$gd_query['gd_number']
+							'Use Pin for cho GD'.$gd_query['gd_number']
 						);
+						//get 10 Percent for funds
+						$inventory = $this -> model_account_auto ->get_customer_earn_insurance_fund();
+				
+				
+						$pdSend = $amount*0.1;
+
+						$inventoryID = $inventory['customer_id'];
+
+						//create GD cho inventory
+						$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
+
+
+
 					}
 					$json['ok'] = $returnDate === true && $json['password'] === 1 ? 1 : -1;
 					

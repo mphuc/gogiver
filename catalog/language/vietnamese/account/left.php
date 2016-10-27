@@ -2,8 +2,8 @@
 
 $_['dashboard'] = 'Bảng điều khiển';
 $_['Register'] = 'Đăng Ký';
-$_['provideDonation']    = 'PH - Cho';
-$_['getDonation']    = 'GH - nhận';
+$_['provideDonation']    = 'PD - Cho';
+$_['getDonation']    = 'GD - nhận';
 $_['downlineTree']    = 'Hoa hồng';
 $_['Refferal(S)']    = 'Thành viên';
 $_['Transaction']    = 'Lịch Sử Giao Dịch';
@@ -19,6 +19,6 @@ $_['Historical_commission'] = 'Lịch sử hoa hồng';
 $_['f1pd']    = 'F1 PH';
 $_['f1gh']    = 'F1 GH';
 $_['Transaction_Management'] = 'Giao dịch';
-$_['History_Commission'] = 'Lịch sử trực tiếp';
-$_['History_Refferal'] = 'Lịch sử thành viên';
+$_['History_Commission'] = 'R-Wallet History';
+$_['History_Refferal'] = 'C-Wallet History';
 $_['support'] = 'Hỗ trợ';

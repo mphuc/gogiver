@@ -32,16 +32,16 @@
                         <?php echo $lang['eligible'] ?>.
                      </div>
                      <div id="err-c-wallet" class="alert alert-dismissable alert-danger" style="display:none">
-                        Bạn chỉ rút được trên 5,000,000 VNĐ.
+                        You must withdraw more 5,000,000 VND.
                      </div>
                       <div id="err-c-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
-                        Bạn chỉ rút được dưới <?php echo number_format($c_wallet) ?> VNĐ.
+                        You must withdraw is below <?php echo number_format($c_wallet) ?> VNĐ.
                      </div>
                      <div id="err-r-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
-                        Bạn chỉ rút được dưới <?php echo number_format($r_wallet) ?> VNĐ.
+                        You must withdraw is below <?php echo number_format($r_wallet) ?> VNĐ.
                      </div>
                      <div id="err-weekday" class="alert alert-dismissable alert-danger" style="display:none">
-                        Số lượng rút của bạn đã vượt quá giới hạn trong 1 tuần.
+                       Your withdraw number has exceeded the limit of 1 week.
                      </div>
                      
                      <div id="err-passs" class="alert alert-dismissable alert-danger" style="display:none">
@@ -93,7 +93,7 @@
                      </div>
                      <div class="control-group form-group">
                         <div class="controls">
-                           <div class="">
+                           <div class="col-md-offset-4">
                               <div class="loading"></div>
                               <button type="submit" class="btn-register btn btn-primary">Create</button>
                            </div>

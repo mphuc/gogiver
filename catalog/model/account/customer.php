@@ -94,14 +94,16 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $return;
 	}
 
-	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription){
+	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription,$type){
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			INSERT INTO ".DB_PREFIX."customer_transaction_history SET
 			customer_id = '".$customer_id."',
 			wallet = '".$wallet."',
 			text_amount = '".$text_amount."',
 			system_decsription = '".$system_decsription."',
-			date_added = NOW()
+			date_added = '".$date_added."',
+			type = '".$type."'
 		");
 		return $query;
 	}
@@ -302,7 +304,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'Thưởng trực tiếp'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'R-wallet'
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -317,7 +319,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'hjhffhjjhjhjh'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet = 'C-wallet'
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -469,7 +471,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Thưởng trực tiếp'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'R-wallet'
 		");
 
 		return $query -> row;
@@ -479,7 +481,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'asdasda'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'C-wallet'
 		");
 
 		return $query -> row;
@@ -2264,8 +2266,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_PD_child($id_customer){
 		$query = $this -> db -> query("
 			SELECT *
-			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.pd_id_customer
-			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
 		");
 
 		return $query -> rows;
