@@ -112,7 +112,7 @@ class ControllerAccountForgotten extends Controller {
 			$data['error_warning'] = '';
 		}
 
-		$data['action'] = $this->url->link('account/forgotten', 'lang=vi', 'SSL');
+		$data['action'] = $this->url->link('account/forgotten', '', 'SSL');
 
 		$data['back'] = $this->url->link('account/login', '', 'SSL');
 
@@ -132,16 +132,17 @@ class ControllerAccountForgotten extends Controller {
 
 	protected function validate() {
 
-		if($this -> request -> get['lang'] == 'vi'){
-			$getLanguage = 'vietnamese';
-		}else{
+		
 			$getLanguage = 'english';
-		}
+		
 
 		$language = new Language($getLanguage);
 		$language -> load('account/forgotten');
 		$lang = $language -> data;
-
+		if ($this->request->post['capcha'] != $_SESSION['cap_code']) {
+				$this->error['warning'] = "Capcha faild";
+	    }
+	    
 		if (!isset($this->request->post['email'])) {
 			$this->error['warning'] = $lang['error_email'];
 		} elseif (!$this->model_account_customer->getCustomerByUsername($this->request->post['email'])) {

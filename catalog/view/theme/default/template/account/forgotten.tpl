@@ -1,122 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- <link rel="shortcut icon" href="img/favicon_1.ico"> -->
-      <title>Forgot password</title>
-      <script src="catalog/view/javascript/jquery.js"></script>
-      <script src="catalog/view/javascript/bootstrap.min.js"></script>
-      <script src="catalog/view/javascript/pace.min.js"></script>
-      <script src="catalog/view/javascript/jquery.nicescroll.js" type="text/javascript"></script>
-      <script src="catalog/view/javascript/jquery.app.js"></script>
-      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic' rel='stylesheet'>
-      <!-- Bootstrap core CSS -->
-      <link href="catalog/view/theme/default/css/bootstrap.min.css" rel="stylesheet">
-      <link href="catalog/view/theme/default/css/bootstrap-reset.css" rel="stylesheet">
-      <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-      <link href="catalog/view/theme/default/css/style.css" rel="stylesheet">
-      <link href="catalog/view/theme/default/css/helper.css" rel="stylesheet">
-      <link href="catalog/view/theme/default/css/style-responsive.css" rel="stylesheet" >
-      <script src="catalog/view/javascript/jquery.form.min.js" type="text/javascript"></script>
-      <script src="catalog/view/javascript/alertifyjs/alertify.js" type="text/javascript"></script>
-      <link href="catalog/view/theme/default/css/al_css/alertify.css" rel="stylesheet">
-   </head>
-   <style type="text/css">
-        body, html{height: 100%;}
-        body{
-                /*background: url("catalog/view/theme/default/images/index3-45.png") center;*/
-                background-repeat: no-repeat;
-                background-size: cover;
-        }
-        @-webkit-keyframes my {
-    0% { color: #F8CD0A; } 
-    50% { color: #fff;  } 
-    100% { color: #F8CD0A;  } 
- }
- @-moz-keyframes my { 
-    0% { color: #F8CD0A;  } 
-    50% { color: #fff;  }
-    100% { color: #F8CD0A;  } 
- }
- @-o-keyframes my { 
-    0% { color: #F8CD0A; } 
-    50% { color: #fff; } 
-    100% { color: #F8CD0A;  } 
- }
- @keyframes my { 
-    0% { color: #F8CD0A;  } 
-    50% { color: #fff;  }
-    100% { color: #F8CD0A;  } 
- } 
- .test {
-         /*background:#3d3d3d;*/
-         font-size:24px;
-         font-weight:bold;
-    -webkit-animation: my 700ms infinite;
-    -moz-animation: my 700ms infinite; 
-    -o-animation: my 700ms infinite; 
-    animation: my 700ms infinite;
-}
-   </style>
-   <body class="account-login" style="background: url('catalog/view/theme/default/img/bg.jpg') 0px 0px repeat;">
-      <div class="login-logo">
-         <div class="bg-logo">
-      <div class="logo"> <a href="dashboard.html" class="logo-expanded"> <img src="catalog/view/theme/default/img/logohp.png" alt="logo" style=" width:250px;"> </a> </div>
-   </div>
-      </div>
-<div class="widget">
-  <!--  <div class="text-center">
-    <p class="test"> Hiện tại chúng tôi đang cập nhật và nâng cấp hệ thống <br>bạn vui lòng không đăng nhập vào lúc này! Xin lỗi vì sự cố</p>    
-   </div> -->
-  
-   <div class="login-content">
-      <div class="widget-content" style="padding-bottom:0;background: rgba(0, 0, 0, 0.6);">
-         
-          <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-submit">
-             <p class="">
-                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-                        Enter your <b>Username</b> and instructions will be sent to you!
-                    </p>
-           
-               <div class="form-group no-margin">
-                  <label for="email">Username</label>
-                  <div class="input-group input-group-lg">
-                     <span class="input-group-addon">
-                     <i class="fa fa-user" aria-hidden="true"></i>
-                     </span>
-                     <input type="text" name="email" value="" id="input-email" class="form-control" />
-                          
-                  </div>
-               </div>
+    
+<!-- Mirrored from themes.suggelab.com/dash/user-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Oct 2016 13:17:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <title>Forgot Password | Gogiver</title>
+        <!-- Mobile specific metas -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <!-- Force IE9 to render in normal mode -->
+        <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+        <meta name="author" content="" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="application-name" content="" />
+        <!-- Import google fonts - Heading first/ text second -->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all' rel='stylesheet' type='text/css'>
+        <!-- Css files -->
+        <!-- Icons -->
+        <link href="catalog/view/theme/default/css/icons/font-awesome.css" rel="stylesheet" />
+      
+        <link href="catalog/view/theme/default/css/bootstrap/bootstrap.css" rel="stylesheet" />
+      
+        <link href="catalog/view/theme/default/css/main.css" rel="stylesheet" />
+       
+        <link href="catalog/view/theme/default/css/plugins.css" rel="stylesheet" />
+       
+        <link href="catalog/view/theme/default/css/theme/theme-default.css" rel="stylesheet" />
+        
+        <link href="catalog/view/theme/default/css/responsive.css" rel="stylesheet" />
+        
+        <link href="catalog/view/theme/default/css/custom.css" rel="stylesheet" />
+       
+    </head>
+    <body class="login-page">
+        <div class="container">
             
-           
-               <div class="clearfix" style="margin-top:20px;"></div>
+        </div>
+        <!-- Start login container -->
+        <div class="container login-container">
+            <div class="login-panel panel plain">
+                <!-- Start .panel -->
+                <div class="panel-body p0">
+                    <div class="text-center mb30">
+                         <img src="catalog/view/theme/default/images/lo_go.png" width="200" class="logo" alt="Dash logo">
+                    </div>
+                   
+                    <form action="<?php echo $action; ?>" method="post" class="form-horizontal mt0" class="no-margin">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <div class="input-group input-icon">
+                                    <span class="input-group-addon input-group-lg"><i class="fa fa-user"></i></span>
+                                   <input type="text" name="email" value="" id="input-email" placeholder="Your Username" class="form-control input-lg"  />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                        <img class="img_capcha" style="float: left" src="captcha_code.php"/>
+                        <input style="width: 150px; margin-left: px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" />
+                      </div>
+                    </div>
 
-           
-
-             
-                  <button class="btn btn-warning pull-right" type="submit">
-                  <div class="clearfix" style="clear: both"></div>
-                  Xác nhận <i class="m-icon-swapright m-icon-white"></i>
-                  </button> 
-                  <div class="forgot" style="clear: both; "><a href="login.html" style="color: #fff" class="forgot">Đăng nhập?</a></div>
-              
-           
-         </form>
-
-         <div class="form-group m-t-10">
-               
-                        <div class="input-group"> 
-                            <?php if ($error_warning) { ?>
+                        <div class="form-group mb0">
+                                
+                            <div class="col-lg-12 mt30">
+                                <button class="btn btn-danger btn-lg btn-block uppercase" type="submit"><i class="fa fa-unlock-alt mr5"></i> Reset</button>
+                            </div>
+                        </div>
+                       
+                    </form>
+                    <div style="margin-top:15px;">
+                      <?php if ($error_warning) { ?>
                             <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
                           <?php } ?>
-                        </div> 
-                  
+                    </div>
+                    
+                </div>
             </div>
-         </div>
-      </div>
-   </body>
+            <!-- End .panel -->
+        </div>
+        <!-- End login container -->
+        <div class="container">
+            <div class="footer-links">
+                
+                <p class="text-center mb5"><a href="login.html" class="color-gray-lighter color-hover-white s16 transition"> Login ?</a>
+                </p>
+            </div>
+        </div>
+        <!-- Javascripts -->
+        <!-- Important javascript libs(put in all pages) -->
+        <script src="../../code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+        window.jQuery || document.write('<script src="catalog/view/theme/default/js/libs/jquery.min.js">\x3C/script>')
+        </script>
+        <script src="../../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+        window.jQuery || document.write('<script src="catalog/view/theme/default/js/libs/jquery-ui-1.11.4.min.js">\x3C/script>')
+        </script>
+        <!--[if lt IE 9]>
+  <script type="text/javascript" src="catalog/view/theme/default/js/libs/excanvas.min.js"></script>
+  <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <script type="text/javascript" src="catalog/view/theme/default/js/libs/respond.min.js"></script>
+<![endif]-->
+        <!-- Bootstrap plugins -->
+        <script src="catalog/view/theme/default/js/bootstrap/bootstrap.js"></script>
+        <!-- Core plugins ( not remove ) -->
+        <script src="catalog/view/theme/default/js/libs/modernizr.custom.js"></script>
+        <script src="catalog/view/theme/default/js/libs/jRespond.js"></script>
+        
+        <!-- Init plugins olny for this page -->
+        <script src="catalog/view/theme/default/js/pages/user-login.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/jquery-1.11.1.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/bootstrap/js/bootstrap.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/jquery.backstretch.min.js"></script>
+        <script src="catalog/view/theme/default/assetslg/js/scripts.js"></script>
+    </body>
+
+<!-- Mirrored from themes.suggelab.com/dash/user-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Oct 2016 13:17:33 GMT -->
 </html>
+

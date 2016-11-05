@@ -56,7 +56,7 @@
                                             <td data-title="UserID PH"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><strong><?php echo number_format($key['max_profit']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
+                                            <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
                                          </span> </strong></td>
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:

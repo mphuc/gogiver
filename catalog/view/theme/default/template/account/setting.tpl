@@ -59,7 +59,7 @@
                                     
                                     <div class=""  >
                                         <div class="col-lg-6 col-md-6">
-<form id="updateProfile" action="<?php echo $self -> url -> link('account/setting/update_profile', '', 'SSL'); ?>" method="POST" novalidate="novalidate">
+<!-- <form id="updateProfile" action="<?php echo $self -> url -> link('account/setting/update_profile', '', 'SSL'); ?>" method="POST" novalidate="novalidate"> -->
                                             <div class="">
 
                                                 <div class="">
@@ -80,7 +80,7 @@
                                                         <div class="controls">
                                                             <label class="control-label" for="Email"><?php echo $lang['text_email'] ?></label>
                                                             <div class="">
-                                                                <input class="form-control" data-link="<?php echo $self -> url -> link('account/register/checkemail', '', 'SSL'); ?>" id="Email" name="email"  type="text" value=""/>
+                                                                <input class="form-control" readonly='true' data-link="<?php echo $self -> url -> link('account/register/checkemail', '', 'SSL'); ?>" id="Email" name="email"  type="text" value=""/>
                                                                 <span id="Email-error" class="field-validation-error">
                                                                     <span></span>
                                                                 </span>
@@ -91,7 +91,7 @@
                                                         <div class="controls">
                                                             <label class="control-label" for="Phone"><?php echo $lang['text_phone'] ?></label>
                                                             <div class="">
-                                                                <input data-link="<?php echo $self -> url -> link('account/register/checkphone', '', 'SSL'); ?>" class="form-control" id="Phone" name="telephone" type="text" value=""/>
+                                                                <input data-link="<?php echo $self -> url -> link('account/register/checkphone', '', 'SSL'); ?>" readonly='true' class="form-control" id="Phone" name="telephone" type="text" value=""/>
                                                                 <span id="Phone-error" class="field-validation-error">
                                                                     <span></span>
                                                                 </span>
@@ -99,7 +99,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                     <button type="submit" class="btn btn-primary"><?php echo $lang['wallet_btn'] ?></button>
+                                                     <!-- <button type="submit" class="btn btn-primary"><?php echo $lang['wallet_btn'] ?></button> -->
                                                     </div>
                                                 </div>
                                             </div>

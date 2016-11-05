@@ -12,7 +12,7 @@
                     <!-- .navbar-header  -->
                     <div class="navbar-header">
                         <!-- .navbar-brand  -->
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="#">
                             <img src="catalog/view/theme/default/images/lo_go.png" style="margin-top: -2px" width="200" class="logo" alt="Dash logo">
                             <img src="catalog/view/theme/default/images/logosm.png" width="30" class="logo-sm" alt="Dash logo">
                         </a>

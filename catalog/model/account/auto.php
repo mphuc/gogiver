@@ -56,7 +56,7 @@ public function updateTransferList($transfer_id){
 			INSERT INTO ". DB_PREFIX . "customer_get_donation SET
 			customer_id = '".$customer_id."',
 			date_added = NOW(),
-			date_finish = DATE_ADD(NOW(),INTERVAL - 144 HOUR),
+			date_finish = DATE_ADD(NOW(),INTERVAL - 10 DAY),
 			amount = '".$amount."',
 			status = 0
 		");

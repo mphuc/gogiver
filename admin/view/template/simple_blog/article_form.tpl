@@ -44,7 +44,7 @@
                                 
                                 <ul class="nav nav-tabs" id="language">
                                     <?php foreach ($languages as $language) { ?>
-                                        <li><a id="languages<?php echo $language['language_id']; ?>" href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                                        <li><a id="languages<?php echo $language['language_id']; ?>" href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="../image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                                 

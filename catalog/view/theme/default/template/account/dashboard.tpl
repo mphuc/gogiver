@@ -34,12 +34,20 @@
                     
                     
                   ?>
+                
+                  <?php if ($language=='english') { ?>
+                  
+                    <div class="alert alert-danger">
+                       <strong>Notification! </strong> Please create PH to freezing or locked accounts. <a class="btn btn-success" href="provide-donation.html">Create PH</a>
+                     </div>
+                  <?php }else{ ?>
+                  
                      <div class="alert alert-danger">
                        <strong>Thông báo! </strong> Bạn vui lòng tạo PH để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
                      </div>
 
                   <?php
-                   
+                   }
                   }
                ?>
                <div class="row">
@@ -212,15 +220,18 @@
                         <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $lang['Notification_System']; ?></h3>
                      </div>
                      <div class="widget-content">
-                        <div class="blog-item">
-                           <p class="blog-title"><a href="blog&token=53">Gogiver <?php echo $lang['Notification']; ?> <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
-                           <p>
-                              Mình vì mọi người và mọi người vì mình !!!
-                           </p>
-                           <p>Mùa Đông se lạnh ùa về khắp mọi miền Tổ Quốc. Đâu đó đã lenlõi từng cơn gió lạnh se buốt từng hơi thở của những ngày đầu Đông !</p>
-                           <p>...............</p>
-                        </div>
+               <?php foreach ($article_limit as $key => $value): ?>
+                     <div class="blog-item">
+                        <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
+                        <p><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></p>
+                        <p><?php echo html_entity_decode($value['short_description'] , ENT_QUOTES, 'UTF-8')?></p>
+                        
                      </div>
+                     <?php endforeach; ?>
+                     <?php echo $pagination; ?>
+       
+             
+          </div>
                   </div>
                </div>
 
