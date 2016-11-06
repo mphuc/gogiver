@@ -37,7 +37,7 @@ class ControllerAccountDashboard extends Controller {
 		//language
 		$this -> load -> model('account/customer');
 		$this -> model_account_customer -> update_login($this -> session -> data['customer_id']);
-		die('11');
+
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$data['language']= $getLanguage;
 		$language = new Language($getLanguage);
@@ -55,7 +55,7 @@ class ControllerAccountDashboard extends Controller {
 		$data['date'] = $time['date'];
 		//method to call function
 
-		
+		die('1123');
 		//data render website
 		//start load country model
 
