@@ -78,7 +78,7 @@
                                     </div>
                                     <!-- End .panel -->
                                 </div>
-                                 
+
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-6 start here -->
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <!-- End .panel -->
-                                </div> <?php die('1111323'); ?>
+                               
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
@@ -106,7 +106,7 @@
                                         <!-- Start .panel -->
                                         <div class="panel-body">
                                             <a class="lead-stats" href="#">
-                              <span class="stats-number pin-balence" data-link="<?php echo $self->url->link('account/dashboard/totalpin', '', 'SSL'); ?>"><?php echo $self -> totalpin(); ?></span>
+                              <span class="stats-number pin-balence"><?php echo $self -> totalpin(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-battery-full color-blue"></i>
                               </span>
@@ -218,6 +218,7 @@
                             </div>
 
                 </div>
+                 </div> <?php die('1111323'); ?>
                 <!-- col-md-8 end here -->
 
                 <!-- col-md-4 end here -->
