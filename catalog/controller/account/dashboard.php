@@ -33,7 +33,7 @@ class ControllerAccountDashboard extends Controller {
 		
 		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		call_user_func_array("myConfig", array($this));
-
+die('11');
 		//language
 		$this -> load -> model('account/customer');
 		$this -> model_account_customer -> update_login($this -> session -> data['customer_id']);
