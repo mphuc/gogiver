@@ -12,15 +12,16 @@
                 <div class="col-md-12">
 
                     <?php if(count($chu_ky) > 0 && intval($chu_ky['number']) > 0) { ?>
-                     <?php die('11231'); ?>
+                   
                     <div class="col-md-12 alert" style="margin:0px 0px; color:red; font-size:18px; font-weight:700">
                         <?php echo $lang['vongquayketthuc'];?>
                     </div>
                     <?php } ?>
                     <!-- col-md-8 start here -->
-                     <?php die('1111'); ?>
+                    
                     <?php 
                   if (count($getPDfinish_child) > 0) {
+                       <?php die('1123adasds1'); ?>
                      foreach ($getPDfinish_child as $value) {
                   ?>
                     <div class="alert alert-danger">
@@ -32,7 +33,7 @@
                      }
                   }
                ?>
-
+ <?php die('1111323'); ?>
                         <?php 
                   if (count($repd) > 0) {
                     
