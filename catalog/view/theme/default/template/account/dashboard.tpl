@@ -78,7 +78,7 @@
                                     </div>
                                     <!-- End .panel -->
                                 </div>
-                                  <?php die('1111323'); ?>
+                                 
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-6 start here -->
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <!-- End .panel -->
-                                </div>
+                                </div> <?php die('1111323'); ?>
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
