@@ -21,7 +21,7 @@
                     
                     <?php 
                   if (count($getPDfinish_child) > 0) {
-                       die('12121');
+
                      foreach ($getPDfinish_child as $value) {
                   ?>
                     <div class="alert alert-danger">
@@ -33,10 +33,10 @@
                      }
                   }
                ?>
- <?php die('1111323'); ?>
+
                         <?php 
                   if (count($repd) > 0) {
-                    
+                       die('12121');
                     
                   ?>
 
@@ -55,6 +55,7 @@
                    }
                   }
                ?>
+                <?php die('1111323'); ?>
                             <div class="row">
 
                                 <!-- .row start -->
