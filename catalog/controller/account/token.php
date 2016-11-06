@@ -263,12 +263,12 @@ class ControllerAccountToken extends Controller {
 			unset($UTree[0]);
 
 			//get customer partent
-			$customerParent = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
-			$customerParent = $customerParent['p_node'];
-			if (intval($customerParent) !== 0) {
-				$customerParent = $this -> model_account_customer -> getCustomer($customerParent);
-				array_push($UTree, $customerParent['username']);
-			}
+			// $customerParent = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
+			// $customerParent = $customerParent['p_node'];
+			// if (intval($customerParent) !== 0) {
+			// 	$customerParent = $this -> model_account_customer -> getCustomer($customerParent);
+			// 	array_push($UTree, $customerParent['username']);
+			// }
 
 			$customers = in_array($customer, $UTree) ? 1 : 0;
 

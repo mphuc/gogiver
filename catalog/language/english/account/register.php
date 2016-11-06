@@ -39,5 +39,5 @@ $_['err_Repeat_Transaction_Password']            = 'Repeat Transaction Password 
 $_['ok']            = 'Create account successfull';
 $_['text_register'] = '<P> Note: The system supports only account Gogiver vietcombank. </ P>
                                              <P> Enter the correct bank account number vietcombank, the system will automatically take the name from your account. </ P>
-                                             <P> Each account can only register vietcombank 3 account. </ P>';
+                                             <P> Each account can only register vietcombank 1 account. </ P>';
 $_['url_link'] = 'Copy the link below to send your friends to join the system';
