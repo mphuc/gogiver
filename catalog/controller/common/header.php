@@ -6,8 +6,9 @@ class ControllerCommonHeader extends Controller {
 		$this -> load -> model('account/customer');
 
 		if(isset($this -> session -> data['customer_id'])){
-			die('1111111111');
+
 			$data['customer'] = $this -> model_account_customer ->  getCustomer($this -> session -> data['customer_id']);
+			echo "<pre>"; print_r($data['customer']); echo "</pre>"; die();
 			$data['date_auto'] = $this -> model_account_customer ->  getDateAuto($this -> session -> data['customer_id']);
 			$data['date_auto'] =  $data['date_auto']['date_auto'];
 			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
