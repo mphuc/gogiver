@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2016 at 03:34 PM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Nov 06, 2016 at 10:08 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `da_happymoney`
+-- Database: `gogiver`
 --
 
 -- --------------------------------------------------------
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `acount_vietcombank`
 --
 
-CREATE TABLE IF NOT EXISTS `acount_vietcombank` (
+CREATE TABLE `acount_vietcombank` (
   `id` int(11) NOT NULL,
   `account_id` double NOT NULL,
   `account_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `bank_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `acount_vietcombank`
@@ -362,7 +362,7 @@ INSERT INTO `acount_vietcombank` (`id`, `account_id`, `account_name`, `bank_name
 --
 -- Stand-in structure for view `pin`
 --
-CREATE TABLE IF NOT EXISTS `pin` (
+CREATE TABLE `pin` (
 `id` int(11)
 ,`id_customer` int(11)
 ,`amount` varchar(255)
@@ -378,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `pin` (
 -- Table structure for table `sm_address`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_address` (
+CREATE TABLE `sm_address` (
   `address_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
@@ -391,7 +391,7 @@ CREATE TABLE IF NOT EXISTS `sm_address` (
   `country_id` int(11) NOT NULL DEFAULT '0',
   `zone_id` int(11) NOT NULL DEFAULT '0',
   `custom_field` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -399,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `sm_address` (
 -- Table structure for table `sm_affiliate`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_affiliate` (
+CREATE TABLE `sm_affiliate` (
   `affiliate_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
@@ -439,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `sm_affiliate` (
 -- Table structure for table `sm_affiliate_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_affiliate_activity` (
+CREATE TABLE `sm_affiliate_activity` (
   `activity_id` int(11) NOT NULL,
   `affiliate_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
@@ -454,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `sm_affiliate_activity` (
 -- Table structure for table `sm_affiliate_login`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_affiliate_login` (
+CREATE TABLE `sm_affiliate_login` (
   `affiliate_login_id` int(11) NOT NULL,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
@@ -469,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `sm_affiliate_login` (
 -- Table structure for table `sm_affiliate_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_affiliate_transaction` (
+CREATE TABLE `sm_affiliate_transaction` (
   `affiliate_transaction_id` int(11) NOT NULL,
   `affiliate_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -484,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `sm_affiliate_transaction` (
 -- Table structure for table `sm_api`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_api` (
+CREATE TABLE `sm_api` (
   `api_id` int(11) NOT NULL,
   `username` varchar(64) NOT NULL,
   `firstname` varchar(64) NOT NULL,
@@ -493,7 +493,7 @@ CREATE TABLE IF NOT EXISTS `sm_api` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_api`
@@ -508,11 +508,11 @@ INSERT INTO `sm_api` (`api_id`, `username`, `firstname`, `lastname`, `password`,
 -- Table structure for table `sm_attribute`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_attribute` (
+CREATE TABLE `sm_attribute` (
   `attribute_id` int(11) NOT NULL,
   `attribute_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_attribute`
@@ -537,7 +537,7 @@ INSERT INTO `sm_attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) 
 -- Table structure for table `sm_attribute_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_attribute_description` (
+CREATE TABLE `sm_attribute_description` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -577,10 +577,10 @@ INSERT INTO `sm_attribute_description` (`attribute_id`, `language_id`, `name`) V
 -- Table structure for table `sm_attribute_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_attribute_group` (
+CREATE TABLE `sm_attribute_group` (
   `attribute_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_attribute_group`
@@ -598,7 +598,7 @@ INSERT INTO `sm_attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 -- Table structure for table `sm_attribute_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_attribute_group_description` (
+CREATE TABLE `sm_attribute_group_description` (
   `attribute_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -624,11 +624,11 @@ INSERT INTO `sm_attribute_group_description` (`attribute_group_id`, `language_id
 -- Table structure for table `sm_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_banner` (
+CREATE TABLE `sm_banner` (
   `banner_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_banner`
@@ -643,7 +643,7 @@ INSERT INTO `sm_banner` (`banner_id`, `name`, `status`) VALUES
 -- Table structure for table `sm_banner_image`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_banner_image` (
+CREATE TABLE `sm_banner_image` (
   `banner_image_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
@@ -651,7 +651,7 @@ CREATE TABLE IF NOT EXISTS `sm_banner_image` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `starDate` int(11) DEFAULT '0',
   `endDate` int(11) DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=323 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_banner_image`
@@ -669,7 +669,7 @@ INSERT INTO `sm_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, 
 -- Table structure for table `sm_banner_image_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_banner_image_description` (
+CREATE TABLE `sm_banner_image_description` (
   `banner_image_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
@@ -696,7 +696,7 @@ INSERT INTO `sm_banner_image_description` (`banner_image_id`, `language_id`, `ba
 -- Table structure for table `sm_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category` (
+CREATE TABLE `sm_category` (
   `category_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `parent_id` int(11) NOT NULL DEFAULT '0',
@@ -706,7 +706,7 @@ CREATE TABLE IF NOT EXISTS `sm_category` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_category`
@@ -758,7 +758,7 @@ INSERT INTO `sm_category` (`category_id`, `image`, `parent_id`, `top`, `column`,
 -- Table structure for table `sm_category_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category_description` (
+CREATE TABLE `sm_category_description` (
   `category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -856,7 +856,7 @@ INSERT INTO `sm_category_description` (`category_id`, `language_id`, `name`, `de
 -- Table structure for table `sm_category_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category_filter` (
+CREATE TABLE `sm_category_filter` (
   `category_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -867,7 +867,7 @@ CREATE TABLE IF NOT EXISTS `sm_category_filter` (
 -- Table structure for table `sm_category_path`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category_path` (
+CREATE TABLE `sm_category_path` (
   `category_id` int(11) NOT NULL,
   `path_id` int(11) NOT NULL,
   `level` int(11) NOT NULL
@@ -956,7 +956,7 @@ INSERT INTO `sm_category_path` (`category_id`, `path_id`, `level`) VALUES
 -- Table structure for table `sm_category_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category_to_layout` (
+CREATE TABLE `sm_category_to_layout` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
@@ -968,7 +968,7 @@ CREATE TABLE IF NOT EXISTS `sm_category_to_layout` (
 -- Table structure for table `sm_category_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_category_to_store` (
+CREATE TABLE `sm_category_to_store` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1023,7 +1023,7 @@ INSERT INTO `sm_category_to_store` (`category_id`, `store_id`) VALUES
 -- Table structure for table `sm_country`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_country` (
+CREATE TABLE `sm_country` (
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `iso_code_2` varchar(2) NOT NULL,
@@ -1031,7 +1031,7 @@ CREATE TABLE IF NOT EXISTS `sm_country` (
   `address_format` text NOT NULL,
   `postcode_required` tinyint(1) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=258 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_country`
@@ -1298,7 +1298,7 @@ INSERT INTO `sm_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 -- Table structure for table `sm_coupon`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_coupon` (
+CREATE TABLE `sm_coupon` (
   `coupon_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -1313,7 +1313,7 @@ CREATE TABLE IF NOT EXISTS `sm_coupon` (
   `uses_customer` varchar(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_coupon`
@@ -1330,7 +1330,7 @@ INSERT INTO `sm_coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logge
 -- Table structure for table `sm_coupon_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_coupon_category` (
+CREATE TABLE `sm_coupon_category` (
   `coupon_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1341,7 +1341,7 @@ CREATE TABLE IF NOT EXISTS `sm_coupon_category` (
 -- Table structure for table `sm_coupon_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_coupon_history` (
+CREATE TABLE `sm_coupon_history` (
   `coupon_history_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -1356,7 +1356,7 @@ CREATE TABLE IF NOT EXISTS `sm_coupon_history` (
 -- Table structure for table `sm_coupon_product`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_coupon_product` (
+CREATE TABLE `sm_coupon_product` (
   `coupon_product_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -1368,7 +1368,7 @@ CREATE TABLE IF NOT EXISTS `sm_coupon_product` (
 -- Table structure for table `sm_currency`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_currency` (
+CREATE TABLE `sm_currency` (
   `currency_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `code` varchar(3) NOT NULL,
@@ -1378,7 +1378,7 @@ CREATE TABLE IF NOT EXISTS `sm_currency` (
   `value` float(15,8) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_currency`
@@ -1395,7 +1395,7 @@ INSERT INTO `sm_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbo
 -- Table structure for table `sm_customer`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer` (
+CREATE TABLE `sm_customer` (
   `customer_id` int(11) NOT NULL,
   `total_pd` double NOT NULL,
   `total_pd_left` double NOT NULL,
@@ -1415,7 +1415,7 @@ CREATE TABLE IF NOT EXISTS `sm_customer` (
   `fax` varchar(32) NOT NULL,
   `ma_thue` varchar(255) DEFAULT NULL,
   `password` varchar(40) NOT NULL,
-  `password_custom` varchar(255) NOT NULL DEFAULT '01488dd067097083f80f32761c0ad802',
+  `password_custom` varchar(255) NOT NULL DEFAULT 'bc6ba492c7ac45761d180c67a5a4f125',
   `salt` varchar(9) NOT NULL,
   `cart` text,
   `wishlist` text,
@@ -1454,21 +1454,1050 @@ CREATE TABLE IF NOT EXISTS `sm_customer` (
   `date_auto` datetime NOT NULL,
   `payment` int(11) NOT NULL DEFAULT '0',
   `date_cmnd` datetime DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=1037 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer`
 --
 
 INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
-(1, 0, 0, 0, '146333582723', 0, 0, 'root', '1GruUhxKT4rVrJe5odig2KCEfxk6FiHqKH', 1, 0, '', '', '1970-01-01 00:00:00', '123', '9999999', '', '', 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, 'a:0:{}', '::1', '0000-00-00 00:00:00', NULL, 0, 1, 0, '0', '2016-08-15 00:00:00', '1', '2016-10-16 23:48:39', '2016-08-15 04:48:02', '', '43534789568', '', 'Gò Vấp, TpHCM', '', 'http://happymoney.us/system/upload/root.jpg.0417021b30a25472bcf0da0bae30942c', 230, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 949, '', '', '', '', 0, 1, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
-(538, 0, 0, 0, '627675761', 0, 0, 'happy1', '', 1, 1, '', '', NULL, '123', '09787878454', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-19 00:21:03', '', '2016-10-16 09:58:05', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 1048, 'DO TIEN TRUC', '', '0181003428387', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
-(539, 0, 0, 0, '109673218177', 0, 0, 'happymoney', '', 1, 538, '', '', NULL, '123', '0123456789', '', NULL, '8c481bc1153742df4d362a61536dfe8cfcfe67f3', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.35.202', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-19 00:29:39', '', '2016-10-09 03:04:49', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/430253_334426783269360_1580175482_n.jpg.98983315d15861fb1039fe3f33320a71', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 1012, 'BUI NGOC KHIEM', '', '0501000097234', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
-(562, 0, 0, 0, '163745710646', 0, 0, 'ngocthanh', '', 1, 539, '', '', NULL, '123', '0967899126', '', NULL, 'f34da34af3fb99e3c2787d561f2250e2692d4ec6', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-16 10:15:34', '164157298', '2016-10-17 00:09:20', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngocthanh.jpg.a2aa03cf0a6497d714e600404a87dd32', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 982, 'VU NGOC THANH', '', '0521000713868', '', 0, 0, 'vietnamese', 1, 0, '2016-08-15 04:48:02', 0, NULL),
-(563, 0, 0, 0, '245976630388', 0, 0, 'NhatLinh68A', '', 1, 562, '', '', NULL, '123', '0937577804', '', NULL, '9d11025e824ca1cb7e48f05a06ebf0ea0a174183', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:20:07', '191994404', '2016-10-15 12:20:26', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.0760e3c64aee236e2f8b6ee0cae6cb02', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 1000, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
-(564, 0, 0, 0, '109109936713', 0, 0, 'tunglam1', '', 1, 563, '', '', NULL, '123', '0979809943', '', NULL, '038c7f005f69202c2af704c78ee19a153610e5da', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-10 20:16:49', '001093002291', '2016-10-15 23:58:57', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/20161005_200624.jpg.3568bae719b6985249212cbd8485af0c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 977, 'NGUYEN TUNG LAM', '', '0301000366449', '', 0, 0, 'english', 0, 0, '2016-08-15 04:48:02', 0, NULL),
-(565, 0, 0, 0, '946929785', 0, 0, 'NhatLinh68B', '', 1, 564, '', '', NULL, '123', '0937577804', '', NULL, '4be1e9752b865986601e101a463f4c4faf89c0a2', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-16 15:06:00', '191994404', '2016-10-16 10:16:30', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.ac8832001a34e2f25ef76163f7a83edd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 991, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 1, 0, '2016-08-15 04:48:02', 0, NULL),
-(633, 0, 0, 0, '156842329094', 0, 0, 'kimanh', '', 1, 565, '', '', NULL, '123', '0967289988', '', NULL, '8fa309387fa2f42d788503c1ebb9d26eabfa0816', '25d55ad283aa400af464c76d713c07ad', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 14:02:09', '017014932', '2016-10-15 23:59:10', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 997, 'LE KIM ANH', '', '0971000003965', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL);
+(1, 0, 0, 0, '146333582723', 0, 0, 'root', '1GruUhxKT4rVrJe5odig2KCEfxk6FiHqKH', 2, 0, '', '', '1970-01-01 00:00:00', 'mmo.hyipcent@gmail.com', '9999999', '', '', 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, 'a:0:{}', '::1', '0000-00-00 00:00:00', NULL, 0, 1, 0, '0', '2016-08-15 00:00:00', '1', '2016-11-05 13:13:15', '2016-08-15 04:48:02', '', '43534789568', '', 'Gò Vấp, TpHCM', '', 'http://happymoney.us/system/upload/root.jpg.0417021b30a25472bcf0da0bae30942c', 230, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 98, '', '', '', '', 0, 1, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(538, 0, 0, 0, '627675761', 0, 0, 'happy1', '', 2, 1, '', '', NULL, 'happymoney@gmail.com', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-19 00:00:00', '1', NULL, '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(539, 0, 0, 0, '109673218177', 0, 0, 'happymoney', '', 2, 1, '', '', NULL, 'happymoney@gmail.com', '0123456789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-19 00:00:00', '1', '2016-11-05 14:35:52', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'http://happymoney.us/system/upload/430253_334426783269360_1580175482_n.jpg.98983315d15861fb1039fe3f33320a71', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 434, 'BUI NGOC KHIEM', '', '0501000097234', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(540, 0, 0, 0, '70675296568', 0, 0, 'Laotuan6868', '', 1, 539, '', '', NULL, 'Tuanduong25387@gmail.com', '0937577050', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-19 02:02:30', '', '2016-10-22 08:44:28', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/photo_2016-09-16_10-42-55.jpg.f72685de1f500d59ce28d876542941c6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'DUONG QUANG TUAN', '', '0161000566454', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(541, 0, 0, 0, '39259891240', 0, 0, 'tinahuynh69', '', 1, 539, '', '', NULL, 'huynhhuong69@gmail.com', '0979809943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-19 03:26:14', '', '2016-11-04 09:39:56', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH THI HUONG', '', '0451001492141', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(542, 0, 0, 0, '176647913844', 0, 0, 'LaoTuan68', '', 1, 540, '', '', NULL, 'Tuanduong25387@gmail.com', '0937577050', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.22.17.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 02:23:05', '191621169', '2016-10-14 23:01:29', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG QUANG TUAN', '', '0161000566454', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(543, 0, 0, 0, '233040064808', 0, 0, 'LaoTuan79', '', 1, 540, '', '', NULL, 'Tuanduong25387@gmail.com', '0937577050', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 02:24:38', '191621169', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG QUANG TUAN', '', '0161000566454', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(544, 0, 0, 0, '75587031445', 0, 0, 'giadam79', '', 1, 540, '', '', NULL, 'giadam.mlinh@gmail.com', '0967561919', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 06:06:10', '012520827', '2016-11-04 22:01:32', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.d9725ab0c016f6546104162442adcf36', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 26, 'NGUYEN GIA DAM', '', '0301000334950', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(545, 0, 0, 0, '34680742707', 0, 0, 'giadam69', '', 1, 544, '', '', NULL, 'giadam.mlinh@gmail.com', '0967561919', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 06:08:32', '012520827', '2016-11-04 22:06:04', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.c6ec2aae1252ec95a72423a85d049242', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN GIA DAM', '', '0301000334950', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(546, 0, 0, 0, '172913932689', 0, 0, 'giadam59', '', 1, 544, '', '', NULL, 'giadam.mlinh@gmail.com', '0967561919', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 06:09:26', '012520827', '2016-11-04 22:03:47', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.f19b22ad748404539f417cc0e7f8d39d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN GIA DAM', '', '0301000334950', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(547, 0, 0, 0, '237065306963', 0, 0, 'Lanri', '', 1, 544, '', '', NULL, 'lanri095@gmail.com', '0984981061', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.175', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 08:41:18', '260871223', '2016-11-04 10:33:36', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/ID.jpg.52cfc8bf4e7b2f680ed31b95b751f67d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 40, 'HUYNH THAI LAN', '', '0251001734027', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(548, 0, 0, 0, '82166683936', 0, 0, 'PhatTaiDN', '', 1, 544, '', '', NULL, 'lehopdongnaic@gmail.com', '01675985521', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.169.68', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 08:45:04', '272279086', '2016-11-04 07:04:40', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhatTaiDN.jpg.8ff5c642cc07a113e3edc993bdf44e13', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'LE VAN HOP', '', '0121001386026', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(549, 0, 0, 0, '40424921382', 0, 0, 'ChauTran', '', 1, 544, '', '', NULL, 'hoangchau2888tth@gmail.com', '0902206903', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 08:51:27', '245375758', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN VAN CHAU', '', '0421000482112', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(550, 0, 0, 0, '88373350965', 0, 0, 'LangHuynh3979', '', 1, 544, '', '', NULL, 'huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 08:58:01', '191762947', '2016-11-04 14:34:53', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.a426383befe370a8b318f75ee768b458', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THI DU LANG', '', '0161001621440', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(551, 0, 0, 0, '31984209961', 0, 0, 'LangHuynh39', '', 1, 550, '', '', NULL, 'Huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 10:12:43', '191762947', '2016-11-03 02:12:20', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.d2a7dbd41b80eccf8397fe2a82fad052', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HUYNH THI DU LANG', '', '0161001621440', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(552, 0, 0, 0, '208044913273', 0, 0, 'LangHuynh79', '', 1, 550, '', '', NULL, 'Huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 10:21:14', '191762947', '2016-11-04 22:49:00', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.818a12b979141ca1ab550c742d1bfbab', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH THI DU LANG', '', '0161001621440', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(553, 0, 0, 0, '215304410241', 0, 0, 'HappyCuc', '', 1, 550, '', '', NULL, 'Cucbt91@gmail.com', '0971983269', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 10:57:43', '173335958', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'BUI THI CUC', '', '0451000336742', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(554, 0, 0, 0, '92398826000', 0, 0, 'HappyTham', '', 1, 550, '', '', NULL, 'Kupipro327@gamil.com', '01668964030', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.186.62.180', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 12:52:49', 'AU523710', '2016-11-04 20:22:56', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HappyTham.jpg.d46b00301941070d341257361a57f291', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRAN THI THAM', '', '0121002681880', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(555, 0, 0, 0, '28257121888', 0, 0, 'BaoTrang1', '', 2, 550, '', '', NULL, 'trangduong24689@gmail.com', '0906465775', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.147.162', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-20 00:00:00', '1', '2016-11-04 08:47:51', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/BaoTrang1.jpg.835c1d87ac9f409546b182e3eab3b1cb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI THUY HANG', '', '0161001650156', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(556, 0, 0, 0, '177594696038', 0, 0, 'BaoTrang2', '', 2, 555, '', '', NULL, 'trangduong24689@gmail.com', '0906465775', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.147.162', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-20 00:00:00', '1', '2016-11-04 08:45:09', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/BaoTrang2.jpg.3caf2c6b4a78397204f4ac0da68d1622', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'DUONG THI THUY HANG', '', '0161001650156', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(557, 0, 0, 0, '220209645444', 0, 0, 'BaoTrang3', '', 2, 555, '', '', NULL, 'trangduong24689@gmail.com', '0906465775', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.147.162', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-20 00:00:00', '1', '2016-11-04 08:46:47', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/BaoTrang3.jpg.51137eb69fbbe7b61503fb0813133cba', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI THUY HANG', '', '0161001650156', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(558, 0, 0, 0, '87833002505', 0, 0, 'HappyHue', '', 1, 550, '', '', NULL, 'hue8496@gmail.com', '0968260691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 13:17:18', '191768496', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI KIM HUE', '', '0481000784173', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(559, 0, 0, 0, '22825886581', 0, 0, 'HappyHuong', '', 1, 550, '', '', NULL, 'Vanpham2526@gmail.com', '0968250490', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 13:21:57', '271960345', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THU HUONG', '', '0121001900954', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(560, 0, 0, 0, '107719713814', 0, 0, 'Bmwthien', '', 1, 550, '', '', NULL, 'Bmwthien1@gmail.com', '0978127789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.136.61', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 13:41:31', '172695741', '2016-10-15 01:16:47', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VAN THIEN', '', '0451000358839', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(561, 0, 0, 0, '2250277524', 0, 0, 'tunglam', '', 1, 541, '', '', NULL, 'tunglamhappymoney@gmail.com', '0979809943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:14:27', '001093002291', '2016-11-04 09:52:28', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161005_180941.jpg.eda61d5d6fd72ec95c5620f688d7a95e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN TUNG LAM', '', '0301000366449', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(562, 0, 0, 0, '163745710646', 0, 0, 'ngocthanh', '', 1, 561, '', '', NULL, 'vungocducminhnb@gmail.com', '0967899126', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:18:20', '164157298', '2016-11-04 07:12:26', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngocthanh.jpg.a2aa03cf0a6497d714e600404a87dd32', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'VU NGOC THANH', '', '0521000713868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(563, 0, 0, 0, '245976630388', 0, 0, 'NhatLinh68A', '', 1, 551, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:20:07', '191994404', '2016-11-03 02:16:08', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.0760e3c64aee236e2f8b6ee0cae6cb02', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(564, 0, 0, 0, '109109936713', 0, 0, 'tunglam1', '', 1, 561, '', '', NULL, 'tunglamhappymoney@gmail.com', '0979809943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:21:11', '001093002291', '2016-11-04 09:47:38', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/20161005_200624.jpg.3568bae719b6985249212cbd8485af0c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TUNG LAM', '', '0301000366449', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(565, 0, 0, 0, '946929785', 0, 0, 'NhatLinh68B', '', 1, 551, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:22:09', '191994404', '2016-11-03 02:16:52', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.ac8832001a34e2f25ef76163f7a83edd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(566, 0, 0, 0, '163294238313', 0, 0, 'tunglam2', '', 1, 561, '', '', NULL, 'tunglamhappymoney@gmail.com', '0979809943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:23:00', '001093002291', '2016-11-04 09:48:48', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/20161005_200624.jpg.f5ab06183175d55a56c76119c6e5ae89', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TUNG LAM', '', '0301000366449', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(567, 0, 0, 0, '246480801809', 0, 0, 'NhatLinh68C', '', 1, 551, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:27:14', '191994404', '2016-11-04 14:31:46', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.a688934b0126f649ae79961c69500196', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(568, 0, 0, 0, '139973629492', 0, 0, 'thanhtrung', '', 1, 562, '', '', NULL, 'trungpt05@gmail.com', '0904297234', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:32:41', '172338141', '2016-11-04 10:20:22', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhtrung.jpg.256103c940ae23db5a14b6ae66d1f364', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAN THANH TRUNG', '', '0021000374411', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(569, 0, 0, 0, '8598721632', 0, 0, 'HappyPhuongDung1', '', 1, 551, '', '', NULL, 'Dungpham.06051988@gmail.com', '0933095007', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '180.93.50.185', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:38:50', '271757659', '2016-11-04 20:08:42', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.a18b0dc3918c14c5b552f7c6438d2cec', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAM THI PHUONG DUNG', '', '0121002070419', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(570, 0, 0, 0, '101354410625', 0, 0, 'HappyPhuongDung2', '', 1, 551, '', '', NULL, 'Dungpham.06051988@gmai.com', '0933095007', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '180.93.50.185', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:43:53', '271757659', '2016-11-04 20:01:34', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.0f6072d2972b36cdc70310f8d8bb70b5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI PHUONG DUNG', '', '0121002070419', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(571, 0, 0, 0, '19113796145', 0, 0, 'HappyPhuongDung3', '', 1, 551, '', '', NULL, 'Dungpham.06051988@gmai.com', '0933095007', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '180.93.50.185', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 14:48:29', '271757659', '2016-11-04 17:43:47', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI PHUONG DUNG', '', '0121002070419', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(572, 0, 0, 0, '146907091027', 0, 0, 'MinhHieu', '', 1, 552, '', '', NULL, 'Hieukhp68@gmail.com', '0905868650', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.69.185', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:06:23', '191678434', '2016-10-08 02:56:55', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN MINH HIEU', '', '0161000881870', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(573, 0, 0, 0, '276545410073', 0, 0, 'HappyHongLien', '', 1, 552, '', '', NULL, 'H.lien1606@gmail.com', '0977669099', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:09:56', '191661079', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VO PHUC', '', '0161001645075', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(574, 0, 0, 0, '103468593202', 0, 0, 'HappyTien', '', 1, 552, '', '', NULL, 'Gianggiangtran91@gmail.com', '0966844852', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:22:17', '350960211', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI TIEN', '', '0151000561495', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(575, 0, 0, 0, '18662115650', 0, 0, 'KiemNhi1411A', '', 1, 550, '', '', NULL, 'Kiemnhi1411@gmail.com', '0908234875', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:27:49', '191786778', '2016-10-27 11:07:38', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(576, 0, 0, 0, '143999997270', 0, 0, 'KiemNhi1411B', '', 1, 550, '', '', NULL, 'Kiemnhi1411@gmail.com', '0908234875', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:32:11', '191786778', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(577, 0, 0, 0, '279546454068', 0, 0, 'domai', '', 1, 568, '', '', NULL, 'domaimoney@gmail.com', '0962123740', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.177.76', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:32:25', '012435124', '2016-11-02 00:36:29', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DO THI MAI', '', '0301000363013', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(578, 0, 0, 0, '98940485785', 0, 0, 'KiamNhi1411C', '', 1, 550, '', '', NULL, 'Kiemnhi1411@gmail.com', '0907234875', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:33:42', '191786778', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(579, 0, 0, 0, '13263574057', 0, 0, 'domai1', '', 1, 568, '', '', NULL, 'domaimoney@gmail.com', '0962123740', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-20 15:34:20', '012435124', '2016-11-04 09:46:08', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DO THI MAI', '', '0301000363013', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(580, 0, 0, 0, '246695946036', 0, 0, 'HappyBaoTram', '', 1, 552, '', '', NULL, 'Bapcaitrang1@gmail.com', '0931230212', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 02:55:23', '191722155', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI BAO TRAM', '', '0161001675246', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(581, 0, 0, 0, '163487093508', 0, 0, 'anhht197', '', 1, 544, '', '', NULL, 'appworld197@gmail.com', '0982936046', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.175.236.141', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 03:01:00', '090708169', '2016-11-04 19:11:34', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anhht197.jpg.c1cbd13c0f82f991a0fbb9824934fe57', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG TUAN ANH', '', '0821000118815', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(582, 0, 0, 0, '1147357336', 0, 0, 'thanhxuan', '', 1, 545, '', '', NULL, 'makemoneyonlinestory@gmail.com', '0912221386', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.134.116', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 04:53:08', '125387373', '2016-10-18 01:46:44', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmt_phe.jpg.c1419c2c95cf9bd7d6e4f81ab02ddeb8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN THANH XUAN', '', '0301000319742', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(583, 0, 0, 0, '109323773480', 0, 0, 'anhht197_1', '', 1, 581, '', '', NULL, 'appworld197@gmail.com', '0982936046', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.175.236.141', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 04:57:18', '090708169', '2016-11-04 19:12:17', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anhht197_1.jpg.c419f237f532433ac49be987f00e3149', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG TUAN ANH', '', '0821000118815', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(584, 0, 0, 0, '246248834659', 0, 0, 'anhht197_2', '', 1, 581, '', '', NULL, 'appworld197@gmail.com', '0982936046', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.175.236.141', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 04:58:48', '090708169', '2016-11-04 19:12:50', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anhht197_2.jpg.102f3a7c3784438bb610c4f12887a236', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG TUAN ANH', '', '0821000118815', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(585, 0, 0, 0, '164021489751', 0, 0, 'domai2', '', 1, 568, '', '', NULL, 'domaimoney@gmail.com', '0962123740', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 05:41:18', '012435124', '2016-11-04 09:50:23', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI MAI', '', '0301000363013', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(586, 0, 0, 0, '2524471687', 0, 0, 'daoson', '', 1, 568, '', '', NULL, 'hoalu1951@gmail.com', '0969168283', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.29.254', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 05:52:52', '012511319', '2016-11-04 11:23:29', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/daoson.jpg.3dee69a703f168eddfc964d1a64f7358', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DAO THUY SON', '', '0971000004761', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(587, 0, 0, 0, '107999401015', 0, 0, 'ductoan', '', 1, 577, '', '', NULL, 'thoithoau_yt@yahoo.com', '0983646284', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 05:59:51', '135079158', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN DUC TOAN', '', '0361000270752', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(588, 0, 0, 0, '238798770834', 0, 0, 'ductoan1', '', 1, 577, '', '', NULL, 'thoithoau_yt@yahoo.com', '0983646284', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 06:01:33', '135079158', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN DUC TOAN', '', '0361000270752', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(589, 0, 0, 0, '159040764280', 0, 0, 'ductoan2', '', 1, 577, '', '', NULL, 'thoithoau_yt@yahoo.com', '0983646284', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 06:03:38', '135079158', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN DUC TOAN', '', '0361000270752', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(590, 0, 0, 0, '279750990183', 0, 0, 'dinhthao', '', 1, 577, '', '', NULL, 'dinhthaomoney@gmail.com', '01628264230', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 06:05:18', '113011989', '2016-11-05 14:15:13', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'NGUYEN BINH THAO', '', '0451000373617', '', 0, 0, 'english', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(591, 0, 0, 0, '144203458949', 0, 0, 'dinhthao1', '', 1, 577, '', '', NULL, 'dinhthaomoney@gmail.com', '01628264230', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.177.76', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 06:06:45', '113011989', '2016-11-02 00:42:30', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN BINH THAO', '', '0451000373617', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(592, 0, 0, 0, '18864246823', 0, 0, 'dinhthao2', '', 1, 577, '', '', NULL, 'dinhthaomoney@gmail.com', '01628264230', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.128.213', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 06:07:55', '113011989', '2016-11-04 09:51:26', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN BINH THAO', '', '0451000373617', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(593, 0, 0, 0, '103674831177', 0, 0, 'dungnd169_1', '', 1, 581, '', '', NULL, 'nguyenvanxe1235@gmail.com', '0915212787', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.5.27', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 08:05:23', '090707913', '2016-11-03 09:35:25', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN DINH DUNG', '', '0821000124009', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(594, 0, 0, 0, '276815771992', 0, 0, 'dungnd169_2', '', 1, 581, '', '', NULL, 'nguyenvanxe1235@gmail.com', '0915212787', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.1.185', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 08:06:31', '090707913', '2016-11-04 02:10:35', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN DINH DUNG', '', '0821000124009', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(595, 0, 0, 0, '147190977824', 0, 0, 'dungnd169_3', '', 1, 581, '', '', NULL, 'nguyenvanxe1235@gmail.com', '0915212787', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.175.236.141', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 08:07:31', '090707913', '2016-11-03 13:16:55', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN DINH DUNG', '', '0821000124009', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(596, 0, 0, 0, '19398874416', 0, 0, 'tonitruong', '', 1, 561, '', '', NULL, 'vthuong508@gmail.com', '0978719896', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 09:19:52', '212743101', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VO TAN THUONG', '', '0721000554796', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(597, 0, 0, 0, '103233824914', 0, 0, 'ngocba', '', 1, 596, '', '', NULL, 'ngocbadolamy@gmail.com', '0989269330', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.52.125.229', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 09:37:14', '060788047', '2016-11-04 03:42:12', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1.jpg.99a573994f132e832dce31ac69a73653', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRIEU NGOC BA', '', '0691000321617', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(598, 0, 0, 0, '283862643817', 0, 0, 'hoanghai', '', 1, 548, '', '', NULL, 'hoanghaitdh91@gmail.com', '0963682112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.170.83', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 11:13:19', '101043195', '2016-10-31 23:30:34', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG VAN HAI', '', '0141000764729', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(599, 0, 0, 0, '151751385457', 0, 0, 'hoangduong', '', 1, 548, '', '', NULL, 'hoangd795@gmail.com', '0967548579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.244.22', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 11:19:47', '272269256', '2016-11-04 19:41:17', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangduong.jpg.0923bc58777e6fe207fea1936aac06b4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN HOANG DUONG', '', '0121001978671', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(600, 0, 0, 0, '26862559829', 0, 0, 'duyvinh', '', 1, 548, '', '', NULL, 'duyvinh.vnd30@gmail.com', '0975610578', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.157.61', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 11:22:14', '271530308', '2016-11-04 10:01:24', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20160827_123036.jpg.4dc947efddb395d1a3d866a57440ac05', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN DUY VINH', '', '0121002057905', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(601, 0, 0, 0, '83266451233', 0, 0, 'lehop79', '', 1, 548, '', '', NULL, 'lehopdongnaic@gmail.com', '01675985521', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.169.68', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 11:24:34', '272279086', '2016-11-04 10:04:38', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lehop79.jpg.d900d367b6b544a8f82208fa010db2d3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE VAN HOP', '', '0121001386026', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(602, 0, 0, 0, '220529762709', 0, 0, 'huynhdao', '', 1, 599, '', '', NULL, 'huynhanhdao1406@gmail.com', '01217358122', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 12:08:31', '271879603', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH ANH DAO', '', '0121000794242', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(603, 0, 0, 0, '214872512033', 0, 0, 'ducthinh', '', 1, 562, '', '', NULL, 'vanluc79qn@gmail.com', '0963699269', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.15.4', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:10:32', '100625315', '2016-10-04 13:57:48', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'BUI DUC THINH', '', '0551000019298', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(604, 0, 0, 0, '22970441862', 0, 0, 'honghuyen', '', 1, 561, '', '', NULL, 'hanhuyen710@gmail.com', '0905287717', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:25:08', '201466296', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'MAI THI HONG HUYEN', '', '0041000195566', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(605, 0, 0, 0, '87109796640', 0, 0, 'honghuyen1', '', 1, 604, '', '', NULL, 'hanhuyen710@gmail.com', '0905287717', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:31:12', '201466296', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'MAI THI HONG HUYEN', '', '0041000195566', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(606, 0, 0, 0, '225361024656', 0, 0, 'honghuyen2', '', 1, 604, '', '', NULL, 'hanhuyen710@gmail.com', '0905287717', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:32:54', '201466296', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'MAI THI HONG HUYEN', '', '0041000195566', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(607, 0, 0, 0, '208625275510', 0, 0, 'thanhbi1983', '', 1, 601, '', '', NULL, 'nguyenthanhbi1235@gmail.com', '01679275620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '221.121.43.187', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:37:13', '370976431', '2016-11-04 19:26:07', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhbi1983.jpg.f0bc1b1d2f565f1cfac8ed087e9160a3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH BI', '', '0481000790026', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(608, 0, 0, 0, '28018049345', 0, 0, 'hoangnhan', '', 1, 561, '', '', NULL, 'richatm68@gmail.com', '0978183888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:49:45', '012378511', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THE NHAN', '', '0011004248292', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(609, 0, 0, 0, '94632159573', 0, 0, 'timhong', '', 2, 581, '', '', NULL, 'cuadedanh11@gmail.com', '01698743094', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.66.35.18', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-21 00:00:00', '1', '2016-11-03 23:51:30', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/timhong.jpg.31702ed4662cd6becebec46f4f17127b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 't', '', '0541000261126', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(610, 0, 0, 0, '70215305336', 0, 0, 'HappyHien', '', 1, 550, '', '', NULL, 'Doanhienhbl@gmail.com', '0913883782', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:51:00', '077190000188', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THUY LOAN', '', '0081001258227', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(611, 0, 0, 0, '77581218312', 0, 0, 'HappyThuyChi', '', 1, 550, '', '', NULL, 'lananh30062011@gmail.com', '0909422994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 13:57:53', '271676394', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THUY', '', '0121000784976', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(612, 0, 0, 0, '227788007576', 0, 0, 'HappyThuyChi39', '', 1, 611, '', '', NULL, 'Lananh30062011@gmail.com', '0909422994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:01:56', '271676394', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THUY', '', '0121000784976', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(613, 0, 0, 0, '169776513604', 0, 0, 'HappyThuyChi79', '', 1, 611, '', '', NULL, 'Lananh30062011@gmail.com', '0909422994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:05:51', '271676394', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THUY', '', '0121000784976', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(614, 0, 0, 0, '39802378115', 0, 0, 'VanLuc', '', 1, 611, '', '', NULL, 'Lucnguyen289@gmail.com', '0977663788', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:11:46', '172496771', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN LUC', '', '0251002047670', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(615, 0, 0, 0, '82411878537', 0, 0, 'MyDuc', '', 1, 611, '', '', NULL, 'Myduc2703@gmail.com', '0978061051', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:14:34', '272259888', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI MY DUC', '', '0481000787241', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(616, 0, 0, 0, '230122005269', 0, 0, 'VanHuan', '', 1, 611, '', '', NULL, 'Levanhuan68@gmail.com', '0915709779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:19:58', '024679377', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VAN HUAN', '', '0501000039535', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(617, 0, 0, 0, '167596271657', 0, 0, 'BachTuyet', '', 1, 611, '', '', NULL, 'Bachtuyet0124@gmail.com', '0961354579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:25:11', '271272468', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN THI BACH TUYET', '', '0121000683717', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(618, 0, 0, 0, '35303462944', 0, 0, 'BachTuyet68', '', 1, 617, '', '', NULL, 'Bachtuyet0124@gmail.com', '0961354579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:29:25', '271272468', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN THI BACH TUYET', '', '0121000683717', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(619, 0, 0, 0, '75448621360', 0, 0, 'BachTuyet6868', '', 1, 617, '', '', NULL, 'Bachtuyet0124@gmail.com', '0961354579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:32:42', '271272468', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN THI BACH TUYET', '', '0121000683717', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(620, 0, 0, 0, '13795529335', 0, 0, 'NganHa', '', 1, 550, '', '', NULL, 'Nganha140887@gmail.com', '0917733263', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.211', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 14:49:28', '125181117', '2016-10-03 22:17:59', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI NGAN', '', '0591001794722', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(621, 0, 0, 0, '96122147921', 0, 0, 'duclong', '', 1, 608, '', '', NULL, 'duclong874@gmail.com', '0982801137', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-21 15:04:55', '024786123', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN DUC LONG', '', '0071004445557', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(622, 0, 0, 0, '281659185239', 0, 0, 'giottuyet85', '', 1, 581, '', '', NULL, 'giottuyetdaklak.1985@gmail.com', '0914177001', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 01:56:42', '240746606', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN HOANG KIM PHUNG', '', '0231000616072', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(623, 0, 0, 0, '152035615303', 0, 0, 'Chieuchanh', '', 1, 597, '', '', NULL, 'chieu.chanh@gmail.com', '0945625111', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.178.71.99', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 02:11:16', '060926395', '2016-10-09 23:04:38', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG CHIEU CHANH', '', '0991000016452', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(624, 0, 0, 0, '13508880214', 0, 0, 'vietkhoiqng', '', 1, 545, '', '', NULL, 'nguyenminhkhoi2015lam@gmail.com', '0976132424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.69.229.196', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 03:34:46', '212288928', '2016-11-04 22:53:19', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vietkhoiqng.jpg.da92ec84b8b94a33b05bb028c10ca075', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TRA LAM', '', '0271001046532', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(625, 0, 0, 0, '96707183942', 0, 0, 'probkd', '', 1, 582, '', '', NULL, 'venus.nt1603@gmail.com', '0995340872', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 03:37:30', '225160518', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO VINH THIEN', '', '0061001086317', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(626, 0, 0, 0, '284835259154', 0, 0, 'nguyenbac', '', 1, 562, '', '', NULL, 'nguyenvanbacbc2015@gmail.com', '01296893634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.111.76.164', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 04:25:07', '101254610', '2016-11-04 09:23:45', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenbac.jpg.52a997447d36de1657d74cf68c8eebee', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(627, 0, 0, 0, '150896672788', 0, 0, 'DanhHieu', '', 1, 612, '', '', NULL, 'caodanhhieu@gmail.com', '0989008567', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 04:50:50', '271598401', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CAO DANH HIEU', '', '0121000783313', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(628, 0, 0, 0, '18524213305', 0, 0, 'DanhHieu39', '', 1, 612, '', '', NULL, 'caodanhhieu@gmail.com', '0989008567', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 04:54:53', '271598401', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CAO DANH HIEU', '', '0121000783313', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(629, 0, 0, 0, '104191856915', 0, 0, 'DanhHieu79', '', 1, 612, '', '', NULL, 'caodanhhieu@gmail.com', '0989008567', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 04:56:37', '271598401', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CAO DANH HIEU', '', '0121000783313', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(630, 0, 0, 0, '9014105618', 0, 0, 'vietkhoi01qng', '', 1, 624, '', '', NULL, 'nguyenminhkhoi2015lam@gmail.com', '0976132424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.122.131', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 13:38:13', '212288928', '2016-11-04 17:57:10', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN TRA LAM', '', '0271001046532', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(631, 0, 0, 0, '138646951216', 0, 0, 'vietkhoi02qng', '', 1, 624, '', '', NULL, 'nguyenminhkhoi2015lam@gmail.com', '0976132424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.16.252', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 13:41:40', '212288928', '2016-11-02 00:26:36', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vietkhoi02qng.jpg.135e73649cc80caf2b3041c84c164d7c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TRA LAM', '', '0271001046532', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(632, 0, 0, 0, '240788861736', 0, 0, 'trinhquang', '', 1, 562, '', '', NULL, 'trinhquang6868@gmail.com', '0989121349', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 13:54:46', '172220983', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRINH THI QUANG', '', '0781000431033', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(633, 0, 0, 0, '156842329094', 0, 0, 'kimanh', '', 1, 586, '', '', NULL, 'lexuananh1010@gmail.com', '0967289988', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.29', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 14:02:09', '017014932', '2016-10-31 23:06:58', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE KIM ANH', '', '0971000003965', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(634, 0, 0, 0, '6264783205', 0, 0, 'HienDiamond', '', 1, 550, '', '', NULL, 'Doanhienhbl@gmail.com', '0908223821', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 14:46:05', '077190000188', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI MINH HONG', '', '0081001259368', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(635, 0, 0, 0, '141823256327', 0, 0, 'HaNguyen', '', 1, 613, '', '', NULL, 'hanguyen081294@gmail.com', '0963229376', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 14:52:38', '272314696', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI HA', '', '0481000761669', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(636, 0, 0, 0, '241367004933', 0, 0, 'daohuyen', '', 1, 582, '', '', NULL, 'fankpham83@gmail.com', '0985862057', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.2.142', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-22 15:07:24', '135170988', '2016-10-07 23:57:25', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/20160805_204037_resized.jpg.6bc9544dd0cf6cbef75fa25a0b0e37f9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DAO THI HUYEN', '', '0361001512576', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(637, 0, 0, 0, '156555055363', 0, 0, 'Trangqng', '', 1, 624, '', '', NULL, 'Trangnguyen211112@gmail.com', '0905552116', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.29.22', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 03:24:37', '212306018', '2016-11-04 10:12:13', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1475153598330_4374.jpg.ca8ba66b6b0b8e73bcd5dd83fd1a8997', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI TRANG', '', '0271000364264', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(638, 0, 0, 0, '1669800980', 0, 0, 'tuandung', '', 1, 545, '', '', NULL, 'monkeyit@gmail.com', '0982553383', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.19.249', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 03:34:44', '081025526', '2016-11-04 04:18:29', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/20161004_082603.jpg.3fd2a61df2033040f28dd0ba100eaee1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN TUAN DUNG', '', '0981000407224', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(639, 0, 0, 0, '108870975624', 0, 0, 'leader', '', 1, 545, '', '', NULL, 'anhdung.mlinh@gmail.com', '0945107525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.16.252', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 03:42:49', '013349286', '2016-11-02 08:02:59', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.cfe4c36fd658a0f1074d26eb5b276a5d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HONG ANH', '', '0011004318136', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(640, 0, 0, 0, '73325037859', 0, 0, 'leader1', '', 1, 545, '', '', NULL, 'anhdung.mlinh@gmail.com', '0945107525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.16.252', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 03:45:04', '013349286', '2016-11-01 23:46:51', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.06312c7dad187e8a227e2e9e284af3a1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HONG ANH', '', '0011004318136', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(641, 0, 0, 0, '36849549331', 0, 0, 'leader2', '', 1, 545, '', '', NULL, 'anhdung.mlinh@gmail.com', '0945107525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.174.69.9', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 03:46:33', '013349286', '2016-11-03 13:52:05', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.fba882e421554c9ac7bf15cba04b1fe2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HONG ANH', '', '0011004318136', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(642, 0, 0, 0, '174237905689', 0, 0, 'HappyDung', '', 1, 551, '', '', NULL, 'Minhdzungbtc@gmail.com', '0909404110', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 05:41:57', '025732079', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM MINH DUNG', '', '0071001077847', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(643, 0, 0, 0, '234079228193', 0, 0, 'daituongquan.', '', 8, 546, '', '', NULL, '', '0908057152', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.228.203', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-23 00:00:00', '1', '2016-10-07 10:26:26', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'http://happymoney.us/system/upload/1474741712422.jpg.549a09b743ca5ea4853b64c68be5d1c7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(644, 0, 0, 0, '74645509958', 0, 0, 'HappyPhuongLe1', '', 1, 552, '', '', NULL, 'Phuong5622@gmail.com', '0937439366', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.187.17.231', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 05:49:53', '21190093', '2016-11-03 12:07:37', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.2c84d30c6b0cff933b352a909e466513', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THI PHUONG', '', '0261003456089', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(645, 0, 0, 0, '35476817700', 0, 0, 'HappyPhuongLe2', '', 1, 552, '', '', NULL, 'Phuong5622@gmail.com', '0937439366', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.23.55', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 05:50:58', '21190093', '2016-11-04 09:24:11', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.8fad611d07cfda91b38ed8fafd487218', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THI PHUONG', '', '0261003456089', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(646, 0, 0, 0, '173716636216', 0, 0, 'HappyPhuongLe3', '', 1, 552, '', '', NULL, 'Phuong5622@gmail.com', '0937439366', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.23.55', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 05:52:11', '21190093', '2016-11-04 09:24:44', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.d58ce6f0ca6d6f832120503bbdf26de4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THI PHUONG', '', '0261003456089', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(647, 0, 0, 0, '234412544128', 0, 0, 'Daoson1', '', 1, 586, '', '', NULL, 'daothuysonklink@gmail.com', '+84969168283', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.29.254', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 08:52:11', '012511319', '2016-11-04 11:26:21', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Daoson1.jpg.512101e562a31d50b06a002d5271dc63', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DAO THUY SON', '', '0971000004761', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(648, 0, 0, 0, '79528470889', 0, 0, 'daoson2', '', 1, 586, '', '', NULL, 'daothuysonklink@gmai.com', '+84969168283', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.233.187', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 08:55:38', '012511319', '2016-11-04 22:22:03', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/daoson2.jpg.6ebd4db5a88cde0dff2824a63586de82', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DAO THUY SON', '', '0971000004761', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(649, 0, 0, 0, '41212721489', 0, 0, 'PhuongHoang68', '', 2, 550, '', '', NULL, 'Phuonghoang1121974@gmail.com', '0914415899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.79.248.250', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-09-23 00:00:00', '1', '2016-11-04 10:12:38', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'HOANG THI MINH PHUONG', '', '0081000213585', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(650, 0, 0, 0, '91026134544', 0, 0, 'tuanphucqng', '', 1, 624, '', '', NULL, 'tuanphuc1994@gmail.Com', '01202799162', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.141.221', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 09:58:42', '212322151', '2016-11-04 03:58:51', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tuanphucqng.jpg.ac6ba98a2ef6c81970ccc8e5c6d660b4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI KIM PHUC', '', '0271000956671', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(651, 0, 0, 0, '31181804900', 0, 0, 'kimvang', '', 1, 624, '', '', NULL, 'Kimvang01qng@gmail.com', '01652798088', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.240.15', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 10:02:51', '212323858', '2016-11-04 20:20:34', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI KIM VANG', '', '0271000976958', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(652, 0, 0, 0, '207242172760', 0, 0, 'thanhnghiep', '', 1, 607, '', '', NULL, 'thanhnghiep1981nky@gmail.com', '0946643243', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 13:58:33', '370998420', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN THANH NGHIEP', '', '0481000790734', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(653, 0, 0, 0, '216245884544', 0, 0, 'thanhbi', '', 1, 607, '', '', NULL, 'nguyenthanhbi1235@gmail.com', '01679275620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.45.151', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-23 14:10:22', '370976431', '2016-11-04 01:51:36', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH BI', '', '0481000790026', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(654, 0, 0, 0, '91359683413', 0, 0, 'nhungnguyen', '', 1, 624, '', '', NULL, 'qcit.nhung@gmail.com', '01697784725', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:28:57', '212302686', '2016-11-04 23:00:16', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI NHUNG', '', '0271000966248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(655, 0, 0, 0, '30660768261', 0, 0, 'totrinh68', '', 1, 630, '', '', NULL, 'Totrinhkhd@gmail.com', '0916135883', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.174.187.188', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:38:47', ' 194303743', '2016-11-04 07:58:01', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1475567964321_107120.jpg.fb660b8a386b8d1f94e8c36f85726c1c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG TO TRINH', '', '0161000419839', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(656, 0, 0, 0, '178394446161', 0, 0, 'nhungnguyen1', '', 1, 654, '', '', NULL, 'qcit.nhung@gmail.com', '01697784725', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:45:57', '212302686', '2016-11-04 09:17:11', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NHUNG', '', '0271000966248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(657, 0, 0, 0, '219170445089', 0, 0, 'nhungnguyen2', '', 1, 654, '', '', NULL, 'qcit.nhung@gmail.com', '01697784725', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:48:46', '212302686', '2016-11-04 09:13:23', '2016-08-15 04:48:02', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NHUNG', '', '0271000966248', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(658, 0, 0, 0, '86796367200', 0, 0, 'banguyen', '', 1, 654, '', '', NULL, 'banhuyenvan2019@gmail.com', '0978621009', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:55:23', '212287936', '2016-11-03 22:34:13', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20160913_112115.jpg.0b73822be0de07594ea1f648cba95a79', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN VAN BA', '', '0271000944264', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(659, 0, 0, 0, '23622719544', 0, 0, 'banguyen1', '', 1, 654, '', '', NULL, 'banhuyenvan2019@gmail.com', '0978621009', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.139.222', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 03:59:43', '0978621009', '2016-11-03 11:11:41', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20160913_112115.jpg.b9498cfe83a4c6a457c05355de7e83d7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN BA', '', '0271000944264', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(660, 0, 0, 0, '105315992915', 0, 0, 'banguyen2', '', 1, 654, '', '', NULL, 'banhuyenvan2019@gmail.com', '0978621009', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 04:01:04', '212287936', '2016-11-02 20:23:06', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20160913_112115.jpg.f954ec5f10b8ccec8ff7b328fdfedfcc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN BA', '', '0271000944264', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(661, 0, 0, 0, '4900074105', 0, 0, 'ngancanh68', '', 1, 625, '', '', NULL, 'Noanh1tinhyeu@gmail.com', ' 0943761484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 06:54:08', ' 385494669', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THAI THANH', '', '0891000632187', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(662, 0, 0, 0, '164677880193', 0, 0, 'MrTyDus', '', 1, 544, '', '', NULL, 'Mrtydus90@gmail.com', '0943200300', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 07:02:47', '024788610', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH NHUT', '', '0071001064518', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(663, 0, 0, 0, '245183580185', 0, 0, 'ngocthanh1', '', 1, 562, '', '', NULL, 'vungocducminhnb@gmail.com', '0967899126', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 09:41:25', '164157298', '2016-10-07 20:55:18', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngocthanh1.jpg.7852b41a78758ceac513dedc8571874f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU NGOC THANH', '', '0521000713868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(664, 0, 0, 0, '109912265814', 0, 0, 'ngocthanh2', '', 1, 562, '', '', NULL, 'vungocducminhnb@gmail.com', '0967899126', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 09:42:59', '164157298', '2016-10-07 20:56:13', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngocthanh2.jpg.f1ec90a8459225b082c71e6c5981eb0c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU NGOC THANH', '', '0521000713868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(665, 0, 0, 0, '5412710', 0, 0, 'thanhtrung1', '', 1, 568, '', '', NULL, 'trungpt05@gmail.com', '0904297234', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 09:46:26', '172338141', '2016-11-04 19:52:48', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhtrung1.jpg.4e39b2a550c4919dbd501d44762c5b0f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'PHAN THANH TRUNG', '', '0021000374411', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(666, 0, 0, 0, '160635122194', 0, 0, 'thanhtrung2', '', 1, 568, '', '', NULL, 'trungpt05@gmail.com', '0904297234', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 09:47:44', '172338141', '2016-10-07 20:51:15', '2016-08-15 04:48:02', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhtrung2.jpg.60fb46a0b772f132e87d1cd17ceebbcd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN THANH TRUNG', '', '0021000374411', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(667, 0, 0, 0, '247283581844', 0, 0, 'vanluc01', '', 1, 612, '', '', NULL, 'lucnguyen289@gmail.com', '0977663788', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 22:14:02', '172496771', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN LUC', '', '0251002047670', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(668, 0, 0, 0, '142371980405', 0, 0, 'vanluc02', '', 1, 612, '', '', NULL, 'lucnguyen289@gmail.com', '0977663788', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-24 22:15:47', '172496771', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN LUC', '', '0251002047670', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(669, 0, 0, 0, '5960537669', 0, 0, 'ngancanh168', '', 1, 661, '', '', NULL, 'noanh1tinhyeu@gmail.com', '0943761484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 05:45:12', '385494669', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THAI THANH', '', '0891000632187', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(670, 0, 0, 0, '100551690578', 0, 0, 'ngancanh1168', '', 1, 661, '', '', NULL, 'noanh1tinhyeu@gmail.com', '0943761484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 05:48:22', '385494669', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THAI THANH', '', '0891000632187', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(1096, 0, 0, 0, '151790028117', 0, 0, 'vanloi68', '', 1, 781, '', '', NULL, 'vedan15047@gmail.com', '0904978597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.43.152', NULL, NULL, 0, 0, 0, '', '2016-10-12 11:05:29', '271786277', '2016-10-12 22:49:08', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DO VAN LOI', '', '0251001156175', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(674, 0, 0, 0, '104262047607', 0, 0, 'Lengocha', '', 1, 661, '', '', NULL, 'Ngochale1988@gmail.com', '01234797555', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:01:47', '272834888', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI NGOC HA', '', '0081000723683', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(675, 0, 0, 0, '17723574329', 0, 0, 'phuongthuy90', '', 1, 661, '', '', NULL, 'phuongthuy01051990@gmail.com', '0946364789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:09:26', '024749670', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO THI PHUONG THUY', '', '0891000632868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(676, 0, 0, 0, '142960850579', 0, 0, 'lephuong', '', 1, 661, '', '', NULL, 'bphuong117@gmail.com', '0909191117', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.34.27', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:18:13', '351616780', '2016-10-04 22:46:52', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE QUANG BAO PHUONG', '', '0151000553563', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(677, 0, 0, 0, '280339481969', 0, 0, 'Hoangduc1997', '', 1, 661, '', '', NULL, 'Nguyenhoangduc158@gmail.com', '0933888845', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:37:54', '271963196', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN HOANG DUC', '', '0481000793854', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(678, 0, 0, 0, '99730663266', 0, 0, 'toanmacau', '', 1, 661, '', '', NULL, 'toanmacau126@gmail.com', '0943588351', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:40:36', '020789953', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CO KHIET NHI', '', '0251002735195', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(679, 0, 0, 0, '10622555442', 0, 0, 'Binhhg38', '', 1, 661, '', '', NULL, 'thanhbinhhg.38@gmail.com', '0939884079', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:42:15', '363559019', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THANH BINH', '', '0111000258389', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(680, 0, 0, 0, '275003167541', 0, 0, 'ChungHM', '', 1, 661, '', '', NULL, 'nguyenthienbao.240510@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '172.17.42.1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 06:44:21', '025530638', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC CHUNG', '', '0331000434692', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(681, 0, 0, 0, '161095164033', 0, 0, 'phuongthuy01', '', 1, 675, '', '', NULL, 'phuongthuy01051990@gmail.com', '0946364789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 09:39:36', '024749670', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO THI PHUONG THUY', '', '0891000632868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(682, 0, 0, 0, '359691367', 0, 0, 'phuongthuy02', '', 1, 675, '', '', NULL, 'phuongthuy01051990@gmail.com', '0946364789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 09:47:44', '024749670', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO THI PHUONG THUY', '', '0891000632868', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(683, 0, 0, 0, '137731716201', 0, 0, 'HMChung01', '', 1, 680, '', '', NULL, 'nguyenthienbao.240510@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 11:18:05', '025530638', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC CHUNG', '', '0331000434692', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(684, 0, 0, 0, '245218313538', 0, 0, 'HMChung02', '', 1, 680, '', '', NULL, 'nguyenthienbao.240510@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 11:20:05', '025530638', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC CHUNG', '', '0331000434692', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(685, 0, 0, 0, '164711514624', 0, 0, 'HMBayminh', '', 1, 680, '', '', NULL, 'nguyenvanminh.070565@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 11:26:09', '025530639', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN MINH', '', '0501000115473', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(686, 0, 0, 0, '4925714772', 0, 0, 'HMBayminh01', '', 1, 680, '', '', NULL, 'nguyenvanminh.070565@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 11:29:41', '025530639', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN MINH', '', '0501000115473', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(687, 0, 0, 0, '105352033376', 0, 0, 'HMBayminh02', '', 1, 680, '', '', NULL, 'nguyenvanminh.070565@gmail.com', '0902921773', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 11:31:55', '025530639', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN MINH', '', '0501000115473', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(688, 0, 0, 0, '237860112741', 0, 0, 'HMCuong', '', 1, 680, '', '', NULL, 'minhtrung.260171@gmail.com', '0909195277', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-25 12:11:02', '025530640', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO TIET MINH TRUNG', '', '0501000115356', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(689, 0, 0, 0, '159840236035', 0, 0, 'vantu76', '', 1, 630, '', '', NULL, 'chuoihot01qb@gmail.com', '0935697123', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.70.255', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-26 02:17:51', '212323293', '2016-11-04 21:01:43', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/tu_loan.png.7caf47625b28be158b5d45f4eea16cb1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI KIM NGAN', '', '0571000037253', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(690, 0, 0, 0, '280787816792', 0, 0, 'ngochadn', '', 1, 599, '', '', NULL, 'Vungocha24081976@gmail.com', '0909200226', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-26 02:23:54', '271673205', NULL, '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU NGOC HA', '', '0121000800844', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(691, 0, 0, 0, '143412783378', 0, 0, 'kimhaudlak', '', 1, 630, '', '', NULL, 'Kimhaudaklak@gmail.com', '01652809906', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.251.31.192', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-09-26 02:33:44', '241455738', '2016-10-06 07:54:04', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/2.jpg.20e6c302ae5d5b3cc73d377548e292f2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI KIM HAU', '', '0271001048349', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(692, 0, 0, 0, '18073653552', 0, 0, 'hai68', '', 1, 539, '', '', NULL, 'nguonvonbt1@gmail.com', '0936025539', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-03 12:30:00', '280669268', '2016-11-05 10:52:34', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/14572821_296360047412619_1500757280477945323_n.jpg.c23d63797c59b0e7ca924d99103cc4a4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH HAI', '', '0381002652774', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(693, 0, 0, 0, '104711205270', 0, 0, 'HoTro-HAPPYMONEY.US', '', 1, 539, '', '', NULL, 'Hotro.happymoney@gmail.com', '0909555999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-11-05 10:35:16', '191621169', '2016-11-05 10:27:18', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/photo_2016-09-16_10-42-55.jpg.92064b5b176f12645924aeafed1b652e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG QUANG TUAN', '', '0481000800963', '', 0, 0, 'vietnamese', 1, 0, '2016-08-15 04:48:02', 0, NULL),
+(694, 0, 0, 0, '275788342321', 0, 0, 'HappyHa68', '', 1, 561, '', '', NULL, 'vanthiha6868@gmail.com', '0944050286', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.212.21', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-03 15:44:44', '272516278', '2016-10-16 23:20:59', '2016-08-15 04:48:02', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 12, 'VAN THI HA', '', '0531002468153', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 0, NULL),
+(695, 0, 0, 0, '147978598423', 0, 0, 'duonghanh', '', 1, 638, '', '', NULL, 'nguoingheols.82@gmail.com', '0912422236', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.235.235', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-03 20:13:31', '081057292', '2016-11-04 10:36:47', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_082354.jpg.3776611968d0b8496f50d02e547720b6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'DUONG THI HANH', '', '0981000406375', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(696, 0, 0, 0, '21797167157', 0, 0, 'duonghanh01', '', 1, 695, '', '', NULL, 'nguoingheols.82@gmail.com', '0912422236', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.235.235', '2016-08-15 04:48:02', NULL, 0, 0, 0, '', '2016-10-03 20:16:09', '081057292', '2016-11-04 10:38:56', '2016-08-15 04:48:02', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_082354.jpg.f6c4beea0be1cecbcc68f795a2c754df', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI HANH', '', '0981000406375', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(697, 0, 0, 0, '100690071845', 0, 0, 'nhung1982', '', 2, 638, '', '', NULL, 'Daisyflower08081992@gmail.com', '85366282007', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '60.246.40.245', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-03 00:00:00', '1', '2016-11-03 06:36:46', '2016-08-15 04:48:02', NULL, '43534789568', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_082424.jpg.49c5367d547cee9508ba2f350d6b97eb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI DUYEN', '', '0231000627858', '', 0, 0, 'vietnamese', 0, 0, '2016-08-15 04:48:02', 1, NULL),
+(698, 0, 0, 0, '281210360900', 0, 0, 'Trieuanqng', '', 1, 624, '', '', NULL, 'thuyhongphambs@gmail.com', '0935932468', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.70.158.250', NULL, NULL, 0, 0, 0, '', '2016-10-03 22:04:28', '212032485', '2016-10-03 22:20:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY HONG', '', '0271001050815', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(699, 0, 0, 0, '152547305524', 0, 0, 'Bichmaria', '', 1, 697, '', '', NULL, 'Foreveronelove9090@gmail.com', '0085363193319', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '182.93.6.134', NULL, NULL, 0, 0, 0, '', '2016-10-03 22:04:28', '180642460', '2016-11-04 22:28:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Bichmaria.jpg.9236349018ddd37b22652011188a71a8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN TRONG QUANG', '', '0101001157397', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(700, 0, 0, 0, '27656218486', 0, 0, 'Vietnhat', '', 1, 620, '', '', NULL, 'nganha57102@gmail.com', '0996787670', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.147', NULL, NULL, 0, 0, 0, '', '2016-10-03 22:10:45', '125181117', '2016-10-03 22:24:00', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI NGAN', '', '0591001794722', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(701, 0, 0, 0, '83088527970', 0, 0, 'honey', '', 1, 620, '', '', NULL, 'nganha57102@gmail.com', '0996787670', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.108', NULL, NULL, 0, 0, 0, '', '2016-10-03 22:14:44', '125181117', '2016-10-03 22:35:07', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI NGAN', '', '0591001794722', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(702, 0, 0, 0, '221327331368', 0, 0, 'thaonguyenqng', '', 1, 624, '', '', NULL, 'hunghieu2323@gmail.com', '0936101439', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.16.252', NULL, NULL, 0, 0, 0, '', '2016-10-03 22:30:15', '212324249', '2016-11-03 22:21:55', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGO THI KIM TINH', '', '0271000983295', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(900, 0, 0, 0, '31697569368', 0, 0, 'Lanvien', '', 1, 640, '', '', NULL, 'Lanvienbtc@gmail.com', '0972799481', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.107.38', NULL, NULL, 0, 0, 0, '', '2016-10-07 00:12:43', '215009718', '2016-11-02 02:55:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lanvien.jpg.d4ef304d023da24c44cd18cf05d6136c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'VO TRUC LAN VIEN', '', '0501000031522', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(703, 0, 0, 0, '214805153044', 0, 0, 'lelythi', '', 1, 654, '', '', NULL, 'nguyenpdd@gmail.com', '01698156103', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.35', NULL, NULL, 0, 0, 0, '', '2016-10-03 23:49:44', '210341674', '2016-11-02 20:24:12', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LY THI LE', '', '0271001044601', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(893, 0, 0, 0, '96712884632', 0, 0, 'vietbank', '', 1, 797, '', '', NULL, 'vuviet2299@gmail.com', '0989673132', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.76.245.42', NULL, NULL, 0, 0, 0, '', '2016-10-06 22:25:31', '025084000203', '2016-11-03 20:51:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vietbank.jpg.635a2c9810882673fc2bff0e16387ce7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VU VAN VIET', '', '0451000332673', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(704, 0, 0, 0, '22657786629', 0, 0, 'ThaoNguyen', '', 1, 638, '', '', NULL, 'tigerjenny02@gmail.com', '0937674776', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.23.175.50', NULL, NULL, 0, 0, 0, '', '2016-10-04 00:42:55', '250458603', '2016-11-04 21:05:48', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN HOANG THACH THAO', '', '0561003873775', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(705, 0, 0, 0, '87662068871', 0, 0, 'cuongbin', '', 1, 582, '', '', NULL, 'cuong.inlinhgia@gmail.com', '01662903891', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.68.85', NULL, NULL, 0, 0, 0, '', '2016-10-04 00:52:55', '013112122', '2016-10-07 00:04:33', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/photo_2016-09-10_21-12-07.jpg.86cc414ee1b08ee32444a1ecc09fa9bb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VIET CUONG', '', '0491000411728', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(706, 0, 0, 0, '225051051653', 0, 0, 'thanhxuan1', '', 1, 582, '', '', NULL, 'makemoneyonlinestory@gmail.com', '0912221386', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.74.252', NULL, NULL, 0, 0, 0, '', '2016-10-04 00:56:13', '125387373', '2016-10-04 01:10:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmt_phe.jpg.1f24aaece45a2f525b33751fcc77b278', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN THANH XUAN', '', '0301000319742', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(707, 0, 0, 0, '210790543961', 0, 0, 'tonyha', '', 1, 545, '', '', NULL, 'Hoangducharoyal007@gmail.com', '0981354367', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-04 00:59:33', '113548996', '2016-11-04 21:17:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.c5be46612ad7a7a4353cbef31f75eebb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG DUC HA', '', '0491000088327', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(708, 0, 0, 0, '28186183220', 0, 0, 'thanhxuan2', '', 1, 582, '', '', NULL, 'makemoneyonlinestory@gmail.com', '0912221386', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.74.252', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:00:00', '125387373', '2016-10-04 01:26:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmt_phe.jpg.1bf3e8c472cfdd6080e8b29a3f6fae6f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN THANH XUAN', '', '0301000319742', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(709, 0, 0, 0, '92230150162', 0, 0, 'datgia', '', 1, 546, '', '', NULL, 'ngomdat67@gmail.com', '0903667106', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:05:24', '025088729', '2016-11-04 02:49:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.51b0708fdd80f750a95fca40aa28076d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGO MINH DAT', '', '0031000255642', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(710, 0, 0, 0, '70138463297', 0, 0, 'thanhtam', '', 1, 546, '', '', NULL, 'nguyenquocquy69@gmail.com', '0917989023', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.85.149', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:10:35', '231025912', '2016-10-17 00:22:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.f0146ea6db499bd344ab350ec3e7dbb4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CAO THI THANH TAM', '', '0291000278315', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(711, 0, 0, 0, '78274238225', 0, 0, 'fonalee672', '', 1, 546, '', '', NULL, 'thongle672@gmail.com', '0962172672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.180.129.204', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:25:44', '301129899', '2016-11-04 19:24:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/CMND_LT.jpg.9fcfe0d67450f5f1f3cd44ef6c934089', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LE THONG', '', '0631000456494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(712, 0, 0, 0, '227720648745', 0, 0, 'hoangbang', '', 1, 546, '', '', NULL, 'hoangkimbang2013@gmail.com', '0913636314', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.172.144.178', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:30:52', '0913636314', '2016-10-05 10:57:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.69d0eeb0221c727937ac6231162e5cd4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG KIM BANG', '', '0071001565876', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(767, 0, 0, 0, '275454653573', 0, 0, 'nhungdihanh3', '', 1, 736, '', '', NULL, 'dihanhag123@gmail.com', '01684225525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.29.128', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:06:56', '351944365', '2016-10-04 06:09:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/condihanh.jpg.dd5da70db4dc3566f6c06495d75439dd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI TUYET NHUNG', '', '0151000564491', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(713, 0, 0, 0, '172184670275', 0, 0, 'thangtyphu', '', 1, 582, '', '', NULL, 'hoangtupro109@gmail.com', '01278936888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.70.105.211', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:43:44', '013424775', '2016-10-07 23:22:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/888.jpg.db55dab200fda3b5f8f8549a72d1c8d8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG HONG TU', '', '0301000355062', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(714, 0, 0, 0, '40354650372', 0, 0, 'lanri2', '', 1, 547, '', '', NULL, 'lanri095@gmail.com', '0984981061', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.249.111.204', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:47:21', '260871223', '2016-11-04 05:39:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/ID.jpg.5e5dcf3630baa1f72c9bb288351beb65', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HUYNH THAI LAN', '', '0251001734027', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(715, 0, 0, 0, '81998192976', 0, 0, 'tuyenhungdn', '', 1, 709, '', '', NULL, 'nganyumii61@gmail.com', '0937654112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:48:52', '272690487', '2016-11-04 02:52:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/loan.jpg.3665f9b997372402f63c51c7ce94166c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANH THI TUYET NGAN', '', '0871004197478', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(716, 0, 0, 0, '232287273576', 0, 0, 'thanhloanag', '', 1, 709, '', '', NULL, 'thanhloan292015@gmail.com', '0901005615', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.22.234.160', NULL, NULL, 0, 0, 0, '', '2016-10-04 01:51:52', '891073000206', '2016-10-10 00:24:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/loan1.jpg.5938dff4abbdd9af362bef764a699b97', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THANH LOAN', '', '0471000016784', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(894, 0, 0, 0, '281664915863', 0, 0, 'vietATM', '', 1, 797, '', '', NULL, 'vuviet2299@gmail.com', '0962999486', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.76.245.42', NULL, NULL, 0, 0, 0, '', '2016-10-06 22:28:10', '025084000302', '2016-11-03 20:50:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vietATM.jpg.2bc5f5fda6b1c003e00a01be43d9d863', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VU VAN VIET', '', '0451000332673', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(717, 0, 0, 0, '165676079184', 0, 0, 'xuandung01', '', 1, 713, '', '', NULL, 'xuandungdkl@gmail.com', '0904791994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '83.249.10.118', NULL, NULL, 0, 0, 0, '', '2016-10-04 02:38:46', '240267314', '2016-10-04 04:29:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmnd_mặt_trước1.jpg.598022a74c8c1d5cfd78d93b91aa67ed', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HA THI HOA', '', '0911000002927', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(718, 0, 0, 0, '34512066115', 0, 0, 'xuandung02', '', 1, 713, '', '', NULL, 'xuandungdkl@gmail.com', '0904791994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '83.249.10.118', NULL, NULL, 0, 0, 0, '', '2016-10-04 02:39:57', '240267314', '2016-10-04 04:30:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmnd_mặt_trước1.jpg.e49f6e03a081e2a2a955eae18803d4fc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HA THI HOA', '', '0911000002927', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(719, 0, 0, 0, '75516486753', 0, 0, 'xuandung03', '', 1, 713, '', '', NULL, 'xuandungdkl@gmail.com', '0904791994', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '83.249.10.118', NULL, NULL, 0, 0, 0, '', '2016-10-04 02:41:27', '240267314', '2016-10-04 04:30:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmnd_mặt_trước1.jpg.5231a5651b719579086fb7ad4337fcfe', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HA THI HOA', '', '0911000002927', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(720, 0, 0, 0, '14586810470', 0, 0, 'Anhtuan', '', 1, 676, '', '', NULL, 'Nguyenanhtuanlx2013@gmail.com', '0939699599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.34.27', NULL, NULL, 0, 0, 0, '', '2016-10-04 03:42:28', '350921607', '2016-10-04 22:48:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN ANH TUAN', '', '0151000107877', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(721, 0, 0, 0, '95954154248', 0, 0, 'vietan', '', 2, 546, '', '', NULL, 'vietanlx@gmail.com', '01225220522', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-11-04 01:55:11', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'http://happymoney.us/system/upload/1475569783284_9818.jpg.33df93a543d62777bdf3ee99c8ccf310', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DANG VIET AN', '', '0151000561655', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(722, 0, 0, 0, '284063462520', 0, 0, 'Anhtuan1', '', 1, 676, '', '', NULL, 'Nguyenanhtuanlx2013@gmail.com', '0939699599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-04 03:44:18', '350921607', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN ANH TUAN', '', '0151000107877', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(723, 0, 0, 0, '151958751332', 0, 0, 'Anhtuan2', '', 1, 676, '', '', NULL, 'Nguyenanhtuanllx2013@gmail.com', '0939699599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-04 03:46:14', '350921607', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN ANH TUAN', '', '0151000107877', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(724, 0, 0, 0, '13192619783', 0, 0, 'ngocsuongbh', '', 1, 547, '', '', NULL, 'Tongsuong2025@gmail.com', '01999535789', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.162.138', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:11:21', '272585525', '2016-10-20 22:05:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TONG THI NGOC SUONG', '', '0121000688139', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(725, 0, 0, 0, '98872480915', 0, 0, 'thangitg', '', 8, 724, '', '', NULL, 'thangitg@gmail.com', '0901251616', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.9.29', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-10-16 19:38:44', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/thangitg.jpg.4be5c5fb2226d294315314904d4272a7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'BUI DUC THANG', '', '0181001831463', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(726, 0, 0, 0, '284427843121', 0, 0, 'xuanhuong', '', 1, 630, '', '', NULL, 'xuanhuong.nguyen85@gmail.com', '0968323447', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.121.199', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:16:56', '212290671', '2016-11-02 02:12:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1.jpg.ea20e9b47c094816118f8d2432becc60', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI XUAN HUONG', '', '0571000015812', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(727, 0, 0, 0, '151448556119', 0, 0, 'vietnga', '', 1, 630, '', '', NULL, 'vietnganguyen2@gmail.com', '01666206685', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.19.126.199', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:22:32', '212296858', '2016-11-04 21:43:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/4.jpg.9b51e0b987f2e422a675b42ac9099ed3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI VIET NGA', '', '0271000959885', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(728, 0, 0, 0, '18594672768', 0, 0, 'hnksang', '', 1, 547, '', '', NULL, 'hnksang@gmail.com', '01277968639', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.178.9', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:22:35', '352185599', '2016-11-04 20:29:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.8c893005d6d8b0fff016bf70ed12c995', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'HUYNH NGUYEN KIM SANG', '', '0151000553500', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(729, 0, 0, 0, '103398313990', 0, 0, 'hanhtran', '', 1, 725, '', '', NULL, 'hanhtran5093@gmail.com', '0972275861', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.159.251', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:25:21', '285238856', '2016-10-06 21:36:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hanhtran.jpg.03a471c44e9335f918dce53838d5f2e9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THI HANH', '', '0421000478524', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(730, 0, 0, 0, '8946750617', 0, 0, 'maidl', '', 1, 547, '', '', NULL, 'mainguyen7066@gmail.com', '0919177066', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.93.248', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:26:57', '250499440', '2016-11-04 10:43:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/Screenshot_2016-09-14-15-24-13-1.png.fdc95cf3893c913be908c1e4825c7306', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 12, 'NGUYEN THI HONG MAI', '', '0071003666349', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(731, 0, 0, 0, '139437838995', 0, 0, 'Diamond', '', 1, 630, '', '', NULL, 'quanbs1985@gmail.com', '0963480571', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:32:37', '212167737', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN QUAN', '', '0271000945811', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(732, 0, 0, 0, '240610941329', 0, 0, 'haotp', '', 1, 547, '', '', NULL, 'Haoho0208@gmai.com', '0903990566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.71.112', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:33:22', '250506032', '2016-11-04 22:32:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/haotp.jpg.4d859f3466ec4ad3d4fac2bfe7f592ff', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 24, 'HO SY HAO', '', '0561000570521', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(733, 0, 0, 0, '159252896133', 0, 0, 'luongchung', '', 1, 713, '', '', NULL, 'darknight9y@gmail.com', '01649653592', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.239.38', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:33:53', '250882878', '2016-10-04 05:51:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/_20161003_214721.JPG.fb46bee0d12f04ccc3a404ea03c463b6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LUONG QUANG CHUNG', '', '0561000559114', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(734, 0, 0, 0, '6819442804', 0, 0, 'Gcuong90', '', 1, 547, '', '', NULL, 'Gcuong90@gmail.com', '0985555903', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.48.101', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:39:00', '272828337', '2016-11-04 05:06:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Gcuong90.jpg.2690a9e33c915a3c6b08deb2878b3cd5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'GIAP VAN CUONG', '', '0481000239167', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(735, 0, 0, 0, '139896383122', 0, 0, 'thangbom', '', 1, 547, '', '', NULL, 'thangbom6899@gmail.com', '01224059921', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.186.101', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:45:35', '25042012', '2016-11-04 22:19:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thangbom.jpg.0d6c4fd8a2ecdcbc1b358b2f82578802', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN HOANG TRANG', '', '0061000068895', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(736, 0, 0, 0, '241919281446', 0, 0, 'vietan1', '', 1, 721, '', '', NULL, 'vietanlx@gmail.com', '01225220522', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:47:46', '351994413', '2016-11-04 20:34:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1475569783284_9818.jpg.8612bebf9714621e011c5570b6d9f73f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG VIET AN', '', '0151000561655', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(737, 0, 0, 0, '156248720448', 0, 0, 'vietan2', '', 1, 721, '', '', NULL, 'vietanlx@gmail.com', '01225220522', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:48:40', '351994413', '2016-11-04 03:06:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1475569783284_9818.jpg.98d65f923d98d1630b41d5003b353205', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG VIET AN', '', '0151000561655', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(738, 0, 0, 0, '876626533', 0, 0, 'nthnam', '', 1, 547, '', '', NULL, 'nthnam.daniels@gmail.com', '0974173417', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.75.90.35', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:49:43', '281050093', '2016-10-04 11:18:10', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TRAN HOAI NAM', '', '0461000529609', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(739, 0, 0, 0, '109042491765', 0, 0, 'nhungngo1', '', 1, 721, '', '', NULL, 'ngonhung1502@gmail.com', '0939887189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:53:03', '351617447', '2016-11-04 20:32:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/nhungngo.jpg.8afdee5f2c7ddf58c41135cdefb6f513', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGO HA THAI NHUNG', '', '0151000564455', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(740, 0, 0, 0, '73879926290', 0, 0, 'trandainhan0506', '', 1, 714, '', '', NULL, 'trandainhan0506@yahoo.com', '0932546584', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.239.144', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:53:41', '024016652', '2016-11-04 22:35:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/WP_20150528_15_07_12_Pro.jpg.e259f9019f10c8280f7f7d98bcb93ee0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRAN HA DUC HUY', '', '0441003782873', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(741, 0, 0, 0, '36533909254', 0, 0, 'nhungngo2', '', 1, 721, '', '', NULL, 'ngonhung1502@gmail.com', '0939887189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:54:08', '351617447', '2016-11-04 20:32:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/nhungngo.jpg.6f9690a08bcb513913d99c67b6121d15', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGO HA THAI NHUNG', '', '0151000564455', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(742, 0, 0, 0, '176400189288', 0, 0, 'baodunggl', '', 1, 730, '', '', NULL, 'baodunggl@gmail.com', '0935240979', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.22.170', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:56:55', '230595672', '2016-11-04 21:53:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/y.jpg.c6190463c2b0a04b6521d9284f287927', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NHU Y', '', '0291000245813', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(743, 0, 0, 0, '233665726022', 0, 0, 'nhungngo3', '', 1, 721, '', '', NULL, 'ngonhung1502@gmail.com', '0939887189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:57:28', '351617447', '2016-11-04 20:33:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/nhungngo.jpg.6888a90bd655f196680792536af06935', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGO HA THAI NHUNG', '', '0151000564455', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(744, 0, 0, 0, '74477279251', 0, 0, 'oanhngoc07', '', 1, 740, '', '', NULL, 'Oanhngoc07@gmail.com', '01682330849', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.68.249.179', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:58:31', '250384667', '2016-11-04 22:39:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpg.da49d64d7244de7006ae704fb3a83529', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'NGUYEN THI NGOC OANH', '', '0561000562148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(745, 0, 0, 0, '36273784611', 0, 0, 'tuantien', '', 1, 714, '', '', NULL, 'loveyoulove25251325@gmail.com', '0914769788', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.152.188', NULL, NULL, 0, 0, 0, '', '2016-10-04 04:58:57', '173341079', '2016-11-03 22:48:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/tuantien.jpg.d948e6b00fc8fa24bc2318188ea541bd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HUU LUC', '', '0561000534379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(746, 0, 0, 0, '173545629185', 0, 0, 'dangphint', '', 1, 714, '', '', NULL, 'dangphint@gmail.com', '0909777452', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.98.227.156', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:01:16', '225387948', '2016-11-04 20:39:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dangphint.jpg.130b4c1553ba0ee8a090c78fd5427655', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG TRAN MINH PHI', '', '0061001081642', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(747, 0, 0, 0, '236817048647', 0, 0, 'Quanglanhm', '', 1, 714, '', '', NULL, 'Lantq87@gmail.com', '0933812833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.161.35.68', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:04:31', '230656148', '2016-11-04 22:34:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.a1c791351b92a4f787684f8f47218d43', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRUONG QUANG LAN', '', '0441000704861', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(748, 0, 0, 0, '79835523142', 0, 0, 'meck1', '', 1, 721, '', '', NULL, 'ngohaag123@gmail.com', '01686320285', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:08:08', '350164766', '2016-11-02 23:27:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/mekc.jpg.beca77542b128736ef276e73077bc1cc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HA LE HANG', '', '0151000564457', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(749, 0, 0, 0, '40660930934', 0, 0, 'anhcong199', '', 1, 547, '', '', NULL, 'anhcong199@gmail.com', '0989908705', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.181.22.43', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:11:26', '125119407', '2016-11-04 21:46:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.5c836a3dbdde0dbe8618f036d139c2d4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG ANH CONG', '', '0351000952377', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(892, 0, 0, 0, '13513364018', 0, 0, 'vndcch', '', 1, 889, '', '', NULL, 'vndcch02@gmail.com', '0917845312', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.3.212.250', NULL, NULL, 0, 0, 0, '', '2016-10-06 21:56:38', '010304156', '2016-10-06 21:58:06', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TA TIEN DUNG', '', '0491001857275', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(750, 0, 0, 0, '90616124225', 0, 0, 'ngacuong0915', '', 1, 735, '', '', NULL, 'bachthao888@gmail.com', '0986371991', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.43.126', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:12:38', '017014627', '2016-11-04 21:57:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngacuong0915.jpg.d951d2cb876b9db155e5421149b1fdd7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LIEU THI NGA', '', '0451000374846', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(751, 0, 0, 0, '31742984729', 0, 0, 'phucdt', '', 1, 714, '', '', NULL, 'phuc.dt.138@gmail.com', '0908286167', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.252.101', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:17:40', '273230963', '2016-11-04 19:47:27', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/14536633_1382299675120985_1637645186_o.jpg.2be02140c88b4e81e78bb78df8485574', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG TRUONG PHUC', '', '0081001252096', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(752, 0, 0, 0, '206834963717', 0, 0, 'meck2', '', 1, 736, '', '', NULL, 'ngohaag123@gmail.com', '01686320285', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:29:48', '350164766', '2016-11-04 20:30:25', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/mekc.jpg.367085f68af70689c161ee38bd771e13', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HA LE HANG', '', '0151000564457', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(753, 0, 0, 0, '216898220305', 0, 0, 'meck3', '', 1, 736, '', '', NULL, 'ngohaag123@gmail.com', '01686320285', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.234.175', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:31:23', '350164766', '2016-10-28 23:31:45', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/mekc.jpg.a04967ec719d4b587a335cddbe5a4b2f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HA LE HANG', '', '0151000564457', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(754, 0, 0, 0, '92150334244', 0, 0, 'disau1', '', 1, 737, '', '', NULL, 'havanag123@gmail.com', '01657530339', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:39:11', '350186314', '2016-11-04 20:35:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/di6.jpg.4c5646fab044382e55cc2bb14569f178', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HA THI THU VAN', '', '0151000564490', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(755, 0, 0, 0, '30492144280', 0, 0, 'linh09', '', 1, 749, '', '', NULL, 'ngoclinhadidaphat@gmail.com', '01683379711', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.249.86.74', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:39:28', '023760557', '2016-11-04 21:47:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/CMND(TRUOC).jpg.1f0bb57b0ca7f375190d5b895af176eb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN NGOC LINH', '', '0441000673701', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(756, 0, 0, 0, '206568755826', 0, 0, 'disau2', '', 1, 737, '', '', NULL, 'havanag123@gmail.com', '01657530339', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:40:42', '350186314', '2016-11-04 20:34:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/di6.jpg.18d35b716f366642a7a4c124cf7f17f9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HA THI THU VAN', '', '0151000564490', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(757, 0, 0, 0, '219100102950', 0, 0, 'nguyenhuutien221', '', 1, 714, '', '', NULL, 'nguyenhuutien2210@gmail.com', '0969856469', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.20.118.30', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:42:08', '001091001843', '2016-11-04 22:13:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/12970650_917478405032195_981681859_o.jpg.88e81737c7590e8188d302b4de83b1bc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN HUU TIEN', '', '0991000013828', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(758, 0, 0, 0, '86244599655', 0, 0, 'disau3', '', 1, 737, '', '', NULL, 'havanag123@gmail.com', '01657530339', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.34.77', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:43:03', '350186314', '2016-11-04 03:15:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/di6.jpg.c2e0c0d904804b0df7e64b6068e93f5e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HA THI THU VAN', '', '0151000564490', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(759, 0, 0, 0, '23929771831', 0, 0, 'lekhanh', '', 1, 749, '', '', NULL, 'dkhanh88it@gmail.com', '0909362680', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.53.91', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:46:56', '371313090', '2016-11-04 19:53:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/Chung-minh-thu3.jpg.64d37a8d16d4b421956897ac82294853', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'LE DUY KHANH', '', '0071001069596', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(760, 0, 0, 0, '107478280564', 0, 0, 'dihanh1', '', 1, 737, '', '', NULL, 'dihanhag456@gmail.com', '0978907669', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:49:17', '350998488', '2016-11-04 20:36:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/dihanh.jpg.d264a9dabc74caf2b34e29fab85dffa6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI MY HANH', '', '0151000561450', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(761, 0, 0, 0, '4586821458', 0, 0, 'dihanh2', '', 1, 737, '', '', NULL, 'dihanhag456@gmail.com', '0978907669', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:50:47', '350998488', '2016-11-04 20:31:38', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/dihanh.jpg.7ba332e57afe2a7f367fa141225ce60e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI MY HANH', '', '0151000561450', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(762, 0, 0, 0, '165239064404', 0, 0, 'dihanh3', '', 1, 737, '', '', NULL, 'dihanhag456@gmail.com', '0978907669', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.25.158', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:52:20', '350998488', '2016-11-04 20:31:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/dihanh.jpg.83fe7fabc91172f8af3c603e2621754b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI MY HANH', '', '0151000561450', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(763, 0, 0, 0, '244867945988', 0, 0, 'ngoctran', '', 1, 749, '', '', NULL, 'ngoctrantranle@gmail.com', '0983776587', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.176.141.212', NULL, NULL, 0, 0, 0, '', '2016-10-04 05:54:38', '225263214', '2016-11-03 23:16:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngoctran.jpg.3017d3f03be002fb9a7f648b8183a6f2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRAN LE NGOC TRAN', '', '0061000456640', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(764, 0, 0, 0, '109841901457', 0, 0, 'nhungdihanh1', '', 1, 736, '', '', NULL, 'dihanhag123@gmail.com', '01684225525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.49.12', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:04:13', '351944365', '2016-11-02 23:04:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/condihanh.jpg.e4eee7fecd7a7433280d6fb1274528bc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH THI TUYET NHUNG', '', '0151000564491', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(765, 0, 0, 0, '805601409', 0, 0, 'nhungdihanh2', '', 1, 736, '', '', NULL, 'dihanhag123@gmail.com', '01684225525', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.29.128', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:05:38', '351944365', '2016-10-04 06:09:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/condihanh.jpg.f0b5f6f651aa634bce9c035bba3e4930', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI TUYET NHUNG', '', '0151000564491', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(766, 0, 0, 0, '160567559011', 0, 0, 'thuyngan', '', 1, 630, '', '', NULL, 'Ntt160889@gmail.com', '01263766233', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.100.211', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:06:03', '212305122', '2016-11-04 22:49:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/6.jpg.4b0726c216fc3a63e5de5cb50fbb5830', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI THUY', '', '0571000381891', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(768, 0, 0, 0, '142681211748', 0, 0, 'Songheo', '', 2, 697, '', '', NULL, 'Nhung3819@gmail.com', '085365619131', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '60.246.40.245', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-11-04 20:39:34', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Songheo.jpg.89922bd0a61b06b95a2a74b083406243', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI THU HOAI', '', '0381000497260', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(769, 0, 0, 0, '5405766512', 0, 0, 'ThuyDung', '', 1, 561, '', '', NULL, 'thuydung5773@gmail.com', '0981358088', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '66.249.82.141', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:09:42', '012975190', '2016-10-04 06:56:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_175555.jpg.8f3dbf461faba5bddec7b22b6bff0664', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DAO THUY DUNG', '', '0301000313976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(770, 0, 0, 0, '100245124209', 0, 0, 'nguyenkhang13', '', 2, 714, '', '', NULL, ' zing4vbaby@gmail.com', '0901919596 ', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.159.52', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-11-04 21:11:35', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/nguyenkhang13.jpg.3284678ee3b0cfa4b4dc078470f0d5aa', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HO MINH HIEU', '', '0061001086867', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(771, 0, 0, 0, '22318192641', 0, 0, 'XuanKieu68', '', 1, 769, '', '', NULL, 'kieu011957@gmail.com', '0947420363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.185', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:13:35', '381298928', '2016-11-04 13:36:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_171620.jpg.6900e16243e4aa624a156b839e245436', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DO XUAN KIEU', '', '0191000315446', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(772, 0, 0, 0, '147639915011', 0, 0, 'ThuyDung1', '', 1, 769, '', '', NULL, 'thuydung5773@gmail.com', '0981358088', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '66.249.82.139', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:20:21', '012975190', '2016-10-04 06:58:15', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_175555.jpg.341d2bd9b1231236aed0f732cf458290', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DAO THUY DUNG', '', '0301000313976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(773, 0, 0, 0, '276304184929', 0, 0, 'giaquat', '', 1, 732, '', '', NULL, 'hagiaquat1984@gmail.com', '0963921268', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.8.65', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:21:25', '121510794', '2016-11-04 22:39:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/giaquat.jpg.8a74185c7d5f4c38e30a84efb95903f7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HA GIA QUAT', '', '0731000663257', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(774, 0, 0, 0, '105062236272', 0, 0, 'ThuyDung2', '', 1, 769, '', '', NULL, 'thuydung5773@gmail.com', '0981358088', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '66.249.82.139', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:21:42', '012975190', '2016-10-04 07:08:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_20161004_175555.jpg.fcb7b4e223a389d27542253f83542d76', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DAO THUY DUNG', '', '0301000313976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(775, 0, 0, 0, '17552572818', 0, 0, 'Phuong221930', '', 1, 738, '', '', NULL, 'Phuong221930@gmail.com', '0987983065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.217.241', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:48:17', '250790396', '2016-11-04 20:45:38', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN LINH PHUONG', '', '0561000557136', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(776, 0, 0, 0, '143751530310', 0, 0, 'nxuanan', '', 1, 547, '', '', NULL, 'xuanan10@gmail.com', '01234555543', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.175.140.150', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:50:37', '201612313', '2016-11-04 21:27:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/CMND-1_XuanAn.jpg.ccfdb9d15d3a2e68d56927a5fce541f6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN XUAN AN', '', '0041000876077', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(777, 0, 0, 0, '280271918934', 0, 0, 'nguyenhuutien222', '', 1, 757, '', '', NULL, 'nguyenhuutien2210@gmail.com', '0969856469', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.20.118.218', NULL, NULL, 0, 0, 0, '', '2016-10-04 06:56:23', '001091001843', '2016-11-03 02:42:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/12970650_917478405032195_981681859_o.jpg.1a6f7792542f9e794b37fbd9e85ce350', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN HUU TIEN', '', '0991000013828', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(778, 0, 0, 0, '99175892065', 0, 0, 'Nguyentp', '', 1, 732, '', '', NULL, 'Nguyennt0099@gmail.com', '0936749835', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.23', NULL, NULL, 0, 0, 0, '', '2016-10-04 07:00:20', '250824366', '2016-11-04 22:48:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyentp.jpg.c15ea3467d240a0837931425f6b93915', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN TAN NGUYEN', '', '0071005615710', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(779, 0, 0, 0, '11032474705', 0, 0, 'tandung', '', 1, 714, '', '', NULL, 'tinhocletran@gmail.com', '0985967639', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.1.234', NULL, NULL, 0, 0, 0, '', '2016-10-04 07:04:38', '273056908', '2016-11-04 21:47:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.97286d33926a9db30ea0bfd48da59319', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'LE TAN DUNG', '', '0081001167367', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(780, 0, 0, 0, '275180489056', 0, 0, 'HappyTham1', '', 1, 554, '', '', NULL, 'Kupipro327@gmail.com', '01668964030', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.186.62.180', NULL, NULL, 0, 0, 0, '', '2016-10-04 07:05:00', '194459474', '2016-11-04 20:22:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HappyTham1.jpg.9ef9199d02ab9e8e20bf16c37339ffa7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRAN THI THAM', '', '0121002681880', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(781, 0, 0, 0, '160294979366', 0, 0, 'vietduynhtq', '', 1, 776, '', '', NULL, 'vietduynhtq@gmail.com', '01629956888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.32.147', NULL, NULL, 0, 0, 0, '', '2016-10-04 07:16:23', '070955188', '2016-11-04 08:56:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vietduynhtq.jpg.cbbff51c8066b9fe4eadba5837878044', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN VIET DUY', '', '0031000262042', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1091, 0, 0, 0, '13262460004', 0, 0, 'caonguyen69', '', 1, 964, '', '', NULL, 'blackeyes.biz@gmail.com', '0963745085', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.183.92.9', NULL, NULL, 0, 0, 0, '', '2016-10-12 00:10:51', '113205182', '2016-11-04 09:42:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/caonguyen69.jpg.1e5db7c68b0fedbcaaf4160a6f54b2f7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'BUI THI BINH NGUYEN', '', '0301000363761', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(782, 0, 0, 0, '427258884', 0, 0, 'lanhuong', '', 1, 776, '', '', NULL, 'lanhuong12a1@gmail.com', '0935539820', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.167.18.38', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:00:38', '225903893', '2016-11-04 22:53:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lanhuong.jpg.89822ef72e5092fe557b95639f8575ac', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI LAN HUONG', '', '0601000446395', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(906, 0, 0, 0, '217038672245', 0, 0, 'luandl', '', 1, 882, '', '', NULL, 'minhluandalat@gmail.com', '0937278708', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.154.65', NULL, NULL, 0, 0, 0, '', '2016-10-07 02:08:45', '250748946', '2016-11-04 21:32:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/luandl.jpg.4e5fbb06cb221275b35b28fd47ba61c2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN MINH LUAN', '', '0561000516964', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(783, 0, 0, 0, '109560624230', 0, 0, 'nguyenvu', '', 1, 759, '', '', NULL, 'nguyenvu0405@gmail.com', '0968031829', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.43.169', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:32:24', '080083000051', '2016-11-04 22:33:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/IMG_0121.JPG.84ee52c18d90c8ba32ce6f064407e72f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HA NGUYEN VU', '', '0071001102253', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(784, 0, 0, 0, '243056054401', 0, 0, 'hoanganh', '', 1, 730, '', '', NULL, 'anhdalat80@gmail.com', '0919550779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.20.134', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:39:48', '250451430', '2016-11-04 21:08:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoanganh.jpg.73e7e9a2f755a9461a8f004ae47decdd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI HOANG ANH', '', '0071001615590', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(785, 0, 0, 0, '165125039751', 0, 0, 'hoanganh1', '', 1, 730, '', '', NULL, 'anhdalat80@gmail.com', '0919550779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.20.134', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:41:52', '250451430', '2016-11-04 21:07:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoanganh1.jpg.af4fb9e3f060019f5bd155190202d5ad', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI HOANG ANH', '', '0071001615590', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(786, 0, 0, 0, '4370826345', 0, 0, 'maidl1', '', 1, 730, '', '', NULL, 'mainguyen7066@gmail.com', '0919177066', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.93.248', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:43:49', '250499440', '2016-11-04 10:44:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/Screenshot_2016-09-14-15-24-13-1.png.67f734bf33fbf07e04e87a2408149ba8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HONG MAI', '', '0071003666349', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(787, 0, 0, 0, '107378972515', 0, 0, 'maidl2', '', 1, 730, '', '', NULL, 'mainguyen7066@gmail.com', '0919177066', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.165.167.244', NULL, NULL, 0, 0, 0, '', '2016-10-04 08:45:28', '250499440', '2016-11-03 23:32:45', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/Screenshot_2016-09-14-15-24-13-1.png.f242d6d5a94f466234117947d533b998', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HONG MAI', '', '0071003666349', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(788, 0, 0, 0, '238657176578', 0, 0, 'chipcoi1307', '', 1, 734, '', '', NULL, 'chipcoi1307@gmail.com', '0937225145', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.203.36', NULL, NULL, 0, 0, 0, '', '2016-10-04 09:04:26', '272044197', '2016-11-04 08:42:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/14580477_1313447565373389_1781743879_n.jpg.44f0ec7f3e6bcd3d782d8907862e016c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'NGUYEN TUAN TRUNG', '', '0121000797684', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(871, 0, 0, 0, '14229661974', 0, 0, 'xuanthaoqn', '', 1, 820, '', '', NULL, 'xuanthao1968@gmail.com', '01278827866', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 22:27:58', '100660229', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN XUAN THAO', '', '0521000714379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(789, 0, 0, 0, '159772581892', 0, 0, 'Tranhop161', '', 2, 732, '', '', NULL, 'Tranthihop9999@gmail.com', '0944089444', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.23', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-11-04 22:45:39', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Tranhop161.jpg.e01e41b3f0ffa5ac66c169a45bf7c356', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI HOP', '', '0151000557282', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1277, 0, 0, 0, '99321673089', 0, 0, 'phuonghn79', '', 1, 637, '', '', NULL, 'Misphuong1987@gmail.com', '0938107888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.77.178', NULL, NULL, 0, 0, 0, '', '2016-10-20 03:15:19', '060809141', '2016-11-04 22:21:34', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI PHUONG', '', '0491000080122', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(790, 0, 0, 0, '279987632165', 0, 0, 'Oanhngoc09', '', 1, 744, '', '', NULL, 'Oanhngoc07@gmail.com', '01682330849', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.68.249.179', NULL, NULL, 0, 0, 0, '', '2016-10-04 09:30:26', '250384667', '2016-11-03 23:09:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpg.3088979c8755006319cb4a5ca46ad146', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NGOC OANH', '', '0561000562148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(791, 0, 0, 0, '143483151641', 0, 0, 'Xuandiu', '', 1, 744, '', '', NULL, 'Haiauo2000@yahoo.com', '01992028427', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.68.249.179', NULL, NULL, 0, 0, 0, '', '2016-10-04 09:52:58', '250784533', '2016-11-03 23:10:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpg.07b9a6a1e52a489e9350fc62d1586690', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI XUAN DIU', '', '0531000293997', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(797, 0, 0, 0, '100135208038', 0, 0, 'vuviet', '', 1, 547, '', '', NULL, 'vuviet2299@gmail.com', '0962999486', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.76.245.42', NULL, NULL, 0, 0, 0, '', '2016-10-04 13:28:49', '025084000203', '2016-11-04 05:09:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/cmt.JPG.3e58da89ef9ee40adc55e941d45d2a52', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VU VAN VIET', '', '0451000332673', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(876, 0, 0, 0, '150920663609', 0, 0, 'thao79', '', 1, 546, '', '', NULL, 'ngocthao4599@gmail.com', '0949454599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.83.19', NULL, NULL, 0, 0, 0, '', '2016-10-06 02:18:30', '352573867', '2016-11-04 19:56:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.42ee3bd4b4198273adb78f82d7b79cd6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC THAO', '', '0151000554735', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(792, 0, 0, 0, '17282978149', 0, 0, 'Phammoi', '', 1, 759, '', '', NULL, 'Soncode86@gmail.com', '0976225674', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.43.169', NULL, NULL, 0, 0, 0, '', '2016-10-04 11:00:50', '363961322', '2016-11-04 22:31:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/photo_2016-10-05_10-51-39.jpg.c87b34d41ed29ffd61e81e95981302fb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'PHAM VAN MOI', '', '0481000802939', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(965, 0, 0, 0, '6711366787', 0, 0, 'congthanhtran', '', 1, 740, '', '', NULL, 'congthanhtran120394@gmail.com', '818064599394', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.74.82.32', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:02:45', '187453228', '2016-11-04 20:40:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/congthanhtran.jpg.96b6c754ae9c030030947b5fdad9ad66', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI NHU', '', '0281000444194', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(793, 0, 0, 0, '104779165849', 0, 0, 'tranngoctu67', '', 1, 738, '', '', NULL, 'tranngoctu67@gmail.com', '0988304297', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.250.37', NULL, NULL, 0, 0, 0, '', '2016-10-04 11:19:41', '011516936', '2016-11-04 22:03:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tranngoctu67.jpg.8fc6a455486c0eaa0c05c8e7e663ab70', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI NGOC TU', '', '0961000006980', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(794, 0, 0, 0, '276095305842', 0, 0, 'nguyenhao', '', 1, 734, '', '', NULL, 'namvietnam8@gmail.com', '0905545934', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.20.112.27', NULL, NULL, 0, 0, 0, '', '2016-10-04 11:40:02', '230825322', '2016-11-04 21:50:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/14591628_1279484592096198_8746861630527655180_n.jpg.899f17f90dc780403f29467b61219adf', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN MINH HAO', '', '0071000937562', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(795, 0, 0, 0, '147426927512', 0, 0, 'quyen96', '', 1, 734, '', '', NULL, 'nguyenthanhquyen96@gmail.com', '0963400409', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.48.101', NULL, NULL, 0, 0, 0, '', '2016-10-04 11:46:26', '272534575', '2016-11-04 05:03:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/quyen96.jpg.060e8120b2ece0f4d05e16d8d2c75247', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH QUYEN', '', '0481000792755', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(796, 0, 0, 0, '22112830216', 0, 0, 'anhmai', '', 1, 735, '', '', NULL, 'huyeminh024@gmail.com', '01267301763', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.55.21', NULL, NULL, 0, 0, 0, '', '2016-10-04 12:24:32', '024642746', '2016-10-18 00:51:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRINH THI ANH MAI', '', '0501000079952', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(798, 0, 0, 0, '281142313489', 0, 0, 'ngocngu', '', 1, 586, '', '', NULL, 'ngochoangicd@gmail.com', '0943362424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.176.122.175', NULL, NULL, 0, 0, 0, '', '2016-10-04 19:15:19', '271629549', '2016-11-04 22:01:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HOANG NGOC NGU', '', '0481000689661', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(799, 0, 0, 0, '154954982153', 0, 0, 'phuong9999', '', 1, 730, '', '', NULL, 'phuongld9999@gmail.com', '01258303592', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.140.34', NULL, NULL, 0, 0, 0, '', '2016-10-04 20:10:43', '250411873', '2016-11-04 22:20:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuong9999.jpg.7880e7aeac4d032ea9442e04a5254296', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI NGUYEN PHUONG', '', '0561000520475', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(800, 0, 0, 0, '31290571123', 0, 0, 'nguyenvy', '', 2, 568, '', '', NULL, 'phuongvychuong@gmail.com', '0916118691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-04 00:00:00', '1', '2016-11-04 20:39:00', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/nguyenvy.jpg.b93aa7f783c9effe06360b03c52f6087', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI VY', '', '0541001611504', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(801, 0, 0, 0, '91120211089', 0, 0, 'Phugia', '', 1, 678, '', '', NULL, 'Mytrinh1116@gmail.com', '0905497667', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.240.192', NULL, NULL, 0, 0, 0, '', '2016-10-04 22:11:45', '240719489', '2016-10-04 22:12:22', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LUONG THI MY TRINH', '', '0231000562106', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(802, 0, 0, 0, '216450803077', 0, 0, 'hai168', '', 1, 692, '', '', NULL, 'nguonvonbt1@gmail.com', '0898307250', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '::1', NULL, NULL, 0, 0, 0, '', '2016-10-04 23:51:08', ' 280669268', '2016-11-05 10:28:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/1449650166132_6598.jpg.d260761abe2aae2bfd37bc2472062fd4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'NGUYEN MINH HAI', '', '0281000454043', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(803, 0, 0, 0, '207367805287', 0, 0, 'hai268', '', 1, 692, '', '', NULL, 'nguonvonbt1@gmail.com', '0898307250', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-04 23:53:36', ' 280669268', '2016-11-03 14:55:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH HAI', '', '0281000454043', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(804, 0, 0, 0, '30944956448', 0, 0, 'kimanhbd', '', 1, 692, '', '', NULL, 'nguonvonbt1@gmail.com', '0898307250', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-04 23:56:54', '280669268', '2016-11-01 15:43:48', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN MINH HAI', '', '0281000454043', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(805, 0, 0, 0, '91646673236', 0, 0, 'nguyenhai', '', 2, 692, '', '', NULL, 'nguonvonbt1@gmail.com', '0898307250', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-05 00:00:00', '1', '2016-11-03 14:46:53', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'http://happymoney.us/system/upload/1449650166132_6598.jpg.310c12b2908e9f2ba5ca5cec27433765', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN MINH HAI', '', '0381002652774', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(806, 0, 0, 0, '219446462816', 0, 0, 'PHUONGMINH', '', 1, 713, '', '', NULL, 'phuongminhvty@gmail.com', '0918931989', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.164.79.13', NULL, NULL, 0, 0, 0, '', '2016-10-05 00:30:53', '361427920', '2016-11-03 22:47:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PHUONGMINH.jpg.c711541350d990bbc672b96b2df8ebce', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN LUU PHUONG MINH', '', '0111000263421', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(807, 0, 0, 0, '178661766740', 0, 0, 'nguyenbacqn1', '', 1, 626, '', '', NULL, 'nguyenvanbacbc2015@gmai.com', '01296893634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 02:35:21', '101254610', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(808, 0, 0, 0, '23494874435', 0, 0, 'nguyenbacqn2', '', 1, 626, '', '', NULL, 'nguyenvanbacbc2015@gmail.com', '01296893634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 02:38:40', '101254610', '2016-10-05 12:15:03', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(809, 0, 0, 0, '86772885857', 0, 0, 'phamthuyqn', '', 1, 626, '', '', NULL, 'phamthithuybc32@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 02:43:31', '100548128', '2016-10-05 12:59:06', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(810, 0, 0, 0, '38677780520', 0, 0, 'nguyencuongqn', '', 1, 626, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.111.67.25', NULL, NULL, 0, 0, 0, '', '2016-10-05 02:48:40', '101125427', '2016-10-08 23:20:36', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(811, 0, 0, 0, '73439195750', 0, 0, 'tangocqn', '', 1, 626, '', '', NULL, 'tavanngoc74@gmail.com', '0967703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.25.212', NULL, NULL, 0, 0, 0, '', '2016-10-05 02:52:30', '030074000664', '2016-11-04 19:46:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tangocqn.jpg.954b225f6c717c47c8ce5654f4bc2f96', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(812, 0, 0, 0, '234169394016', 0, 0, 'phamthuyqn1', '', 1, 809, '', '', NULL, 'phamthuybc32@gmail.com', '01697721676', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 03:48:06', '100548128', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(813, 0, 0, 0, '174336771590', 0, 0, 'phamthuyqn2', '', 1, 809, '', '', NULL, 'phamthithuybc32@gmail.com', '01697721676', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 03:50:12', '100548128', '2016-10-05 23:03:17', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(814, 0, 0, 0, '35740919703', 0, 0, 'nguyencuongqn1', '', 1, 810, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 03:54:44', '101125427', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(815, 0, 0, 0, '74918013017', 0, 0, 'nguyencuongqn2', '', 1, 810, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 03:56:19', '101125427', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(816, 0, 0, 0, '236313384969', 0, 0, 'tangocqn1', '', 1, 811, '', '', NULL, 'tavanngoc74@gmail.com', '0967703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.25.212', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:00:20', '030074000664', '2016-11-04 19:44:50', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(817, 0, 0, 0, '173998048117', 0, 0, 'tangocqn2', '', 1, 811, '', '', NULL, 'tavanngoc74@gmail.com', '0976703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.25.212', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:02:07', '030074000664', '2016-11-04 19:48:18', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(818, 0, 0, 0, '41177137560', 0, 0, 'levanqn', '', 1, 808, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:05:45', '100234299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(819, 0, 0, 0, '79478403986', 0, 0, 'levanqn1', '', 1, 808, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:08:20', '100234299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(820, 0, 0, 0, '21784519065', 0, 0, 'levanqn2', '', 1, 808, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:10:19', '100234299', '2016-10-05 22:21:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(821, 0, 0, 0, '100685415201', 0, 0, 'hungnguyenqng', '', 1, 624, '', '', NULL, 'hunghieu2323@gmail.com', '0985149060', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.16.252', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:11:15', '212317636', '2016-11-03 22:23:40', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH TAM', '', '0271001004154', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(822, 0, 0, 0, '275793392469', 0, 0, 'nguyenhuyenqn', '', 1, 626, '', '', NULL, 'nkh061294@gmail.com', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:15:10', '101305384', '2016-10-05 04:19:47', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(823, 0, 0, 0, '147984955273', 0, 0, 'nguyenhuyenqn1', '', 1, 822, '', '', NULL, 'nkh061294@gmail.com', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:17:35', '100305384', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(824, 0, 0, 0, '18086246210', 0, 0, 'nguyenhuyenqn2', '', 1, 822, '', '', NULL, 'nkh061294@gmail.com', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 04:19:39', '101305384', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(825, 0, 0, 0, '104716314162', 0, 0, '', '', 8, 725, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.50.249', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-05 00:00:00', '1', '2016-10-21 10:12:15', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/phongnt.jpg.6d5cb22e856dc7f428628f5af8431635', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(826, 0, 0, 0, '280675752002', 0, 0, 'quangtungtn', '', 1, 626, '', '', NULL, 'maquangtung1984@gmail.com', '0946588885', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 07:14:51', '090980135', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'MA QUANG TUNG', '', '0021000360623', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(827, 0, 0, 0, '143400191030', 0, 0, 'manhbh', '', 1, 546, '', '', NULL, 'Phamvanmanhdung1402@gmail.com', ' 0983.282.306', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.52.96.188', NULL, NULL, 0, 0, 0, '', '2016-10-05 08:23:54', '187157431 ', '2016-11-04 22:37:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.c354cf0780c66eb33de771834b9990cf', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAM VAN MANH', '', '0121000787515', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(828, 0, 0, 0, '10522998931', 0, 0, 'luudu', '', 1, 712, '', '', NULL, 'luuvandu191268@gmail.com', '0907666471', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 10:51:57', '350779843', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LUU VAN DU', '', '0531002486368', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(829, 0, 0, 0, '99640382307', 0, 0, 'thanhthuygl', '', 1, 742, '', '', NULL, 'thuynguyenglai119@gmail.com', '0983246846', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.19.87.216', NULL, NULL, 0, 0, 0, '', '2016-10-05 11:10:40', '231254312', '2016-11-04 14:29:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/thuynguyen.jpg.ad476707419e2032ca35fc9c1abecb5f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH THUY', '', '0291000301055', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(830, 0, 0, 0, '4938155288', 0, 0, 'huynhanh', '', 1, 804, '', '', NULL, 'nguonvonbt1@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.142.211', NULL, NULL, 0, 0, 0, '', '2016-10-05 11:25:12', '280669268', '2016-11-04 13:02:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(831, 0, 0, 0, '105363165992', 0, 0, 'chinak', '', 1, 742, '', '', NULL, 'thuychinto84@gmail.com', '01224553575', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '64.233.173.150', NULL, NULL, 0, 0, 0, '', '2016-10-05 11:27:49', '230601007', '2016-10-05 11:33:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/chin.jpg.3bcc8cbf413fd17866bf3281c9d9b8ca', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TO THI CHIN', '', '0291000195437', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(832, 0, 0, 0, '245207598392', 0, 0, 'huynhanh68', '', 1, 804, '', '', NULL, 'nguonvonbt1@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:04:34', '280669268', '2016-11-03 14:59:02', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(833, 0, 0, 0, '164705363734', 0, 0, 'huynhanh168', '', 1, 804, '', '', NULL, 'lisapham2003.5@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:11:54', '280669268', '2016-10-31 14:36:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(834, 0, 0, 0, '353597827', 0, 0, 'huynhanh268', '', 1, 804, '', '', NULL, 'lisapham2003.5@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:15:35', '280669268', '2016-10-31 14:45:46', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(835, 0, 0, 0, '137726813545', 0, 0, 'phuongthuyqn', '', 1, 809, '', '', NULL, 'phamthithuybc32@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:17:13', '100548128', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(836, 0, 0, 0, '275014361241', 0, 0, 'kimanh68', '', 1, 804, '', '', NULL, 'lisapham2003.5@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:17:33', '280669268', '2016-11-03 21:40:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(837, 0, 0, 0, '161101255749', 0, 0, 'vanbacqn', '', 1, 808, '', '', NULL, 'nguyenvanbacbc2015@gmail.com', '01296893634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:17:59', '101254610', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(838, 0, 0, 0, '5740441640', 0, 0, 'phuongthuyqn1', '', 1, 809, '', '', NULL, 'phamthithuybc32@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:19:38', '1000548128', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(839, 0, 0, 0, '142160049688', 0, 0, 'vanbacqn1', '', 1, 808, '', '', NULL, 'nguyenvanbacbc2015@gmail.com', '01296892634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:20:48', '101254610', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(840, 0, 0, 0, '77865428069', 0, 0, 'phuongthuyqn2', '', 1, 809, '', '', NULL, 'phamthithuybc32@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:21:45', '100548128', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI THUY', '', '0521000713254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(841, 0, 0, 0, '70602981763', 0, 0, 'vanbacqn2', '', 1, 808, '', '', NULL, 'nguyenvanbacbc2015@gmail.com', '01296893634', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:24:07', '101254610', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN BAC', '', '0521000711976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(842, 0, 0, 0, '170046609793', 0, 0, 'tuancuongqn', '', 1, 810, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:25:51', '101125427', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(843, 0, 0, 0, '228055331171', 0, 0, 'tuancuongqn1', '', 1, 810, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:27:41', '101125427', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(844, 0, 0, 0, '82513958962', 0, 0, 'tuancuongqn2', '', 1, 810, '', '', NULL, 'tuancuong1711@gmail.com', '0982941931', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:29:09', '101125427', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TUAN CUONG', '', '0521000550489', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(845, 0, 0, 0, '39997092148', 0, 0, 'kimanh168', '', 1, 804, '', '', NULL, 'lisapham2003.5@gmail.com', '01692443484', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:31:13', '280669268', '2016-10-31 21:04:19', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH KIM ANH', '', '0281000456129', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(846, 0, 0, 0, '167807877728', 0, 0, 'xuanngocqn', '', 1, 811, '', '', NULL, 'tavanngoc74@gmail.com', '0967703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.25.212', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:33:36', '030074000664', '2016-11-04 19:49:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(847, 0, 0, 0, '231952623494', 0, 0, 'xuanngocqn1', '', 1, 811, '', '', NULL, 'tavanngoc74@gmail.com', '0967703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.175.97.221', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:35:18', '030074000664', '2016-11-04 04:12:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(848, 0, 0, 0, '74982789187', 0, 0, 'xuanngocqn2', '', 1, 811, '', '', NULL, 'tavanngoc74@gmail.com', '0967703139', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.25.212', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:37:17', '030074000664', '2016-11-04 22:02:08', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TA VAN NGOC', '', '0521000712160', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(849, 0, 0, 0, '34952385029', 0, 0, 'hongvanqn', '', 1, 820, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:45:14', '100234299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(850, 0, 0, 0, '83523871318', 0, 0, 'thanhthuyqn', '', 1, 810, '', '', NULL, 'thanhthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.111.67.25', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:48:52', '101125424', '2016-10-08 03:41:19', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(851, 0, 0, 0, '27135064212', 0, 0, 'hongvanqn1', '', 1, 820, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:50:59', '100234299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(852, 0, 0, 0, '215169005600', 0, 0, 'thanhthuyqn1', '', 1, 850, '', '', NULL, 'thanthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:51:57', '101125424', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(853, 0, 0, 0, '220811565158', 0, 0, 'hongvanqn2', '', 1, 820, '', '', NULL, 'lethivan52@gmail.com', '01255586147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:53:10', '100234299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI VAN', '', '0141000796705', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(854, 0, 0, 0, '87327000215', 0, 0, 'thanhthuyqn2', '', 1, 850, '', '', NULL, 'thanhthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:53:38', '101125424', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(855, 0, 0, 0, '23178971431', 0, 0, 'thuyphamqn', '', 1, 850, '', '', NULL, 'thanhthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:55:53', '101125424', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(856, 0, 0, 0, '208715415585', 0, 0, 'thuyphamqn1', '', 1, 850, '', '', NULL, 'thanhthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:57:52', '101125424', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(857, 0, 0, 0, '225560527897', 0, 0, 'thuyphamqn2', '', 1, 850, '', '', NULL, 'thanhthuy281091@gmail.com', '0948826933', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 12:59:17', '101125424', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THANH THUY', '', '0521000715289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(858, 0, 0, 0, '92682151814', 0, 0, 'khanhhuyenqn', '', 1, 809, '', '', NULL, 'nkh061294@gmail.co', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.97.181.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 13:04:55', '101305384', '2016-10-05 13:06:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(859, 0, 0, 0, '27675395876', 0, 0, 'khanhhuyenqn1', '', 1, 858, '', '', NULL, 'nkh062194@gmail.com', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 13:09:32', '101305384', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(860, 0, 0, 0, '139103598709', 0, 0, 'khanhhuyenqn2', '', 1, 858, '', '', NULL, 'nkh061294@gmail.com', '01636196943', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 13:11:49', '101305384', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN KHANH HUYEN', '', '0521000715219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(861, 0, 0, 0, '9468737907', 0, 0, 'LaoTuan.HAPPYMONEY.US', '', 1, 540, '', '', NULL, 'Tuanduong25387@gmail.com', '0937577050', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 20:13:09', '191621169', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG QUANG TUAN', '', '0161000566454', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(884, 0, 0, 0, '240675549800', 0, 0, 'thengoc', '', 1, 879, '', '', NULL, 'nguyenthihienhb81@gmail.com', '0974930508', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.235.2', NULL, NULL, 0, 0, 0, '', '2016-10-06 10:58:37', '001181012131', '2016-11-04 07:44:47', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thengoc.jpg.ad7e13d6519e79bc4a95012a14d11383', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI HIEN', '', '0011004293976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(862, 0, 0, 0, '157178601845', 0, 0, 'HoangPhuongA', '', 2, 552, '', '', NULL, 'Kiemnhi1411@gmail.com', '0937179833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.66', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-05 00:00:00', '1', '2016-11-01 21:21:08', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(863, 0, 0, 0, '241127540275', 0, 0, 'HoangPhuongB', '', 2, 552, '', '', NULL, 'Kiemnhi1411@gmail.com', '0937179833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-05 00:00:00', '1', '2016-11-01 10:08:02', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(864, 0, 0, 0, '141841231896', 0, 0, 'HoangPhuongC', '', 2, 552, '', '', NULL, 'Kiemnhi1411@gmail.com', '0937179833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-05 00:00:00', '1', '2016-11-01 10:09:01', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI HOANG PHUONG', '', '0041000258335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(865, 0, 0, 0, '6297841668', 0, 0, 'minhphuc', '', 1, 548, '', '', NULL, 'manhphuong496@gmail.com', '0978644783', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:12:50', '272414050', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM MANH PHUONG', '', '0481000776436', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(866, 0, 0, 0, '156605448304', 0, 0, 'NhiNhiA', '', 1, 555, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:14:55', '191994404', '2016-11-04 22:59:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.0f048fb31bc66ef8cd069f09610b7848', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(867, 0, 0, 0, '241408972136', 0, 0, 'NhiNhiB', '', 1, 555, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:16:58', '191994404', '2016-11-04 22:52:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.7147d4936a56c46f10786c898f28e3a6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(868, 0, 0, 0, '108589679991', 0, 0, 'NhiNhiC', '', 1, 555, '', '', NULL, 'Nhatlinh051096@gmail.com', '0937577804', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:18:39', '191994404', '2016-11-04 22:56:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.47b43e67cb419e54f320d7255a72ba25', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NHAT LINH', '', '0481000783248', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(869, 0, 0, 0, '1380287847', 0, 0, 'HoaMocLan68', '', 1, 550, '', '', NULL, 'Huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.183.193.167', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:30:14', '191762947', '2016-11-04 02:34:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.b77dec24ef255028d375ef69fb7a8f55', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH THI DU LANG', '', '0161001621440', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(870, 0, 0, 0, '96470335792', 0, 0, 'HoaMocLan39', '', 1, 550, '', '', NULL, 'Huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', NULL, NULL, 0, 0, 0, '', '2016-10-05 21:32:07', '191762947', '2016-11-04 23:00:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/image.jpeg.72ba0199365ea946b8d300b0eb705644', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'HUYNH THI DU LANG', '', '0161001621440', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(872, 0, 0, 0, '152480347170', 0, 0, 'xuanthaoqn1', '', 1, 820, '', '', NULL, 'xuanthao1968@gmail.com', '01278827866', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 22:33:48', '100660229', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN XUAN THAO', '', '0521000714379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(873, 0, 0, 0, '283628557860', 0, 0, 'xuanthaoqn2', '', 1, 820, '', '', NULL, 'xuanthao1968@gmail.com', '01278827866', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-05 22:36:40', '100660299', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN XUAN THAO', '', '0521000714379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(899, 0, 0, 0, '146673203350', 0, 0, 'vinhphatloc', '', 1, 600, '', '', NULL, 'duyvinh.vnd30@gmail.com', '0975610578', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.174.16', NULL, NULL, 0, 0, 0, '', '2016-10-06 23:55:42', '271530308', '2016-11-02 10:36:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vinhphatloc.jpg.bcad337dcd5d6fb42d92dae0b4d425ae', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN DUY VINH', '', '0121002057905', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(895, 0, 0, 0, '152040457017', 0, 0, 'chaubt', '', 1, 582, '', '', NULL, 'nguyenchau5743@gmail.com', '0917378818', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.53.90.116', NULL, NULL, 0, 0, 0, '', '2016-10-06 22:54:18', '271117962', '2016-10-06 23:13:29', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH CHAU', '', '0501000011913', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(874, 0, 0, 0, '96745292615', 0, 0, 'hanhphatloc', '', 1, 600, '', '', NULL, 'chuyenapple289@gmail.com', '0985567999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.16.24', NULL, NULL, 0, 0, 0, '', '2016-10-05 23:54:04', '271557656', '2016-11-04 21:21:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/hanhphatloc.jpg.1743b37c11233b4b3609559926686327', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HONG HANH', '', '0121000695751', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1103, 0, 0, 0, '31464632422', 0, 0, 'trangle1', '', 1, 1079, '', '', NULL, 'lekimtrang2016@gmail.com', '0908773730', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.77.82.63', NULL, NULL, 0, 0, 0, '', '2016-10-12 21:44:20', '022307054', '2016-11-04 06:35:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trangle1.jpg.006a7d06b5b970bd4568e46eed3b722d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE KIM TRANG', '', '0071001067159', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(877, 0, 0, 0, '284862739593', 0, 0, 'iDGiaoSuX', '', 1, 797, '', '', NULL, 'Gs.thangvu@gmail.com', '0986125180', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.182.177.244', NULL, NULL, 0, 0, 0, '', '2016-10-06 03:40:38', '111970772', '2016-11-04 21:40:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/WP_20160829_11_05_27_Pro.jpg.bbe5e66fba499905265b318c7e4d5aea', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VU VAN THANG', '', '0281001211865', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(875, 0, 0, 0, '13556056105', 0, 0, 'cuongtk', '', 1, 825, '', '', NULL, 'Trancuong9005@gmail.com', '0912199901', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.117.200.12', NULL, NULL, 0, 0, 0, '', '2016-10-06 01:34:56', '272112719', '2016-10-06 23:28:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/cuongtk.jpg.5c433fd123985f9d8179b433eb807201', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN KIM CUONG', '', '0121000625554', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(878, 0, 0, 0, '103924860928', 0, 0, 'Thuytran ', '', 1, 744, '', '', NULL, 'Tranthuy0701@yahoo.com', '0909216101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.201.195', NULL, NULL, 0, 0, 0, '', '2016-10-06 05:25:42', '250432456', '2016-11-04 22:59:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/Thuytran_.jpg.de72042a7f4feef832f627fa35c3557e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRAN BICH THUY', '', '0421000463261', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(879, 0, 0, 0, '18254207248', 0, 0, 'lehuy', '', 1, 599, '', '', NULL, 'nhocbujnhoc@gmail.com', '0983480953', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.183.53', NULL, NULL, 0, 0, 0, '', '2016-10-06 06:00:51', '271961774', '2016-11-04 10:25:59', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'LE QUANG HUY', '', '0481000799526', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(880, 0, 0, 0, '241379598377', 0, 0, 'tuhai', '', 1, 734, '', '', NULL, 'tuhai47344@gmail.com', '01208625490', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.237.65.121', NULL, NULL, 0, 0, 0, '', '2016-10-06 06:31:52', '312149974', '2016-11-04 19:18:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/tuhai.jpg.d9d690222063e9df9bd4aa9773c3f4ef', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAN VAN TU HAI', '', '0671004082006', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(881, 0, 0, 0, '156566456359', 0, 0, 'vuonggia', '', 2, 802, '', '', NULL, 'nguonvonbt@gmail.com', '0936025539', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-06 00:00:00', '1', '2016-11-01 23:15:38', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH HAI', '', '0381002652774', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(882, 0, 0, 0, '6260065633', 0, 0, 'duongyenhappi', '', 1, 797, '', '', NULL, 'duongyen161087@gmail.com', '0902857817', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.189.125', NULL, NULL, 0, 0, 0, '', '2016-10-06 07:54:32', '024046288', '2016-11-04 09:46:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duongyenhappi.jpg.ee840be0686fb9c99c43e413a387157f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DUONG THI HAI YEN', '', '0371003789953', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(883, 0, 0, 0, '141810664729', 0, 0, 'hoanmdf', '', 1, 742, '', '', NULL, 'phanvanhoanak.2014@gmail.com', '0986233781', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.22.115', NULL, NULL, 0, 0, 0, '', '2016-10-06 08:10:46', '162886487', '2016-10-06 08:11:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://happymoney.us/system/upload/hoanmdf.jpg.365c4d47402649864b492da2574a8483', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN VAN HOAN', '', '0291000257539', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(904, 0, 0, 0, '30151291907', 0, 0, 'maipham1', '', 1, 711, '', '', NULL, 'maipham5953@gmail.com', '0937565953', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.56.100', NULL, NULL, 0, 0, 0, '', '2016-10-07 01:56:59', '025795952', '2016-11-04 22:20:51', '0000-00-00 00:00:00', NULL, '', '', '', '', '', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'PHAM THI MAI', '', '0501000122136', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(885, 0, 0, 0, '156837648422', 0, 0, 'minhhung', '', 1, 607, '', '', NULL, 'minhhungnk@gmail.com', '0919214661', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.45.151', NULL, NULL, 0, 0, 0, '', '2016-10-06 11:19:34', '034082001505', '2016-11-04 22:22:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhhung.jpg.d5c70229c8b7ee878fd7f31c2e83f3b8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN MINH HUNG', '', '0121000791200', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(975, 0, 0, 0, '13003990530', 0, 0, 'khanhcuongbp', '', 1, 707, '', '', NULL, 'cuongkhanhnguyen87@gmail.com', '0972597397', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.243.62.223', NULL, NULL, 0, 0, 0, '', '2016-10-07 21:58:41', '285190560', '2016-11-04 08:12:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khanhcuongbp.jpg.92daa0c434a95fde276337248a27b4c5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN KHANH CUONG', '', '0281000450204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(886, 0, 0, 0, '9019155218', 0, 0, 'coba', '', 1, 735, '', '', NULL, 'cobatranquy@gmail.com', '0993904289', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.186.101', NULL, NULL, 0, 0, 0, '', '2016-10-06 11:55:24', '020061666', '2016-11-04 22:15:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/coba.jpg.d946e152b9c7e217c60a02b47e1839d1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LU KIET', '', '0441000696042', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(887, 0, 0, 0, '138653308710', 0, 0, 'quocdong', '', 1, 759, '', '', NULL, 'quocdong28916@gmail.com', '0964793132', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.53.91', NULL, NULL, 0, 0, 0, '', '2016-10-06 20:06:13', '215049810', '2016-10-31 00:21:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/quocdong.jpg.b5b15a594cecb8d5c8d6a125395497d9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG QUOC DONG', '', '0501000121450', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(888, 0, 0, 0, '245725672483', 0, 0, 'ngochuyen', '', 1, 759, '', '', NULL, 'Ngochuyen210191@gmail.com', '0948388567', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.76.37.56', NULL, NULL, 0, 0, 0, '', '2016-10-06 20:10:22', '371313114', '2016-11-04 21:45:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngochuyen.jpg.a2966250acd33cd03b4c945cd477350c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI NGOC HUYEN', '', '0091000602292', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(889, 0, 0, 0, '164357112421', 0, 0, 'camry68', '', 1, 609, '', '', NULL, 'thanhnghiem294@gmail.com', '0917844948', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.22.143', NULL, NULL, 0, 0, 0, '', '2016-10-06 20:48:39', '111017251', '2016-10-20 06:35:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/camry68.jpg.c04f96e9422b1d3de1a20c9f8f418921', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI LIEN', '', '0691000304740', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(890, 0, 0, 0, '284829164864', 0, 0, 'nguyenvy1', '', 1, 800, '', '', NULL, 'phuongvychuong@gmail.com', '0916118691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.36.191', NULL, NULL, 0, 0, 0, '', '2016-10-06 21:21:41', '012724412', '2016-11-04 02:37:28', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI VY', '', '0541001611504', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(891, 0, 0, 0, '150885897218', 0, 0, 'nguyenvy2', '', 1, 800, '', '', NULL, 'phuongvychuong@gmail.com', '0916118691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', NULL, NULL, 0, 0, 0, '', '2016-10-06 21:24:02', '012724412', '2016-11-04 20:39:35', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI VY', '', '0541001611504', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(896, 0, 0, 0, '13791080521', 0, 0, 'chaubt1', '', 1, 895, '', '', NULL, 'nguyenchau5743@gmail.com', '0917378818', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.53.90.116', NULL, NULL, 0, 0, 0, '', '2016-10-06 23:02:29', '271117962', '2016-10-06 23:05:47', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH CHAU', '', '0501000011913', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(897, 0, 0, 0, '96109732241', 0, 0, 'chaubt2', '', 1, 895, '', '', NULL, 'nguyenchau5743@gmail.com', '0917378818', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.53.90.116', NULL, NULL, 0, 0, 0, '', '2016-10-06 23:04:53', '271117962', '2016-10-06 23:06:51', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH CHAU', '', '0501000011913', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(898, 0, 0, 0, '277180593186', 0, 0, 'duong39', '', 1, 709, '', '', NULL, 'doduong1978@gmail.com', '0918567887', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-06 23:48:20', '381744955', '2016-11-04 23:05:52', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duong39.jpg.5cd2c55d4892e2124e85306657114413', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DO HUNG DUONG', '', '0251002728983', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(908, 0, 0, 0, '24049438980', 0, 0, 'thanhhuong90', '', 1, 749, '', '', NULL, 'promarter19@gmail.com', '0989908705', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.181.22.43', NULL, NULL, 0, 0, 0, '', '2016-10-07 02:15:20', '125426287', '2016-11-04 21:44:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhhuong90.jpg.3a3fad1279a847a0ea20d3419f64cb6b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG THANH HUONG', '', '0351000806590', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(901, 0, 0, 0, '90567934532', 0, 0, 'Lanvien1', '', 1, 900, '', '', NULL, 'Lanvienbtc@gmail.com', '0972799481', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.107.38', NULL, NULL, 0, 0, 0, '', '2016-10-07 00:21:58', '215009718', '2016-11-02 02:51:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lanvien1.jpg.3952a3814446eeb571443307cceb52d1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VO TRUC LAN VIEN', '', '0501000031522', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(902, 0, 0, 0, '216767039032', 0, 0, 'Lanvien3', '', 1, 900, '', '', NULL, 'Lanvienbtc@gmail.com', '0972799481', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.148', NULL, NULL, 0, 0, 0, '', '2016-10-07 00:26:00', '215009718', '2016-10-07 00:38:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lanvien3.jpg.b7810eef230e53c2be0abe55f18c9a1b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VO TRUC LAN VIEN', '', '0501000031522', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(903, 0, 0, 0, '206813147158', 0, 0, 'huyentn', '', 1, 736, '', '', NULL, 'nguyenchihai.hp@gmail.com', '0937913319', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.24.217', NULL, NULL, 0, 0, 0, '', '2016-10-07 01:43:46', '290931008', '2016-11-04 10:50:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huyentn.jpg.3b3bef6e888c64c2332d2cd92d25b562', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE NGOC HUYEN', '', '0281000258736', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(905, 0, 0, 0, '91824198963', 0, 0, 'Longag', '', 1, 582, '', '', NULL, 'Htlong87@gmail.com', '0947697729', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.158.79', NULL, NULL, 0, 0, 0, '', '2016-10-07 02:01:52', '351878384', '2016-10-14 22:25:31', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THANH LONG', '', '0151000535243', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(907, 0, 0, 0, '206210176915', 0, 0, 'congven', '', 1, 759, '', '', NULL, 'truongven8827@gmail.com', '0908208827', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.28.213', NULL, NULL, 0, 0, 0, '', '2016-10-07 02:09:16', '370844897', '2016-11-04 20:56:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/congven.jpg.35d05d77f24b74ab3f17aad14d4cc898', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRUONG CONG VEN', '', '0091000614841', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(909, 0, 0, 0, '86456738676', 0, 0, 'Thanhlong', '', 1, 882, '', '', NULL, 'Htlong87@gmail.com', '0947697729', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.213.76', NULL, NULL, 0, 0, 0, '', '2016-10-07 02:22:14', '351878384', '2016-11-03 11:56:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thanhlong.jpg.51b4246aabe33cf148a6302eedbf9672', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HUYNH THANH LONG', '', '0151000535243', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(910, 0, 0, 0, '36514891281', 0, 0, 'bichnga', '', 1, 735, '', '', NULL, 'mailyphanthiet@gmail.com', '0928885034', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.36.169', NULL, NULL, 0, 0, 0, '', '2016-10-07 03:01:07', '220865690', '2016-11-04 22:54:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/bichnga.jpg.a5defe0dffb491eab74d5d37e99fcab0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN HOANG TRANG', '', '0061000068895', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(911, 0, 0, 0, '73846192421', 0, 0, 'thanhthuy', '', 1, 735, '', '', NULL, 'thuy22.vn@gmail.com', '01655973797', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.186.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 03:07:53', '245220560', '2016-11-04 11:00:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhthuy.jpg.678f9cd3d2835ecafa16cadf98ebc163', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH THUY', '', '0531000288946', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(912, 0, 0, 0, '233614709845', 0, 0, 'timhong1', '', 1, 609, '', '', NULL, 'Cuadedanh11@gmail.com', '01698743094', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.65.180.28', NULL, NULL, 0, 0, 0, '', '2016-10-07 03:31:22', '011267135', '2016-10-07 22:28:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/timhong1.jpg.74edb5008688f104cdaee516f9b6bd89', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 't', '', '0541000261126', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(913, 0, 0, 0, '176364283415', 0, 0, 'alibaba', '', 1, 735, '', '', NULL, 'alibaba6899@gmail.com', '0982816597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.186.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 03:38:58', '220865690', '2016-11-03 23:27:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/alibaba.jpg.633557be54bb38a97b66962b88eaff6d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRAN HOANG TRANG', '', '0071003646923', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(914, 0, 0, 0, '35811492152', 0, 0, 'trande', '', 1, 711, '', '', NULL, 'tranvande94@gmail.com', '0868096284', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.17.16', NULL, NULL, 0, 0, 0, '', '2016-10-07 04:21:20', '381671037', '2016-11-04 05:46:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trande.jpg.c6dd8c72c5fd9ec37ebdc4d90ae8ec6c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRAN VAN DE', '', '0111000210995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(915, 0, 0, 0, '74124325494', 0, 0, 'Nhalx', '', 1, 909, '', '', NULL, 'Phamvannha3.lxag@gmail.com', '0939 442 268', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.57.201', NULL, NULL, 0, 0, 0, '', '2016-10-07 04:29:32', '351841515', '2016-11-04 22:53:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nhalx.jpg.856febf18bbaed4dd5d0e2a2ceda71e5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM VAN NHA', '', '0111000155662', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(916, 0, 0, 0, '236380715302', 0, 0, 'maipham2', '', 1, 711, '', '', NULL, 'maipham5953@gmail.com', '0937565953', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.180.129.204', NULL, NULL, 0, 0, 0, '', '2016-10-07 04:42:18', '025795952', '2016-11-04 19:19:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/maipham2.jpg.c71a3eeb8d7db1397b4f68aff0e07a86', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'PHAM THI MAI', '', '0501000122136', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(917, 0, 0, 0, '173200868872', 0, 0, 'kimchung', '', 1, 640, '', '', NULL, 'Chunghp2016@gmail.com', '01685983766', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.34', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:01:23', '030937687', '2016-11-04 20:52:43', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kimchung.jpg.71365bdc72f59100b486c5bc38b568fe', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI CHUNG', '', '0031000243167', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(918, 0, 0, 0, '40861381993', 0, 0, 'kimchung1', '', 1, 917, '', '', NULL, 'Chunghp2016@gmail.com', '01685983766', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.18.39.187', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:04:22', '030937687 ', '2016-11-03 10:44:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kimchung1.jpg.cc742004d0486d9a0a7a2efeca2f18ef', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI CHUNG', '', '0031000243167', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(919, 0, 0, 0, '81643579801', 0, 0, 'kimchung2', '', 1, 917, '', '', NULL, 'Chunghp2016@gmail.com', '01685983766 ', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.163.61.68', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:05:59', '030937687 ', '2016-11-02 01:43:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kimchung2.jpg.c3bad2980979821b06b254987e96d9a1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI CHUNG', '', '0031000243167', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(920, 0, 0, 0, '22100390400', 0, 0, 'Tuanlx', '', 1, 915, '', '', NULL, 'tuanklkg@gmail.com', '0939 461 614', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.73.58.17', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:14:18', '371278079', '2016-11-04 12:22:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuanlx.jpg.cc63e1c6186eaa9fd80b9d062863e9ab', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH TUAN', '', '0601000498998', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(921, 0, 0, 0, '100130759490', 0, 0, 'Lengoc', '', 2, 909, '', '', NULL, 'ngochanhngoan82@gmail.com', '0966099842', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.57.201', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 16:59:26', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Lengoc.jpg.cb2267885d0686073c55400df11e5eb8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE THI NGOC HANH', '', '0471000322320', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(922, 0, 0, 0, '276106023218', 0, 0, 'ducchung', '', 1, 749, '', '', NULL, 'anhcong199@naver.com', '0989908705', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.181.22.43', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:25:15', '125601323', '2016-11-04 21:45:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ducchung.jpg.262fee9f02a8b8ae6cfdbf82b085630e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRAN DUC CHUNG', '', '0351000915503', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(923, 0, 0, 0, '147439367718', 0, 0, 'thedung', '', 1, 640, '', '', NULL, 'Thedung75@gmail.com', '096 9805620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.69.55.148', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:31:33', ' 012471744', '2016-10-07 05:32:17', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THE DUNG', '', '0011004292494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(924, 0, 0, 0, '17289070853', 0, 0, 'anhcong', '', 1, 749, '', '', NULL, 'anhcong199@gmai.com', '0989908705', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.181.22.43', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:33:17', '125119407', '2016-11-04 21:43:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anhcong.jpg.87bc8f7f5be0d5099ba2d7cda301a689', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG ANH CONG', '', '0351000952377', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(925, 0, 0, 0, '104783648579', 0, 0, 'Thedung1', '', 1, 923, '', '', NULL, 'Thedung75@gmail.com', '096 9805620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:34:38', '012471744', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THE DUNG', '', '0011004292494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(926, 0, 0, 0, '279982732055', 0, 0, 'Thedung2', '', 1, 923, '', '', NULL, 'Thedung75@gmail.com', '096 9805620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:36:07', '012471744', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THE DUNG', '', '0011004292494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(927, 0, 0, 0, '143470766233', 0, 0, 'thoaduong0309', '', 1, 734, '', '', NULL, 'thoa.htxad@gmail.com', '0903100144', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.222.247', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:38:16', '251108183', '2016-10-07 05:38:52', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG THI THOA', '', '0561000499855', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(928, 0, 0, 0, '11075392656', 0, 0, 'Minhlx', '', 1, 909, '', '', NULL, 'Huynhminhthienlx@gmail.com', '0984260848 ', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.28.72', NULL, NULL, 0, 0, 0, '', '2016-10-07 05:55:16', '362197323', '2016-11-02 04:16:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhlx.jpg.1cef011af37c34d433e31b713fc9b2d2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH MINH THIEN', '', '0151000517839', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(929, 0, 0, 0, '99327640356', 0, 0, 'Nhanlx', '', 1, 915, '', '', NULL, 'Trongnhan1988lx@gmail.com', '0901012015', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.22.176', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:14:46', '0901012015', '2016-11-04 06:41:31', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DANG TRONG NHAN', '', '0151000321084', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(930, 0, 0, 0, '4383475041', 0, 0, 'hoanghaiqn', '', 1, 548, '', '', NULL, 'hoanghai.springer@gmail.com', '0963682112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.194.227', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:40:47', '101043195', '2016-11-03 23:43:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG VAN HAI', '', '0141000764729', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(931, 0, 0, 0, '107384021777', 0, 0, 'quangtruc', '', 1, 799, '', '', NULL, 'quangtruc0147@gmail.com', '0971999297', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.246.69.149', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:43:46', '251113281', '2016-11-04 08:45:24', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 16, 'NGUYEN QUANG TRUC', '', '0561000564676', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(932, 0, 0, 0, '243044713491', 0, 0, 'Nhalx1', '', 1, 915, '', '', NULL, 'Phamvannha3.lxag@gmail.com', '0939442268', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.75.208.73', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:44:45', '351841515', '2016-10-07 14:47:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nhalx1.jpg.c2cbbc0511381414622ca3efa0c45a7a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN NHA', '', '0111000155662', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(933, 0, 0, 0, '165112390745', 0, 0, 'quangtruc1', '', 1, 799, '', '', NULL, 'quangtruc0147@gmail.com', '0971999297', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.246.69.149', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:45:12', '251113281', '2016-11-04 08:48:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/quangtruc1.jpg.a6b548638e2c09539009afb40b24f040', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 16, 'NGUYEN QUANG TRUC', '', '0561000564676', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(934, 0, 0, 0, '420958280', 0, 0, 'Nhalx2', '', 1, 915, '', '', NULL, 'Phamvannha3.lxag@gmail.com', '0939442268', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '203.210.232.71', NULL, NULL, 0, 0, 0, '', '2016-10-07 06:48:12', '351841515', '2016-10-07 09:03:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nhalx2.jpg.fce07e6cdc881c4c6896c45b7fad9dff', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN NHA', '', '0111000155662', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(935, 0, 0, 0, '109555513204', 0, 0, 'QuangBao', '', 1, 869, '', '', NULL, 'Nguyenbao16689@gmail.com', '0977604622', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.75.0.190', NULL, NULL, 0, 0, 0, '', '2016-10-07 07:00:20', '271926607', '2016-11-01 23:41:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/QuangBao.jpg.ab3314ea1cd1ef35339c87a799172241', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN QUANG BAO', '', '0121000697993', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(936, 0, 0, 0, '275185599794', 0, 0, 'phucdt1', '', 1, 751, '', '', NULL, 'olympus67892@gmail.com', '0996801423', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.252.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 07:14:44', '273230963', '2016-11-04 19:54:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phucdt1.jpg.6bb1b6972bbf07f3851aa4164921611e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG TRUONG PHUC', '', '0081001252096', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(937, 0, 0, 0, '160307571014', 0, 0, 'phucdt2', '', 1, 751, '', '', NULL, 'phuc.dt.138@gmail.com', '0996801423', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.252.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 07:17:01', '273230963', '2016-11-04 19:57:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG TRUONG PHUC', '', '0081001252096', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(938, 0, 0, 0, '5427698005', 0, 0, 'shalala', '', 1, 882, '', '', NULL, 'hoavungcao@gmail.com', '0987389260', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-07 07:32:55', '090920011', '2016-11-03 21:24:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/shalala.jpg.4114bf93f521005af8d2adb06955cb78', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VU VAN GIANG', '', '0011001510122', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(939, 0, 0, 0, '142813106771', 0, 0, 'Hoangvananh', '', 1, 546, '', '', NULL, 'Vananhdttc@gmail.com', '0911866699', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '45.122.232.233', NULL, NULL, 0, 0, 0, '', '2016-10-07 08:56:46', '025183000244', '2016-11-04 22:24:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoangvananh.jpg.a956e82ba0ddb37d0430cbff56b340bb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'QUACH THI THUY HOA', '', '0591000219959', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(940, 0, 0, 0, '77933384472', 0, 0, 'camthu1', '', 1, 640, '', '', NULL, 'camthuag1991@gmail.com', '0979430148', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.65.63', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:16:52', '351845216', '2016-11-02 22:59:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/camthu1.jpg.a8785b0c2f689a572e8d069977c1ac02', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VAN THI CAM VUNG', '', '0421000489280', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(941, 0, 0, 0, '69812301960', 0, 0, 'Hoa7604', '', 1, 915, '', '', NULL, 'nguyenminhhoa7604@gmail.com', '0949484751', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '203.210.232.71', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:18:26', '351810275', '2016-10-07 09:28:24', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH HOA', '', '0471000321310', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(942, 0, 0, 0, '171834541648', 0, 0, 'camthu2', '', 1, 640, '', '', NULL, 'Camthuag1991@gmail.com', '0979431048', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.176.193.184', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:19:09', '351845216', '2016-11-04 10:15:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/camthu2.jpg.9222ad88cf5b4b52aaaec364dd7c82d9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VAN THI CAM VUNG', '', '0421000489280', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(943, 0, 0, 0, '225644529732', 0, 0, 'camthu', '', 1, 640, '', '', NULL, 'camthuag1991@gmail.com', '0979431048', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.65.63', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:20:58', '351845216', '2016-11-02 22:58:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/camthu.jpg.bd6e029b4aea62c43ac4680ccb291b4c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VAN THI CAM VUNG', '', '0421000489280', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(944, 0, 0, 0, '81959067747', 0, 0, 'lehoadn', '', 1, 601, '', '', NULL, 'lyboy86@gmail.com', '0973367405', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.169.68', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:22:24', '272735045', '2016-11-04 07:07:38', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lehoadn.jpg.4477d4ff90d64ee9502e3298bbb17bce', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THI HOA', '', '0121000787511', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(945, 0, 0, 0, '40306434885', 0, 0, 'dinhhuyak', '', 1, 742, '', '', NULL, 'Huyhades@gmail.com', '0902804521', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.174.249.79', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:24:18', '230825477', '2016-11-03 21:38:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dinhhuyak.jpg.67c283f70a37cb9631e9a91eea7d9c72', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE DINH HUY', '', '0291000311250', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(946, 0, 0, 0, '165645195331', 0, 0, 'thapvt', '', 1, 601, '', '', NULL, 'hongthap010@gmail.com', '0919382384', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.230.48', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:31:51', '273103697', '2016-11-03 21:52:56', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI HONG THAP', '', '0081001233487', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(947, 0, 0, 0, '232265876233', 0, 0, 'vinhdang', '', 1, 751, '', '', NULL, 'olympus67893@gmail.com', '0996801423', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.252.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:32:53', '273553668', '2016-11-04 19:43:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vinhdang.jpg.df8cdc74e9b484d43e89f42f5032bb5b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG QUANG VINH', '', '0081001260624', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(948, 0, 0, 0, '77393467784', 0, 0, 'thapvt1', '', 1, 601, '', '', NULL, 'hongthap010@gmail.com', '0919382384', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.230.48', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:35:31', '273103697', '2016-11-01 23:12:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI HONG THAP', '', '0081001233487', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(949, 0, 0, 0, '34781469062', 0, 0, 'thapvt2', '', 1, 601, '', '', NULL, 'hongthap010@gmail.com', '0919382384', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.244.22', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:38:22', '273103697', '2016-11-04 00:19:26', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI HONG THAP', '', '0081001233487', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(950, 0, 0, 0, '82733191687', 0, 0, 'hyvong', '', 1, 889, '', '', NULL, 'huyenzo85@gmail.com', '0868986566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.170.229.88', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:39:35', '030185000800', '2016-10-08 00:45:40', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI HUYEN', '', '0341001710468', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(951, 0, 0, 0, '27202627333', 0, 0, 'vinhdang1', '', 2, 751, '', '', NULL, 'olympus67893@gmail.com', '0996801423', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.175', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 12:01:39', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/vinhdang1.jpg.4d690d7c2444e7957c39aa3c7fd91c8a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG QUANG VINH', '', '0081001260624', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(952, 0, 0, 0, '212758205745', 0, 0, 'vinhdang2', '', 1, 751, '', '', NULL, 'olympus6789@gmail.com', '0996801423', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.252.101', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:42:08', '273553668', '2016-11-04 19:46:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vinhdang2.jpg.03cc1f22cda3c36f73f69585038fccc8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG QUANG VINH', '', '0081001260624', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(953, 0, 0, 0, '220982568201', 0, 0, 'lehoadn1', '', 1, 601, '', '', NULL, 'lyboy86@gmail.com', '0973367405', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.244.22', NULL, NULL, 0, 0, 0, '', '2016-10-07 09:54:40', '272735045', '2016-11-04 00:18:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI HOA', '', '0121000787511', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(954, 0, 0, 0, '87636342918', 0, 0, 'vietminh', '', 1, 944, '', '', NULL, 'Levietminh5124@gmail.com.vn', ' 0937225124', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:01:33', '271864129', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VIET MINH', '', '0481000792289', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(955, 0, 0, 0, '22624080246', 0, 0, 'Minhtam ', '', 1, 939, '', '', NULL, 'Minhtamdttc@gmail.com', '0994287168', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.33.198', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:17:49', '038185000185', '2016-11-04 22:25:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhtam_.jpg.5a42e4663ea20ea330db5d5daec73046', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HOANG THI MINH TAM', '', '0591000273014', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(956, 0, 0, 0, '210739942662', 0, 0, 'thangbh', '', 1, 944, '', '', NULL, 'thangminhkt2603@gmail.com', '01682794018', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.226.5.215', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:20:00', '272327477', '2016-10-13 23:01:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH THANG', '', '0121000785646', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(957, 0, 0, 0, '225008877622', 0, 0, 'thanhchung', '', 1, 751, '', '', NULL, 'hankimphuc@yahoo.com', '0939545902', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.28.233', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:21:41', '273307511', '2016-11-04 07:24:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhchung.jpg.90bf1c96d19442cc1d4120a7455ed12f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CHUNG TAN THANH', '', '0081001243332', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(958, 0, 0, 0, '92611900737', 0, 0, 'thanhchung1', '', 1, 957, '', '', NULL, 'hankimphuc@yahoo.com', '0939545902', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.28.233', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:23:46', '273307511', '2016-11-04 07:21:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhchung1.jpg.0cfaa7a4f2e815e27f1d452412a5f1b1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CHUNG TAN THANH', '', '0081001243332', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(959, 0, 0, 0, '30086076057', 0, 0, 'thuylinh', '', 1, 944, '', '', NULL, 'thuylinhkt.dntu@gmail.com', '0912686296', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.226.5.215', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:24:06', '186172549', '2016-10-13 23:02:02', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'BUI THI LINH', '', '0121001057597', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(960, 0, 0, 0, '139174360328', 0, 0, 'vuthangcity', '', 1, 582, '', '', NULL, 'vuthangcity@gmail.com', '0902793819', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.22.243', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:26:31', '273254584', '2016-10-07 11:36:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU THANG', '', '0081001123817', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(961, 0, 0, 0, '8674870800', 0, 0, 'thanhthuy82', '', 1, 711, '', '', NULL, 'thanhthuy1275@gmail.com', '0905690693', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.72.40', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:32:42', '201483044', '2016-11-04 22:49:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhthuy82.jpg.c25827041c34375a3c9c7d3a9191b057', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGO THI THANH THUY', '', '0041000248072', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(962, 0, 0, 0, '158964130052', 0, 0, 'Haduong', '', 1, 643, '', '', NULL, 'haintimexld@gmail.com', '0987594147', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.137.95', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:33:18', '250392294', '2016-11-04 22:50:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Haduong.jpg.cd67a33d4e30be7663a8998a2731fd77', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'MONG THI DUONG HA', '', '0561000396570', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(963, 0, 0, 0, '238726252088', 0, 0, 'fonalee67', '', 1, 711, '', '', NULL, 'thongle672@gmail.com', '0962172672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.180.129.204', NULL, NULL, 0, 0, 0, '', '2016-10-07 10:48:52', '301129899', '2016-11-04 19:19:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/fonalee67.jpg.02e554f7d839fcb7f341c25129adf7fe', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THONG', '', '0631000456494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1234, 0, 0, 0, '163565282905', 0, 0, 'kimchuc79', '', 1, 876, '', '', NULL, 'kimchuc678@gmail.com', '0901091071', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.83.19', NULL, NULL, 0, 0, 0, '', '2016-10-18 09:24:28', '351433768', '2016-11-04 19:52:14', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CHUNG THI KIM CHUC', '', '0151000538207', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(964, 0, 0, 0, '139678946661', 0, 0, 'Ziggy', '', 2, 776, '', '', NULL, 'Ziggy.infinity.inc@gmail.com', '01215679430', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.130.194', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 03:22:59', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Ziggy.jpg.4d0f2915770ac25079a990965b71d665', 230, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'VO VIET HAN', '', '0441000713059', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(966, 0, 0, 0, '156050559863', 0, 0, 'hoangsonqn', '', 1, 734, '', '', NULL, 'son.hoangpham92@gmail.com', '01246160492', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.237.129', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:17:00', '205721460', '2016-10-07 12:17:18', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM HOANG SON', '', '0071000909280', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(967, 0, 0, 0, '241718343801', 0, 0, 'caominhhai1990', '', 1, 740, '', '', NULL, 'caominhhai1990@gmail.com', '01265229595', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.161.130', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:22:32', '024855917', '2016-11-04 21:57:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/caominhhai1990.jpg.6e75b45c43231552b95c6094a73d6509', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'CAO MINH HAI', '', '0371000421148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(968, 0, 0, 0, '109380452386', 0, 0, 'thuyvanhoang1963', '', 1, 740, '', '', NULL, 'thuyvanhoang1963@gmail.com', '0903214292', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.5.1', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:39:34', '011030753', '2016-11-04 21:11:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thuyvanhoang1963.jpg.b70e92e459eb4e80148788018246aa75', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG THI THUY VAN', '', '0021002055439', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(969, 0, 0, 0, '1211577184', 0, 0, 'thanhsuong', '', 1, 882, '', '', NULL, 'Suong0136@gmail.com', '0933935155', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.100.210.214', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:41:44', '024184710', '2016-10-25 04:37:22', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC THANH SUONG', '', '0071000806014', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(970, 0, 0, 0, '95670175749', 0, 0, 'thanhphu', '', 1, 776, '', '', NULL, 'Nguyenrin201@gmail.com', '01216818974', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.226.121', NULL, NULL, 0, 0, 0, '', '2016-10-07 12:56:29', '201622911', '2016-11-04 02:02:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhphu.jpg.4cbf7902c1814b1db72aed7757f3ff2f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH PHU', '', '0041000262412', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(978, 0, 0, 0, '103756150133', 0, 0, 'Lethuybp', '', 2, 975, '', '', NULL, 'Cuongkhanhnguyen87@gmail.com', '0972597397', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.243.62.223', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 08:11:43', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Lethuybp.jpg.b7b266b9c7547aa2198e3abb0e92e0fa', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN KHANH CUONG', '', '0281000450204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(971, 0, 0, 0, '14300030229', 0, 0, 'Hoangtan68', '', 1, 707, '', '', NULL, 'Tranghoangtan@moet.edu.vn', '0988233622', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.73.187.66', NULL, NULL, 0, 0, 0, '', '2016-10-07 15:07:13', '365039651', '2016-10-09 02:20:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoangtan68.jpg.c84f545b00db98dc68b02fe688cfb034', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRANG HOANG TAN', '', '0321000644792', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(972, 0, 0, 0, '151689696329', 0, 0, 'test', '', 1, 1, '', '', NULL, 'mmo.hyipcent@gmail.com', '3245236', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.109.80', NULL, NULL, 0, 0, 0, '', '2016-10-08 06:14:14', '435643', '2016-10-09 21:43:31', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH PHUC', '', '0501000073921', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1003, 0, 0, 0, '31541499137', 0, 0, 'mycoin299', '', 1, 779, '', '', NULL, 'mycoin299@gmail.com', '0983773993', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.10.197.202', NULL, NULL, 0, 0, 0, '', '2016-10-08 06:28:43', '324224531', '2016-10-08 06:37:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mycoin299.jpg.6fb174522a7b178a12b5c73434ca7a7b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN HUU HUY', '', '0331000442332', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(973, 0, 0, 0, '283803473205', 0, 0, 'Nguyenhien68', '', 1, 707, '', '', NULL, 'Gaimienque201191@gmail.com', '0979269963', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.24.85.118', NULL, NULL, 0, 0, 0, '', '2016-10-07 21:14:32', '509212', '2016-10-29 23:11:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyenhien68.jpg.7c14b65b62b50a03ca9045f57dbe24aa', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HIEN', '', '0451000222668', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(974, 0, 0, 0, '97058523030', 0, 0, 'thanhha65', '', 2, 800, '', '', NULL, 'nguyenthanhha@gmail.com', '0913503408', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 20:55:07', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/thanhha65.jpg.1afff2b90feee065b38f77732bffe368', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH HA', '', '0011004246359', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1141, 0, 0, 0, '169990132998', 0, 0, 'Quydaigia79', '', 2, 1119, '', '', NULL, 'Dangphucquy271@gmail.com', '0904683968', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.16.233', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-14 00:00:00', '1', '2016-11-02 01:35:08', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG PHUC QUY', '', '0011004006903', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(976, 0, 0, 0, '151236326660', 0, 0, 'Kimthu', '', 1, 944, '', '', NULL, 'Hainambacom@gmail.com', '0979476635', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.35.170', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:07:37', '271770434', '2016-10-07 22:11:28', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DO DUY HAI NAM', '', '0511000401740', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(977, 0, 0, 0, '284307851320', 0, 0, 'PhuocLam', '', 1, 964, '', '', NULL, 'lamngocphuoc@gmail.com', '0903880565', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.77.121.191', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:10:41', '023171600', '2016-11-01 04:12:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhuocLam.jpg.9e4bbda5c13df5db0bacf4f7b184d38d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LAM NGOC PHUOC', '', '0071001985335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(979, 0, 0, 0, '18944709495', 0, 0, 'quangviet', '', 2, 546, '', '', NULL, 'quangviet20008@gmail.com', '0908635370', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.230.190', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-10-11 22:04:45', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRUONG QUANG VIET', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(980, 0, 0, 0, '241931666498', 0, 0, 'Kimthoahn', '', 1, 707, '', '', NULL, 'Hoangducharoyal007@gmail.com', '0983356216', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:25:30', '001167004780', '2016-11-04 21:46:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Kimthoahn.jpg.7a16ad2b4075d3eb073211c7fc3604b7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 12, 'TRUONG THI KIM THOA', '', '0691000362422', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(981, 0, 0, 0, '156253623048', 0, 0, 'Kimthoahn1', '', 1, 980, '', '', NULL, 'Hoangducharoyal007@gmail.com', '0983356216', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:35:45', '001167004780', '2016-11-04 19:58:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Kimthoahn1.jpg.354d1ee748e0903625633e655065b37b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG THI KIM THOA', '', '0691000362422', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(982, 0, 0, 0, '6814958402', 0, 0, 'hungbj18', '', 2, 964, '', '', NULL, 'lena.nguyen.92@gmail.com', '0933782020', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.130.194', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 12:50:17', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/hungbj18.jpg.076b7878f83e4ba8e9eadd2877662dee', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN MAI LE', '', '0071000991954', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(983, 0, 0, 0, '139890684566', 0, 0, 'Kimthoahn2', '', 1, 980, '', '', NULL, 'Hoangducharoyal007@gmail.com', '0983356216', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:40:00', '001167004780', '2016-11-04 19:59:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Kimthoahn2.jpg.a31c8659c6d64a3ef1929d187e1e0e12', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRUONG THI KIM THOA', '', '0691000362422', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(984, 0, 0, 0, '240605210005', 0, 0, 'Quoctrung586', '', 2, 734, '', '', NULL, 'lqtrung040278@gmail.com', '0944891989', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.229.217', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-07 00:00:00', '1', '2016-11-04 02:56:00', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Quoctrung586.jpg.f472d1ff224c77bc79087aa1007f1f5e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LUONG QUOC TRUNG', 'VCB', '0111000806519', 'HCM', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(985, 0, 0, 0, '159242158409', 0, 0, 'lethong', '', 1, 800, '', '', NULL, 'thongtien83@gmail.com', '0986362999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.190.158.31', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:45:13', '173352482', '2016-11-04 09:54:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LE VAN THONG', '', '0781000420241', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(986, 0, 0, 0, '8951198833', 0, 0, 'thanhha68', '', 1, 974, '', '', NULL, 'nguyenthanhha@gmail.com', '0913503408', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.36.191', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:54:07', '010304225', '2016-11-04 02:31:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH HA', '', '0011004246359', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(987, 0, 0, 0, '139443988489', 0, 0, 'Hyvong1', '', 1, 950, '', '', NULL, 'huyenzo85@gmail.com', '0868986566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:55:39', '030185000800', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI HUYEN', '', '0341001710468', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(988, 0, 0, 0, '246041219844', 0, 0, 'thanhha69', '', 1, 974, '', '', NULL, 'nguyenthanhha@gmail.com', '0913503408', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:55:51', '010304225', '2016-11-03 13:42:12', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH HA', '', '0011004246359', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(989, 0, 0, 0, '163802339736', 0, 0, 'Hyvong2', '', 1, 950, '', '', NULL, 'huyenzo85@gmail.com', '0868986566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 22:58:36', '030185000800', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI HUYEN', '', '0341001710468', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(990, 0, 0, 0, '284415250513', 0, 0, 'Maihoa', '', 1, 950, '', '', NULL, 'tammai84@icloud.com', '01683824222', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 23:03:00', '030184001169', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU THI HOA', '', '0341007014646', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(991, 0, 0, 0, '151437547401', 0, 0, 'Maihoa1', '', 1, 950, '', '', NULL, 'tammai84@iloud.com', '01683824222', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-07 23:05:47', '030184001169', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'VU THI HOA', '', '0341007014646', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(992, 0, 0, 0, '13204021333', 0, 0, 'dangbahiep', '', 1, 734, '', '', NULL, 'dangbahiep1987@gmail.com', '0938714711', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.46.41', NULL, NULL, 0, 0, 0, '', '2016-10-07 23:06:06', '271885121', '2016-11-04 19:45:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dangbahiep.jpg.5cdb5e0199ac6893be09b0472054934d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG BA HIEP', '', '0121000799402', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1043, 0, 0, 0, '77997761427', 0, 0, 'hoangduong1', '', 1, 599, '', '', NULL, 'hoangd795@gmail.com', '0967548579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.244.22', NULL, NULL, 0, 0, 0, '', '2016-10-09 23:11:17', '272269256', '2016-11-03 18:42:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangduong1.jpg.63b22717241d955814e1f758c0d4eec2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HOANG DUONG', '', '0121001978671', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(993, 0, 0, 0, '98885073207', 0, 0, 'QUOCTRUNG01', '', 1, 984, '', '', NULL, 'trung.luongquoc@yahoo.com.vn', '0944891989', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.245', NULL, NULL, 0, 0, 0, '', '2016-10-08 01:09:48', '361769889', '2016-11-04 23:01:33', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/QUOCTRUNG01.jpg.35389ab3971cdc0bb07d1282821e668a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LUONG QUOC TRUNG', '', '0111000806519', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(996, 0, 0, 0, '14581760272', 0, 0, 'kimdung', '', 1, 964, '', '', NULL, 'sieuchuoi2015@gmail.com', '1231231231', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.20.116.164', NULL, NULL, 0, 0, 0, '', '2016-10-08 03:26:30', '123123123213', '2016-10-25 09:57:23', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'QUACH TAT TA', '', '0801000203728', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(994, 0, 0, 0, '284076110466', 0, 0, 'Quanglanhm01', '', 1, 747, '', '', NULL, 'Lantq87@gmail.com', '0933812833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.53.90.121', NULL, NULL, 0, 0, 0, '', '2016-10-08 02:49:17', '230656148', '2016-11-04 10:18:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Quanglanhm01.jpg.2616745c6e4d45cde68a9ad090d41c51', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRUONG QUANG LAN', '', '0441000704861', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(995, 0, 0, 0, '151969699584', 0, 0, 'PhuocLam001', '', 2, 977, '', '', NULL, 'phivu1977.pnp@gmail.com', '0902949838', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-08 00:00:00', '1', NULL, '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM NGOC PHI VU', '', '0501000101967', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(997, 0, 0, 0, '95941112680', 0, 0, 'Justinnguyen', '', 1, 779, '', '', NULL, 'Tanvp12@gmail.com', '0909287298', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.37.125', NULL, NULL, 0, 0, 0, '', '2016-10-08 03:51:50', '135066342', '2016-11-04 22:41:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Justinnguyen.jpg.158ebba6ae51d2cd4af541f3c21be667', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN VAN TAN', '', '0361000266908', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(998, 0, 0, 0, '276625428755', 0, 0, 'mmpt456', '', 1, 547, '', '', NULL, 'thanhhuanpt@gmail.com', '0976079784', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.36.42', NULL, NULL, 0, 0, 0, '', '2016-10-08 04:18:52', '131187347', '2016-10-08 09:54:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mmpt456.jpg.0d270221966c1046fecfc7470c7df861', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH HUAN', '', '0801000239555', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(999, 0, 0, 0, '146988750883', 0, 0, 'ducthang', '', 1, 586, '', '', NULL, 'ldt.286@gmail.com', '0936459359', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.210.121', NULL, NULL, 0, 0, 0, '', '2016-10-08 04:29:10', '012868860', '2016-10-08 04:44:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ducthang.jpg.ecc3174f6cef0733e5a0ee257888ec79', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE DUC THANG', '', '0081001174648', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1000, 0, 0, 0, '206733665589', 0, 0, 'LanTP', '', 1, 732, '', '', NULL, 'Lannguyenngoc0403@gmail.com', '0902605823', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-08 05:48:54', '250856825', '2016-11-04 10:15:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/LanTP.jpg.f6d07ad621cebe41a1f4908c47f29496', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN NGOC LAN', '', '0401001374768', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1001, 0, 0, 0, '216684634163', 0, 0, 'Ainguyen', '', 1, 759, '', '', NULL, 'tranthao09@yahoo.com.vn', '0932425209', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.182.68.65', NULL, NULL, 0, 0, 0, '', '2016-10-08 06:13:45', '273442901', '2016-10-10 01:15:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ainguyen.jpg.35954d01429d2c7dd0852cfd0c5f49d2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THI AI', '', '0081001241646', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1002, 0, 0, 0, '90503143737', 0, 0, 'test1', '', 1, 1, '', '', NULL, 'appnanas0001@gmail.com', '43545', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-08 06:23:00', '235324', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'MAI THANH QUANG', '', '0501000073923', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1004, 0, 0, 0, '206285928208', 0, 0, 'coinnet', '', 1, 1003, '', '', NULL, 'ccdcf@gmail.com', '096544455', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.10.197.202', NULL, NULL, 0, 0, 0, '', '2016-10-08 06:40:56', '321626592', '2016-10-08 06:44:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/coinnet.jpg.e8d08bc7341d5c90fd0330a16c6836af', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THI THANH THUY', '', '0331000441775', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1005, 0, 0, 0, '217218822194', 0, 0, 'kiemtienxu', '', 1, 977, '', '', NULL, 'lamngocphuoc@gmail.com', '0903880565', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.77.121.191', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:07:18', '023171600', '2016-11-03 22:09:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiemtienxu.jpg.85d65f273cab6ebb1c05bf4bde16b6f6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LAM NGOC PHUOC', '', '0071001985335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1033, 0, 0, 0, '4304409136', 0, 0, 'hainth7', '', 1, 1032, '', '', NULL, 'haihunghan88@gmail.com', '01657234613', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.126.162', NULL, NULL, 0, 0, 0, '', '2016-10-09 00:20:45', '264283017', '2016-10-21 22:43:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hainth7.jpg.72ed89c5b4162ddaa5d0aa808e9e45f3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HAN HUNG HAI', '', '0811000022244', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1006, 0, 0, 0, '91879608582', 0, 0, 'kiemtienle', '', 1, 977, '', '', NULL, 'lamngocphuoc@gmail.com', '0903880565', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.77.121.191', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:09:08', '023171600', '2016-11-04 09:17:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiemtienle.jpg.efcd4dce623decf37a690da05f2e4cb6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LAM NGOC PHUOC', '', '0071001985335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1007, 0, 0, 0, '30216059272', 0, 0, 'Hoaphat79', '', 1, 944, '', '', NULL, 'nguyenvanhungcjc@gmail.com', '+84902893950', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.216.166', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:15:06', '163059685', '2016-11-04 15:43:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoaphat79.jpg.24adf63851439c538b2322a68085790b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN HUNG', '', '0121000764621', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1008, 0, 0, 0, '211376702099', 0, 0, 'Hoaphat39', '', 1, 1007, '', '', NULL, 'nguyenhungltc009@gmail.com', '+84968630649', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.52.54.111', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:18:13', '163059685', '2016-10-26 02:30:44', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN HUNG', '', '0121000764621', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1009, 0, 0, 0, '224772249863', 0, 0, 'MinhHao', '', 1, 869, '', '', NULL, 'Minhhao76@gmail.com', '0982495811', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.21.44', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:18:32', '111292452', '2016-11-04 19:31:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/MinhHao.jpg.66d5d6014487309a4461c9b7d002a94f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'KHUONG THI MINH HAO', '', '0011004292016', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1010, 0, 0, 0, '176198678928', 0, 0, 'yengiang13', '', 1, 882, '', '', NULL, 'yengiang13@gmail.com', '0932644236', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.40.179', NULL, NULL, 0, 0, 0, '', '2016-10-08 07:50:35', '172356625', '2016-10-08 07:56:41', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN GIANG', '', '0441000621757', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1011, 0, 0, 0, '233559036790', 0, 0, 'vukhoiqng', '', 8, 624, '', '', NULL, 'com', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.88.199', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-08 00:00:00', '1', '2016-10-08 08:21:08', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/vukhoiqng.jpg.54e9b516269cccf5354478eb42d7d5f5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1022, 0, 0, 0, '99968102949', 0, 0, 'thanhhuanpt', '', 1, 724, '', '', NULL, 'thanhhuanpt@gmail.com', '0976079784', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.66.165.206', NULL, NULL, 0, 0, 0, '', '2016-10-08 10:40:18', '131187347', '2016-11-04 22:53:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhhuanpt.jpg.0152d3eb3a6beb4f32bc23afae26c5c6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH HUAN', '', '0801000239555', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1012, 0, 0, 0, '73673025026', 0, 0, 'vukhoi01qng', '', 1, 631, '', '', NULL, 'lamvietbinhduong@gmail.com', '01217468222', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.88.199', NULL, NULL, 0, 0, 0, '', '2016-10-08 08:33:46', '212178350', '2016-10-08 08:40:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vukhoi01qng.jpg.9734aed908cb5f158d9c98b085e176f3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI VIET', '', '0271001044600', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1013, 0, 0, 0, '36332341142', 0, 0, 'vukhoi02qng', '', 1, 631, '', '', NULL, 'lamvietbinhduong@gmail.com', '01217468222', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.88.199', NULL, NULL, 0, 0, 0, '', '2016-10-08 08:38:13', '212178350', '2016-10-08 08:38:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vukhoi02qng.jpg.d5764ca97cd0b8267414082889cbcb55', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI VIET', '', '0271001044600', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1014, 0, 0, 0, '173262860849', 0, 0, 'Thachtp', '', 1, 732, '', '', NULL, 'Tranthanhxd08a@gmail.com', '0902550461', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.73.160', NULL, NULL, 0, 0, 0, '', '2016-10-08 08:41:21', '251167219', '2016-11-04 20:22:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thachtp.jpg.3714ba8d00453f9c3dc6b3ea2093817c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THANH', '', '0561000575021', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1015, 0, 0, 0, '236546322785', 0, 0, 'Hongha', '', 1, 1009, '', '', NULL, 'Nganha0676@gmail.com', '0977279201', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-08 08:50:33', '111292453', '2016-11-04 11:33:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongha.jpg.3f6c5a718ffa2dedef0fd6b45b5a317f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HONG HA', '', '0011004290597', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1016, 0, 0, 0, '74206218119', 0, 0, 'Maika', '', 1, 1009, '', '', NULL, 'Phuongpha25@gmail.com', '0945459230', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.21.44', NULL, NULL, 0, 0, 0, '', '2016-10-08 08:56:00', 'P797708', '2016-11-04 11:32:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Maika.jpg.0eeaf37a6b1250458685aa9fc8c50197', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'KHUONG THI MINH HAO', '', '0011004305771', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1094, 0, 0, 0, '95883060309', 0, 0, 'manhhung', '', 1, 561, '', '', NULL, 'hungmlc01@gmail.com', '0978898758', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.3.144', NULL, NULL, 0, 0, 0, '', '2016-10-12 03:18:48', '090856911', '2016-11-04 13:06:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MANH HUNG', '', '0011004293479', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1017, 0, 0, 0, '35991351841', 0, 0, 'Nganpro', '', 1, 1009, '', '', NULL, 'Hongha7606@gmai.com', '0977279201', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-08 09:08:06', '111292453', '2016-11-04 11:31:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nganpro.jpg.f4be8c9ed0097eb7c096d5c3d323102c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HONG HA', '', '0011004290597', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1018, 0, 0, 0, '168737052544', 0, 0, 'Huyhieu', '', 1, 1009, '', '', NULL, 'nguyenthihanghb88@gmail.com', '0944038552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-08 09:14:28', '112331601', '2016-11-04 11:31:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huyhieu.jpg.47807f9d7366a776658bbc2f693617c0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HANG', '', '0611001942172', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1019, 0, 0, 0, '229533681744', 0, 0, 'Huyhieu1', '', 1, 1009, '', '', NULL, 'nguyenthihanghb88@gmail.com', '0944038552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.27.13.196', NULL, NULL, 0, 0, 0, '', '2016-10-08 09:18:29', '112331601', '2016-11-04 11:15:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huyhieu1.jpg.46b8bc16346ae1921661f98676b78057', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HANG', '', '0611001942172', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1072, 0, 0, 0, '14379487286', 0, 0, 'LuongMinh6568VN', '', 8, 992, '', '', NULL, 'luongminhtamtk@gmail.com', '0868983593', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.72.74.145', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-10 00:00:00', '1', '2016-11-01 10:05:57', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 3, 'LUONG VAN TAM', '', '0011004201664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1020, 0, 0, 0, '147256837651', 0, 0, 'vukhoi03qng', '', 1, 631, '', '', NULL, 'lamvietbinhduong@gmail.com', '01217468222', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-08 10:17:29', '212178350', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH THI VIET', '', '0271001044600', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1021, 0, 0, 0, '276027221319', 0, 0, 'hason', '', 1, 877, '', '', NULL, 'vanson.1070@gmail.com', '0938505363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.77.11.103', NULL, NULL, 0, 0, 0, '', '2016-10-08 10:18:56', '022647666', '2016-11-04 20:51:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hason.jpg.35c6c6f5728d74f65d8034b210aa662e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE VAN SON', '', '0171003456552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1023, 0, 0, 0, '22035838065', 0, 0, 'Nguyentan1', '', 1, 997, '', '', NULL, 'Nguyentan.business@gmail.com', '0909287298', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.90.15', NULL, NULL, 0, 0, 0, '', '2016-10-08 11:01:40', '135066342', '2016-10-22 22:36:29', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN TAN', '', '0361000266908', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1024, 0, 0, 0, '143650228040', 0, 0, 'phuong', '', 1, 1009, '', '', NULL, 'phanthiphuong05071985@gmail.com', '01666571432', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.27.13.196', NULL, NULL, 0, 0, 0, '', '2016-10-08 11:48:57', '112217937', '2016-11-04 11:12:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuong.jpg.8e4f07d30edaeeee00cebdb22235cffc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN THI PHUONG', '', '0011004298675', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1025, 0, 0, 0, '280064595544', 0, 0, 'phuong1', '', 1, 1009, '', '', NULL, 'phanthiphuong05071985@gmail.com', '01666571432', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.27.13.196', NULL, NULL, 0, 0, 0, '', '2016-10-08 11:51:45', '112217937', '2016-11-04 11:15:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuong1.jpg.7787fc19c6653cbad4e0f5758d1339a2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN THI PHUONG', '', '0011004298675', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1026, 0, 0, 0, '104848586816', 0, 0, 'HongNguyen', '', 1, 964, '', '', NULL, 'nguyenhong86kr@gmail.com', '0947219771', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.27.219', NULL, NULL, 0, 0, 0, '', '2016-10-08 12:39:35', '381852308', '2016-11-04 20:07:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HongNguyen.jpg.42e02e3e80d10a563296c6f1f4c37c7b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'NGUYEN THI ANH HONG', '', '0071001095773', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1027, 0, 0, 0, '17451721812', 0, 0, 'maihuongvt', '', 1, 735, '', '', NULL, 'marrydangvt@gmail.com', '0912171967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.94.97', NULL, NULL, 0, 0, 0, '', '2016-10-08 12:39:51', '273417657', '2016-11-02 11:31:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/maihuongvt.jpg.c733a50220e14ab0fff63563d5e889ac', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG THI MAI HUONG', '', '0081000384254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1028, 0, 0, 0, '148521714947', 0, 0, 'khacdu', '', 1, 1027, '', '', NULL, 'qkhanh2016vn@gmail.com', '01223919675', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.46.253', NULL, NULL, 0, 0, 0, '', '2016-10-08 12:57:48', '273404309', '2016-11-04 13:17:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khacdu.jpg.0e7ecbce974473a856210feedd4a8b5f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI KHAC DU', '', '0081000493552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1029, 0, 0, 0, '285907179909', 0, 0, 'Maika1', '', 1, 1009, '', '', NULL, 'Phuongpha25@gmail.com', '0945459230', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.21.44', NULL, NULL, 0, 0, 0, '', '2016-10-08 18:49:57', 'P797708', '2016-11-02 18:57:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Maika1.jpg.14996f0ec6d3fa7d864326834019c496', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'KHUONG THI MINH HAO', '', '0011004305771', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1030, 0, 0, 0, '164956291926', 0, 0, 'Hongha1', '', 1, 1009, '', '', NULL, 'Nganha0676@gmail.com', '0977279201', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-08 18:53:43', '111292453', '2016-11-04 07:38:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongha1.jpg.ca499cb2b553bd255b8ab654ff73b257', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI HONG HA', '', '0011004290597', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1031, 0, 0, 0, '242986603160', 0, 0, 'Ziggy001', '', 1, 964, '', '', NULL, 'ziggy.infinity.inc@gmail.com', '01215679430', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.130.194', NULL, NULL, 0, 0, 0, '', '2016-10-08 22:25:50', '046092000017', '2016-11-04 03:23:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ziggy001.jpg.4f5acb607a0eb59690d0f1235ed84372', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VO VIET HAN', '', '0441000713059', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1032, 0, 0, 0, '105596995872', 0, 0, 'Han hung hai', '', 1, 747, '', '', NULL, 'Haihunghan88@gmail.com', '012657234613', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.20.26', NULL, NULL, 0, 0, 0, '', '2016-10-08 22:34:10', '264283017', '2016-10-28 07:32:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Han_hung_hai.jpg.e2039240a2ca56cff330356b5d49abe5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HAN HUNG HAI', '', '0811000022244', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1076, 0, 0, 0, '12921947745', 0, 0, 'Caoduchanh1', '', 1, 1046, '', '', NULL, 'Abcduchanh@gmail.com', '0982757503', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.192.65', NULL, NULL, 0, 0, 0, '', '2016-10-10 22:51:46', '186851997', '2016-11-04 12:52:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Caoduchanh1.jpg.7457482f7627083a06e0927ed8c06382', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'CAO DUC HANH', '', '0101001151393', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1034, 0, 0, 0, '160366069079', 0, 0, 'hainth8', '', 1, 1032, '', '', NULL, 'haihunghan88@gmail.com', '01657234613', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.20.26', NULL, NULL, 0, 0, 0, '', '2016-10-09 00:23:16', '264283017', '2016-10-28 07:29:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hainth8.jpg.c0e6df0b606979662a416b377a29e688', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HAN HUNG HAI', '', '0811000022244', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1035, 0, 0, 0, '275247296917', 0, 0, 'PhamVuMMO', '', 1, 977, '', '', NULL, 'phivu1977.pnp@gmail.com', '0902949838', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.94.239', NULL, NULL, 0, 0, 0, '', '2016-10-09 00:42:00', '285345714', '2016-10-09 10:35:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhamVuMMO.jpg.d0f665ca854cf293e27fdf05767e9bf3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM NGOC PHI VU', '', '0501000101967', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1036, 0, 0, 0, '109628704595', 0, 0, 'thanhbi1', '', 1, 607, '', '', NULL, 'nguyenthanhbi1235@gmail.com', '01679275620', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.45.151', NULL, NULL, 0, 0, 0, '', '2016-10-09 04:14:07', '370976431', '2016-11-04 02:02:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhbi1.jpg.8d20f487295af9f7351c5b629d2ef155', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THANH BI', '', '0481000790026', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1037, 0, 0, 0, '604053841', 0, 0, 'QuynhthanhTP', '', 1, 732, '', '', NULL, 'Phamthanh030887@gmail.com', '0903184234', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.120.106', NULL, NULL, 0, 0, 0, '', '2016-10-09 05:45:49', '212724192', '2016-11-04 22:36:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/QuynhthanhTP.jpg.2a3eaee2c8b708cb6edf584f39907596', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI THANH', '', '0401001433633', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1038, 0, 0, 0, '155797570196', 0, 0, 'nhungdn', '', 1, 715, '', '', NULL, 'tuyetnhungdn.112@gmail.com', '0937654112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.252.2', NULL, NULL, 0, 0, 0, '', '2016-10-09 07:17:31', '272072233', '2016-10-31 04:09:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nhungdn.jpg.ad9678976562149aa37dbdcabfe35d2d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANH THI TUYET NHUNG', '', '0121002765256', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1538, 0, 0, 0, '159804100993', 0, 0, 'cuongpd3', '', 1, 781, '', '', NULL, 'cuongpd89@gmail.com', '0947265686', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.160.0.58', NULL, NULL, 0, 0, 0, '', '2016-11-01 21:46:19', '142501576', '2016-11-03 05:53:25', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM DINH CUONG', '', '0541000181004', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1039, 0, 0, 0, '242439170344', 0, 0, 'anhduong', '', 1, 879, '', '', NULL, 'oanhngoc011@gmail.com', '01683678044', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.10.252', NULL, NULL, 0, 0, 0, '', '2016-10-09 10:30:52', '001177006602', '2016-11-04 04:58:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anhduong.jpg.6053c19ab020914a9b100b1ec49fd417', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HOANG THI OANH', '', '0541000191659', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1040, 0, 0, 0, '225827627609', 0, 0, 'mydung', '', 1, 759, '', '', NULL, 'mydung131182@yahoo.com', '0948333640', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.236.23', NULL, NULL, 0, 0, 0, '', '2016-10-09 20:35:20', '381135917', '2016-11-04 21:06:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mydung.jpg.7dcf8d8812b0efdfc1066affc3a89427', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRUONG MY DUNG', '', '0191000338776', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1041, 0, 0, 0, '171907316055', 0, 0, 'QUOCTRUNG02', '', 1, 984, '', '', NULL, 'trung.luongquoc@yahoo.com.vn', '0944891989', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.73.54.22', NULL, NULL, 0, 0, 0, '', '2016-10-09 20:43:48', '361769889', '2016-11-04 03:41:42', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LUONG QUOC TRUNG', '', '0111000806519', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1042, 0, 0, 0, '69867737649', 0, 0, 'mydung1', '', 1, 759, '', '', NULL, 'mydung131182@yahoo.com', '0948333640', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.13.224', NULL, NULL, 0, 0, 0, '', '2016-10-09 20:55:40', '381135917', '2016-11-01 04:05:25', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mydung1.jpg.001dd4677b129fa09e7cceb0d9b061aa', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRUONG MY DUNG', '', '0191000338776', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1079, 0, 0, 0, '144202676616', 0, 0, 'quangvietsg', '', 2, 805, '', '', NULL, 'quangviet20008@gmail.com', '0908635370', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.100.63', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-11 00:00:00', '2', '2016-11-04 20:46:13', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/quangvietsg.jpg.f37db5604cd662ff3dad5c7f9ef16f60', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 19, 'TRUONG QUANG VIET', '', '0441000705690', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1044, 0, 0, 0, '232085729936', 0, 0, 'hoangduong2', '', 1, 599, '', '', NULL, 'hoangd795@gmail.com', '0967548579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.244.22', NULL, NULL, 0, 0, 0, '', '2016-10-09 23:19:58', '272269256', '2016-11-04 08:17:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangduong2.jpg.55d64d353059241a2ad9bef3d9f31322', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HOANG DUONG', '', '0121001978671', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1045, 0, 0, 0, '165462493056', 0, 0, '797979', '', 1, 550, '', '', NULL, 'Sinh.tavaiquantreem@gmail.com', '01255177071', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.155.34', NULL, NULL, 0, 0, 0, '', '2016-10-09 23:31:29', '212242121', '2016-11-04 20:17:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAM THI SINH', '', '0051000430744', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1046, 0, 0, 0, '40141006608', 0, 0, 'hanhcao', '', 1, 724, '', '', NULL, 'Abcduchanh@gmail.com', '0982757503', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.192.65', NULL, NULL, 0, 0, 0, '', '2016-10-10 00:47:57', '186851997', '2016-11-04 12:51:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hanhcao.jpg.016af64a34b4acf4a7110bf9b7778681', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 18, 'CAO DUC HANH', '', '0101001151393', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1047, 0, 0, 0, '81897346084', 0, 0, 'Khanhcuongbp1', '', 1, 975, '', '', NULL, 'Cuongkhanhnguyen87@gmail.com', '0972597397', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.243.62.223', NULL, NULL, 0, 0, 0, '', '2016-10-10 01:16:25', '285190560', '2016-11-04 08:35:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN KHANH CUONG', '', '0281000450204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1055, 0, 0, 0, '210577291671', 0, 0, 'trinhmai', '', 1, 1046, '', '', NULL, 'tt.anhdung@gmail.com', '01267301763', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.4.182', NULL, NULL, 0, 0, 0, '', '2016-10-10 05:46:03', '024642746', '2016-11-04 10:54:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trinhmai.jpg.5e0d8bf9c15583529ea51195a99e3920', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRINH THI ANH MAI', '', '0501000079952', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1048, 0, 0, 0, '237095878807', 0, 0, 'fonalee6', '', 1, 711, '', '', NULL, 'thongle672@gmail.com', '0962172672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.180.129.204', NULL, NULL, 0, 0, 0, '', '2016-10-10 01:26:01', '301129899', '2016-11-04 19:20:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/fonalee6.jpg.f21c35d06e61d0d382285d14332c51c0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THONG', '', '0631000456494', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1049, 0, 0, 0, '172959474773', 0, 0, 'maipham3', '', 1, 711, '', '', NULL, 'maipham5953@gmail.com', '0937565953', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.180.129.204', NULL, NULL, 0, 0, 0, '', '2016-10-10 01:28:35', '025795952', '2016-11-04 19:17:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/maipham3.jpg.471164c2cf547b6c04207687695d67d2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THI MAI', '', '0501000122136', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1050, 0, 0, 0, '221044561488', 0, 0, 'tam82', '', 1, 734, '', '', NULL, 'daothitam040382@gmail.com', '0986529507', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.172.101.244', NULL, NULL, 0, 0, 0, '', '2016-10-10 01:55:48', '025364743', '2016-11-04 23:00:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DAO THI TAM', '', '0441000717723', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1199, 0, 0, 0, '21525432087', 0, 0, 'tony88', '', 1, 992, '', '', NULL, 'toanpham85@gmail.com', '0982060425', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.226.7.143', NULL, NULL, 0, 0, 0, '', '2016-10-17 23:28:22', '162514551', '2016-11-04 20:24:39', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM KHANH TOAN', '', '0121000795787', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1051, 0, 0, 0, '212923421238', 0, 0, 'Lucky', '', 1, 734, '', '', NULL, 'Lethihayenht@gmail.com', '0985475189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.181.99.68', NULL, NULL, 0, 0, 0, '', '2016-10-10 04:24:49', '164661346', '2016-10-10 04:49:19', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI HAI YEN', '', '0221000024846', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1052, 0, 0, 0, '27385157464', 0, 0, 'lucky1', '', 1, 1051, '', '', NULL, 'Lethihayenht@gmail.com', '0985475189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-10 04:47:02', '164661346', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI HAI YEN', '', '0221000024846', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1053, 0, 0, 0, '82812409682', 0, 0, 'lucky2', '', 1, 1051, '', '', NULL, 'Lethihayenht@gmail.com', '0985475189', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-10 04:48:35', '164661346', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI HAI YEN', '', '0221000024846', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1054, 0, 0, 0, '224950229145', 0, 0, 'nhuquynh', '', 1, 759, '', '', NULL, 'nhuquynh18071911@gmail.com', '0963622652', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.160.152.29', NULL, NULL, 0, 0, 0, '', '2016-10-10 05:13:25', '060929461', '2016-11-04 20:07:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nhuquynh.jpg.615ae47b0eac28bc2f23b4a45ec2bd53', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE THI NHU QUYNH', '', '0611001942062', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1056, 0, 0, 0, '22551155459', 0, 0, 'MinhHieu68', '', 1, 869, '', '', NULL, 'Hieukhp68@gmail.com', '0905868650', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.175.207', NULL, NULL, 0, 0, 0, '', '2016-10-10 07:12:14', '191678434', '2016-11-04 20:03:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/MinhHieu68.jpg.24fab229c01e1e45ca9c294c76bf1763', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAN MINH HIEU', '', '0161000881870', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1057, 0, 0, 0, '87560770921', 0, 0, 'TuanNguyen', '', 1, 869, '', '', NULL, 'Tuannguyen7484@gmail.com', '0913122835', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.117.210', NULL, NULL, 0, 0, 0, '', '2016-10-10 07:40:31', ' 334326716', '2016-11-04 04:43:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/TuanNguyen.jpg.733023540d33123f3f582e4109eca242', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN HOANG TUAN', '', '0181003403379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1073, 0, 0, 0, '95852852080', 0, 0, 'phuongdl', '', 1, 730, '', '', NULL, 'maidalat80@gmail.com', '0918722382', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-10 21:35:05', '250467026', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DAO THANH PHUONG', '', '0561000558865', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1058, 0, 0, 0, '220243109490', 0, 0, 'IDGiaoSuX2', '', 1, 877, '', '', NULL, 'thuyanhtran88@gmail.com', '0986125180', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.182.177.244', NULL, NULL, 0, 0, 0, '', '2016-10-10 08:59:49', '111970772', '2016-11-04 22:20:52', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/IDGiaoSuX2.jpg.a17e72c4714d26c12ee383ce0e84e4e9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU VAN THANG', '', '0281001211865', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1059, 0, 0, 0, '177737983110', 0, 0, '', '', 2, 768, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-10 00:00:00', '1', NULL, '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THU HOAI', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1085, 0, 0, 0, '8875681344', 0, 0, 'kieplangthang', '', 1, 638, '', '', NULL, 'daisyflower080888@gmail.com', '85363711080', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '60.246.40.245', NULL, NULL, 0, 0, 0, '', '2016-10-11 05:29:08', '194232272', '2016-11-04 20:40:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kieplangthang.jpg.422e7bf5c1440876236c0b40404b38cb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI THU HOAI', '', '0381000497260', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1060, 0, 0, 0, '238798780805', 0, 0, 'Nguyenle', '', 1, 699, '', '', NULL, 'Daisyflower080888@gmail.com', '63193319', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '60.246.40.245', NULL, NULL, 0, 0, 0, '', '2016-10-10 09:33:30', '194232272', '2016-11-04 20:03:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyenle.jpg.ee9db677a64c268c2fa9b6bfc84e1147', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THI THU HOAI', '', '0381000497260', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1061, 0, 0, 0, '159039699093', 0, 0, 'mainguyen2016', '', 1, 740, '', '', NULL, 'doivtth@gmail.com', '0912107023', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.181.228.152', NULL, NULL, 0, 0, 0, '', '2016-10-10 09:59:45', '060643019', '2016-11-04 23:01:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mainguyen2016.jpg.427bdc00d125020e428640b8d8c5b7b5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN LE MAI', '', '0951004181915', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1062, 0, 0, 0, '8733102711', 0, 0, 'RICHNGUYEN', '', 1, 957, '', '', NULL, 'richnguyen092@gmai.com', '0977367981', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.145', NULL, NULL, 0, 0, 0, '', '2016-10-10 10:43:24', '371116348', '2016-10-10 14:19:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/RICHNGUYEN.jpg.d5a5ce0676d5f471bf25c3a7d4a493d4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN PHU NHO', '', '0111000255368', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1068, 0, 0, 0, '246695557461', 0, 0, 'hungha59', '', 1, 974, '', '', NULL, 'nguyenthanhha5768@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.39.27', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:26:06', '010030530', '2016-11-04 23:04:19', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH HA', '', '0011004263443', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1067, 0, 0, 0, '139620320084', 0, 0, 'hungha58', '', 1, 974, '', '', NULL, 'nguyenthanhha5768@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:22:33', '010030530', '2016-11-03 13:44:20', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH HA', '', '0011004263443', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1066, 0, 0, 0, '6548711478', 0, 0, 'hungha56', '', 1, 974, '', '', NULL, 'nguyenthanhha5768@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:20:46', '010030530', '2016-11-04 20:28:25', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN THANH HA', '', '0011004263443', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1069, 0, 0, 0, '163494394199', 0, 0, 'mjmjshop', '', 1, 974, '', '', NULL, 'mimikitty1993@gmail.com', '0933550461', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.252.207', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:32:12', '025360428', '2016-11-04 13:52:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mjmjshop.jpg.2d124a8b9df87191cac8cd8a7c707f62', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 16, 'BUI THI TU MI', '', '0071000650914', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1070, 0, 0, 0, '283861554788', 0, 0, 'mjmjshop01', '', 1, 1069, '', '', NULL, 'mimikitty1993@gmail.com', '0933550461', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.200.230', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:43:15', '025360428', '2016-11-03 14:27:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mjmjshop01.jpg.a6c8d407ca4d4d8720680a5c47ad0614', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'BUI THI TU MI', '', '0071000650914', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1071, 0, 0, 0, '151751394690', 0, 0, 'mjmjshop02', '', 1, 1069, '', '', NULL, 'mimikitty1993@gmail.com', '0933550461', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.70.185.55', NULL, NULL, 0, 0, 0, '', '2016-10-10 13:50:05', '025360428', '2016-11-04 01:06:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mjmjshop02.jpg.fe35487a9bc524eb6bd4053098244915', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'BUI THI TU MI', '', '0071000650914', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1074, 0, 0, 0, '284145488421', 0, 0, 'nguyenduy', '', 1, 734, '', '', NULL, 'minhtuan25395@gmail.com', '0974549319', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.183.133', NULL, NULL, 0, 0, 0, '', '2016-10-10 22:14:14', '301544865', '2016-11-04 11:25:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenduy.jpg.f41c73e5b194291fc6ac17afa7d9f112', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN KHANH DUY', '', '0111000268944', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1075, 0, 0, 0, '151171533145', 0, 0, 'thanhbinh', '', 1, 607, '', '', NULL, 'nghiemthanhbinh.85@gmail.com', '01697660447', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.170.214.232', NULL, NULL, 0, 0, 0, '', '2016-10-10 22:17:52', '173713886', '2016-11-04 10:18:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhbinh.jpg.cc3c390ccb0f583916cc8e83519bc11b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGHIEM VAN BINH', '', '0481000796407', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1077, 0, 0, 0, '96979061091', 0, 0, 'Caoduchanh2', '', 1, 1046, '', '', NULL, 'Abcduchanh@gmail.com', '0982757503', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.192.65', NULL, NULL, 0, 0, 0, '', '2016-10-10 22:54:10', '186851997', '2016-11-04 12:53:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Caoduchanh2.jpg.be7cd295b9587345c129077b89b76fe0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'CAO DUC HANH', '', '0101001151393', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1078, 0, 0, 0, '279752026164', 0, 0, 'danghiep', '', 1, 759, '', '', NULL, 'Thihiep0783@gmail.com', '01247893979', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.156.105', NULL, NULL, 0, 0, 0, '', '2016-10-10 22:58:34', '077185000399', '2016-11-04 20:43:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/danghiep.jpg.40f127b3964836dbcf867aef41e1b4b4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DANG THI HIEP', '', '0081001229077', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1080, 0, 0, 0, '139972514901', 0, 0, 'khanhchaudn', '', 1, 1027, '', '', NULL, 'Khanhchaudn80@gmail.com', '0905777815', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.111.161.208', NULL, NULL, 0, 0, 0, '', '2016-10-11 04:16:43', '201654954', '2016-11-04 04:52:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khanhchaudn.jpg.230de324bdd488dc568ae57471dfe550', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HO THI CHAU', '', '0041000241925', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1081, 0, 0, 0, '8598799223', 0, 0, 'khanhchaudn1', '', 1, 1080, '', '', NULL, 'Khanhchaudn80@gmail.com', '0905777815', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.98.6.68', NULL, NULL, 0, 0, 0, '', '2016-10-11 04:27:02', '201654954', '2016-10-11 10:49:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khanhchaudn1.jpg.d4f5a50d41f4292435f8328e5503111c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO THI CHAU', '', '0041000241925', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1082, 0, 0, 0, '156315551321', 0, 0, 'khanhchaudn2', '', 1, 1080, '', '', NULL, 'Khanhchaudn80@gmail.com', '0905777815', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.191.187.33', NULL, NULL, 0, 0, 0, '', '2016-10-11 04:29:52', '201654954', '2016-10-11 04:32:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khanhchaudn2.jpg.34dd244020469e078453469d108ba1a2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO THI CHAU', '', '0041000241925', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1083, 0, 0, 0, '241996662593', 0, 0, 'Lamhuyen', '', 1, 624, '', '', NULL, 'thanhhuyenkt.vn@gmail.com', '0985678676', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.77.178', NULL, NULL, 0, 0, 0, '', '2016-10-11 04:32:28', '218603', '2016-11-04 11:07:30', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lamhuyen.jpg.c233b50760cc23bc45c39785172dd9cb', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LUONG THANH HUYEN', '', '0491000080121', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1084, 0, 0, 0, '139371028536', 0, 0, 'hoangsim', '', 1, 631, '', '', NULL, 'hoangsim.09cdtk@gmail.com', '0962101091', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.99.49', NULL, NULL, 0, 0, 0, '', '2016-10-11 04:40:12', '009858542', '2016-11-04 02:16:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangsim.jpg.0ea025f4c3ae5e3e36476cfd97cd7c7a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'HOANG THI SIM', '', '0301000330003', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1104, 0, 0, 0, '178595956521', 0, 0, 'thanhnhan79', '', 1, 1084, '', '', NULL, 'thanhnhannguyen186@gmail.com', '0938957809', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.144.174', NULL, NULL, 0, 0, 0, '', '2016-10-12 22:31:18', '241316744', '2016-11-04 06:20:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH NHAN', '', '0331000446976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1086, 0, 0, 0, '159183471128', 0, 0, 'Truong93', '', 1, 957, '', '', NULL, 'nguyentruong200393@gmail.com', '0962123313', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.3.200', NULL, NULL, 0, 0, 0, '', '2016-10-11 06:18:27', '063342250', '2016-10-11 07:55:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Truong93.jpg.fd7c8198213729eee0cd13b64a4da1dd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN TRUONG', '', '0951004181634', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1097, 0, 0, 0, '283892979465', 0, 0, 'daoanhtuyet', '', 1, 776, '', '', NULL, 'daoanhtuyet.bmt92@gmail.com', '01669907678', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.175.129.163', NULL, NULL, 0, 0, 0, '', '2016-10-12 12:43:08', '241350129', '2016-11-02 05:46:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/daoanhtuyet.jpg.6532e87d5625f5be0e0bdc4d5fb58d1f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DAO THI ANH TUYET', '', '0041000256199', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1087, 0, 0, 0, '240542881398', 0, 0, 'Caoxuankien', '', 1, 782, '', '', NULL, 'Kiencao11x3b@gmail.com', '01669999664', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.185.246', NULL, NULL, 0, 0, 0, '', '2016-10-11 09:48:41', '187183792', '2016-11-04 22:13:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Caoxuankien.jpg.92317bb8751cc4fb0ab8de76aa570ab6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'CAO XUAN KIEN', '', '0041000254456', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1168, 0, 0, 0, '247002638368', 0, 0, 'maihuongvt1', '', 1, 1027, '', '', NULL, 'marrydangvt@gmail.com', '0912171967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.94.97', NULL, NULL, 0, 0, 0, '', '2016-10-16 22:12:44', '273417657', '2016-11-02 11:33:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/maihuongvt1.jpg.32248c83f5cb20480fca78970548e1b8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THI MAI HUONG', '', '0081000384254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1088, 0, 0, 0, '107726931735', 0, 0, 'Luckystar', '', 1, 977, '', '', NULL, 'petien12@gmail.com', '01992035245', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.118.134.194', NULL, NULL, 0, 0, 0, '', '2016-10-11 16:29:13', '023826819', '2016-10-11 22:50:08', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THU HOAI', '', '0181003050074', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1090, 0, 0, 0, '98940561304', 0, 0, 'Minhhoa', '', 1, 977, '', '', NULL, 'Minhhoa3711@gmail.com', '0907828184', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.164.79.161', NULL, NULL, 0, 0, 0, '', '2016-10-11 20:38:38', '371126389', '2016-10-11 20:39:46', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'CHAU MINH HOA', '', '0111000257846', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1089, 0, 0, 0, '2249528849', 0, 0, '', '', 8, 709, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.76', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-11 00:00:00', '1', '2016-10-11 20:02:33', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/duycanhhp.jpg.66b7699e0b427086c43e737f0c1e099b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1102, 0, 0, 0, '91303118390', 0, 0, 'quangvietsg2', '', 1, 1079, '', '', NULL, 'quangviet20008@gmail.com', '0908635370', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.168.138.93', NULL, NULL, 0, 0, 0, '', '2016-10-12 20:55:22', '212226758', '2016-10-31 21:20:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/quangvietsg2.jpg.9bb8b17ae87621e08bb36015b1c9df49', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRUONG QUANG VIET', '', '0441000705690', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1092, 0, 0, 0, '151519645812', 0, 0, 'quangvietsg1', '', 1, 1079, '', '', NULL, 'quangviet20008@gmail.com', '0908635370', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.100.63', NULL, NULL, 0, 0, 0, '', '2016-10-12 02:38:36', '212226758', '2016-11-04 20:47:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/quangvietsg1.jpg.15be7878867be3bc151804c501aae81b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRUONG QUANG VIET', '', '0441000705690', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1093, 0, 0, 0, '284595337284', 0, 0, 'Giangtiensinh68', '', 1, 546, '', '', NULL, 'G0944798081@gmail.com', '0944798081', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '210.245.34.196', NULL, NULL, 0, 0, 0, '', '2016-10-12 02:46:44', '205618302', '2016-10-12 02:47:33', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGAN GIANG', '', '0071000779892', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1115, 0, 0, 0, '236230082904', 0, 0, 'duy8100', '', 1, 649, '', '', NULL, 'duyduyduy199888@gmail.com', '01284299924', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.118.126.197', NULL, NULL, 0, 0, 0, '', '2016-10-13 02:47:03', '077098000372', '2016-11-04 19:24:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HOANG DUY', '', '0081001238461', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1095, 0, 0, 0, '14519973897', 0, 0, 'tranhieubl', '', 1, 914, '', '', NULL, 'tranhienhieu86@gmail.com', '0888819878', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.170.219.80', NULL, NULL, 0, 0, 0, '', '2016-10-12 06:18:06', '385317082', '2016-11-04 21:40:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tranhieubl.jpg.811b811190b17a73715173cf84838f7a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN HIEN HIEU', '', '0891000632084', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1098, 0, 0, 0, '101353661206', 0, 0, 'xuanan', '', 1, 776, '', '', NULL, 'men.homekaka@gmail.com', '01234555543', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.175.129.163', NULL, NULL, 0, 0, 0, '', '2016-10-12 12:50:02', '201612313', '2016-11-03 04:36:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/xuanan.jpg.ae14d91e220baf50dcf7ca7f9538bf3d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN XUAN AN', '', '0041000876077', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1417, 0, 0, 0, '36363994249', 0, 0, 'anhkhoa082', '', 1, 1115, '', '', NULL, 'khoanguyenbb@gmail.com', '0937153434', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.117.41.122', NULL, NULL, 0, 0, 0, '', '2016-10-27 05:23:17', '273588474', '2016-10-31 11:23:59', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN HOANG ANH KHOA', '', '0081001229105', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1099, 0, 0, 0, '19114723344', 0, 0, 'phuongtran1', '', 1, 1079, '', '', NULL, 'phuongtran16022015@gmail.com', '01206400992', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.20.239', NULL, NULL, 0, 0, 0, '', '2016-10-12 20:47:16', '381448825', '2016-11-04 20:55:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuongtran1.jpg.7261444502dad2329c42eeb3dd39b0ef', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'TRAN THI PHUONG', '', '0441000705688', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1100, 0, 0, 0, '207524942632', 0, 0, 'phuongtran2', '', 2, 1079, '', '', NULL, 'phuongtran16022015@gmail.com', '01206400992', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.20.239', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-12 00:00:00', '1', '2016-11-04 21:00:24', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/phuongtran2.jpg.aafb0315c4fdb3cfe604967edfefaa98', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI PHUONG', '', '0441000705688', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1101, 0, 0, 0, '216516610406', 0, 0, 'phuongtran3', '', 1, 1079, '', '', NULL, 'phuongtran16022015@gmail.com', '01206400992', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.20.239', NULL, NULL, 0, 0, 0, '', '2016-10-26 14:09:45', '381448825', '2016-11-04 21:18:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuongtran3.jpg.8fb38d5670db22e90c01fb0dec7c5f2d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI PHUONG', '', '0441000705688', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1163, 0, 0, 0, '138923098208', 0, 0, 'Tuyetthanhhn', '', 1, 980, '', '', NULL, 'Hoangducharoyal007@gmail.com', '01269903004', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-16 13:08:07', '012540361', '2016-11-04 05:16:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetthanhhn.jpg.e3cc6ec30c9b0e84286ad0f4cfe8bab9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI TUYET THANH', '', '0691000306926', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1105, 0, 0, 0, '219383695761', 0, 0, 'phattai68', '', 1, 548, '', '', NULL, 'haikendy198@gmail.com', '0963682112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.194.227', NULL, NULL, 0, 0, 0, '', '2016-10-12 23:20:31', '101043195', '2016-11-03 23:44:10', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG VAN HAI', '', '0141000764729', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1106, 0, 0, 0, '91573269349', 0, 0, 'Phuplt85', '', 1, 714, '', '', NULL, 'Phuplt85@gmail.com', '0945035096', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.174.239.157', NULL, NULL, 0, 0, 0, '', '2016-10-12 23:40:20', '22115221', '2016-11-01 04:44:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phuplt85.jpg.361d24ed620986a2a7e9beccb5a387ba', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NGOC PHU', '', '0751000025675', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1107, 0, 0, 0, '30761648405', 0, 0, 'typhuhm', '', 1, 561, '', '', NULL, 'xuanhiepqt601@gmail.com', '0971935583', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.8.64', NULL, NULL, 0, 0, 0, '', '2016-10-13 00:14:04', '145122300', '2016-11-04 06:35:55', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE XUAN HIEP', '', '0591001681163', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1108, 0, 0, 0, '211548213890', 0, 0, 'phucloctho68', '', 1, 1045, '', '', NULL, 'thanthanhtinqn@gmail.com', '01268556779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.155.34', NULL, NULL, 0, 0, 0, '', '2016-10-13 00:32:25', '215096569', '2016-11-04 20:16:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phucloctho68.jpg.03fed1851e1e96226f5e30caefdccf3f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'THAN THANH TIN', '', '0431000239406', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1109, 0, 0, 0, '223979071094', 0, 0, 'minhhung1', '', 1, 885, '', '', NULL, 'minhhungnk@gmail.com', '0919214661', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.22.104.123', NULL, NULL, 0, 0, 0, '', '2016-10-13 01:02:32', '034082001505', '2016-11-04 16:21:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhhung1.jpg.d25205ba517ab5badc8085f6366a9fcf', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN MINH HUNG', '', '0121000791200', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1110, 0, 0, 0, '176130951297', 0, 0, 'quangtruc2', '', 1, 799, '', '', NULL, 'quangtruc0147@gmail.com', '0971999297', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.246.53.94', NULL, NULL, 0, 0, 0, '', '2016-10-13 01:25:20', '251113281', '2016-10-13 01:25:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN QUANG TRUC', '', '0561000564676', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1131, 0, 0, 0, '245390903575', 0, 0, 'hieumai68', '', 2, 1119, '', '', NULL, 'luongminhhieu470@gmail.com', '0906.544.371', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.66', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-13 00:00:00', '1', '2016-11-01 22:07:44', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 4, 'LUONG THI MINH HIEU', '', '0561000559210', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1111, 0, 0, 0, '234349920789', 0, 0, 'levanchung', '', 1, 1106, '', '', NULL, 'levanchungdc@gmail.com', '01695444127', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.147.40', NULL, NULL, 0, 0, 0, '', '2016-10-13 01:59:29', '231166011', '2016-11-03 23:50:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/levanchung.jpg.aefe0b8ca6e09d9817abe15ebf57d630', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE VAN CHUNG', '', '0291000300680', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1112, 0, 0, 0, '73602056513', 0, 0, 'levanchung01', '', 1, 1111, '', '', NULL, 'levanchungdc@gmail.com', '01695444127', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.136.245', NULL, NULL, 0, 0, 0, '', '2016-10-13 02:04:23', '231166011', '2016-11-04 01:40:27', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/levanchung01.jpg.b670a89766a90357cd4ebdc866fe0d04', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'LE VAN CHUNG', '', '0291000300680', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1113, 0, 0, 0, '38742930211', 0, 0, 'Truongson', '', 1, 747, '', '', NULL, 'Sonle0511@yahoo.com.vn', '0903683101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.75.141.226', NULL, NULL, 0, 0, 0, '', '2016-10-13 02:17:45', '025685113', '2016-10-28 01:44:36', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGO DINH TRUONG SON', '', '0251002489153', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1116, 0, 0, 0, '74752198984', 0, 0, 'thanhtuyen1', '', 1, 649, '', '', NULL, 'thanhtuyen2571@gmail.com', '0932194453', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.118.126.197', NULL, NULL, 0, 0, 0, '', '2016-10-13 05:49:53', '271038550', '2016-11-04 19:25:46', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH TUYEN', '', '0081000623116', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1114, 0, 0, 0, '173817541128', 0, 0, 'Viendinh68', '', 1, 707, '', '', NULL, 'Sinhvienmh@gmail.com', '0988100887', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.246.43.13', NULL, NULL, 0, 0, 0, '', '2016-10-13 02:36:09', '121549214', '2016-10-13 02:37:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Viendinh68.jpg.cdb95ebb3ade98f5b1a7d1a83ef06c50', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN DINH VIEN', '', '0731000700234', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1140, 0, 0, 0, '227989886596', 0, 0, 'kiemtientrenmang321', '', 1, 957, '', '', NULL, 'kiemtientrenmang321@gmail.com', '01689820239', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.171.255', NULL, NULL, 0, 0, 0, '', '2016-10-14 00:50:02', '250806894', '2016-11-04 20:55:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiemtientrenmang321.jpg.2b024d412ff321afd4e6d08e001ce26c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'HUYNH DINH LAN', '', '0561003775071', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1117, 0, 0, 0, '35577664578', 0, 0, 'phamminhtam', '', 1, 1106, '', '', NULL, 'pytampm1@gmail.com', '0935440444', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.98.224.36', NULL, NULL, 0, 0, 0, '', '2016-10-13 06:23:09', '221356376', '2016-11-04 21:11:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phamminhtam.jpg.45ed18af52f6591b147e20ef308bfdc8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'PHAM MINH TAM', '', '0751000012598', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1118, 0, 0, 0, '168044143993', 0, 0, 'Quyet08', '', 1, 1106, '', '', NULL, 'phamquyet1965@gmail.com', '0945618996', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.182.185.30', NULL, NULL, 0, 0, 0, '', '2016-10-13 06:25:46', '031773738', '2016-10-16 05:44:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN QUYET', '', '0031000243682', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1176, 0, 0, 0, '13715843448', 0, 0, 'cauchu', '', 1, 992, '', '', NULL, 'hienlevan9213@gmail.com', '0868186363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.39.54', NULL, NULL, 0, 0, 0, '', '2016-10-17 00:57:45', '331534391', '2016-10-25 23:01:55', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VAN HIEN', '', '0791000037789', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1119, 0, 0, 0, '229604136979', 0, 0, 'vanloi79', '', 1, 1106, '', '', NULL, 'vedan15047@gmail.com', '0904978597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.227.95', NULL, NULL, 0, 0, 0, '', '2016-10-13 08:52:59', '271786277', '2016-11-04 06:06:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vanloi79.jpg.f991dfab487c103ae2d6541a75f180fd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DO VAN LOI', '', '0251001156175', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1120, 0, 0, 0, '148050108820', 0, 0, 'vanloi0109', '', 1, 1119, '', '', NULL, 'vedan15047@gmail.com', '0904978597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.28.87.27', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:13:03', '271786277', '2016-11-04 07:08:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN LOI', '', '0251001156175', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1121, 0, 0, 0, '275956257284', 0, 0, 'vanloi010986', '', 1, 1119, '', '', NULL, 'dovanloim5bank@gmail.com', '0904978597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.28.87.27', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:15:06', '271786277', '2016-11-04 07:35:21', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN LOI', '', '0401001390120', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1122, 0, 0, 0, '100765280656', 0, 0, 'tandung1', '', 1, 779, '', '', NULL, 'tinhocletran@gmail.com', '0985967639', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.118.206.93', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:35:33', '273056908', '2016-10-17 10:51:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE TAN DUNG', '', '0081001167367', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1123, 0, 0, 0, '21867426642', 0, 0, 'trantham68', '', 1, 1119, '', '', NULL, 'tranthitham0933@gmail.com', '0933810871', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.191.255.209', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:36:34', '271886636', '2016-11-03 19:52:42', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THAM', '', '0401001343687', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1124, 0, 0, 0, '143236939921', 0, 0, 'trantham79', '', 1, 1119, '', '', NULL, 'tranthitham0933@gmail.com', '0933810871', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.191.144.205', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:38:09', '271886636', '2016-11-04 11:40:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THAM', '', '0401001343687', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1125, 0, 0, 0, '280616896631', 0, 0, 'trantham', '', 1, 1119, '', '', NULL, 'tranthitham0933@gmail.com', '0933810871', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.23.56.77', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:40:18', '271886636', '2016-11-02 22:40:47', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THAM', '', '0401001343687', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1126, 0, 0, 0, '104539035697', 0, 0, 'nguyenthu79', '', 1, 1119, '', '', NULL, 'dovanloim5bank@gmail.com', '0904978597', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.187.17.197', NULL, NULL, 0, 0, 0, '', '2016-10-13 09:44:14', '271786277', '2016-11-04 22:06:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN LOI', '', '0401001390120', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1127, 0, 0, 0, '18006381409', 0, 0, 'hungchandat', '', 1, 1106, '', '', NULL, 'hungchandat@gmail.com', '0915644160', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.41.39', NULL, NULL, 0, 0, 0, '', '2016-10-13 10:03:54', '090970660', '2016-11-04 23:02:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hungchandat.jpg.178354aa7bdf1a6d290c2c2e2b483800', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN DUC HUNG', '', '0821000028096', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1128, 0, 0, 0, '148595874180', 0, 0, 'HongNguyen1', '', 1, 964, '', '', NULL, 'nguyenhong86kr@gmail.com', '0947219771', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.27.219', NULL, NULL, 0, 0, 0, '', '2016-10-13 11:25:19', '381852308', '2016-11-04 20:08:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HongNguyen1.jpg.d6e59350298d4d688fbc2ad09e48bc60', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGUYEN THI ANH HONG', '', '0071001095773', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1129, 0, 0, 0, '285116204916', 0, 0, 'long68', '', 1, 631, '', '', NULL, 'Lythilong2016@gmail.com', '01225544070', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.84.17', NULL, NULL, 0, 0, 0, '', '2016-10-13 18:35:25', '211986119', '2016-10-13 18:39:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/long68.jpg.2b4c0cf5818bb0ab7ea093b118a41e54', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LY THI LONG', '', '0271000811472', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1130, 0, 0, 0, '164879427961', 0, 0, 'anh79', '', 1, 631, '', '', NULL, 'Lythilong2016@gmail.com', '01225544070', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.84.17', NULL, NULL, 0, 0, 0, '', '2016-10-13 18:37:46', '211986119', '2016-10-13 18:40:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/anh79.jpg.169b748b35c73c0419558e7901673379', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LY THI LONG', '', '0271000811472', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1132, 0, 0, 0, '105529247619', 0, 0, 'duongyenhappi01', '', 1, 882, '', '', NULL, 'duongyen161087@gmail.com', '0902857817', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.189.125', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:16:10', '024046288', '2016-11-04 20:45:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duongyenhappi01.jpg.46b4c99c46ffdbc5d9bb4ca112513f67', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG THI HAI YEN', '', '0371003789953', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1133, 0, 0, 0, '5101588503', 0, 0, 'duongyenhappi02', '', 1, 882, '', '', NULL, 'duongyen161087@gmail.com', '0902857817', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.189.125', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:17:36', '024046288', '2016-11-01 08:28:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duongyenhappi02.jpg.ef6735d78f7403fe531e65bbdd0b3cf2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DUONG THI HAI YEN', '', '0371003789953', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1134, 0, 0, 0, '160917952514', 0, 0, 'Hoaphat68', '', 1, 1007, '', '', NULL, 'nguyenhungltc6688@gmail.com', '+84968630649', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:20:04', '163059685', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN HUNG', '', '0121000764621', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1135, 0, 0, 0, '274934670600', 0, 0, 'Hoapha86', '', 1, 1007, '', '', NULL, 'nguyenhungckc009@gmail.com', '+84902893950', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:22:03', '163059685', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN HUNG', '', '0121000793521', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1136, 0, 0, 0, '137563805442', 0, 0, 'Hoaphat19', '', 1, 1007, '', '', NULL, 'nguyenhungsdc009@gmail.com', '+841645143714', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.216.166', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:24:50', 'AX898233', '2016-11-04 15:43:33', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VAN HUNG', '', '0121000793521', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1137, 0, 0, 0, '287793302', 0, 0, 'Hoaphat91', '', 1, 1007, '', '', NULL, 'nguyenhungskz009@gmail.com', '+851645143714', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:26:46', 'AX898233', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN HUNG', '', '0121000793521', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1138, 0, 0, 0, '155006177541', 0, 0, 'Hoaphat92', '', 1, 1007, '', '', NULL, 'buocmaitrongdem@gmail.com', '+841645143714', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-13 22:30:23', 'AX898233', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN HUNG', '', '0121000793524', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1139, 0, 0, 0, '242506621841', 0, 0, 'tay20', '', 1, 929, '', '', NULL, 'Tayle4158@gmail.com', '0939566156', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.168.210', NULL, NULL, 0, 0, 0, '', '2016-10-13 23:40:20', '351916650 ', '2016-10-13 23:44:24', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE HOANG TAY', '', '0151000555795', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1152, 0, 0, 0, '26968855625', 0, 0, 'minhhao1', '', 1, 1015, '', '', NULL, 'minhhao76@gmail.com', '0982495811', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-15 12:16:55', '111292452', '2016-11-04 07:41:15', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhhao1.jpg.2fc4edb6a13f96fa116d0d03c165f037', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'KHUONG THI MINH HAO', '', '0011004292016', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1142, 0, 0, 0, '70422599808', 0, 0, 'Tuyetnhunghn', '', 1, 980, '', '', NULL, 'Hoangducharoyal007@gmail.com', '0984943683', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.232.140', NULL, NULL, 0, 0, 0, '', '2016-10-14 08:26:58', '012607345', '2016-11-04 11:19:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetnhunghn.jpg.032a0fcf5f33a66d3b978a592fac6c79', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG TUYET NHUNG', '', '0021001187110', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1143, 0, 0, 0, '77682123046', 0, 0, 'kimlien', '', 1, 1046, '', '', NULL, 'luckyhcm2016@gmail.com', '0915931188', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.238.193', NULL, NULL, 0, 0, 0, '', '2016-10-14 09:35:13', '135549942', '2016-10-20 00:44:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kimlien.jpg.d4c21814052b7021fbad8bd7906911b1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DO THI KIM LIEN', '', '0361000285478', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1144, 0, 0, 0, '232015361683', 0, 0, 'caominhhai0001', '', 1, 967, '', '', NULL, 'haibanh1990@yahoo.com.vn', '01265229595', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.161.130', NULL, NULL, 0, 0, 0, '', '2016-10-14 09:58:56', '024855917', '2016-11-04 21:59:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/caominhhai0001.jpg.7467a07c98ae25836dc76060093b6dbc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'CAO MINH HAI', '', '0371000421148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1145, 0, 0, 0, '167873290503', 0, 0, 'caominhhai0002', '', 1, 967, '', '', NULL, 'caominhnhiem1960@gmail.com', '01265229595', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.27.111', NULL, NULL, 0, 0, 0, '', '2016-10-14 10:06:48', '024855917', '2016-11-04 12:47:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/caominhhai0002.jpg.95541278a97df59272a0c4560ecdf809', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CAO MINH HAI', '', '0371000421148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1146, 0, 0, 0, '40073439233', 0, 0, 'Quydaigia791', '', 1, 1119, '', '', NULL, 'Dangphucquy271@gmail.com', '0904683968', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.37.3', NULL, NULL, 0, 0, 0, '', '2016-10-14 10:27:32', '011516491', '2016-11-03 01:24:06', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG PHUC QUY', '', '0011004006903', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1147, 0, 0, 0, '82688021401', 0, 0, 'Quydaigia792', '', 1, 1119, '', '', NULL, 'Dangphucquy271@gmail.com', '0904683968', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.16.233', NULL, NULL, 0, 0, 0, '', '2016-10-14 10:29:36', '011516491', '2016-11-02 01:37:13', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG PHUC QUY', '', '0011004006903', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1465, 0, 0, 0, '158938511750', 0, 0, 'hongtuoi', '', 1, 1462, '', '', NULL, 'hongtuoi686@gmail.com', '0989986847', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.6.226', NULL, NULL, 0, 0, 0, '', '2016-10-28 11:39:37', '000000000', '2016-10-28 11:41:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'THACH THI HONG TUOI', '', '0321000645680', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1148, 0, 0, 0, '237405104436', 0, 0, 'hathao', '', 1, 1083, '', '', NULL, 'hathao.phuquy@gmail.com', '0989134111', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.134.74', NULL, NULL, 0, 0, 0, '', '2016-10-14 11:03:27', '113362197', '2016-11-04 22:50:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hathao.jpg.5509e7c8af538a4cd8fc45a31790951e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HA THI THAO', '', '0011004320843', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1149, 0, 0, 0, '172404281430', 0, 0, 'Ziggy002', '', 1, 964, '', '', NULL, 'ziggy.infinity.inc@gmail.com', '01215679430', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.131.36', NULL, NULL, 0, 0, 0, '', '2016-10-14 21:44:24', '046092000017', '2016-11-01 06:41:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ziggy002.jpg.3fb684200cca33d2253d9d53bab45483', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'VO VIET HAN', '', '0441000713059', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1161, 0, 0, 0, '157119743748', 0, 0, 'congthanhtran1', '', 1, 965, '', '', NULL, 'congthanhtran120394@gmail.com', '00818064599394', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.74.82.32', NULL, NULL, 0, 0, 0, '', '2016-10-16 11:45:20', '187453228', '2016-11-04 20:41:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/congthanhtran1.jpg.0af555db1c41fb22212f45efd138d211', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI NHU', '', '0281000444194', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1150, 0, 0, 0, '220737991027', 0, 0, 'mydung2', '', 1, 759, '', '', NULL, 'mydung131182@yahoo.com', '0948333640', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.45.20', NULL, NULL, 0, 0, 0, '', '2016-10-15 03:03:06', '381135917', '2016-11-03 21:22:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/mydung2.jpg.53525944b0724763906eafc9cd694051', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRUONG MY DUNG', '', '0191000338776', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1315, 0, 0, 0, '237334835560', 0, 0, 'lethong1', '', 1, 985, '', '', NULL, 'thongtien83@gmail.com', '0986362999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.190.158.31', NULL, NULL, 0, 0, 0, '', '2016-10-22 23:02:10', '173352482', '2016-11-04 09:56:50', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE VAN THONG', '', '0781000420241', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1329, 0, 0, 0, '284868305408', 0, 0, 'vungcao', '', 1, 938, '', '', NULL, 'haithanghai@gmail.com', '0917052946', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-23 07:08:37', '090920011', '2016-11-03 21:53:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vungcao.jpg.e0f24890ebbe3b8c219f91f09b716f0c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU VAN GIANG', '', '0821000089707', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1151, 0, 0, 0, '215086098065', 0, 0, 'hpnhien94', '', 1, 1107, '', '', NULL, 'subon20122014@gmail.com', '0933812286', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-15 11:08:10', '145563775', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VAN NHIEN', '', '0591000323255', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1153, 0, 0, 0, '83367298119', 0, 0, 'minhhao2', '', 1, 1015, '', '', NULL, 'minhhao76@gmail.com', '0982495811', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.21.44', NULL, NULL, 0, 0, 0, '', '2016-10-15 12:18:25', '111292452', '2016-11-03 19:11:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhhao2.jpg.5f703c6bc0d131d3fbea9b5c7735e987', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'KHUONG THI MINH HAO', '', '0011004292016', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1154, 0, 0, 0, '225643434592', 0, 0, 'hongha2', '', 1, 1015, '', '', NULL, 'Nganha0676@gmail.com', '0982495811', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.162.21.44', NULL, NULL, 0, 0, 0, '', '2016-10-15 12:31:22', 'S367621', '2016-11-04 11:37:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongha2.jpg.4d217cb6f896372117fe2632cac4b8c6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HONG HA', '', '0011004305774', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1155, 0, 0, 0, '210506949474', 0, 0, 'hongha01', '', 1, 1015, '', '', NULL, 'hongha7606@gmail.com', '01236719398', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-10-15 12:40:19', 'S367621', '2016-11-04 19:27:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongha01.jpg.60050bbb8178b06b9e39245c4b512e77', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HONG HA', '', '0011004305774', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1156, 0, 0, 0, '23241167510', 0, 0, 'TonHoaSen68', '', 1, 1072, '', '', NULL, 'luongminhtamtk@gmail.com', '0977338111', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-15 23:22:36', '142716568', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LUONG VAN TAM', '', '0011004201664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1159, 0, 0, 0, '178047234689', 0, 0, '', '', 8, 957, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.186.90', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-16 00:00:00', '1', '2016-10-17 06:35:35', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/ngocbau.jpg.21760fb00de878c05988bc8d8959c7e0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1157, 0, 0, 0, '87392540216', 0, 0, 'TonHoaSen69', '', 1, 1072, '', '', NULL, 'luongminhtamtk@gmail.com', '0977338111', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-15 23:24:24', '142716568', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LUONG VAN TAM', '', '0011004201664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1158, 0, 0, 0, '219688309529', 0, 0, 'thaonguyenhp', '', 1, 640, '', '', NULL, 'Tuyetthao2019@gmail.com', '0947305298', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.40.123', NULL, NULL, 0, 0, 0, '', '2016-10-16 01:15:51', '031127094', '2016-11-04 09:48:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thaonguyenhp.jpg.042a795acebef02cc0241ab6bf154f7b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TUYET THAO', '', '0031000367721', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1160, 0, 0, 0, '241064949556', 0, 0, 'trinhmai1', '', 1, 1046, '', '', NULL, 'tt.anhdung@gmail.com', '01267301763', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.4.182', NULL, NULL, 0, 0, 0, '', '2016-10-16 11:32:58', '024642746', '2016-11-04 09:20:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trinhmai1.jpg.b2655f4e399b85d64438657a7c580409', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'TRINH THI ANH MAI', '', '0501000079952', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1564, 0, 0, 0, '241096462375', 0, 0, 'Nhatphat', '', 1, 655, '', '', NULL, 'Pquangnhat@gmail.com', '0905376744', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-11-04 08:02:20', '225299851', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHUNG QUANG NHAT', '', '0061001099381', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1190, 0, 0, 0, '96639936403', 0, 0, 'Huynhhuy', '', 1, 778, '', '', NULL, 'Nhathuy.npv.logs@gmail.com', '0964426609', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.238.192', NULL, NULL, 0, 0, 0, '', '2016-10-17 11:09:13', '250824436', '2016-11-04 21:59:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huynhhuy.jpg.a3d8de8ad46baa13f4b50ee73782b6d3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NHAT HUY', '', '0071005646336', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1162, 0, 0, 0, '9285170776', 0, 0, 'congthanhtran2', '', 1, 965, '', '', NULL, 'congthanhtran120394@gmail.com', '00818064599394', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.74.82.32', NULL, NULL, 0, 0, 0, '', '2016-10-16 11:46:40', '187453228', '2016-11-04 20:42:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/congthanhtran2.jpg.532cf39199769cb89c31848ba8c5a026', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI NHU', '', '0281000444194', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1309, 0, 0, 0, '225572889744', 0, 0, 'thanhthuybmt', '', 8, 545, '', '', NULL, 'thuyyanh@gmail.com', '0972142099', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-22 00:00:00', '1', '2016-10-26 02:59:27', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/thanhthuybmt.jpg.347e03e6082fbf9b5500d1543503ca42', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH THUY', '', '0231000548604', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1165, 0, 0, 0, '156768703365', 0, 0, 'Tuyetthanhhn2', '', 1, 1163, '', '', NULL, 'thanhtuyethd68@gmail.com', '01269903004', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.153.87', NULL, NULL, 0, 0, 0, '', '2016-10-16 13:17:29', '012540361', '2016-11-04 10:24:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetthanhhn2.jpg.9969d5e36c4f577f9cfdc07a1ab412a1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI TUYET THANH', '', '0691000306926', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1164, 0, 0, 0, '241474540825', 0, 0, 'Tuyetthanhhn1', '', 1, 1163, '', '', NULL, 'thanhtuyethd68@gmail.com', '01269903004', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-16 13:15:09', '012540361', '2016-11-04 19:59:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetthanhhn1.jpg.3942ae16e62038e12948206b23ef361c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI TUYET THANH', '', '0691000306926', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1167, 0, 0, 0, '142024803909', 0, 0, 'tranhuy1', '', 1, 740, '', '', NULL, 'trandainhan0506@yahoo.com', '0932546584', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.26.63', NULL, NULL, 0, 0, 0, '', '2016-10-16 20:48:25', '024016652', '2016-11-04 10:38:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN HA DUC HUY', '', '0441003782873', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1186, 0, 0, 0, '156920522647', 0, 0, 'Sin', '', 2, 697, '', '', NULL, 'Nhung97988@gmail.com', '85366282007', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '60.246.40.245', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-17 00:00:00', '1', '2016-11-03 06:04:26', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI DUYEN', '', '0231000627858', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1166, 0, 0, 0, '6478373269', 0, 0, 'caoxuankien1', '', 1, 1087, '', '', NULL, 'kiencaobkpro@gmail.com', '01669999664', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.185.246', NULL, NULL, 0, 0, 0, '', '2016-10-16 20:11:37', '187183792', '2016-11-04 22:13:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/caoxuankien1.jpg.8b4b7d400bb805a1370e8b96af4915c3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'CAO XUAN KIEN', '', '0041000254456', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1169, 0, 0, 0, '161332019476', 0, 0, 'Khien8790', '', 1, 992, '', '', NULL, 'ptkbitking90@gmail.com', '0989951890', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.183.20.126', NULL, NULL, 0, 0, 0, '', '2016-10-16 22:35:02', '163111859', '2016-10-16 22:39:00', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN TU KHIEN', '', '0421000460534', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1175, 0, 0, 0, '151003332868', 0, 0, 'cuachu', '', 1, 992, '', '', NULL, 'hienlevan9213@gmail.com', '0868186363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-17 00:53:55', '331534391', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE VAN HIEN', '', '0791000037789', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1170, 0, 0, 0, '283552212053', 0, 0, 'lamtrangqng', '', 1, 637, '', '', NULL, 'trangnguyen211112@gmail.com', ' 0935168377', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.125.56', NULL, NULL, 0, 0, 0, '', '2016-10-16 22:51:34', '212306018', '2016-11-04 01:54:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lamtrangqng.jpg.11fbcbb7400a216ce4a069aacaa4ebf6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI TRANG', '', '0271000364264', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1174, 0, 0, 0, '284936143640', 0, 0, 'hanhphatloc8', '', 1, 874, '', '', NULL, 'chuyenapple289@gmail.com', '0985567999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.16.24', NULL, NULL, 0, 0, 0, '', '2016-10-16 23:33:40', '271557656', '2016-11-04 22:11:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hanhphatloc8.jpg.def6a94ecf42be27a8deb54b3c30fca1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN HONG HANH', '', '0121000695751', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1171, 0, 0, 0, '152306287443', 0, 0, 'tuanph', '', 1, 637, '', '', NULL, 'tuanphuc1994@gmail.com', '01202799162', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.141.221', NULL, NULL, 0, 0, 0, '', '2016-10-16 23:01:10', '212322151', '2016-11-04 01:36:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tuanph.jpg.47cb651b6eb0825f335a96bc6d421daf', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI KIM PHUC', '', '0271000956671', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1172, 0, 0, 0, '14066652437', 0, 0, 'Hongmachag', '', 1, 928, '', '', NULL, 'hongvanmachm5@gmail.com', '0969672168', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.49.88', NULL, NULL, 0, 0, 0, '', '2016-10-16 23:07:03', '341900066', '2016-11-03 07:25:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongmachag.jpg.0d6ea49f9d27aa5a22037396d789fd54', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HONG VAN MACH', '', '0151000556915', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1289, 0, 0, 0, '4585816393', 0, 0, 'doduong', '', 1, 898, '', '', NULL, 'doduong1978@gmail.com', '0918567887', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-20 23:05:25', '381744955', '2016-10-31 07:15:23', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DO HUNG DUONG', '', '0251002728983', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1173, 0, 0, 0, '96404526985', 0, 0, 'hanhphatloc1', '', 1, 874, '', '', NULL, 'chuyenapple289@gmail.com', '0985567999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.22.104', NULL, NULL, 0, 0, 0, '', '2016-10-16 23:14:06', '271557656', '2016-11-03 20:46:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hanhphatloc1.jpg.d05f5863ae3f699b771924eb51fe4e75', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HONG HANH', '', '0121000695751', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1177, 0, 0, 0, '96908698258', 0, 0, 'Hangtp', '', 1, 1000, '', '', NULL, 'Thanhhang38894@gmail.com', '01207372223', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-17 01:08:38', '273585781', '2016-11-04 22:56:43', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hangtp.jpg.db99c3c83bb2cffe4c1b570305fdfa0d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH HANG', '', '0401001431930', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1178, 0, 0, 0, '279206531113', 0, 0, 'Lantp2', '', 1, 1000, '', '', NULL, 'Lannguyenngoc0403@gmail.com', '0902605823', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-17 01:25:26', '250856825', '2016-11-04 10:15:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lantp2.jpg.9b7fbe48251584519a40e4698b1a3c64', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN NGOC LAN', '', '0401001374768', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1179, 0, 0, 0, '146120345625', 0, 0, 'Oanhngoc05', '', 1, 744, '', '', NULL, 'Oanhngoc07@gmail.com', '01682330849', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '118.68.249.179', NULL, NULL, 0, 0, 0, '', '2016-10-17 02:58:51', '250384667', '2016-11-04 22:20:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Oanhngoc05.jpg.8ca14af361ae9b8ff85d213f4f10c565', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI NGOC OANH', '', '0561000562148', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1180, 0, 0, 0, '141751751506', 0, 0, 'Yvy', '', 2, 778, '', '', NULL, 'Vynguyen120993@gmail.com', '0902388880', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.100.180.163', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-17 00:00:00', '1', '2016-11-04 10:53:42', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Yvy.jpg.e2c2884a3178bcde4e3dfb8bc99187f4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN Y VY', '', '0421000488203', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1181, 0, 0, 0, '6197511188', 0, 0, 'Xuandiu2', '', 1, 744, '', '', NULL, 'Haiauo2000@yahoo.com', '01992028427', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.2.114.139', NULL, NULL, 0, 0, 0, '', '2016-10-17 03:05:40', '250784533', '2016-11-04 08:36:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Xuandiu2.jpg.1b3d8d99a9a490d56351696162a701ee', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI XUAN DIU', '', '0531000293997', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1182, 0, 0, 0, '156385895008', 0, 0, 'VyTP', '', 1, 778, '', '', NULL, 'Vynguyen120993@gmail.com', '0902388880', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.100.180.163', NULL, NULL, 0, 0, 0, '', '2016-10-17 03:17:00', '250950455', '2016-11-04 10:52:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/VyTP.jpg.43133411e1b8221b87e8ead81d24ac9f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN Y VY', '', '0421000488203', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1183, 0, 0, 0, '241196086288', 0, 0, 'shalala2', '', 1, 938, '', '', NULL, 'hoavungcao@gmail.com', '0987389260', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-17 05:28:07', '090920011', '2016-11-03 21:25:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/shalala2.jpg.6e47dea797c9cfa9b5df26755ff9d618', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VU VAN GIANG', '', '0011001510122', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1184, 0, 0, 0, '138816140151', 0, 0, 'thanhthuy821', '', 1, 961, '', '', NULL, 'thanhthuy1275@gmail.com', '0905690693', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.72.40', NULL, NULL, 0, 0, 0, '', '2016-11-01 20:56:32', '201483044', '2016-11-04 22:45:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhthuy821.jpg.6df3c25ac2e179dbad63d7d043ac2e15', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGO THI THANH THUY', '', '0041000248072', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1185, 0, 0, 0, '9185028377', 0, 0, 'thanhthuy822', '', 1, 961, '', '', NULL, 'thanhthuy1275@gmail.com', '0905690693', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.72.40', NULL, NULL, 0, 0, 0, '', '2016-10-17 06:27:22', '201483044', '2016-11-04 22:47:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhthuy822.jpg.d5215e03d54d261b322e3e5aeaad9913', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'NGO THI THANH THUY', '', '0041000248072', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1227, 0, 0, 0, '18933160036', 0, 0, 'ha01', '', 1, 734, '', '', NULL, 'hatuanbb@gmail.com', '0911768227', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.164.127', NULL, NULL, 0, 0, 0, '', '2016-10-18 07:27:38', '012984957', '2016-10-18 08:57:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ha01.jpg.427eb12e9e09ef5e762fc4a28a23f365', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THI HA', '', '0491000084551', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1187, 0, 0, 0, '240856138019', 0, 0, 'thuvan', '', 1, 992, '', '', NULL, 'thuvan250106@gmail.com', '0932213033', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.233.115', NULL, NULL, 0, 0, 0, '', '2016-10-17 09:09:57', '162841237', '2016-11-04 22:17:09', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THU VAN', '', '0831000033751', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1188, 0, 0, 0, '108520736336', 0, 0, 'tungtony', '', 1, 781, '', '', NULL, 'tungtony2015@gmail.com', '0973663636', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.181.79.98', NULL, NULL, 0, 0, 0, '', '2016-10-17 09:27:28', '070662798', '2016-11-04 10:28:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tungtony.jpg.57ad29b2ee7684680459dac849dd6ea9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LOC MINH TUNG', '', '0451001778407', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1189, 0, 0, 0, '2172990244', 0, 0, 'huyhieu2', '', 1, 1015, '', '', NULL, 'nguyenthihanghb88@gmail.com', '0944038552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.0.33.137', NULL, NULL, 0, 0, 0, '', '2016-11-02 13:07:33', '112331601', '2016-11-04 07:48:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huyhieu2.jpg.74602cd5a73598b85d118bde08246196', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HANG', '', '0611001942172', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1249, 0, 0, 0, '173194823297', 0, 0, 'habinh56', '', 1, 988, '', '', NULL, 'phankimpk@gmail.com', '0914818897', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:24:07', '012916617', '2016-11-02 20:47:51', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI BINH', '', '0971000009287', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1191, 0, 0, 0, '13430690823', 0, 0, 'ThuanTP', '', 1, 778, '', '', NULL, 'Doancongthuan681991@gmail.com', '0904612065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.23', NULL, NULL, 0, 0, 0, '', '2016-10-17 11:13:06', '250824365', '2016-11-04 22:46:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ThuanTP.jpg.7343c71dd97e553ec0da023ae7422359', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 8, 'DOAN CONG THUAN', '', '0421000471233', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1208, 0, 0, 0, '210746033717', 0, 0, 'trucnguyen', '', 1, 1069, '', '', NULL, 'nguyentruc8989@gmail.com', '0934189914', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.22.184', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:42:38', '341414135', '2016-10-19 10:55:34', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THANH TRUC', '', '0071000957454', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1296, 0, 0, 0, '152893495365', 0, 0, '', '', 8, 640, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-21 00:00:00', '1', NULL, '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1276, 0, 0, 0, '11063018339', 0, 0, 'Huyenpham', '', 1, 1248, '', '', NULL, 'phamhuyen170484@gmail.com', '0903320901', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.33.240', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:49:35', '273240094', '2016-10-30 09:00:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huyenpham.jpg.69f6c2109c9e130c0150449db5ffeedc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THI HUYEN', '', '0441000661924', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1192, 0, 0, 0, '150719461143', 0, 0, 'phamhung68', '', 1, 988, '', '', NULL, 'hungthanhoave@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-17 14:12:15', '010030536', '2016-11-04 08:49:07', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM VAN HUNG', '', '0011004321883', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1193, 0, 0, 0, '284665681013', 0, 0, 'phamhung168', '', 1, 1192, '', '', NULL, 'hungthanhoave@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.42.191', NULL, NULL, 0, 0, 0, '', '2016-10-17 14:19:13', '010030530', '2016-11-04 01:37:35', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM VAN HUNG', '', '0011004321883', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1194, 0, 0, 0, '96192431954', 0, 0, 'phamhung69', '', 2, 1192, '', '', NULL, 'hungthanhhoave@gmail.com', '0914898715', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-17 00:00:00', '1', '2016-11-03 13:47:45', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM VAN HUNG', '', '0011004321883', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1195, 0, 0, 0, '13965087014', 0, 0, 'Ngoctu1', '', 1, 734, '', '', NULL, 'bauphanngoc123@gmail.com', '0988885300', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.186.90', NULL, NULL, 0, 0, 0, '', '2016-10-17 15:41:53', '250233683', '2016-11-04 22:12:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ngoctu1.jpg.ae6bf105462d97a1f07f787c041c361d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN NGOC BAU', '', '0501000106435', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1196, 0, 0, 0, '152203530294', 0, 0, 'minhkhanh', '', 1, 727, '', '', NULL, 'vietnganguyen2@gmail.com', '01666206685', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.165.112.149', NULL, NULL, 0, 0, 0, '', '2016-10-17 21:28:12', '212296858', '2016-10-17 21:29:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI VIET NGA', '', '0571000039582', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1197, 0, 0, 0, '281730695760', 0, 0, 'Hoangtrang', '', 1, 709, '', '', NULL, 'Trangtran1516@gmail.com', '0945853683', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.35.68', NULL, NULL, 0, 0, 0, '', '2016-10-17 22:00:59', '168022158', '2016-11-04 22:25:15', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoangtrang.jpg.b2521fffce0e25f75d381cfc6ec85c1f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THU TRANG', '', '0381000501216', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1206, 0, 0, 0, '92499693650', 0, 0, 'Thulx', '', 1, 928, '', '', NULL, 'Thu7777@gmail.com', '0907474952', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.54.109', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:28:15', '351037470', '2016-11-03 23:22:47', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thulx.jpg.c3d1f1ab84750b731f196ecfb4e38ac4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRINH THI THU', '', '0151000521745', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1198, 0, 0, 0, '101277122649', 0, 0, 'thaotran', '', 1, 755, '', '', NULL, 'sanh09@gmail.com', '0989595306', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.249.86.74', NULL, NULL, 0, 0, 0, '', '2016-10-17 23:19:47', '026069106', '2016-11-04 21:49:07', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thaotran.jpg.665b4f9dc76f59020e79960fc6458ce4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI BICH THAO', '', '0421000479236', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1200, 0, 0, 0, '208315626625', 0, 0, 'trinhmai2', '', 1, 1046, '', '', NULL, 'tt.anhdung@gmail.com', '01267301763', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.4.182', NULL, NULL, 0, 0, 0, '', '2016-10-17 23:55:52', '024642746', '2016-11-04 09:23:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trinhmai2.jpg.d6b78c5ab71ddc119dc4ac5557e7d4c9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRINH THI ANH MAI', '', '0071001076499', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1201, 0, 0, 0, '215580481425', 0, 0, 'Thuytran1', '', 1, 744, '', '', NULL, 'Tranthuy0701@yahoo.com', '0909216101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.201.195', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:02:32', '023249441', '2016-11-04 23:00:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuytran1.jpg.39ecfa6f65ed76013dfbf7155800e46c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN BICH THUY', '', '0421000463261', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1202, 0, 0, 0, '90266752617', 0, 0, 'Thuytran2', '', 1, 790, '', '', NULL, 'Tranthuy0701@yahoo.com', '0909216101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.2.114.139', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:06:28', '023249441', '2016-11-04 05:40:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuytran2.jpg.eed73f349a59c5a0f44ab9702ebf4aad', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN BICH THUY', '', '0421000463261', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1203, 0, 0, 0, '32255256953', 0, 0, 'ReTech', '', 1, 1069, '', '', NULL, 'ngocduy9636@gmail.com', '0888775079', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.244.0', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:09:47', '250932016', '2016-11-04 22:39:29', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC DUY', '', '0531002517775', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1204, 0, 0, 0, '177808302930', 0, 0, 'ReTech01', '', 1, 1069, '', '', NULL, 'ngocduy9636@gmail.com', '0888775079', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.244.0', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:12:13', '250932016', '2016-11-03 23:48:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC DUY', '', '0531002517775', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1205, 0, 0, 0, '220411143426', 0, 0, 'ReTech02', '', 1, 1069, '', '', NULL, 'ngocduy9636@gmail.com', '08887750790', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.244.0', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:13:43', '250932016', '2016-11-04 22:32:49', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC DUY', '', '0531002517775', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1213, 0, 0, 0, '39530604400', 0, 0, 'Tuanlx01', '', 1, 920, '', '', NULL, 'Tuanklkg@gmail.com', '0939461614', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.116', NULL, NULL, 0, 0, 0, '', '2016-10-18 02:33:21', '371278079', '2016-11-04 20:57:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuanlx01.jpg.4c4c5b4edb015b6777ba7e45d2e25b0d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH TUAN', '', '0601000498998', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1207, 0, 0, 0, '30074623380', 0, 0, 'trande1', '', 1, 914, '', '', NULL, 'tranvande94@gmail.com', '0868096281', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.17.16', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:35:58', '381671037', '2016-11-04 13:39:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trande1.jpg.88053cd0abef9cdd89f1fc35148e5012', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN VAN DE', '', '0111000210995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1209, 0, 0, 0, '225020749697', 0, 0, 'trucnguyen01', '', 1, 1069, '', '', NULL, 'nguyentruc8989@gmail.com', '0934189914', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:43:49', '341414135', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THANH TRUC', '', '0071000957454', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1210, 0, 0, 0, '176918962564', 0, 0, 'trucnguyen02', '', 1, 1069, '', '', NULL, 'nguyentruc8989@gmail.com', '0934189914', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.130.118', NULL, NULL, 0, 0, 0, '', '2016-10-18 00:44:44', '341414135', '2016-10-19 05:01:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THANH TRUC', '', '0071000957454', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1211, 0, 0, 0, '233322853936', 0, 0, 'Phamngocmai1811', '', 1, 779, '', '', NULL, 'Phamngocmai1811@gmail.com', '0949973969', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.38.140', NULL, NULL, 0, 0, 0, '', '2016-10-18 01:10:43', '381823001', '2016-11-04 23:07:15', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phamngocmai1811.jpg.135e9d23df869d2ccafae55ca3dada3c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC MAI', '', '0191000321855', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1212, 0, 0, 0, '70957634432', 0, 0, 'phuongminh1', '', 1, 806, '', '', NULL, 'phuongminhvty@gmail.com', '0918931989', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.28.134', NULL, NULL, 0, 0, 0, '', '2016-10-18 01:13:52', '361427920', '2016-11-04 10:38:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phuongminh1.jpg.5b4077b23bc0634196d71f351ed950d9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN LUU PHUONG MINH', '', '0111000263421', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1214, 0, 0, 0, '173026843013', 0, 0, 'Ngoctuanlx ', '', 1, 920, '', '', NULL, 'dangngoctuanlx@gmail.com', '0932311422', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-18 02:50:47', '351999776', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DANG NGOC TUAN', '', '0601000500068', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1215, 0, 0, 0, '237166199395', 0, 0, 'Dungtp', '', 2, 1000, '', '', NULL, 'Tp.phamtiendung@gmail.com', '0914918356', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-18 00:00:00', '1', '2016-11-04 22:01:48', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/Dungtp.jpg.9171b7c3416ec33f518c350d0c3acfaf', 230, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM TIEN DUNG', '', '0401001408195', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1216, 0, 0, 0, '77399140421', 0, 0, 'xuanhong39', '', 1, 711, '', '', NULL, 'hongdoan432@gmail.com', '01263155098', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.138.25', NULL, NULL, 0, 0, 0, '', '2016-10-18 04:57:11', '225573558', '2016-11-03 05:25:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/xuanhong39.jpg.d84fc8627f2863ffbf357360a40b0dc0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DOAN THI XUAN HONG', '', '0061001011501', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1217, 0, 0, 0, '34787001433', 0, 0, 'tuongnguyen', '', 1, 630, '', '', NULL, 'tuongnguyenvan84@gmail.com', '0968307406', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.40.212', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:00:09', '212290722', '2016-11-04 22:55:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tuongnguyen.jpg.25ffb5842d02946b5dc2704a4801ab9c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VAN TUONG', '', '0271000318635', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1218, 0, 0, 0, '165633676144', 0, 0, 'binhsg01', '', 1, 747, '', '', NULL, 'btran4893@gmail.com', '0936242945', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.193.224', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:03:23', '079093003006', '2016-10-18 23:34:26', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THANH BINH', '', '0331000451403', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1219, 0, 0, 0, '232254472736', 0, 0, 'kieumi', '', 1, 630, '', '', NULL, 'kieumi0984@yahoo.com.vn', '01699989984', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.162.121.199', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:03:59', '212285220', '2016-11-04 21:15:27', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kieumi.jpg.94ca2f2ba27da250e850db92fa0ccedd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'MAI THI KIEU MY', '', '0271001044294', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1220, 0, 0, 0, '147120718361', 0, 0, 'Sottp', '', 1, 1000, '', '', NULL, 'Luongutsot@gmail.com', '0933991313', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:08:53', '371126390', '2016-11-04 01:11:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Sottp.jpg.db5d7fab7c769193b12f8f529c234ea4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LUONG UT SOT', '', '0401001431738', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1221, 0, 0, 0, '276646215945', 0, 0, 'nhungdn1', '', 1, 715, '', '', NULL, 'tuyetnhungdn.112@gmail.com', '0937654112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:42:14', '272072233', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DANH THI TUYET NHUNG', '', '0121002765256', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1222, 0, 0, 0, '103166574851', 0, 0, 'nhungdn2', '', 1, 715, '', '', NULL, 'tuyetnhungdn.112@gmail.com', '0937654112', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:44:45', '272072233', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DANH THI TUYET NHUNG', '', '0121002765256', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1223, 0, 0, 0, '19327365431', 0, 0, 'Thienkhanh1987', '', 1, 779, '', '', NULL, 'Thienkhanh1987@gmail.com', '0969486786', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.237.97.139', NULL, NULL, 0, 0, 0, '', '2016-10-18 05:50:43', '285173566', '2016-11-04 12:02:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thienkhanh1987.jpg.a53bbee88ae1c7abb47b44a91cbb1f2e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THIEN KHANH', '', '0281000451079', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1224, 0, 0, 0, '144270706488', 0, 0, '', '', 8, 630, '', '', NULL, 'hongphong1289@gmail.com', '0905141566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.71.168', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-18 00:00:00', '1', '2016-10-24 03:56:32', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1225, 0, 0, 0, '279828787990', 0, 0, 'Thienkhanh011987', '', 1, 1223, '', '', NULL, 'Thienkhanh011987@gmail.com', '0969486786', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.237.97.139', NULL, NULL, 0, 0, 0, '', '2016-10-18 06:49:02', '285173566', '2016-11-04 12:03:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thienkhanh011987.jpg.dc17cd9561169252135a127f5efa6d62', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THIEN KHANH', '', '0281000451079', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1226, 0, 0, 0, '103751377990', 0, 0, 'Dotung', '', 1, 778, '', '', NULL, 'Thanhtung27731@gmail.com', '0903934021', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.118.80.114', NULL, NULL, 0, 0, 0, '', '2016-10-18 06:49:56', '079076000524', '2016-11-03 19:15:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Dotung.jpg.31baa1376e0a51186ef2771ef229982b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 5, 'DO THANH TUNG', '', '0071001571737', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1228, 0, 0, 0, '151248196133', 0, 0, 'loanhm', '', 2, 544, '', '', NULL, 'danglytam93@gmail.com', '0938884681', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.217.148', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-18 00:00:00', '1', '2016-11-04 12:09:09', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/loanhm.jpg.2370b76f2af0071558275695f8402f02', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG LY TAM', '', '0511000413964', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1229, 0, 0, 0, '284313545027', 0, 0, 'Minhtamag', '', 1, 928, '', '', NULL, 'Minhthien123g8@gmail.com', '0969672168', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.49.88', NULL, NULL, 0, 0, 0, '', '2016-10-18 08:29:45', '362197323', '2016-11-03 00:58:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhtamag.jpg.c56a88a645933627bae1fe9d0154839a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH MINH THIEN', '', '0151000517839', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1230, 0, 0, 0, '163851932176', 0, 0, 'Giaphu', '', 1, 928, '', '', NULL, 'Quyenbossauto@gmail.com', '0979180648', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.30.41', NULL, NULL, 0, 0, 0, '', '2016-10-18 09:03:18', '341900066', '2016-11-04 23:02:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Giaphu.jpg.b7482f0ec5474c104372145f311d0655', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH MINH THIEN', '', '0601000497416', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1231, 0, 0, 0, '246178550614', 0, 0, 'vanvinh', '', 2, 800, '', '', NULL, 'nguyenvynghean77@gmail.com', '0966965916', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.39.27', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-18 00:00:00', '1', '2016-11-04 22:46:02', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN VAN VINH', '', '0491000065294', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1232, 0, 0, 0, '107927867462', 0, 0, 'thao179', '', 1, 876, '', '', NULL, 'ngocthao4599@gmail.com', '0949454599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.10.206', NULL, NULL, 0, 0, 0, '', '2016-10-18 09:14:00', '352573867', '2016-11-03 22:50:46', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NGOC THAO', '', '0151000554735', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1233, 0, 0, 0, '2457219986', 0, 0, 'thao279', '', 1, 876, '', '', NULL, 'ngocthao4599@gmail.com', '0949454599', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.10.206', NULL, NULL, 0, 0, 0, '', '2016-10-18 09:18:58', '352573867', '2016-11-03 22:51:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM NGOC THAO', '', '0151000554735', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1295, 0, 0, 0, '14655111541', 0, 0, 'robert', '', 1, 640, '', '', NULL, 'giabao.pt536@gmail.com', '091 3053387', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', NULL, NULL, 0, 0, 0, '', '2016-10-21 06:48:17', '012620827', '2016-11-04 22:53:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/robert.jpg.05d6ab57adf9bc505e366549da44c922', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN GIA DAM', '', '0071001124717', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1238, 0, 0, 0, '156045443684', 0, 0, 'thuyhuong', '', 1, 759, '', '', NULL, 'ptthuongqn@gmail.com', '0974835101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.67.110', NULL, NULL, 0, 0, 0, '', '2016-10-18 11:50:14', '212727730', '2016-11-04 19:44:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thuyhuong.jpg.d52d845431f973f7fe5e07e674929b76', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI THUY HUONG', '', '0271000307619', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1235, 0, 0, 0, '246763586693', 0, 0, 'thaonguyenhp1', '', 1, 1158, '', '', NULL, 'Tuyetthao2019@gmail.com', '094 7305298', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.175', NULL, NULL, 0, 0, 0, '', '2016-10-18 10:53:01', '031127094', '2016-11-04 10:31:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thaonguyenhp1.jpg.88703cfff2a5076c920db6b1746267a3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN TUYET THAO', '', '0031000367721', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1306, 0, 0, 0, '92677421081', 0, 0, 'huyenthuy79', '', 1, 1083, '', '', NULL, 'Thuytrahanoi@yahoo.com', '0914509182', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.163.34.236', NULL, NULL, 0, 0, 0, '', '2016-10-22 01:48:44', '012121896', '2016-10-31 11:07:51', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VU THI THANH THUY', '', '0941000001698', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1236, 0, 0, 0, '109392270449', 0, 0, 'kimchuc179', '', 1, 1234, '', '', NULL, 'kimchuc678@gmail.com', '0901091071', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.26.56', NULL, NULL, 0, 0, 0, '', '2016-10-18 11:05:29', '351433768', '2016-11-03 10:02:39', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CHUNG THI KIM CHUC', '', '0151000538207', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1237, 0, 0, 0, '1217614227', 0, 0, 'kimchuc279', '', 1, 1234, '', '', NULL, 'kimchuc678@gmail.com', '0901091071', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.28.183', NULL, NULL, 0, 0, 0, '', '2016-10-18 11:06:47', '351433768', '2016-11-03 10:03:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'CHUNG THI KIM CHUC', '', '0151000538207', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1239, 0, 0, 0, '241713111938', 0, 0, 'Thai68', '', 1, 732, '', '', NULL, 'Hantinh11021368@gmail.com', '0901678612', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.176.182.120', NULL, NULL, 0, 0, 0, '', '2016-10-18 11:54:12', '250526108', '2016-11-04 23:07:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thai68.jpg.2a68690228ff635244499d40d58209f8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN THAI', '', '0561000573425', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1240, 0, 0, 0, '229032084001', 0, 0, 'Lavender', '', 1, 1239, '', '', NULL, 'Chuong02673@gmail.com', '0909837772', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.11.249', NULL, NULL, 0, 0, 0, '', '2016-10-18 12:14:58', '250559139', '2016-11-04 20:23:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lavender.jpg.ae2699615f9962821c5b0d745ec4fac5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH CHUONG', '', '0561000574264', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1241, 0, 0, 0, '169187754297', 0, 0, 'luckyhm', '', 1, 1228, '', '', NULL, 'btcuong65@gmail.com', '0913746720', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.180.1', NULL, NULL, 0, 0, 0, '', '2016-10-18 13:25:48', '021868200', '2016-11-04 22:10:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/luckyhm.jpg.84e1bec3d58dad2587ef123889a0747c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI THANH CUONG', '', '0331003778728', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1242, 0, 0, 0, '69626570529', 0, 0, 'nghihm', '', 1, 1228, '', '', NULL, 'nghibui1965@gmail.com', '0918473334', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.249.33.152', NULL, NULL, 0, 0, 0, '', '2016-10-18 13:28:46', '021868186', '2016-11-04 10:23:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nghihm.jpg.df705ee7a64dddb6e1ee2e526f73624f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI THANH NGHI', '', '0071000867027', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1243, 0, 0, 0, '78724236323', 0, 0, 'happy', '', 1, 1228, '', '', NULL, 'tltang67@gmail.com', '0909101578', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.250.180.1', NULL, NULL, 0, 0, 0, '', '2016-10-18 13:31:06', '024242975', '2016-11-04 20:11:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/happy.jpg.220dbf92a3aa530399c72eb711ac499b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TANG THI THANH LOAN', '', '0071001076432', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1313, 0, 0, 0, '38978946181', 0, 0, 'huynhan', '', 1, 879, '', '', NULL, 'huynhanhdao1406@gmail.com', '0996437877', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.152.147', NULL, NULL, 0, 0, 0, '', '2016-10-22 10:46:10', '271879603', '2016-10-31 02:29:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huynhan.jpg.90b6102e4f94b40a2ffad41d69002e6a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HUYNH ANH DAO', '', '0121000794242', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1244, 0, 0, 0, '229365606706', 0, 0, 'thuthao2016', '', 1, 1079, '', '', NULL, 'tranminhthao1209@gmail.com', '0903163633', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.20.239', NULL, NULL, 0, 0, 0, '', '2016-10-18 20:36:16', '230793149', '2016-11-04 21:23:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thuthao2016.jpg.363da322f99dc36ae12076dc158f044c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THU THAO', '', '0501000012683', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1245, 0, 0, 0, '168666691600', 0, 0, 'tuqbinh', '', 1, 689, '', '', NULL, 'vantuqb@gmail.com', '01676974889', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.3.70.255', NULL, NULL, 0, 0, 0, '', '2016-10-18 21:06:09', '212323293', '2016-11-04 21:02:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tuqbinh.jpg.5270c9ca938e93ee938b0d2e4c6e0587', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE VAN TU', '', '0571000050553', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1252, 0, 0, 0, '26175751318', 0, 0, 'hathuy56', '', 1, 988, '', '', NULL, 'thanhthuy1963xblg@mail.com', '0982100563', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:37:37', '011075109', '2016-11-03 13:51:12', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI THANH THUY', '', '0021000968641', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1360, 0, 0, 0, '237867436068', 0, 0, 'Thuyduyenhn', '', 1, 707, '', '', NULL, 'bangoaibegau@gmail.com', '0964397672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-24 11:09:50', '050007860', '2016-11-03 05:02:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuyduyenhn.jpg.06f748058384ce40b2c6b174cfea4b15', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LAM THUY DUYEN', '', '0491000041577', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1246, 0, 0, 0, '40872797824', 0, 0, 'minhlan1', '', 1, 1079, '', '', NULL, 'minhlan.vip@gmal.com', '0909326191', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.172.156.101', NULL, NULL, 0, 0, 0, '', '2016-10-19 02:35:00', '024684433', '2016-11-04 10:53:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhlan1.jpg.454250f751f3bf2795a4e4f8d1d8ddb6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'CAN THI MINH LAN', '', '0071001054573', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1253, 0, 0, 0, '86017073784', 0, 0, 'vanvinh1', '', 1, 800, '', '', NULL, 'nguyenvynghean77@gmail.com', '0966965916', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.39.27', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:43:16', '040070000053', '2016-11-04 23:05:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 't', '', '0491000065294', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1247, 0, 0, 0, '81655112852', 0, 0, 'sonha', '', 1, 1021, '', '', NULL, 'vanson.1070@gmail.com', '0938505363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '203.205.23.9', NULL, NULL, 0, 0, 0, '', '2016-10-19 03:51:58', '022647666', '2016-11-04 03:47:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/sonha.jpg.ccf6e4eca94fa8182eb821cf81401349', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE VAN SON', '', '0171003456552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1248, 0, 0, 0, '236374786947', 0, 0, 'phamtrang', '', 1, 1046, '', '', NULL, 'phamthitrangvt195@gmail.com', '0908790587', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.186.231', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:10:50', '273230104', '2016-11-04 22:08:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phamtrang.jpg.c3d3965d6270bdb239c95fe180ff0f7b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI TRANG', '', '0081000794995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1250, 0, 0, 0, '223381440608', 0, 0, 'habinh58', '', 1, 1249, '', '', NULL, 'phankim.pk@gmail.com', '0914818897', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:30:25', '012916617', '2016-11-04 22:08:26', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN THI BINH', '', '0971000009287', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1251, 0, 0, 0, '212675754260', 0, 0, 'habinh59', '', 1, 1249, '', '', NULL, 'phankim.pk@gmail.com', '0914818897', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:32:44', '012916617', '2016-11-03 13:50:35', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI BINH', '', '0971000009287', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1254, 0, 0, 0, '224701912659', 0, 0, 'hathuy58', '', 1, 988, '', '', NULL, 'thanhthuy1963xblg@gmail.com', '0982100563', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:43:23', '011075109', '2016-11-03 13:51:53', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI THANH THUY', '', '0021000968641', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1255, 0, 0, 0, '211309315673', 0, 0, 'vanvinh2', '', 2, 800, '', '', NULL, 'nguyenvynghean77@gmail.com', '0966965916', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-19 00:00:00', '1', '2016-11-04 20:35:36', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VAN VINH', '', '0491000065294', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1256, 0, 0, 0, '24043869061', 0, 0, 'hathuy59', '', 1, 988, '', '', NULL, 'thanhthuy1963xblg@gmail.com', '0982100563', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-19 04:45:27', '011075109', '2016-11-04 22:09:36', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN THI THANH THUY', '', '0021000968641', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1512, 0, 0, 0, '74953625687', 0, 0, 'kiemtien1', '', 1, 1140, '', '', NULL, 'kiemtientrenmang321@gmail.com', '01689820239', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.171.255', NULL, NULL, 0, 0, 0, '', '2016-10-31 21:42:05', '250806894', '2016-11-04 21:02:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiemtien1.jpg.fe2eeebcd072da3bbeff553423150361', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'HUYNH DINH LAN', '', '0561003775071', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1260, 0, 0, 0, '238658278759', 0, 0, 'Huathanhls2', '', 1, 1258, '', '', NULL, 'Huathanhlangson@gmail.com', '01666772886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.167.182.50', NULL, NULL, 0, 0, 0, '', '2016-10-19 10:36:01', '080962924', '2016-11-04 11:26:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huathanhls2.jpg.6bd3aa5cd99e546cfcbf818380532970', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUA THI THANH', '', '0731000680976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1257, 0, 0, 0, '86444761713', 0, 0, 'PVBong1978', '', 1, 771, '', '', NULL, 'Pvbong1978@gmail.com', '0919080945', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.142.189', NULL, NULL, 0, 0, 0, '', '2016-10-19 08:35:26', '381097699', '2016-10-19 10:22:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PVBong1978.jpg.1173d7902d3a34c6defcd7acf426c3e4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN BONG', '', '0191000333886', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1325, 0, 0, 0, '277418033233', 0, 0, 'Tuanbmt88', '', 1, 1320, '', '', NULL, 'Tuan88.th@gmail.com', '0941814043', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.122.149', NULL, NULL, 0, 0, 0, '', '2016-10-23 02:40:38', '241030961', '2016-11-04 21:04:18', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN NGOC TUAN', '', '0231000182884', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1292, 0, 0, 0, '148327498120', 0, 0, 'Hoangduyen01', '', 1, 747, '', '', NULL, 'Duyenthannu83@gmail.com', '016797738508', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.153.146', NULL, NULL, 0, 0, 0, '', '2016-10-21 02:29:08', '250575464', '2016-11-04 10:57:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoangduyen01.jpg.7f49da6f876c27b3ee01809612972882', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN LE HOANG DUYEN', '', '0561000569284', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1258, 0, 0, 0, '217050120710', 0, 0, 'Huathanhls', '', 1, 707, '', '', NULL, 'Huathanhlangson@gmail.com', '01666772886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.5.36', NULL, NULL, 0, 0, 0, '', '2016-10-19 10:28:23', '080962924', '2016-11-04 22:55:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huathanhls.jpg.3c99d683ed7c260a5cf2dd7452ce2a15', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUA THI THANH', '', '0731000680976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1259, 0, 0, 0, '206215451144', 0, 0, 'Huathanhls1', '', 1, 1258, '', '', NULL, 'Huathanhlangson@gmail.com', '01666772886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.167.182.50', NULL, NULL, 0, 0, 0, '', '2016-10-19 10:33:15', '080962924', '2016-11-04 11:23:39', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huathanhls1.jpg.ff80617b6f3cf786996e43d0a1e9bc6b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUA THI THANH', '', '0731000680976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1261, 0, 0, 0, '159772072339', 0, 0, 'vienpede', '', 1, 637, '', '', NULL, 'Longly200469@gmail.com', '01655964305', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.103.129.157', NULL, NULL, 0, 0, 0, '', '2016-10-19 10:58:46', '211232668', '2016-10-19 11:06:22', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN NGOC ANH', '', '0271001048619', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1262, 0, 0, 0, '10326970709', 0, 0, 'vienpede2', '', 1, 637, '', '', NULL, 'Longly200469@gmail.com', '01655964305', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-19 11:01:00', '211232668', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN NGOC ANH', '', '0271001048619', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1263, 0, 0, 0, '138126980691', 0, 0, 'vienpede1', '', 1, 637, '', '', NULL, 'Longly200469@gmail.com', '01655964305', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-19 11:05:20', '211232668', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DOAN NGOC ANH', '', '0271001048619', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1270, 0, 0, 0, '281142199444', 0, 0, 'Phamhuyen', '', 1, 1248, '', '', NULL, 'phamhuyen170484@gmail.com', '0903320901', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.53.72', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:15:12', '273240094', '2016-11-04 10:44:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phamhuyen.jpg.64d66207529cd48b1f7b8ed2e43f5b2f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THI HUYEN', '', '0441000661924', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1283, 0, 0, 0, '242232853845', 0, 0, 'Bichag', '', 1, 909, '', '', NULL, 'Lethingoctranbossauto@gmail.com', '0947697729', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.69.50', NULL, NULL, 0, 0, 0, '', '2016-10-20 09:12:26', '351621159', '2016-10-24 09:41:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Bichag.jpg.1bf46c6d199f06203ee687eb40b3c4b9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI NGOC BICH', '', '0471000316283', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1264, 0, 0, 0, '242267603800', 0, 0, 'Thienkhanh021987', '', 1, 1223, '', '', NULL, 'Thienkhanh021987@gmail.com', '0969486786', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.237.97.139', NULL, NULL, 0, 0, 0, '', '2016-10-19 17:07:35', '285173566', '2016-11-04 20:49:24', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THIEN KHANH', '', '0281000451079', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1265, 0, 0, 0, '155729499200', 0, 0, 'shalom', '', 1, 759, '', '', NULL, 'shalomya17@gmail.com', '01684424026', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.197.77', NULL, NULL, 0, 0, 0, '', '2016-10-19 20:52:42', '230626391', '2016-11-04 04:21:42', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PUIH Y YA', '', '0071001008787', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1266, 0, 0, 0, '5439226918', 0, 0, 'vanthach', '', 1, 1265, '', '', NULL, 'thachtrabong@gmail.com', '0974282905', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-19 20:59:07', '212446822', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HO VAN THACH', '', '0841000021115', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1267, 0, 0, 0, '142824518464', 0, 0, 'duong79', '', 1, 709, '', '', NULL, 'doduong1878@gmail.com', '091856887', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-19 22:23:09', '381744955', '2016-11-04 23:02:06', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO HUNG DUONG', '', '0251002728983', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1286, 0, 0, 0, '159318815638', 0, 0, 'Hoanghieu', '', 1, 651, '', '', NULL, 'kimvang01qng@gmai.com', '01652798088', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.159.138', NULL, NULL, 0, 0, 0, '', '2016-10-20 10:31:11', '212323858', '2016-11-04 10:47:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI KIM VANG', '', '0271000976958', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1399, 0, 0, 0, '21766632341', 0, 0, 'phamdinhtien', '', 1, 1117, '', '', NULL, 'phamdinhtien2299@gmail.com', '0917328292', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.207', NULL, NULL, 0, 0, 0, '', '2016-10-26 01:59:32', '215259037', '2016-11-04 22:13:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phamdinhtien.jpg.999814d3a9c56db34d1ac585276a42e4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM DINH TIEN', '', '0431000189692', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1268, 0, 0, 0, '275179918721', 0, 0, 'quynhtrang', '', 1, 586, '', '', NULL, 'quynhftrang01@gmail.com', '0948552645', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.160.80', NULL, NULL, 0, 0, 0, '', '2016-10-19 23:49:18', '111559179', '2016-11-04 20:37:29', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CAO THI QUYNH TRANG', '', '0021000368938', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1540, 0, 0, 0, '230191091812', 0, 0, 'khanhphanvn', '', 1, 779, '', '', NULL, 'khanhphanvn@gmail.com', '0932181044', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.243.52.190', NULL, NULL, 0, 0, 0, '', '2016-11-01 22:19:32', '311775210', '2016-11-04 23:00:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/khanhphanvn.jpg.8fe755521284025fab5cba288f2ed11f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN PHAM NHAT KHANH', '', '0531000286271', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1269, 0, 0, 0, '160295322489', 0, 0, 'Thaigia', '', 1, 707, '', '', NULL, 'Thaikimquoc@gmail.com', '0933251680', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.24.32', NULL, NULL, 0, 0, 0, '', '2016-10-20 01:48:24', '261252453', '2016-10-20 03:08:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thaigia.jpg.9f19810ba5c234ff2d4322f1124bced5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'THAI KIM QUOC', '', '0621000399587', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1271, 0, 0, 0, '154956476790', 0, 0, 'Phamhuyen1', '', 1, 1270, '', '', NULL, 'phamhuyen170484@gmail.com', '0903320901', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.41.35', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:18:45', '273240094', '2016-10-28 21:01:49', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM THI HUYEN', '', '0441000661924', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1272, 0, 0, 0, '15105360226', 0, 0, 'loannghiem56', '', 1, 988, '', '', NULL, 'loannghiem77@gmail.com', '01234554666', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:20:20', '011921691', '2016-11-02 20:55:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGHIEM THI THANH LOAN', '', '0011001596904', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1273, 0, 0, 0, '95605184882', 0, 0, 'loannghiem58', '', 1, 1272, '', '', NULL, 'loannghiem77@gmail.com', '01234554666', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:24:43', '011921691', '2016-11-04 11:53:10', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGHIEM THI THANH LOAN', '', '0011001596904', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1274, 0, 0, 0, '285738472295', 0, 0, 'loannghiem59', '', 1, 1272, '', '', NULL, 'loannghiem77@gmail.com', '01234554666', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:27:54', '011921691', '2016-11-04 11:55:43', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGHIEM THI THANH LOAN', '', '0011001596904', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1275, 0, 0, 0, '148451202711', 0, 0, 'lamhuyen1', '', 1, 1083, '', '', NULL, 'thanhhuyenkt.vn@gmail.com', '0985678676', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.77.178', NULL, NULL, 0, 0, 0, '', '2016-10-20 02:35:29', '218603', '2016-11-04 12:53:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lamhuyen1.jpg.0641771649968408868f4bf602f9e9b5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LUONG THANH HUYEN', '', '0491000080121', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1278, 0, 0, 0, '279987975944', 0, 0, 'ngocngu1', '', 1, 798, '', '', NULL, 'ngochoangicd@gmail.com', '0943362424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.176.122.175', NULL, NULL, 0, 0, 0, '', '2016-10-20 03:23:52', '271629549', '2016-11-04 22:03:40', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HOANG NGOC NGU', '', '0481000689661', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1279, 0, 0, 0, '143482185990', 0, 0, 'Thomag', '', 1, 909, '', '', NULL, 'Nguyenvanthom85@gmail.com', '01299990769', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.147.218', NULL, NULL, 0, 0, 0, '', '2016-10-20 05:08:35', '351811296', '2016-10-20 06:30:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thomag.jpg.969bf6f2200dfeb0392c492245463610', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN THOM', '', '0471000321352', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1280, 0, 0, 0, '142681204485', 0, 0, 'lhphuong991', '', 1, 1040, '', '', NULL, 'lhphuong991@gmail.com', '0916759295', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.237.110', NULL, NULL, 0, 0, 0, '', '2016-10-20 05:17:21', '381597042', '2016-11-04 23:06:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lhphuong991.jpg.292d56c240e6dd436592a4e9b68ab64c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE HOAI PHUONG', '', '0191000339830', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1281, 0, 0, 0, '5406860345', 0, 0, 'Longlb', '', 1, 909, '', '', NULL, 'Huynhthanhlong06@gmail.com', '0947697729', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.57.201', NULL, NULL, 0, 0, 0, '', '2016-10-20 05:21:47', '351878384', '2016-11-04 16:57:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Longlb.jpg.8ba428dfbb2e7859d7ed28e288799c73', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH THANH LONG', '', '0151000535243', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1282, 0, 0, 0, '155695940901', 0, 0, 'Maithao', '', 1, 1079, '', '', NULL, 'Thao049409@gmail.com', '0903049409', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.152.121', NULL, NULL, 0, 0, 0, '', '2016-10-20 05:57:08', '381595249', '2016-10-24 00:35:14', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MAI THAO', '', '0531002517167', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1284, 0, 0, 0, '137782393156', 0, 0, 'Phanlanghn', '', 1, 980, '', '', NULL, 'Truongkimthoa1967@gmail.com', '0973492536', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-20 10:09:25', '001063003486', '2016-11-04 21:56:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phanlanghn.jpg.9d392cca2d68775b484989addea0669e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN VAN LANG', '', '0691000362895', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1285, 0, 0, 0, '9973044084', 0, 0, 'Lesonhn', '', 1, 980, '', '', NULL, 'Truongkimthoa1967@gmail.com', '01696020632', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-20 10:13:02', '038159000103', '2016-11-04 20:03:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lesonhn.jpg.98ed6f124961e9bc6e7d867c51e50e33', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI SON', '', '0711000254955', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1287, 0, 0, 0, '238211720468', 0, 0, 'Truongmydung', '', 1, 1040, '', '', NULL, 'Truongmydung9@gmail.com', '0948333540', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.164.236.23', NULL, NULL, 0, 0, 0, '', '2016-10-20 11:06:38', '961094001017', '2016-11-04 21:08:36', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Truongmydung.jpg.0081657efe99b1715f68fedbcaf0d473', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRUONG MY DUNG', '', '0191000097324', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1288, 0, 0, 0, '107479066403', 0, 0, 'nguyentrang', '', 1, 1027, '', '', NULL, 'trangnguyentvkh@gmail.com', '01684118009', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.98.222', NULL, NULL, 0, 0, 0, '', '2016-10-20 11:54:18', '172212867', '2016-10-22 22:10:07', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI TRANG', '', '0161000839673', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1347, 0, 0, 0, '79483541057', 0, 0, 'vungcao2', '', 1, 938, '', '', NULL, 'haithanghai@gmail.com', '0917052946', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-24 02:40:52', '090920011', '2016-11-03 21:54:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vungcao2.jpg.402766dc966fa045d8bef3267888740f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU VAN GIANG', '', '0821000089707', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1290, 0, 0, 0, '99176960662', 0, 0, 'quynhtrang1', '', 1, 586, '', '', NULL, 'quynhftrang01@gmail.com', '0948552645', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.85.88', NULL, NULL, 0, 0, 0, '', '2016-10-21 00:14:28', '111559179', '2016-11-04 10:19:47', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'CAO THI QUYNH TRANG', '', '0021000368938', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1303, 0, 0, 0, '32568133014', 0, 0, 'thanhthao', '', 1, 882, '', '', NULL, 'shine_doan@yahoo.com', '0907076533', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.119.24.127', NULL, NULL, 0, 0, 0, '', '2016-10-21 22:21:07', '024531739', '2016-11-04 22:11:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhthao.jpg.85065a23fc2220cff7778834e2273ce1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DOAN THI THANH THAO', '', '0071000869703', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1291, 0, 0, 0, '11032469538', 0, 0, 'Lehuonghn', '', 1, 1284, '', '', NULL, 'Truongkimthoa1967@gmail.com', '01657890932', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-21 00:23:52', '011481874', '2016-11-04 21:21:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lehuonghn.jpg.8cea01be158761624ad443304ebe098f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI HUONG', '', '0711000256223', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1331, 0, 0, 0, '245626920999', 0, 0, 'khacdu1', '', 1, 1027, '', '', NULL, 'qkhanh2016vn@gmail.com', '01223919675', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.94.97', NULL, NULL, 0, 0, 0, '', '2016-10-23 09:53:07', '273404309', '2016-11-02 11:32:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI KHAC DU', '', '0081000493552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1293, 0, 0, 0, '285699498324', 0, 0, 'Hoangduyen02', '', 1, 747, '', '', NULL, 'Duyenthannu83@gmail.com', '01679738508', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.130.10', NULL, NULL, 0, 0, 0, '', '2016-10-21 02:31:48', '250575464', '2016-11-03 04:01:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoangduyen02.jpg.8166681ec17d2aa6be86b79c0b4cb96c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN LE HOANG DUYEN', '', '0561000569284', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1515, 0, 0, 0, '234148336784', 0, 0, 'ngocthao', '', 1, 1234, '', '', NULL, 'thao87114@gmail.com', '0974739552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.83.19', NULL, NULL, 0, 0, 0, '', '2016-10-31 22:56:55', '350986273', '2016-11-04 19:53:20', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI NGOC THAO', '', '0151000554046', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1294, 0, 0, 0, '95161910387', 0, 0, 'XuanKieu69', '', 1, 771, '', '', NULL, 'kieu011957@gmail.com', '0947420363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.185', NULL, NULL, 0, 0, 0, '', '2016-10-21 03:12:34', '381298928', '2016-11-04 13:43:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/XuanKieu69.jpg.b035a2e1ab54440ebc0c617a53ac7be7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO XUAN KIEU', '', '0191000315446', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1298, 0, 0, 0, '100244092272', 0, 0, 'robert1', '', 1, 1295, '', '', NULL, 'giabao.pt536@gmail.com', '091 3053387', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.65.63', NULL, NULL, 0, 0, 0, '', '2016-10-21 07:06:32', '012520827', '2016-11-02 23:01:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/robert1.jpg.93cdb5ccae2c9a31f2a79af1fd7f3f5b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN GIA DAM', '', '0071001124717', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1297, 0, 0, 0, '280801313145', 0, 0, '', '', 8, 640, '', '', NULL, '', '', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-21 00:00:00', '1', NULL, '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1299, 0, 0, 0, '22318979140', 0, 0, 'robert2', '', 1, 1295, '', '', NULL, 'giabao.pt536@gmail.com', '091 3053387', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.251.78.146', NULL, NULL, 0, 0, 0, '', '2016-10-21 07:07:37', '012520827', '2016-10-30 09:38:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/robert2.jpg.4518d25df11fd7b0f855d7c05a203586', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN GIA DAM', '', '0071001124717', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1300, 0, 0, 0, '207660087302', 0, 0, 'shalala3', '', 1, 938, '', '', NULL, 'hoavungcao@gmail.com', '0987389260', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-21 07:30:17', '090920011', '2016-11-03 21:52:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/shalala3.jpg.5bcee8ae74e0331f4936be4099ab2660', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU VAN GIANG', '', '0011001510122', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1395, 0, 0, 0, '15452248114', 0, 0, 'tiendatsg', '', 1, 1384, '', '', NULL, 'xdatlovex@gmail.com', '0934129492', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.234.38', NULL, NULL, 0, 0, 0, '', '2016-10-25 23:52:06', '025522665', '2016-11-04 21:39:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tiendatsg.jpg.281a0b7ebf5ce79c32aab3c3d45b2a19', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO TIEN DAT', '', '0421000414490', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1302, 0, 0, 0, '88104506182', 0, 0, 'PhongKa84', '', 1, 869, '', '', NULL, 'mrphong1984@gmail.com', '0908962692', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.81.50.5', NULL, NULL, 0, 0, 0, '', '2016-10-21 10:06:35', '271574078', '2016-11-04 22:53:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhongKa84.jpg.887220640b08fea037afe6fcf2228fe6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THANH PHONG', '', '0121001214517', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1301, 0, 0, 0, '215896133782', 0, 0, '', '', 8, 869, '', '', NULL, 'Phongnt12@fpt.com.vn', '0908962692', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.40.56', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-21 00:00:00', '1', '2016-10-21 09:59:20', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, '', '', '', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1304, 0, 0, 0, '177976939267', 0, 0, 'Nguyenlamhcm', '', 1, 707, '', '', NULL, 'Nguyenlamhcm111@gmail.com', '0935141438', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-21 22:48:28', '023767292', '2016-11-04 20:44:00', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyenlamhcm.jpg.e66d4e5a2cd7b95a86de8569b16d47cc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN LAM', '', '0501000049017', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1305, 0, 0, 0, '219620480261', 0, 0, 'Kimnga', '', 1, 655, '', '', NULL, 'Kimnga2016@gmail.com', '0935751512', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.225.161', NULL, NULL, 0, 0, 0, '', '2016-10-21 23:21:57', 'Smc 212312741', '2016-11-04 01:04:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Kimnga.jpg.f23e2c2afc88d1bdecf21ae1c5220bf9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI KIM NGA', '', '0271000804175', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1310, 0, 0, 0, '177234613361', 0, 0, 'Tuyetnhunghn1', '', 1, 1142, '', '', NULL, 'Truongkimthoa1967@gmail.com', '0984943683', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.135.13', NULL, NULL, 0, 0, 0, '', '2016-10-22 07:29:33', '012607345', '2016-11-04 05:54:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetnhunghn1.jpg.6433bf570e90e92403d9faca900b18ed', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG TUYET NHUNG', '', '0021001187110', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1307, 0, 0, 0, '27670156147', 0, 0, 'boichau', '', 1, 546, '', '', NULL, 'phanboichau2493@gmail.com', '+84907020493', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.62.107', NULL, NULL, 0, 0, 0, '', '2016-10-22 02:37:50', '241393350', '2016-10-22 02:40:57', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAN BOI CHAU', '', '0421000469369', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1308, 0, 0, 0, '208727660296', 0, 0, 'Huyhung70', '', 1, 1295, '', '', NULL, 'Kinhdoanhmlm.vn@gmail.com', '0983250138', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.114.94.50', NULL, NULL, 0, 0, 0, '', '2016-10-22 05:11:02', '001070001162', '2016-11-03 22:01:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huyhung70.jpg.c6522f74dd12b5cf486e7c68193a68b2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'QUACH HUY HUNG', '', '0491000084980', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1339, 0, 0, 0, '241397945417', 0, 0, 'locphat986', '', 1, 1337, '', '', NULL, 'ctytnhhgiangnam2001@gmail.com', '0986578981', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.42.123', NULL, NULL, 0, 0, 0, '', '2016-10-24 00:03:05', '230487906', '2016-11-02 20:28:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/locphat986.jpg.a19556bf589badf3b1c631fd55fdb027', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'NGUYEN HUYNH THUONG', '', '0291000275318', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1311, 0, 0, 0, '232767584631', 0, 0, 'HoaMocLan79', '', 1, 869, '', '', NULL, 'Huynhdulang1989@gmail.com', '0934998556', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.236.134', NULL, NULL, 0, 0, 0, '', '2016-10-22 07:46:33', '191762947', '2016-11-03 02:17:47', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THI DU LANG', '', '0481000800964', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1312, 0, 0, 0, '71270926691', 0, 0, 'xiemgl', '', 1, 742, '', '', NULL, 'Xiemgialai@gmail.com', '0935751642', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.42.99', NULL, NULL, 0, 0, 0, '', '2016-10-22 07:55:43', '230923021', '2016-11-04 17:48:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TO THI XIEM', '', '0291000307655', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1314, 0, 0, 0, '172336844848', 0, 0, 'thuyhangvt', '', 1, 1027, '', '', NULL, 'thuyhangvt201980@gmail.com', '0906159880', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.170.29.188', NULL, NULL, 0, 0, 0, '', '2016-10-22 22:18:54', '273672392', '2016-11-04 00:35:08', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI THUY HANG', '', '0081001199786', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1337, 0, 0, 0, '1392546200', 0, 0, 'locphat886', '', 1, 544, '', '', NULL, 'nguyenthithuy1979gl@gmail.com', '0965360290', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.172.121', NULL, NULL, 0, 0, 0, '', '2016-10-23 23:21:31', '230536887', '2016-11-04 21:23:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/locphat886.jpg.1286360104413b913fbcda37a49efe53', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 17, 'NGUYEN THI THUY', '', '0291000279886', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1316, 0, 0, 0, '74994648656', 0, 0, 'lethong2', '', 1, 985, '', '', NULL, 'thongtien83@gmail.com', '0986362999', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.170.52.134', NULL, NULL, 0, 0, 0, '', '2016-10-22 23:04:04', '0781000420241', '2016-11-01 21:57:03', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE VAN THONG', '', '0781000420241', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1317, 0, 0, 0, '34964337046', 0, 0, 'hienlong56', '', 1, 986, '', '', NULL, 'vanlongdang@gmail.com', '0988165176', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.177.158.203', NULL, NULL, 0, 0, 0, '', '2016-10-23 00:08:52', '010439084', '2016-11-04 04:34:05', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG VAN LONG', '', '0011004248342', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1318, 0, 0, 0, '167796429079', 0, 0, 'hienlong58', '', 1, 986, '', '', NULL, 'vanlongdang@gmail.com', '0988165176', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-23 00:13:55', '010439084', '2016-11-02 20:52:35', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG VAN LONG', '', '0011004248342', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1319, 0, 0, 0, '231947375193', 0, 0, 'hienlong59', '', 1, 986, '', '', NULL, 'vanlongdang@gmail.com', '0988165176', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-23 00:16:34', '010439084', '2016-11-02 20:53:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG VAN LONG', '', '0011004248342', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1320, 0, 0, 0, '146569062496', 0, 0, 'dothanh', '', 1, 561, '', '', NULL, 'thanhbaby32@gmail.com', '0963922313', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', NULL, NULL, 0, 0, 0, '', '2016-10-23 00:36:21', '241327737', '2016-11-04 12:02:45', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'DO THI THANH', '', '0231000624500', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1326, 0, 0, 0, '103919649907', 0, 0, 'Hainambmt', '', 1, 1320, '', '', NULL, 'Hoangnambmtbmt@gmail.com', '0978944477', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.122.149', NULL, NULL, 0, 0, 0, '', '2016-10-23 02:51:48', '241400076', '2016-11-04 12:07:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAM HAI NAM', '', '0231000627909', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1327, 0, 0, 0, '18142501223', 0, 0, 'Domaibmt', '', 1, 1320, '', '', NULL, 'Domai1990@yahoo.com', '0966079199', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.146.40', NULL, NULL, 0, 0, 0, '', '2016-10-23 03:15:22', '241269194', '2016-11-04 19:32:24', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI MAI', '', '0231000627022', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1321, 0, 0, 0, '277060150914', 0, 0, 'Thuyngan1', '', 1, 766, '', '', NULL, 'Ntt160889@gmail.com', '01263766233', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.100.211', NULL, NULL, 0, 0, 0, '', '2016-10-23 01:28:44', '212305122', '2016-11-04 22:48:03', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI THUY', '', '0571000381891', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1322, 0, 0, 0, '101001090308', 0, 0, 'hienhung56', '', 1, 986, '', '', NULL, 'dangquanghung1991@gmail.com', '0964576336', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-23 01:37:51', '012837613', '2016-11-02 20:54:20', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG QUANG HUNG', '', '0011004306777', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1323, 0, 0, 0, '19636753730', 0, 0, 'hienhung58', '', 1, 986, '', '', NULL, 'dangquanghung1991@gmail.com', '0964576336', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-23 01:42:21', '012837613', '2016-11-01 12:14:59', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG QUANG HUNG', '', '0011004306777', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1324, 0, 0, 0, '146052367465', 0, 0, 'hienhung59', '', 1, 986, '', '', NULL, 'dangquanghung1991@gmail.com', '0964576336', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-23 01:44:35', '012837613', '2016-11-01 12:15:52', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DANG QUANG HUNG', '', '0011004306777', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1328, 0, 0, 0, '150932636468', 0, 0, 'HanhNS', '', 1, 909, '', '', NULL, 'Ngochanhngoan82@gmail.com', '0966099842', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.167.219.112', NULL, NULL, 0, 0, 0, '', '2016-10-23 04:18:23', '351407581', '2016-10-27 20:19:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HanhNS.jpg.3a24e899232f0e0e698dbf2d28d7a4a6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LE THI NGOC HANH', '', '0471000322320', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1363, 0, 0, 0, '138298262032', 0, 0, 'trangHM68', '', 1, 631, '', '', NULL, 'trangnguyen211112@gmail.com', '0935168377', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.125.56', NULL, NULL, 0, 0, 0, '', '2016-10-24 22:16:05', '212306018', '2016-11-03 09:15:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trangHM68.jpg.249b11ec7ea78d69a87f3af535f63434', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI TRANG', '', '0271000364264', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1330, 0, 0, 0, '164165203799', 0, 0, 'huong68', '', 1, 958, '', '', NULL, 'luankinhte123@gmail.com', '0928030380', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.3.128.229', NULL, NULL, 0, 0, 0, '', '2016-10-23 08:39:57', '023008334', '2016-11-04 21:06:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'http://i.imgur.com/ltU4LvP.jpg', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI DIEM HUONG', '', '0071000982370', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1412, 0, 0, 0, '74162898804', 0, 0, 'trangle2', '', 1, 1103, '', '', NULL, 'lekimtrang2016@gmail.com', '0908773730', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.237.66.233', NULL, NULL, 0, 0, 0, '', '2016-10-27 00:14:48', '022307054', '2016-10-30 05:26:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trangle2.jpg.7d773824c425905372f0ac827e8e8c9f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE KIM TRANG', '', '0071001067159', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1349, 0, 0, 0, '173986174836', 0, 0, 'duonghanh02', '', 1, 695, '', '', NULL, 'nguoingheols.82@gmail.com', '0912422236', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.235.235', NULL, NULL, 0, 0, 0, '', '2016-10-24 04:08:59', '081057292', '2016-11-03 06:04:16', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duonghanh02.jpg.4be5aa174276e4d1b34602f390f8051b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DUONG THI HANH', '', '0981000406375', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1332, 0, 0, 0, '108237255689', 0, 0, 'khacdu2', '', 1, 1028, '', '', NULL, 'qkhanh2016vn@gmail.com', '01223919675', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.94.97', NULL, NULL, 0, 0, 0, '', '2016-10-23 10:49:01', '273404309', '2016-11-02 06:32:45', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'BUI KHAC DU', '', '0081000493552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1333, 0, 0, 0, '1902348345', 0, 0, 'Khanhnhu', '', 1, 903, '', '', NULL, 'Botngucocandam@gmail.com', '0978590609 ', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.246.77.13', NULL, NULL, 0, 0, 0, '', '2016-10-23 10:50:36', '241055944', '2016-11-04 21:17:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Khanhnhu.jpg.e4a8fe4c660a5325df9812e423baba00', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI KHANH NHU', '', '0281000448713', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1334, 0, 0, 0, '161154110504', 0, 0, 'maihuongvt2', '', 1, 1028, '', '', NULL, 'marrydangvt@gmail.com', '0912171967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.172.94.97', NULL, NULL, 0, 0, 0, '', '2016-10-23 10:51:00', '273417657', '2016-11-02 06:28:17', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DANG THI MAI HUONG', '', '0081000384254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1367, 0, 0, 0, '142272262773', 0, 0, 'vyvyvy', '', 1, 963, '', '', NULL, 'vyvydang1812@gmail.com', '0933581580', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.86.49', NULL, NULL, 0, 0, 0, '', '2016-10-25 01:19:08', '023230179', '2016-11-03 22:04:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vyvyvy.jpg.a3172b33059ca6c44b0cc7e3c86ff06d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THI BICH VY', '', '0251002729664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1335, 0, 0, 0, '246833971576', 0, 0, 'nguyenchinh', '', 1, 879, '', '', NULL, 'nguyenchinhkiengiang@gmail.com', '0932975661', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.249.95.8', NULL, NULL, 0, 0, 0, '', '2016-10-23 11:02:49', '371152984', '2016-11-04 02:31:15', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenchinh.jpg.edbf3cd9203aff36ad73dc026ba2eb22', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI CHINH', '', '0501000122450', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1336, 0, 0, 0, '108601636242', 0, 0, 'Levy', '', 1, 1000, '', '', NULL, 'lehongvy2808@gmail.com', '01639999059', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.22.4.50', NULL, NULL, 0, 0, 0, '', '2016-10-23 11:09:07', '272364655', '2016-11-04 22:26:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Levy.jpg.6ad1e49787e46838986ff904c79b9c92', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE HONG VY', '', '0561000575556', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1488, 0, 0, 0, '109077201921', 0, 0, 'locve', '', 1, 1460, '', '', NULL, 'honghong8304@gmail.com', '0982270450', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.54.101', NULL, NULL, 0, 0, 0, '', '2016-10-29 16:07:40', '183425356', '2016-11-03 10:39:45', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/locve.jpg.17419d83fffbc5735aca9ae63435305f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG THI HONG', '', '0041000420699', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1410, 0, 0, 0, '173231132948', 0, 0, 'Minhtuyethb2', '', 1, 1364, '', '', NULL, 'Leminhtuyet1976@gmail.com', '01674497488', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-26 11:57:48', '17031001017', '2016-11-04 21:55:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhtuyethb2.jpg.2afefdd404922108e3dd533289a2dfe1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI MINH TUYET', '', '0801000240453', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1343, 0, 0, 0, '78791607894', 0, 0, 'tien79', '', 1, 876, '', '', NULL, 'phamngocthao686@gmail.com', '0969680824', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.10.206', NULL, NULL, 0, 0, 0, '', '2016-10-24 01:00:54', '371734564', '2016-11-03 22:50:17', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM NGOC TIEN', '', '0091000602632', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1379, 0, 0, 0, '143411714081', 0, 0, 'hongnhungkhatoco', '', 1, 1377, '', '', NULL, 'nhungban@gmail.com', '0905729672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.85.234', NULL, NULL, 0, 0, 0, '', '2016-10-25 07:48:23', '206331385', '2016-11-03 21:06:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongnhungkhatoco.jpg.4221edee047fc34629b0f76c895df571', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HONG NHUNG', '', '0651000806388', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1340, 0, 0, 0, '228238435992', 0, 0, 'bichvan79', '', 1, 1339, '', '', NULL, 'bichvan579999@gmail.com', '0974654279', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.174.195', NULL, NULL, 0, 0, 0, '', '2016-10-24 00:09:32', '230562799', '2016-11-04 09:36:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/bichvan79.jpg.6b2e33aca6eb03228337319c3fa01fc0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THIEN AN', '', '0291000311785', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1338, 0, 0, 0, '156600202599', 0, 0, 'conghoan', '', 1, 568, '', '', NULL, 'nguyenconghoanpha75@gmail.com', '0987516269', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.4.10', NULL, NULL, 0, 0, 0, '', '2016-10-23 23:32:57', '125528997', '2016-10-24 00:49:26', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN CONG HOAN', '', '0351000736840', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1341, 0, 0, 0, '169258341906', 0, 0, 'Vuthidung', '', 1, 734, '', '', NULL, 'vthidung@gmail.com', '0984990779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.16.44.176', NULL, NULL, 0, 0, 0, '', '2016-10-24 00:25:26', '162737248', '2016-11-04 23:06:49', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU THI DUNG', '', '0301000310875', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1351, 0, 0, 0, '211882107945', 0, 0, 'lanhuong01', '', 1, 782, '', '', NULL, 'lanhuong12a1@gmail.com', '0935539820', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.167.18.38', NULL, NULL, 0, 0, 0, '', '2016-10-24 05:36:25', '225903893', '2016-11-04 22:53:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lanhuong01.jpg.33c7ad6734b1bb41c130d20fcf2a06d4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI LAN HUONG', '', '0601000446395', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1352, 0, 0, 0, '26343786257', 0, 0, 'Kinhkha', '', 1, 747, '', '', NULL, 'Nkha447799@gmail.com', '01286220985', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.130.10', NULL, NULL, 0, 0, 0, '', '2016-10-24 07:08:30', '250730819', '2016-11-03 04:02:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Kinhkha.jpg.80036cb98b1f97234e03cafd90d67c74', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN KINH KHA', '', '0561000575801', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1342, 0, 0, 0, '68829016112', 0, 0, 'Khanhcuongbp2', '', 1, 975, '', '', NULL, 'Cuongkhanhnguyen87@gmail.com', '0972597397', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.82.125', NULL, NULL, 0, 0, 0, '', '2016-10-24 00:44:04', '285190560', '2016-11-04 02:07:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Khanhcuongbp2.jpg.b89cf5eb60eda3cb20b1908b99ab3cde', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN KHANH CUONG', '', '0281000450204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1344, 0, 0, 0, '229671982869', 0, 0, 'tien179', '', 1, 876, '', '', NULL, 'phamngocthao686@gmail.com', '0969680824', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.236', NULL, NULL, 0, 0, 0, '', '2016-10-24 01:03:03', '371734564', '2016-11-01 04:13:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM NGOC TIEN', '', '0091000602632', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1345, 0, 0, 0, '168114456161', 0, 0, 'tien279', '', 1, 876, '', '', NULL, 'phamngocthao686@gmail.com', '0969680824', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.212.191', NULL, NULL, 0, 0, 0, '', '2016-10-24 01:04:15', '371734564', '2016-11-01 02:26:26', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM NGOC TIEN', '', '0091000602632', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1346, 0, 0, 0, '41188681777', 0, 0, 'xuanhong79', '', 1, 963, '', '', NULL, 'hongdoan432@gmail.com', '01263155098', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.105.83.213', NULL, NULL, 0, 0, 0, '', '2016-10-24 01:27:25', '225573558', '2016-11-04 11:47:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/xuanhong79.jpg.0ac05fcee5353c106cdc1d4a9c2914ee', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DOAN THI XUAN HONG', '', '0061001011501', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1350, 0, 0, 0, '223458321049', 0, 0, 'Hunggl', '', 1, 1337, '', '', NULL, 'hungpleiku1958@gmail.com', '01667576369', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.76.255', NULL, NULL, 0, 0, 0, '', '2016-10-24 05:19:55', '231052340', '2016-11-04 11:41:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hunggl.jpg.1da8b91c4277a19191e78e314ec1eaec', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN LAM HUNG', '', '0291000247507', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1348, 0, 0, 0, '236307294244', 0, 0, 'hongphong68', '', 1, 655, '', '', NULL, 'hongphong1289@gmail.com', '0905141566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.117', NULL, NULL, 0, 0, 0, '', '2016-10-24 03:53:29', '230748030', '2016-11-04 20:25:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongphong68.jpg.4d89a4b2dd7b73724a4a0bb5cb5ae99f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM HONG PHONG', '', '0291000297877', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1362, 0, 0, 0, '9533720356', 0, 0, 'Nguyenhieutp', '', 1, 1239, '', '', NULL, 'Nguyenhieuvan2507@gmail.com', '01679481467', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-24 12:15:24', '186926846', '2016-11-04 15:41:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyenhieutp.jpg.46d92caeeb81953f088195708bf79e45', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN HIEU', '', '0401001434968', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1359, 0, 0, 0, '178666878513', 0, 0, 'Thaohn75', '', 1, 695, '', '', NULL, 'Nguyenthibichthao1975@gmail.com', '0977159399', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.27.108.225', NULL, NULL, 0, 0, 0, '', '2016-10-24 10:30:31', '113013104', '2016-10-31 23:01:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI BICH THAO', '', '0491000083652', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1353, 0, 0, 0, '83609323017', 0, 0, 'Vanhoach', '', 1, 885, '', '', NULL, 'Suphuhoach@gmail.com', '01694103555', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.45.151', NULL, NULL, 0, 0, 0, '', '2016-10-24 08:15:02', '151786764', '2016-11-04 22:10:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Vanhoach.jpg.3d0d3b095da112c11a17e7cb2e7637b7', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VAN HOACH', '', '0481000782080', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1354, 0, 0, 0, '224150046000', 0, 0, 'yennhi79', '', 1, 1234, '', '', NULL, 'daubui0579@gmail.com', '0919257857', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.72.34.90', NULL, NULL, 0, 0, 0, '', '2016-10-24 08:53:22', '351783755', '2016-10-30 21:29:15', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'BUI VAN DAU', '', '0151000557326', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1355, 0, 0, 0, '211615691794', 0, 0, 'yennhi179', '', 1, 1234, '', '', NULL, 'daubui0597@gmail.com', '0919257857', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.57.230', NULL, NULL, 0, 0, 0, '', '2016-10-24 08:54:37', '351783755', '2016-11-01 04:14:33', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'BUI VAN DAU', '', '0151000557326', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1356, 0, 0, 0, '23489226100', 0, 0, 'yennhi279', '', 1, 1234, '', '', NULL, 'daubui0597@gmail.com', '0919257857', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.212.191', NULL, NULL, 0, 0, 0, '', '2016-10-24 08:56:01', '351783755', '2016-11-01 02:36:04', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'BUI VAN DAU', '', '0151000557326', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1375, 0, 0, 0, '150377727860', 0, 0, 'tungtp', '', 1, 1226, '', '', NULL, 'thanhtung27731@gmail.com', '0903934021', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.118.80.114', NULL, NULL, 0, 0, 0, '', '2016-10-25 05:19:28', '079076000524', '2016-11-03 19:12:05', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DO THANH TUNG', '', '0071001571737', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1357, 0, 0, 0, '86760645494', 0, 0, 'Tungtmntp', '', 1, 1000, '', '', NULL, 'Tungpham2708@gmail.com', '0939319143', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-24 09:16:31', '101039254', '2016-11-04 10:21:14', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THANH TUNG', '', '0401001434974', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1358, 0, 0, 0, '219451691809', 0, 0, 'nguyenthanhlong.btc2', '', 1, 757, '', '', NULL, 'nguyenthanhlong.btc2@gmail.com', '0907988831', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.9.199', NULL, NULL, 0, 0, 0, '', '2016-10-24 09:18:50', '023571750', '2016-11-04 02:07:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenthanhlong.btc2.jpg.fd9cb413bfd6aaf8b2c3c0220a39b103', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THANH LONG', '', '0181001085878', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1406, 0, 0, 0, '90546898192', 0, 0, 'tunglam68', '', 1, 655, '', '', NULL, 'tunglammlm199@gmail.com', '0935366199', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.175.161.104', NULL, NULL, 0, 0, 0, '', '2016-10-26 07:02:11', '215043251', '2016-11-04 01:28:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tunglam68.jpg.825ea1794255a3efeab5dcef451de3d1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN TUNG LAM', '', '0051000526575', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1446, 0, 0, 0, '69830407970', 0, 0, 'Hoang my', '', 1, 1339, '', '', NULL, 'tthuthao12@gmail.com', '0962434479', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.198.176', NULL, NULL, 0, 0, 0, '', '2016-10-27 22:04:20', '230817237', '2016-11-04 22:47:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoang_my.jpg.264fe326f6ff335a8222de9d3fc3b237', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI THU THAO', '', '0291000369617', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1361, 0, 0, 0, '159839842712', 0, 0, 'Ngoctan', '', 1, 1239, '', '', NULL, 'Ngoctan20021992@gmail.com', '0967555652', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.28.93.86', NULL, NULL, 0, 0, 0, '', '2016-10-24 11:41:12', '352198343', '2016-11-04 10:35:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ngoctan.jpg.d78d716faa3a1a703730b0b24b7b95d2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE NGOC TAN', '', '0401001434969', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1388, 0, 0, 0, '105316107016', 0, 0, 'buinguyet', '', 1, 1337, '', '', NULL, 'xuannguyet1971@gmail.com', '0949978483', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.132.62', NULL, NULL, 0, 0, 0, '', '2016-10-25 11:40:55', '012553761', '2016-10-27 23:04:09', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/buinguyet.jpg.a62b4b609bb274a7da7cfca5c61503da', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI THI NGUYET', '', '0541000265122', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1364, 0, 0, 0, '242684548183', 0, 0, 'Minhtuyethb', '', 1, 707, '', '', NULL, 'Leminhtuyet1976@gmail.com', '01674497488', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-24 22:43:41', '171031001017', '2016-11-04 21:52:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhtuyethb.jpg.2ded58579982dfb5521e12c5d4e53294', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'LE THI MINH TUYET', '', '0801000240453', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1365, 0, 0, 0, '155174860121', 0, 0, 'Minhtuyethb1', '', 1, 1364, '', '', NULL, 'Leminhtuyet1976@gmail.com', '01674497488', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-24 22:53:20', '171031001017', '2016-11-04 21:54:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Minhtuyethb1.jpg.f45e6369c8b616aad9d62db9cfad6e9f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI MINH TUYET', '', '0801000240453', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1380, 0, 0, 0, '142371612006', 0, 0, 'nguyenbanggl', '', 1, 1350, '', '', NULL, 'thiendigialai@gmail.com', '0989075199', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.16.128', NULL, NULL, 0, 0, 0, '', '2016-10-25 08:37:18', '230660619', '2016-11-04 23:07:52', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenbanggl.jpg.9255881b3d8d7bd25295deb7281a2093', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN BANG', '', '0291000412072', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1366, 0, 0, 0, '5745607425', 0, 0, 'kimnga01', '', 1, 1305, '', '', NULL, 'kimnga2016qng@gmail.com', ' 0935751512', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.225.161', NULL, NULL, 0, 0, 0, '', '2016-10-24 23:49:18', '212312741', '2016-11-03 04:37:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kimnga01.jpg.7ce6f0ba37ec9167d71ae7666ddca9b2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI KIM NGA', '', '0271000804175', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1368, 0, 0, 0, '275002098978', 0, 0, 'datgia1', '', 1, 709, '', '', NULL, 'ngomdat67@gmail.com', '0903667106', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-25 03:08:02', '025088729', '2016-11-04 23:05:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/datgia1.jpg.491fa03dcb4307630d1651bd9b1a0bd8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGO MINH DAT', '', '0031000255642', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1385, 0, 0, 0, '9804615977', 0, 0, 'dungbmt1', '', 1, 1384, '', '', NULL, 'thedung56@gmail.com', '0936822822', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.93.85', NULL, NULL, 0, 0, 0, '', '2016-10-25 10:33:27', '240826292', '2016-11-04 19:38:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dungbmt1.jpg.e4d52849df5e3ec2dba6a18656cffc77', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THE DUNG', '', '0231000118547', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1414, 0, 0, 0, '176230565639', 0, 0, 'Tuyetnhunghn2', '', 1, 1142, '', '', NULL, 'Truongkimthoa1967@gmail.com', '0984943683', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 03:09:39', '012607345', '2016-11-04 10:00:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuyetnhunghn2.jpg.de3fb9f76c52b5f82cde8a13aa86a1f1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG TUYET NHUNG', '', '0021001187110', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1369, 0, 0, 0, '161095169156', 0, 0, 'Thanhsuong1', '', 1, 969, '', '', NULL, 'Suong0136@gmail.com', '0933935155', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-25 04:35:49', '024184710', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC THANH SUONG', '', '0071000806014', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1370, 0, 0, 0, '281209574999', 0, 0, 'Vuthaian', '', 1, 1239, '', '', NULL, 'Vuthaian84@gmail.com', '0975800208', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.191.207.152', NULL, NULL, 0, 0, 0, '', '2016-10-25 04:37:28', '250654541', '2016-11-04 22:53:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Vuthaian.jpg.6216ef812dc41f5f19ed074fe5577f52', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU THAI AN', '', '0561000576003', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1371, 0, 0, 0, '152548312185', 0, 0, 'Thanhsuong2', '', 1, 969, '', '', NULL, 'Suong0136@gmail.com', '0933935155', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-25 04:38:28', '024184710', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC THANH SUONG', '', '0071000806014', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1372, 0, 0, 0, '15176369811', 0, 0, 'maihao', '', 1, 914, '', '', NULL, 'maitranhao29@gmail.com', '0946638979', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.243.201', NULL, NULL, 0, 0, 0, '', '2016-10-25 04:47:54', '381661544', '2016-11-04 17:26:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/maihao.jpg.eef4db835c9b5cd7dd9a2289dbf1aa79', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'MAI TRAN HAO', '', '0191000324681', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1373, 0, 0, 0, '94811542897', 0, 0, 'vungcao3', '', 1, 938, '', '', NULL, 'haithanghai@gmail.com', '0917052946', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.65.163', NULL, NULL, 0, 0, 0, '', '2016-10-25 04:50:45', '090920011', '2016-11-03 21:55:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/vungcao3.jpg.92811f87866677252c7ae89c94228dd2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VU VAN GIANG', '', '0821000089707', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1391, 0, 0, 0, '10622212357', 0, 0, 'songquynhbmt', '', 1, 1325, '', '', NULL, 'somgquynhbmt89@gmail.com', '0979879716', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.122.149', NULL, NULL, 0, 0, 0, '', '2016-10-25 20:23:39', '241030093', '2016-11-04 20:33:56', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE SONG QUYNH', '', '0231000628822', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1374, 0, 0, 0, '285183808772', 0, 0, 'thanhhuanpt2', '', 1, 1022, '', '', NULL, 'thanhhuanpt@gmail.com', '0976079784', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-25 05:00:49', '131187347', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH HUAN', '', '0801000239555', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1392, 0, 0, 0, '150483661575', 0, 0, 'ngabmt', '', 1, 1384, '', '', NULL, 'ngavietuc@gmail.com', '0913226479', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.93.85', NULL, NULL, 0, 0, 0, '', '2016-10-25 22:15:35', '245154518', '2016-11-04 19:39:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngabmt.jpg.e872b2f2092d8d95890417dde0f9d12e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI NGA', '', '0071000604735', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1376, 0, 0, 0, '10511156018', 0, 0, 'ngocthuy', '', 1, 1226, '', '', NULL, 'ngocthuy27731@gmail.com', '0901567234', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.118.80.114', NULL, NULL, 0, 0, 0, '', '2016-10-25 05:32:43', '023113918', '2016-11-03 19:13:40', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngocthuy.jpg.f734e5beefc19fb550ed163c52c932a4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI NGOC THUY', '', '0181003509350', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1377, 0, 0, 0, '99628446744', 0, 0, 'nguyenngocban', '', 1, 877, '', '', NULL, 'ngocbanccivn@gmail.com', '0935600052', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.233.226', NULL, NULL, 0, 0, 0, '', '2016-10-25 06:23:37', '205485243', '2016-11-04 22:47:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenngocban.jpg.e98b46c830d777e686298b86e96b0793', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN NGOC BAN', '', '0651000318828', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1378, 0, 0, 0, '280787822659', 0, 0, 'PhanTamBMT', '', 1, 1320, '', '', NULL, 'Phanthitambmt123456@gmail.com', '0905834545', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.2.114.180', NULL, NULL, 0, 0, 0, '', '2016-10-25 07:08:07', '240693702', '2016-11-04 03:49:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhanTamBMT.jpg.5e670a8cdda600676dd540042f13856a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 7, 'PHAN THI TAM', '', '0231000396080', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 1, NULL),
+(1381, 0, 0, 0, '5961503360', 0, 0, 'dominhgl', '', 1, 1337, '', '', NULL, 'vanquangminh09@gmail.com', '01696252777', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.222.36', NULL, NULL, 0, 0, 0, '', '2016-10-25 08:54:28', '230814673', '2016-10-31 22:21:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dominhgl.jpg.94b49155dd1f23ed70718936960d2824', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN MINH', '', '0291000284123', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1382, 0, 0, 0, '155282609976', 0, 0, 'dominhgl1', '', 1, 1381, '', '', NULL, 'vanquangminh09@gmail.com', '01696252777', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.222.36', NULL, NULL, 0, 0, 0, '', '2016-10-25 09:11:36', '230814673', '2016-11-01 21:03:20', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dominhgl1.jpg.02859c117551b0582fa39af076f44155', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN MINH', '', '0291000284123', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1383, 0, 0, 0, '242784696072', 0, 0, 'dominhgl2', '', 1, 1381, '', '', NULL, 'vanquangminh09@gmail.com', '01696252777', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.67.5.72', NULL, NULL, 0, 0, 0, '', '2016-10-25 09:15:06', '230814673', '2016-11-04 00:21:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dominhgl2.jpg.2c67cc78a8275340e351e4e32a7a0ae0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO VAN MINH', '', '0291000284123', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1384, 0, 0, 0, '138579949127', 0, 0, 'Dungbmt', '', 1, 953, '', '', NULL, 'thedung56@gmail.con', '0936822822', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.234.38', NULL, NULL, 0, 0, 0, '', '2016-10-25 09:39:53', '240826292', '2016-11-04 21:33:48', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Dungbmt.jpg.a0295f906819b069f7764e52af35845a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THE DUNG', '', '0231000118547', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1386, 0, 0, 0, '160112462101', 0, 0, 'dungbmt2', '', 1, 1384, '', '', NULL, 'thedung56@gmail.com', '0936822822', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.110.93.85', NULL, NULL, 0, 0, 0, '', '2016-10-25 10:41:48', '240826292', '2016-11-04 19:40:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/dungbmt2.jpg.c2405f310058cc15daed257984128d5e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THE DUNG', '', '0231000118547', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1387, 0, 0, 0, '238141132869', 0, 0, 'doanhanh', '', 1, 740, '', '', NULL, 'miyukidanshi@gmail.com', '0932636681', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.72.218', NULL, NULL, 0, 0, 0, '', '2016-10-25 10:59:46', '023465157', '2016-11-04 03:42:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/doanhanh.jpg.e30b221eb923eb0e7c740edcd3cfe490', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DOAN THI MY HANH', '', '0181000970193', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1389, 0, 0, 0, '4898972528', 0, 0, 'minhlan2', '', 1, 1246, '', '', NULL, 'minhlan.vip@gmail.com', '0909326191', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.172.156.101', NULL, NULL, 0, 0, 0, '', '2016-10-25 11:52:12', '024684433', '2016-11-04 10:50:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhlan2.jpg.629c47d5eb09ebfc4ef394409a915808', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'CAN THI MINH LAN', '', '0071001054573', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1390, 0, 0, 0, '99731603737', 0, 0, 'syhien', '', 1, 1337, '', '', NULL, 'vosyhien3079@gmail.com', '0983378977', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.235.77', NULL, NULL, 0, 0, 0, '', '2016-10-25 11:54:49', '230471732', '2016-11-03 20:08:41', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/syhien.jpg.eda7af7438637f848a1e9aec3328a168', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VO SY HIEN', '', '0291000257560', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1400, 0, 0, 0, '206260376377', 0, 0, 'Nhungphanhm', '', 1, 747, '', '', NULL, 'Nhugphan94@gmail.com', '0907086133', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.244.226', NULL, NULL, 0, 0, 0, '', '2016-10-26 02:24:25', '362363108', '2016-11-04 21:47:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nhungphanhm.jpg.17374f11ec16af244b2de6578c9060b4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAN THI TUYET NHUNG', '', '0391001006261', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1409, 0, 0, 0, '223414858361', 0, 0, 'Nguyenhoatn', '', 1, 709, '', '', NULL, 'hoa151290@gmail.com', '01675500920', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.253.10.21', NULL, NULL, 0, 0, 0, '', '2016-10-26 09:21:42', '049180000029', '2016-10-27 07:21:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyenhoatn.jpg.8174024b464a514352504608e6525ebc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI HOA', '', '0701000415830', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1401, 0, 0, 0, '217181283593', 0, 0, 'Ninhhuonghn', '', 1, 1284, '', '', NULL, 'Huong22062005@gmail.com', '0987389638', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-26 03:23:17', '034180001505', '2016-11-04 04:48:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ninhhuonghn.jpg.fd44ed2a9e9d8e897a64655a11ad8ed1', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 15, 'PHAM NINH HUONG', '', '0711000257103', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1411, 0, 0, 0, '236508692772', 0, 0, 'minhhueak', '', 1, 655, '', '', NULL, 'vanminhhueak1962@gmail.com', '0968492368', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.54.82', NULL, NULL, 0, 0, 0, '', '2016-10-26 21:41:46', '236362186', '2016-11-04 01:27:33', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhhueak.jpg.4d8fa826d9346e41ddda0d578560885c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VAN MINH HUE', '', '0291000286832', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1393, 0, 0, 0, '285386830853', 0, 0, 'ngocngu2', '', 1, 798, '', '', NULL, 'Ngochoangicd@gmail.com', '0943362424', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.176.122.175', NULL, NULL, 0, 0, 0, '', '2016-10-25 22:47:12', '271629549', '2016-11-04 22:04:16', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HOANG NGOC NGU', '', '0481000689661', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1396, 0, 0, 0, '152816616450', 0, 0, 'Nguyensondn', '', 1, 707, '', '', NULL, 'Sonnguyennguyen571@gmail.com', '0976689745', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.54.101', NULL, NULL, 0, 0, 0, '', '2016-10-25 23:54:43', '271826987', '2016-11-03 23:50:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nguyensondn.jpg.d688a65befb702c24c8f7a47efd4988a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN SON', '', '0481000689662', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1394, 0, 0, 0, '95094538864', 0, 0, 'nguyenthuan', '', 1, 709, '', '', NULL, 'nguyenthuan0192@gmail.com', '0985705910', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.74.113.67', NULL, NULL, 0, 0, 0, '', '2016-10-25 23:09:58', '187205994', '2016-11-04 20:15:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenthuan.jpg.b4c1df048630416924efa74fb493e34f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN VAN THUAN', '', '0381000423029', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1397, 0, 0, 0, '281594566248', 0, 0, 'ND', '', 1, 877, '', '', NULL, 'Ndung9493@gmail.com', '0965022418', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.170.97.160', NULL, NULL, 0, 0, 0, '', '2016-10-26 00:06:08', '186745405', '2016-10-27 00:42:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ND.jpg.18a59e73ebdfb7835ce8a9994c92bb94', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN DUNG', '', '0561000559752', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1398, 0, 0, 0, '100550588457', 0, 0, 'Huynhhuy1', '', 1, 1190, '', '', NULL, 'nhathuy.npv.logs@gmail.com', '0964426609', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.238.192', NULL, NULL, 0, 0, 0, '', '2016-10-26 00:18:43', '250824436', '2016-11-04 21:59:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huynhhuy1.jpg.a0f7fddf4943902398329223b6f11855', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NHAT HUY', '', '0071005646336', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1402, 0, 0, 0, '91842696711', 0, 0, 'Ninhhuonghn1', '', 1, 1401, '', '', NULL, 'Huong22062005@gmail.com', '0987389638', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-26 03:26:51', '034180001505', '2016-11-04 21:23:19', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ninhhuonghn1.jpg.5aba63154e88a4a2a64dfcb4fd230fc5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NINH HUONG', '', '0711000257103', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1418, 0, 0, 0, '169232852804', 0, 0, 'honglien68', '', 1, 1115, '', '', NULL, 'honglien.brvt@gmail.com', '0917745399', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.117.42.10', NULL, NULL, 0, 0, 0, '', '2016-10-27 05:30:21', '273587912', '2016-10-28 11:10:39', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI HONG LIEN', '', '0401001365735', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1498, 0, 0, 0, '103437140768', 0, 0, 'huy71', '', 1, 1248, '', '', NULL, 'huynhquangvu0071@gmail.com', '0914084137', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.248.33.240', NULL, NULL, 0, 0, 0, '', '2016-10-31 03:00:06', '022405457', '2016-11-01 08:36:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH QUANG VU', '', '0511000440903', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1403, 0, 0, 0, '30184448297', 0, 0, 'Ninhhuonghn2', '', 1, 1401, '', '', NULL, 'Huong22062005@gmail.com', '0987389638', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '210.245.54.121', NULL, NULL, 0, 0, 0, '', '2016-10-26 03:30:10', '034180001505', '2016-11-04 02:51:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ninhhuonghn2.jpg.d1c33a7031326d1ae8cdaf0700194f24', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM NINH HUONG', '', '0711000257103', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1404, 0, 0, 0, '206765828500', 0, 0, 'Tuananhbh', '', 1, 707, '', '', NULL, 'Tuananhdnsumo@gmail.com', '0911319797', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-26 05:47:48', '271593783', '2016-11-04 21:31:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Tuananhbh.jpg.2d5044e3ce6eecc824a5fc5d49484f28', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN TUAN ANH', '', '0481000748736', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1405, 0, 0, 0, '216728570134', 0, 0, 'Long79', '', 1, 1239, '', '', NULL, 'Lethanhlong10081991@gmail.com', '0968922132', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-26 05:51:21', '241226517', '2016-11-04 05:47:44', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Long79.jpg.88938cc736ec726d145a49786c892e3d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE THANH LONG', '', '0401001370916', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1407, 0, 0, 0, '31566743862', 0, 0, 'IDGiaoSuX3', '', 1, 877, '', '', NULL, 'gs.thangvu@gmail.com', '0986125180', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.28.250', NULL, NULL, 0, 0, 0, '', '2016-10-26 07:25:08', '111970772', '2016-11-04 09:33:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/IDGiaoSuX3.jpg.21652f5f8171b7f1b1ca113d0e27f745', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'VU VAN THANG', '', '0281001211865', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1408, 0, 0, 0, '212711520553', 0, 0, 'lucky68', '', 1, 1330, '', '', NULL, 'n.huong1712@gmail.com', '0928030380', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.3.128.229', NULL, NULL, 0, 0, 0, '', '2016-10-26 07:38:24', '023008334', '2016-11-04 21:06:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lucky68.jpg.2c1caf8dd8543a32a3e00f0d6ce62f75', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI DIEM HUONG', '', '0071000982370', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1427, 0, 0, 0, '22148565254', 0, 0, 'Tranhieubl01', '', 1, 1095, '', '', NULL, 'tranhienhieu86@gmail.com', '0946991411', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.2.32.16', NULL, NULL, 0, 0, 0, '', '2016-10-27 10:03:18', '385317082', '2016-10-27 10:05:14', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN HIEN HIEU', '', '0891000632084', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1413, 0, 0, 0, '35858773526', 0, 0, 'trangle3', '', 1, 1103, '', '', NULL, 'lekimtrang2016@gmail.com', '0908773730', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.237.66.233', NULL, NULL, 0, 0, 0, '', '2016-10-27 00:20:06', '022307054', '2016-10-30 05:28:13', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE KIM TRANG', '', '0071001067159', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1511, 0, 0, 0, '236331468665', 0, 0, 'HongNguyen2', '', 1, 964, '', '', NULL, 'nguyenhong86kr@gmail.com', '0947219771', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '183.80.27.219', NULL, NULL, 0, 0, 0, '', '2016-10-31 12:19:48', '381852308', '2016-11-04 20:09:25', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/HongNguyen2.jpg.5ef5b8954c7b7bd9df56d8688556a2f4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI ANH HONG', '', '0071001095773', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1500, 0, 0, 0, '206183817256', 0, 0, 'thanhtruc', '', 1, 1476, '', '', NULL, 'tangdat265@gmail.com', '0901670228', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.25.216', NULL, NULL, 0, 0, 0, '', '2016-10-31 03:21:27', '025228637', '2016-11-04 11:18:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhtruc.jpg.33daa98c3b32947e9968acf1e6ca8b5c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI THANH TRUC', '', '0251002732958', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1458, 0, 0, 0, '215444051972', 0, 0, 'hongphucnt', '', 1, 746, '', '', NULL, 'dangphint@gmail.com', '0909777452', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.98.227.156', NULL, NULL, 0, 0, 0, '', '2016-10-28 08:58:51', '225372771', '2016-11-04 20:38:47', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongphucnt.jpg.351d8130f0a11e7d4d525af781ef5a81', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG THI HONG PHUC', '', '0061001096633', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1415, 0, 0, 0, '233596589897', 0, 0, 'Thuyphan', '', 1, 545, '', '', NULL, 'quynhgiao132@gmail.com', '0908738066', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.99.173.16', NULL, NULL, 0, 0, 0, '', '2016-10-27 03:54:28', '025236413', '2016-11-04 21:59:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuyphan.jpg.9e528aafada674c78ea5bd9dc65fe262', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN THI THUY', '', '0071000738228', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1416, 0, 0, 0, '73709978723', 0, 0, 'xuanduc81', '', 1, 1415, '', '', NULL, 'xuanduchcm@gmail.com', '0907756889', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.200.133', NULL, NULL, 0, 0, 0, '', '2016-10-27 04:00:34', '024859203', '2016-11-04 20:20:49', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/xuanduc81.jpg.b1050717d03342201223713720cd2b32', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN XUAN DUC', '', '0071002468586', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1419, 0, 0, 0, '229062039440', 0, 0, 'hoahoang', '', 1, 770, '', '', NULL, 'hoang.n.hoa@gmail.com', '01275533111', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.191.86.236', NULL, NULL, 0, 0, 0, '', '2016-10-27 05:45:12', '225116764', '2016-11-04 22:59:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoahoang.jpg.ecee3bb8b841a4347f530f35496fb68a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HOANG NGOC HOA', '', '0061000214532', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1420, 0, 0, 0, '143437203073', 0, 0, 'vietduytqnh', '', 1, 781, '', '', NULL, 'vietduynhtq@gmail.com', '01629956888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.32.147', NULL, NULL, 0, 0, 0, '', '2016-10-27 06:38:50', '070955188', '2016-11-04 01:09:56', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VIET DUY', '', '0031000262042', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1421, 0, 0, 0, '279863138137', 0, 0, 'BichMy39', '', 1, 555, '', '', NULL, 'bichmy2404@gmail.com', '0944286555', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '101.99.9.89', NULL, NULL, 0, 0, 0, '', '2016-10-27 06:41:11', '272579344', '2016-11-04 03:26:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/BichMy39.jpg.129badc76770efe44d75404a1d2223d0', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI BICH', '', '0121000803456', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1422, 0, 0, 0, '104747583767', 0, 0, 'BichMy79', '', 1, 869, '', '', NULL, 'bichmy2404@gmail.com', '0944286555', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.192.63', NULL, NULL, 0, 0, 0, '', '2016-10-27 06:48:10', '272579344', '2016-11-04 03:24:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/BichMy79.jpg.513b7e3668359c81b3df6efc0497ae1c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI BICH', '', '0121000803456', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1423, 0, 0, 0, '17238071413', 0, 0, 'Hongthuctp', '', 1, 1239, '', '', NULL, 'Thaothach08@gmail.com', '0902872142', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-27 06:53:02', '261065116', '2016-11-04 22:02:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongthuctp.jpg.eee00b605b47504e9827eca638081cd4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI KIM HONG', '', '0401001433156', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1424, 0, 0, 0, '147463704612', 0, 0, 'haivinh', '', 1, 1231, '', '', NULL, 'nguyenvynghean@gmail.com', '0916213691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.207.77', NULL, NULL, 0, 0, 0, '', '2016-10-27 09:07:52', '040178000096', '2016-11-04 20:40:16', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI VINH', '', '0491000101492', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1425, 0, 0, 0, '276228605264', 0, 0, 'haivinh1', '', 1, 1231, '', '', NULL, 'nguyenvynghean@gmai.com', '0916213691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.96.88.217', NULL, NULL, 0, 0, 0, '', '2016-10-27 09:09:41', '040178000096', '2016-10-30 21:00:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI VINH', '', '0491000101492', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1426, 0, 0, 0, '100169692992', 0, 0, 'haivinh2', '', 1, 1231, '', '', NULL, 'nguyenvynghean@gmail.com', '0916213691', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-27 09:11:30', '040178000096', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI VINH', '', '0491000101492', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1428, 0, 0, 0, '154913968433', 0, 0, 'hoangsim68', '', 1, 1084, '', '', NULL, 'hoangsim.09cdtk@gmail.com', '0962101091', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.56.21', NULL, NULL, 0, 0, 0, '', '2016-10-27 11:01:15', '060858542', '2016-11-04 10:34:55', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangsim68.jpg.89159a3a9cbafd12bf584d3775abef5f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG THI SIM', '', '0301000330003', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1429, 0, 0, 0, '281108841317', 0, 0, 'Phuongduy', '', 1, 1295, '', '', NULL, 'lythanhphuongduy86@gmail.com', '0906672026', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.14.85', NULL, NULL, 0, 0, 0, '', '2016-10-27 11:34:23', '023913694', '2016-10-27 11:35:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'LY THANH PHUONG DUY', '', '0441000659891', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1430, 0, 0, 0, '160259463542', 0, 0, 'locphat887', '', 1, 1337, '', '', NULL, 'nguyenthithuy1979gl@gmail.com', '0965360290', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.140.27', NULL, NULL, 0, 0, 0, '', '2016-10-27 11:49:46', '230536887', '2016-11-04 07:47:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/locphat887.jpg.811196fe5a5f41f47e45730c8d2e7392', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THUY', '', '0291000279886', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1431, 0, 0, 0, '275146618192', 0, 0, 'Hongtuls', '', 1, 1258, '', '', NULL, 'Huathanhlangson@gmail.com', '0942870467', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:27:50', '080572375', '2016-11-04 21:24:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongtuls.jpg.3c84461cf3bdb574d1c7bbc07d27d3e2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO HONG TU', '', '0731000687733', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1473, 0, 0, 0, '98803341460', 0, 0, 'nguyenthanhqn', '', 1, 811, '', '', NULL, 'halongbiennho63@gmail.com', '01646751899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.161.243', NULL, NULL, 0, 0, 0, '', '2016-10-29 05:30:45', '100484514', '2016-11-04 21:25:09', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 12, 'NGUYEN VAN THANH', '', '0141000812642', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1432, 0, 0, 0, '109527400580', 0, 0, 'Hongtuls1', '', 1, 1258, '', '', NULL, 'Huathanhlangson@gmail.com', '0942870467', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:32:11', '080572375', '2016-11-04 21:26:45', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongtuls1.jpg.4dd1f0e891e384d5bb667d8e03b6f97f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO HONG TU', '', '0731000687733', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1433, 0, 0, 0, '390287448', 0, 0, 'Hongtuls2', '', 1, 1258, '', '', NULL, 'Huathanhlangson@gmail.com', '0942870467', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.167.182.50', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:36:25', '080572375', '2016-11-04 11:16:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hongtuls2.jpg.2f5fc9b903e23166e2a1c4a0dea5d14a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO HONG TU', '', '0731000687733', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1434, 0, 0, 0, '165163459159', 0, 0, 'tungduong56', '', 1, 1192, '', '', NULL, 'tungpham021193@gmail.com', '0974239886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:53:27', '013308606', '2016-11-02 20:55:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM BA TUNG', '', '0021000367833', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1435, 0, 0, 0, '243087414617', 0, 0, 'Thuyngocls', '', 1, 1258, '', '', NULL, 'Tuana16k48@gmail.com', '01654937418', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:55:07', '082066649', '2016-11-04 21:29:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuyngocls.jpg.f08430d92bb8e943e50c6fe2d155edf3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THUY NGOC', '', '0941000000513', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1436, 0, 0, 0, '107409315475', 0, 0, 'tungduong58', '', 1, 1192, '', '', NULL, 'tungpham021193@gmail.com', '0974239886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:55:53', '013308606', '2016-11-01 12:18:16', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM BA TUNG', '', '0021000367833', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1437, 0, 0, 0, '4417020245', 0, 0, 'tungduong59', '', 1, 1192, '', '', NULL, 'tungpham021193@gmail.com', '0974239886', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.190.128.60', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:57:56', '013308606', '2016-11-01 12:18:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM BA TUNG', '', '0021000367833', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1438, 0, 0, 0, '159727031426', 0, 0, 'Ngocthuyls1', '', 1, 1259, '', '', NULL, 'Tuana16k48@gmail.com', '01654937418', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 14:59:48', '082066649', '2016-11-04 21:28:43', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Ngocthuyls1.jpg.0b7b697bd32c6c350a2dfc7d4b532d9a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THUY NGOC', '', '0941000000513', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1439, 0, 0, 0, '238527206980', 0, 0, 'Thuyngocls2', '', 1, 1259, '', '', NULL, 'Tuana16k48@gmail.com', '01654937418', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 15:02:37', '082066649', '2016-11-04 10:17:04', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuyngocls2.jpg.c157315234acdb5df96b757510b7e835', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI THUY NGOC', '', '0941000000513', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1440, 0, 0, 0, '232218138457', 0, 0, 'Hoangtrangls', '', 1, 1259, '', '', NULL, 'Tuana16k48@gmail.com', '01664749316', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-27 15:06:25', '082120878', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THUY TRANG', '', '0731000695660', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1441, 0, 0, 0, '165500163671', 0, 0, 'Hoangtrangls1', '', 1, 1259, '', '', NULL, 'Tuana16k48@gmail.com', '01664749316', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-27 15:09:55', '082120878', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THUY TRANG', '', '0731000695660', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1442, 0, 0, 0, '40285401205', 0, 0, 'hoangtrangls2', '', 1, 1259, '', '', NULL, 'Tuana16k48@gmail.com', '01664749316', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-27 15:13:09', '082120878', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THUY TRANG', '', '0731000695660', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1443, 0, 0, 0, '81928882281', 0, 0, 'nguyen169', '', 1, 964, '', '', NULL, 'blackeyes.biz@gmail.com', '0963745085', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.183.92.9', NULL, NULL, 0, 0, 0, '', '2016-10-27 19:14:20', '113205182', '2016-11-04 09:45:21', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyen169.jpg.2f1a3a18c1d4309dc7b1961da6ae4bd5', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI THI BINH NGUYEN', '', '0301000363761', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1444, 0, 0, 0, '225795389588', 0, 0, 'nguyen170', '', 1, 964, '', '', NULL, 'blackeyes.biz@gmail.com', '0963745085', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.183.92.9', NULL, NULL, 0, 0, 0, '', '2016-10-27 19:15:06', '113205182', '2016-11-04 09:46:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyen170.jpg.964537e088d4a5fda31dbb7f48701324', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI THI BINH NGUYEN', '', '0301000363761', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1501, 0, 0, 0, '219585655636', 0, 0, 'ngophuc', '', 1, 1476, '', '', NULL, 'ngotriphuc1015@gmail.com', '0984161015', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.161.15', NULL, NULL, 0, 0, 0, '', '2016-10-31 03:51:10', '021861630', '2016-10-31 09:25:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngophuc.jpg.0ed9a13553c314f231e6d3a58f68146b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGO TRI PHUC', '', '0171003452254', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1445, 0, 0, 0, '171870196772', 0, 0, 'trandieulinh', '', 1, 782, '', '', NULL, 'trandieulinh229@gmail.com', '0985857551', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.209.247', NULL, NULL, 0, 0, 0, '', '2016-10-27 21:59:48', '225914769', '2016-11-03 09:10:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trandieulinh.jpg.2a90505dbcf749b877ab0002ecf18821', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN DIEU LINH', '', '0061001054605', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1447, 0, 0, 0, '77966148928', 0, 0, 'Phanlanghn1', '', 1, 1284, '', '', NULL, 'Truongkimthoa1967@gmail.com', '0973492536', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 22:09:19', '001063003486', '2016-11-04 21:28:01', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phanlanghn1.jpg.07235432201b024405c56cb22341571b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN VAN LANG', '', '0691000362895', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1448, 0, 0, 0, '233277755475', 0, 0, 'Phanlanghn2', '', 1, 1284, '', '', NULL, 'TTKT.Link@gmail.com', '0973492536', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 22:14:17', '001063003486', '2016-10-28 12:06:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phanlanghn2.jpg.fbe7c14e489402437f1744f4085e39bc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN VAN LANG', '', '0691000362895', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1449, 0, 0, 0, '176787948935', 0, 0, 'ngoc68', '', 1, 1330, '', '', NULL, 'n.huong1712@gmail.com', '0928030380', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.3.129.172', NULL, NULL, 0, 0, 0, '', '2016-10-27 22:34:21', '023008334', '2016-11-02 07:34:50', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngoc68.jpg.a01a28385c3c637ad92a222fd7fe467a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI DIEM HUONG', '', '0071000982370', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1496, 0, 0, 0, '151418634801', 0, 0, 'huynhthigl', '', 2, 1430, '', '', NULL, 'thihuynh2612016@gmail.com', '0949379315', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.240.80', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-31 00:00:00', '1', '2016-11-04 09:40:26', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/huynhthigl.jpg.7df8fcc00656e13de663eeaf34afe572', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH VAN THI', '', '0291000243624', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1460, 0, 0, 0, '241749362505', 0, 0, 'nangmoi', '', 2, 1339, '', '', NULL, 'honghong8301@gmail.com', '01684325579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.54.101', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-28 00:00:00', '1', '2016-11-03 10:37:38', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/nangmoi.jpg.513310ded3f96d1fa9cdb19ac7e689d3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'BUI QUOC TUAN', '', '0291000320180', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1454, 0, 0, 0, '221012833603', 0, 0, 'Dangvy1', '', 1, 1367, '', '', NULL, 'Vyvydang1812@gmail.com', '0933581580', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.86.49', NULL, NULL, 0, 0, 0, '', '2016-10-28 00:33:23', '023230179', '2016-11-03 22:05:43', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Dangvy1.jpg.49f9fcdd51b43be3a8dd5fcc5cfbc694', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THI BICH VY', '', '0251002729664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1451, 0, 0, 0, '210614453088', 0, 0, 'Oanhtp', '', 1, 1014, '', '', NULL, 'oanh06041102@gmail.com', '01283233095', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.95.112', NULL, NULL, 0, 0, 0, '', '2016-10-27 23:52:33', '250701368', '2016-11-04 08:27:03', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Oanhtp.jpg.10b931b9fd202770849156019226a78f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI KIEU OANH', '', '0531002526854', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1450, 0, 0, 0, '224982484514', 0, 0, 'Dangvy', '', 1, 1367, '', '', NULL, 'Vyvydang1812@gmail.com', '0933581580', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.86.49', NULL, NULL, 0, 0, 0, '', '2016-10-27 23:29:00', '023230179', '2016-11-03 22:07:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Dangvy.jpg.b1f1f080978c64716c13b6f1076f3f2c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DANG THI BICH VY', '', '0251002729664', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1452, 0, 0, 0, '22588502356', 0, 0, 'Nghiemthuyhn', '', 1, 1401, '', '', NULL, 'Nghiemthuy1706@gmail.com', '0985508664', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '112.197.176.184', NULL, NULL, 0, 0, 0, '', '2016-10-27 23:57:53', '017202501', '2016-11-04 21:49:56', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Nghiemthuyhn.jpg.a26c8461e8d2769da113caad5ff7b0f8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGHIEM THI THUY', '', '0711000256164', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1453, 0, 0, 0, '87586525800', 0, 0, 'hoaithuong', '', 1, 782, '', '', NULL, 'nguyenhoaithuongdhv@gmail.com', '01659150472', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.167.18.38', NULL, NULL, 0, 0, 0, '', '2016-10-28 00:07:18', '230828593', '2016-11-04 22:52:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoaithuong.jpg.fa374a703f04eb8ec07383f533da6a56', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HOAI THUONG', '', '0061001082607', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1455, 0, 0, 0, '212886184339', 0, 0, 'hangtp2', '', 1, 1000, '', '', NULL, 'thanhhang38894@gmail.com', '01207372223', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-28 00:37:30', '273585781', '2016-11-04 10:16:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hangtp2.jpg.bcbc70889daf12d0135ea1a2a1f7fa26', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH HANG', '', '0401001431930', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1456, 0, 0, 0, '27247466297', 0, 0, 'huyhung701', '', 1, 1308, '', '', NULL, 'kinhdoanhmlm.vn@gmail.com', '0983250138', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-28 00:38:26', '001070001162', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'QUACH HUY HUNG', '', '0491000084980', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1479, 0, 0, 0, '147154076434', 0, 0, 'thaihoaak', '', 1, 742, '', '', NULL, 'Thaihoaak@gmail.com', '0905054899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.145.80', NULL, NULL, 0, 0, 0, '', '2016-10-29 08:50:59', '230952704', '2016-11-03 22:33:14', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THAI HOA', '', '0291000319104', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1457, 0, 0, 0, '82780889431', 0, 0, 'lantrinh', '', 1, 963, '', '', NULL, 'phamhonghuebt1984@gmail.com', '0946714834', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '222.254.226.172', NULL, NULL, 0, 0, 0, '', '2016-10-28 03:26:01', '380977975', '2016-11-03 09:56:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lantrinh.jpg.f2b8250628d52736f743b9768601f726', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN QUOC SY', '', '0191000337983', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1464, 0, 0, 0, '238692686116', 0, 0, 'phuonghoang69', '', 1, 649, '', '', NULL, 'phuonghoang1121974@gmail.com', '0914415899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-28 11:16:58', '273413499', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THI MINH PHUONG', '', '0081000213585', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1459, 0, 0, 0, '208181547060', 0, 0, 'kimhuonggl', '', 2, 1340, '', '', NULL, 'ngothikimhuongmkt@gmail.com', '01652885436', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.161.190', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-10-28 00:00:00', '1', '2016-11-04 09:40:25', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/kimhuonggl.jpg.ca81db2aac137531b3318a1a3b659fd2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGO THI KIM HUONG', '', '0291000250656', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1461, 0, 0, 0, '156078768945', 0, 0, 'Phuoctran', '', 1, 599, '', '', NULL, 'Phuoctrannewpd@gmail.com', '0933070334', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.22.156.4', NULL, NULL, 0, 0, 0, '', '2016-10-28 10:37:46', '194321159', '2016-10-28 10:39:12', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN VAN PHUOC', '', '0041000253425', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1462, 0, 0, 0, '6750303045', 0, 0, 'Nguyenngocthach', '', 1, 992, '', '', NULL, 'ngocthachvanphat@gmail.com', '0941607779', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.237.64.121', NULL, NULL, 0, 0, 0, '', '2016-10-28 10:47:31', '361735070', '2016-10-29 21:57:31', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN NGOC THACH', '', '0111000138046', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1463, 0, 0, 0, '139727148953', 0, 0, 'TH6688', '', 1, 869, '', '', NULL, 'Trantronghop67@gmail.com', '0981614179', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.247.81.62', NULL, NULL, 0, 0, 0, '', '2016-10-28 11:04:23', '162422272', '2016-11-04 20:18:38', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN TRONG HOP', '', '0481000774975', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1466, 0, 0, 0, '8632099652', 0, 0, 'Thuthao', '', 1, 1446, '', '', NULL, 'tthuthao12@gmail.com', '0962434479', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.198.176', NULL, NULL, 0, 0, 0, '', '2016-10-28 11:55:05', '230817237', '2016-11-04 22:48:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thuthao.jpg.898353e40f3190057ffb43645c85c0f6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DO THI THU THAO', '', '0291000369617', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1467, 0, 0, 0, '139123362164', 0, 0, 'Thanhthai', '', 1, 1446, '', '', NULL, 'sumiemsuri@gmail.com', '0983851575', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.130.119', NULL, NULL, 0, 0, 0, '', '2016-10-28 12:00:53', '230530112', '2016-10-28 22:12:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thanhthai.jpg.551887f8b060e6d66ae5b83f940b14be', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DOAN THANH THAI', '', '0291000296524', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1485, 0, 0, 0, '6786811222', 0, 0, 'Vyhuong', '', 1, 1336, '', '', NULL, 'Lehongvy2808@gmail.com', '01639999059', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.22.4.50', NULL, NULL, 0, 0, 0, '', '2016-10-29 11:45:15', '272364655', '2016-11-04 09:29:11', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE HONG VY', '', '0561000575556', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1529, 0, 0, 0, '281179226256', 0, 0, 'Viet19194', '', 1, 1520, '', '', NULL, 'viettran19194@gmail.com', '0938250105', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.115.143.17', NULL, NULL, 0, 0, 0, '', '2016-11-01 05:49:45', '025402890', '2016-11-02 22:55:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Viet19194.jpg.83003415a2939c5fd1e8fcbcf4d28b34', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN QUOC VIET', '', '0381000493017', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1468, 0, 0, 0, '246223616259', 0, 0, 'KienTP', '', 1, 1014, '', '', NULL, 'kiensautp@mail.com', '01253992702', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.95.112', NULL, NULL, 0, 0, 0, '', '2016-10-28 18:24:17', '250886124', '2016-11-04 08:25:31', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/KienTP.jpg.34553cf4f1e55b85e67995f81f6f102c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG TRUNG KIEN', '', '0561000576154', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1469, 0, 0, 0, '163882340503', 0, 0, 'Hao60293', '', 1, 1014, '', '', NULL, 'Haoho0208@gmail.com', '0903990566', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.37.37', NULL, NULL, 0, 0, 0, '', '2016-10-28 18:39:49', '250506032', '2016-11-04 07:33:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hao60293.jpg.80a19cf479020876663a5a6274c6b68f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HO SY HAO', '', '0561000570521', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1470, 0, 0, 0, '284358553906', 0, 0, 'hongnhungkhatoco1', '', 1, 1379, '', '', NULL, 'nhungban@gmail.com', '0905729672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.116.167.247', NULL, NULL, 0, 0, 0, '', '2016-10-28 23:21:17', '206331385', '2016-11-04 20:00:27', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hongnhungkhatoco1.jpg.5571772a97436aaa745fa84a1fef12e8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI HONG NHUNG', '', '0651000806388', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1471, 0, 0, 0, '151272370704', 0, 0, 'Doanthuan', '', 1, 778, '', '', NULL, 'Doancongthuan681991@gmail.com', '0904612065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '103.199.43.130', NULL, NULL, 0, 0, 0, '', '2016-10-28 23:39:03', '250824365', '2016-11-04 07:18:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Doanthuan.jpg.4048a3120ce1265351e3e75ba9320cad', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DOAN CONG THUAN', '', '0421000471233', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1472, 0, 0, 0, '13023384612', 0, 0, 'thaihoan', '', 1, 1415, '', '', NULL, 'Nguyenthaihoan60@gmail.com', '0913737482', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.186.237.237', NULL, NULL, 0, 0, 0, '', '2016-10-29 02:01:28', '020588742', '2016-10-29 02:05:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thaihoan.jpg.3baacdb93f4a241085ac603e2132011d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THAI HOAN', '', '0251002693396', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1474, 0, 0, 0, '283755368595', 0, 0, 'phongka85', '', 1, 1302, '', '', NULL, 'mrphong1984@gmail.com', '0908962692', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.23.25.225', NULL, NULL, 0, 0, 0, '', '2016-10-29 05:52:22', '271574078', '2016-10-29 05:58:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/phongka85.jpg.6a6b0fbc4e7eef7d5cffdac3cf2cdbed', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THANH PHONG', '', '0121001214517', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1475, 0, 0, 0, '151550052657', 0, 0, 'Namhai', '', 1, 545, '', '', NULL, 'namhaist88@gmail.com', '0932725255', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.194.21', NULL, NULL, 0, 0, 0, '', '2016-10-29 06:39:31', '362215997', '2016-11-03 06:13:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Namhai.jpg.2de2ca1b35dac8fa3b70385d41fd464e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 't', '', '0501000035682', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1476, 0, 0, 0, '14278599521', 0, 0, 'Phuongsg', '', 1, 1475, '', '', NULL, 'qphuong089@gmail.com', '0908959065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.25.216', NULL, NULL, 0, 0, 0, '', '2016-10-29 06:50:55', '024551044', '2016-11-04 10:38:51', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phuongsg.jpg.cb8db369572fcc99da4dd50001d11052', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 19, 'NGUYEN HUU PHUONG', '', '0171003452204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1477, 0, 0, 0, '95639110279', 0, 0, 'phuongsg1', '', 1, 1476, '', '', NULL, 'qphuong089@gmail.com', '0908959065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.186.237.237', NULL, NULL, 0, 0, 0, '', '2016-10-29 07:04:21', '024551044', '2016-10-29 07:18:51', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN HUU PHUONG', '', '0171003452204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1478, 0, 0, 0, '276782678416', 0, 0, 'phuongsg2', '', 1, 1476, '', '', NULL, 'qphuong089@gmail.com', '0908959065', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.186.237.237', NULL, NULL, 0, 0, 0, '', '2016-10-29 07:06:59', '024551044', '2016-10-29 07:18:06', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'NGUYEN HUU PHUONG', '', '0171003452204', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1480, 0, 0, 0, '139477483897', 0, 0, 'thaihoaak1', '', 1, 742, '', '', NULL, 'Thaihoaak@gmail.com', '0905054899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.145.80', NULL, NULL, 0, 0, 0, '', '2016-10-29 08:52:48', '230952704', '2016-11-03 22:31:20', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THAI HOA', '', '0291000319104', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1481, 0, 0, 0, '8976860713', 0, 0, 'PhanAnHM', '', 1, 1367, '', '', NULL, 'phanhanhson.biz@gmail.com', '0909860101', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.20.246.67', NULL, NULL, 0, 0, 0, '', '2016-10-29 08:57:16', '271329788', '2016-11-04 07:12:13', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/PhanAnHM.jpg.4be3bb8e718338f4a6d0f58d436bdfaa', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAN HANH SON', '', '0071002700758', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1482, 0, 0, 0, '159284466225', 0, 0, 'thaihoaak2', '', 1, 742, '', '', NULL, 'Thaihoaak@gmail.com', '0905054899', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.255.145.80', NULL, NULL, 0, 0, 0, '', '2016-10-29 09:01:34', '230952704', '2016-11-03 22:32:25', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THAI HOA', '', '0291000319104', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1483, 0, 0, 0, '240655860521', 0, 0, 'thanhtu1', '', 1, 1415, '', '', NULL, 'susannguyen1181@gmail.com', '0919707045', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.102.45.43', NULL, NULL, 0, 0, 0, '', '2016-10-29 09:06:08', '025071614', '2016-10-29 23:07:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhtu1.jpg.4095e42105f269f62aef6f4a5cfd0b2c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH TU', '', '0531002516850', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1484, 0, 0, 0, '139859612176', 0, 0, 'trahoanu1', '', 1, 1246, '', '', NULL, 'cobecodon948@gmail.com', '0975790909', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.74.31.27', NULL, NULL, 0, 0, 0, '', '2016-10-29 09:56:03', '241238321', '2016-11-03 05:11:38', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/trahoanu1.jpg.d731b62fe95714d887afe7edf88b7e59', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI TRA HOA NU', '', '0371000453197', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1486, 0, 0, 0, '156113576742', 0, 0, 'hanh11111', '', 1, 992, '', '', NULL, 'tranmyhanh148@gmail.com', '0907383828', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.161.211.29', NULL, NULL, 0, 0, 0, '', '2016-10-29 12:04:28', '362136035', '2016-10-30 09:39:34', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRAN THI MY HANH', '', '0111000271820', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1487, 0, 0, 0, '241883550834', 0, 0, 'duyvinh.nina', '', 1, 770, '', '', NULL, 'duyvinh.nina@gmail.com', '0903075208', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.68.148', NULL, NULL, 0, 0, 0, '', '2016-10-29 12:33:23', '212315830', '2016-11-04 20:28:52', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/duyvinh.nina.jpg.8412e9c964a5d2ce64d42f4cd65d3af8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN DUY VINH', '', '0381002634084', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1505, 0, 0, 0, '216415181191', 0, 0, 'ductin', '', 1, 1337, '', '', NULL, 'nguyenductin918@gmail.com', '0987944918', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.165.133.159', NULL, NULL, 0, 0, 0, '', '2016-10-31 07:37:23', '225151979', '2016-11-03 07:29:36', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN DUC TIN', '', '0061001001539', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1489, 0, 0, 0, '909668725', 0, 0, 'baokim', '', 1, 992, '', '', NULL, 'thuynguyen78py@gmail.com', '0983990314', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.71.173', NULL, NULL, 0, 0, 0, '', '2016-10-30 04:32:24', '221183364', '2016-11-04 03:00:45', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN THI THANH THUY', '', '0531000285244', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1490, 0, 0, 0, '95989237840', 0, 0, 'huytran', '', 1, 714, '', '', NULL, 'bestwishforyou0@gmail.com', '0918432426', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '27.75.235.228', NULL, NULL, 0, 0, 0, '', '2016-10-30 05:12:31', '362389404', '2016-11-04 20:43:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huytran.jpg.8dd0628937937b19ff0fbcf30b15776b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN NAM HUY', '', '0111000242338', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1491, 0, 0, 0, '14620643972', 0, 0, 'tutran', '', 1, 1490, '', '', NULL, 'tranngoctu67@gmail.com', '0988304297', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.4.250.37', NULL, NULL, 0, 0, 0, '', '2016-10-30 05:22:16', '001167005920', '2016-11-04 22:04:24', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tutran.jpg.6df7eae69a52e36e8aa165dbedca90d6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'TRAN THI NGOC TU', '', '0961000006980', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1492, 0, 0, 0, '151991570516', 0, 0, 'Thanphong', '', 1, 1055, '', '', NULL, 'Lehoang010288@gmail.com', '0962913970', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.108.170.89', NULL, NULL, 0, 0, 0, '', '2016-10-30 10:57:51', '024648276', '2016-11-04 00:21:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thanphong.jpg.8a38b91b7e1a51cddf6102c473b54b5d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE DINH HOANG', '', '0251002660088', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1493, 0, 0, 0, '284106712598', 0, 0, 'huynhhai', '', 1, 1055, '', '', NULL, 'hai.bitkingdom@gmail.com', '0909492295', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.118.191.81', NULL, NULL, 0, 0, 0, '', '2016-10-30 10:58:06', '211892279', '2016-11-04 06:22:59', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huynhhai.jpg.79800f94ced91d0a7ab1723dae8ba5ca', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH MINH HAI', '', '0071000804217', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1494, 0, 0, 0, '98827773969', 0, 0, 'hieuphapsu', '', 1, 1055, '', '', NULL, 'hieu_hieu744@yahoo.com', '0906663540', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.52.142.7', NULL, NULL, 0, 0, 0, '', '2016-10-30 10:59:32', '023718987', '2016-10-30 12:07:10', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hieuphapsu.jpg.e743b2c9dc2cd519a92e5c48948d72ea', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DINH TRUNG HIEU', '', '0331000411744', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1510, 0, 0, 0, '174031182231', 0, 0, 'xuanhoang', '', 1, 1490, '', '', NULL, 'hkx1668@gmail.com', '0977931668', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.211.147', NULL, NULL, 0, 0, 0, '', '2016-10-31 09:38:33', '131080386', '2016-10-31 09:41:32', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'HOANG THI KIM XUAN', '', '0801000242303', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1495, 0, 0, 0, '13161238835', 0, 0, 'Diemkimcuong', '', 1, 1460, '', '', NULL, 'diem8x@gmail.com', '01697818494', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.54.54.101', NULL, NULL, 0, 0, 0, '', '2016-10-30 16:06:10', '230674362', '2016-11-03 10:12:51', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI DIEM', '', '0291000294729', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1497, 0, 0, 0, '284381677619', 0, 0, 'tungngo', '', 1, 1490, '', '', NULL, 'ngotung10594@gmail.com', '0963097247', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.234.57.30', NULL, NULL, 0, 0, 0, '', '2016-10-31 02:07:12', '122163446', '2016-11-04 18:39:47', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/tungngo.jpg.43060c143e6e06635ff16eeb69070a00', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGO VAN TUNG', '', '0351000715019', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1519, 0, 0, 0, '228271400997', 0, 0, 'doanhanh1', '', 1, 1387, '', '', NULL, 'miyukidanshi@gmail.com', '0932636681', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.161.37.68', NULL, NULL, 0, 0, 0, '', '2016-11-01 00:19:22', '023465157', '2016-11-04 03:42:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'DOAN THI MY HANH', '', '0181000970193', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1499, 0, 0, 0, '18623964742', 0, 0, 'Huyvo78', '', 1, 1497, '', '', NULL, 'Huyvo78@gmail.com', '0908138248', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.89.227', NULL, NULL, 0, 0, 0, '', '2016-10-31 03:14:14', '340948587', '2016-11-04 10:59:34', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Huyvo78.jpg.4ea6639c16da0b92117edc8bc769fc71', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'VO KHAC HUY', '', '0151000244995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1502, 0, 0, 0, '91673940502', 0, 0, 'Hoangdung', '', 1, 550, '', '', NULL, 'phamdung1810@gmail.com', '0903603567', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '210.245.34.66', NULL, NULL, 0, 0, 0, '', '2016-10-31 05:22:14', '250850969', '2016-11-04 22:47:54', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'PHAM THI DUNG', '', '0441000711919', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1503, 0, 0, 0, '30975198096', 0, 0, 'Sottp1', '', 1, 1220, '', '', NULL, 'Luongutsot@gmail.com', '0933991313', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-31 05:55:47', '371126390', '2016-11-03 22:53:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Sottp1.jpg.017751ce0e541884bc1959ce4e3f31ee', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LUONG UT SOT', '', '0401001431738', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1504, 0, 0, 0, '207317575433', 0, 0, 'Sottp2', '', 1, 1220, '', '', NULL, 'Luongutsot@gmail.com', '0933991313', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-31 06:02:25', '371126390', '2016-11-03 22:53:58', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Sottp2.jpg.ba9d6ec71ef2772fd53a9bff0c74a69e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LUONG UT SOT', '', '0401001431738', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1506, 0, 0, 0, '91101628033', 0, 0, 'phamtrang1', '', 1, 1248, '', '', NULL, 'phamthitrangvt195@gmail.com', '0908790587', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.191.151', NULL, NULL, 0, 0, 0, '', '2016-10-31 09:15:38', '273230104', '2016-11-01 09:43:41', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THI TRANG', '', '0081000794995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1507, 0, 0, 0, '31257471321', 0, 0, 'lekhanhnt', '', 1, 1505, '', '', NULL, 'lekhanhvinh972@gmail.com', '0919702672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.126.192', NULL, NULL, 0, 0, 0, '', '2016-10-31 09:22:28', '220894644', '2016-11-04 22:04:19', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DINH THI LE', '', '0061001094256', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1508, 0, 0, 0, '211920881986', 0, 0, 'lekhanhnt1', '', 1, 1505, '', '', NULL, 'lekhanhvinh972@gmail.com', '0919702672', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.185.38.39', NULL, NULL, 0, 0, 0, '', '2016-10-31 09:25:56', '220894644', '2016-10-31 09:42:27', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'DINH THI LE', '', '0061001094256', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1509, 0, 0, 0, '223482438166', 0, 0, 'mama', '', 1, 1248, '', '', NULL, 'phamthitrangvt195@gmail.com', '0908790587', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.191.151', NULL, NULL, 0, 0, 0, '', '2016-10-31 09:30:18', '273230104', '2016-11-01 09:44:40', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'PHAM THI TRANG', '', '0081000794995', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1513, 0, 0, 0, '35791073799', 0, 0, 'kiemtien2', '', 1, 1140, '', '', NULL, 'kiemtientrenmang321@gmail.com', '01689820239', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.232.171.255', NULL, NULL, 0, 0, 0, '', '2016-10-31 21:43:32', '250806894', '2016-11-04 21:02:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiemtien2.jpg.ae567fe4c96550a83b76b9b41721f11c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 6, 'HUYNH DINH LAN', '', '0561003775071', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1562, 0, 0, 0, '6333871650', 0, 0, 'VinhHM', '', 1, 550, '', '', NULL, 'Tvquantoan1982@gmail.com', '0908376813', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.175', NULL, NULL, 0, 0, 0, '', '2016-11-04 02:20:47', '031082000919', '2016-11-04 06:10:37', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 10, 'LE QUANG VINH', '', '0031000242512', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1514, 0, 0, 0, '174306957128', 0, 0, 'Sangnguyen', '', 1, 963, '', '', NULL, 'nguyenminhsang759@gmail.com', '0972971472', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.169.76.8', NULL, NULL, 0, 0, 0, '', '2016-10-31 22:44:21', '025787113', '2016-11-02 04:36:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Sangnguyen.jpg.fefb58b8ee4d44b3aeb64854e175925d', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH SANG', '', '0071001069792', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1516, 0, 0, 0, '73400681536', 0, 0, 'ngocthao1', '', 1, 1515, '', '', NULL, 'thao87114@gmail.com', '0974739552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.78.83.19', NULL, NULL, 0, 0, 0, '', '2016-10-31 22:58:50', '350986273', '2016-11-02 01:23:30', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI NGOC THAO', '', '0151000554046', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1517, 0, 0, 0, '36918748930', 0, 0, 'ngocthao2', '', 1, 1515, '', '', NULL, 'thao87114@gmail.com', '0974739552', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-10-31 22:59:40', '350986273', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI NGOC THAO', '', '0151000554046', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1518, 0, 0, 0, '169401095779', 0, 0, 'hungtp', '', 1, 1000, '', '', NULL, 'hungle7819@gmail.com', '0908842705', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.163.241.83', NULL, NULL, 0, 0, 0, '', '2016-10-31 23:29:11', '023073507', '2016-11-04 06:01:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hungtp.jpg.bf685ffe76feb712efc8c7a516a2ccb3', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE NGUYEN VIET HUNG', '', '0181003418826', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1520, 0, 0, 0, '143369114512', 0, 0, 'hobalam5294', '', 1, 1490, '', '', NULL, 'hobalam5294@gmail.com', '0903050294', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.108.165', NULL, NULL, 0, 0, 0, '', '2016-11-01 01:33:33', '024945086', '2016-11-04 22:45:29', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hobalam5294.jpg.7b2f90887b7c74628775fae9f9672a7c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HO BA LAM', '', '0071001053258', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1521, 0, 0, 0, '280653893782', 0, 0, 'minhchuyen', '', 2, 1027, '', '', NULL, 'minhchuyennguyen0410@gmail.com', '01687272579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.168.160.153', '0000-00-00 00:00:00', NULL, 0, 0, 0, '', '2016-11-01 00:00:00', '1', '2016-11-04 08:38:42', '0000-00-00 00:00:00', NULL, '43534789568', '', '', '', 'https://happymoney.us/system/upload/minhchuyen.jpg.bd8b269d6ff422781bbd049acff64c54', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH CHUYEN', '', '0121000781545', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1522, 0, 0, 0, '104576656738', 0, 0, 'minhchuyen1', '', 1, 1027, '', '', NULL, 'minhchuyennguyen0410@gmail.com', '01687272579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.29.207', NULL, NULL, 0, 0, 0, '', '2016-11-01 01:50:47', '270826851', '2016-11-01 03:12:22', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhchuyen1.jpg.96f885485a46319ae2266af8eda22702', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH CHUYEN', '', '0121000781545', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1523, 0, 0, 0, '18038101636', 0, 0, 'minhchuyen2', '', 1, 1027, '', '', NULL, 'minhchuyennguyen0410@gmail.com', '01687272579', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.183.29.207', NULL, NULL, 0, 0, 0, '', '2016-11-01 01:53:56', '270826851', '2016-11-01 03:13:11', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhchuyen2.jpg.7fe8b12369aeb86910290adad7bc0c76', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN MINH CHUYEN', '', '0121000781545', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1524, 0, 0, 0, '148018463381', 0, 0, 'ngoctu', '', 1, 1387, '', '', NULL, 'huynhthingoctu74@gmail.com', '0909212814', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.166.12', NULL, NULL, 0, 0, 0, '', '2016-11-01 03:46:44', '022675481', '2016-11-02 22:23:54', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/ngoctu.jpg.1aaba1a9e230c66996108f13d5327096', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'HUYNH THI NGOC TU', '', '0251002736588', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1525, 0, 0, 0, '275818649161', 0, 0, 'TheThuan1', '', 1, 869, '', '', NULL, 'baotrang24689@gmail.com', '0901120102', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.240.248', NULL, NULL, 0, 0, 0, '', '2016-11-01 03:52:27', '191579996', '2016-11-01 23:44:13', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THE THUAN', '', '0161001680647', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1526, 0, 0, 0, '100721443857', 0, 0, 'TheThuan2', '', 1, 869, '', '', NULL, 'baotrang24689@gmail.com', '0901120102', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.27', NULL, NULL, 0, 0, 0, '', '2016-11-01 03:54:25', '191579996', '2016-11-01 04:17:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THE THUAN', '', '0161001680647', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
+INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd_right`, `customer_code`, `customer_group_id`, `store_id`, `username`, `wallet`, `status`, `p_node`, `lastname`, `firstname`, `date_birth`, `email`, `telephone`, `fax`, `ma_thue`, `password`, `password_custom`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `date_off`, `num_off`, `type_off`, `approved`, `safe`, `token`, `date_added`, `cmnd`, `date_login_update`, `date_active`, `address_cmnd`, `account_bank`, `address_bank`, `address_cus`, `note`, `img_profile`, `country_id`, `transaction_password`, `ping`, `account_holder`, `bank_name`, `account_number`, `branch_bank`, `check_PD`, `check_Newuser`, `language`, `quy_bao_tro`, `cycle`, `date_auto`, `payment`, `date_cmnd`) VALUES
+(1527, 0, 0, 0, '21835573569', 0, 0, 'TheThuan3', '', 1, 869, '', '', NULL, 'baotrang24689@gmail.com', '0901120102', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.232.27', NULL, NULL, 0, 0, 0, '', '2016-11-01 03:56:02', '191579996', '2016-11-01 04:19:58', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH THE THUAN', '', '0161001680647', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1528, 0, 0, 0, '152509503592', 0, 0, 'thanhnhan2', '', 1, 1084, '', '', NULL, 'thanhnhannguyen186@gmail.com', '0938957809', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.99.49', NULL, NULL, 0, 0, 0, '', '2016-11-01 04:14:11', '241316744', '2016-11-02 00:53:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhnhan2.jpg.173f6e5557c532cebd17a972d7e42b82', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI THANH NHAN', '', '0331000446976', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1537, 0, 0, 0, '4968769632', 0, 0, 'tunglm', '', 1, 781, '', '', NULL, 'tungtony2015@gmail.com', '0973663636', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.181.79.98', NULL, NULL, 0, 0, 0, '', '2016-11-01 21:20:05', '070662798', '2016-11-04 10:28:00', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LOC MINH TUNG', '', '0451001778407', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1534, 0, 0, 0, '164854190900', 0, 0, 'lunga', '', 1, 913, '', '', NULL, 'lunga686868@gmail.com', '0909754086', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.113.186.101', NULL, NULL, 0, 0, 0, '', '2016-11-01 13:20:40', '021914288', '2016-11-04 11:06:18', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/lunga.jpg.eed7ed168523e439d0d3d2863242d3b6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LU BICH NGA', '', '0511000443174', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1530, 0, 0, 0, '160949556057', 0, 0, 'nguyentragl', '', 1, 1350, '', '', NULL, 'huongtragialai@gmail.com', '0915660359', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '58.187.174.43', NULL, NULL, 0, 0, 0, '', '2016-11-01 06:41:18', '230390461', '2016-11-02 05:23:38', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyentragl.jpg.ce36305f0f897ebdb9c0c3d83d6519bd', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI TRA', '', '0291000279968', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1531, 0, 0, 0, '274971574807', 0, 0, 'hoamobmt', '', 1, 1384, '', '', NULL, 'tranthimobmt@gmail.com', '0947183767', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.55.176.56', NULL, NULL, 0, 0, 0, '', '2016-11-01 06:47:34', '240722206', '2016-11-02 19:52:32', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoamobmt.jpg.1d18ffab6ac6e5d4fd1a9eb1d075564c', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI MO', '', '0231000322954', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1532, 0, 0, 0, '137707870499', 0, 0, 'Duc_sg86', '', 1, 1475, '', '', NULL, 'Theduc_love86@yahoo.com', '0933330113', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '115.79.46.172', NULL, NULL, 0, 0, 0, '', '2016-11-01 06:48:25', '025807953', '2016-11-02 22:13:06', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Duc_sg86.jpg.df0d080824a2477464d1f533f923f1c6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN VAN DUC', '', '0461000521607', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1533, 0, 0, 0, '320022135', 0, 0, 'huynhnguyenvu1', '', 1, 1415, '', '', NULL, 'ngocngats_binhdinh@yahoo.com', '0905971227', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.231.140.217', NULL, NULL, 0, 0, 0, '', '2016-11-01 08:21:47', '211671145', '2016-11-04 07:49:42', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/huynhnguyenvu1.jpg.80b858691ad536dd21225a0177a9df1a', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HUYNH NGUYEN VU', '', '0051000490933', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1549, 0, 0, 0, '177201255282', 0, 0, 'hoangsim69', '', 1, 1084, '', '', NULL, 'hoangsim.09cdtk@gmail.com', '0962101091', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '42.112.99.49', NULL, NULL, 0, 0, 0, '', '2016-11-02 00:46:07', '060858542', '2016-11-03 03:35:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/hoangsim69.jpg.cf5e203215c0a8a1305fd14c47cd9a29', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'HOANG THI SIM', '', '0301000330003', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1535, 0, 0, 0, '245353449544', 0, 0, 'nguyenngocban1', '', 1, 1377, '', '', NULL, 'ngocbanccivn@gmail.com', '0935600052', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '59.153.234.200', NULL, NULL, 0, 0, 0, '', '2016-11-01 20:01:40', '205485243', '2016-11-04 10:04:27', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nguyenngocban1.jpg.3578b9d8ebe9c08cb2f131c99912013b', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN NGOC BAN', '', '0651000318828', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1536, 0, 0, 0, '105385047696', 0, 0, 'Hoanganhtp', '', 1, 1014, '', '', NULL, 'Nguyenhoanganh.baoloc11@gmail.com', '01689966537', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.188.73.160', NULL, NULL, 0, 0, 0, '', '2016-11-01 20:22:16', '250831490', '2016-11-04 20:14:45', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Hoanganhtp.jpg.6d93c2571ab28543a50cd786b968bbdc', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HOANG ANH', '', '0561000509630', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1539, 0, 0, 0, '237834019857', 0, 0, 'minhlan3', '', 1, 1079, '', '', NULL, 'minhlan.vip@gmail.com', '0909326141', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.172.156.101', NULL, NULL, 0, 0, 0, '', '2016-11-01 21:51:52', '024684433', '2016-11-04 10:51:28', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/minhlan3.jpg.01ff69dc91d010bab13162dea36497d2', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'CAN THI MINH LAN', '', '0071001054573', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1541, 0, 0, 0, '167772254516', 0, 0, 'nhu1', '', 1, 965, '', '', NULL, 'tranminhthanh1203@gmail.com', '0973833967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.74.82.32', NULL, NULL, 0, 0, 0, '', '2016-11-01 22:36:41', '281167949', '2016-11-04 20:43:26', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nhu1.jpg.54bc6320ccbd33160662817db70866a8', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI THANG', '', '0101001157569', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1542, 0, 0, 0, '39871580242', 0, 0, 'nhu2', '', 1, 965, '', '', NULL, 'tranminhthanh1203@gmail.com', '0973833967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.214.49.44', NULL, NULL, 0, 0, 0, '', '2016-11-01 22:38:22', '281167949', '2016-11-04 09:22:57', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nhu2.jpg.b2c141bbe70d953ea2a122370e4bf94f', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI THANG', '', '0101001157569', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1543, 0, 0, 0, '82481255042', 0, 0, 'nhu3', '', 1, 965, '', '', NULL, 'tranminhthanh1203@gmail.com', '0973833967', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '126.214.49.44', NULL, NULL, 0, 0, 0, '', '2016-11-01 22:39:57', '281167949', '2016-11-04 09:23:23', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/nhu3.jpg.d37dad36926df176fccf456db9ae0871', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE THI THANG', '', '0101001157569', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1561, 0, 0, 0, '156624828470', 0, 0, 'Quanglanhm02', '', 1, 747, '', '', NULL, 'Lantq87@gmail.com', '0933812833', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-11-04 01:52:30', '230656148', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'TRUONG QUANG LAN', '', '0441000704861', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1544, 0, 0, 0, '228196960631', 0, 0, 'Lamtt', '', 1, 732, '', '', NULL, 'lam.baoloc1@gmail.com', '0909404012', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.191.137', NULL, NULL, 0, 0, 0, '', '2016-11-01 23:24:26', '250532801', '2016-11-04 20:03:46', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Lamtt.jpg.fad931adcbb94896957f8cfe19fc7883', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRUONG THANH LAM', '', '0561000576335', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1566, 0, 0, 0, '9429353369', 0, 0, 'Thanphong1', '', 1, 1055, '', '', NULL, 'Lehoang010288@gmail.com', '0962913970', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.142.211', NULL, NULL, 0, 0, 0, '', '2016-11-04 10:15:51', '024648276', '2016-11-04 13:12:13', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'LE DINH HOANG', '', '0251002660088', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1545, 0, 0, 0, '171802310777', 0, 0, 'tuannguyen1', '', 1, 1057, '', '', NULL, 'tuannguyen7484@gmail.com', '0913122835', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.117.210', NULL, NULL, 0, 0, 0, '', '2016-11-01 23:56:17', '334326716', '2016-11-04 04:45:01', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN HOANG TUAN', '', '0181003403379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1546, 0, 0, 0, '70623958849', 0, 0, 'tuannguyen2', '', 1, 1057, '', '', NULL, 'tuannguyen7484@gmail.com', '0913122835', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-11-01 23:57:50', '334326716', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN HOANG TUAN', '', '0181003403379', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1547, 0, 0, 0, '77889356693', 0, 0, 'nguyentrungtin1987', '', 1, 1055, '', '', NULL, 'nguyentrungtin1987@gmail.com', '0911730303', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '1.52.141.247', NULL, NULL, 0, 0, 0, '', '2016-11-02 00:27:52', '024052026', '2016-11-04 02:18:25', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN TRUNG TIN', '', '0181003492003', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1548, 0, 0, 0, '232624830616', 0, 0, 'háon', '', 1, 1021, '', '', NULL, 'vanha.1070@gmail.com', '0938505363', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '203.205.23.9', NULL, NULL, 0, 0, 0, '', '2016-11-02 00:33:37', '022647666', '2016-11-04 20:51:53', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/háon.jpg.88a09a973cc72c513bd2c640a06febb9', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'LE VAN SON', '', '0171003456552', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1567, 0, 0, 0, '139055874935', 0, 0, 'rangvn', '', 1, 1295, '', '', NULL, 'rangvn@yahoo.com', '01647747441', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '123.25.200.208', NULL, NULL, 0, 0, 0, '', '2016-11-04 20:45:19', '072058000136', '2016-11-04 21:05:12', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/rangvn.jpg.b65e2f16011f7697eff204dbe0f5147e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN RANG', '', '0701000386633', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1550, 0, 0, 0, '225536639265', 0, 0, 'tuyenquanghai', '', 1, 781, '', '', NULL, 'vietduynhtq@gmail.com', '01629956888', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '117.1.32.147', NULL, NULL, 0, 0, 0, '', '2016-11-02 07:28:06', '070955188', '2016-11-04 09:01:10', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 11, 'NGUYEN VIET DUY', '', '0031000262042', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1551, 0, 0, 0, '208694359623', 0, 0, 'Phokhongmua', '', 1, 655, '', '', NULL, 'Totrinhkhd@gmail.com', '0916135883', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.174.187.188', NULL, NULL, 0, 0, 0, '', '2016-11-02 08:45:57', '194303743', '2016-11-04 07:55:08', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Phokhongmua.jpg.ce3e360c95d5b53ef66e044d979911ac', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'DUONG TO TRINH', '', '0161000419839', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1552, 0, 0, 0, '23140455941', 0, 0, 'nguyenvanthi', '', 1, 1231, '', '', NULL, 'nguyenhoathbx@gmail.com', '0917854756', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.171.87.58', NULL, NULL, 0, 0, 0, '', '2016-11-02 11:13:30', '01978118', '2016-11-03 11:28:43', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN VAN THI', '', '0361000268219', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1553, 0, 0, 0, '87279636497', 0, 0, 'Quangvinhtp', '', 1, 1014, '', '', NULL, 'Tranquangvinh1202@gmail.com', '0968191937', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '113.174.49.66', NULL, NULL, 0, 0, 0, '', '2016-11-02 11:32:36', '191593269', '2016-11-04 09:19:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Quangvinhtp.jpg.5a914955ad59795893b1447456579874', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN QUANG VINH', '', '0561000576393', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1554, 0, 0, 0, '220944947538', 0, 0, 'bichlan', '', 1, 1339, '', '', NULL, 'bichlan051293@gmail.com', '0935728081', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.167.82.93', NULL, NULL, 0, 0, 0, '', '2016-11-02 12:25:36', '230874338', '2016-11-03 05:23:35', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/bichlan.jpg.74cf17b4b9c7013421668b518a96f125', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI BICH LAN', '', '0761002346020', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1555, 0, 0, 0, '215287755544', 0, 0, 'nguyenthithuvan', '', 1, 1358, '', '', NULL, 'knowoneshareone@gmail.com', '0967210486', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', NULL, NULL, 0, 0, '', '', NULL, NULL, 0, 0, 0, '', '2016-11-02 12:31:26', '025492705', NULL, '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN THI THU VAN', '', '0181001011627', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1556, 0, 0, 0, '27170280804', 0, 0, 'kiencang', '', 1, 963, '', '', NULL, 'kiencang2108@gmail.com', '01285516143', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '222.254.226.172', NULL, NULL, 0, 0, 0, '', '2016-11-03 09:16:14', '301035311', '2016-11-03 12:02:17', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/kiencang.jpg.478708341b2f63d0835f7a9b3467cd5e', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN THI DAU', '', '0631000457666', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1560, 0, 0, 0, '241442502160', 0, 0, 'thanhsang92', '', 1, 1055, '', '', NULL, 'nguyentongthanhsang@gmail.com', '0904658583', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '171.233.112.88', NULL, NULL, 0, 0, 0, '', '2016-11-03 23:34:25', '191738522', '2016-11-03 23:49:37', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/thanhsang92.jpg.6abd2783de61f47080c57ebdd7398db6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'NGUYEN TONG THANH SANG', '', '0881000436934', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1565, 0, 0, 0, '157156739379', 0, 0, 'Phamkhambmt', '', 1, 1320, '', '', NULL, 'Phamkham688679@gmail.com', '01206218718', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.185.49.210', NULL, NULL, 0, 0, 0, '', '2016-11-04 08:55:05', '241422854', '2016-11-04 12:38:36', '0000-00-00 00:00:00', NULL, '', '', '', '', NULL, 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 0, 'PHAM VAN KHAM', '', '0231000627960', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1557, 0, 0, 0, '83574022658', 0, 0, 'Thien1', '', 1, 739, '', '', NULL, 'minhchithien@gmail.com', '0907226568', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.6.150', NULL, NULL, 0, 0, 0, '', '2016-11-03 09:21:08', '351967867', '2016-11-04 10:47:05', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thien1.jpg.fa06d3891a3241ef3f51481bcacc4ea4', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH THIEN', '', '0151000564195', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1558, 0, 0, 0, '215857775957', 0, 0, 'Thien2', '', 1, 739, '', '', NULL, 'minhchithien@gmail.com', '0907226568', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.6.150', NULL, NULL, 0, 0, 0, '', '2016-11-03 09:22:21', '351967867', '2016-11-04 02:18:02', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thien2.jpg.aa09c83ace88423e6fe0bb6b32bc99f6', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH THIEN', '', '0151000564195', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1559, 0, 0, 0, '207635970327', 0, 0, 'Thien3', '', 1, 739, '', '', NULL, 'minhchithien@gmail.com', '0907226568', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '116.109.6.150', NULL, NULL, 0, 0, 0, '', '2016-11-03 09:23:55', '351967867', '2016-11-04 02:22:14', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Thien3.jpg.340bd2add0befa671f35503c0a649489', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'NGUYEN MINH THIEN', '', '0151000564195', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL),
+(1563, 0, 0, 0, '141892289060', 0, 0, 'Anhthy', '', 1, 1014, '', '', NULL, 'Anhthytm@gmail.com', '01234229395', '', NULL, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 'bc6ba492c7ac45761d180c67a5a4f125', '5c5d0d927', 'a:0:{}', '', 0, 0, '', '14.184.95.112', NULL, NULL, 0, 0, 0, '', '2016-11-04 04:10:19', '250360323', '2016-11-04 08:24:33', '0000-00-00 00:00:00', NULL, '', '', '', '', 'https://happymoney.us/system/upload/Anhthy.jpg.3414720873a6f66a3a4d1e2561e25213', 0, 'cbbf11c085ccd5191b1d9946fc7fa5800a446649', 9, 'TRAN THI ANH THY', '', '0561000576443', '', 0, 0, 'vietnamese', 0, 0, '0000-00-00 00:00:00', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1476,14 +2505,14 @@ INSERT INTO `sm_customer` (`customer_id`, `total_pd`, `total_pd_left`, `total_pd
 -- Table structure for table `sm_customer_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_activity` (
+CREATE TABLE `sm_customer_activity` (
   `activity_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
   `data` text NOT NULL,
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7661 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer_activity`
@@ -9163,7 +10192,28 @@ INSERT INTO `sm_customer_activity` (`activity_id`, `customer_id`, `key`, `data`,
 (7657, 548, 'login', 'a:2:{s:11:"customer_id";s:3:"548";s:4:"name";s:1:" ";}', '118.68.88.104', '2016-10-09 05:08:51'),
 (7658, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '27.67.30.60', '2016-10-09 05:09:14'),
 (7659, 759, 'login', 'a:2:{s:11:"customer_id";s:3:"759";s:4:"name";s:1:" ";}', '118.68.88.104', '2016-10-09 05:10:36'),
-(7660, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '113.190.236.231', '2016-10-09 05:19:28');
+(7660, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '113.190.236.231', '2016-10-09 05:19:28'),
+(7661, 565, 'login', 'a:2:{s:11:"customer_id";s:3:"565";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:15:59'),
+(7662, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:17:10'),
+(7663, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:19:05'),
+(7664, 565, 'login', 'a:2:{s:11:"customer_id";s:3:"565";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:21:07'),
+(7665, 562, 'login', 'a:2:{s:11:"customer_id";s:3:"562";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:24:28'),
+(7666, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '::1', '2016-10-26 08:59:56'),
+(7667, 565, 'login', 'a:2:{s:11:"customer_id";s:3:"565";s:4:"name";s:1:" ";}', '::1', '2016-10-26 09:39:03'),
+(7668, 562, 'login', 'a:2:{s:11:"customer_id";s:3:"562";s:4:"name";s:1:" ";}', '::1', '2016-10-26 09:41:11'),
+(7669, 564, 'login', 'a:2:{s:11:"customer_id";s:3:"564";s:4:"name";s:1:" ";}', '::1', '2016-10-26 09:58:26'),
+(7670, 565, 'login', 'a:2:{s:11:"customer_id";s:3:"565";s:4:"name";s:1:" ";}', '::1', '2016-10-26 12:10:06'),
+(7671, 564, 'login', 'a:2:{s:11:"customer_id";s:3:"564";s:4:"name";s:1:" ";}', '::1', '2016-10-26 12:35:16'),
+(7672, 565, 'login', 'a:2:{s:11:"customer_id";s:3:"565";s:4:"name";s:1:" ";}', '::1', '2016-10-26 12:36:56'),
+(7673, 563, 'login', 'a:2:{s:11:"customer_id";s:3:"563";s:4:"name";s:1:" ";}', '::1', '2016-10-26 16:30:15'),
+(7674, 563, 'login', 'a:2:{s:11:"customer_id";s:3:"563";s:4:"name";s:1:" ";}', '::1', '2016-10-26 17:16:14'),
+(7675, 633, 'login', 'a:2:{s:11:"customer_id";s:3:"633";s:4:"name";s:1:" ";}', '::1', '2016-10-26 19:26:35'),
+(7676, 693, 'login', 'a:2:{s:11:"customer_id";s:3:"693";s:4:"name";s:1:" ";}', '::1', '2016-11-05 10:27:17'),
+(7677, 802, 'login', 'a:2:{s:11:"customer_id";s:3:"802";s:4:"name";s:1:" ";}', '::1', '2016-11-05 10:28:17'),
+(7678, 692, 'login', 'a:2:{s:11:"customer_id";s:3:"692";s:4:"name";s:1:" ";}', '::1', '2016-11-05 10:38:14'),
+(7679, 1, 'login', 'a:2:{s:11:"customer_id";s:1:"1";s:4:"name";s:1:" ";}', '::1', '2016-11-05 13:13:14'),
+(7680, 590, 'login', 'a:2:{s:11:"customer_id";s:3:"590";s:4:"name";s:1:" ";}', '::1', '2016-11-05 13:14:32'),
+(7681, 539, 'login', 'a:2:{s:11:"customer_id";s:3:"539";s:4:"name";s:1:" ";}', '::1', '2016-11-05 14:21:27');
 
 -- --------------------------------------------------------
 
@@ -9171,10 +10221,10 @@ INSERT INTO `sm_customer_activity` (`activity_id`, `customer_id`, `key`, `data`,
 -- Table structure for table `sm_customer_ban_ip`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_ban_ip` (
+CREATE TABLE `sm_customer_ban_ip` (
   `customer_ban_ip_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9182,876 +10232,878 @@ CREATE TABLE IF NOT EXISTS `sm_customer_ban_ip` (
 -- Table structure for table `sm_customer_c_wallet`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_c_wallet` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_c_wallet` (
+  `id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `amount` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=860 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `amount` double NOT NULL,
+  `date_add_rut` datetime NOT NULL,
+  `count_rut` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_c_wallet`
 --
 
-INSERT INTO `sm_customer_c_wallet` (`id`, `customer_id`, `amount`) VALUES
-(1, 1, 8800),
-(2, 2, 0),
-(3, 3, 0),
-(4, 4, 0),
-(5, 5, 0),
-(6, 6, 0),
-(7, 7, 0),
-(8, 8, 0),
-(9, 9, 0),
-(10, 11, 0),
-(11, 12, 0),
-(12, 15, 0),
-(13, 13, 0),
-(14, 17, 0),
-(15, 19, 0),
-(16, 20, 0),
-(17, 21, 0),
-(18, 22, 0),
-(19, 23, 0),
-(20, 25, 0),
-(21, 27, 0),
-(22, 16, 0),
-(23, 28, 0),
-(24, 30, 0),
-(25, 31, 0),
-(26, 24, 0),
-(27, 37, 0),
-(28, 14, 0),
-(29, 40, 0),
-(30, 41, 0),
-(31, 44, 0),
-(32, 45, 0),
-(33, 46, 0),
-(34, 48, 0),
-(35, 49, 0),
-(36, 50, 0),
-(37, 47, 0),
-(38, 10, 0),
-(39, 18, 0),
-(40, 51, 0),
-(41, 54, 0),
-(42, 56, 0),
-(43, 57, 0),
-(44, 58, 0),
-(45, 59, 0),
-(46, 60, 0),
-(47, 52, 0),
-(48, 61, 0),
-(49, 62, 0),
-(50, 63, 0),
-(51, 64, 0),
-(52, 65, 0),
-(53, 77, 0),
-(54, 29, 0),
-(55, 78, 0),
-(56, 39, 0),
-(57, 66, 0),
-(58, 79, 0),
-(59, 80, 0),
-(60, 81, 0),
-(61, 67, 0),
-(62, 68, 0),
-(63, 69, 0),
-(64, 70, 0),
-(65, 71, 0),
-(66, 72, 0),
-(67, 73, 0),
-(68, 74, 0),
-(69, 75, 0),
-(70, 76, 0),
-(71, 85, 0),
-(72, 83, 0),
-(73, 87, 0),
-(74, 86, 0),
-(75, 88, 0),
-(76, 90, 0),
-(77, 91, 0),
-(78, 93, 0),
-(79, 94, 0),
-(80, 97, 0),
-(81, 101, 0),
-(82, 102, 0),
-(83, 103, 0),
-(84, 105, 0),
-(85, 106, 0),
-(86, 107, 0),
-(87, 109, 0),
-(88, 110, 0),
-(89, 111, 0),
-(90, 112, 0),
-(91, 113, 0),
-(92, 130, 0),
-(93, 108, 0),
-(94, 132, 0),
-(95, 133, 0),
-(96, 140, 0),
-(97, 134, 0),
-(98, 142, 0),
-(99, 137, 0),
-(100, 149, 0),
-(101, 143, 0),
-(102, 147, 0),
-(103, 89, 0),
-(104, 141, 0),
-(105, 148, 0),
-(106, 188, 0),
-(107, 194, 0),
-(108, 204, 0),
-(109, 205, 0),
-(110, 203, 0),
-(111, 128, 0),
-(112, 207, 0),
-(113, 210, 0),
-(114, 211, 0),
-(115, 212, 0),
-(116, 213, 0),
-(117, 214, 0),
-(118, 215, 0),
-(119, 216, 0),
-(120, 217, 0),
-(121, 218, 0),
-(122, 219, 0),
-(123, 220, 0),
-(124, 221, 0),
-(125, 222, 0),
-(126, 223, 0),
-(127, 224, 0),
-(128, 225, 0),
-(129, 226, 0),
-(130, 227, 0),
-(131, 228, 0),
-(132, 229, 0),
-(133, 231, 0),
-(134, 230, 0),
-(135, 234, 0),
-(136, 82, 0),
-(137, 84, 0),
-(138, 177, 0),
-(139, 92, 0),
-(140, 166, 0),
-(141, 95, 0),
-(142, 96, 0),
-(143, 98, 0),
-(144, 100, 0),
-(145, 241, 0),
-(146, 244, 0),
-(147, 242, 0),
-(148, 243, 0),
-(149, 114, 0),
-(150, 115, 0),
-(151, 116, 0),
-(152, 55, 0),
-(153, 117, 0),
-(154, 118, 0),
-(155, 119, 0),
-(156, 120, 0),
-(157, 121, 0),
-(158, 122, 0),
-(159, 123, 0),
-(160, 124, 0),
-(161, 125, 0),
-(162, 126, 0),
-(163, 127, 0),
-(164, 167, 0),
-(165, 168, 0),
-(166, 169, 0),
-(167, 151, 0),
-(168, 170, 0),
-(169, 171, 0),
-(170, 152, 0),
-(171, 172, 0),
-(172, 173, 0),
-(173, 153, 0),
-(174, 176, 0),
-(175, 175, 0),
-(176, 180, 0),
-(177, 154, 0),
-(178, 181, 0),
-(179, 182, 0),
-(180, 184, 0),
-(181, 155, 0),
-(182, 186, 0),
-(183, 156, 0),
-(184, 157, 0),
-(185, 158, 0),
-(186, 179, 0),
-(187, 159, 0),
-(188, 160, 0),
-(189, 183, 0),
-(190, 161, 0),
-(191, 185, 0),
-(192, 163, 0),
-(193, 164, 0),
-(194, 187, 0),
-(195, 165, 0),
-(196, 189, 0),
-(197, 190, 0),
-(198, 200, 0),
-(199, 199, 0),
-(200, 191, 0),
-(201, 192, 0),
-(202, 198, 0),
-(203, 193, 0),
-(204, 197, 0),
-(205, 195, 0),
-(206, 196, 0),
-(207, 259, 0),
-(208, 246, 0),
-(209, 247, 0),
-(210, 248, 0),
-(211, 249, 0),
-(212, 250, 0),
-(213, 251, 0),
-(214, 252, 0),
-(215, 253, 0),
-(216, 254, 0),
-(217, 255, 0),
-(218, 256, 0),
-(219, 257, 0),
-(220, 258, 0),
-(221, 264, 0),
-(222, 262, 0),
-(223, 263, 0),
-(224, 266, 0),
-(225, 267, 0),
-(226, 268, 0),
-(227, 260, 0),
-(228, 269, 0),
-(229, 129, 0),
-(230, 271, 0),
-(231, 270, 0),
-(232, 273, 0),
-(233, 274, 0),
-(234, 275, 0),
-(235, 276, 0),
-(236, 282, 0),
-(237, 280, 0),
-(238, 261, 0),
-(239, 286, 0),
-(240, 287, 0),
-(241, 288, 0),
-(242, 290, 0),
-(243, 289, 0),
-(244, 291, 0),
-(245, 292, 0),
-(246, 293, 0),
-(247, 302, 0),
-(248, 294, 0),
-(249, 295, 0),
-(250, 296, 0),
-(251, 297, 0),
-(252, 298, 0),
-(253, 303, 0),
-(254, 299, 0),
-(255, 304, 0),
-(256, 305, 0),
-(257, 306, 0),
-(258, 307, 0),
-(259, 308, 0),
-(260, 309, 0),
-(261, 300, 0),
-(262, 301, 0),
-(263, 310, 0),
-(264, 312, 0),
-(265, 272, 0),
-(266, 313, 0),
-(267, 311, 0),
-(268, 314, 0),
-(269, 315, 0),
-(270, 316, 0),
-(271, 317, 0),
-(272, 265, 0),
-(273, 318, 0),
-(274, 319, 0),
-(275, 321, 0),
-(276, 323, 0),
-(277, 320, 0),
-(278, 333, 0),
-(279, 335, 0),
-(280, 336, 0),
-(281, 347, 0),
-(282, 349, 0),
-(283, 350, 0),
-(284, 351, 0),
-(285, 352, 0),
-(286, 353, 0),
-(287, 354, 0),
-(288, 355, 0),
-(289, 356, 0),
-(290, 357, 0),
-(291, 359, 0),
-(292, 358, 0),
-(293, 360, 0),
-(294, 361, 0),
-(295, 362, 0),
-(296, 363, 0),
-(297, 324, 0),
-(298, 365, 0),
-(299, 366, 0),
-(300, 367, 0),
-(301, 325, 0),
-(302, 348, 0),
-(303, 337, 0),
-(304, 338, 0),
-(305, 345, 0),
-(306, 326, 0),
-(307, 369, 0),
-(308, 368, 0),
-(309, 370, 0),
-(310, 372, 0),
-(311, 373, 0),
-(312, 374, 0),
-(313, 375, 0),
-(314, 379, 0),
-(315, 380, 0),
-(316, 381, 0),
-(317, 382, 0),
-(318, 383, 0),
-(319, 364, 0),
-(320, 384, 0),
-(321, 387, 0),
-(322, 388, 0),
-(323, 389, 0),
-(324, 390, 0),
-(325, 392, 0),
-(326, 393, 0),
-(327, 395, 0),
-(328, 394, 0),
-(329, 378, 0),
-(330, 396, 0),
-(331, 398, 0),
-(332, 400, 0),
-(333, 401, 0),
-(334, 399, 0),
-(335, 327, 0),
-(336, 328, 0),
-(337, 329, 0),
-(338, 330, 0),
-(339, 331, 0),
-(340, 332, 0),
-(341, 334, 0),
-(342, 339, 0),
-(343, 340, 0),
-(344, 341, 0),
-(345, 342, 0),
-(346, 343, 0),
-(347, 344, 0),
-(348, 346, 0),
-(349, 404, 0),
-(350, 403, 0),
-(351, 405, 0),
-(352, 408, 0),
-(353, 409, 0),
-(354, 411, 0),
-(355, 412, 0),
-(356, 413, 0),
-(357, 415, 0),
-(358, 416, 0),
-(359, 417, 0),
-(360, 418, 0),
-(361, 402, 0),
-(362, 422, 0),
-(363, 423, 0),
-(364, 424, 0),
-(365, 285, 0),
-(366, 38, 0),
-(367, 32, 0),
-(368, 34, 0),
-(369, 33, 0),
-(370, 26, 0),
-(371, 385, 0),
-(372, 386, 0),
-(373, 376, 0),
-(374, 99, 0),
-(375, 36, 0),
-(376, 397, 0),
-(377, 406, 0),
-(378, 419, 0),
-(379, 420, 0),
-(380, 421, 0),
-(381, 426, 0),
-(382, 427, 0),
-(383, 428, 0),
-(384, 429, 0),
-(385, 430, 0),
-(386, 432, 0),
-(387, 434, 0),
-(388, 433, 0),
-(389, 436, 0),
-(390, 435, 0),
-(391, 371, 0),
-(392, 407, 0),
-(393, 437, 0),
-(394, 440, 0),
-(395, 441, 0),
-(396, 442, 0),
-(397, 53, 0),
-(398, 443, 0),
-(399, 444, 0),
-(400, 445, 0),
-(401, 446, 0),
-(402, 447, 0),
-(403, 448, 0),
-(404, 449, 0),
-(405, 450, 0),
-(406, 377, 0),
-(407, 452, 0),
-(408, 453, 0),
-(409, 456, 0),
-(410, 458, 0),
-(411, 459, 0),
-(412, 460, 0),
-(413, 461, 0),
-(414, 462, 0),
-(415, 463, 0),
-(416, 464, 0),
-(417, 466, 0),
-(418, 470, 0),
-(419, 469, 0),
-(420, 471, 0),
-(421, 472, 0),
-(422, 474, 0),
-(423, 475, 0),
-(424, 476, 0),
-(425, 467, 0),
-(426, 468, 0),
-(427, 477, 0),
-(428, 478, 0),
-(429, 479, 0),
-(430, 480, 0),
-(431, 451, 0),
-(432, 481, 0),
-(433, 482, 0),
-(434, 483, 0),
-(435, 454, 0),
-(436, 485, 0),
-(437, 486, 0),
-(438, 487, 0),
-(439, 488, 0),
-(440, 489, 0),
-(441, 490, 0),
-(442, 491, 0),
-(443, 492, 0),
-(444, 493, 0),
-(445, 495, 0),
-(446, 494, 0),
-(447, 496, 0),
-(448, 497, 0),
-(449, 498, 0),
-(450, 499, 0),
-(451, 500, 0),
-(452, 455, 0),
-(453, 501, 0),
-(454, 502, 0),
-(455, 503, 0),
-(456, 484, 0),
-(457, 504, 0),
-(458, 505, 0),
-(459, 507, 0),
-(460, 508, 0),
-(461, 509, 0),
-(462, 511, 0),
-(463, 512, 0),
-(464, 514, 0),
-(465, 515, 0),
-(466, 510, 0),
-(467, 516, 0),
-(468, 518, 0),
-(469, 519, 0),
-(470, 520, 0),
-(471, 521, 0),
-(472, 522, 0),
-(473, 523, 0),
-(474, 526, 0),
-(475, 524, 0),
-(476, 528, 0),
-(477, 527, 0),
-(478, 529, 0),
-(479, 530, 0),
-(480, 534, 0),
-(481, 538, 0),
-(482, 539, 8800),
-(483, 540, 0),
-(484, 542, 0),
-(485, 544, 0),
-(486, 541, 8800),
-(487, 550, 0),
-(488, 554, 0),
-(489, 555, 0),
-(490, 551, 0),
-(491, 561, 8800),
-(492, 562, 0),
-(493, 568, 0),
-(494, 548, 0),
-(495, 552, 0),
-(496, 572, 0),
-(497, 573, 0),
-(498, 553, 0),
-(499, 581, 0),
-(500, 574, 0),
-(501, 545, 0),
-(502, 582, 0),
-(503, 580, 0),
-(504, 577, 0),
-(505, 596, 0),
-(506, 597, 0),
-(507, 601, 0),
-(508, 599, 0),
-(509, 603, 0),
-(510, 604, 0),
-(511, 607, 0),
-(512, 608, 0),
-(513, 611, 0),
-(514, 617, 0),
-(515, 623, 0),
-(516, 622, 0),
-(517, 625, 0),
-(518, 626, 0),
-(519, 586, 0),
-(520, 612, 0),
-(521, 613, 0),
-(522, 559, 0),
-(523, 621, 0),
-(524, 624, 0),
-(525, 549, 0),
-(526, 630, 0),
-(527, 546, 0),
-(528, 637, 0),
-(529, 638, 0),
-(530, 639, 0),
-(531, 640, 0),
-(532, 641, 0),
-(533, 647, 0),
-(534, 649, 0),
-(535, 650, 0),
-(536, 651, 0),
-(537, 652, 0),
-(538, 653, 0),
-(539, 642, 0),
-(540, 655, 0),
-(541, 654, 0),
-(542, 656, 0),
-(543, 657, 0),
-(544, 658, 0),
-(545, 660, 0),
-(546, 661, 0),
-(547, 662, 0),
-(548, 560, 0),
-(549, 631, 0),
-(550, 677, 0),
-(551, 659, 0),
-(552, 675, 0),
-(553, 680, 0),
-(554, 689, 0),
-(555, 692, 0),
-(556, 693, 0),
-(557, 695, 0),
-(558, 696, 0),
-(559, 697, 0),
-(560, 620, 0),
-(561, 698, 0),
-(562, 700, 0),
-(563, 636, 0),
-(564, 701, 0),
-(565, 702, 0),
-(566, 547, 0),
-(567, 643, 0),
-(568, 703, 0),
-(569, 704, 0),
-(570, 707, 0),
-(571, 709, 0),
-(572, 556, 0),
-(573, 705, 0),
-(574, 706, 0),
-(575, 708, 0),
-(576, 710, 0),
-(577, 711, 0),
-(578, 712, 0),
-(579, 713, 0),
-(580, 714, 0),
-(581, 716, 0),
-(582, 694, 0),
-(583, 715, 0),
-(584, 717, 0),
-(585, 676, 0),
-(586, 720, 0),
-(587, 724, 0),
-(588, 721, 0),
-(589, 726, 0),
-(590, 725, 0),
-(591, 728, 0),
-(592, 718, 0),
-(593, 719, 0),
-(594, 733, 0),
-(595, 691, 0),
-(596, 734, 0),
-(597, 730, 0),
-(598, 740, 0),
-(599, 735, 0),
-(600, 742, 0),
-(601, 727, 0),
-(602, 749, 0),
-(603, 737, 0),
-(604, 736, 0),
-(605, 739, 0),
-(606, 741, 0),
-(607, 743, 0),
-(608, 748, 0),
-(609, 752, 0),
-(610, 750, 0),
-(611, 753, 0),
-(612, 757, 0),
-(613, 754, 0),
-(614, 756, 0),
-(615, 758, 0),
-(616, 760, 0),
-(617, 761, 0),
-(618, 762, 0),
-(619, 732, 0),
-(620, 759, 0),
-(621, 766, 0),
-(622, 764, 0),
-(623, 765, 0),
-(624, 767, 0),
-(625, 768, 0),
-(626, 769, 0),
-(627, 771, 0),
-(628, 773, 0),
-(629, 745, 0),
-(630, 747, 0),
-(631, 755, 0),
-(632, 738, 0),
-(633, 763, 0),
-(634, 772, 0),
-(635, 774, 0),
-(636, 777, 0),
-(637, 776, 0),
-(638, 746, 0),
-(639, 778, 0),
-(640, 781, 0),
-(641, 779, 0),
-(642, 744, 0),
-(643, 780, 0),
-(644, 788, 0),
-(645, 789, 0),
-(646, 790, 0),
-(647, 791, 0),
-(648, 751, 0),
-(649, 729, 0),
-(650, 775, 0),
-(651, 794, 0),
-(652, 795, 0),
-(653, 644, 0),
-(654, 796, 0),
-(655, 663, 0),
-(656, 664, 0),
-(657, 590, 0),
-(658, 793, 0),
-(659, 784, 0),
-(660, 557, 0),
-(661, 801, 0),
-(662, 783, 0),
-(663, 792, 0),
-(664, 806, 0),
-(665, 797, 0),
-(666, 782, 0),
-(667, 798, 0),
-(668, 808, 0),
-(669, 809, 0),
-(670, 810, 0),
-(671, 805, 0),
-(672, 811, 0),
-(673, 821, 0),
-(674, 822, 0),
-(675, 825, 0),
-(676, 584, 0),
-(677, 583, 0),
-(678, 593, 0),
-(679, 645, 0),
-(680, 646, 0),
-(681, 563, 484000),
-(682, 565, 0),
-(683, 567, 0),
-(684, 570, 0),
-(685, 571, 0),
-(686, 569, 0),
-(687, 827, 0),
-(688, 786, 0),
-(689, 787, 0),
-(690, 564, 0),
-(691, 566, 0),
-(692, 829, 0),
-(693, 804, 0),
-(694, 594, 0),
-(695, 595, 0),
-(696, 831, 0),
-(697, 820, 0),
-(698, 850, 0),
-(699, 858, 0),
-(700, 802, 0),
-(701, 575, 0),
-(702, 869, 0),
-(703, 813, 0),
-(704, 870, 0),
-(705, 866, 0),
-(706, 867, 0),
-(707, 868, 0),
-(708, 600, 0),
-(709, 874, 0),
-(710, 875, 0),
-(711, 876, 0),
-(712, 877, 0),
-(713, 799, 0),
-(714, 878, 0),
-(715, 879, 0),
-(716, 880, 0),
-(717, 883, 0),
-(718, 800, 0),
-(719, 884, 0),
-(720, 882, 0),
-(721, 885, 0),
-(722, 886, 0),
-(723, 888, 0),
-(724, 887, 0),
-(725, 609, 0),
-(726, 889, 0),
-(727, 892, 0),
-(728, 893, 0),
-(729, 894, 0),
-(730, 895, 0),
-(731, 896, 0),
-(732, 897, 0),
-(733, 898, 0),
-(734, 899, 0),
-(735, 900, 0),
-(736, 901, 0),
-(737, 902, 0),
-(738, 903, 0),
-(739, 904, 0),
-(740, 906, 0),
-(741, 908, 0),
-(742, 909, 0),
-(743, 911, 0),
-(744, 912, 0),
-(745, 914, 0),
-(746, 915, 0),
-(747, 916, 0),
-(748, 917, 0),
-(749, 918, 0),
-(750, 919, 0),
-(751, 923, 0),
-(752, 907, 0),
-(753, 927, 0),
-(754, 921, 0),
-(755, 928, 0),
-(756, 932, 0),
-(757, 934, 0),
-(758, 935, 0),
-(759, 938, 0),
-(760, 929, 0),
-(761, 939, 0),
-(762, 931, 0),
-(763, 941, 0),
-(764, 947, 0),
-(765, 920, 0),
-(766, 950, 0),
-(767, 944, 0),
-(768, 943, 0),
-(769, 957, 0),
-(770, 940, 0),
-(771, 942, 0),
-(772, 961, 0),
-(773, 962, 0),
-(774, 963, 0),
-(775, 960, 0),
-(776, 633, 0),
-(777, 966, 0),
-(778, 967, 0),
-(779, 965, 0),
-(780, 964, 0),
-(781, 951, 0),
-(782, 952, 0),
-(783, 924, 0),
-(784, 910, 0),
-(785, 913, 0),
-(786, 971, 0),
-(787, 945, 0),
-(788, 665, 0),
-(789, 666, 0),
-(790, 648, 0),
-(791, 973, 0),
-(792, 975, 0),
-(793, 976, 0),
-(794, 933, 0),
-(795, 977, 0),
-(796, 978, 0),
-(797, 979, 0),
-(798, 980, 0),
-(799, 968, 0),
-(800, 981, 0),
-(801, 984, 0),
-(802, 983, 0),
-(803, 974, 0),
-(804, 992, 0),
-(805, 982, 0),
-(806, 985, 0),
-(807, 846, 0),
-(808, 848, 0),
-(809, 785, 0),
-(810, 996, 0),
-(811, 997, 0),
-(812, 998, 0),
-(813, 999, 0),
-(814, 1000, 0),
-(815, 1001, 0),
-(816, 972, 0),
-(817, 1003, 0),
-(818, 1004, 0),
-(819, 1005, 0),
-(820, 1007, 0),
-(821, 816, 0),
-(822, 1009, 0),
-(823, 817, 0),
-(824, 1006, 0),
-(825, 1010, 0),
-(826, 1011, 0),
-(827, 1008, 0),
-(828, 1012, 0),
-(829, 1013, 0),
-(830, 1014, 0),
-(831, 1018, 0),
-(832, 1019, 0),
-(833, 949, 0),
-(834, 948, 0),
-(835, 1021, 0),
-(836, 1022, 0),
-(837, 1016, 0),
-(838, 1015, 0),
-(839, 1017, 0),
-(840, 1024, 0),
-(841, 1025, 0),
-(842, 862, 0),
-(843, 1027, 0),
-(844, 958, 0),
-(845, 995, 0),
-(846, 1026, 0),
-(847, 1028, 0),
-(848, 922, 0),
-(849, 1029, 0),
-(850, 955, 0),
-(851, 936, 0),
-(852, 890, 0),
-(853, 891, 0),
-(854, 986, 0),
-(855, 988, 0),
-(856, 1031, 0),
-(857, 1032, 0),
-(858, 1035, 0),
-(859, 1036, 0);
+INSERT INTO `sm_customer_c_wallet` (`id`, `customer_id`, `amount`, `date_add_rut`, `count_rut`) VALUES
+(1, 1, 528000, '0000-00-00 00:00:00', 0),
+(2, 2, 0, '0000-00-00 00:00:00', 0),
+(3, 3, 0, '0000-00-00 00:00:00', 0),
+(4, 4, 0, '0000-00-00 00:00:00', 0),
+(5, 5, 0, '0000-00-00 00:00:00', 0),
+(6, 6, 0, '0000-00-00 00:00:00', 0),
+(7, 7, 0, '0000-00-00 00:00:00', 0),
+(8, 8, 0, '0000-00-00 00:00:00', 0),
+(9, 9, 0, '0000-00-00 00:00:00', 0),
+(10, 11, 0, '0000-00-00 00:00:00', 0),
+(11, 12, 0, '0000-00-00 00:00:00', 0),
+(12, 15, 0, '0000-00-00 00:00:00', 0),
+(13, 13, 0, '0000-00-00 00:00:00', 0),
+(14, 17, 0, '0000-00-00 00:00:00', 0),
+(15, 19, 0, '0000-00-00 00:00:00', 0),
+(16, 20, 0, '0000-00-00 00:00:00', 0),
+(17, 21, 0, '0000-00-00 00:00:00', 0),
+(18, 22, 0, '0000-00-00 00:00:00', 0),
+(19, 23, 0, '0000-00-00 00:00:00', 0),
+(20, 25, 0, '0000-00-00 00:00:00', 0),
+(21, 27, 0, '0000-00-00 00:00:00', 0),
+(22, 16, 0, '0000-00-00 00:00:00', 0),
+(23, 28, 0, '0000-00-00 00:00:00', 0),
+(24, 30, 0, '0000-00-00 00:00:00', 0),
+(25, 31, 0, '0000-00-00 00:00:00', 0),
+(26, 24, 0, '0000-00-00 00:00:00', 0),
+(27, 37, 0, '0000-00-00 00:00:00', 0),
+(28, 14, 0, '0000-00-00 00:00:00', 0),
+(29, 40, 0, '0000-00-00 00:00:00', 0),
+(30, 41, 0, '0000-00-00 00:00:00', 0),
+(31, 44, 0, '0000-00-00 00:00:00', 0),
+(32, 45, 0, '0000-00-00 00:00:00', 0),
+(33, 46, 0, '0000-00-00 00:00:00', 0),
+(34, 48, 0, '0000-00-00 00:00:00', 0),
+(35, 49, 0, '0000-00-00 00:00:00', 0),
+(36, 50, 0, '0000-00-00 00:00:00', 0),
+(37, 47, 0, '0000-00-00 00:00:00', 0),
+(38, 10, 0, '0000-00-00 00:00:00', 0),
+(39, 18, 0, '0000-00-00 00:00:00', 0),
+(40, 51, 0, '0000-00-00 00:00:00', 0),
+(41, 54, 0, '0000-00-00 00:00:00', 0),
+(42, 56, 0, '0000-00-00 00:00:00', 0),
+(43, 57, 0, '0000-00-00 00:00:00', 0),
+(44, 58, 0, '0000-00-00 00:00:00', 0),
+(45, 59, 0, '0000-00-00 00:00:00', 0),
+(46, 60, 0, '0000-00-00 00:00:00', 0),
+(47, 52, 0, '0000-00-00 00:00:00', 0),
+(48, 61, 0, '0000-00-00 00:00:00', 0),
+(49, 62, 0, '0000-00-00 00:00:00', 0),
+(50, 63, 0, '0000-00-00 00:00:00', 0),
+(51, 64, 0, '0000-00-00 00:00:00', 0),
+(52, 65, 0, '0000-00-00 00:00:00', 0),
+(53, 77, 0, '0000-00-00 00:00:00', 0),
+(54, 29, 0, '0000-00-00 00:00:00', 0),
+(55, 78, 0, '0000-00-00 00:00:00', 0),
+(56, 39, 0, '0000-00-00 00:00:00', 0),
+(57, 66, 0, '0000-00-00 00:00:00', 0),
+(58, 79, 0, '0000-00-00 00:00:00', 0),
+(59, 80, 0, '0000-00-00 00:00:00', 0),
+(60, 81, 0, '0000-00-00 00:00:00', 0),
+(61, 67, 0, '0000-00-00 00:00:00', 0),
+(62, 68, 0, '0000-00-00 00:00:00', 0),
+(63, 69, 0, '0000-00-00 00:00:00', 0),
+(64, 70, 0, '0000-00-00 00:00:00', 0),
+(65, 71, 0, '0000-00-00 00:00:00', 0),
+(66, 72, 0, '0000-00-00 00:00:00', 0),
+(67, 73, 0, '0000-00-00 00:00:00', 0),
+(68, 74, 0, '0000-00-00 00:00:00', 0),
+(69, 75, 0, '0000-00-00 00:00:00', 0),
+(70, 76, 0, '0000-00-00 00:00:00', 0),
+(71, 85, 0, '0000-00-00 00:00:00', 0),
+(72, 83, 0, '0000-00-00 00:00:00', 0),
+(73, 87, 0, '0000-00-00 00:00:00', 0),
+(74, 86, 0, '0000-00-00 00:00:00', 0),
+(75, 88, 0, '0000-00-00 00:00:00', 0),
+(76, 90, 0, '0000-00-00 00:00:00', 0),
+(77, 91, 0, '0000-00-00 00:00:00', 0),
+(78, 93, 0, '0000-00-00 00:00:00', 0),
+(79, 94, 0, '0000-00-00 00:00:00', 0),
+(80, 97, 0, '0000-00-00 00:00:00', 0),
+(81, 101, 0, '0000-00-00 00:00:00', 0),
+(82, 102, 0, '0000-00-00 00:00:00', 0),
+(83, 103, 0, '0000-00-00 00:00:00', 0),
+(84, 105, 0, '0000-00-00 00:00:00', 0),
+(85, 106, 0, '0000-00-00 00:00:00', 0),
+(86, 107, 0, '0000-00-00 00:00:00', 0),
+(87, 109, 0, '0000-00-00 00:00:00', 0),
+(88, 110, 0, '0000-00-00 00:00:00', 0),
+(89, 111, 0, '0000-00-00 00:00:00', 0),
+(90, 112, 0, '0000-00-00 00:00:00', 0),
+(91, 113, 0, '0000-00-00 00:00:00', 0),
+(92, 130, 0, '0000-00-00 00:00:00', 0),
+(93, 108, 0, '0000-00-00 00:00:00', 0),
+(94, 132, 0, '0000-00-00 00:00:00', 0),
+(95, 133, 0, '0000-00-00 00:00:00', 0),
+(96, 140, 0, '0000-00-00 00:00:00', 0),
+(97, 134, 0, '0000-00-00 00:00:00', 0),
+(98, 142, 0, '0000-00-00 00:00:00', 0),
+(99, 137, 0, '0000-00-00 00:00:00', 0),
+(100, 149, 0, '0000-00-00 00:00:00', 0),
+(101, 143, 0, '0000-00-00 00:00:00', 0),
+(102, 147, 0, '0000-00-00 00:00:00', 0),
+(103, 89, 0, '0000-00-00 00:00:00', 0),
+(104, 141, 0, '0000-00-00 00:00:00', 0),
+(105, 148, 0, '0000-00-00 00:00:00', 0),
+(106, 188, 0, '0000-00-00 00:00:00', 0),
+(107, 194, 0, '0000-00-00 00:00:00', 0),
+(108, 204, 0, '0000-00-00 00:00:00', 0),
+(109, 205, 0, '0000-00-00 00:00:00', 0),
+(110, 203, 0, '0000-00-00 00:00:00', 0),
+(111, 128, 0, '0000-00-00 00:00:00', 0),
+(112, 207, 0, '0000-00-00 00:00:00', 0),
+(113, 210, 0, '0000-00-00 00:00:00', 0),
+(114, 211, 0, '0000-00-00 00:00:00', 0),
+(115, 212, 0, '0000-00-00 00:00:00', 0),
+(116, 213, 0, '0000-00-00 00:00:00', 0),
+(117, 214, 0, '0000-00-00 00:00:00', 0),
+(118, 215, 0, '0000-00-00 00:00:00', 0),
+(119, 216, 0, '0000-00-00 00:00:00', 0),
+(120, 217, 0, '0000-00-00 00:00:00', 0),
+(121, 218, 0, '0000-00-00 00:00:00', 0),
+(122, 219, 0, '0000-00-00 00:00:00', 0),
+(123, 220, 0, '0000-00-00 00:00:00', 0),
+(124, 221, 0, '0000-00-00 00:00:00', 0),
+(125, 222, 0, '0000-00-00 00:00:00', 0),
+(126, 223, 0, '0000-00-00 00:00:00', 0),
+(127, 224, 0, '0000-00-00 00:00:00', 0),
+(128, 225, 0, '0000-00-00 00:00:00', 0),
+(129, 226, 0, '0000-00-00 00:00:00', 0),
+(130, 227, 0, '0000-00-00 00:00:00', 0),
+(131, 228, 0, '0000-00-00 00:00:00', 0),
+(132, 229, 0, '0000-00-00 00:00:00', 0),
+(133, 231, 0, '0000-00-00 00:00:00', 0),
+(134, 230, 0, '0000-00-00 00:00:00', 0),
+(135, 234, 0, '0000-00-00 00:00:00', 0),
+(136, 82, 0, '0000-00-00 00:00:00', 0),
+(137, 84, 0, '0000-00-00 00:00:00', 0),
+(138, 177, 0, '0000-00-00 00:00:00', 0),
+(139, 92, 0, '0000-00-00 00:00:00', 0),
+(140, 166, 0, '0000-00-00 00:00:00', 0),
+(141, 95, 0, '0000-00-00 00:00:00', 0),
+(142, 96, 0, '0000-00-00 00:00:00', 0),
+(143, 98, 0, '0000-00-00 00:00:00', 0),
+(144, 100, 0, '0000-00-00 00:00:00', 0),
+(145, 241, 0, '0000-00-00 00:00:00', 0),
+(146, 244, 0, '0000-00-00 00:00:00', 0),
+(147, 242, 0, '0000-00-00 00:00:00', 0),
+(148, 243, 0, '0000-00-00 00:00:00', 0),
+(149, 114, 0, '0000-00-00 00:00:00', 0),
+(150, 115, 0, '0000-00-00 00:00:00', 0),
+(151, 116, 0, '0000-00-00 00:00:00', 0),
+(152, 55, 0, '0000-00-00 00:00:00', 0),
+(153, 117, 0, '0000-00-00 00:00:00', 0),
+(154, 118, 0, '0000-00-00 00:00:00', 0),
+(155, 119, 0, '0000-00-00 00:00:00', 0),
+(156, 120, 0, '0000-00-00 00:00:00', 0),
+(157, 121, 0, '0000-00-00 00:00:00', 0),
+(158, 122, 0, '0000-00-00 00:00:00', 0),
+(159, 123, 0, '0000-00-00 00:00:00', 0),
+(160, 124, 0, '0000-00-00 00:00:00', 0),
+(161, 125, 0, '0000-00-00 00:00:00', 0),
+(162, 126, 0, '0000-00-00 00:00:00', 0),
+(163, 127, 0, '0000-00-00 00:00:00', 0),
+(164, 167, 0, '0000-00-00 00:00:00', 0),
+(165, 168, 0, '0000-00-00 00:00:00', 0),
+(166, 169, 0, '0000-00-00 00:00:00', 0),
+(167, 151, 0, '0000-00-00 00:00:00', 0),
+(168, 170, 0, '0000-00-00 00:00:00', 0),
+(169, 171, 0, '0000-00-00 00:00:00', 0),
+(170, 152, 0, '0000-00-00 00:00:00', 0),
+(171, 172, 0, '0000-00-00 00:00:00', 0),
+(172, 173, 0, '0000-00-00 00:00:00', 0),
+(173, 153, 0, '0000-00-00 00:00:00', 0),
+(174, 176, 0, '0000-00-00 00:00:00', 0),
+(175, 175, 0, '0000-00-00 00:00:00', 0),
+(176, 180, 0, '0000-00-00 00:00:00', 0),
+(177, 154, 0, '0000-00-00 00:00:00', 0),
+(178, 181, 0, '0000-00-00 00:00:00', 0),
+(179, 182, 0, '0000-00-00 00:00:00', 0),
+(180, 184, 0, '0000-00-00 00:00:00', 0),
+(181, 155, 0, '0000-00-00 00:00:00', 0),
+(182, 186, 0, '0000-00-00 00:00:00', 0),
+(183, 156, 0, '0000-00-00 00:00:00', 0),
+(184, 157, 0, '0000-00-00 00:00:00', 0),
+(185, 158, 0, '0000-00-00 00:00:00', 0),
+(186, 179, 0, '0000-00-00 00:00:00', 0),
+(187, 159, 0, '0000-00-00 00:00:00', 0),
+(188, 160, 0, '0000-00-00 00:00:00', 0),
+(189, 183, 0, '0000-00-00 00:00:00', 0),
+(190, 161, 0, '0000-00-00 00:00:00', 0),
+(191, 185, 0, '0000-00-00 00:00:00', 0),
+(192, 163, 0, '0000-00-00 00:00:00', 0),
+(193, 164, 0, '0000-00-00 00:00:00', 0),
+(194, 187, 0, '0000-00-00 00:00:00', 0),
+(195, 165, 0, '0000-00-00 00:00:00', 0),
+(196, 189, 0, '0000-00-00 00:00:00', 0),
+(197, 190, 0, '0000-00-00 00:00:00', 0),
+(198, 200, 0, '0000-00-00 00:00:00', 0),
+(199, 199, 0, '0000-00-00 00:00:00', 0),
+(200, 191, 0, '0000-00-00 00:00:00', 0),
+(201, 192, 0, '0000-00-00 00:00:00', 0),
+(202, 198, 0, '0000-00-00 00:00:00', 0),
+(203, 193, 0, '0000-00-00 00:00:00', 0),
+(204, 197, 0, '0000-00-00 00:00:00', 0),
+(205, 195, 0, '0000-00-00 00:00:00', 0),
+(206, 196, 0, '0000-00-00 00:00:00', 0),
+(207, 259, 0, '0000-00-00 00:00:00', 0),
+(208, 246, 0, '0000-00-00 00:00:00', 0),
+(209, 247, 0, '0000-00-00 00:00:00', 0),
+(210, 248, 0, '0000-00-00 00:00:00', 0),
+(211, 249, 0, '0000-00-00 00:00:00', 0),
+(212, 250, 0, '0000-00-00 00:00:00', 0),
+(213, 251, 0, '0000-00-00 00:00:00', 0),
+(214, 252, 0, '0000-00-00 00:00:00', 0),
+(215, 253, 0, '0000-00-00 00:00:00', 0),
+(216, 254, 0, '0000-00-00 00:00:00', 0),
+(217, 255, 0, '0000-00-00 00:00:00', 0),
+(218, 256, 0, '0000-00-00 00:00:00', 0),
+(219, 257, 0, '0000-00-00 00:00:00', 0),
+(220, 258, 0, '0000-00-00 00:00:00', 0),
+(221, 264, 0, '0000-00-00 00:00:00', 0),
+(222, 262, 0, '0000-00-00 00:00:00', 0),
+(223, 263, 0, '0000-00-00 00:00:00', 0),
+(224, 266, 0, '0000-00-00 00:00:00', 0),
+(225, 267, 0, '0000-00-00 00:00:00', 0),
+(226, 268, 0, '0000-00-00 00:00:00', 0),
+(227, 260, 0, '0000-00-00 00:00:00', 0),
+(228, 269, 0, '0000-00-00 00:00:00', 0),
+(229, 129, 0, '0000-00-00 00:00:00', 0),
+(230, 271, 0, '0000-00-00 00:00:00', 0),
+(231, 270, 0, '0000-00-00 00:00:00', 0),
+(232, 273, 0, '0000-00-00 00:00:00', 0),
+(233, 274, 0, '0000-00-00 00:00:00', 0),
+(234, 275, 0, '0000-00-00 00:00:00', 0),
+(235, 276, 0, '0000-00-00 00:00:00', 0),
+(236, 282, 0, '0000-00-00 00:00:00', 0),
+(237, 280, 0, '0000-00-00 00:00:00', 0),
+(238, 261, 0, '0000-00-00 00:00:00', 0),
+(239, 286, 0, '0000-00-00 00:00:00', 0),
+(240, 287, 0, '0000-00-00 00:00:00', 0),
+(241, 288, 0, '0000-00-00 00:00:00', 0),
+(242, 290, 0, '0000-00-00 00:00:00', 0),
+(243, 289, 0, '0000-00-00 00:00:00', 0),
+(244, 291, 0, '0000-00-00 00:00:00', 0),
+(245, 292, 0, '0000-00-00 00:00:00', 0),
+(246, 293, 0, '0000-00-00 00:00:00', 0),
+(247, 302, 0, '0000-00-00 00:00:00', 0),
+(248, 294, 0, '0000-00-00 00:00:00', 0),
+(249, 295, 0, '0000-00-00 00:00:00', 0),
+(250, 296, 0, '0000-00-00 00:00:00', 0),
+(251, 297, 0, '0000-00-00 00:00:00', 0),
+(252, 298, 0, '0000-00-00 00:00:00', 0),
+(253, 303, 0, '0000-00-00 00:00:00', 0),
+(254, 299, 0, '0000-00-00 00:00:00', 0),
+(255, 304, 0, '0000-00-00 00:00:00', 0),
+(256, 305, 0, '0000-00-00 00:00:00', 0),
+(257, 306, 0, '0000-00-00 00:00:00', 0),
+(258, 307, 0, '0000-00-00 00:00:00', 0),
+(259, 308, 0, '0000-00-00 00:00:00', 0),
+(260, 309, 0, '0000-00-00 00:00:00', 0),
+(261, 300, 0, '0000-00-00 00:00:00', 0),
+(262, 301, 0, '0000-00-00 00:00:00', 0),
+(263, 310, 0, '0000-00-00 00:00:00', 0),
+(264, 312, 0, '0000-00-00 00:00:00', 0),
+(265, 272, 0, '0000-00-00 00:00:00', 0),
+(266, 313, 0, '0000-00-00 00:00:00', 0),
+(267, 311, 0, '0000-00-00 00:00:00', 0),
+(268, 314, 0, '0000-00-00 00:00:00', 0),
+(269, 315, 0, '0000-00-00 00:00:00', 0),
+(270, 316, 0, '0000-00-00 00:00:00', 0),
+(271, 317, 0, '0000-00-00 00:00:00', 0),
+(272, 265, 0, '0000-00-00 00:00:00', 0),
+(273, 318, 0, '0000-00-00 00:00:00', 0),
+(274, 319, 0, '0000-00-00 00:00:00', 0),
+(275, 321, 0, '0000-00-00 00:00:00', 0),
+(276, 323, 0, '0000-00-00 00:00:00', 0),
+(277, 320, 0, '0000-00-00 00:00:00', 0),
+(278, 333, 0, '0000-00-00 00:00:00', 0),
+(279, 335, 0, '0000-00-00 00:00:00', 0),
+(280, 336, 0, '0000-00-00 00:00:00', 0),
+(281, 347, 0, '0000-00-00 00:00:00', 0),
+(282, 349, 0, '0000-00-00 00:00:00', 0),
+(283, 350, 0, '0000-00-00 00:00:00', 0),
+(284, 351, 0, '0000-00-00 00:00:00', 0),
+(285, 352, 0, '0000-00-00 00:00:00', 0),
+(286, 353, 0, '0000-00-00 00:00:00', 0),
+(287, 354, 0, '0000-00-00 00:00:00', 0),
+(288, 355, 0, '0000-00-00 00:00:00', 0),
+(289, 356, 0, '0000-00-00 00:00:00', 0),
+(290, 357, 0, '0000-00-00 00:00:00', 0),
+(291, 359, 0, '0000-00-00 00:00:00', 0),
+(292, 358, 0, '0000-00-00 00:00:00', 0),
+(293, 360, 0, '0000-00-00 00:00:00', 0),
+(294, 361, 0, '0000-00-00 00:00:00', 0),
+(295, 362, 0, '0000-00-00 00:00:00', 0),
+(296, 363, 0, '0000-00-00 00:00:00', 0),
+(297, 324, 0, '0000-00-00 00:00:00', 0),
+(298, 365, 0, '0000-00-00 00:00:00', 0),
+(299, 366, 0, '0000-00-00 00:00:00', 0),
+(300, 367, 0, '0000-00-00 00:00:00', 0),
+(301, 325, 0, '0000-00-00 00:00:00', 0),
+(302, 348, 0, '0000-00-00 00:00:00', 0),
+(303, 337, 0, '0000-00-00 00:00:00', 0),
+(304, 338, 0, '0000-00-00 00:00:00', 0),
+(305, 345, 0, '0000-00-00 00:00:00', 0),
+(306, 326, 0, '0000-00-00 00:00:00', 0),
+(307, 369, 0, '0000-00-00 00:00:00', 0),
+(308, 368, 0, '0000-00-00 00:00:00', 0),
+(309, 370, 0, '0000-00-00 00:00:00', 0),
+(310, 372, 0, '0000-00-00 00:00:00', 0),
+(311, 373, 0, '0000-00-00 00:00:00', 0),
+(312, 374, 0, '0000-00-00 00:00:00', 0),
+(313, 375, 0, '0000-00-00 00:00:00', 0),
+(314, 379, 0, '0000-00-00 00:00:00', 0),
+(315, 380, 0, '0000-00-00 00:00:00', 0),
+(316, 381, 0, '0000-00-00 00:00:00', 0),
+(317, 382, 0, '0000-00-00 00:00:00', 0),
+(318, 383, 0, '0000-00-00 00:00:00', 0),
+(319, 364, 0, '0000-00-00 00:00:00', 0),
+(320, 384, 0, '0000-00-00 00:00:00', 0),
+(321, 387, 0, '0000-00-00 00:00:00', 0),
+(322, 388, 0, '0000-00-00 00:00:00', 0),
+(323, 389, 0, '0000-00-00 00:00:00', 0),
+(324, 390, 0, '0000-00-00 00:00:00', 0),
+(325, 392, 0, '0000-00-00 00:00:00', 0),
+(326, 393, 0, '0000-00-00 00:00:00', 0),
+(327, 395, 0, '0000-00-00 00:00:00', 0),
+(328, 394, 0, '0000-00-00 00:00:00', 0),
+(329, 378, 0, '0000-00-00 00:00:00', 0),
+(330, 396, 0, '0000-00-00 00:00:00', 0),
+(331, 398, 0, '0000-00-00 00:00:00', 0),
+(332, 400, 0, '0000-00-00 00:00:00', 0),
+(333, 401, 0, '0000-00-00 00:00:00', 0),
+(334, 399, 0, '0000-00-00 00:00:00', 0),
+(335, 327, 0, '0000-00-00 00:00:00', 0),
+(336, 328, 0, '0000-00-00 00:00:00', 0),
+(337, 329, 0, '0000-00-00 00:00:00', 0),
+(338, 330, 0, '0000-00-00 00:00:00', 0),
+(339, 331, 0, '0000-00-00 00:00:00', 0),
+(340, 332, 0, '0000-00-00 00:00:00', 0),
+(341, 334, 0, '0000-00-00 00:00:00', 0),
+(342, 339, 0, '0000-00-00 00:00:00', 0),
+(343, 340, 0, '0000-00-00 00:00:00', 0),
+(344, 341, 0, '0000-00-00 00:00:00', 0),
+(345, 342, 0, '0000-00-00 00:00:00', 0),
+(346, 343, 0, '0000-00-00 00:00:00', 0),
+(347, 344, 0, '0000-00-00 00:00:00', 0),
+(348, 346, 0, '0000-00-00 00:00:00', 0),
+(349, 404, 0, '0000-00-00 00:00:00', 0),
+(350, 403, 0, '0000-00-00 00:00:00', 0),
+(351, 405, 0, '0000-00-00 00:00:00', 0),
+(352, 408, 0, '0000-00-00 00:00:00', 0),
+(353, 409, 0, '0000-00-00 00:00:00', 0),
+(354, 411, 0, '0000-00-00 00:00:00', 0),
+(355, 412, 0, '0000-00-00 00:00:00', 0),
+(356, 413, 0, '0000-00-00 00:00:00', 0),
+(357, 415, 0, '0000-00-00 00:00:00', 0),
+(358, 416, 0, '0000-00-00 00:00:00', 0),
+(359, 417, 0, '0000-00-00 00:00:00', 0),
+(360, 418, 0, '0000-00-00 00:00:00', 0),
+(361, 402, 0, '0000-00-00 00:00:00', 0),
+(362, 422, 0, '0000-00-00 00:00:00', 0),
+(363, 423, 0, '0000-00-00 00:00:00', 0),
+(364, 424, 0, '0000-00-00 00:00:00', 0),
+(365, 285, 0, '0000-00-00 00:00:00', 0),
+(366, 38, 0, '0000-00-00 00:00:00', 0),
+(367, 32, 0, '0000-00-00 00:00:00', 0),
+(368, 34, 0, '0000-00-00 00:00:00', 0),
+(369, 33, 0, '0000-00-00 00:00:00', 0),
+(370, 26, 0, '0000-00-00 00:00:00', 0),
+(371, 385, 0, '0000-00-00 00:00:00', 0),
+(372, 386, 0, '0000-00-00 00:00:00', 0),
+(373, 376, 0, '0000-00-00 00:00:00', 0),
+(374, 99, 0, '0000-00-00 00:00:00', 0),
+(375, 36, 0, '0000-00-00 00:00:00', 0),
+(376, 397, 0, '0000-00-00 00:00:00', 0),
+(377, 406, 0, '0000-00-00 00:00:00', 0),
+(378, 419, 0, '0000-00-00 00:00:00', 0),
+(379, 420, 0, '0000-00-00 00:00:00', 0),
+(380, 421, 0, '0000-00-00 00:00:00', 0),
+(381, 426, 0, '0000-00-00 00:00:00', 0),
+(382, 427, 0, '0000-00-00 00:00:00', 0),
+(383, 428, 0, '0000-00-00 00:00:00', 0),
+(384, 429, 0, '0000-00-00 00:00:00', 0),
+(385, 430, 0, '0000-00-00 00:00:00', 0),
+(386, 432, 0, '0000-00-00 00:00:00', 0),
+(387, 434, 0, '0000-00-00 00:00:00', 0),
+(388, 433, 0, '0000-00-00 00:00:00', 0),
+(389, 436, 0, '0000-00-00 00:00:00', 0),
+(390, 435, 0, '0000-00-00 00:00:00', 0),
+(391, 371, 0, '0000-00-00 00:00:00', 0),
+(392, 407, 0, '0000-00-00 00:00:00', 0),
+(393, 437, 0, '0000-00-00 00:00:00', 0),
+(394, 440, 0, '0000-00-00 00:00:00', 0),
+(395, 441, 0, '0000-00-00 00:00:00', 0),
+(396, 442, 0, '0000-00-00 00:00:00', 0),
+(397, 53, 0, '0000-00-00 00:00:00', 0),
+(398, 443, 0, '0000-00-00 00:00:00', 0),
+(399, 444, 0, '0000-00-00 00:00:00', 0),
+(400, 445, 0, '0000-00-00 00:00:00', 0),
+(401, 446, 0, '0000-00-00 00:00:00', 0),
+(402, 447, 0, '0000-00-00 00:00:00', 0),
+(403, 448, 0, '0000-00-00 00:00:00', 0),
+(404, 449, 0, '0000-00-00 00:00:00', 0),
+(405, 450, 0, '0000-00-00 00:00:00', 0),
+(406, 377, 0, '0000-00-00 00:00:00', 0),
+(407, 452, 0, '0000-00-00 00:00:00', 0),
+(408, 453, 0, '0000-00-00 00:00:00', 0),
+(409, 456, 0, '0000-00-00 00:00:00', 0),
+(410, 458, 0, '0000-00-00 00:00:00', 0),
+(411, 459, 0, '0000-00-00 00:00:00', 0),
+(412, 460, 0, '0000-00-00 00:00:00', 0),
+(413, 461, 0, '0000-00-00 00:00:00', 0),
+(414, 462, 0, '0000-00-00 00:00:00', 0),
+(415, 463, 0, '0000-00-00 00:00:00', 0),
+(416, 464, 0, '0000-00-00 00:00:00', 0),
+(417, 466, 0, '0000-00-00 00:00:00', 0),
+(418, 470, 0, '0000-00-00 00:00:00', 0),
+(419, 469, 0, '0000-00-00 00:00:00', 0),
+(420, 471, 0, '0000-00-00 00:00:00', 0),
+(421, 472, 0, '0000-00-00 00:00:00', 0),
+(422, 474, 0, '0000-00-00 00:00:00', 0),
+(423, 475, 0, '0000-00-00 00:00:00', 0),
+(424, 476, 0, '0000-00-00 00:00:00', 0),
+(425, 467, 0, '0000-00-00 00:00:00', 0),
+(426, 468, 0, '0000-00-00 00:00:00', 0),
+(427, 477, 0, '0000-00-00 00:00:00', 0),
+(428, 478, 0, '0000-00-00 00:00:00', 0),
+(429, 479, 0, '0000-00-00 00:00:00', 0),
+(430, 480, 0, '0000-00-00 00:00:00', 0),
+(431, 451, 0, '0000-00-00 00:00:00', 0),
+(432, 481, 0, '0000-00-00 00:00:00', 0),
+(433, 482, 0, '0000-00-00 00:00:00', 0),
+(434, 483, 0, '0000-00-00 00:00:00', 0),
+(435, 454, 0, '0000-00-00 00:00:00', 0),
+(436, 485, 0, '0000-00-00 00:00:00', 0),
+(437, 486, 0, '0000-00-00 00:00:00', 0),
+(438, 487, 0, '0000-00-00 00:00:00', 0),
+(439, 488, 0, '0000-00-00 00:00:00', 0),
+(440, 489, 0, '0000-00-00 00:00:00', 0),
+(441, 490, 0, '0000-00-00 00:00:00', 0),
+(442, 491, 0, '0000-00-00 00:00:00', 0),
+(443, 492, 0, '0000-00-00 00:00:00', 0),
+(444, 493, 0, '0000-00-00 00:00:00', 0),
+(445, 495, 0, '0000-00-00 00:00:00', 0),
+(446, 494, 0, '0000-00-00 00:00:00', 0),
+(447, 496, 0, '0000-00-00 00:00:00', 0),
+(448, 497, 0, '0000-00-00 00:00:00', 0),
+(449, 498, 0, '0000-00-00 00:00:00', 0),
+(450, 499, 0, '0000-00-00 00:00:00', 0),
+(451, 500, 0, '0000-00-00 00:00:00', 0),
+(452, 455, 0, '0000-00-00 00:00:00', 0),
+(453, 501, 0, '0000-00-00 00:00:00', 0),
+(454, 502, 0, '0000-00-00 00:00:00', 0),
+(455, 503, 0, '0000-00-00 00:00:00', 0),
+(456, 484, 0, '0000-00-00 00:00:00', 0),
+(457, 504, 0, '0000-00-00 00:00:00', 0),
+(458, 505, 0, '0000-00-00 00:00:00', 0),
+(459, 507, 0, '0000-00-00 00:00:00', 0),
+(460, 508, 0, '0000-00-00 00:00:00', 0),
+(461, 509, 0, '0000-00-00 00:00:00', 0),
+(462, 511, 0, '0000-00-00 00:00:00', 0),
+(463, 512, 0, '0000-00-00 00:00:00', 0),
+(464, 514, 0, '0000-00-00 00:00:00', 0),
+(465, 515, 0, '0000-00-00 00:00:00', 0),
+(466, 510, 0, '0000-00-00 00:00:00', 0),
+(467, 516, 0, '0000-00-00 00:00:00', 0),
+(468, 518, 0, '0000-00-00 00:00:00', 0),
+(469, 519, 0, '0000-00-00 00:00:00', 0),
+(470, 520, 0, '0000-00-00 00:00:00', 0),
+(471, 521, 0, '0000-00-00 00:00:00', 0),
+(472, 522, 0, '0000-00-00 00:00:00', 0),
+(473, 523, 0, '0000-00-00 00:00:00', 0),
+(474, 526, 0, '0000-00-00 00:00:00', 0),
+(475, 524, 0, '0000-00-00 00:00:00', 0),
+(476, 528, 0, '0000-00-00 00:00:00', 0),
+(477, 527, 0, '0000-00-00 00:00:00', 0),
+(478, 529, 0, '0000-00-00 00:00:00', 0),
+(479, 530, 0, '0000-00-00 00:00:00', 0),
+(480, 534, 0, '0000-00-00 00:00:00', 0),
+(481, 538, 0, '0000-00-00 00:00:00', 0),
+(482, 539, 220000, '0000-00-00 00:00:00', 0),
+(483, 540, 0, '0000-00-00 00:00:00', 0),
+(484, 542, 0, '0000-00-00 00:00:00', 0),
+(485, 544, 0, '0000-00-00 00:00:00', 0),
+(486, 541, 0, '0000-00-00 00:00:00', 0),
+(487, 550, 0, '0000-00-00 00:00:00', 0),
+(488, 554, 0, '0000-00-00 00:00:00', 0),
+(489, 555, 0, '0000-00-00 00:00:00', 0),
+(490, 551, 0, '0000-00-00 00:00:00', 0),
+(491, 561, 0, '0000-00-00 00:00:00', 0),
+(492, 562, 35200, '0000-00-00 00:00:00', 0),
+(493, 568, 0, '0000-00-00 00:00:00', 0),
+(494, 548, 0, '0000-00-00 00:00:00', 0),
+(495, 552, 0, '0000-00-00 00:00:00', 0),
+(496, 572, 0, '0000-00-00 00:00:00', 0),
+(497, 573, 0, '0000-00-00 00:00:00', 0),
+(498, 553, 0, '0000-00-00 00:00:00', 0),
+(499, 581, 0, '0000-00-00 00:00:00', 0),
+(500, 574, 0, '0000-00-00 00:00:00', 0),
+(501, 545, 0, '0000-00-00 00:00:00', 0),
+(502, 582, 0, '0000-00-00 00:00:00', 0),
+(503, 580, 0, '0000-00-00 00:00:00', 0),
+(504, 577, 1760000, '0000-00-00 00:00:00', 0),
+(505, 596, 0, '0000-00-00 00:00:00', 0),
+(506, 597, 0, '0000-00-00 00:00:00', 0),
+(507, 601, 0, '0000-00-00 00:00:00', 0),
+(508, 599, 0, '0000-00-00 00:00:00', 0),
+(509, 603, 0, '0000-00-00 00:00:00', 0),
+(510, 604, 0, '0000-00-00 00:00:00', 0),
+(511, 607, 0, '0000-00-00 00:00:00', 0),
+(512, 608, 0, '0000-00-00 00:00:00', 0),
+(513, 611, 0, '0000-00-00 00:00:00', 0),
+(514, 617, 0, '0000-00-00 00:00:00', 0),
+(515, 623, 0, '0000-00-00 00:00:00', 0),
+(516, 622, 0, '0000-00-00 00:00:00', 0),
+(517, 625, 0, '0000-00-00 00:00:00', 0),
+(518, 626, 0, '0000-00-00 00:00:00', 0),
+(519, 586, 0, '0000-00-00 00:00:00', 0),
+(520, 612, 0, '0000-00-00 00:00:00', 0),
+(521, 613, 0, '0000-00-00 00:00:00', 0),
+(522, 559, 0, '0000-00-00 00:00:00', 0),
+(523, 621, 0, '0000-00-00 00:00:00', 0),
+(524, 624, 0, '0000-00-00 00:00:00', 0),
+(525, 549, 0, '0000-00-00 00:00:00', 0),
+(526, 630, 0, '0000-00-00 00:00:00', 0),
+(527, 546, 0, '0000-00-00 00:00:00', 0),
+(528, 637, 0, '0000-00-00 00:00:00', 0),
+(529, 638, 0, '0000-00-00 00:00:00', 0),
+(530, 639, 0, '0000-00-00 00:00:00', 0),
+(531, 640, 0, '0000-00-00 00:00:00', 0),
+(532, 641, 0, '0000-00-00 00:00:00', 0),
+(533, 647, 0, '0000-00-00 00:00:00', 0),
+(534, 649, 0, '0000-00-00 00:00:00', 0),
+(535, 650, 0, '0000-00-00 00:00:00', 0),
+(536, 651, 0, '0000-00-00 00:00:00', 0),
+(537, 652, 0, '0000-00-00 00:00:00', 0),
+(538, 653, 0, '0000-00-00 00:00:00', 0),
+(539, 642, 0, '0000-00-00 00:00:00', 0),
+(540, 655, 0, '0000-00-00 00:00:00', 0),
+(541, 654, 0, '0000-00-00 00:00:00', 0),
+(542, 656, 0, '0000-00-00 00:00:00', 0),
+(543, 657, 0, '0000-00-00 00:00:00', 0),
+(544, 658, 0, '0000-00-00 00:00:00', 0),
+(545, 660, 0, '0000-00-00 00:00:00', 0),
+(546, 661, 0, '0000-00-00 00:00:00', 0),
+(547, 662, 0, '0000-00-00 00:00:00', 0),
+(548, 560, 0, '0000-00-00 00:00:00', 0),
+(549, 631, 0, '0000-00-00 00:00:00', 0),
+(550, 677, 0, '0000-00-00 00:00:00', 0),
+(551, 659, 0, '0000-00-00 00:00:00', 0),
+(552, 675, 0, '0000-00-00 00:00:00', 0),
+(553, 680, 0, '0000-00-00 00:00:00', 0),
+(554, 689, 0, '0000-00-00 00:00:00', 0),
+(555, 692, 26400, '0000-00-00 00:00:00', 0),
+(556, 693, 0, '0000-00-00 00:00:00', 0),
+(557, 695, 0, '0000-00-00 00:00:00', 0),
+(558, 696, 0, '0000-00-00 00:00:00', 0),
+(559, 697, 0, '0000-00-00 00:00:00', 0),
+(560, 620, 0, '0000-00-00 00:00:00', 0),
+(561, 698, 0, '0000-00-00 00:00:00', 0),
+(562, 700, 0, '0000-00-00 00:00:00', 0),
+(563, 636, 0, '0000-00-00 00:00:00', 0),
+(564, 701, 0, '0000-00-00 00:00:00', 0),
+(565, 702, 0, '0000-00-00 00:00:00', 0),
+(566, 547, 0, '0000-00-00 00:00:00', 0),
+(567, 643, 0, '0000-00-00 00:00:00', 0),
+(568, 703, 0, '0000-00-00 00:00:00', 0),
+(569, 704, 0, '0000-00-00 00:00:00', 0),
+(570, 707, 0, '0000-00-00 00:00:00', 0),
+(571, 709, 0, '0000-00-00 00:00:00', 0),
+(572, 556, 0, '0000-00-00 00:00:00', 0),
+(573, 705, 0, '0000-00-00 00:00:00', 0),
+(574, 706, 0, '0000-00-00 00:00:00', 0),
+(575, 708, 0, '0000-00-00 00:00:00', 0),
+(576, 710, 0, '0000-00-00 00:00:00', 0),
+(577, 711, 0, '0000-00-00 00:00:00', 0),
+(578, 712, 0, '0000-00-00 00:00:00', 0),
+(579, 713, 0, '0000-00-00 00:00:00', 0),
+(580, 714, 0, '0000-00-00 00:00:00', 0),
+(581, 716, 0, '0000-00-00 00:00:00', 0),
+(582, 694, 0, '0000-00-00 00:00:00', 0),
+(583, 715, 0, '0000-00-00 00:00:00', 0),
+(584, 717, 0, '0000-00-00 00:00:00', 0),
+(585, 676, 0, '0000-00-00 00:00:00', 0),
+(586, 720, 0, '0000-00-00 00:00:00', 0),
+(587, 724, 0, '0000-00-00 00:00:00', 0),
+(588, 721, 0, '0000-00-00 00:00:00', 0),
+(589, 726, 0, '0000-00-00 00:00:00', 0),
+(590, 725, 0, '0000-00-00 00:00:00', 0),
+(591, 728, 0, '0000-00-00 00:00:00', 0),
+(592, 718, 0, '0000-00-00 00:00:00', 0),
+(593, 719, 0, '0000-00-00 00:00:00', 0),
+(594, 733, 0, '0000-00-00 00:00:00', 0),
+(595, 691, 0, '0000-00-00 00:00:00', 0),
+(596, 734, 0, '0000-00-00 00:00:00', 0),
+(597, 730, 0, '0000-00-00 00:00:00', 0),
+(598, 740, 0, '0000-00-00 00:00:00', 0),
+(599, 735, 0, '0000-00-00 00:00:00', 0),
+(600, 742, 0, '0000-00-00 00:00:00', 0),
+(601, 727, 0, '0000-00-00 00:00:00', 0),
+(602, 749, 0, '0000-00-00 00:00:00', 0),
+(603, 737, 0, '0000-00-00 00:00:00', 0),
+(604, 736, 0, '0000-00-00 00:00:00', 0),
+(605, 739, 0, '0000-00-00 00:00:00', 0),
+(606, 741, 0, '0000-00-00 00:00:00', 0),
+(607, 743, 0, '0000-00-00 00:00:00', 0),
+(608, 748, 0, '0000-00-00 00:00:00', 0),
+(609, 752, 0, '0000-00-00 00:00:00', 0),
+(610, 750, 0, '0000-00-00 00:00:00', 0),
+(611, 753, 0, '0000-00-00 00:00:00', 0),
+(612, 757, 0, '0000-00-00 00:00:00', 0),
+(613, 754, 0, '0000-00-00 00:00:00', 0),
+(614, 756, 0, '0000-00-00 00:00:00', 0),
+(615, 758, 0, '0000-00-00 00:00:00', 0),
+(616, 760, 0, '0000-00-00 00:00:00', 0),
+(617, 761, 0, '0000-00-00 00:00:00', 0),
+(618, 762, 0, '0000-00-00 00:00:00', 0),
+(619, 732, 0, '0000-00-00 00:00:00', 0),
+(620, 759, 0, '0000-00-00 00:00:00', 0),
+(621, 766, 0, '0000-00-00 00:00:00', 0),
+(622, 764, 0, '0000-00-00 00:00:00', 0),
+(623, 765, 0, '0000-00-00 00:00:00', 0),
+(624, 767, 0, '0000-00-00 00:00:00', 0),
+(625, 768, 0, '0000-00-00 00:00:00', 0),
+(626, 769, 0, '0000-00-00 00:00:00', 0),
+(627, 771, 0, '0000-00-00 00:00:00', 0),
+(628, 773, 0, '0000-00-00 00:00:00', 0),
+(629, 745, 0, '0000-00-00 00:00:00', 0),
+(630, 747, 0, '0000-00-00 00:00:00', 0),
+(631, 755, 0, '0000-00-00 00:00:00', 0),
+(632, 738, 0, '0000-00-00 00:00:00', 0),
+(633, 763, 0, '0000-00-00 00:00:00', 0),
+(634, 772, 0, '0000-00-00 00:00:00', 0),
+(635, 774, 0, '0000-00-00 00:00:00', 0),
+(636, 777, 0, '0000-00-00 00:00:00', 0),
+(637, 776, 0, '0000-00-00 00:00:00', 0),
+(638, 746, 0, '0000-00-00 00:00:00', 0),
+(639, 778, 0, '0000-00-00 00:00:00', 0),
+(640, 781, 0, '0000-00-00 00:00:00', 0),
+(641, 779, 0, '0000-00-00 00:00:00', 0),
+(642, 744, 0, '0000-00-00 00:00:00', 0),
+(643, 780, 0, '0000-00-00 00:00:00', 0),
+(644, 788, 0, '0000-00-00 00:00:00', 0),
+(645, 789, 0, '0000-00-00 00:00:00', 0),
+(646, 790, 0, '0000-00-00 00:00:00', 0),
+(647, 791, 0, '0000-00-00 00:00:00', 0),
+(648, 751, 0, '0000-00-00 00:00:00', 0),
+(649, 729, 0, '0000-00-00 00:00:00', 0),
+(650, 775, 0, '0000-00-00 00:00:00', 0),
+(651, 794, 0, '0000-00-00 00:00:00', 0),
+(652, 795, 0, '0000-00-00 00:00:00', 0),
+(653, 644, 0, '0000-00-00 00:00:00', 0),
+(654, 796, 0, '0000-00-00 00:00:00', 0),
+(655, 663, 0, '0000-00-00 00:00:00', 0),
+(656, 664, 0, '0000-00-00 00:00:00', 0),
+(657, 590, 0, '0000-00-00 00:00:00', 0),
+(658, 793, 0, '0000-00-00 00:00:00', 0),
+(659, 784, 0, '0000-00-00 00:00:00', 0),
+(660, 557, 0, '0000-00-00 00:00:00', 0),
+(661, 801, 0, '0000-00-00 00:00:00', 0),
+(662, 783, 0, '0000-00-00 00:00:00', 0),
+(663, 792, 0, '0000-00-00 00:00:00', 0),
+(664, 806, 0, '0000-00-00 00:00:00', 0),
+(665, 797, 0, '0000-00-00 00:00:00', 0),
+(666, 782, 0, '0000-00-00 00:00:00', 0),
+(667, 798, 0, '0000-00-00 00:00:00', 0),
+(668, 808, 0, '0000-00-00 00:00:00', 0),
+(669, 809, 0, '0000-00-00 00:00:00', 0),
+(670, 810, 0, '0000-00-00 00:00:00', 0),
+(671, 805, 0, '0000-00-00 00:00:00', 0),
+(672, 811, 0, '0000-00-00 00:00:00', 0),
+(673, 821, 0, '0000-00-00 00:00:00', 0),
+(674, 822, 0, '0000-00-00 00:00:00', 0),
+(675, 825, 0, '0000-00-00 00:00:00', 0),
+(676, 584, 0, '0000-00-00 00:00:00', 0),
+(677, 583, 0, '0000-00-00 00:00:00', 0),
+(678, 593, 0, '0000-00-00 00:00:00', 0),
+(679, 645, 0, '0000-00-00 00:00:00', 0),
+(680, 646, 0, '0000-00-00 00:00:00', 0),
+(681, 563, 0, '0000-00-00 00:00:00', 0),
+(682, 565, 0, '0000-00-00 00:00:00', 0),
+(683, 567, 0, '0000-00-00 00:00:00', 0),
+(684, 570, 0, '0000-00-00 00:00:00', 0),
+(685, 571, 0, '0000-00-00 00:00:00', 0),
+(686, 569, 0, '0000-00-00 00:00:00', 0),
+(687, 827, 0, '0000-00-00 00:00:00', 0),
+(688, 786, 0, '0000-00-00 00:00:00', 0),
+(689, 787, 0, '0000-00-00 00:00:00', 0),
+(690, 564, 0, '2016-10-26 11:45:17', 10),
+(691, 566, 0, '0000-00-00 00:00:00', 0),
+(692, 829, 0, '0000-00-00 00:00:00', 0),
+(693, 804, 897600, '0000-00-00 00:00:00', 0),
+(694, 594, 0, '0000-00-00 00:00:00', 0),
+(695, 595, 0, '0000-00-00 00:00:00', 0),
+(696, 831, 0, '0000-00-00 00:00:00', 0),
+(697, 820, 0, '0000-00-00 00:00:00', 0),
+(698, 850, 0, '0000-00-00 00:00:00', 0),
+(699, 858, 0, '0000-00-00 00:00:00', 0),
+(700, 802, 0, '0000-00-00 00:00:00', 0),
+(701, 575, 0, '0000-00-00 00:00:00', 0),
+(702, 869, 0, '0000-00-00 00:00:00', 0),
+(703, 813, 0, '0000-00-00 00:00:00', 0),
+(704, 870, 0, '0000-00-00 00:00:00', 0),
+(705, 866, 0, '0000-00-00 00:00:00', 0),
+(706, 867, 0, '0000-00-00 00:00:00', 0),
+(707, 868, 0, '0000-00-00 00:00:00', 0),
+(708, 600, 0, '0000-00-00 00:00:00', 0),
+(709, 874, 0, '0000-00-00 00:00:00', 0),
+(710, 875, 0, '0000-00-00 00:00:00', 0),
+(711, 876, 0, '0000-00-00 00:00:00', 0),
+(712, 877, 0, '0000-00-00 00:00:00', 0),
+(713, 799, 0, '0000-00-00 00:00:00', 0),
+(714, 878, 0, '0000-00-00 00:00:00', 0),
+(715, 879, 0, '0000-00-00 00:00:00', 0),
+(716, 880, 0, '0000-00-00 00:00:00', 0),
+(717, 883, 0, '0000-00-00 00:00:00', 0),
+(718, 800, 0, '0000-00-00 00:00:00', 0),
+(719, 884, 0, '0000-00-00 00:00:00', 0),
+(720, 882, 0, '0000-00-00 00:00:00', 0),
+(721, 885, 0, '0000-00-00 00:00:00', 0),
+(722, 886, 0, '0000-00-00 00:00:00', 0),
+(723, 888, 0, '0000-00-00 00:00:00', 0),
+(724, 887, 0, '0000-00-00 00:00:00', 0),
+(725, 609, 0, '0000-00-00 00:00:00', 0),
+(726, 889, 0, '0000-00-00 00:00:00', 0),
+(727, 892, 0, '0000-00-00 00:00:00', 0),
+(728, 893, 0, '0000-00-00 00:00:00', 0),
+(729, 894, 0, '0000-00-00 00:00:00', 0),
+(730, 895, 0, '0000-00-00 00:00:00', 0),
+(731, 896, 0, '0000-00-00 00:00:00', 0),
+(732, 897, 0, '0000-00-00 00:00:00', 0),
+(733, 898, 0, '0000-00-00 00:00:00', 0),
+(734, 899, 0, '0000-00-00 00:00:00', 0),
+(735, 900, 0, '0000-00-00 00:00:00', 0),
+(736, 901, 0, '0000-00-00 00:00:00', 0),
+(737, 902, 0, '0000-00-00 00:00:00', 0),
+(738, 903, 0, '0000-00-00 00:00:00', 0),
+(739, 904, 0, '0000-00-00 00:00:00', 0),
+(740, 906, 0, '0000-00-00 00:00:00', 0),
+(741, 908, 0, '0000-00-00 00:00:00', 0),
+(742, 909, 0, '0000-00-00 00:00:00', 0),
+(743, 911, 0, '0000-00-00 00:00:00', 0),
+(744, 912, 0, '0000-00-00 00:00:00', 0),
+(745, 914, 0, '0000-00-00 00:00:00', 0),
+(746, 915, 0, '0000-00-00 00:00:00', 0),
+(747, 916, 0, '0000-00-00 00:00:00', 0),
+(748, 917, 0, '0000-00-00 00:00:00', 0),
+(749, 918, 0, '0000-00-00 00:00:00', 0),
+(750, 919, 0, '0000-00-00 00:00:00', 0),
+(751, 923, 0, '0000-00-00 00:00:00', 0),
+(752, 907, 0, '0000-00-00 00:00:00', 0),
+(753, 927, 0, '0000-00-00 00:00:00', 0),
+(754, 921, 0, '0000-00-00 00:00:00', 0),
+(755, 928, 0, '0000-00-00 00:00:00', 0),
+(756, 932, 0, '0000-00-00 00:00:00', 0),
+(757, 934, 0, '0000-00-00 00:00:00', 0),
+(758, 935, 0, '0000-00-00 00:00:00', 0),
+(759, 938, 0, '0000-00-00 00:00:00', 0),
+(760, 929, 0, '0000-00-00 00:00:00', 0),
+(761, 939, 0, '0000-00-00 00:00:00', 0),
+(762, 931, 0, '0000-00-00 00:00:00', 0),
+(763, 941, 0, '0000-00-00 00:00:00', 0),
+(764, 947, 0, '0000-00-00 00:00:00', 0),
+(765, 920, 0, '0000-00-00 00:00:00', 0),
+(766, 950, 0, '0000-00-00 00:00:00', 0),
+(767, 944, 0, '0000-00-00 00:00:00', 0),
+(768, 943, 0, '0000-00-00 00:00:00', 0),
+(769, 957, 0, '0000-00-00 00:00:00', 0),
+(770, 940, 0, '0000-00-00 00:00:00', 0),
+(771, 942, 0, '0000-00-00 00:00:00', 0),
+(772, 961, 0, '0000-00-00 00:00:00', 0),
+(773, 962, 0, '0000-00-00 00:00:00', 0),
+(774, 963, 0, '0000-00-00 00:00:00', 0),
+(775, 960, 0, '0000-00-00 00:00:00', 0),
+(776, 633, 0, '0000-00-00 00:00:00', 0),
+(777, 966, 0, '0000-00-00 00:00:00', 0),
+(778, 967, 0, '0000-00-00 00:00:00', 0),
+(779, 965, 0, '0000-00-00 00:00:00', 0),
+(780, 964, 0, '0000-00-00 00:00:00', 0),
+(781, 951, 0, '0000-00-00 00:00:00', 0),
+(782, 952, 0, '0000-00-00 00:00:00', 0),
+(783, 924, 0, '0000-00-00 00:00:00', 0),
+(784, 910, 0, '0000-00-00 00:00:00', 0),
+(785, 913, 0, '0000-00-00 00:00:00', 0),
+(786, 971, 0, '0000-00-00 00:00:00', 0),
+(787, 945, 0, '0000-00-00 00:00:00', 0),
+(788, 665, 0, '0000-00-00 00:00:00', 0),
+(789, 666, 0, '0000-00-00 00:00:00', 0),
+(790, 648, 0, '0000-00-00 00:00:00', 0),
+(791, 973, 0, '0000-00-00 00:00:00', 0),
+(792, 975, 0, '0000-00-00 00:00:00', 0),
+(793, 976, 0, '0000-00-00 00:00:00', 0),
+(794, 933, 0, '0000-00-00 00:00:00', 0),
+(795, 977, 0, '0000-00-00 00:00:00', 0),
+(796, 978, 0, '0000-00-00 00:00:00', 0),
+(797, 979, 0, '0000-00-00 00:00:00', 0),
+(798, 980, 0, '0000-00-00 00:00:00', 0),
+(799, 968, 0, '0000-00-00 00:00:00', 0),
+(800, 981, 0, '0000-00-00 00:00:00', 0),
+(801, 984, 0, '0000-00-00 00:00:00', 0),
+(802, 983, 0, '0000-00-00 00:00:00', 0),
+(803, 974, 0, '0000-00-00 00:00:00', 0),
+(804, 992, 0, '0000-00-00 00:00:00', 0),
+(805, 982, 0, '0000-00-00 00:00:00', 0),
+(806, 985, 0, '0000-00-00 00:00:00', 0),
+(807, 846, 0, '0000-00-00 00:00:00', 0),
+(808, 848, 0, '0000-00-00 00:00:00', 0),
+(809, 785, 0, '0000-00-00 00:00:00', 0),
+(810, 996, 0, '0000-00-00 00:00:00', 0),
+(811, 997, 0, '0000-00-00 00:00:00', 0),
+(812, 998, 0, '0000-00-00 00:00:00', 0),
+(813, 999, 0, '0000-00-00 00:00:00', 0),
+(814, 1000, 0, '0000-00-00 00:00:00', 0),
+(815, 1001, 0, '0000-00-00 00:00:00', 0),
+(816, 972, 0, '0000-00-00 00:00:00', 0),
+(817, 1003, 0, '0000-00-00 00:00:00', 0),
+(818, 1004, 0, '0000-00-00 00:00:00', 0),
+(819, 1005, 0, '0000-00-00 00:00:00', 0),
+(820, 1007, 0, '0000-00-00 00:00:00', 0),
+(821, 816, 0, '0000-00-00 00:00:00', 0),
+(822, 1009, 0, '0000-00-00 00:00:00', 0),
+(823, 817, 0, '0000-00-00 00:00:00', 0),
+(824, 1006, 0, '0000-00-00 00:00:00', 0),
+(825, 1010, 0, '0000-00-00 00:00:00', 0),
+(826, 1011, 0, '0000-00-00 00:00:00', 0),
+(827, 1008, 0, '0000-00-00 00:00:00', 0),
+(828, 1012, 0, '0000-00-00 00:00:00', 0),
+(829, 1013, 0, '0000-00-00 00:00:00', 0),
+(830, 1014, 0, '0000-00-00 00:00:00', 0),
+(831, 1018, 0, '0000-00-00 00:00:00', 0),
+(832, 1019, 0, '0000-00-00 00:00:00', 0),
+(833, 949, 0, '0000-00-00 00:00:00', 0),
+(834, 948, 0, '0000-00-00 00:00:00', 0),
+(835, 1021, 0, '0000-00-00 00:00:00', 0),
+(836, 1022, 0, '0000-00-00 00:00:00', 0),
+(837, 1016, 0, '0000-00-00 00:00:00', 0),
+(838, 1015, 0, '0000-00-00 00:00:00', 0),
+(839, 1017, 0, '0000-00-00 00:00:00', 0),
+(840, 1024, 0, '0000-00-00 00:00:00', 0),
+(841, 1025, 0, '0000-00-00 00:00:00', 0),
+(842, 862, 0, '0000-00-00 00:00:00', 0),
+(843, 1027, 0, '0000-00-00 00:00:00', 0),
+(844, 958, 0, '0000-00-00 00:00:00', 0),
+(845, 995, 0, '0000-00-00 00:00:00', 0),
+(846, 1026, 0, '0000-00-00 00:00:00', 0),
+(847, 1028, 0, '0000-00-00 00:00:00', 0),
+(848, 922, 0, '0000-00-00 00:00:00', 0),
+(849, 1029, 0, '0000-00-00 00:00:00', 0),
+(850, 955, 0, '0000-00-00 00:00:00', 0),
+(851, 936, 0, '0000-00-00 00:00:00', 0),
+(852, 890, 0, '0000-00-00 00:00:00', 0),
+(853, 891, 0, '0000-00-00 00:00:00', 0),
+(854, 986, 0, '0000-00-00 00:00:00', 0),
+(855, 988, 0, '0000-00-00 00:00:00', 0),
+(856, 1031, 0, '0000-00-00 00:00:00', 0),
+(857, 1032, 0, '0000-00-00 00:00:00', 0),
+(858, 1035, 0, '0000-00-00 00:00:00', 0),
+(859, 1036, 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -10059,8 +11111,8 @@ INSERT INTO `sm_customer_c_wallet` (`id`, `customer_id`, `amount`) VALUES
 -- Table structure for table `sm_customer_get_donation`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_get_donation` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_get_donation` (
+  `id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `date_added` datetime NOT NULL,
@@ -10069,15 +11121,7 @@ CREATE TABLE IF NOT EXISTS `sm_customer_get_donation` (
   `gd_number` double NOT NULL,
   `filled` double NOT NULL,
   `check_gd` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `sm_customer_get_donation`
---
-
-INSERT INTO `sm_customer_get_donation` (`id`, `customer_id`, `amount`, `date_added`, `date_finish`, `status`, `gd_number`, `filled`, `check_gd`) VALUES
-(24, 562, 8800000, '2016-09-16 05:15:34', '2016-10-19 05:15:34', 2, 108032898665, 8800000, 0),
-(25, 565, 8800000, '2016-09-16 10:06:00', '2016-10-19 10:06:00', 1, 2559727879, 8800000, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -10085,11 +11129,11 @@ INSERT INTO `sm_customer_get_donation` (`id`, `customer_id`, `amount`, `date_add
 -- Table structure for table `sm_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_group` (
+CREATE TABLE `sm_customer_group` (
   `customer_group_id` int(11) NOT NULL,
   `approval` int(1) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer_group`
@@ -10105,7 +11149,7 @@ INSERT INTO `sm_customer_group` (`customer_group_id`, `approval`, `sort_order`) 
 -- Table structure for table `sm_customer_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_group_description` (
+CREATE TABLE `sm_customer_group_description` (
   `customer_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -10126,12 +11170,12 @@ INSERT INTO `sm_customer_group_description` (`customer_group_id`, `language_id`,
 -- Table structure for table `sm_customer_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_history` (
+CREATE TABLE `sm_customer_history` (
   `customer_history_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `comment` text NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -10139,7 +11183,7 @@ CREATE TABLE IF NOT EXISTS `sm_customer_history` (
 -- Table structure for table `sm_customer_invoice_pd`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_invoice_pd` (
+CREATE TABLE `sm_customer_invoice_pd` (
   `invoice_id` int(11) NOT NULL,
   `invoice_id_hash` double NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -10162,8 +11206,8 @@ CREATE TABLE IF NOT EXISTS `sm_customer_invoice_pd` (
 -- Table structure for table `sm_customer_invoice_pin`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_invoice_pin` (
-  `invoice_id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_invoice_pin` (
+  `invoice_id` int(10) UNSIGNED NOT NULL,
   `invoice_id_hash` double NOT NULL,
   `customer_id` int(11) NOT NULL,
   `secret` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -10176,7 +11220,7 @@ CREATE TABLE IF NOT EXISTS `sm_customer_invoice_pin` (
   `date_created` datetime NOT NULL,
   `pin` int(11) NOT NULL,
   `url_callback` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_invoice_pin`
@@ -10281,7 +11325,9 @@ INSERT INTO `sm_customer_invoice_pin` (`invoice_id`, `invoice_id_hash`, `custome
 (99, 0, 649, '80439ec5d2f0f0b6', '', '', 0, 9787928, 0, 0, '2016-10-09 19:09:26', 10, ''),
 (100, 0, 649, '2c38c5f8290338d9', '', '', 0, 9787130, 0, 0, '2016-10-09 19:09:55', 10, ''),
 (101, 26325119268, 649, '6c189e025cdec248', '14Yiu4nKWck9akztvVhuKeJnMRrepXpKu9', '1Lzc9WEsvXAdXqUokBK3yTJBsP2ZX7Xn6L', 1, 9766579, 9766579, 3, '2016-10-09 19:11:09', 10, 'http://localhost/gogiver/index.php?route=account/token/callback&invoice_id=26325119268&secret=6c189e025cdec248&value=9766579&confirmations=3'),
-(102, 99692329249, 562, '32f417114b4ffc7f', '1DVZBugTMHZEra14HmihmEhyWCo9zWJdim', '1Lzc9WEsvXAdXqUokBK3yTJBsP2ZX7Xn6L', 1, 9756732, 0, 0, '2016-10-10 15:04:37', 10, 'http://localhost/gogiver/index.php?route=account/token/callback&invoice_id=99692329249&secret=32f417114b4ffc7f&value=9756732&confirmations=3');
+(102, 99692329249, 562, '32f417114b4ffc7f', '1DVZBugTMHZEra14HmihmEhyWCo9zWJdim', '1Lzc9WEsvXAdXqUokBK3yTJBsP2ZX7Xn6L', 1, 9756732, 0, 0, '2016-10-10 15:04:37', 10, 'http://localhost/gogiver/index.php?route=account/token/callback&invoice_id=99692329249&secret=32f417114b4ffc7f&value=9756732&confirmations=3'),
+(103, 70951322433, 1, '56b6d84461b2c5f8', '1Fpgf9LBJZoRppDvEcex8yU5T7tPnURRQF', '1Lzc9WEsvXAdXqUokBK3yTJBsP2ZX7Xn6L', 1, 8540925, 0, 0, '2016-11-05 04:07:23', 10, 'http://localhost/mmo/gogiver/index.php?route=account/token/callback&invoice_id=70951322433&secret=56b6d84461b2c5f8&value=8540925&confirmations=3'),
+(104, 73090990120, 590, 'bedf59e5a9b2e406', '1M6shm516yvgTJtU2rkHDYjSP2kXtHz4nf', '1Lzc9WEsvXAdXqUokBK3yTJBsP2ZX7Xn6L', 1, 9445709, 0, 0, '2016-11-05 07:17:09', 11, 'http://localhost/mmo/gogiver/index.php?route=account/token/callback&invoice_id=73090990120&secret=bedf59e5a9b2e406&value=9445709&confirmations=3');
 
 -- --------------------------------------------------------
 
@@ -10289,12 +11335,12 @@ INSERT INTO `sm_customer_invoice_pin` (`invoice_id`, `invoice_id_hash`, `custome
 -- Table structure for table `sm_customer_ip`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_ip` (
+CREATE TABLE `sm_customer_ip` (
   `customer_ip_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=22979 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer_ip`
@@ -33233,7 +34279,12 @@ INSERT INTO `sm_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 (22975, 633, '::1', '2016-10-10 20:16:22'),
 (22976, 564, '::1', '2016-10-10 20:39:01'),
 (22977, 563, '::1', '2016-10-15 12:20:24'),
-(22978, 565, '::1', '2016-10-16 00:03:14');
+(22978, 565, '::1', '2016-10-16 00:03:14'),
+(22979, 539, '::1', '2016-10-24 22:33:13'),
+(22980, 563, '127.0.0.1', '2016-10-26 18:52:02'),
+(22981, 802, '::1', '2016-11-05 10:28:17'),
+(22982, 692, '::1', '2016-11-05 10:38:15'),
+(22983, 590, '::1', '2016-11-05 13:14:32');
 
 -- --------------------------------------------------------
 
@@ -33241,14 +34292,14 @@ INSERT INTO `sm_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 -- Table structure for table `sm_customer_login`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_login` (
+CREATE TABLE `sm_customer_login` (
   `customer_login_id` int(11) NOT NULL,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `total` int(4) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=1263 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer_login`
@@ -33750,85 +34801,13 @@ INSERT INTO `sm_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `d
 -- Table structure for table `sm_customer_message_transfer`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_message_transfer` (
+CREATE TABLE `sm_customer_message_transfer` (
   `id` int(11) NOT NULL,
   `transfer_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `message` text NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sm_customer_message_transfer`
---
-
-INSERT INTO `sm_customer_message_transfer` (`id`, `transfer_id`, `customer_id`, `message`, `date_added`) VALUES
-(1, 1, 1, 'HIHI', '2016-10-08 17:16:00'),
-(2, 1, 972, 'thank you', '2016-10-08 17:16:53'),
-(3, 7, 931, 'B?n xác nh?n giùm mình ?', '2016-10-09 10:09:25'),
-(4, 7, 547, 'Tnk :)', '2016-10-09 10:09:37'),
-(5, 7, 547, 'tnk', '2016-10-09 10:11:21'),
-(6, 10, 0, 'caominhhai1990 ph vietkhoiqnp HM', '2016-10-09 10:22:44'),
-(7, 10, 967, 'caominhhai1990 ph vietkhoiqnp HM up hinh', '2016-10-09 10:32:58'),
-(8, 10, 967, 'caominhhai1990 ph vietkhoiqnp HM', '2016-10-09 10:42:06'),
-(9, 12, 693, 'Chúc b?n thành công cùng HAPPYMONEY.US !', '2016-10-09 11:44:28'),
-(10, 24, 565, '123', '2016-10-16 03:14:52'),
-(11, 24, 565, '123', '2016-10-16 03:14:52'),
-(12, 24, 565, '123', '2016-10-16 03:14:53'),
-(13, 24, 565, '123', '2016-10-16 03:14:54'),
-(14, 24, 565, '123', '2016-10-16 03:14:55'),
-(15, 24, 565, '123', '2016-10-16 03:14:55'),
-(16, 24, 565, '123', '2016-10-16 03:14:55'),
-(17, 24, 565, '123', '2016-10-16 03:14:56'),
-(18, 24, 565, '123', '2016-10-16 03:14:56'),
-(19, 24, 565, '123', '2016-10-16 03:14:56'),
-(20, 24, 565, '123', '2016-10-16 03:14:59'),
-(21, 24, 565, '123', '2016-10-16 03:14:59'),
-(22, 24, 565, '123', '2016-10-16 03:15:00'),
-(23, 24, 565, '123', '2016-10-16 03:15:00'),
-(24, 24, 565, '123', '2016-10-16 03:15:00'),
-(25, 24, 565, '123', '2016-10-16 03:15:05'),
-(26, 26, 565, 'ádsd', '2016-10-16 03:27:18'),
-(27, 26, 565, 'ádasd', '2016-10-16 03:36:59'),
-(28, 26, 565, 'ádasd', '2016-10-16 03:37:01'),
-(29, 26, 565, 'ádasd', '2016-10-16 03:37:01'),
-(30, 26, 565, 'ádasd', '2016-10-16 03:37:01'),
-(31, 26, 565, 'ádasd', '2016-10-16 03:37:06'),
-(32, 26, 565, 'sdasdasd', '2016-10-16 03:39:08'),
-(33, 26, 565, 'aaaaaaa', '2016-10-16 03:48:16'),
-(34, 26, 565, 'aaaaaaa', '2016-10-16 03:48:18'),
-(35, 26, 565, 'aaaaaaa', '2016-10-16 03:48:18'),
-(36, 26, 565, 'aaaaaaa', '2016-10-16 03:48:18'),
-(37, 26, 565, 'aaaaaaa', '2016-10-16 03:48:18'),
-(38, 26, 565, 'aaaaaaa', '2016-10-16 03:48:19'),
-(39, 26, 565, 'ádsad', '2016-10-16 03:49:10'),
-(40, 26, 565, 'ádsad', '2016-10-16 03:49:11'),
-(41, 26, 565, 'ádsad', '2016-10-16 03:49:12'),
-(42, 26, 565, 'ádsad', '2016-10-16 03:49:12'),
-(43, 26, 565, 'ádsad', '2016-10-16 03:49:12'),
-(44, 26, 565, 'ádsad', '2016-10-16 03:49:12'),
-(45, 26, 565, 'ádsad', '2016-10-16 03:49:13'),
-(46, 26, 565, 'ádsad', '2016-10-16 03:49:13'),
-(47, 26, 565, 'ádasd', '2016-10-16 03:49:32'),
-(48, 26, 565, 'ádasd', '2016-10-16 03:49:43'),
-(49, 26, 565, 'ádasd', '2016-10-16 03:49:44'),
-(50, 26, 565, 'ádsad', '2016-10-16 03:50:37'),
-(51, 26, 565, 'ádasd', '2016-10-16 03:52:21'),
-(52, 26, 565, 'sadasdasd', '2016-10-16 03:52:50'),
-(53, 26, 565, 'ádasdsad', '2016-10-16 03:54:04'),
-(54, 26, 565, 'ádasdasd', '2016-10-16 03:54:46'),
-(55, 27, 538, 'ádasd', '2016-10-16 04:01:55'),
-(56, 27, 538, 's', '2016-10-16 04:02:19'),
-(57, 27, 538, 'q?eqwe', '2016-10-16 04:03:09'),
-(58, 27, 538, '1', '2016-10-16 04:03:15'),
-(59, 28, 538, 'ádasd', '2016-10-16 04:19:36'),
-(60, 28, 538, 'ádasd', '2016-10-16 04:19:37'),
-(61, 28, 538, 'ádasd', '2016-10-16 04:19:37'),
-(62, 29, 565, 'asdasdasd', '2016-10-16 05:15:58'),
-(63, 29, 565, 'adssad', '2016-10-16 05:16:30'),
-(64, 29, 565, 'sadasd', '2016-10-16 05:16:44'),
-(65, 29, 562, 'asdsad', '2016-10-16 05:17:31'),
-(66, 30, 562, 'q?e', '2016-10-16 10:09:55');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -33836,7 +34815,7 @@ INSERT INTO `sm_customer_message_transfer` (`id`, `transfer_id`, `customer_id`, 
 -- Table structure for table `sm_customer_ml`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_ml` (
+CREATE TABLE `sm_customer_ml` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
@@ -33848,33 +34827,33 @@ CREATE TABLE IF NOT EXISTS `sm_customer_ml` (
   `right` int(11) DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `customer_code` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=1044 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_customer_ml`
 --
 
 INSERT INTO `sm_customer_ml` (`id`, `customer_id`, `date_added`, `date_end`, `level`, `p_node`, `p_binary`, `left`, `right`, `status`, `customer_code`) VALUES
-(1, 1, '2016-07-29 17:17:30', '0000-00-00 00:00:00', 1, 0, 0, 0, 0, 1, ''),
+(1, 1, '2016-07-29 17:17:30', '0000-00-00 00:00:00', 5, 0, 0, 0, 0, 1, ''),
 (545, 538, '2016-09-19 00:21:03', '0000-00-00 00:00:00', 1, 1, 1, 0, 0, 1, ''),
-(546, 539, '2016-09-19 00:29:39', '0000-00-00 00:00:00', 1, 1, 1, 0, 0, 1, ''),
-(547, 540, '2016-09-19 02:02:30', '0000-00-00 00:00:00', 1, 539, 539, 0, 0, 1, ''),
+(546, 539, '2016-09-19 00:29:39', '0000-00-00 00:00:00', 4, 1, 1, 0, 0, 1, ''),
+(547, 540, '2016-09-19 02:02:30', '0000-00-00 00:00:00', 4, 539, 539, 0, 0, 1, ''),
 (548, 541, '2016-09-19 03:26:14', '0000-00-00 00:00:00', 1, 539, 539, 0, 0, 1, ''),
 (549, 542, '2016-09-20 02:23:05', '0000-00-00 00:00:00', 1, 540, 540, 0, 0, 1, ''),
 (550, 543, '2016-09-20 02:24:38', '0000-00-00 00:00:00', 1, 540, 540, 0, 0, 1, ''),
 (551, 544, '2016-09-20 06:06:10', '0000-00-00 00:00:00', 1, 540, 540, 0, 0, 1, ''),
 (552, 545, '2016-09-20 06:08:32', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
-(553, 546, '2016-09-20 06:09:26', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
+(553, 546, '2016-09-20 06:09:26', '0000-00-00 00:00:00', 3, 544, 544, 0, 0, 1, ''),
 (554, 547, '2016-09-20 08:41:18', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
 (555, 548, '2016-09-20 08:45:04', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
-(556, 549, '2016-09-20 08:51:27', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
+(556, 549, '2016-09-20 08:51:27', '0000-00-00 00:00:00', 2, 544, 544, 0, 0, 1, ''),
 (557, 550, '2016-09-20 08:58:01', '0000-00-00 00:00:00', 1, 544, 544, 0, 0, 1, ''),
 (558, 551, '2016-09-20 10:12:43', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
-(559, 552, '2016-09-20 10:21:14', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
+(559, 552, '2016-09-20 10:21:14', '0000-00-00 00:00:00', 2, 550, 550, 0, 0, 1, ''),
 (560, 553, '2016-09-20 10:57:43', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
 (561, 554, '2016-09-20 12:52:49', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
 (562, 555, '2016-09-20 12:59:50', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
-(563, 556, '2016-09-20 13:06:29', '0000-00-00 00:00:00', 1, 555, 555, 0, 0, 1, ''),
+(563, 556, '2016-09-20 13:06:29', '0000-00-00 00:00:00', 2, 555, 555, 0, 0, 1, ''),
 (564, 557, '2016-09-20 13:09:33', '0000-00-00 00:00:00', 1, 555, 555, 0, 0, 1, ''),
 (565, 558, '2016-09-20 13:17:18', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
 (566, 559, '2016-09-20 13:21:57', '0000-00-00 00:00:00', 1, 550, 550, 0, 0, 1, ''),
@@ -33883,7 +34862,7 @@ INSERT INTO `sm_customer_ml` (`id`, `customer_id`, `date_added`, `date_end`, `le
 (569, 562, '2016-09-20 14:18:20', '0000-00-00 00:00:00', 2, 561, 561, 0, 0, 1, ''),
 (570, 563, '2016-09-20 14:20:07', '0000-00-00 00:00:00', 1, 551, 551, 0, 0, 1, ''),
 (571, 564, '2016-09-20 14:21:11', '0000-00-00 00:00:00', 1, 561, 561, 0, 0, 1, ''),
-(572, 565, '2016-09-20 14:22:09', '0000-00-00 00:00:00', 1, 551, 551, 0, 0, 1, ''),
+(572, 565, '2016-09-20 14:22:09', '0000-00-00 00:00:00', 2, 551, 551, 0, 0, 1, ''),
 (573, 566, '2016-09-20 14:23:00', '0000-00-00 00:00:00', 1, 561, 561, 0, 0, 1, ''),
 (574, 567, '2016-09-20 14:27:14', '0000-00-00 00:00:00', 1, 551, 551, 0, 0, 1, ''),
 (575, 568, '2016-09-20 14:32:41', '0000-00-00 00:00:00', 1, 562, 562, 0, 0, 1, ''),
@@ -34010,7 +34989,7 @@ INSERT INTO `sm_customer_ml` (`id`, `customer_id`, `date_added`, `date_end`, `le
 (696, 689, '2016-09-26 02:17:51', '0000-00-00 00:00:00', 1, 630, 630, 0, 0, 1, ''),
 (697, 690, '2016-09-26 02:23:54', '0000-00-00 00:00:00', 1, 599, 599, 0, 0, 1, ''),
 (698, 691, '2016-09-26 02:33:44', '0000-00-00 00:00:00', 1, 630, 630, 0, 0, 1, ''),
-(699, 692, '2016-10-03 12:30:00', '0000-00-00 00:00:00', 1, 539, 539, 0, 0, 1, ''),
+(699, 692, '2016-10-03 12:30:00', '0000-00-00 00:00:00', 3, 539, 539, 0, 0, 1, ''),
 (700, 693, '2016-10-03 13:54:54', '0000-00-00 00:00:00', 1, 539, 539, 0, 0, 1, ''),
 (701, 694, '2016-10-03 15:44:44', '0000-00-00 00:00:00', 1, 561, 561, 0, 0, 1, ''),
 (702, 695, '2016-10-03 20:13:31', '0000-00-00 00:00:00', 1, 638, 638, 0, 0, 1, ''),
@@ -34122,7 +35101,7 @@ INSERT INTO `sm_customer_ml` (`id`, `customer_id`, `date_added`, `date_end`, `le
 (808, 801, '2016-10-04 22:11:45', '0000-00-00 00:00:00', 1, 678, 678, 0, 0, 1, ''),
 (809, 802, '2016-10-04 23:51:08', '0000-00-00 00:00:00', 1, 692, 692, 0, 0, 1, ''),
 (810, 803, '2016-10-04 23:53:36', '0000-00-00 00:00:00', 1, 692, 692, 0, 0, 1, ''),
-(811, 804, '2016-10-04 23:56:54', '0000-00-00 00:00:00', 1, 692, 692, 0, 0, 1, ''),
+(811, 804, '2016-10-04 23:56:54', '0000-00-00 00:00:00', 2, 692, 692, 0, 0, 1, ''),
 (812, 805, '2016-10-05 00:11:37', '0000-00-00 00:00:00', 1, 692, 692, 0, 0, 1, ''),
 (813, 806, '2016-10-05 00:30:53', '0000-00-00 00:00:00', 1, 713, 713, 0, 0, 1, ''),
 (814, 807, '2016-10-05 02:35:21', '0000-00-00 00:00:00', 1, 626, 626, 0, 0, 1, ''),
@@ -34362,12 +35341,12 @@ INSERT INTO `sm_customer_ml` (`id`, `customer_id`, `date_added`, `date_end`, `le
 -- Table structure for table `sm_customer_m_wallet`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_m_wallet` (
+CREATE TABLE `sm_customer_m_wallet` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=856 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_m_wallet`
@@ -35236,7 +36215,7 @@ INSERT INTO `sm_customer_m_wallet` (`id`, `customer_id`, `amount`, `date`) VALUE
 -- Table structure for table `sm_customer_online`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_online` (
+CREATE TABLE `sm_customer_online` (
   `ip` varchar(40) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `url` text NOT NULL,
@@ -35250,10 +36229,10 @@ CREATE TABLE IF NOT EXISTS `sm_customer_online` (
 -- Table structure for table `sm_customer_profit_custom`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_profit_custom` (
+CREATE TABLE `sm_customer_profit_custom` (
   `id` int(11) NOT NULL,
   `profit` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_profit_custom`
@@ -35268,8 +36247,8 @@ INSERT INTO `sm_customer_profit_custom` (`id`, `profit`) VALUES
 -- Table structure for table `sm_customer_provide_donation`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_provide_donation` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_provide_donation` (
+  `id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(11) NOT NULL,
   `check_withdrawal` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
@@ -35284,19 +36263,14 @@ CREATE TABLE IF NOT EXISTS `sm_customer_provide_donation` (
   `check_R_Wallet` int(11) NOT NULL,
   `check_return_profit` float NOT NULL DEFAULT '0',
   `cycle` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_provide_donation`
 --
 
 INSERT INTO `sm_customer_provide_donation` (`id`, `customer_id`, `check_withdrawal`, `date_added`, `date_finish`, `date_finish_forAdmin`, `date_update_profit`, `pd_number`, `filled`, `max_profit`, `status`, `amount`, `check_R_Wallet`, `check_return_profit`, `cycle`) VALUES
-(128, 565, 0, '2016-09-16 05:15:07', '2016-10-17 22:15:34', '2016-11-15 05:15:07', '0000-00-00 00:00:00', '22282451270', 8800000, 11440000, 1, 8800000, 1, 0, 0),
-(129, 562, 0, '2016-09-16 10:05:31', '2016-10-18 03:06:00', '2016-11-15 10:05:31', '0000-00-00 00:00:00', '100211708232', 8800000, 11440000, 2, 8800000, 1, 0, 0),
-(130, 562, 0, '2016-10-16 10:14:45', '2016-11-15 10:14:45', '2016-11-15 10:14:45', '0000-00-00 00:00:00', '5369849719', 8800000, 11440000, 0, 0, 1, 0, 0),
-(131, 562, 0, '2016-10-16 10:16:59', '2016-11-15 10:16:59', '2016-11-15 10:16:59', '0000-00-00 00:00:00', '142648362279', 8800000, 11440000, 0, 0, 1, 0, 0),
-(132, 562, 0, '2016-10-16 19:37:25', '2016-11-15 19:37:25', '2016-11-15 19:37:25', '0000-00-00 00:00:00', '17991955609', 44000000, 11440000, 0, 0, 1, 0, 0),
-(133, 562, 0, '2016-10-16 19:47:32', '2016-11-15 19:47:32', '2016-11-15 19:47:32', '0000-00-00 00:00:00', '104530510665', 44000000, 57200000, 0, 0, 1, 0, 0);
+(1, 830, 0, '2016-11-05 08:18:09', '2016-11-04 08:18:09', '2016-12-05 08:18:09', '0000-00-00 00:00:00', '139626751763', 8800000, 11440000, 2, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -35304,7 +36278,7 @@ INSERT INTO `sm_customer_provide_donation` (`id`, `customer_id`, `check_withdraw
 -- Table structure for table `sm_customer_reward`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_reward` (
+CREATE TABLE `sm_customer_reward` (
   `customer_reward_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT '0',
@@ -35319,11 +36293,11 @@ CREATE TABLE IF NOT EXISTS `sm_customer_reward` (
 -- Table structure for table `sm_customer_r_wallet`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_r_wallet` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_r_wallet` (
+  `id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(11) NOT NULL,
   `amount` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1037 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_customer_r_wallet`
@@ -35919,7 +36893,7 @@ INSERT INTO `sm_customer_r_wallet` (`id`, `customer_id`, `amount`) VALUES
 (587, 587, 0),
 (588, 588, 0),
 (589, 589, 0),
-(590, 590, 0),
+(590, 590, 22880000),
 (591, 591, 0),
 (592, 592, 0),
 (593, 593, 0),
@@ -36159,7 +37133,7 @@ INSERT INTO `sm_customer_r_wallet` (`id`, `customer_id`, `amount`) VALUES
 (827, 827, 0),
 (828, 828, 0),
 (829, 829, 0),
-(830, 830, 0),
+(830, 830, 11440000),
 (831, 831, 0),
 (832, 832, 0),
 (833, 833, 0),
@@ -36373,7 +37347,7 @@ INSERT INTO `sm_customer_r_wallet` (`id`, `customer_id`, `amount`) VALUES
 -- Table structure for table `sm_customer_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_transaction` (
+CREATE TABLE `sm_customer_transaction` (
   `customer_transaction_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -36388,32 +37362,15 @@ CREATE TABLE IF NOT EXISTS `sm_customer_transaction` (
 -- Table structure for table `sm_customer_transaction_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_transaction_history` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_transaction_history` (
+  `id` int(10) UNSIGNED NOT NULL,
   `text_amount` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_added` datetime NOT NULL,
   `wallet` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `system_decsription` text COLLATE utf8_unicode_ci NOT NULL,
-  `customer_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `sm_customer_transaction_history`
---
-
-INSERT INTO `sm_customer_transaction_history` (`id`, `text_amount`, `date_added`, `wallet`, `system_decsription`, `customer_id`) VALUES
-(26, '+ 440,000 VNĐ', '2016-10-10 23:41:32', 'Thưởng trực tiếp', '10% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(27, '+ 44,000 VNĐ', '2016-10-10 23:41:32', 'Thưởng quản lý', '0.5% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(28, '+ 8,800 VNĐ', '2016-10-10 23:41:32', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(29, '+ 8,800 VNĐ', '2016-10-10 23:41:32', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(30, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(31, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(32, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(33, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(34, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(35, '+ 8,800 VNĐ', '2016-10-10 23:41:33', 'Thưởng liên tầng', '0.1% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(36, '+ 440,000 VNĐ', '2016-10-10 23:41:32', 'Thưởng trực tiếp', '10% từ PH tunglam1 (8,800,000 VNĐ)', 538),
-(37, '+ 440,000 VNĐ', '2016-10-10 23:41:32', 'Thưởng trực tiếp', '10% từ PH tunglam1 (8,800,000 VNĐ)', 538);
+  `customer_id` int(11) NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -36421,8 +37378,8 @@ INSERT INTO `sm_customer_transaction_history` (`id`, `text_amount`, `date_added`
 -- Table structure for table `sm_customer_transfer_list`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_customer_transfer_list` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `sm_customer_transfer_list` (
+  `id` int(10) UNSIGNED NOT NULL,
   `pd_id` int(11) NOT NULL,
   `gd_id` int(11) NOT NULL,
   `pd_id_customer` int(11) NOT NULL,
@@ -36434,17 +37391,9 @@ CREATE TABLE IF NOT EXISTS `sm_customer_transfer_list` (
   `pd_satatus` tinyint(4) NOT NULL COMMENT '0: watting 1: finish 2: report',
   `gd_status` tinyint(4) NOT NULL COMMENT '0: watting 1: finish  2: report',
   `image` text COLLATE utf8_unicode_ci NOT NULL,
-  `input_transaction_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status_pnode_pd` int(11) NOT NULL COMMENT '0: cha chưa PD, 1 cha PD rồi',
   `transaction_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `sm_customer_transfer_list`
---
-
-INSERT INTO `sm_customer_transfer_list` (`id`, `pd_id`, `gd_id`, `pd_id_customer`, `gd_id_customer`, `transfer_code`, `date_added`, `date_finish`, `amount`, `pd_satatus`, `gd_status`, `image`, `input_transaction_hash`, `transaction_hash`) VALUES
-(29, 128, 24, 565, 562, '108032898665', '2016-10-16 10:15:34', '2016-10-17 22:15:34', 8800000, 0, 2, '', '', ''),
-(30, 129, 25, 562, 565, '2559727879', '2016-10-16 15:06:00', '2016-10-18 03:06:00', 8800000, 1, 0, 'http://localhost/gogiver/system/upload/30_coollogo_com-309951596.png.563ef5c43eb3d229ec569d0d70cdffc7', '', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -36452,7 +37401,7 @@ INSERT INTO `sm_customer_transfer_list` (`id`, `pd_id`, `gd_id`, `pd_id_customer
 -- Table structure for table `sm_custom_field`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_custom_field` (
+CREATE TABLE `sm_custom_field` (
   `custom_field_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `value` text NOT NULL,
@@ -36467,7 +37416,7 @@ CREATE TABLE IF NOT EXISTS `sm_custom_field` (
 -- Table structure for table `sm_custom_field_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_custom_field_customer_group` (
+CREATE TABLE `sm_custom_field_customer_group` (
   `custom_field_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   `required` tinyint(1) NOT NULL
@@ -36479,7 +37428,7 @@ CREATE TABLE IF NOT EXISTS `sm_custom_field_customer_group` (
 -- Table structure for table `sm_custom_field_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_custom_field_description` (
+CREATE TABLE `sm_custom_field_description` (
   `custom_field_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL
@@ -36491,7 +37440,7 @@ CREATE TABLE IF NOT EXISTS `sm_custom_field_description` (
 -- Table structure for table `sm_custom_field_value`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_custom_field_value` (
+CREATE TABLE `sm_custom_field_value` (
   `custom_field_value_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -36503,7 +37452,7 @@ CREATE TABLE IF NOT EXISTS `sm_custom_field_value` (
 -- Table structure for table `sm_custom_field_value_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_custom_field_value_description` (
+CREATE TABLE `sm_custom_field_value_description` (
   `custom_field_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
@@ -36516,7 +37465,7 @@ CREATE TABLE IF NOT EXISTS `sm_custom_field_value_description` (
 -- Table structure for table `sm_download`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_download` (
+CREATE TABLE `sm_download` (
   `download_id` int(11) NOT NULL,
   `filename` varchar(128) NOT NULL,
   `mask` varchar(128) NOT NULL,
@@ -36529,7 +37478,7 @@ CREATE TABLE IF NOT EXISTS `sm_download` (
 -- Table structure for table `sm_download_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_download_description` (
+CREATE TABLE `sm_download_description` (
   `download_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -36541,7 +37490,7 @@ CREATE TABLE IF NOT EXISTS `sm_download_description` (
 -- Table structure for table `sm_event`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_event` (
+CREATE TABLE `sm_event` (
   `event_id` int(11) NOT NULL,
   `code` varchar(32) NOT NULL,
   `trigger` text NOT NULL,
@@ -36554,11 +37503,11 @@ CREATE TABLE IF NOT EXISTS `sm_event` (
 -- Table structure for table `sm_extension`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_extension` (
+CREATE TABLE `sm_extension` (
   `extension_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=448 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_extension`
@@ -36597,7 +37546,7 @@ INSERT INTO `sm_extension` (`extension_id`, `type`, `code`) VALUES
 -- Table structure for table `sm_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_filter` (
+CREATE TABLE `sm_filter` (
   `filter_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -36609,7 +37558,7 @@ CREATE TABLE IF NOT EXISTS `sm_filter` (
 -- Table structure for table `sm_filter_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_filter_description` (
+CREATE TABLE `sm_filter_description` (
   `filter_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
@@ -36622,7 +37571,7 @@ CREATE TABLE IF NOT EXISTS `sm_filter_description` (
 -- Table structure for table `sm_filter_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_filter_group` (
+CREATE TABLE `sm_filter_group` (
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -36633,7 +37582,7 @@ CREATE TABLE IF NOT EXISTS `sm_filter_group` (
 -- Table structure for table `sm_filter_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_filter_group_description` (
+CREATE TABLE `sm_filter_group_description` (
   `filter_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -36645,13 +37594,13 @@ CREATE TABLE IF NOT EXISTS `sm_filter_group_description` (
 -- Table structure for table `sm_geo_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_geo_zone` (
+CREATE TABLE `sm_geo_zone` (
   `geo_zone_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_modified` datetime NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_geo_zone`
@@ -36667,12 +37616,12 @@ INSERT INTO `sm_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`
 -- Table structure for table `sm_information`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_information` (
+CREATE TABLE `sm_information` (
   `information_id` int(11) NOT NULL,
   `bottom` int(1) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_information`
@@ -36687,7 +37636,7 @@ INSERT INTO `sm_information` (`information_id`, `bottom`, `sort_order`, `status`
 -- Table structure for table `sm_information_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_information_description` (
+CREATE TABLE `sm_information_description` (
   `information_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -36711,7 +37660,7 @@ INSERT INTO `sm_information_description` (`information_id`, `language_id`, `titl
 -- Table structure for table `sm_information_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_information_to_layout` (
+CREATE TABLE `sm_information_to_layout` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
@@ -36730,7 +37679,7 @@ INSERT INTO `sm_information_to_layout` (`information_id`, `store_id`, `layout_id
 -- Table structure for table `sm_information_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_information_to_store` (
+CREATE TABLE `sm_information_to_store` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -36748,7 +37697,7 @@ INSERT INTO `sm_information_to_store` (`information_id`, `store_id`) VALUES
 -- Table structure for table `sm_language`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_language` (
+CREATE TABLE `sm_language` (
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `code` varchar(5) NOT NULL,
@@ -36757,7 +37706,7 @@ CREATE TABLE IF NOT EXISTS `sm_language` (
   `directory` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_language`
@@ -36773,10 +37722,10 @@ INSERT INTO `sm_language` (`language_id`, `name`, `code`, `locale`, `image`, `di
 -- Table structure for table `sm_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_layout` (
+CREATE TABLE `sm_layout` (
   `layout_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_layout`
@@ -36805,13 +37754,13 @@ INSERT INTO `sm_layout` (`layout_id`, `name`) VALUES
 -- Table structure for table `sm_layout_module`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_layout_module` (
+CREATE TABLE `sm_layout_module` (
   `layout_module_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=165 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_layout_module`
@@ -36835,12 +37784,12 @@ INSERT INTO `sm_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 -- Table structure for table `sm_layout_route`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_layout_route` (
+CREATE TABLE `sm_layout_route` (
   `layout_route_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_layout_route`
@@ -36869,10 +37818,10 @@ INSERT INTO `sm_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 -- Table structure for table `sm_length_class`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_length_class` (
+CREATE TABLE `sm_length_class` (
   `length_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_length_class`
@@ -36889,12 +37838,12 @@ INSERT INTO `sm_length_class` (`length_class_id`, `value`) VALUES
 -- Table structure for table `sm_length_class_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_length_class_description` (
+CREATE TABLE `sm_length_class_description` (
   `length_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `unit` varchar(4) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_length_class_description`
@@ -36914,7 +37863,7 @@ INSERT INTO `sm_length_class_description` (`length_class_id`, `language_id`, `ti
 -- Table structure for table `sm_location`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_location` (
+CREATE TABLE `sm_location` (
   `location_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `address` text NOT NULL,
@@ -36932,12 +37881,12 @@ CREATE TABLE IF NOT EXISTS `sm_location` (
 -- Table structure for table `sm_manufacturer`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_manufacturer` (
+CREATE TABLE `sm_manufacturer` (
   `manufacturer_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_manufacturer`
@@ -36957,7 +37906,7 @@ INSERT INTO `sm_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`)
 -- Table structure for table `sm_manufacturer_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_manufacturer_to_store` (
+CREATE TABLE `sm_manufacturer_to_store` (
   `manufacturer_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -36980,7 +37929,7 @@ INSERT INTO `sm_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 -- Table structure for table `sm_marketing`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_marketing` (
+CREATE TABLE `sm_marketing` (
   `marketing_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `description` text NOT NULL,
@@ -36995,11 +37944,11 @@ CREATE TABLE IF NOT EXISTS `sm_marketing` (
 -- Table structure for table `sm_member_level`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_member_level` (
+CREATE TABLE `sm_member_level` (
   `id` int(11) NOT NULL,
   `name_vn` varchar(255) NOT NULL,
   `name_en` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_member_level`
@@ -37014,7 +37963,7 @@ INSERT INTO `sm_member_level` (`id`, `name_vn`, `name_en`) VALUES
 -- Table structure for table `sm_modification`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_modification` (
+CREATE TABLE `sm_modification` (
   `modification_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `code` varchar(64) NOT NULL,
@@ -37032,12 +37981,12 @@ CREATE TABLE IF NOT EXISTS `sm_modification` (
 -- Table structure for table `sm_module`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_module` (
+CREATE TABLE `sm_module` (
   `module_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `code` varchar(32) NOT NULL,
   `setting` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_module`
@@ -37059,7 +38008,7 @@ INSERT INTO `sm_module` (`module_id`, `name`, `code`, `setting`) VALUES
 -- Table structure for table `sm_openbay_faq`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_openbay_faq` (
+CREATE TABLE `sm_openbay_faq` (
   `id` int(11) NOT NULL,
   `route` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -37070,11 +38019,11 @@ CREATE TABLE IF NOT EXISTS `sm_openbay_faq` (
 -- Table structure for table `sm_option`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_option` (
+CREATE TABLE `sm_option` (
   `option_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_option`
@@ -37099,7 +38048,7 @@ INSERT INTO `sm_option` (`option_id`, `type`, `sort_order`) VALUES
 -- Table structure for table `sm_option_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_option_description` (
+CREATE TABLE `sm_option_description` (
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL
@@ -37139,12 +38088,12 @@ INSERT INTO `sm_option_description` (`option_id`, `language_id`, `name`) VALUES
 -- Table structure for table `sm_option_value`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_option_value` (
+CREATE TABLE `sm_option_value` (
   `option_value_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_option_value`
@@ -37172,7 +38121,7 @@ INSERT INTO `sm_option_value` (`option_value_id`, `option_id`, `image`, `sort_or
 -- Table structure for table `sm_option_value_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_option_value_description` (
+CREATE TABLE `sm_option_value_description` (
   `option_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
@@ -37219,7 +38168,7 @@ INSERT INTO `sm_option_value_description` (`option_value_id`, `language_id`, `op
 -- Table structure for table `sm_order`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order` (
+CREATE TABLE `sm_order` (
   `order_id` int(11) NOT NULL,
   `invoice_no` int(11) NOT NULL DEFAULT '0',
   `invoice_prefix` varchar(26) NOT NULL,
@@ -37289,7 +38238,7 @@ CREATE TABLE IF NOT EXISTS `sm_order` (
 -- Table structure for table `sm_order_custom_field`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_custom_field` (
+CREATE TABLE `sm_order_custom_field` (
   `order_custom_field_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
@@ -37306,7 +38255,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_custom_field` (
 -- Table structure for table `sm_order_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_history` (
+CREATE TABLE `sm_order_history` (
   `order_history_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_status_id` int(11) NOT NULL,
@@ -37321,7 +38270,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_history` (
 -- Table structure for table `sm_order_option`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_option` (
+CREATE TABLE `sm_order_option` (
   `order_option_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_product_id` int(11) NOT NULL,
@@ -37338,7 +38287,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_option` (
 -- Table structure for table `sm_order_product`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_product` (
+CREATE TABLE `sm_order_product` (
   `order_product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -37357,7 +38306,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_product` (
 -- Table structure for table `sm_order_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_recurring` (
+CREATE TABLE `sm_order_recurring` (
   `order_recurring_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
@@ -37386,7 +38335,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_recurring` (
 -- Table structure for table `sm_order_recurring_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_recurring_transaction` (
+CREATE TABLE `sm_order_recurring_transaction` (
   `order_recurring_transaction_id` int(11) NOT NULL,
   `order_recurring_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
@@ -37401,11 +38350,11 @@ CREATE TABLE IF NOT EXISTS `sm_order_recurring_transaction` (
 -- Table structure for table `sm_order_status`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_status` (
+CREATE TABLE `sm_order_status` (
   `order_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_order_status`
@@ -37447,7 +38396,7 @@ INSERT INTO `sm_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 -- Table structure for table `sm_order_total`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_total` (
+CREATE TABLE `sm_order_total` (
   `order_total_id` int(10) NOT NULL,
   `order_id` int(11) NOT NULL,
   `code` varchar(32) NOT NULL,
@@ -37462,7 +38411,7 @@ CREATE TABLE IF NOT EXISTS `sm_order_total` (
 -- Table structure for table `sm_order_voucher`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_order_voucher` (
+CREATE TABLE `sm_order_voucher` (
   `order_voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
@@ -37483,11 +38432,11 @@ CREATE TABLE IF NOT EXISTS `sm_order_voucher` (
 -- Table structure for table `sm_pd_timer`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_pd_timer` (
+CREATE TABLE `sm_pd_timer` (
   `id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_pd_timer`
@@ -37502,7 +38451,7 @@ INSERT INTO `sm_pd_timer` (`id`, `date`, `total`) VALUES
 -- Table structure for table `sm_ping_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_ping_history` (
+CREATE TABLE `sm_ping_history` (
   `id` int(11) NOT NULL,
   `id_customer` int(11) NOT NULL,
   `amount` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -37510,7 +38459,7 @@ CREATE TABLE IF NOT EXISTS `sm_ping_history` (
   `user_description` text COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `system_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=621 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_ping_history`
@@ -38132,7 +39081,57 @@ INSERT INTO `sm_ping_history` (`id`, `id_customer`, `amount`, `date_added`, `use
 (617, 562, '- 12', '2016-10-17 00:10:42', 'hidden description', 'Giao Dịch Pin', 'ID được nhận happymoney'),
 (618, 539, '+ 12', '2016-10-17 00:10:42', 'hidden description', 'Giao Dịch Pin', 'ID chuyển ngocthanh'),
 (619, 562, '- 1', '2016-10-17 00:37:25', 'Sủ dụng Pin cho PH17991955609', 'PD', 'Sủ dụng Pin cho PH17991955609'),
-(620, 562, '- 1', '2016-10-17 00:47:33', 'Sủ dụng Pin cho PH104530510665', 'PD', 'Sủ dụng Pin cho PH104530510665');
+(620, 562, '- 1', '2016-10-17 00:47:33', 'Sủ dụng Pin cho PH104530510665', 'PD', 'Sủ dụng Pin cho PH104530510665'),
+(621, 1, '- 1', '2016-10-24 22:26:04', 'Sủ dụng Pin cho PH10019223314', 'PD', 'Sủ dụng Pin cho PH10019223314'),
+(622, 539, '- 1', '2016-10-24 23:16:45', 'Sủ dụng Pin cho PH137812725830', 'PD', 'Sủ dụng Pin cho PH137812725830'),
+(623, 539, '- 1', '2016-10-24 23:21:23', 'Sủ dụng Pin cho PH21847168544', 'PD', 'Sủ dụng Pin cho PH21847168544'),
+(624, 539, '- 1', '2016-10-24 23:22:08', 'Sủ dụng Pin cho PH100733038886', 'PD', 'Sủ dụng Pin cho PH100733038886'),
+(625, 539, '- 1', '2016-10-24 23:22:09', 'Sủ dụng Pin cho PH4447350865', 'PD', 'Sủ dụng Pin cho PH4447350865'),
+(626, 539, '- 1', '2016-10-24 23:27:27', 'Sủ dụng Pin cho PH107447931461', 'PD', 'Sủ dụng Pin cho PH107447931461'),
+(627, 539, '- 1', '2016-10-24 23:28:46', 'Sủ dụng Pin cho PH75473944976', 'PD', 'Sủ dụng Pin cho PH75473944976'),
+(628, 562, '- 1', '2016-10-24 23:31:02', 'Sủ dụng Pin cho PH34478765878', 'PD', 'Sủ dụng Pin cho PH34478765878'),
+(629, 539, '- 1', '2016-10-24 23:34:15', 'Sủ dụng Pin cho PH87377283192', 'PD', 'Sủ dụng Pin cho PH87377283192'),
+(630, 539, '- 1', '2016-10-24 23:35:19', 'Sủ dụng Pin cho PH23238104118', 'PD', 'Sủ dụng Pin cho PH23238104118'),
+(631, 539, '- 1', '2016-10-24 23:35:38', 'Sủ dụng Pin cho PH70888546389', 'PD', 'Sủ dụng Pin cho PH70888546389'),
+(632, 539, '- 1', '2016-10-24 23:37:12', 'Sủ dụng Pin cho PH39461548919', 'PD', 'Sủ dụng Pin cho PH39461548919'),
+(633, 562, '- 1', '2016-10-26 00:40:51', 'Sủ dụng Pin cho PH83341166725', 'PD', 'Sủ dụng Pin cho PH83341166725'),
+(634, 539, '- 1', '2016-10-26 00:44:29', 'Sủ dụng Pin cho PH26937426549', 'PD', 'Sủ dụng Pin cho PH26937426549'),
+(635, 633, '- 1', '2016-10-26 00:47:43', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(636, 633, '- 1', '2016-10-26 00:49:59', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(637, 565, '- 1', '2016-10-26 00:51:28', 'Sủ dụng Pin cho PH18524230711', 'PD', 'Sủ dụng Pin cho PH18524230711'),
+(638, 562, '- 1', '2016-10-26 08:14:09', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(639, 633, '- 1', '2016-10-26 08:19:13', 'Sủ dụng Pin cho PH18524230711', 'PD', 'Sủ dụng Pin cho PH18524230711'),
+(640, 565, '- 1', '2016-10-26 08:22:55', 'Sủ dụng Pin cho PH104191841809', 'PD', 'Sủ dụng Pin cho PH104191841809'),
+(641, 633, '- 1', '2016-10-26 09:00:04', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(642, 633, '- 1', '2016-10-26 09:09:37', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(643, 633, '- 1', '2016-10-26 09:29:40', 'Sủ dụng Pin cho PH18524230711', 'PD', 'Sủ dụng Pin cho PH18524230711'),
+(644, 633, '- 1', '2016-10-26 09:34:43', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(645, 565, '- 1', '2016-10-26 09:39:07', 'Sủ dụng Pin cho PH18524230711', 'PD', 'Sủ dụng Pin cho PH18524230711'),
+(646, 564, '- 1', '2016-10-26 06:38:10', 'Sủ dụng Pin cho GH39812696327', 'PD', 'Sủ dụng Pin cho GH39812696327'),
+(647, 564, '- 1', '2016-10-26 06:39:39', 'Sủ dụng Pin cho GH90302601316', 'GD', 'Sủ dụng Pin cho GH90302601316'),
+(648, 564, '- 1', '2016-10-26 06:43:02', 'Sủ dụng Pin cho GH32288215128', 'GD', 'Sủ dụng Pin cho GH32288215128'),
+(649, 564, '- 1', '2016-10-26 06:43:35', 'Sủ dụng Pin cho GH77611751268', 'GD', 'Sủ dụng Pin cho GH77611751268'),
+(650, 564, '- 1', '2016-10-26 06:44:49', 'Sủ dụng Pin cho GH70337712770', 'GD', 'Sủ dụng Pin cho GH70337712770'),
+(651, 564, '- 1', '2016-10-26 06:45:17', 'Sủ dụng Pin cho GH82947768691', 'GD', 'Sủ dụng Pin cho GH82947768691'),
+(652, 564, '- 1', '2016-10-26 06:47:16', 'Sủ dụng Pin cho GH27419820597', 'GD', 'Sủ dụng Pin cho GH27419820597'),
+(653, 564, '- 1', '2016-10-26 07:03:43', 'Sủ dụng Pin cho GH109290197524', 'GD', 'Sủ dụng Pin cho GH109290197524'),
+(654, 564, '- 1', '2016-10-26 07:05:17', 'Sủ dụng Pin cho GH1112622948', 'GD', 'Sủ dụng Pin cho GH1112622948'),
+(655, 564, '- 1', '2016-10-26 07:05:46', 'Sủ dụng Pin cho GH96730632248', 'GD', 'Sủ dụng Pin cho GH96730632248'),
+(656, 565, '- 1', '2016-10-26 07:13:32', 'Sủ dụng Pin cho PH104191841809', 'PD', 'Sủ dụng Pin cho PH104191841809'),
+(657, 565, '- 1', '2016-10-26 07:25:10', 'Sủ dụng Pin cho PH101209740102', 'PD', 'Sủ dụng Pin cho PH101209740102'),
+(658, 565, '- 1', '2016-10-26 07:32:42', 'Sủ dụng Pin cho PH4301524997', 'PD', 'Sủ dụng Pin cho PH4301524997'),
+(659, 565, '- 1', '2016-10-26 08:18:54', 'Sủ dụng Pin cho PH28327514935', 'PD', 'Sủ dụng Pin cho PH28327514935'),
+(660, 565, '- 1', '2016-10-26 08:18:59', 'Sủ dụng Pin cho PH82418430309', 'PD', 'Sủ dụng Pin cho PH82418430309'),
+(661, 563, '- 1', '2016-10-26 11:52:15', 'Sủ dụng Pin cho PH39812696327', 'PD', 'Sủ dụng Pin cho PH39812696327'),
+(662, 563, '- 1', '2016-10-26 13:51:25', 'Sủ dụng Pin cho PH90302601316', 'PD', 'Sủ dụng Pin cho PH90302601316'),
+(663, 563, '- 1', '2016-10-26 13:52:41', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(664, 563, '- 1', '2016-10-26 14:02:53', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(665, 633, '- 1', '2016-10-26 14:27:17', 'Sủ dụng Pin cho PH139626751763', 'PD', 'Sủ dụng Pin cho PH139626751763'),
+(666, 1, '- 1', '2016-10-29 19:21:52', 'Use Pin for PD18524230711', 'PD', 'Use Pin for PD18524230711'),
+(667, 1, '- 1', '2016-11-05 04:25:24', 'Use Pin for PD104191841809', 'PD', 'Use Pin for PD104191841809'),
+(668, 802, '- 1', '2016-11-05 04:35:04', 'Use Pin for PD8692077192', 'PD', 'Use Pin for PD8692077192'),
+(669, 692, '- 1', '2016-11-05 04:38:44', 'Use Pin for PD139191531312', 'PD', 'Use Pin for PD139191531312'),
+(670, 590, '- 1', '2016-11-05 08:18:09', 'Use Pin for PD139626751763', 'PD', 'Use Pin for PD139626751763');
 
 -- --------------------------------------------------------
 
@@ -38140,7 +39139,7 @@ INSERT INTO `sm_ping_history` (`id`, `id_customer`, `amount`, `date_added`, `use
 -- Table structure for table `sm_product`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product` (
+CREATE TABLE `sm_product` (
   `product_id` int(11) NOT NULL,
   `model` varchar(64) NOT NULL,
   `sku` varchar(64) NOT NULL,
@@ -38172,7 +39171,7 @@ CREATE TABLE IF NOT EXISTS `sm_product` (
   `viewed` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38180,7 +39179,7 @@ CREATE TABLE IF NOT EXISTS `sm_product` (
 -- Table structure for table `sm_product_attribute`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_attribute` (
+CREATE TABLE `sm_product_attribute` (
   `product_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -38193,7 +39192,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_attribute` (
 -- Table structure for table `sm_product_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_description` (
+CREATE TABLE `sm_product_description` (
   `product_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -38210,7 +39209,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_description` (
 -- Table structure for table `sm_product_discount`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_discount` (
+CREATE TABLE `sm_product_discount` (
   `product_discount_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -38219,7 +39218,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_discount` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=441 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38227,7 +39226,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_discount` (
 -- Table structure for table `sm_product_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_filter` (
+CREATE TABLE `sm_product_filter` (
   `product_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38238,12 +39237,12 @@ CREATE TABLE IF NOT EXISTS `sm_product_filter` (
 -- Table structure for table `sm_product_image`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_image` (
+CREATE TABLE `sm_product_image` (
   `product_image_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2352 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38251,13 +39250,13 @@ CREATE TABLE IF NOT EXISTS `sm_product_image` (
 -- Table structure for table `sm_product_option`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_option` (
+CREATE TABLE `sm_product_option` (
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `value` text NOT NULL,
   `required` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38265,7 +39264,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_option` (
 -- Table structure for table `sm_product_option_value`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_option_value` (
+CREATE TABLE `sm_product_option_value` (
   `product_option_value_id` int(11) NOT NULL,
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -38279,7 +39278,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_option_value` (
   `points_prefix` varchar(1) NOT NULL,
   `weight` decimal(15,8) NOT NULL,
   `weight_prefix` varchar(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38287,7 +39286,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_option_value` (
 -- Table structure for table `sm_product_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_recurring` (
+CREATE TABLE `sm_product_recurring` (
   `product_id` int(11) NOT NULL,
   `recurring_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL
@@ -38299,7 +39298,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_recurring` (
 -- Table structure for table `sm_product_related`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_related` (
+CREATE TABLE `sm_product_related` (
   `product_id` int(11) NOT NULL,
   `related_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38310,12 +39309,12 @@ CREATE TABLE IF NOT EXISTS `sm_product_related` (
 -- Table structure for table `sm_product_reward`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_reward` (
+CREATE TABLE `sm_product_reward` (
   `product_reward_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL DEFAULT '0',
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=546 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38323,7 +39322,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_reward` (
 -- Table structure for table `sm_product_special`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_special` (
+CREATE TABLE `sm_product_special` (
   `product_special_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -38331,7 +39330,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_special` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=440 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38339,7 +39338,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_special` (
 -- Table structure for table `sm_product_to_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_to_category` (
+CREATE TABLE `sm_product_to_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38350,7 +39349,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_to_category` (
 -- Table structure for table `sm_product_to_download`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_to_download` (
+CREATE TABLE `sm_product_to_download` (
   `product_id` int(11) NOT NULL,
   `download_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38361,7 +39360,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_to_download` (
 -- Table structure for table `sm_product_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_to_layout` (
+CREATE TABLE `sm_product_to_layout` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
@@ -38373,7 +39372,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_to_layout` (
 -- Table structure for table `sm_product_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_product_to_store` (
+CREATE TABLE `sm_product_to_store` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38384,7 +39383,7 @@ CREATE TABLE IF NOT EXISTS `sm_product_to_store` (
 -- Table structure for table `sm_profit`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_profit` (
+CREATE TABLE `sm_profit` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `receive` float NOT NULL,
@@ -38396,7 +39395,7 @@ CREATE TABLE IF NOT EXISTS `sm_profit` (
   `year` int(11) DEFAULT NULL,
   `date` int(11) NOT NULL,
   `date_hpdk` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_profit`
@@ -38500,17 +39499,17 @@ INSERT INTO `sm_profit` (`id`, `user_id`, `receive`, `type_profit`, `description
 -- Table structure for table `sm_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_recurring` (
+CREATE TABLE `sm_recurring` (
   `recurring_id` int(11) NOT NULL,
   `price` decimal(10,4) NOT NULL,
   `frequency` enum('day','week','semi_month','month','year') NOT NULL,
-  `duration` int(10) unsigned NOT NULL,
-  `cycle` int(10) unsigned NOT NULL,
+  `duration` int(10) UNSIGNED NOT NULL,
+  `cycle` int(10) UNSIGNED NOT NULL,
   `trial_status` tinyint(4) NOT NULL,
   `trial_price` decimal(10,4) NOT NULL,
   `trial_frequency` enum('day','week','semi_month','month','year') NOT NULL,
-  `trial_duration` int(10) unsigned NOT NULL,
-  `trial_cycle` int(10) unsigned NOT NULL,
+  `trial_duration` int(10) UNSIGNED NOT NULL,
+  `trial_cycle` int(10) UNSIGNED NOT NULL,
   `status` tinyint(4) NOT NULL,
   `sort_order` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -38521,7 +39520,7 @@ CREATE TABLE IF NOT EXISTS `sm_recurring` (
 -- Table structure for table `sm_recurring_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_recurring_description` (
+CREATE TABLE `sm_recurring_description` (
   `recurring_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -38533,7 +39532,7 @@ CREATE TABLE IF NOT EXISTS `sm_recurring_description` (
 -- Table structure for table `sm_return`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_return` (
+CREATE TABLE `sm_return` (
   `return_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -38561,11 +39560,11 @@ CREATE TABLE IF NOT EXISTS `sm_return` (
 -- Table structure for table `sm_return_action`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_return_action` (
+CREATE TABLE `sm_return_action` (
   `return_action_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_return_action`
@@ -38585,7 +39584,7 @@ INSERT INTO `sm_return_action` (`return_action_id`, `language_id`, `name`) VALUE
 -- Table structure for table `sm_return_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_return_history` (
+CREATE TABLE `sm_return_history` (
   `return_history_id` int(11) NOT NULL,
   `return_id` int(11) NOT NULL,
   `return_status_id` int(11) NOT NULL,
@@ -38600,11 +39599,11 @@ CREATE TABLE IF NOT EXISTS `sm_return_history` (
 -- Table structure for table `sm_return_reason`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_return_reason` (
+CREATE TABLE `sm_return_reason` (
   `return_reason_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(128) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_return_reason`
@@ -38628,11 +39627,11 @@ INSERT INTO `sm_return_reason` (`return_reason_id`, `language_id`, `name`) VALUE
 -- Table structure for table `sm_return_status`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_return_status` (
+CREATE TABLE `sm_return_status` (
   `return_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_return_status`
@@ -38652,7 +39651,7 @@ INSERT INTO `sm_return_status` (`return_status_id`, `language_id`, `name`) VALUE
 -- Table structure for table `sm_review`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_review` (
+CREATE TABLE `sm_review` (
   `review_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -38670,7 +39669,7 @@ CREATE TABLE IF NOT EXISTS `sm_review` (
 -- Table structure for table `sm_send_contact`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_send_contact` (
+CREATE TABLE `sm_send_contact` (
   `id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -38680,12 +39679,12 @@ CREATE TABLE IF NOT EXISTS `sm_send_contact` (
 -- Table structure for table `sm_send_con_tact`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_send_con_tact` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE `sm_send_con_tact` (
+  `id` int(11) UNSIGNED NOT NULL,
   `date` datetime DEFAULT NULL,
   `title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sm_send_con_tact`
@@ -38719,14 +39718,14 @@ INSERT INTO `sm_send_con_tact` (`id`, `date`, `title`, `content`) VALUES
 -- Table structure for table `sm_setting`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_setting` (
+CREATE TABLE `sm_setting` (
   `setting_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
   `code` varchar(32) NOT NULL,
   `key` varchar(64) NOT NULL,
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=16321 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_setting`
@@ -38820,7 +39819,7 @@ INSERT INTO `sm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (16284, 0, 'config', 'config_mail_smtp_port', '2525', 0),
 (16283, 0, 'config', 'config_mail_smtp_password', '9TGTnhfOcAOG', 0),
 (16282, 0, 'config', 'config_mail_smtp_username', 'appnanas0001@gmail.com234', 0),
-(16279, 0, 'config', 'config_mail_protocol', 'smtp234', 0),
+(16279, 0, 'config', 'config_mail_protocol', 'smtp', 0),
 (16280, 0, 'config', 'config_mail_parameter', 'appnanas0001@gmail.com234', 0),
 (16281, 0, 'config', 'config_mail_smtp_hostname', 'mail.smtp2go.com234', 0),
 (16278, 0, 'config', 'config_ftp_status', '1', 0),
@@ -38934,7 +39933,7 @@ INSERT INTO `sm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 -- Table structure for table `sm_simple_blog_article`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article` (
+CREATE TABLE `sm_simple_blog_article` (
   `simple_blog_article_id` int(16) NOT NULL,
   `simple_blog_author_id` int(16) NOT NULL,
   `allow_comment` tinyint(1) NOT NULL,
@@ -38946,7 +39945,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_article`
@@ -38954,7 +39953,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article` (
 
 INSERT INTO `sm_simple_blog_article` (`simple_blog_article_id`, `simple_blog_author_id`, `allow_comment`, `image`, `featured_image`, `article_related_method`, `article_related_option`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
 (42, 1, 0, '', '', '', '', 0, 0, '2016-06-10 13:41:42', '2016-06-10 13:41:42'),
-(53, 1, 0, '', '', '', '', 0, 0, '2016-08-19 03:09:11', '2016-10-07 10:53:57');
+(53, 1, 0, '', '', '', '', 0, 1, '2016-08-19 03:09:11', '2016-11-05 10:52:23');
 
 -- --------------------------------------------------------
 
@@ -38962,7 +39961,7 @@ INSERT INTO `sm_simple_blog_article` (`simple_blog_article_id`, `simple_blog_aut
 -- Table structure for table `sm_simple_blog_article_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_description` (
+CREATE TABLE `sm_simple_blog_article_description` (
   `simple_blog_article_description_id` int(16) NOT NULL,
   `simple_blog_article_id` int(16) NOT NULL,
   `language_id` int(16) NOT NULL,
@@ -38971,15 +39970,15 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_description` (
   `meta_description` varchar(256) CHARACTER SET utf8 NOT NULL,
   `meta_keyword` varchar(256) CHARACTER SET utf8 NOT NULL,
   `short_description` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=351 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_article_description`
 --
 
 INSERT INTO `sm_simple_blog_article_description` (`simple_blog_article_description_id`, `simple_blog_article_id`, `language_id`, `article_title`, `description`, `meta_description`, `meta_keyword`, `short_description`) VALUES
-(349, 53, 1, 'Group happymoney announcement:', '&lt;p&gt;At the request of the Vietnam market! Visit the official system Happymoneyopen ports in Vietnam market! At 19h15 ''dated 17.08.2016 to customers, investors Vietnam! Learning the technical manipulation, self-ordering systems up tree id league position, this to ensure consistency with the international market, the players understand, capture, use and operation stability permanent, professional, corporate happymoney this notice and schedule of happymoney operating procedures are as follows:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1. The time from 25-27 at the official opening of the web portal of international markets and the system starts automatically charge interest (direct transfer of funds to such blockchain) of all investors.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2 - all triggered id (sau24h) since 17 / 8- 25/8 27/8/2016 system will still pay interest of 2.5% / day is accumulated on for C and DC draw upon automatic activation system between days 25-27 / 8/2016. &lt;/p&gt;&lt;p&gt;Thankyou!&lt;/p&gt;', '', '', 'At the request of the Vietnam market! Visit the official system Happymoney open ports in Vietnam market! At 19h15 ''dated 17.08.2016 to customers, investors Vietnam!'),
-(350, 53, 2, 'Happymoney', '&lt;p&gt;Theo yêu cầu của thị trường Việt Nam! Hệ thống web Happymoneychính thức mở cổng tại thị trường Việt Nam! Vào 19h15'' ngày 17/8/2016 để khách hàng , các nhà đầu tư Việt Nam! Hoc tap cac thao tac ky thuat , Tự lên cây hệ thống sắp đặt vị trí id của minh, nay để đảm bảo sự đồng nhất với thị trường quốc tế, ngừoi chơi hiểu , nắm bắt, thao tác sủ dụng cũng như tính ổn định lâu dài ,chuyên nghiệp ,nay tập đoàn Happymoney ra thông báo lịch và quy trình hoạt động của Happymoney như sau:&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1- thời gian từ 25-27 chính thức mở cổng web tại thị trường quốc tế và hệ thống bắt đầu tính lãi tự động (chuyển tiền vào trực tiếp ví blockchain) của tất các nhà đầu tư.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2 - toàn bộ các id đã kích hoạt(sau24h) kể từ 17/8- 25/8 ,27/8/2016 hệ thống sẽ vẫn trả lãi 2,5% / ngày được cộng dồn vào ví C và đc rút ngay khi hệ thống kích hoạt tự động trong khoảng từ ngày 25-27/8/2016. Thankyou!&lt;/p&gt;', '', '', 'Happymoney');
+(355, 53, 1, 'Group Gogiver announcement:', '&lt;p&gt;At the request of the Vietnam market! Visit the official system Happymoneyopen ports in Vietnam market! At 19h15 ''dated 17.08.2016 to customers, investors Vietnam! Learning the technical manipulation, self-ordering systems up tree id league position, this to ensure consistency with the international market, the players understand, capture, use and operation stability permanent, professional, corporate happymoney this notice and schedule of happymoney operating procedures are as follows:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1. The time from 25-27 at the official opening of the web portal of international markets and the system starts automatically charge interest (direct transfer of funds to such blockchain) of all investors.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2 - all triggered id (sau24h) since 17 / 8- 25/8 27/8/2016 system will still pay interest of 2.5% / day is accumulated on for C and DC draw upon automatic activation system between days 25-27 / 8/2016. &lt;/p&gt;&lt;p&gt;Thankyou!&lt;/p&gt;', '', '', 'At the request of the Vietnam market! Visit the official system Happymoney open ports in Vietnam market! At 19h15 ''dated 17.08.2016 to customers, investors Vietnam!'),
+(356, 53, 2, 'Group Gogiver announcement:', '&lt;p&gt;Theo yêu cầu của thị trường Việt Nam! Hệ thống web Happymoneychính thức mở cổng tại thị trường Việt Nam! Vào 19h15'' ngày 17/8/2016 để khách hàng , các nhà đầu tư Việt Nam! Hoc tap cac thao tac ky thuat , Tự lên cây hệ thống sắp đặt vị trí id của minh, nay để đảm bảo sự đồng nhất với thị trường quốc tế, ngừoi chơi hiểu , nắm bắt, thao tác sủ dụng cũng như tính ổn định lâu dài ,chuyên nghiệp ,nay tập đoàn Happymoney ra thông báo lịch và quy trình hoạt động của Happymoney như sau:&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1- thời gian từ 25-27 chính thức mở cổng web tại thị trường quốc tế và hệ thống bắt đầu tính lãi tự động (chuyển tiền vào trực tiếp ví blockchain) của tất các nhà đầu tư.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2 - toàn bộ các id đã kích hoạt(sau24h) kể từ 17/8- 25/8 ,27/8/2016 hệ thống sẽ vẫn trả lãi 2,5% / ngày được cộng dồn vào ví C và đc rút ngay khi hệ thống kích hoạt tự động trong khoảng từ ngày 25-27/8/2016. Thankyou!&lt;/p&gt;', '', '', 'Group Gogiver announcement:');
 
 -- --------------------------------------------------------
 
@@ -38987,7 +39986,7 @@ INSERT INTO `sm_simple_blog_article_description` (`simple_blog_article_descripti
 -- Table structure for table `sm_simple_blog_article_description_additional`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_description_additional` (
+CREATE TABLE `sm_simple_blog_article_description_additional` (
   `simple_blog_article_id` int(16) NOT NULL,
   `language_id` int(16) NOT NULL,
   `additional_description` text CHARACTER SET utf8 NOT NULL
@@ -38999,7 +39998,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_description_additional` (
 -- Table structure for table `sm_simple_blog_article_product_related`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_product_related` (
+CREATE TABLE `sm_simple_blog_article_product_related` (
   `simple_blog_article_id` int(16) NOT NULL,
   `product_id` int(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -39010,7 +40009,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_product_related` (
 -- Table structure for table `sm_simple_blog_article_to_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_to_category` (
+CREATE TABLE `sm_simple_blog_article_to_category` (
   `simple_blog_article_id` int(16) NOT NULL,
   `simple_blog_category_id` int(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -39021,7 +40020,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_to_category` (
 -- Table structure for table `sm_simple_blog_article_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_to_layout` (
+CREATE TABLE `sm_simple_blog_article_to_layout` (
   `simple_blog_article_id` int(16) NOT NULL,
   `store_id` int(16) NOT NULL,
   `layout_id` int(16) NOT NULL
@@ -39033,7 +40032,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_to_layout` (
 -- Table structure for table `sm_simple_blog_article_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_article_to_store` (
+CREATE TABLE `sm_simple_blog_article_to_store` (
   `simple_blog_article_id` int(16) NOT NULL,
   `store_id` int(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -39052,14 +40051,14 @@ INSERT INTO `sm_simple_blog_article_to_store` (`simple_blog_article_id`, `store_
 -- Table structure for table `sm_simple_blog_author`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_author` (
+CREATE TABLE `sm_simple_blog_author` (
   `simple_blog_author_id` int(16) NOT NULL,
   `name` varchar(256) NOT NULL,
   `image` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_author`
@@ -39074,7 +40073,7 @@ INSERT INTO `sm_simple_blog_author` (`simple_blog_author_id`, `name`, `image`, `
 -- Table structure for table `sm_simple_blog_author_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_author_description` (
+CREATE TABLE `sm_simple_blog_author_description` (
   `simple_blog_author_description_id` int(16) NOT NULL,
   `simple_blog_author_id` int(16) NOT NULL,
   `language_id` int(16) NOT NULL,
@@ -39082,7 +40081,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_author_description` (
   `meta_description` varchar(256) NOT NULL,
   `meta_keyword` varchar(256) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_author_description`
@@ -39098,7 +40097,7 @@ INSERT INTO `sm_simple_blog_author_description` (`simple_blog_author_description
 -- Table structure for table `sm_simple_blog_category`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_category` (
+CREATE TABLE `sm_simple_blog_category` (
   `simple_blog_category_id` int(16) NOT NULL,
   `image` text NOT NULL,
   `parent_id` int(16) NOT NULL,
@@ -39109,7 +40108,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_category` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_category`
@@ -39128,7 +40127,7 @@ INSERT INTO `sm_simple_blog_category` (`simple_blog_category_id`, `image`, `pare
 -- Table structure for table `sm_simple_blog_category_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_category_description` (
+CREATE TABLE `sm_simple_blog_category_description` (
   `simple_blog_category_description_id` int(16) NOT NULL,
   `simple_blog_category_id` int(16) NOT NULL,
   `language_id` int(16) NOT NULL,
@@ -39136,7 +40135,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_category_description` (
   `description` text CHARACTER SET utf8 NOT NULL,
   `meta_description` varchar(256) CHARACTER SET utf8 NOT NULL,
   `meta_keyword` varchar(256) CHARACTER SET utf8 NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sm_simple_blog_category_description`
@@ -39160,7 +40159,7 @@ INSERT INTO `sm_simple_blog_category_description` (`simple_blog_category_descrip
 -- Table structure for table `sm_simple_blog_category_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_category_to_layout` (
+CREATE TABLE `sm_simple_blog_category_to_layout` (
   `simple_blog_category_id` int(16) NOT NULL,
   `store_id` int(16) NOT NULL,
   `layout_id` int(16) NOT NULL
@@ -39172,7 +40171,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_category_to_layout` (
 -- Table structure for table `sm_simple_blog_category_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_category_to_store` (
+CREATE TABLE `sm_simple_blog_category_to_store` (
   `simple_blog_category_id` int(16) NOT NULL,
   `store_id` int(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -39194,7 +40193,7 @@ INSERT INTO `sm_simple_blog_category_to_store` (`simple_blog_category_id`, `stor
 -- Table structure for table `sm_simple_blog_comment`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_comment` (
+CREATE TABLE `sm_simple_blog_comment` (
   `simple_blog_comment_id` int(16) NOT NULL,
   `simple_blog_article_id` int(16) NOT NULL,
   `simple_blog_article_reply_id` int(16) NOT NULL,
@@ -39211,7 +40210,7 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_comment` (
 -- Table structure for table `sm_simple_blog_related_article`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_related_article` (
+CREATE TABLE `sm_simple_blog_related_article` (
   `simple_blog_related_article_id` int(16) NOT NULL,
   `simple_blog_article_id` int(16) NOT NULL,
   `simple_blog_article_related_id` int(16) NOT NULL,
@@ -39226,13 +40225,13 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_related_article` (
 -- Table structure for table `sm_simple_blog_view`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_simple_blog_view` (
+CREATE TABLE `sm_simple_blog_view` (
   `simple_blog_view_id` int(16) NOT NULL,
   `simple_blog_article_id` int(16) NOT NULL,
   `view` int(16) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -39240,11 +40239,11 @@ CREATE TABLE IF NOT EXISTS `sm_simple_blog_view` (
 -- Table structure for table `sm_stock_status`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_stock_status` (
+CREATE TABLE `sm_stock_status` (
   `stock_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_stock_status`
@@ -39266,7 +40265,7 @@ INSERT INTO `sm_stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 -- Table structure for table `sm_store`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_store` (
+CREATE TABLE `sm_store` (
   `store_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -39279,13 +40278,13 @@ CREATE TABLE IF NOT EXISTS `sm_store` (
 -- Table structure for table `sm_tax_class`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_tax_class` (
+CREATE TABLE `sm_tax_class` (
   `tax_class_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_tax_class`
@@ -39301,7 +40300,7 @@ INSERT INTO `sm_tax_class` (`tax_class_id`, `title`, `description`, `date_added`
 -- Table structure for table `sm_tax_rate`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_tax_rate` (
+CREATE TABLE `sm_tax_rate` (
   `tax_rate_id` int(11) NOT NULL,
   `geo_zone_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL,
@@ -39309,7 +40308,7 @@ CREATE TABLE IF NOT EXISTS `sm_tax_rate` (
   `type` char(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_tax_rate`
@@ -39325,7 +40324,7 @@ INSERT INTO `sm_tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`,
 -- Table structure for table `sm_tax_rate_to_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_tax_rate_to_customer_group` (
+CREATE TABLE `sm_tax_rate_to_customer_group` (
   `tax_rate_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -39344,13 +40343,13 @@ INSERT INTO `sm_tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`)
 -- Table structure for table `sm_tax_rule`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_tax_rule` (
+CREATE TABLE `sm_tax_rule` (
   `tax_rule_id` int(11) NOT NULL,
   `tax_class_id` int(11) NOT NULL,
   `tax_rate_id` int(11) NOT NULL,
   `based` varchar(10) NOT NULL,
   `priority` int(5) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_tax_rule`
@@ -39368,11 +40367,11 @@ INSERT INTO `sm_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`
 -- Table structure for table `sm_type_money`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_type_money` (
+CREATE TABLE `sm_type_money` (
   `id` int(11) NOT NULL,
   `name_vn` varchar(255) NOT NULL,
   `name_en` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_type_money`
@@ -39389,13 +40388,13 @@ INSERT INTO `sm_type_money` (`id`, `name_vn`, `name_en`) VALUES
 -- Table structure for table `sm_upload`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_upload` (
+CREATE TABLE `sm_upload` (
   `upload_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `filename` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_upload`
@@ -39428,11 +40427,11 @@ INSERT INTO `sm_upload` (`upload_id`, `name`, `filename`, `code`, `date_added`) 
 -- Table structure for table `sm_url_alias`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_url_alias` (
+CREATE TABLE `sm_url_alias` (
   `url_alias_id` int(11) NOT NULL,
   `query` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_url_alias`
@@ -39466,10 +40465,11 @@ INSERT INTO `sm_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (25, 'account/token/buypin', 'buypin.html'),
 (26, 'account/token/show_invoice', 'confirm'),
 (27, 'account/registers', 'signup'),
-(31, 'simple_blog_article_id=53', 'asd'),
+(37, 'simple_blog_article_id=53', 'asd'),
 (30, 'account/gd/confirm_submit', 'confirmgh.html'),
 (32, 'account/gd/block_id', 'block.html'),
-(33, 'account/gd/report_submit', 'reportgh.html');
+(33, 'account/gd/report_submit', 'reportgh.html'),
+(34, 'account/support', 'support.html');
 
 -- --------------------------------------------------------
 
@@ -39477,7 +40477,7 @@ INSERT INTO `sm_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 -- Table structure for table `sm_user`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_user` (
+CREATE TABLE `sm_user` (
   `user_id` int(11) NOT NULL,
   `user_group_id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -39491,7 +40491,7 @@ CREATE TABLE IF NOT EXISTS `sm_user` (
   `ip` varchar(40) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_user`
@@ -39506,11 +40506,11 @@ INSERT INTO `sm_user` (`user_id`, `user_group_id`, `username`, `password`, `salt
 -- Table structure for table `sm_user_group`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_user_group` (
+CREATE TABLE `sm_user_group` (
   `user_group_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `permission` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_user_group`
@@ -39526,7 +40526,7 @@ INSERT INTO `sm_user_group` (`user_group_id`, `name`, `permission`) VALUES
 -- Table structure for table `sm_voucher`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_voucher` (
+CREATE TABLE `sm_voucher` (
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -39547,7 +40547,7 @@ CREATE TABLE IF NOT EXISTS `sm_voucher` (
 -- Table structure for table `sm_voucher_history`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_voucher_history` (
+CREATE TABLE `sm_voucher_history` (
   `voucher_history_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -39561,10 +40561,10 @@ CREATE TABLE IF NOT EXISTS `sm_voucher_history` (
 -- Table structure for table `sm_voucher_theme`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_voucher_theme` (
+CREATE TABLE `sm_voucher_theme` (
   `voucher_theme_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_voucher_theme`
@@ -39581,7 +40581,7 @@ INSERT INTO `sm_voucher_theme` (`voucher_theme_id`, `image`) VALUES
 -- Table structure for table `sm_voucher_theme_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_voucher_theme_description` (
+CREATE TABLE `sm_voucher_theme_description` (
   `voucher_theme_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
@@ -39605,10 +40605,10 @@ INSERT INTO `sm_voucher_theme_description` (`voucher_theme_id`, `language_id`, `
 -- Table structure for table `sm_weight_class`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_weight_class` (
+CREATE TABLE `sm_weight_class` (
   `weight_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL DEFAULT '0.00000000'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_weight_class`
@@ -39626,12 +40626,12 @@ INSERT INTO `sm_weight_class` (`weight_class_id`, `value`) VALUES
 -- Table structure for table `sm_weight_class_description`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_weight_class_description` (
+CREATE TABLE `sm_weight_class_description` (
   `weight_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `unit` varchar(4) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_weight_class_description`
@@ -39653,13 +40653,13 @@ INSERT INTO `sm_weight_class_description` (`weight_class_id`, `language_id`, `ti
 -- Table structure for table `sm_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_zone` (
+CREATE TABLE `sm_zone` (
   `zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `code` varchar(32) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=4231 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_zone`
@@ -43780,14 +44780,14 @@ INSERT INTO `sm_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 -- Table structure for table `sm_zone_to_geo_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `sm_zone_to_geo_zone` (
+CREATE TABLE `sm_zone_to_geo_zone` (
   `zone_to_geo_zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `zone_id` int(11) NOT NULL DEFAULT '0',
   `geo_zone_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sm_zone_to_geo_zone`
@@ -43911,7 +44911,7 @@ INSERT INTO `sm_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id
 --
 DROP TABLE IF EXISTS `pin`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pin` AS select `sm_ping_history`.`id` AS `id`,`sm_ping_history`.`id_customer` AS `id_customer`,`sm_ping_history`.`amount` AS `amount`,`sm_ping_history`.`date_added` AS `date_added`,`sm_ping_history`.`user_description` AS `user_description`,`sm_ping_history`.`type` AS `type`,`sm_ping_history`.`system_description` AS `system_description` from `sm_ping_history` where (`sm_ping_history`.`id_customer` = 539) order by `sm_ping_history`.`id` desc;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pin`  AS  select `sm_ping_history`.`id` AS `id`,`sm_ping_history`.`id_customer` AS `id_customer`,`sm_ping_history`.`amount` AS `amount`,`sm_ping_history`.`date_added` AS `date_added`,`sm_ping_history`.`user_description` AS `user_description`,`sm_ping_history`.`type` AS `type`,`sm_ping_history`.`system_description` AS `system_description` from `sm_ping_history` where (`sm_ping_history`.`id_customer` = 539) order by `sm_ping_history`.`id` desc ;
 
 --
 -- Indexes for dumped tables
@@ -44857,12 +45857,12 @@ ALTER TABLE `sm_zone_to_geo_zone`
 -- AUTO_INCREMENT for table `acount_vietcombank`
 --
 ALTER TABLE `acount_vietcombank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=319;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
 --
 -- AUTO_INCREMENT for table `sm_address`
 --
 ALTER TABLE `sm_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_affiliate`
 --
@@ -44887,42 +45887,42 @@ ALTER TABLE `sm_affiliate_transaction`
 -- AUTO_INCREMENT for table `sm_api`
 --
 ALTER TABLE `sm_api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_attribute`
 --
 ALTER TABLE `sm_attribute`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `sm_attribute_group`
 --
 ALTER TABLE `sm_attribute_group`
-  MODIFY `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `sm_banner`
 --
 ALTER TABLE `sm_banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `sm_banner_image`
 --
 ALTER TABLE `sm_banner_image`
-  MODIFY `banner_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=323;
+  MODIFY `banner_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
 --
 -- AUTO_INCREMENT for table `sm_category`
 --
 ALTER TABLE `sm_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `sm_country`
 --
 ALTER TABLE `sm_country`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=258;
+  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 --
 -- AUTO_INCREMENT for table `sm_coupon`
 --
 ALTER TABLE `sm_coupon`
-  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `sm_coupon_history`
 --
@@ -44937,42 +45937,42 @@ ALTER TABLE `sm_coupon_product`
 -- AUTO_INCREMENT for table `sm_currency`
 --
 ALTER TABLE `sm_currency`
-  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_customer`
 --
 ALTER TABLE `sm_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1037;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1568;
 --
 -- AUTO_INCREMENT for table `sm_customer_activity`
 --
 ALTER TABLE `sm_customer_activity`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7661;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7682;
 --
 -- AUTO_INCREMENT for table `sm_customer_ban_ip`
 --
 ALTER TABLE `sm_customer_ban_ip`
-  MODIFY `customer_ban_ip_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `customer_ban_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sm_customer_c_wallet`
 --
 ALTER TABLE `sm_customer_c_wallet`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=860;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=860;
 --
 -- AUTO_INCREMENT for table `sm_customer_get_donation`
 --
 ALTER TABLE `sm_customer_get_donation`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sm_customer_group`
 --
 ALTER TABLE `sm_customer_group`
-  MODIFY `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `customer_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sm_customer_history`
 --
 ALTER TABLE `sm_customer_history`
-  MODIFY `customer_history_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `customer_history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sm_customer_invoice_pd`
 --
@@ -44982,42 +45982,42 @@ ALTER TABLE `sm_customer_invoice_pd`
 -- AUTO_INCREMENT for table `sm_customer_invoice_pin`
 --
 ALTER TABLE `sm_customer_invoice_pin`
-  MODIFY `invoice_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
+  MODIFY `invoice_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT for table `sm_customer_ip`
 --
 ALTER TABLE `sm_customer_ip`
-  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22979;
+  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22984;
 --
 -- AUTO_INCREMENT for table `sm_customer_login`
 --
 ALTER TABLE `sm_customer_login`
-  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1263;
+  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1265;
 --
 -- AUTO_INCREMENT for table `sm_customer_message_transfer`
 --
 ALTER TABLE `sm_customer_message_transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sm_customer_ml`
 --
 ALTER TABLE `sm_customer_ml`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1044;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1044;
 --
 -- AUTO_INCREMENT for table `sm_customer_m_wallet`
 --
 ALTER TABLE `sm_customer_m_wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=856;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=856;
 --
 -- AUTO_INCREMENT for table `sm_customer_profit_custom`
 --
 ALTER TABLE `sm_customer_profit_custom`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_customer_provide_donation`
 --
 ALTER TABLE `sm_customer_provide_donation`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=134;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_customer_reward`
 --
@@ -45027,7 +46027,7 @@ ALTER TABLE `sm_customer_reward`
 -- AUTO_INCREMENT for table `sm_customer_r_wallet`
 --
 ALTER TABLE `sm_customer_r_wallet`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1037;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1037;
 --
 -- AUTO_INCREMENT for table `sm_customer_transaction`
 --
@@ -45037,12 +46037,12 @@ ALTER TABLE `sm_customer_transaction`
 -- AUTO_INCREMENT for table `sm_customer_transaction_history`
 --
 ALTER TABLE `sm_customer_transaction_history`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sm_customer_transfer_list`
 --
 ALTER TABLE `sm_customer_transfer_list`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sm_custom_field`
 --
@@ -45067,7 +46067,7 @@ ALTER TABLE `sm_event`
 -- AUTO_INCREMENT for table `sm_extension`
 --
 ALTER TABLE `sm_extension`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=448;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=448;
 --
 -- AUTO_INCREMENT for table `sm_filter`
 --
@@ -45082,42 +46082,42 @@ ALTER TABLE `sm_filter_group`
 -- AUTO_INCREMENT for table `sm_geo_zone`
 --
 ALTER TABLE `sm_geo_zone`
-  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sm_information`
 --
 ALTER TABLE `sm_information`
-  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `sm_language`
 --
 ALTER TABLE `sm_language`
-  MODIFY `language_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `language_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sm_layout`
 --
 ALTER TABLE `sm_layout`
-  MODIFY `layout_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `layout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `sm_layout_module`
 --
 ALTER TABLE `sm_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=165;
+  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 --
 -- AUTO_INCREMENT for table `sm_layout_route`
 --
 ALTER TABLE `sm_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT for table `sm_length_class`
 --
 ALTER TABLE `sm_length_class`
-  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_length_class_description`
 --
 ALTER TABLE `sm_length_class_description`
-  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_location`
 --
@@ -45127,7 +46127,7 @@ ALTER TABLE `sm_location`
 -- AUTO_INCREMENT for table `sm_manufacturer`
 --
 ALTER TABLE `sm_manufacturer`
-  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sm_marketing`
 --
@@ -45137,7 +46137,7 @@ ALTER TABLE `sm_marketing`
 -- AUTO_INCREMENT for table `sm_member_level`
 --
 ALTER TABLE `sm_member_level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_modification`
 --
@@ -45147,7 +46147,7 @@ ALTER TABLE `sm_modification`
 -- AUTO_INCREMENT for table `sm_module`
 --
 ALTER TABLE `sm_module`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `sm_openbay_faq`
 --
@@ -45157,12 +46157,12 @@ ALTER TABLE `sm_openbay_faq`
 -- AUTO_INCREMENT for table `sm_option`
 --
 ALTER TABLE `sm_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `sm_option_value`
 --
 ALTER TABLE `sm_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `sm_order`
 --
@@ -45202,7 +46202,7 @@ ALTER TABLE `sm_order_recurring_transaction`
 -- AUTO_INCREMENT for table `sm_order_status`
 --
 ALTER TABLE `sm_order_status`
-  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `sm_order_total`
 --
@@ -45217,52 +46217,52 @@ ALTER TABLE `sm_order_voucher`
 -- AUTO_INCREMENT for table `sm_pd_timer`
 --
 ALTER TABLE `sm_pd_timer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sm_ping_history`
 --
 ALTER TABLE `sm_ping_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=621;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=671;
 --
 -- AUTO_INCREMENT for table `sm_product`
 --
 ALTER TABLE `sm_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `sm_product_discount`
 --
 ALTER TABLE `sm_product_discount`
-  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=441;
+  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=441;
 --
 -- AUTO_INCREMENT for table `sm_product_image`
 --
 ALTER TABLE `sm_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2352;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2352;
 --
 -- AUTO_INCREMENT for table `sm_product_option`
 --
 ALTER TABLE `sm_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=227;
+  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 --
 -- AUTO_INCREMENT for table `sm_product_option_value`
 --
 ALTER TABLE `sm_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `sm_product_reward`
 --
 ALTER TABLE `sm_product_reward`
-  MODIFY `product_reward_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=546;
+  MODIFY `product_reward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=546;
 --
 -- AUTO_INCREMENT for table `sm_product_special`
 --
 ALTER TABLE `sm_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=440;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=440;
 --
 -- AUTO_INCREMENT for table `sm_profit`
 --
 ALTER TABLE `sm_profit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `sm_recurring`
 --
@@ -45277,7 +46277,7 @@ ALTER TABLE `sm_return`
 -- AUTO_INCREMENT for table `sm_return_action`
 --
 ALTER TABLE `sm_return_action`
-  MODIFY `return_action_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `return_action_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_return_history`
 --
@@ -45287,12 +46287,12 @@ ALTER TABLE `sm_return_history`
 -- AUTO_INCREMENT for table `sm_return_reason`
 --
 ALTER TABLE `sm_return_reason`
-  MODIFY `return_reason_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `return_reason_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sm_return_status`
 --
 ALTER TABLE `sm_return_status`
-  MODIFY `return_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `return_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_review`
 --
@@ -45302,42 +46302,42 @@ ALTER TABLE `sm_review`
 -- AUTO_INCREMENT for table `sm_send_con_tact`
 --
 ALTER TABLE `sm_send_con_tact`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `sm_setting`
 --
 ALTER TABLE `sm_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16321;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16321;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_article`
 --
 ALTER TABLE `sm_simple_blog_article`
-  MODIFY `simple_blog_article_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `simple_blog_article_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_article_description`
 --
 ALTER TABLE `sm_simple_blog_article_description`
-  MODIFY `simple_blog_article_description_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=351;
+  MODIFY `simple_blog_article_description_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=357;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_author`
 --
 ALTER TABLE `sm_simple_blog_author`
-  MODIFY `simple_blog_author_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `simple_blog_author_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_author_description`
 --
 ALTER TABLE `sm_simple_blog_author_description`
-  MODIFY `simple_blog_author_description_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `simple_blog_author_description_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_category`
 --
 ALTER TABLE `sm_simple_blog_category`
-  MODIFY `simple_blog_category_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `simple_blog_category_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_category_description`
 --
 ALTER TABLE `sm_simple_blog_category_description`
-  MODIFY `simple_blog_category_description_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `simple_blog_category_description_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `sm_simple_blog_comment`
 --
@@ -45352,12 +46352,12 @@ ALTER TABLE `sm_simple_blog_related_article`
 -- AUTO_INCREMENT for table `sm_simple_blog_view`
 --
 ALTER TABLE `sm_simple_blog_view`
-  MODIFY `simple_blog_view_id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `simple_blog_view_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `sm_stock_status`
 --
 ALTER TABLE `sm_stock_status`
-  MODIFY `stock_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `stock_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `sm_store`
 --
@@ -45367,42 +46367,42 @@ ALTER TABLE `sm_store`
 -- AUTO_INCREMENT for table `sm_tax_class`
 --
 ALTER TABLE `sm_tax_class`
-  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sm_tax_rate`
 --
 ALTER TABLE `sm_tax_rate`
-  MODIFY `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
+  MODIFY `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `sm_tax_rule`
 --
 ALTER TABLE `sm_tax_rule`
-  MODIFY `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=129;
+  MODIFY `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `sm_type_money`
 --
 ALTER TABLE `sm_type_money`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sm_upload`
 --
 ALTER TABLE `sm_upload`
-  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `sm_url_alias`
 --
 ALTER TABLE `sm_url_alias`
-  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `sm_user`
 --
 ALTER TABLE `sm_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sm_user_group`
 --
 ALTER TABLE `sm_user_group`
-  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `sm_voucher`
 --
@@ -45417,27 +46417,27 @@ ALTER TABLE `sm_voucher_history`
 -- AUTO_INCREMENT for table `sm_voucher_theme`
 --
 ALTER TABLE `sm_voucher_theme`
-  MODIFY `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `sm_weight_class`
 --
 ALTER TABLE `sm_weight_class`
-  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `sm_weight_class_description`
 --
 ALTER TABLE `sm_weight_class_description`
-  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `sm_zone`
 --
 ALTER TABLE `sm_zone`
-  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4231;
+  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4231;
 --
 -- AUTO_INCREMENT for table `sm_zone_to_geo_zone`
 --
 ALTER TABLE `sm_zone_to_geo_zone`
-  MODIFY `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+  MODIFY `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
