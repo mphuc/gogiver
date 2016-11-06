@@ -153,7 +153,7 @@ class ControllerAccountRegister extends Controller {
 		       <hr>
 
 			');
-			//$mail -> send();
+			$mail -> send();
 			//print_r($mail); die;
 			// $this -> response -> redirect($this -> url -> link('account/register', '#success', 'SSL'));
 			$this->response->redirect(HTTPS_SERVER . 'register.html#success');
