@@ -30,7 +30,7 @@ class ControllerAccountDashboard extends Controller {
 			$self -> load -> model('simple_blog/article');
 		};
 		
-		
+		$this->response->redirect(HTTPS_SERVER . 'getdonation.html');
 		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		call_user_func_array("myConfig", array($this));
 
