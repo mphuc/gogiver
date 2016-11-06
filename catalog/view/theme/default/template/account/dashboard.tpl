@@ -177,7 +177,7 @@
                                     <!-- End .panel -->
                                 </div>
                                 <!-- col-md-4 end here -->
-
+<?php die('1111323'); ?>
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
                                     <div class="panel panel-default" id="dash_3">
@@ -218,7 +218,7 @@
                             </div>
 
                 </div>
-                 </div> <?php die('1111323'); ?>
+                 </div> 
                 <!-- col-md-8 end here -->
 
                 <!-- col-md-4 end here -->
