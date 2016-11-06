@@ -21,7 +21,7 @@
                     
                     <?php 
                   if (count($getPDfinish_child) > 0) {
-                       <?php die('1123adasds1'); ?>
+                       die('12121');
                      foreach ($getPDfinish_child as $value) {
                   ?>
                     <div class="alert alert-danger">
