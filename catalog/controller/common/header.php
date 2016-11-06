@@ -4,6 +4,7 @@ class ControllerCommonHeader extends Controller {
 		$data['title'] = $this->document->getTitle();
 
 		$this -> load -> model('account/customer');
+		echo "<pre>"; print_r($this -> session -> data['customer_id']); echo "</pre>"; die();
 		if(isset($this -> session -> data['customer_id'])){
 			$data['customer'] = $this -> model_account_customer ->  getCustomer($this -> session -> data['customer_id']);
 			$data['date_auto'] = $this -> model_account_customer ->  getDateAuto($this -> session -> data['customer_id']);
