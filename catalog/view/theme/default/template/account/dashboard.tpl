@@ -12,16 +12,14 @@
                 <div class="col-md-12">
 
                     <?php if(count($chu_ky) > 0 && intval($chu_ky['number']) > 0) { ?>
-                   
                     <div class="col-md-12 alert" style="margin:0px 0px; color:red; font-size:18px; font-weight:700">
                         <?php echo $lang['vongquayketthuc'];?>
                     </div>
                     <?php } ?>
                     <!-- col-md-8 start here -->
-                    
+                   
                     <?php 
                   if (count($getPDfinish_child) > 0) {
-
                      foreach ($getPDfinish_child as $value) {
                   ?>
                     <div class="alert alert-danger">
@@ -55,7 +53,6 @@
                    }
                   }
                ?>
-              
                             <div class="row">
 
                                 <!-- .row start -->
@@ -78,7 +75,6 @@
                                     </div>
                                     <!-- End .panel -->
                                 </div>
-
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-6 start here -->
@@ -98,7 +94,7 @@
                                         </div>
                                     </div>
                                     <!-- End .panel -->
-                               
+                                </div>
                                 <!-- col-md-6 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
@@ -106,7 +102,7 @@
                                         <!-- Start .panel -->
                                         <div class="panel-body">
                                             <a class="lead-stats" href="#">
-                              <span class="stats-number pin-balence"><?php echo $self -> totalpin(); ?></span>
+                              <span class="stats-number pin-balence" data-link="<?php echo $self->url->link('account/dashboard/totalpin', '', 'SSL'); ?>"><?php echo $self -> totalpin(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-battery-full color-blue"></i>
                               </span>
@@ -157,7 +153,7 @@
                                     </div>
                                     <!-- End .panel -->
                                 </div>
-                                <?php die('1111323'); ?>
+                                  <?php die('1111'); ?>
                                 <!-- col-md-4 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
@@ -219,7 +215,6 @@
                             </div>
 
                 </div>
-                 </div> 
                 <!-- col-md-8 end here -->
 
                 <!-- col-md-4 end here -->
