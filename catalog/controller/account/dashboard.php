@@ -24,13 +24,13 @@ class ControllerAccountDashboard extends Controller {
 		};
 
 		function myConfig($self) {
-			$self -> document -> addScript('catalog/view/javascript/dashboard/dashboard.js');
+			// $self -> document -> addScript('catalog/view/javascript/dashboard/dashboard.js');
 			$self -> document -> addScript('catalog/view/javascript/jquery.marquee.js');
 			
 			$self -> load -> model('simple_blog/article');
 		};
 		
-		$this->response->redirect(HTTPS_SERVER . 'getdonation.html');
+		
 		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		call_user_func_array("myConfig", array($this));
 
@@ -274,8 +274,8 @@ if ($getLanguage == 'vietnamese') {
 	public function totaltree() {
 		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
 			$this -> load -> model('account/customer');
-			$json['success'] = intval($this -> model_account_customer -> getCountTreeCustom($this -> customer -> getId()));
-			$this -> response -> setOutput(json_encode($json));
+			return $json['success'] = intval($this -> model_account_customer -> getCountTreeCustom($this -> customer -> getId()));
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 	public function total_binary_left(){
@@ -344,9 +344,9 @@ if ($getLanguage == 'vietnamese') {
 			$this -> load -> model('account/customer');
 			$pin = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
 			$pin = $pin['ping'];
-			$json['success'] = intval($pin);
-			$pin = null;
-			$this -> response -> setOutput(json_encode($json));
+			return $json['success'] = intval($pin);
+			// $pin = null;
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 
@@ -364,9 +364,9 @@ if ($getLanguage == 'vietnamese') {
 			$this -> load -> model('account/customer');
 			$total = $this -> model_account_customer -> getTotalPD($this -> customer -> getId());
 			$total = $total['number'];
-			$json['success'] = intval($total);
-			$total = null;
-			$this -> response -> setOutput(json_encode($json));
+			return $json['success'] = intval($total);
+			// $total = null;
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 
@@ -376,9 +376,9 @@ if ($getLanguage == 'vietnamese') {
 			$this -> load -> model('account/customer');
 			$total = $this -> model_account_customer -> getTotalGD($this -> customer -> getId());
 			$total = $total['number'];
-			$json['success'] = intval($total);
-			$total = null;
-			$this -> response -> setOutput(json_encode($json));
+			return $json['success'] = intval($total);
+			// $total = null;
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 
@@ -413,8 +413,8 @@ if ($getLanguage == 'vietnamese') {
 			$total = $this -> model_account_customer -> getR_Wallet($this -> customer -> getId());
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
-			$json['success'] = number_format($json['success']);
-			$this -> response -> setOutput(json_encode($json));
+			return $json['success'] = number_format($json['success']);
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 
@@ -435,8 +435,8 @@ if ($getLanguage == 'vietnamese') {
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
 			$total = null;
-			$json['success'] = number_format($json['success']);
-			$this -> response -> setOutput(json_encode($json));
+			return  $json['success'] = number_format($json['success']);
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 	public function getMWallet(){

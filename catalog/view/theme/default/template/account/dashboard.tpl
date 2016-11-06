@@ -59,7 +59,8 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number dolar c-wallet" data-link="<?php echo $self->url->link('account/dashboard/getCWallet', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number dolar c-wallet">
+                                 <?php echo $self -> getCWallet(); ?> VND</span>
                               <span class="stats-icon">
                               <i class="fa fa-money color-green"></i>
                               </span>
@@ -77,7 +78,7 @@
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
                             
-                              <span class="stats-number dolar r-wallet" data-link="<?php echo $self->url->link('account/dashboard/getRWallet', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number dolar r-wallet"><?php echo $self -> getRWallet(); ?> VND</span>
                               <span class="stats-icon">
                               <i class="fa fa-money color-yellow-dark"></i>
                               </span>
@@ -94,7 +95,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number pin-balence" data-link="<?php echo $self->url->link('account/dashboard/totalpin', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number pin-balence" data-link="<?php echo $self->url->link('account/dashboard/totalpin', '', 'SSL'); ?>"><?php echo $self -> totalpin(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-battery-full color-blue"></i>
                               </span>
@@ -113,7 +114,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number pd-count" data-link="<?php echo $self->url->link('account/dashboard/countPD', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number pd-count"><?php echo $self -> countPD(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-cloud-upload color-green"></i>
                               </span>
@@ -131,7 +132,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number gd-count" data-link="<?php echo $self->url->link('account/dashboard/countGD', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number gd-count"><?php echo $self -> countGD(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-cloud-download color-gray"></i>
                               </span>
@@ -148,7 +149,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number downline-tree" data-link="<?php echo $self->url->link('account/dashboard/totaltree', '', 'SSL'); ?>">loading ...</span>
+                              <span class="stats-number downline-tree"><?php echo $self -> totaltree(); ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-users color-green-light"></i>
                               </span>
