@@ -153,7 +153,7 @@
                                     </div>
                                     <!-- End .panel -->
                                 </div>
-
+                                 
                                 <!-- col-md-4 end here -->
                                 <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                                     <!-- col-md-4 start here -->
@@ -161,7 +161,7 @@
                                         <!-- Start .panel -->
                                         <div class="panel-body">
                                             <a class="lead-stats" href="#">
-                                                <span class="stats-number downline-tree"><?php echo "<pre>"; print_r($self -> totaltree()); echo "</pre>"; die(); ?><?php echo $self -> totaltree(); ?></span>
+                                                <span class="stats-number downline-tree"><?php echo $self -> totaltree(); ?></span>
                                                 <span class="stats-icon">
                               <i class="fa fa-users color-green-light"></i>
                               </span>
