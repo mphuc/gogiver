@@ -55,7 +55,7 @@ class ControllerAccountDashboard extends Controller {
 		$data['date'] = $time['date'];
 		//method to call function
 
-		die('1123');
+	
 		//data render website
 		//start load country model
 
@@ -65,6 +65,7 @@ class ControllerAccountDashboard extends Controller {
 			$server = $this -> config -> get('config_url');
 		}
 		$data['customer_code'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
+		echo "<pre>"; print_r($data['customer_code']); echo "</pre>"; die();
 		$data['customer_code'] = $data['customer_code']['username'];
 		$data['base'] = $server;
 		$data['self'] = $this;
