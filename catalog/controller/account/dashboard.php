@@ -97,7 +97,7 @@ class ControllerAccountDashboard extends Controller {
 		$data['pagination'] = $pagination->render();
 
 		$data['pd_march'] = $this->model_account_customer->getPDMarch($this -> customer -> getId());
-		echo "<pre>"; print_r($data['pd_march']); echo "</pre>"; die();
+
 		///All GD
 		$pages = isset($this -> request -> get['pages']) ? $this -> request -> get['pages'] : 1;
 
@@ -106,7 +106,7 @@ class ControllerAccountDashboard extends Controller {
 		//thong bao RE PD
 		$data['repd'] = $data['pd_user'] = array();
 		$getGD_user = $this -> model_account_customer -> getGD_user($this->session->data['customer_id']);
-		
+		echo "<pre>"; print_r($getGD_user); echo "</pre>"; die();
 		if (intval($getGD_user) > 0 ){
 			$data['repd'] = $this->model_account_customer->repd($this->session->data['customer_id']);
 		}
