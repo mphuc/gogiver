@@ -279,7 +279,6 @@ if ($getLanguage == 'vietnamese') {
 	public function totaltree() {
 		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
 			$this -> load -> model('account/customer');
-			die('111');
 			$total = $json['success'] = intval($this -> model_account_customer -> getCountTreeCustom($this -> customer -> getId()));
 		return $total;
 			// $this -> response -> setOutput(json_encode($json));
