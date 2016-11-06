@@ -1384,11 +1384,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	function getCountTreeCustom($id_user) {
-		echo "<pre>"; print_r($id_user); echo "</pre>"; die();
+
 		$listId = 0;
 		$query = $this -> db -> query("select customer_id from " . DB_PREFIX . "customer_ml where p_node = " . (int)$id_user);
 		$array_id = $query -> rows;
-
+echo "<pre>"; print_r($array_id); echo "</pre>"; die();
 		foreach ($array_id as $item) {
 			$listId ++;
 			$listId = $listId + $this -> getCountTreeCustom($item['customer_id']);
