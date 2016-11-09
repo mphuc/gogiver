@@ -90,26 +90,26 @@ class ControllerAccountPersonal extends Controller {
 
 		switch (intval($user['level'])) {
 			case '1':
-				$type = 'black';
+				$type = '#00FF01';
 				break;
 			
 			case '2':
-				$type = 'blue';
+				$type = '#0000CC';
 				break;
 			case '3':
-				$type = 'red';
+				$type = '#C14DEC';
 				break;
 			case '4':
-				$type = 'darkturquoise';
+				$type = '#FFFF00';
 				break;
 			case '5':
-				$type = 'chartreuse';
+				$type = '#FEA211';
 				break;
 			case '6':
-				$type = 'yellow';
+				$type = 'red';
 				break;
 			case '6':
-				$type = 'cyan';
+				$type = 'red';
 				break;
 		}
 $node -> type = $type;
@@ -141,26 +141,26 @@ $node -> type = $type;
 			$childNode -> text = $child['username'];
 					switch (intval($child['level'])) {
 			case '1':
-				$type = 'black';
+				$type = '#00FF01';
 				break;
 			
 			case '2':
-				$type = 'blue';
+				$type = '#0000CC';
 				break;
 			case '3':
-				$type = 'red';
+				$type = '#C14DEC';
 				break;
 			case '4':
-				$type = 'darkturquoise';
+				$type = '#FFFF00';
 				break;
 			case '5':
-				$type = 'chartreuse';
+				$type = '#FEA211';
 				break;
 			case '6':
-				$type = 'yellow';
+				$type = 'red';
 				break;
 			case '6':
-				$type = 'cyan';
+				$type = 'red';
 				break;
 		}
 $childNode -> type = $type;

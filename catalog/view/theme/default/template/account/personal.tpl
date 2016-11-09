@@ -55,32 +55,33 @@ svg:not(:root) {
              color-stop(.5, transparent), to(transparent));
 }
 span.cir {
-    border: 5px solid #00f;
-    width: 10px;
+    
+    width: 15px;
     border-radius: 50px;
-    height: 10px;
+    background: #000;
+    height: 15px;
     display: inline-block;
 }
 .cir.lv0{
-  border-color: black;
+  background: #00FF01;
 }
 .cir.lv1{
-  border-color: blue;
+  background: #0000CC;
 }
 .cir.lv2{
-  border-color: red;
+ background: #C14DEC;
 }
 .cir.lv3{
-  border-color: darkturquoise;
+ background: #FFFF00;
 }
 .cir.lv4{
-  border-color: chartreuse;
+  background: #FEA211;
 }
 .cir.lv5{
-  border-color: yellow;
+  background: red;
 }
 .cir.lv6{
-  border-color: cyan;
+  background: red;
 }
 .bitree {
     margin-left: 12px;
@@ -101,6 +102,10 @@ span.cir {
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
+                <span class="cir lv0"></span> G0 - <span class="cir lv1"></span> G1 - <span class="cir lv2"></span> G2 - 
+               <span class="cir lv3"></span> G3 - 
+               <span class="cir lv4"></span> G4 - 
+               <span class="cir lv5"></span> G5
                  <div class="form-group">
                     <div class="col-lg-12 col-md-12">
                       <div class="input-group input-icon file-upload">
@@ -199,7 +204,7 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 6, function(d) { return d.value; }) 
+      .attr("r", 8, function(d) { return d.value; }) 
       .style("fill", function(d) { return d._children ? "d.type" : "#fff"; });
 
   nodeUpdate.select("text")
