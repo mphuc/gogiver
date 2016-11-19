@@ -66,6 +66,12 @@ class ControllerAccountGd extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/gd.tpl', $data));
 		}
 	}
+	public function get_confirmation($gd_number)
+	{
+		$this -> load -> model('account/gd');
+		$confirm = $this -> model_account_gd -> get_confirmation($gd_number);
+		return $confirm['confirmations'];
+	}
 	public function getAccountHolder($customer_id){
 		$this -> load -> model('account/customer');
 		$cus_id =0;
@@ -505,6 +511,7 @@ class ControllerAccountGd extends Controller {
 			$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
 			$this -> load -> model('account/customer');
 			$this -> load -> model('account/auto');
+			$this -> load -> model('account/gd');
 
 				
 
@@ -589,7 +596,11 @@ class ControllerAccountGd extends Controller {
 						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'C-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from C-Wallet", "Cash Out");
 						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
 						$returnDate = $this -> model_account_customer -> update_C_Wallet($this->request->get['amount'], $this -> session -> data['customer_id']);
-						$gd_query = $this -> model_account_customer -> createGD($amount*0.9);
+						$gd_query = $this -> model_account_customer -> createGD($amount);
+
+						//fee 10%
+						$this -> fee_cashout($gd_query['gd_number'], $amount);
+						// End fee
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
@@ -597,16 +608,7 @@ class ControllerAccountGd extends Controller {
 							'GD',
 							'Use Pin for cho GD'.$gd_query['gd_number']
 						);
-						//get 10 Percent for funds
-						$inventory = $this -> model_account_auto ->get_customer_earn_insurance_fund();
-				
-				
-						$pdSend = $amount*0.1;
 
-						$inventoryID = $inventory['customer_id'];
-
-						//create GD cho inventory
-						$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
 					}
 					else
 					{
@@ -626,7 +628,10 @@ class ControllerAccountGd extends Controller {
 						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'R-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from R-Wallet", "Cash Out");
 						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
 						$returnDate = $this -> model_account_customer -> updateRWallet($this->request->get['amount'], $this -> session -> data['customer_id']);
-						$gd_query = $this -> model_account_customer -> createGD($amount*0.9);
+						$gd_query = $this -> model_account_customer -> createGD($amount);
+						//fee 10%
+						$this -> fee_cashout($gd_query['gd_number'], $amount);
+						// End fee
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
@@ -635,15 +640,10 @@ class ControllerAccountGd extends Controller {
 							'Use Pin for cho GD'.$gd_query['gd_number']
 						);
 						//get 10 Percent for funds
-						$inventory = $this -> model_account_auto ->get_customer_earn_insurance_fund();
-				
-				
-						$pdSend = $amount*0.1;
-
-						$inventoryID = $inventory['customer_id'];
+										
 
 						//create GD cho inventory
-						$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
+						
 
 
 
@@ -655,6 +655,146 @@ class ControllerAccountGd extends Controller {
 				
 			}
 			
+		}
+	}
+	public function payconfirm()
+    {
+        function myCheckLoign($self)
+        {
+            return $self->customer->isLogged() ? true : false;
+        }
+       
+        
+        function myConfig($self)
+        {
+            $self->load->model('account/customer');
+            $self->document->addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+            $self->document->addScript('catalog/view/javascript/pd/countdown.js');
+            $self->document->addScript('catalog/view/javascript/pd/confirm.js');
+        }
+       
+        !$this->request->get['token'] && $this->response->redirect(HTTPS_SERVER.'login.html');
+
+        !call_user_func_array("myCheckLoign", array(
+            $this
+        )) && $this->response->redirect(HTTPS_SERVER.'login.html');
+        call_user_func_array("myConfig", array(
+            $this
+        ));
+        
+        //language
+        $this->load->model('account/gd');
+      
+        $server       = $this->request->server['HTTPS'] ? $server = $this->config->get('config_ssl') : $server = $this->config->get('config_url');
+        $data['base'] = $server;
+        $data['self'] = $this;
+      
+        $PdUser = $this->model_account_gd->getPDConfirm_ByTranfer($this->request->get['token'], $this->session->data['customer_id']);
+
+        count($PdUser) === 0 && $this->response->redirect(HTTPS_SERVER.'login.html');
+        		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
+		$language = new Language($getLanguage);
+		$language -> load('account/token');
+		$data['lang'] = $language -> data;
+        //get PD
+
+        $PD_by_Status = $this->model_account_gd-> getPD_By_GD_Numner($this->request->get['token']);
+        count($PD_by_Status) === 0 && $this->response->redirect(HTTPS_SERVER.'login.html');
+
+        $data['bitcoin'] = $PdUser['amount'];
+        $data['date_added'] = $PdUser['date_created'];
+        $data['invoice_hash'] = $PdUser['invoice_id_hash'];
+        $data['wallet'] = $PdUser['input_address'];
+        $PdUser = null;
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/gd_btc_confirm.tpl')) {
+            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/account/gd_btc_confirm.tpl', $data));
+        } else {
+            $this->response->setOutput($this->load->view('default/template/account/gd_btc_confirm.tpl', $data));
+        }
+        
+    }
+	public function fee_cashout($gd_id,$amount){
+
+		$data = file_get_contents("http://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx");
+		$p = explode("<Exrate ", $data);
+		for($a = 1; $a<count($p); $a++) {
+			if(strpos($p[$a],'USD')) {
+		        $posBuy = strrpos($p[$a],'Buy="')+5;
+		        $priceBuy = floatval(substr( $p[$a], $posBuy, 8));
+		    }
+		}
+		
+		$fee = $amount*0.1;
+		$usd = $fee/$priceBuy;
+		
+		$price_usd = round($usd);
+	
+		$secret = substr(hash_hmac('ripemd160', hexdec(crc32(md5(microtime()))), 'secret'), 0, 16);
+		
+		$url = "https://blockchain.info/tobtc?currency=USD&value=" . (string)$price_usd;
+		$amount_btc = file_get_contents($url);
+
+		$amount_btc = round($amount_btc,8);
+	
+		$amount_satosi = $amount_btc*100000000;
+
+		$invoice_id = $this -> model_account_gd -> saveInvoice($this -> session -> data['customer_id'], $secret, $amount_satosi, $gd_id);
+		
+		$invoice_id === -1 && die('Server error , Please try again !!!!');
+		$invoice_id_hash = hexdec(crc32(md5($invoice_id)));
+		$my_address = '1P3THRSxLWj4XumeWp68AJVa1z7QQVek2m';
+
+		$my_callback_url = HTTPS_SERVER . 'index.php?route=account/gd/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret;
+
+		$api_base = 'https://blockchainapi.org/api/receive';
+		$arrContextOptions=array(
+		    "ssl"=>array(
+		        "verify_peer"=>false,
+		        "verify_peer_name"=>false,
+		    ),
+		);  
+		$response = file_get_contents($api_base . '?method=create&address=' . $my_address . '&callback=' . urlencode($my_callback_url), false, stream_context_create($arrContextOptions));
+	
+		$object = json_decode($response);
+
+		 $call_back = HTTPS_SERVER . 'index.php?route=account/gd/callback/&invoice_id=' . $invoice_id_hash . '&secret=' . $secret.'&value='.$amount_satosi.'&input_address='.$object->input_address.'&confirmations=3&transaction_hash=feecashout&input_transaction_hash=feecashout&destination_address=feecashout';
+		//update input address and fee_percent
+		!$this -> model_account_gd -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination, $call_back);
+		
+	}
+	public function callback() {
+
+		$this -> load -> model('account/gd');
+
+		$invoice_id_hash = array_key_exists('invoice_id', $this -> request -> get) ? $this -> request -> get['invoice_id'] : "Error";
+		$secret = array_key_exists('secret', $this -> request -> get) ? $this -> request -> get['secret'] : "Error";
+
+		$value_in_satoshi = array_key_exists('value', $this -> request -> get) ? $this -> request -> get['value'] : "Error";
+
+		$confirmations = array_key_exists('confirmations', $this -> request -> get) ? $this -> request -> get['confirmations'] : "Error";
+		$input_address = array_key_exists('input_address', $this -> request -> get) ? $this -> request -> get['input_address'] : "Error";
+		 $transaction_hash = array_key_exists('transaction_hash', $this -> request -> get) ? $this -> request -> get['transaction_hash'] : "Error";
+        $input_transaction_hash = array_key_exists('input_transaction_hash', $this -> request -> get) ? $this -> request -> get['input_transaction_hash'] : "Error";
+		//check invoice
+
+		$invoice = $this -> model_account_gd -> getInvoiceByIdAndSecret($invoice_id_hash, $secret,$input_address);
+
+		count($invoice) === 0 && die();
+
+		$received = intval($invoice['received']) + intval($value_in_satoshi);
+		$this -> model_account_gd -> updateReceived($value_in_satoshi, $invoice_id_hash);
+		$invoice = $this -> model_account_gd -> getInvoiceByIdAndSecret($invoice_id_hash, $secret,$input_address);
+		$received = intval($invoice['received']);
+
+		if ($received >= intval($invoice['amount'])) {
+
+			//update Pin User
+			
+			//update confirm
+			 $this -> model_account_gd -> updateConfirm($invoice_id_hash, $confirmations, $transaction_hash, $input_transaction_hash);
+
+			
+
 		}
 	}
 

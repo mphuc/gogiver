@@ -13,7 +13,7 @@ $_['AMOUNT']            = 'SỐ LƯỢNG';
 
 $_['danhnhan']            = 'ĐÃ NHẬN';
 $_['DATE_CREATED']            = 'NGÀY TẠO';
-
+$_['fee']            = 'PHÍ RÚT';
 $_['GD_NUMBER']            = 'MÃ GD';
 $_['detail']            = 'Chi tiết';
 $_['STATUS']            = 'TRẠNG THÁI';

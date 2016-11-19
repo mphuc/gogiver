@@ -637,6 +637,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		$data['query'] = $query ? true : false;
 		$data['gd_number'] = $gd_number;
+		$data['gd_id'] = $gd_id;
 		return $data;
 	}
 
