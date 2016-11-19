@@ -156,7 +156,7 @@ public function updateTransferList($transfer_id){
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
 			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
-			AND status = 0
+			AND status = 0 AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer_invoice_fee WHERE confirmations = 0) 
 			ORDER BY date_added ASC
 			LIMIT 1
 		");

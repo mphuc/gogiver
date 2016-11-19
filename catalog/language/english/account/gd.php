@@ -17,6 +17,7 @@ $_['DATE_CREATED']            = 'DATE CREATED	';
 $_['GD_NUMBER']            = 'GD NUMBER';
 $_['detail']            = 'DETAIL';
 $_['STATUS']            = 'STATUS';
+$_['fee']            = 'FEE';
 
 $_['TRANSFER']            = 'Transfer list';
 $_['TRANSFER_']            = 'Transfer list';
@@ -74,3 +75,4 @@ $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
 $_['heading_title_com_his'] = "History GH F1";
 $_['support'] = "Support";
+
