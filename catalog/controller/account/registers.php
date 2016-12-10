@@ -3,7 +3,7 @@ class ControllerAccountRegisters extends Controller {
 	private $error = array();
 
 	public function index() {
-
+		die();
 		!array_key_exists('ref', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 
 

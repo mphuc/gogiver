@@ -48,7 +48,7 @@
                          <img src="catalog/view/theme/default/images/lo_go.png" width="200" class="logo" alt="Dash logo">
                     </div>
                    
-                    <form action="<?php echo $action; ?>" method="post" class="form-horizontal mt0" class="no-margin">
+                    <form action="forgot.html" method="post" class="form-horizontal mt0" class="no-margin">
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <div class="input-group input-icon">

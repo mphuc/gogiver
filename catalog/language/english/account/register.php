@@ -25,8 +25,10 @@ $_['text_Repeat_Transaction_Password']            = 'Repeat Transaction Password
 $_['text_email'] = 'Email is used to get information from the system';
 $_['text_Agree_Transaction_Password']            = 'Agree to our Terms and Condition';
 $_['text_Submit']            = 'Submit';
+$_['buy_more_pin']            = 'Please buy more pin to continue!';
 
 $_['err_text_username']            = 'Please check user name, or user is already exists';
+
 $_['err_text_Eamil']            = 'Please enter email address, or email is already exists';
 $_['err_text_Phone']            = 'Please enter phone number';
 $_['err_text_cmnd']            = 'The Citizenship card/passport no field is required, or email is already exists';

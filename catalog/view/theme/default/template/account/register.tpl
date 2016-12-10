@@ -5,7 +5,27 @@
    ?>
 <div class="main-content">
 <!-- Start .content -->
+
   <div class="content" style="">
+   <?php 
+        $pin = $self -> check_pin(); 
+    ?>
+    <?php if ($pin < 10) { ?>
+
+   
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="text-center">
+             
+              <h2><?php echo $lang['buy_more_pin'] ?></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php die(); }  ?>
      <div class="row">
         <!-- .row start -->
         <div class="col-md-12">
@@ -97,8 +117,8 @@
                                           </div>
 
                                           <div class="col-md-12">
-                                             <p><?php echo $lang['url_link'] ?>:</p>
-                                             <a style="word-break: break-word; font-weight:700; color:cyan" href="signup&ref=<?php echo $customer_code;  ?>" target="_blank"><?php echo HTTPS_SERVER ?>signup&ref=<?php echo $customer_code;  ?></a>
+                                             <!-- <p><?php echo $lang['url_link'] ?>:</p>
+                                             <a style="word-break: break-word; font-weight:700; color:cyan" href="signup&ref=<?php echo $customer_code;  ?>" target="_blank"><?php echo HTTPS_SERVER ?>signup&ref=<?php echo $customer_code;  ?></a> -->
                                           </div>
                                        </div>
                                        <!-- .form -->

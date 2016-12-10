@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<!-- Mirrored from themes.suggelab.com/dash/user-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Oct 2016 13:17:33 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
         <meta charset="utf-8">
         <title>Login | Gogiver</title>
@@ -104,39 +102,18 @@
         <div class="container">
             <div class="footer-links">
                 
-                <p class="text-center mb5"><a href="user-forgot.html" class="color-gray-lighter color-hover-white s16 transition"> Forgot your password ?</a>
+                <p class="text-center mb5"><a href="forgot.html" class="color-gray-lighter color-hover-white s16 transition" style=" color: #48ae00 !important; "> Forgot your password ?</a>
                 </p>
             </div>
         </div>
-        <!-- Javascripts -->
-        <!-- Important javascript libs(put in all pages) -->
-        <script src="../../code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script>
-        window.jQuery || document.write('<script src="catalog/view/theme/default/js/libs/jquery.min.js">\x3C/script>')
-        </script>
-        <script src="../../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script>
-        window.jQuery || document.write('<script src="catalog/view/theme/default/js/libs/jquery-ui-1.11.4.min.js">\x3C/script>')
-        </script>
-        <!--[if lt IE 9]>
-  <script type="text/javascript" src="catalog/view/theme/default/js/libs/excanvas.min.js"></script>
-  <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <script type="text/javascript" src="catalog/view/theme/default/js/libs/respond.min.js"></script>
-<![endif]-->
-        <!-- Bootstrap plugins -->
-        <script src="catalog/view/theme/default/js/bootstrap/bootstrap.js"></script>
-        <!-- Core plugins ( not remove ) -->
-        <script src="catalog/view/theme/default/js/libs/modernizr.custom.js"></script>
-        <script src="catalog/view/theme/default/js/libs/jRespond.js"></script>
-        
+
         <!-- Init plugins olny for this page -->
-        <script src="catalog/view/theme/default/js/pages/user-login.js"></script>
+      
         <script src="catalog/view/theme/default/assetslg/js/jquery-1.11.1.min.js"></script>
         <script src="catalog/view/theme/default/assetslg/bootstrap/js/bootstrap.min.js"></script>
         <script src="catalog/view/theme/default/assetslg/js/jquery.backstretch.min.js"></script>
         <script src="catalog/view/theme/default/assetslg/js/scripts.js"></script>
     </body>
 
-<!-- Mirrored from themes.suggelab.com/dash/user-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Oct 2016 13:17:33 GMT -->
 </html>
 

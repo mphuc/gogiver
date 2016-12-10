@@ -2409,4 +2409,10 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row;
 	}
+	public function check_pin($customer_id){
+		$query = $this->db->query("SELECT ping
+			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
+		
+		return $query->row['ping'];
+	}
 }

@@ -19,7 +19,7 @@ $_['text_Password']            = 'Mật khẩu đăng nhập';
 $_['text_Repeat_Password']            = 'Lặp lại mật khẩu đăng nhập';
 $_['name_bank'] = 'Tên đầy đủ không dấu như trên thẻ ATM';
 $_['text_Transaction_Password']            = 'Mật khẩu giao dịch';
-
+$_['buy_more_pin']            = 'Xin vui lòng mua thêm PIN để tiếp tục!';
 $_['text_Repeat_Transaction_Password']            = 'Lặp lại mật khẩu giao dịch';
 
 $_['text_Agree_Transaction_Password']            = 'Đồng ý với các điều khoản và điều kiện của chúng tôi';

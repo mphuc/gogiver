@@ -60,7 +60,14 @@ class ControllerAccountRegister extends Controller {
 			$data['has_register'] = true;
 			$cus_id= $tmp;
 			$amount = 0;
-
+			$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
+			$this -> model_account_customer -> saveHistoryPin(
+					$this -> session -> data['customer_id'],  
+					'- 5',
+					'Use Pin for register '.$_POST['username'],
+					'Register',
+					'Use Pin for register '.$_POST['username']
+				);
 			$checkC_Wallet = $this -> model_account_customer -> checkR_Wallet($cus_id);
 			if(intval($checkC_Wallet['number'])  === 0){
 				if(!$this -> model_account_customer -> insertR_WalletR($amount, $cus_id)){
@@ -167,7 +174,12 @@ class ControllerAccountRegister extends Controller {
 		}
 
 	}
+	public function check_pin(){
+		$this -> load -> model('account/customer');
+		$pin = $this -> model_account_customer -> check_pin($this->session->data['customer_id']);
 
+		return $pin;
+	}
 	public function checkuser() {
 		if ($this -> request -> get['username']) {
 			$this -> load -> model('customize/register');
