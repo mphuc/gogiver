@@ -244,25 +244,7 @@
                   </div>
                </div>
 
-               <div class=" rule" style="margin-top:0;"></div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                           <h3 class="panel-title"><?php echo $lang['introduct']; ?></h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="media-body innerAnnounce">
-                                <h4 class="heading" style="margin-bottom: 0px;"> <i class="fa fa-link">
-                                  </i> <?php echo $lang['url_link']; ?>
-                              </h4>
-                                <span><u><a style="word-break: break-word; font-weight:700; color:cyan" href="signup&ref=<?php echo $customer_code;  ?>" target="_blank"><?php echo HTTPS_SERVER ?>signup&ref=<?php echo $customer_code;  ?></a></u></span>
-                              </div>
-                            
-                        </div>
-                     </div>
-                  </div>
-            </div>
+               
             <div class=" rule" style="margin-bottom:80px;"></div>
             </div>
 
