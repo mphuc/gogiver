@@ -4184,3 +4184,8 @@ hr {
 .ph_collapse .row {
     margin-bottom: 15px;
 }
+
+.left-sidebar-toggle .bg-logo img {
+    width: 61px !important;
+    margin-top: 15px !important;
+}

@@ -13,7 +13,7 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="application-name" content="" />
-        <!-- Import google fonts - Heading first/ text second -->
+        <link rel="icon" href="catalog/view/theme/default/img/icon.png">
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all' rel='stylesheet' type='text/css'>
         <!-- Css files -->
@@ -43,7 +43,7 @@
                 <!-- Start .panel -->
                 <div class="panel-body p0">
                     <div class="text-center mb30">
-                         <img src="catalog/view/theme/default/images/lo_go.png" width="200" class="logo" alt="Dash logo">
+                         <img src="catalog/view/theme/default/img/logo.png" width="200" class="logo" alt="Dash logo">
                     </div>
                      <form action="login.html" class="form-horizontal mt0" method="post">
                     <form action="login.html" method="post" class="form-horizontal m-t-10" class="no-margin">

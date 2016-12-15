@@ -6,25 +6,17 @@
         <!-- Start .left-sidebar  -->
         <div class="left-sidebar">
             <!-- Start .sidebar-header  -->
-            <header class="sidebar-header">
-                <!-- .navbar  -->
-                <nav class="navbar navbar-default">
-                    <!-- .navbar-header  -->
-                    <div class="navbar-header">
-                        <!-- .navbar-brand  -->
-                        <a class="navbar-brand" href="#">
-                            <img src="catalog/view/theme/default/images/lo_go.png" style="margin-top: -2px" width="200" class="logo" alt="Dash logo">
-                            <img src="catalog/view/theme/default/images/logosm.png" width="30" class="logo-sm" alt="Dash logo">
-                        </a>
-                        <!-- / .navbar-brand  -->
-                    </div>
-                    <!-- / .navbar-header  -->
-                </nav>
-                <!-- / .navbar  -->
-            </header>
+          
+
             <!-- End / .sidebar-header  -->
             <!-- Start .scroll-area  -->
             <div class="scroll-area">
+               <div class="bg-logo">
+         <a href="dashboard.html" class="logo-expanded"> 
+          <img src="catalog/view/theme/default/img/logo.png" style="margin-top: -2px" width="200" class="logo" alt="Dash logo">
+                           
+         </a>
+      </div>
                 <!-- Start .sidebar-nav  -->
                 <ul class="sidebar-nav" data-open-speed="250" data-close-speed="200" data-easing="linear">
                     <!-- li (nav item )  -->

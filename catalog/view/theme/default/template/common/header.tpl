@@ -19,7 +19,7 @@
 		<meta name="keywords" content="<?php echo $keywords; ?>" />
 		<?php } ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- <link rel="icon" href="catalog/view/theme/default/images/index3-44.png"> -->
+		<link rel="icon" href="catalog/view/theme/default/img/icon.png">
 		<script src="catalog/view/javascript/jquery/underscorejs/underscorejs.js" type="text/javascript"></script>
 
 		<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -83,41 +83,7 @@
             }
 
         </script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                // $("html").niceScroll({
-                //  cursorcolor:"#333",
-                //  autohidemode: false,
-                //  cursorminheight : 30,
-                //  cursorwidth: 10,
-
-                // });
-                $(".navigation > ul > li > a img").on({
-                    "mouseover" : function() {
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-home.png", "catalog/view/theme/default/img/icon-home-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-register.png", "catalog/view/theme/default/img/icon-register-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-pin.png", "catalog/view/theme/default/img/icon-pin-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-pd.png", "catalog/view/theme/default/img/icon-pd-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-gd.png", "catalog/view/theme/default/img/icon-gd-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-refferal.png", "catalog/view/theme/default/img/icon-refferal-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-tree.png", "catalog/view/theme/default/img/icon-tree-active.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-transaction.png", "catalog/view/theme/default/img/icon-transaction-active.png");
-
-                    },
-                    "mouseout" : function() {
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-home-active.png", "catalog/view/theme/default/img/icon-home.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-register-active.png", "catalog/view/theme/default/img/icon-register.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-pin-active.png", "catalog/view/theme/default/img/icon-pin.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-pd-active.png", "catalog/view/theme/default/img/icon-pd.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-gd-active.png", "catalog/view/theme/default/img/icon-gd.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-refferal-active.png", "catalog/view/theme/default/img/icon-refferal.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-tree-active.png", "catalog/view/theme/default/img/icon-tree.png");
-                        this.src = this.src.replace("catalog/view/theme/default/img/icon-transaction-active.png", "catalog/view/theme/default/img/icon-transaction.png");
-                    }
-                });
-
-            });
-        </script>
+ 
 		
 		<script src="catalog/view/javascript/jquery.form.min.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/alertifyjs/alertify.js" type="text/javascript"></script>
