@@ -1,12 +1,10 @@
 <?php
-
 // Version
-define('VERSION', '2.0.3.1');
-
 // Configuration
 if (is_file('config.php')) {
 	require_once('config.php');
 }
+require_once('filtering.php');
 // Install
 if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
@@ -16,13 +14,12 @@ if (!defined('DIR_APPLICATION')) {
 // VirtualQMOD
 require_once('./vqmod/vqmod.php');
 VQMod::bootup();
-
+//die('11');
 // VQMODDED Startup
 require_once(VQMod::modCheck(DIR_SYSTEM . 'startup.php'));
 
 // Registry
 $registry = new Registry();
-
 // Loader
 $loader = new Loader($registry);
 $registry->set('load', $loader);
@@ -30,7 +27,6 @@ $registry->set('load', $loader);
 // Config
 $config = new Config();
 $registry->set('config', $config);
-
 // Database
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
@@ -47,7 +43,6 @@ if ($store_query->num_rows) {
 } else {
 	$config->set('config_store_id', 0);
 }
-
 // Settings
 $query = $db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE store_id = '0' OR store_id = '" . (int)$config->get('config_store_id') . "' ORDER BY store_id ASC");
 
@@ -260,7 +255,7 @@ $controller->addPreAction(new Action('common/seo_url'));
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);
 } else {
-	$action = new Action('home/page');
+	$action = new Action('account/account');
 }
 
 // Dispatch
