@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2016 at 04:15 AM
+-- Generation Time: Dec 15, 2016 at 04:21 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.15
 
@@ -357,21 +357,6 @@ INSERT INTO `acount_vietcombank` (`id`, `account_id`, `account_name`, `bank_name
 (317, 441000704879, 'DOAN NGOC TRUNG', 'vcb'),
 (318, 441000704878, 'NGUYEN THI NGOC LUAN', 'vcb'),
 (319, 231000606121, 'LOC VAN TAI', 'vcb');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `pin`
---
-CREATE TABLE `pin` (
-`id` int(11)
-,`id_customer` int(11)
-,`amount` varchar(255)
-,`date_added` datetime
-,`user_description` text
-,`type` varchar(20)
-,`system_description` varchar(255)
-);
 
 -- --------------------------------------------------------
 
@@ -46119,15 +46104,6 @@ INSERT INTO `sm_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id
 (107, 222, 3954, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (108, 222, 3955, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (109, 222, 3972, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Structure for view `pin`
---
-DROP TABLE IF EXISTS `pin`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pin`  AS  select `sm_ping_history`.`id` AS `id`,`sm_ping_history`.`id_customer` AS `id_customer`,`sm_ping_history`.`amount` AS `amount`,`sm_ping_history`.`date_added` AS `date_added`,`sm_ping_history`.`user_description` AS `user_description`,`sm_ping_history`.`type` AS `type`,`sm_ping_history`.`system_description` AS `system_description` from `sm_ping_history` where (`sm_ping_history`.`id_customer` = 539) order by `sm_ping_history`.`id` desc ;
 
 --
 -- Indexes for dumped tables
