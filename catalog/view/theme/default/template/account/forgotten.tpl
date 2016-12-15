@@ -5,15 +5,17 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
         <meta charset="utf-8">
-        <title>Forgot Password | Iontach</title>
+        <title>Forgot Password | Iontach - || Empowering Communitees, Ending Poverty</title>
         <!-- Mobile specific metas -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <!-- Force IE9 to render in normal mode -->
         <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
         <meta name="author" content="" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
+       <meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
+    
+        <meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
+<meta name="robots" content="index, follow"/>
         <meta name="application-name" content="" />
         <!-- Import google fonts - Heading first/ text second -->
         <link rel="icon" href="catalog/view/theme/default/img/icon.png">

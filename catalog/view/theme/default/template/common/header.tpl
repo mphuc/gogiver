@@ -9,15 +9,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title> <?php echo $title; ?> </title>
+		<title> <?php echo $title; ?> - Empowering Communitees, Ending Poverty </title>
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<base href="<?php echo $base; ?>" />
-		<?php if ($description) { ?>
-		<meta name="description" content="<?php echo $description; ?>" />
-		<?php } ?>
-		<?php if ($keywords) { ?>
-		<meta name="keywords" content="<?php echo $keywords; ?>" />
-		<?php } ?>
+		
+		<meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
+	
+		<meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
+<meta name="robots" content="index, follow"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" href="catalog/view/theme/default/img/icon.png">
 		<script src="catalog/view/javascript/jquery/underscorejs/underscorejs.js" type="text/javascript"></script>
