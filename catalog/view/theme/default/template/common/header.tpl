@@ -137,7 +137,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown">
-                            <img class="avatar mr5" src="catalog/view/theme/default/images/11.jpg" alt="SuggeElson">
+                            <img class="avatar mr5" src="catalog/view/theme/default/img/icon.png" alt="SuggeElson">
                             <span class="user-name"><?php echo $customer['username'] ?></span> 
                             <span class="caret"></span> 
                         </a>
