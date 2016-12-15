@@ -13,4 +13,4 @@ $_['text_success']    = 'Success: A new password has been sent to your e-mail ad
 $_['entry_email']     = 'E-Mail Address';
 
 // Error
-$_['error_email']     = 'Warning: The E-Mail Address was not found in our records, please try again!';
+$_['error_email']     = 'Warning: The Username was not found in our records, please try again!';
