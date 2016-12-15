@@ -34,6 +34,9 @@ class ControllerAccountDashboard extends Controller {
 		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		call_user_func_array("myConfig", array($this));
 
+		$block_id = $this -> check_block_id();
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+
 		//language
 		$this -> load -> model('account/customer');
 		$this -> model_account_customer -> update_login($this -> session -> data['customer_id']);
@@ -111,12 +114,15 @@ class ControllerAccountDashboard extends Controller {
 			$data['repd'] = $this->model_account_customer->repd($this->session->data['customer_id']);
 		}
 		
-			
+		
+
 		//get thong bao het chu ky (3)
 
 		$data['chu_ky'] = $this -> model_account_customer ->  checkChuky($this -> customer -> getId());
 
 		$data['getPDfinish_child'] = $this -> model_account_customer ->getPDfinish_child($this -> customer -> getId());
+
+
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
@@ -124,6 +130,32 @@ class ControllerAccountDashboard extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
 		}
 	}
+
+	public function check_block_id(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
+		
+		return intval($block_id['status']);
+
+	}
+
+	public function insurance_fund(){
+		$this->load->model('account/customer');
+		$insurance_fund = $this->model_account_customer->get_insurance_fund();
+		$data = file_get_contents("http://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx");
+		$p = explode("<Exrate ", $data);
+		for($a = 1; $a<count($p); $a++) {
+			if(strpos($p[$a],'USD')) {
+		        $posBuy = strrpos($p[$a],'Buy="')+5;
+		        $priceBuy = floatval(substr( $p[$a], $posBuy, 8));
+		    }
+		}
+		$insurance = intval($insurance_fund);
+		$insurance = number_format($priceBuy*$insurance);
+		return $insurance;
+		
+	}
+	
 	public function RequestGD(){
 		$this->load->model('account/customer');
 		$gds = $this -> model_account_customer -> getAllGD(7, 0, 0);

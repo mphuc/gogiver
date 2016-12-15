@@ -86,9 +86,9 @@ class ControllerAccountAuto extends Controller {
 		while ($loop) {
 
 			$gdList = $this -> model_account_auto -> getGD7Before();
-			//echo "<pre>"; print_r($gdList); echo "</pre>"; die();
+			// echo "<pre>"; print_r($gdList); echo "</pre>"; die();
 			$pdList = $this -> model_account_auto -> getPD7Before();
-		 //echo "<pre>"; print_r($pdList); echo "</pre>"; die();
+		
 			if(count($gdList) === 0 && count($pdList) > 0){
 
 				//get customer in inventory
@@ -179,7 +179,7 @@ class ControllerAccountAuto extends Controller {
 					continue;
 				}
 			}
-			die();
+			
 			echo $i.'<br>';
 			$i++;
 			
@@ -465,7 +465,7 @@ public function updateLevel_listID($customer_id){
 		foreach ($re_pd as $value) {
 
 			$this -> model_account_auto -> update_status_customer($value['customer_id']);
-			
+			$this -> model_account_auto -> update_lock_customer($value['customer_id']);
 		}
 	}
 

@@ -74,6 +74,9 @@ class ControllerAccountRegister extends Controller {
 					die();
 				}
 			}
+			$this -> model_account_customer -> insert_block_id($cus_id);
+			$this -> model_account_customer -> insertC_Wallet($cus_id);
+			
 			$mail = new Mail();
 			$mail -> protocol = $this -> config -> get('config_mail_protocol');
 			$mail -> parameter = $this -> config -> get('config_mail_parameter');
@@ -87,7 +90,7 @@ class ControllerAccountRegister extends Controller {
 		
 			$mail->setTo(array(0 => ''.$_POST['email'].'', 1 => 'mmo.hyipcent@gmail.com'));
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Gogiver", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
 			$mail -> setSubject("Chúc mừng bạn đã đăng ký thành công!");
 			$mail -> setHtml('
 				
@@ -130,7 +133,7 @@ class ControllerAccountRegister extends Controller {
 		                  <tr>
 		                     <td align="center" style="background:#ffffff">
 		                        <a href="https://happymoney.us" target="_blank" data-saferedirecturl="happymoney.us">
-		                           <h1 style="margin-top:30px; font-weight:bold;">Gogiver.biz</h1>
+		                           <h1 style="margin-top:30px; font-weight:bold;">Iontach.biz</h1>
 		                        </a>
 		                     </td>
 		                  </tr>

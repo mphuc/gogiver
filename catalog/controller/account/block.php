@@ -1,7 +1,8 @@
 <?php
-class ControllerAccountSupport extends Controller {
+class ControllerAccountBlock extends Controller {
 
 	public function index() {
+		
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};

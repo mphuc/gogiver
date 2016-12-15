@@ -47,7 +47,7 @@
                                             <td><?php echo $lang['danhnhan'] ?></td>
                                             <td><?php echo $lang['transferTime'] ?></td>
                                             <td><?php echo $lang['STATUS'] ?></td>
-                                            <td><?php echo $lang['fee'] ?></td>
+                                            
                                             <td rowspan="2">
                                               <a style="margin-top:15px;" class="pull-right btn btn-primary " role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['gd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['gd_number'] ?>">
                                               <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
@@ -79,16 +79,7 @@
                                            break;
                                        } ?></span></strong></td>
                                          
-                                             <td data-title="<?php echo $lang['fee'] ?>">
-                                              <?php $confirm = $self -> get_confirmation($key["gd_number"]); ?>
-
-                                              <?php if (intval($confirm) === 0) { ?>
-                                                 <a href="<?php echo $self -> url -> link('account/gd/payconfirm', 'token='.$key["gd_number"], 'SSL') ?>" class="btn btn-danger btn-xs">Send Fee (<?php echo number_format($key['amount']*0.1) ?> VND)</a>
-                                              <?php } else{ ?>
-                                              <a href="#" class="btn btn-success btn-xs">Approve Fee (<?php echo number_format($key['amount']*0.1) ?> VND)</a>
-                                             <?php } ?>
                                              
-                                            </td>
                                           </tr>
 
                                         </tbody>
@@ -147,7 +138,7 @@
 <script type="text/javascript">
 
   $('.gh_confirm').on('click', function() {
-    var result = confirm("Xác nhận hóa đơn?");
+    var result = confirm("Confirm Bill?");
     var code = $(this).data().value;
     if (result) {
       url = 'confirmgh.html&token='+code;
@@ -155,7 +146,7 @@
     }
   });
    $('.gh_report').on('click', function() {
-    var result = confirm("Báo cáo ID không PH?");
+    var result = confirm("Confirm Report ID PH?");
     var code = $(this).data().value;
     if (result) {
       url = 'reportgh.html&token='+code;

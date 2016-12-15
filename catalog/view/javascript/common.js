@@ -472,7 +472,7 @@ $(document).delegate('.agree', 'click', function(e) {
 })(window.jQuery);
 
 $(function(){
-	$('title').text($('title').text() + ' | Gogiver');
+	$('title').text($('title').text() + ' | Iontach');
 	$('.goog-te-gadget img').hide();
 });
 

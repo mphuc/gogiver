@@ -1,7 +1,7 @@
 <div id="footer" class="clearfix">
         <!-- Start #footer  -->
         <p class="pull-left">
-            Copyrights © 2016 <a href="#" class="color-blue strong underline-effect" target="_blank">Gogiver</a>. All rights reserved.
+            Copyrights © 2016 <a href="#" class="color-blue strong underline-effect" target="_blank">Iontach</a>. All rights reserved.
         </p>
         <p class="pull-right">
             <a href="#" class="mr5 strong underline-effect">Terms of use</a>

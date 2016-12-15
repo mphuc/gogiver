@@ -66,12 +66,12 @@ class ControllerAccountGd extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/gd.tpl', $data));
 		}
 	}
-	public function get_confirmation($gd_number)
-	{
-		$this -> load -> model('account/gd');
-		$confirm = $this -> model_account_gd -> get_confirmation($gd_number);
-		return $confirm['confirmations'];
-	}
+	// public function get_confirmation($gd_number)
+	// {
+	// 	$this -> load -> model('account/gd');
+	// 	$confirm = $this -> model_account_gd -> get_confirmation($gd_number);
+	// 	return $confirm['confirmations'];
+	// }
 	public function getAccountHolder($customer_id){
 		$this -> load -> model('account/customer');
 		$cus_id =0;
@@ -189,7 +189,7 @@ class ControllerAccountGd extends Controller {
 		
 			$mail->setTo('mmo.hyipcent@gmail.com');
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Gogiver", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
 			$mail -> setSubject("User ID GH ".$customer_gd['username']." đã báo cáo User ID ".$customer_pd['username']." không xác nhận PH");
 			$mail -> setHtml('
 			<div style="background: #f2f2f2; width:100%;">
@@ -240,7 +240,7 @@ class ControllerAccountGd extends Controller {
 		
 			$mail->setTo('mmo.hyipcent@gmail.com');
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Gogiver", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
 			$mail -> setSubject("User ID GH ".$customer_gd['username']." đã báo cáo bạn ".$customer_pd['username']." không xác nhận PH");
 			$mail -> setHtml('
 			<div style="background: #f2f2f2; width:100%;">
@@ -287,25 +287,31 @@ class ControllerAccountGd extends Controller {
 		}
 	}
 	public function show_confirm($id_transfer){
+		//language
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$data['language'] = $getLanguage;
+		$language = new Language($getLanguage);
+		$language -> load('account/gd');
+		$lang = $language -> data;
+		$data['getLanguage'] = $getLanguage;
 		$transfer_confirm = $this -> model_account_customer -> getGDTranferByID($id_transfer);
 
 		$html = '';
 		$html .= '<table class="table table-bordered table-condensed table-hover ">
    <thead>
       <tr>
-         <th colspan="2" class="fade in"> Thông Tin ID Chuyển Khoản</th>
+         <th colspan="2" class="fade in"> '.$lang["InformationIDTransfers"].'</th>
       </tr>
    </thead>
-   <tbody>
-   	  
-     
+   <tbody>     
       <tr>
-         <td>Thông Tin ID Chuyển </td>
-         <td>Tên: <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>Phone:<strong> '.$transfer_confirm['telephone'].'</strong></td>
+         <td>'.$lang["IDInformation"].' </td>
+         <td>'.$lang['ten'].': <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>'.$lang['phone'].':<strong> '.$transfer_confirm['telephone'].'</strong></td>
       </tr>
       <tr>
-         <td>Thông Tin Bảo Trợ ID Chuyển </td>
-         <td>Tên: <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>Phone:<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
+         <td>'.$lang["InformationSponsorID"].'</td>
+         <td>'.$lang['ten'].': <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>'.$lang['phone'].':<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
       </tr>
    </tbody>
 </table>';
@@ -314,36 +320,42 @@ class ControllerAccountGd extends Controller {
 		return $html;
 	}
 	public function show_transfer($pd_id){
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$data['language'] = $getLanguage;
+		$language = new Language($getLanguage);
+		$language -> load('account/gd');
+		$lang = $language -> data;
+		$data['getLanguage'] = $getLanguage;
 		$transferList = $this -> model_account_customer -> getGdFromTransferList($pd_id);
 		
 		$html ='';
 		foreach ($transferList as $key => $value) {
 			$btnconfirm='';
 		if (intval($value["gd_status"]) === 0){
-      		$btnconfirm .= "<button type='button' data-value='".$value['id']."' class='gh_confirm btn btn-xs btn-success' >Xác nhận</i></button>";
-      		$btnconfirm .= "<button type='button' data-value='".$value['id']."' class='gh_report btn btn-xs btn-danger' style='margin-left:5px;' >Báo cáo</i></button>";
+      		$btnconfirm .= "<button type='button' data-value='".$value['id']."' class='gh_confirm btn btn-success' >".$lang['btn_confirm']."</i></button>";
+      		$btnconfirm .= "<button type='button' data-value='".$value['id']."' class='gh_report btn btn-danger' style='margin-left:5px;' >".$lang['btn_report']."</i></button>";
 		}
 
 		if (intval($value['pd_satatus']) === 0){
-			$status = '<span class="label label-warning">Đang chờ</span>';
+			$status = '<span class="label label-warning">'.$lang['dangcho'].'</span>';
 		}
 		if (intval($value['pd_satatus']) === 1){
-			$status = '<span class="label label-success">Hoàn thành</span>';
+			$status = '<span class="label label-success">'.$lang['ketthuc'].'</span>';
 		}
 		if (intval($value['pd_satatus']) === 2){
-			$status = '<span class="label label-danger">Báo cáo</span>';
+			$status = '<span class="label label-danger">'.$lang['baocao'].'</span>';
 		}
 		if (intval($value['gd_status']) === 0){
-			$status_gd = '<span class="label label-warning">Đang chờ</span>';
+			$status_gd = '<span class="label label-warning">'.$lang['dangcho'].'</span>';
 		}
 		if (intval($value['gd_status']) === 1){
-			$status_gd = '<span class="label label-success">Hoàn thành</span>';
+			$status_gd = '<span class="label label-success">'.$lang['ketthuc'].'</span>';
 		}
 		if (intval($value['gd_status']) === 2){
-			$status_gd = '<span class="label label-danger">Báo cáo</span>';
+			$status_gd = '<span class="label label-danger">'.$lang['baocao'].'</span>';
 		}
 		if (intval($value['gd_status']) === 3){
-			$status_gd = '<span class="label label-danger">Báo cáo</span>';
+			$status_gd = '<span class="label label-danger">'.$lang['baocao'].'</span>';
 		}
 		/*if (intval($value['status_pnode_pd']) === 1){
 			$status = '<span class="label label-danger">Báo cáo</span>';
@@ -356,39 +368,39 @@ class ControllerAccountGd extends Controller {
 
 			$html .= '<div class="row">
    <div class="col-lg-12 col-sm-12 col-xs-12 height">
-      <i class="fa fa-code-fork" aria-hidden="true"></i> Mã giao dịch: </i> 
+      <i class="fa fa-code-fork" aria-hidden="true"></i> '.$lang['GD_NUMBER'].': </i> 
       <strong class=" text-danger">GH'.$value["transfer_code"].'</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-calendar"> Thời gian tạo:</i> 
+      <i class="fa fa-calendar"> '.$lang['DATE_CREATED'].':</i> 
       <strong class=" text-primary">'.date("d/m/Y", strtotime($value['date_added'])).'</strong>
    </div>
    
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-cloud-upload"> Người chuyển :</i> 
+      <i class="fa fa-cloud-upload"> '.$lang['id_transfer'].' :</i> 
       <strong class="text-primary">'.$this->getParrent($value['pd_id_customer']).'</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-money"> Số tiền :</i> 
-      <strong class=" text-primary">'.(number_format($value['amount'])).' VNĐ</strong>
+      <i class="fa fa-money"> '.$lang['AMOUNT'].' :</i> 
+      <strong class=" text-primary">'.(number_format($value['amount'])).' '.$lang['VND'].'</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-cloud-download"> Người nhận : </i> 
-      <strong class=" text-primary">You ('.$value['username'].' )</strong>
+      <i class="fa fa-cloud-download"> '.$lang['ID_received'].' : </i> 
+      <strong class=" text-primary">'.$lang['You'].' ('.$value['username'].' )</strong>
    </div>
     <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success">Trạng Thái PH: </i>
+      <i class="fa fa-check-circle-o text-success">'.$lang['transferPDStatus'].': </i>
       <span class="text-success">'.$status .'</span>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success"> Trạng Thái GH:  </i>
+      <i class="fa fa-check-circle-o text-success"> '.$lang['transferGDStatus'].':  </i>
       <span class="text-success">'.$status_gd.'</span>
    </div>
 
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
       <span class="pull-left">
-      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Hóa đơn</a>
-      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">Chi tiết </a>
+      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">'.$lang['Bill'].'</a>
+      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">'.$lang['detail'].' </a>
       </span>
    </div>
 
@@ -397,14 +409,14 @@ class ControllerAccountGd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Xác nhận PH cho '.$value['username'].'</h4>
+               <h4 class="modal-title">'.$lang['ConfirmPHfor'] .' '.$value['username'].'</h4>
             </div>
             <div class="modal-body">
                '.$this->show_confirm($value['id']).'
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Gửi</a>
+               <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['Close'].'</button>
+               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">'.$lang['Send'].'</a>
             </div>
          </div>
       </div>
@@ -414,7 +426,7 @@ class ControllerAccountGd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Tin Nhắn</h4>
+               <h4 class="modal-title">Message</h4>
             </div>
             <form id="comfim-pd" action="'.$this -> url -> link('account/gd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
     text-align: left;
@@ -429,7 +441,7 @@ class ControllerAccountGd extends Controller {
                      </div>
                   </div>
                   <div class="form-group">
-                     <textarea autofocus="" placeholder="Tin nhắn" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
+                     <textarea autofocus="" placeholder="Message" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
                   </div>
                   <div class="form-group">
                   	'.$this->getMessages($value['id']).'
@@ -438,8 +450,8 @@ class ControllerAccountGd extends Controller {
                <div class="modal-footer">
                <center>
                		'.$btnconfirm.'
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                  <button type="submit" class="btn btn-primary">Gửi Tin Nhắn</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['Close'].'</button>
+                  <button type="submit" class="btn btn-primary">'.$lang['Send'].'</button>
                  </center>
                </div>
             </form>
@@ -599,7 +611,7 @@ class ControllerAccountGd extends Controller {
 						$gd_query = $this -> model_account_customer -> createGD($amount);
 
 						//fee 10%
-						$this -> fee_cashout($gd_query['gd_number'], $amount);
+						//$this -> fee_cashout($gd_query['gd_number'], $amount);
 						// End fee
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
@@ -630,7 +642,7 @@ class ControllerAccountGd extends Controller {
 						$returnDate = $this -> model_account_customer -> updateRWallet($this->request->get['amount'], $this -> session -> data['customer_id']);
 						$gd_query = $this -> model_account_customer -> createGD($amount);
 						//fee 10%
-						$this -> fee_cashout($gd_query['gd_number'], $amount);
+					//	$this -> fee_cashout($gd_query['gd_number'], $amount);
 						// End fee
 						$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  

@@ -26,6 +26,8 @@ $_['TRANSFER']            = 'Transfer list';
 $_['VND']            = 'VND';
 $_['TIME_REMAIN']            = 'TIME REMAIN';
 
+
+
 $_['createPD']            = 'Create Provide Donation (PD)';
 $_['text_blockchain_received'] = 'Received';
 $_['text_btc'] = 'Total BTC';

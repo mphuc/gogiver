@@ -101,41 +101,41 @@ class ControllerAccountPd extends Controller {
 		$html .= '<table class="table table-bordered table-condensed table-hover ">
    <thead>
       <tr>
-         <th colspan="2" class="fade in"> Thông Tin Chuyển Khoản : <br>Thông Tin Ngân Hàng</th>
+         <th colspan="2" class="fade in"> Information Transfer : <br>Information Bank</th>
       </tr>
    </thead>
    <tbody>
    	  <tr>
-         <td>Số Tiền Chuyển</td>
+         <td>Amount</td>
          <td>'.number_format($transfer_confirm['amount']).' VNĐ</td>
       </tr>
       <tr>
-         <td>Ngân Hàng</td>
+         <td>Bank</td>
          <td>Vietcombank</td>
       </tr>
      
       <tr>
-         <td>Tên Tài Khoản</td>
+         <td>Account Holder</td>
          <td>'.$transfer_confirm['account_holder'].'</td>
       </tr>
       <tr>
-         <td>Số Tài Khoản</td>
+         <td>Account Number</td>
          <td>'.$transfer_confirm['account_number'].'</td>
       </tr>
       <tr>
-         <td>Số Điện Thoại</td>
+         <td>Phone Number</td>
          <td>'.$transfer_confirm['telephone'].'</td>
       </tr>
       <tr>
-         <th colspan="2" class="fade in"><strong>Thông Tin Liên Hệ </strong></th>
+         <th colspan="2" class="fade in"><strong>Contact Info </strong></th>
       </tr>
       <tr>
-         <td>Thông Tin ID Nhận </td>
-         <td>Tên: <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>Phone:<strong> '.$transfer_confirm['telephone'].'</strong></td>
+         <td>Information ID Receive </td>
+         <td>Name: <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>Phone:<strong> '.$transfer_confirm['telephone'].'</strong></td>
       </tr>
       <tr>
-         <td>Thông Tin Bảo Trợ ID Nhận </td>
-         <td>Tên: <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>Phone:<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
+         <td>Information Sponsor ID Receive </td>
+         <td>Name: <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>Phone:<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
       </tr>
    </tbody>
 </table>';
@@ -158,27 +158,27 @@ class ControllerAccountPd extends Controller {
 		foreach ($transferList as $key => $value) {
 			
 			if (intval($value['pd_satatus']) === 0){
-			$status = '<span class="label label-warning">Đang chờ</span>';
+			$status = '<span class="label label-default">Waitting</span>';
 		}
 		if (intval($value['pd_satatus']) === 1){
-			$status = '<span class="label label-success">Hoàn thành</span>';
+			$status = '<span class="label label-success">Finish</span>';
 		}
 		if (intval($value['pd_satatus']) === 2){
-			$status = '<span class="label label-danger">Báo cáo</span>';
+			$status = '<span class="label label-danger">Report</span>';
 		}
 		if (intval($value['gd_status']) === 0){
-			$status_gd = '<span class="label label-warning">Đang chờ</span>';
+			$status_gd = '<span class="label label-warning">Waitting</span>';
 		}
 		if (intval($value['gd_status']) === 1){
-			$status_gd = '<span class="label label-success">Hoàn thành</span>';
+			$status_gd = '<span class="label label-success">Finish</span>';
 		}
 		if (intval($value['gd_status']) === 2){
-			$status_gd = '<span class="label label-danger">Báo cáo</span>';
+			$status_gd = '<span class="label label-danger">Report</span>';
 		}
 
 			if(!$value['image']){
 				$image = ' <div class="fileUpload btn btn-primary">
-	    <span>Chọn ảnh</span>
+	    <span>Upload Bill</span>
 	   	
 	   	<input type="file" class="upload" name="avatar" id="file" accept="image/jpg,image/png,image/jpeg,image/gif"/>
 	</div>    
@@ -194,11 +194,11 @@ class ControllerAccountPd extends Controller {
 			$html .= '<div class="row">
    
    <div class="col-lg-12 col-sm-12 col-xs-12 height">
-      <i class="fa fa-code-fork" aria-hidden="true"></i> Mã Giao Dịch:
+      <i class="fa fa-code-fork" aria-hidden="true"></i> Trade Code:
       <strong class=" text-danger">'.$value["transfer_code"].'</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-calendar"> </i> Ngày Tạo:
+      <i class="fa fa-calendar"> </i> Date Created:
       <strong class=" text-primary">'.date("d/m/Y", strtotime($value['date_added'])).'</strong>
    </div>
    
@@ -215,17 +215,17 @@ class ControllerAccountPd extends Controller {
       <strong class=" text-primary">'.$value['username'].'</strong>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success">Trạng Thái PH: </i>
+      <i class="fa fa-check-circle-o text-success">Status PH: </i>
       <span class="text-success">'.$status .'</span>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success"> Trạng Thái GH:  </i>
+      <i class="fa fa-check-circle-o text-success"> Status GH:  </i>
       <span class="text-success">'.$status_gd.'</span>
    </div>
    <div class="col-lg-4 col-sm-6 col-xs-12 height">
       <span class="pull-left">
-      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Xác Nhận</a>
-      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">Chi tiết </a>
+      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Confirm Bill</a>
+      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">Detail </a>
       </span>
    </div>
    <div class="modal fade" id="modal-'.$value['transfer_code'].'">
@@ -233,14 +233,14 @@ class ControllerAccountPd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Xác nhận PH cho '.$value['username'].'</h4>
+               <h4 class="modal-title">Confirm PH for '.$value['username'].'</h4>
             </div>
             <div class="modal-body">
                '.$this->show_confirm($value['id']).'
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Xác Nhận Chuyển</a>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Confirm Transfer</a>
             </div>
          </div>
       </div>
@@ -250,7 +250,7 @@ class ControllerAccountPd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Tin Nhắn</h4>
+               <h4 class="modal-title">Message</h4>
             </div>
             <form class="comfim-pd" action="'.$this -> url -> link('account/pd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
     text-align: left;
@@ -266,15 +266,15 @@ class ControllerAccountPd extends Controller {
                      </div>
                   </div>
                   <div class="form-group">
-                     <textarea autofocus="" placeholder="Tin nhắn" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
+                     <textarea autofocus="" placeholder="Message" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
                   </div>
                   <div class="form-group">
                   	'.$this->getMessages($value['id']).'
                   </div>
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                  <button type="submit" class="btn btn-primary">Xác nhận</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Confirm</button>
                </div>
             </form>
          </div>
@@ -410,8 +410,8 @@ $("#file").change(function(){
 				$amount	= $this -> request -> get['amount'];
 				$this -> model_account_customer ->updatePin_sub($this -> session -> data['customer_id'], 1 );
 				switch ($amount) {
-					case 8800000:
-						$max_profit = 11440000;
+					case 7700000:
+						$max_profit = 10010000;
 						break;
 					case 17600000:
 						$max_profit = 22800000;
@@ -499,8 +499,8 @@ $("#file").change(function(){
 		               <tbody>
 		                  <tr>
 		                     <td align="center" style="background:#ffffff">
-		                        <a href="https://gogiver.us" target="_blank" data-saferedirecturl="happymoney.us">
-		                           <h1 style="margin-top:30px; font-weight:bold;">Gogiver</h1>
+		                        <a href="https://Iontach.us" target="_blank" data-saferedirecturl="happymoney.us">
+		                           <h1 style="margin-top:30px; font-weight:bold;">Iontach</h1>
 		                        </a>
 		                     </td>
 		                  </tr>

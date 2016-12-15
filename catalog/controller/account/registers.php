@@ -78,7 +78,7 @@ class ControllerAccountRegisters extends Controller {
 			//$mail -> setTo($this -> config -> get('config_email'));
 			$mail->setTo(array(0 => ''.$_POST['email'].'', 1 => 'mmo.hyipcent@gmail.com'));
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Gogiver", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
 			$mail -> setSubject("Chúc mừng bạn đã đăng ký thành công!");
 			$mail -> setHtml('
 				

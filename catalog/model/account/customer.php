@@ -86,6 +86,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		return $query;
 	}
+	
 
 	public function getInfoUsers_binary($id_id){
 
@@ -421,6 +422,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query;
 	}
+	public function insert_block_id($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			date = NOW()
+		");
+		return $query;
+	}
 
 	public function insertC_Wallet($id_customer){
 		$query = $this -> db -> query("
@@ -435,6 +444,15 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_r_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+
+	public function get_block_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_id
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
 		");
 		return $query -> row;
@@ -2371,6 +2389,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function repd($customer_id){
 		$date_added= date('Y-m-d H:i:s');
+	
 		$query = $this -> db -> query("
 			SELECT count(*) as num
 			FROM ". DB_PREFIX . "customer_get_donation
@@ -2414,5 +2433,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
 		
 		return $query->row['ping'];
+	}
+	public function get_insurance_fund(){
+		$query = $this->db->query("SELECT amount
+			FROM " . DB_PREFIX . "customer_insurance_fund");
+		
+		return $query->row['amount'];
 	}
 }

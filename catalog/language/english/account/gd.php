@@ -8,10 +8,24 @@ $_['text_button_create']            = 'Create Get Donation';
 
 
 $_['NO']            = 'NO';
+$_['InformationIDTransfers']            = 'Information ID Transfers';
+$_['IDInformation']            = 'ID Transfer';
+$_['InformationSponsorID']            = 'Information Sponsor ID Transfer';
+$_['ten']            = 'Name';
+$_['phone']            = 'Phone Number';
+$_['btn_confirm']            = 'Confirm';
+$_['btn_report']            = 'Report';
+$_['id_transfer']            = 'ID TRANSFER';
+$_['ID_received']            = 'ID RECEIVED';
+$_['You']            = 'YOU';
+$_['Bill']            = 'Bill';
+$_['ConfirmPHfor']            = 'Confirm PH For';
+$_['Close']            = 'Close';
+$_['Send']            = 'Send';
 
 $_['AMOUNT']            = 'AMOUNT';
 
-$_['danhnhan']            = 'Received';
+$_['danhnhan']            = 'RECEIVED';
 $_['DATE_CREATED']            = 'DATE CREATED	';
 
 $_['GD_NUMBER']            = 'GD NUMBER';
@@ -53,8 +67,8 @@ $_['TRANSACTION']            = 'TRANSACTION';
 
 $_['ACCOUNT_TRANSFER']            = 'ACCOUNT TRANSFER';
 
-$_['transferPDStatus']            = 'PD STATUS';
-$_['transferGDStatus']            = 'GD STATUS';
+$_['transferPDStatus']            = 'PH STATUS';
+$_['transferGDStatus']            = 'GH STATUS';
 
 $_['transferTime']            = 'TIME REMAIN';
 $_['err_account']            = '<i class="fa fa-fw fa-times"></i>You are not create get donation! Please setting your account bank!';

@@ -164,7 +164,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12" >
-                          <p>Lưu ý: hệ thống Gogiver chỉ hỗ trợ tài khoản vietcombank.</p>
+                          <p>Lưu ý: hệ thống Iontach chỉ hỗ trợ tài khoản vietcombank.</p>
                           <p>Nhập đúng số tài khoản ngân hàng vietcombank, hệ thống sẽ tự lấy họ tên từ tài khoản của bạn.</p>
                           <p>Mỗi tài khoản vietcombank chỉ có thể đăng ký đươc 1 tài khoản.</p>
                           <br/>

@@ -20,17 +20,25 @@
                   if (count($getPDfinish_child) > 0) {
                      foreach ($getPDfinish_child as $value) {
                   ?>
+                  <?php if ($language=='english') { ?>
+
+                  <div class="alert alert-danger">
+                       <strong><?php echo $value['username'];?> not transfer money</strong> Please create PD with money <?php echo number_format($value['amount']); ?> VND no penalty <a class="btn btn-success" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Create PH</a>
+                     </div>
+
+                   <?php }else{ ?>
                      <div class="alert alert-danger">
                        <strong><?php echo $value['username'];?> chưa chuyển tiền</strong> Bạn vui lòng tạo PD với số tiền <?php echo number_format($value['amount']); ?> VNĐ để không bị phạt <a class="btn btn-success" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PH</a>
                      </div>
-
+                     <?php } ?>
                   <?php
                      }
                   }
                ?>
 
                <?php 
-                  if (count($repd) > 0) {
+
+                  if (intval($repd) != 0) {
                     
                     
                   ?>
@@ -167,7 +175,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number" data-from="0" data-to="48">0</span>
+                              <span class="stats-number" data-from="0" data-to="48"><?php echo $self -> insurance_fund(); ?> VND</span>
                               <span class="stats-icon">
                               <i class="fa fa-university color-red"></i>
                               </span>

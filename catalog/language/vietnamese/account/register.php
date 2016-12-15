@@ -37,7 +37,7 @@ $_['err_text_Transaction_Password']            = 'Vui lòng nhập mật khẩu 
 $_['err_Repeat_Transaction_Password']            = 'Vui lòng lặp lại mật khẩu giao dịch';
 
 $_['ok']            = 'Thành công';
-$_['text_register'] = '<p>Lưu ý: hệ thống Gogiver chỉ hỗ trợ tài khoản vietcombank.</p>
+$_['text_register'] = '<p>Lưu ý: hệ thống Iontach chỉ hỗ trợ tài khoản vietcombank.</p>
                                              <p>Nhập đúng số tài khoản ngân hàng vietcombank, hệ thống sẽ tự lấy họ tên từ tài khoản của bạn.</p>
                                              <p>Mỗi tài khoản vietcombank chỉ có thể đăng ký đươc 1 tài khoản.</p>';
 $_['url_link'] = 'Sao chép đường dẫn bên dưới để gửi cho bạn bè cùng tham gia hệ thống';

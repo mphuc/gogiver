@@ -1,5 +1,6 @@
 <?php
 // Heading
+
 $_['heading_title']     = 'Nhận Về (GD)';
 // Text
 $_['text_home']            = 'Trang Chủ';
@@ -8,6 +9,17 @@ $_['text_button_create']            = 'Rút Về';
 
 
 $_['NO']            = 'STT';
+$_['InformationIDTransfers']            = 'Thông Tin ID Chuyển Khoản';
+$_['IDInformation']            = 'ID Chuyển';
+$_['InformationSponsorID']            = 'Thông Tin Bảo Trợ ID Chuyển';
+$_['ten']            = 'Tên';
+$_['phone']            = 'Điện Thoại';
+$_['btn_confirm']            = 'Xác Nhận';
+$_['btn_report']            = 'Báo Cáo';
+$_['id_transfer']            = 'NGƯỜI CHUYỂN';
+$_['ID_received']            = 'NGƯỜI NHẬN';
+$_['You']            = 'BẠN';
+$_['Bill']            = 'Hóa Đơn';
 
 $_['AMOUNT']            = 'SỐ LƯỢNG';
 
@@ -21,6 +33,9 @@ $_['t_view_btc'] ='Xem thông tin về giao dịch Bitcoin:';
 $_['TRANSFER']            = 'CHUYỂN KHOẢN';
 $_['TRANSFER_']            = 'Chuyển khoản';
 $_['VND']            = 'VNĐ';
+$_['ConfirmPHfor']            = 'Xác Nhận PH cho';
+$_['Close']            = 'Đóng';
+$_['Send']            = 'Gửi';
 
 $_['create']            = 'Tạo GD';
 $_['successfull']            = 'Tạo GD thành công';

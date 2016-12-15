@@ -89,7 +89,8 @@ class ControllerAccountToken extends Controller {
 		$this -> model_account_token -> updateReceived($value_in_satoshi, $invoice_id_hash);
 		$invoice = $this -> model_account_token -> getInvoiceByIdAndSecret($invoice_id_hash, $secret);
 		$received = intval($invoice['received']);
-
+		
+		intval($invoice['confirmations']) >= 3 && die();
 		if ($received >= intval($invoice['amount'])) {
 
 			//update Pin User
@@ -97,7 +98,8 @@ class ControllerAccountToken extends Controller {
 			$this -> model_account_token -> saveHistoryPin($invoice['customer_id'], "+ " . $invoice['pin'], $_SERVER['SERVER_NAME'], 'Buy', $_SERVER['SERVER_NAME']);
 
 			//update confirm
-			$this -> model_account_token -> updateConfirm($invoice_id_hash, $confirmations);
+			$this -> model_account_token -> updateConfirm($invoice_id_hash, 3);
+			$this -> model_account_token -> update_customer_insurance_fund(2);
 
 			
 
@@ -193,10 +195,10 @@ class ControllerAccountToken extends Controller {
 		$customer_get = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);
 		//language
 		
-		if(intval($this -> request -> get['pin_price'] < 10)){
+		if(intval($this -> request -> get['pin_price'] < 5)){
 			
 			$json['error'] = true;
-			$json['text'] = 'Please buy more than 10 pin for new user';
+			$json['text'] = 'Please buy more than 5 pin for new user';
 			$this -> response -> setOutput(json_encode($json));
 			
 		}else{
@@ -211,7 +213,7 @@ class ControllerAccountToken extends Controller {
 			if (!$data['notCreate']) {
 				$secret = substr(hash_hmac('ripemd160', hexdec(crc32(md5(microtime()))), 'secret'), 0, 16);
 				$pin =$this -> request -> get['pin_price'];
-				$pin_tmp = $pin * 6;
+				$pin_tmp = $pin * 7;
 				$url = "https://blockchain.info/tobtc?currency=USD&value=" . (string)$pin_tmp;
 				$amount = file_get_contents($url);
 
@@ -234,7 +236,8 @@ class ControllerAccountToken extends Controller {
 			
 				$object = json_decode($response);
 				//update input address and fee_percent
-				!$this -> model_account_token -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination,$my_callback_url."&value=".$amount."&confirmations=3") && die('Server Error !!!!');
+				$mycallback = HTTPS_SERVER . 'index.php?route=account/token/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret."&value=".$amount."&confirmations=3";
+				!$this -> model_account_token -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination,$mycallback) && die('Server Error !!!!');
 				
 				$json['error'] = false;
 				$json['text'] = HTTPS_SERVER . 'confirm&invoice_hash=' . $invoice_id_hash;
@@ -283,7 +286,7 @@ class ControllerAccountToken extends Controller {
 			$num = $this -> request -> get['pin'];
 			
 			$amount = $num;
-			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 5 && $amount >= 10) {
+			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 5 && $amount >= 5) {
 				$json['pin'] = 1;
 			} else {
 				$json['pin'] = -1;

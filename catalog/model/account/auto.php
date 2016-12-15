@@ -95,7 +95,7 @@ public function updateTransferList($transfer_id){
 			amount = 0,
 			status = 0
 		");
-		$amount	= 8800000;
+		$amount	= 7700000;
 
 		$gd_id = $this->db->getLastId();
 
@@ -156,9 +156,7 @@ public function updateTransferList($transfer_id){
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
 			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
-			AND status = 0 AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer_invoice_fee WHERE confirmations = 0) 
-			ORDER BY date_added ASC
-			LIMIT 1
+			AND status = 0 ORDER BY date_added ASC LIMIT 1
 		");
 		return $query -> row;
 	}
@@ -811,6 +809,15 @@ public function updateTransferList($transfer_id){
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
 				status = '8'
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+	public function update_lock_customer($customer_id){
+		
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_block_id SET
+				status = 1
 				WHERE customer_id = '".$customer_id."'
 			");
 		return $query;

@@ -60,7 +60,7 @@
                                          </span> </strong></td>
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
-                                             echo '<span class="label label-warning">'.$lang['dangcho'].'</span>';
+                                             echo '<span class="label label-default">'.$lang['dangcho'].'</span>';
                                              break;
                                          case 1:
                                              echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
@@ -77,9 +77,6 @@
                                             <?php echo $lang['detail'] ?>
                                             </a></td>
                                           </tr>
-                                          
-                                            
-                                         
                                         </tbody>
                                       </table>  
                                    </div>
@@ -167,7 +164,7 @@
 </style>
 <script type="text/javascript">
    function viewImage (image) {
-     alertify.confirm('Hóa đơn của bạn', '<img style="width:100%" src="'+image+'"/>', function(){  }, function(){ });
+     alertify.confirm('Your Bill', '<img style="width:100%" src="'+image+'"/>', function(){  }, function(){ });
    }
    
    if(location.hash){
@@ -179,7 +176,7 @@
      jQuery('.id_tranfer').val(id);
    
      jQuery('.ajs-button.ajs-ok').hide();
-     alertify.confirm('Tìm hóa đơn', jQuery('.content_upload').html(), function(){  }, function(){ });
+     alertify.confirm('Find bill', jQuery('.content_upload').html(), function(){  }, function(){ });
      function readURL(input) {
          if (input.files && input.files[0]) {
              var reader = new FileReader();

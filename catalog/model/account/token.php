@@ -98,7 +98,13 @@ class ModelAccountToken extends Model {
 		");
 		return $this -> db -> getLastId();
 	}
-
+public function update_customer_insurance_fund($amount){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_insurance_fund SET
+				amount = amount + ".floatval($amount)."
+			");
+		return $query;
+	}
 	public function saveInvoice($customer_id, $secret, $amount, $pin){
 		
 		// switch ($amount) {

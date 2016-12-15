@@ -61,8 +61,8 @@ class ControllerAccountAccount extends Controller {
 		               <tbody>
 		                  <tr>
 		                     <td align="center" style="background:#ffffff">
-		                        <a href="https://gogiver.us" target="_blank" data-saferedirecturl="happymoney.us">
-		                           <h1 style="margin-top:30px; font-weight:bold;">gogiver</h1>
+		                        <a href="https://Iontach.us" target="_blank" data-saferedirecturl="happymoney.us">
+		                           <h1 style="margin-top:30px; font-weight:bold;">Iontach</h1>
 		                        </a>
 		                     </td>
 		                  </tr>
@@ -202,23 +202,7 @@ class ControllerAccountAccount extends Controller {
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/pd');
 		$this -> load -> model('customize/register');
-		$pd_admin = $this-> model_account_auto -> getPD_for_admin();
-		foreach ($pd_admin as $key => $value) {
-			$inventory = $this -> model_account_auto ->getCustomerInventory();
-			$gd_query = $this -> model_account_pd -> createGDInventory($value['filled']*0.1, $inventory['customer_id']);
-			$data['pd_id'] = $value['id'];
-			$data['gd_id'] = $gd_query['gd_id'];
-			$data['pd_id_customer'] = $value['customer_id'];
-			$data['gd_id_customer'] = $inventory['customer_id'];
-			$data['amount'] = $value['filled']*0.1;
-			$transfer_id = $this -> model_account_pd -> createTransferList10percent($data, 1);
-			$this -> model_account_pd -> updateTransferList($transfer_id);
-			$this -> model_account_pd -> updateStatusGD($gd_query['gd_id'], 1);
-			$this -> model_account_pd -> updateTotalAmountPD($value['id'], $value['filled']*0.1);
-			$this -> model_account_pd -> updateFilledGD($gd_query['gd_id'], $value['filled']*0.1);
-			
-		}
-		
+				
 		//get first GD
 		$loop = true;
 		// $count = 0;

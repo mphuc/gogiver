@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
         <meta charset="utf-8">
-        <title>Login | Gogiver</title>
+        <title>Login | Iontach</title>
         <!-- Mobile specific metas -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -51,7 +51,7 @@
                             <div class="col-lg-12">
                                 <div class="input-group input-icon">
                                     <span class="input-group-addon input-group-lg"><i class="fa fa-envelope"></i></span>
-                                    <input  autocomplete="off" type="text" name="email" value="<?php echo $email; ?>" placeholder="Tài khoản đăng nhập" id="input-email" class="form-control input-lg" />
+                                    <input  autocomplete="off" type="text" name="email" value="<?php echo $email; ?>" placeholder="Username" id="input-email" class="form-control input-lg" />
                                     
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                 <div class="input-group input-icon">
                                     <span class="input-group-addon input-group-lg"><i class="fa fa-key"></i></span>
                                     
-                                    <input autocomplete="off" type="password" name="password" value="<?php echo $password; ?>" placeholder="Mật khẩu" id="input-password" class="form-control input-lg"  />
+                                    <input autocomplete="off" type="password" name="password" value="<?php echo $password; ?>" placeholder="Password" id="input-password" class="form-control input-lg"  />
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <div class="col-lg-12">
                         <img class="img_capcha" style="float: left" src="captcha_code.php"/>
-                        <input style="width: 150px; margin-left: px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Mã xác thực" id="input-password" value="" class="form-control" />
+                        <input style="width: 150px; margin-left: px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" />
                       </div>
                     </div>
 

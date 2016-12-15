@@ -18,7 +18,7 @@ $( document ).ready(function() {
                 }
                 else{
                   if (name=="N/A"){
-                    $('#account_holder').attr('placeholder', 'Số tài khoản ngân hàng không tồn tại');
+                    $('#account_holder').attr('placeholder', 'Bank account number does not exist!');
                     $('#account_holder').parent().addClass('has-error');
                     $('#account_number').parent().addClass('has-error');
                     $('.conf-vcb span').hide();
@@ -128,7 +128,7 @@ $( document ).ready(function() {
             userName: function(self) {
                 if (self.find('#username').existsWithValue() === 0) {
                     self.find('#username').parent().addClass('has-error');
-                    self.find('#username').attr('placeholder', 'ID không thể bỏ trống');
+                    self.find('#username').attr('placeholder', 'Please enter your username!');
                     return false;
                 }
                 return true;
@@ -137,7 +137,7 @@ $( document ).ready(function() {
             email: function(self) {
                 if (self.find('#email').existsWithValue() === 0) {
                     self.find('#email').parent().addClass('has-error');
-                    self.find('#email').attr('placeholder', 'Email không thể bỏ trống');
+                    self.find('#email').attr('placeholder', 'Please enter your Email!');
                     return false;
                 }
                 return true;
@@ -146,7 +146,7 @@ $( document ).ready(function() {
             phone: function(self) {
                 if (self.find('#phone').existsWithValue() === 0) {
                     self.find('#phone').parent().addClass('has-error');
-                    self.find('#phone').attr('placeholder', 'SĐT không thể bỏ trống');
+                    self.find('#phone').attr('placeholder', 'Please enter your Phone Number!');
                     return false;
                 }
                 return true;
@@ -155,7 +155,7 @@ $( document ).ready(function() {
             account_holder: function(self) {
                 if (self.find('#account_holder').existsWithValue() === 0) {
                     self.find('#account_holder').parent().addClass('has-error');
-                    self.find('#account_holder').attr('placeholder', 'Tên chủ sở hữu thẻ ngân hàng không thể bỏ trống');
+                    self.find('#account_holder').attr('placeholder', 'Please enter your bank account holder!');
                     return false;
                 }
                 return true;
@@ -163,7 +163,7 @@ $( document ).ready(function() {
             account_number: function(self) {
                 if (self.find('#account_number').existsWithValue() === 0) {
                     self.find('#account_number').parent().addClass('has-error');
-                    self.find('#account_number').attr('placeholder', 'Số thẻ ngân hàng không thể bỏ trống');
+                    self.find('#account_number').attr('placeholder', 'Please enter your bank account number');
                     return false;
                 }
                 return true;
@@ -171,7 +171,7 @@ $( document ).ready(function() {
             bank_name: function(self) {
                 if (self.find('#bank_name').existsWithValue() === 0) {
                     self.find('#bank_name').parent().addClass('has-error');
-                    self.find('#bank_name').attr('placeholder', 'Số thẻ ngân hàng không thể bỏ trống');
+                    self.find('#bank_name').attr('placeholder', 'Please enter your bank name');
                     return false;
                 }
                 return true;
@@ -188,7 +188,7 @@ $( document ).ready(function() {
             password: function(self) {
                 if (self.find('#password').existsWithValue() === 0) {
                     self.find('#password').parent().addClass('has-error');
-                    self.find('#password').attr('placeholder', 'Mật khẩu đăng nhập không thể để trống');
+                    self.find('#password').attr('placeholder', 'Please enter your password');
                     return false;
                 }
                 return true;
@@ -196,7 +196,7 @@ $( document ).ready(function() {
             password_tran: function(self) {
                 if (self.find('#password2').existsWithValue() === 0) {
                     self.find('#password2').parent().addClass('has-error');
-                    self.find('#password2').attr('placeholder', 'Mật khẩu giao dịch không thể để trống');
+                    self.find('#password2').attr('placeholder', 'Please enter your password again');
                     return false;
                 }
                 return true;
@@ -205,7 +205,7 @@ $( document ).ready(function() {
             repeatPasswd: function(self) {
                 if (self.find('#confirmpassword').val() !== self.find('#password').val()) {
                     self.find('#confirmpassword').parent().addClass('has-error');
-                    self.find('#confirmpassword').attr('placeholder', 'Mật khẩu đăng nhập không trùng khớp');
+                    self.find('#confirmpassword').attr('placeholder', 'Login password do not match');
                     return false;
                 }
                 return true;
@@ -214,7 +214,7 @@ $( document ).ready(function() {
             repeatPasswd_tran: function(self) {
                 if (self.find('#confirmpasswordtransaction').val() !== self.find('#password2').val()) {
                     self.find('#confirmpasswordtransaction').parent().addClass('has-error');
-                    self.find('#confirmpasswordtransaction').attr('placeholder', 'Mật khẩu giao dịch không trùng khớp');
+                    self.find('#confirmpasswordtransaction').attr('placeholder', 'Login transaction password do not match');
                     return false;
                 }
                 return true;
@@ -351,7 +351,7 @@ $( document ).ready(function() {
             if (checkEmail) {
                 self.find('#email').parent().addClass('has-error');
                 self.find('#email').val('');
-                self.find('#email').attr('placeholder', 'Email không đúng vd: email@gmail.com');
+                self.find('#email').attr('placeholder', 'Email incorrect ex: email@iontach.biz');
                 return false;
             } else {
                 validate.init($(this));
@@ -385,7 +385,7 @@ $( document ).ready(function() {
         
         if (self.find('#cmnds').existsWithValue() === 0) {
             self.find('#cmnds').parent().addClass('has-error');
-            self.find('#cmnds').attr('placeholder', 'Vui lòng nhập số CMND');
+            self.find('#cmnds').attr('placeholder', 'The Citizenship card/passport no field is required!');
                     return false;
            
         }else{
@@ -401,7 +401,7 @@ $( document ).ready(function() {
             if (!callback) {
                 self.find('#username').parent().addClass('has-error');
 
-                self.find('#username').val('').attr('placeholder', 'ID đã được đăng ký trong hệ thống, vui lòng chọn ID khác');
+                self.find('#username').val('').attr('placeholder', 'Username is already registered in the system, please select another Username');
 
                 self.find('#password').val('');
                 self.find('#password').parent().removeClass('has-success');
@@ -441,7 +441,7 @@ $( document ).ready(function() {
             validate.checkEmailExit($(this), function(callback) {
                 if (!callback) {
                     self.find('#email').parent().addClass('has-error');
-                    self.find('#email').val('').attr('placeholder', 'Email đã vượt quá số lần đăng ký, vui lòng chọn Email khác');
+                    self.find('#email').val('').attr('placeholder', 'Email has exceeded the number of registered, please choose another email!');
                     self.find('#password').val('');
                     self.find('#password').parent().removeClass('has-success');
                     self.find('#confirmpassword').val('');
@@ -481,7 +481,7 @@ $( document ).ready(function() {
             validate.checkPhoneExit($(this), function(callback) {
                 if (!callback) {
                     self.find('#phone').parent().addClass('has-error');
-                    self.find('#phone').val('').attr('placeholder', 'SĐT đã vượt quá số lần đăng ký, vui lòng chọn SĐT khác');
+                    self.find('#phone').val('').attr('placeholder', 'Phone number has exceeded the registered, please choose another phone number');
                     self.find('#password').val('');
                     self.find('#password').parent().removeClass('has-success');
                     self.find('#confirmpassword').val('');
@@ -521,7 +521,7 @@ $( document ).ready(function() {
             validate.checkAccountHolder($(this), function(callback) {
                 if (!callback) {
                     self.find('#account_number').parent().addClass('has-error');
-                    self.find('#account_number').val('').attr('placeholder', 'Số tài khoản ngân hàng đã vượt quá số lần đăng ký, vui lòng chọn cái khác');
+                    self.find('#account_number').val('').attr('placeholder', 'Bank account number has exceeded the number of registered, please choose another');
                     self.find('#account_holder').val('');
                     self.find('#password').val('');
                     self.find('#password').parent().removeClass('has-success');
