@@ -4189,3 +4189,99 @@ hr {
     width: 61px !important;
     margin-top: 15px !important;
 }
+.block_panel {
+    width: 80%;
+  
+    margin: 35px auto 20px auto;
+    position: relative;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 7px 13px rgba(0, 0, 0, 0.5);
+}
+
+
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+    right: 290px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center
+}
+.ajs-header{
+  text-align: center;
+  background-color: #531f1f !important;
+  padding:0px !important;
+}
+
+.ajs-btn{
+  width: 109px;
+  float: right;
+}
+
+.alertify .ajs-dialog{
+  max-width: 768px !important;
+}
+
+.alertify .ajs-commands {
+    position: absolute;
+    right: 4px;
+    margin: 13px 24px 0 0;
+    z-index: 2;
+}
+.alertify .ajs-footer{
+  display: none;
+}
+
+.alertify .ajs-header{
+  margin: 0px !important;
+}
+
+.alertify .ajs-body {
+    min-height: 56px;
+    width: 100%;
+    float: left;
+    background: #fff;
+}
+
+.alertify .ajs-dialog{
+  background:none !important;
+}
+
+
+.alertify .ajs-commands {
+    position: absolute;
+    right: 4px;
+    margin: -2px 24px 0 0 !important;
+    z-index: 2;
+}
+
+.alertify .ajs-dialog{
+  padding: 0px !important;
+}
+
+.alertify .ajs-footer {
+    padding: 4px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    min-height: 43px;
+    background-color: #fff;
+    width: 100%;
+    float: left;
+    display: block !important; 
+    padding: 15px !important;
+}
+
+.alertify .ajs-commands{
+  display: none;
+}
+
+
+.ajs-cancel{
+  margin-right: 10px;
+}
+@media screen and (max-width: 568px){
+.alertify:not(.ajs-maximized) .ajs-modal {
+        padding: 0 2% !important;
+    }
+    
+}

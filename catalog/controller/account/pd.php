@@ -14,7 +14,8 @@ class ControllerAccountPd extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.js');
 			$self -> document -> addStyle('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.css');
 		};
-		$this -> load -> model('account/customer');
+		$block_id = $this -> check_block_id();		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -317,7 +318,9 @@ $("#file").change(function(){
 			$self -> load -> model('account/customer');
 			
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);
@@ -351,6 +354,9 @@ $("#file").change(function(){
 		
 		if ($this -> customer -> isLogged() && $this -> request -> get['amount'] && $this -> request -> get['Password2']) {
 			$this -> load -> model('account/customer');
+			$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 			$variablePasswd = $this -> model_account_customer -> getPasswdTransaction($this -> request -> get['Password2']);
 			$json['password'] = $variablePasswd['number'] === '0' ? -1 : 1;
 			$customer = $this -> model_account_customer ->getCustomer($this -> session -> data['customer_id']);
@@ -413,20 +419,22 @@ $("#file").change(function(){
 					case 7700000:
 						$max_profit = 10010000;
 						break;
-					case 17600000:
-						$max_profit = 22800000;
+					case 15200000:
+						$max_profit = 19760000;
 						break;
-					case 26400000:
-						$max_profit = 34320000;
+					case 23100000:
+						$max_profit = 30030000;
 						break;
-					case 35200000:
-						$max_profit = 45760000;
+					case 30800000:
+						$max_profit = 40040000;
 						break;
-					case 44000000:
-						$max_profit = 57200000;
+					case 38500000:
+						$max_profit = 50050000;
+					case 46200000:
+						$max_profit = 50050000;
 						break;
 					default:
-						$max_profit = 57200000;
+						die();
 						break;
 				}
 				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);							
@@ -535,7 +543,9 @@ $("#file").change(function(){
 			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
 			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		!$this -> request -> get['token'] && $this->response->redirect(HTTPS_SERVER . 'dashboard.html');
 
 		//method to call function
@@ -592,7 +602,9 @@ $("#file").change(function(){
 			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$self -> document -> addScript('catalog/view/javascript/pd/confirm.js');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -1550,4 +1562,11 @@ $("#file").change(function(){
 		$this -> model_account_customer -> updateStatustranfer($select_tranfer['id']);
     	$this -> response -> redirect($this -> url -> link('account/dashboard#createPD', '', 'SSL'));
     }
+    public function check_block_id(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
+		
+		return intval($block_id['status']);
+
+	}
 }

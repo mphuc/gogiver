@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('Thêm PH'); 
+   $self -> document -> setTitle('Create PH'); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -48,16 +48,19 @@
                                              <option value="7700000"><?php echo number_format("7700000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] == 2) {?>
-                                             <option value="17600000"><?php echo number_format("17600000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <option value="15200000"><?php echo number_format("15200000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] == 3) {?>
-                                             <option value="26400000"><?php echo number_format("26400000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <option value="23100000"><?php echo number_format("23100000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] == 4) {?>
-                                             <option value="35200000"><?php echo number_format("35200000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <option value="30800000"><?php echo number_format("30800000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] >= 5) {?>
-                                             <option value="44000000"><?php echo number_format("44000000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <option value="38500000"><?php echo number_format("38500000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <?php } ?>
+                                             <?php if ($level['level'] >= 6) {?>
+                                             <option value="46200000"><?php echo number_format("46200000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              
       

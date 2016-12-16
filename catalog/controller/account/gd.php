@@ -16,7 +16,8 @@ class ControllerAccountGd extends Controller {
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
 
-
+		$block_id = $this -> check_block_id();		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//language
 		
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
@@ -65,6 +66,13 @@ class ControllerAccountGd extends Controller {
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/gd.tpl', $data));
 		}
+	}
+	public function check_block_id(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
+		
+		return intval($block_id['status']);
+
 	}
 	// public function get_confirmation($gd_number)
 	// {
@@ -473,7 +481,8 @@ class ControllerAccountGd extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/gd/create.js');
 			$self -> load -> model('account/customer');
 		};
-
+$block_id = $this -> check_block_id();		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//language
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
@@ -546,22 +555,22 @@ class ControllerAccountGd extends Controller {
 
 				switch (intval($level['level'])) {
 					case 1:
-						$amount_gd = 26400000;
+						$amount_gd = 23100000;
 						break;
 					case 2:
-						$amount_gd = 57200000;
+						$amount_gd = 44000000;
 						break;
 					case 3:
-						$amount_gd = 79200000;
+						$amount_gd = 77000000;
 						break;
 					case 4:
-						$amount_gd = 136400000;
+						$amount_gd = 121000000;
 						break;
 					case 5:
-						$amount_gd = 215600000;
+						$amount_gd = 176000000;
 						break;
 					case 6:
-						$amount_gd = 272800000;
+						$amount_gd = 242000000;
 						break;
 				}
 

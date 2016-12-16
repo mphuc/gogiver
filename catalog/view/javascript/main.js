@@ -22,9 +22,7 @@ if (isAndroid) {
 }
 
 //attach fast click
-window.addEventListener('load', function() {
-    FastClick.attach(document.body);
-}, false);
+
 
 //doc ready function
 $(document).ready(function() {

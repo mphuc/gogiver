@@ -14,6 +14,9 @@ class ControllerAccountToken extends Controller {
 			$self -> load -> model('account/customer');
 
 		};
+		$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 
 		//language
 		$this -> load -> model('account/customer');
@@ -66,6 +69,13 @@ class ControllerAccountToken extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/token.tpl', $data));
 		}
 	}
+	public function check_block_id(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
+		
+		return intval($block_id['status']);
+
+	}
 
 	public function callback() {
 
@@ -114,7 +124,9 @@ class ControllerAccountToken extends Controller {
 			$self -> load -> model('account/customer');
 			$self -> load -> model('account/token');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -142,7 +154,9 @@ class ControllerAccountToken extends Controller {
 			$self -> load -> model('account/customer');
 			$self -> load -> model('account/token');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -184,7 +198,9 @@ class ControllerAccountToken extends Controller {
 			$self -> load -> model('account/customer');
 			$self -> load -> model('account/token');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -259,7 +275,9 @@ class ControllerAccountToken extends Controller {
 			$this -> load -> model('account/customer');
 			//check customer
 			$customer = $this -> request -> get['customer'];
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 			$Tree = $this -> model_account_customer -> checkUserName($this -> customer -> getId());
 
 			$UTree = explode(',', $Tree);
@@ -383,7 +401,9 @@ class ControllerAccountToken extends Controller {
 		$language = new Language($getLanguage);
 		$language -> load('account/token');
 		$data['lang'] = $language -> data;
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -431,14 +451,16 @@ class ControllerAccountToken extends Controller {
 
 		function myConfig($self) {
 			$self -> load -> model('account/token');
-		
+		$self -> load -> model('account/customer');
 			// $self -> document -> addScript('catalog/view/javascript/transfer/transfer.js');
 			$self -> document -> addScript('catalog/view/javascript/token/token.js');
 		};
 
 		//language
 		
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -496,7 +518,9 @@ class ControllerAccountToken extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
 			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 		};
-
+$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		!$this -> request -> get['value'] && $this -> response -> redirect($this -> url -> link('account/dashboard', '', 'SSL'));
 		if (!is_numeric($this -> request -> get['value'])) {
 			$this -> response -> redirect($this -> url -> link('account/dashboard', '', 'SSL'));

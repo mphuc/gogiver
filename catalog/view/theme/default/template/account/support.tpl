@@ -24,21 +24,20 @@
                               <form class="form" id="support" method="post" action="index.php?route=account/support/sendmail">
         
                                 <p class="name">
-                                  <input type="text" name="name" id="name" placeholder="John Doe" />
+                                  <input type="text" name="name" id="name" placeholder="John Doe" required />
                                   <label for="name">Name</label>
-                                </p>
+                                </p>                                
                                 
-                                
-                                
-                                <!-- <p class="web">
-                                  <input type="text" name="web" id="web" placeholder="www.example.com" />
-                                  <label for="web">Website</label>
-                                </p>     -->
+                 
                               
                                 <p class="text">
-                                  <textarea name="content" placeholder="Write something to us" /></textarea>
+                                  <textarea name="content" placeholder="Write something to us" required ></textarea>
                                 </p>
-                                
+                                <p>
+                                <input style="width: 150px; margin-left: 10px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" required />
+                                <img class="img_capcha" style="float: right" src="captcha_code.php"/>
+                              </p>
+                                <div class="clearfix"></div>
                                 <p class="submit">
                                   <input type="submit" value="Send" />
                                 </p>
@@ -68,6 +67,15 @@
         alertify.set('notifier', 'delay', 100000000);
         alertify.set('notifier', 'position', 'top-right');
         alertify.success('Send mail successfull !!!');
+    }
+     if (location.hash === '#error') {
+      var html = '<div class="col-md-12">';
+        html += '<p class="text-center" style="font-size:23px;text-transform: uppercase;height: 20px;color:red">ERROR !</p><p class="text-center" style="font-size:20px;height: 20px">Faild Capcha</p>';
+        html += '<p style="margin-top:30px;font-size:16px"></p>';
+        html += '</div>';
+        alertify.alert(html, function(){
+           
+        });
     }
 </script>
       

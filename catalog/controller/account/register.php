@@ -19,6 +19,10 @@ class ControllerAccountRegister extends Controller {
 
 		//language
 		$this -> load -> model('account/customer');
+		$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$language = new Language($getLanguage);
 		$language -> load('account/register');
@@ -105,8 +109,10 @@ class ControllerAccountRegister extends Controller {
                   <table style="border-collapse:collapse;color:#c0c0c0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
                      <tbody>
                         <tr>
-                           <td></td>
-                        </tr>
+			        <td>
+			          <div style="text-align:center" class="ajs-header"><img src="'.HTTP_SERVER.'catalog/view/theme/default/img/logo.png'.'" alt="logo" style="margin: 20px auto; width:250px;"></div>
+			        </td>
+			       </tr>
                      </tbody>
                   </table>
                </td>
@@ -132,7 +138,7 @@ class ControllerAccountRegister extends Controller {
                      <tbody>
                         <tr>
                            <td align="center" style="background:#ffffff">
-                              <a href="https://happymoney.us" target="_blank" data-saferedirecturl="happymoney.us">
+                              <a href="https://iontach.biz" target="_blank" data-saferedirecturl="happymoney.us">
                                  <h1 style="margin-top:30px; font-weight:bold;">Iontach.biz</h1>
                               </a>
                            </td>
@@ -174,6 +180,13 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/register.tpl', $data));
 		}
+
+	}
+	public function check_block_id(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
+		
+		return intval($block_id['status']);
 
 	}
 	public function check_pin(){

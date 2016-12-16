@@ -25,7 +25,6 @@
 		<script src="catalog/view/javascript/jquery/jquery.easyui.min.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/jquery/jquery-ui.js" type="text/javascript"></script>
 
-        <script type="text/javascript" src="view/javascript/bootstrap/js/bootstrap.min.js"></script>
 		<script src="catalog/view/javascript/jquery/jquery.quick.pagination.min.js" type="text/javascript"></script>
         
 		<script src="catalog/view/javascript/loading.js" type="text/javascript"></script>

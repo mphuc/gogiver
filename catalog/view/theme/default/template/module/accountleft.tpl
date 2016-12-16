@@ -179,10 +179,4 @@
       
         
     
-<script type="text/javascript">
-  jQuery('.sub-menu').parent('ul li').click(function(){
-    jQuery(this).children('.sub-menu').toggle();
-    jQuery(this).toggleClass('active');
-   
-  })
-</script> -->
+

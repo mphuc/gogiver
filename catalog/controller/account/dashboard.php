@@ -35,6 +35,7 @@ class ControllerAccountDashboard extends Controller {
 		call_user_func_array("myConfig", array($this));
 
 		$block_id = $this -> check_block_id();
+		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 
 		//language
