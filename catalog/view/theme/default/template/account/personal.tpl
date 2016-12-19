@@ -102,10 +102,10 @@ span.cir {
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
-                <span class="cir lv0"></span> G0 - <span class="cir lv1"></span> G1 - <span class="cir lv2"></span> G2 - 
-               <span class="cir lv3"></span> G3 - 
-               <span class="cir lv4"></span> G4 - 
-               <span class="cir lv5"></span> G5
+                <span class="cir lv0"></span> I0 - <span class="cir lv1"></span> I1 - <span class="cir lv2"></span> I2 - 
+               <span class="cir lv3"></span> I3 - 
+               <span class="cir lv4"></span> I4 - 
+               <span class="cir lv5"></span> I5
                  <div class="form-group">
                     <div class="col-lg-12 col-md-12">
                       <div class="input-group input-icon file-upload">
