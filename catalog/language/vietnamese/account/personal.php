@@ -13,5 +13,5 @@ $_['full_name'] = 'Họ tên';
 $_['bank_number'] = 'Số tài khoản';
 $_['telephone'] = 'Số điện thoại';
 $_['Guardian'] = "Người bảo trợ";
-$_['status'] = "Trạng thái PH";
+$_['status'] = "Trạng thái PD";
 ?>

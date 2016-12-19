@@ -84,6 +84,6 @@ $_['khoplenh']            = 'Khớp lệnh';
 $_['dangcho']            = 'Đang chờ';
 $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
-$_['heading_title_com_his'] = "Lịch sử GH F1";
+$_['heading_title_com_his'] = "Lịch sử GD F1";
 $_['support'] = "Hỗ trợ";
 

@@ -11,6 +11,7 @@ $(function() {
 				$('.alert-dismissable').hide();
 				if (arr[0].value === "") {
 					$('#amount-error').show().parent().addClass('has-error');
+					window.funLazyLoad.reset();
 					return false;
 				} else {
 					$('#amount-error').parent().addClass('has-success');
@@ -18,6 +19,7 @@ $(function() {
 				if (arr[1].value === "") {
 					$('#Password2-error').show().parent().addClass('has-error');
 					$('#Password2-error span').show().html(window.err_password);
+					window.funLazyLoad.reset();
 					return false;
 				} else {
 					$('#Password2-error').parent().addClass('has-success');

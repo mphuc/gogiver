@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']     = 'Cho Đi (PH)';
+$_['heading_title']     = 'Cho Đi (PD)';
 // Text
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh sách cho đi';
@@ -27,7 +27,7 @@ $_['TRANSFER']            = 'Danh sách chuyển';
 $_['VND']            = 'VNĐ';
 $_['TIME_REMAIN']            = 'THỜI GIAN CHỜ';
 $_['action']            = 'HÀNH ĐỘNG';
-$_['createPD']            = 'Tạo (PH)';
+$_['createPD']            = 'Tạo (PD)';
 $_['detail']            = 'Chi Tiết';
 $_['amount']            = 'Số lượng';
 
@@ -83,7 +83,7 @@ $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
 $_['heading_title_comis'] = 'Lịch sử trực tiếp';
 $_['heading_title_com_his'] = 'Lịch sử thành viên';
-$_['heading_title_comisf1'] = 'Lịch sử PH F1';
+$_['heading_title_comisf1'] = 'Lịch sử PD F1';
 $_['Amount'] = 'Số tiền';
 $_['Date_create'] = 'Thời gian';
 $_['Loai'] = 'Loại';

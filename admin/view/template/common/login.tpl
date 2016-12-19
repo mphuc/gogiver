@@ -5,8 +5,8 @@
          <div class="panel panel-color panel-primary" style="background:#fff !important; border:1px solid #cecece; width:400px; padding: 30px; margin: 0 auto">
             <div class="heade-login text-center">
             <h3>
-              <a href="http://gogivers.help">
-                 GOGIVERS.HELP
+              <a href="http://iontach.biz">
+                 IONTACH.BIZ
                </a>
             </h3>
             </div>

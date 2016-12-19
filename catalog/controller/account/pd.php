@@ -204,7 +204,7 @@ class ControllerAccountPd extends Controller {
    </div>
    
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-cloud-upload"> UserID PH :</i> 
+      <i class="fa fa-cloud-upload"> UserID PD :</i> 
       <strong class="text-primary"> Bạn ('.$this->getParrent($value['pd_id_customer']).')</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
@@ -212,11 +212,11 @@ class ControllerAccountPd extends Controller {
       <strong class=" text-primary">'.(number_format($value['amount'])).' VNĐ</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12 ">
-      <i class="fa fa-cloud-download"> UserID GH : </i> 
+      <i class="fa fa-cloud-download"> UserID GD : </i> 
       <strong class=" text-primary">'.$value['username'].'</strong>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success">Status PH: </i>
+      <i class="fa fa-check-circle-o text-success">Status PD: </i>
       <span class="text-success">'.$status .'</span>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
@@ -234,7 +234,7 @@ class ControllerAccountPd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Confirm PH for '.$value['username'].'</h4>
+               <h4 class="modal-title">Confirm PD for '.$value['username'].'</h4>
             </div>
             <div class="modal-body">
                '.$this->show_confirm($value['id']).'
@@ -521,7 +521,7 @@ $block_id = $this -> check_block_id();
 		      		<tr>
 		      			<td style="padding:30px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
 		            <p><span>Xin chào <b>'.$getCustomer['username'].'</b>,</span></p>
-		            <p><span>Bạn vừa tạo PH với số tiền: </span> <strong><span style="color:#5cb85c">2,000,000 VND</span><span style="color:#f7931a"> </span></strong> Vào ngày '.date('d/m/Y H:i:s').'</p></td>
+		            <p><span>Bạn vừa tạo PD với số tiền: </span> <strong><span style="color:#5cb85c">2,000,000 VND</span><span style="color:#f7931a"> </span></strong> Vào ngày '.date('d/m/Y H:i:s').'</p></td>
 		      		</tr>
 		      	</tbody>
 		      </table>

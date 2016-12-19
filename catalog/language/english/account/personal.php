@@ -13,5 +13,5 @@ $_['full_name'] = 'Full name';
 $_['bank_number'] = 'Account number';
 $_['telephone'] = 'Telephone';
 $_['Guardian'] = "Guardian";
-$_['status'] = "Status PH";
+$_['status'] = "Status PD";
 ?>

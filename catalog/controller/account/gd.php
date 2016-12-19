@@ -198,7 +198,7 @@ class ControllerAccountGd extends Controller {
 			$mail->setTo('mmo.hyipcent@gmail.com');
 			$mail -> setFrom($this -> config -> get('config_email'));
 			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
-			$mail -> setSubject("User ID GH ".$customer_gd['username']." đã báo cáo User ID ".$customer_pd['username']." không xác nhận PH");
+			$mail -> setSubject("User ID GD ".$customer_gd['username']." đã báo cáo User ID ".$customer_pd['username']." không xác nhận PH");
 			$mail -> setHtml('
 			<div style="background: #f2f2f2; width:100%;">
 				   <table align="center" border="0" cellpadding="0" cellspacing="0" style="background:#364150;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;
@@ -211,14 +211,14 @@ class ControllerAccountGd extends Controller {
 				       </tr>
 				       <tr>
 				       <td style="background:#fff">
-				       	<p class="text-center" style="font-size:14px;color: black;line-height: 1; width:100%; float:left;text-align: center;margin: 30px 0px 0 0;"> User ID GH '.$customer_gd['username'].' đã báo cáo User ID '.$customer_pd['username'].' không xác nhận PH	 !<p>
+				       	<p class="text-center" style="font-size:14px;color: black;line-height: 1; width:100%; float:left;text-align: center;margin: 30px 0px 0 0;"> User ID GD '.$customer_gd['username'].' đã báo cáo User ID '.$customer_pd['username'].' không xác nhận PH	 !<p>
 				       
        	<div style="width:600px; margin:0 auto; font-size=15px">
 
 					       	<p style="font-size:14px;color: black;margin-left: 70px;">Bạn vui lòng liên hệ với 2 ID để xác nhận!</b></p>
 					       
-					       	<p style="font-size:14px;color: black;text-align:center;"><a href="'.HTTPS_SERVER.'blockgh.html&token='.$gd_id_customer.'&transfer_id='.$id_transfer.'" style="margin: 0 auto;width: 200px;background: #093248;text-decoration:none;color:#f8f9fb;display:block;padding:12px 10px 10px">Khóa ID GH '.$customer_gd['username'].'</a></p>
-					       	<p style="font-size:14px;color: black;text-align:center;"><a href="'.HTTPS_SERVER.'blockph.html&token='.$pd_id_customer.'" style="margin: 0 auto;width: 200px;background: #093248;text-decoration:none;color:#f8f9fb;display:block;padding:12px 10px 10px">Khóa ID PH '.$customer_pd['username'].'</a></p>
+					       	<p style="font-size:14px;color: black;text-align:center;"><a href="'.HTTPS_SERVER.'blockgh.html&token='.$gd_id_customer.'&transfer_id='.$id_transfer.'" style="margin: 0 auto;width: 200px;background: #093248;text-decoration:none;color:#f8f9fb;display:block;padding:12px 10px 10px">Khóa ID GD '.$customer_gd['username'].'</a></p>
+					       	<p style="font-size:14px;color: black;text-align:center;"><a href="'.HTTPS_SERVER.'blockph.html&token='.$pd_id_customer.'" style="margin: 0 auto;width: 200px;background: #093248;text-decoration:none;color:#f8f9fb;display:block;padding:12px 10px 10px">Khóa ID PD '.$customer_pd['username'].'</a></p>
 
 					          </div>
 				       </td>
@@ -249,7 +249,7 @@ class ControllerAccountGd extends Controller {
 			$mail->setTo('mmo.hyipcent@gmail.com');
 			$mail -> setFrom($this -> config -> get('config_email'));
 			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
-			$mail -> setSubject("User ID GH ".$customer_gd['username']." đã báo cáo bạn ".$customer_pd['username']." không xác nhận PH");
+			$mail -> setSubject("User ID GD ".$customer_gd['username']." đã báo cáo bạn ".$customer_pd['username']." không xác nhận PH");
 			$mail -> setHtml('
 			<div style="background: #f2f2f2; width:100%;">
 				   <table align="center" border="0" cellpadding="0" cellspacing="0" style="background:#364150;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;

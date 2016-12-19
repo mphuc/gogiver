@@ -34,7 +34,7 @@
                               <div class="list_ph" style="margin-bottom: 30px">
                                  <div class="Head" role="tab" id="headingOne<?php echo $key['gd_number'] ?>">
                                     
-                                    <h4 style=" width: 200px;float: left;">GH : <strong>GH<?php echo $key['gd_number'] ?></strong></h4>
+                                    <h4 style=" width: 200px;float: left;">GD : <strong>GH<?php echo $key['gd_number'] ?></strong></h4>
                                     <div class="clearfix"></div>
                                     <table  class="table">
                                         <thead>
@@ -42,7 +42,7 @@
                                         
                                           <tr>
                                             <td><?php echo $lang['DATE_CREATED'] ?></td>
-                                            <td>UserID GH</td>
+                                            <td>UserID GD</td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
                                             <td><?php echo $lang['danhnhan'] ?></td>
                                             <td><?php echo $lang['transferTime'] ?></td>

@@ -214,7 +214,7 @@
             <?php for ($i=0; $i < 6; $i++) { ?>
              <div class="col-md-2 col-sm-2 col-xs-2">
                <div class="panel panel-default item_level">
-                  <div ><code>G<?php echo $i ?></code></div>
+                  <div ><code>I<?php echo $i ?></code></div>
                   <div data-level="<?php echo $i + 1 ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/analytics', '', 'SSL'); ?>" class="analytics-tree analytics-tree-loading">loading ...
                   </div>
                </div>

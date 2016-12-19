@@ -19,7 +19,7 @@ $_['id_transfer']            = 'ID TRANSFER';
 $_['ID_received']            = 'ID RECEIVED';
 $_['You']            = 'YOU';
 $_['Bill']            = 'Bill';
-$_['ConfirmPHfor']            = 'Confirm PH For';
+$_['ConfirmPHfor']            = 'Confirm PD For';
 $_['Close']            = 'Close';
 $_['Send']            = 'Send';
 
@@ -67,8 +67,8 @@ $_['TRANSACTION']            = 'TRANSACTION';
 
 $_['ACCOUNT_TRANSFER']            = 'ACCOUNT TRANSFER';
 
-$_['transferPDStatus']            = 'PH STATUS';
-$_['transferGDStatus']            = 'GH STATUS';
+$_['transferPDStatus']            = 'PD STATUS';
+$_['transferGDStatus']            = 'GD STATUS';
 
 $_['transferTime']            = 'TIME REMAIN';
 $_['err_account']            = '<i class="fa fa-fw fa-times"></i>You are not create get donation! Please setting your account bank!';
@@ -87,6 +87,6 @@ $_['khoplenh']            = 'Matched';
 $_['dangcho']            = 'Waiting';
 $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
-$_['heading_title_com_his'] = "History GH F1";
+$_['heading_title_com_his'] = "History GD F1";
 $_['support'] = "Support";
 
