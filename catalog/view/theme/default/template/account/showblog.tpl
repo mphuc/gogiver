@@ -11,7 +11,7 @@
           
       <div class="row">
          <div class="col-md-12">
-            <h2 class="page-title">Thông báo</h2>
+            
          </div>
       </div>
       <div class="widget-content" style="padding:10px">
