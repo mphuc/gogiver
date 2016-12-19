@@ -48,7 +48,7 @@
                                        </div>
                                     </form>
                                     <div class="col-md-8">
-                                       <h4 style="color:#bfd507">Mỗi giao dịch phải lớn hơn hoặc bằng 5 PIN. Nếu bạn không thực hiện đúng giao dịch chúng tôi sẽ không chịu trách nhiệm cho sự mất mát của bạn.</h4>
+                                       <h4 style="color:#bfd507"></h4>
                                     </div>
                                  </div>
                               </div>
