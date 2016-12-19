@@ -14,7 +14,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>XÁC NHẬN</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Confirm</h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
