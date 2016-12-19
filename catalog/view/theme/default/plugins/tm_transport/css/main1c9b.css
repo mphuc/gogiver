@@ -1308,13 +1308,13 @@ Common
   opacity: .9;
 }
 .request.skin-header07 .wpb_column:nth-child(2) .wpb_wrapper:after {
-  background-color: #CA1F26;
+  background-color: #5472ba;
 }
 .request.skin-header07 .wpb_column:nth-child(2):before {
-  border-right-color: #CA1F26;
+  border-right-color: #5472ba;
 }
 .request.skin-header07 .wpb_column:nth-child(2):after {
-  background-color: #CA1F26;
+  background-color: #5472ba;
 }
 .request .wpb_column:nth-child(2) .wpb_wrapper:after {
   content: '';
@@ -1553,10 +1553,10 @@ Common
     background: #fff !important;
   }
   .get-quote.skin-header07 .wpb_column:nth-child(1):before {
-    background-color: #CA1F26 !important;
+    background-color: #5472ba !important;
   }
   .get-quote.skin-header07 .wpb_column:nth-child(1):after {
-    border-left-color: #CA1F26 !important;
+    border-left-color: #5472ba !important;
   }
   .home__about-us .wpb_column:nth-child(1):before {
     content: '';
@@ -3050,7 +3050,7 @@ WooCommerce
   top: auto;
 }
 .products .loop-product .price .amount {
-  color: #ca1f26;
+  color: #5472ba;
   font-weight: 700;
 }
 .woocommerce .woocommerce-message,
@@ -3985,7 +3985,7 @@ Visual Composer
   background-color: #232331;
 }
 .skin-header07 li:not(:first-child) a.eg-infinity-features-element-26:before {
-  background-color: #CA1F26;
+  background-color: #5472ba;
 }
 .vc_custom_heading.style3,
 .vc_custom_heading.style5 {
@@ -4152,11 +4152,11 @@ Visual Composer
   right: -50px;
 }
 .skin-header07 .eg-infinity-features-element-25 i {
-  background-color: #CA1F26 !important;
+  background-color: #5472ba !important;
   color: #fff;
 }
 .skin-header07 .eg-infinity-features-element-25 i:after {
-  border-color: transparent transparent transparent #CA1F26 !important;
+  border-color: transparent transparent transparent #5472ba !important;
   border-width: 110px 0 0 50px;
 }
 .eg-infinity-members-content em {
@@ -4253,7 +4253,7 @@ Visual Composer
   color: #888888;
 }
 .skin-header07 .wpcf7 .form1 .wpcf7-submit {
-  color: #CA1F26;
+  color: #5472ba;
 }
 .skin-header07 .wpcf7 .form1 .wpcf7-submit:hover {
   color: #111;
