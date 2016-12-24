@@ -7,6 +7,9 @@ jQuery(document).ready(function() {
     $.backstretch([
                     "catalog/view/theme/default/assetslg/img/backgrounds/2.jpg"
 	              , "catalog/view/theme/default/assetslg/img/backgrounds/3.jpg"
+                  , "catalog/view/theme/default/assetslg/img/backgrounds/7.jpg"
+                  , "catalog/view/theme/default/assetslg/img/backgrounds/8.jpg"
+                 
                   , "catalog/view/theme/default/assetslg/img/backgrounds/5.jpg"
 	              , "catalog/view/theme/default/assetslg/img/backgrounds/1.jpg"
                   , "catalog/view/theme/default/assetslg/img/backgrounds/4.jpg"
