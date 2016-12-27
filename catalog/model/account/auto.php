@@ -468,14 +468,25 @@ public function updateTransferList($transfer_id){
 		return $query === true ? true : false;
 	}
 	public function auto_find_pd_update_status_report(){
+		
 		$query = $this -> db -> query("
 			UPDATE ". DB_PREFIX . "customer_provide_donation SET
 			status = 3,
 			date_added = DATE_ADD(NOW(),INTERVAL -15 DAY),
 			date_finish = NOW()
-			WHERE date_finish_forAdmin <= NOW()
-				  AND STATUS =0
+			WHERE date_finish <= NOW()
+				  AND STATUS =1
 		");
+		return $query === true ? true : false;
+	}
+	public function get_rp_pd(){
+		$query_row = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE date_finish <= NOW()
+				  AND STATUS =1
+		");
+		return $query_row -> rows;
 	}
 	public function getM_Wallet(){
 		$query = $this -> db -> query("
@@ -818,6 +829,15 @@ public function updateTransferList($transfer_id){
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_block_id SET
 				status = 1
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+	public function update_lock2_customer($customer_id){
+		
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_block_id SET
+				status = 2
 				WHERE customer_id = '".$customer_id."'
 			");
 		return $query;

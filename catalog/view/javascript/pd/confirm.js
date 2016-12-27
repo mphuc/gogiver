@@ -36,10 +36,12 @@ $(function() {
     $('.comfim-pd').on('submit', function(){
         $(this).ajaxSubmit({
             beforeSubmit : function(arr, $form, options) { 
-               /* if(!$("#file").val()){
-                    $('.error-file').show();
+               var user_choice = window.confirm('Would you like to continue?');
+                if(user_choice==true) {
+                     return true;
+                } else {
                     return false;
-                }        */       
+                } 
             },
             success : function(result) {
                 console.log(result);

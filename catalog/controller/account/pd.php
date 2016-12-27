@@ -220,7 +220,7 @@ class ControllerAccountPd extends Controller {
       <span class="text-success">'.$status .'</span>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success"> Status GH:  </i>
+      <i class="fa fa-check-circle-o text-success"> Status GD:  </i>
       <span class="text-success">'.$status_gd.'</span>
    </div>
    <div class="col-lg-4 col-sm-6 col-xs-12 height">
@@ -679,6 +679,17 @@ $block_id = $this -> check_block_id();
 
 			if(count($countNotPDFinsh) > 0 && intval($countNotPDFinsh['number']) === 0){
 				// $this -> model_account_customer -> updateStusPDActive($PDCustomer, 1);
+
+				$total = $this -> model_account_customer -> count_1date($PDCustomer);
+				if (count($total) > 0) {
+					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.25);
+					
+				}
+				$total2day = $this -> model_account_customer -> count_2date($PDCustomer);
+				if (count($total2day) > 0) {
+					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.19);
+				}
+
 				$this -> model_account_customer -> updateStusPD($PDCustomer);
 				$this -> model_account_customer -> updateCheck_R_WalletPD($PDCustomer);
 				
@@ -1548,7 +1559,7 @@ $block_id = $this -> check_block_id();
     	$this ->load->model('account/customer');
     	$select_tranfer = $this -> model_account_customer ->getTransferList($transfer_code);
     	//print_r($select_tranfer); die;
-    	$pd_query = $this -> model_account_customer -> createPD_pnode($select_tranfer['amount'] ,$select_tranfer['amount']*1.3);							
+    	$pd_query = $this -> model_account_customer -> createPD_pnode($select_tranfer['amount'] ,$select_tranfer['amount']*1.15);							
 		$id_history = $this->model_account_customer->saveHistoryPin(
 			$this -> session -> data['customer_id'],  
 			'- 1',

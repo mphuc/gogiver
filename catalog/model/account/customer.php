@@ -2440,4 +2440,25 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		
 		return $query->row['amount'];
 	}
+
+	public function count_1date($pd_id){
+		$query = $this->db->query("SELECT * 
+			FROM sm_customer_provide_donation WHERE status = 1 AND DATE_ADD(date_finish,INTERVAL - 2 DAY) < NOW() AND id = '".$pd_id."'");
+		
+		return $query->row;
+	}
+	public function count_2date($pd_id){
+		$query = $this->db->query("SELECT *
+			FROM sm_customer_provide_donation WHERE status = 1 AND DATE_ADD(date_finish,INTERVAL - 1 DAY) < NOW() AND id = '".$pd_id."'");
+		
+		return $query->row;
+	}
+	public function update_max_profit($pd_id,$max_profit){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_provide_donation SET
+				max_profit = '".$max_profit."'
+				WHERE id = '".$pd_id."'
+			");
+		$data['query'] = $query ? true : false;
+	}
 }

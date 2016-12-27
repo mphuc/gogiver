@@ -111,28 +111,28 @@ class ControllerAccountBlock extends Controller {
             	if (intval($block_id['total']) === 0) {
             		switch (intval($level['level'])) {
 						case 1:
-							$r_wallet = 7700000;
+							$r_wallet = 2000000;
 							$c_wallet = 2000000;
 							break;
 						case 2:
-							$r_wallet = 15400000;
-							$c_wallet = 2000000;
+							$r_wallet = 4000000;
+							$c_wallet = 4000000;
 							break;
 						case 3:
-							$r_wallet = 30800000;
-							$c_wallet = 4000000;
+							$r_wallet = 7000000;
+							$c_wallet = 8000000;
 							break;
 						case 4:
-							$r_wallet = 61600000;
-							$c_wallet = 4000000;
+							$r_wallet = 11000000;
+							$c_wallet = 16000000;
 							break;
 						case 5:
-							$r_wallet = 92400000;
-							$c_wallet = 4000000;
+							$r_wallet = 16000000;
+							$c_wallet = 32000000;
 							break;
 						case 6:
-							$r_wallet = 122200000;
-							$c_wallet = 4000000;
+							$r_wallet = 22000000;
+							$c_wallet = 64000000;
 							break;
 					}
             	}
@@ -140,28 +140,28 @@ class ControllerAccountBlock extends Controller {
 
             		switch (intval($level['level'])) {
 						case 1:
-							$r_wallet = 3300000;
-							$c_wallet = 1000000;
+							$r_wallet = 4000000;
+							$c_wallet = 4000000;
 							break;
 						case 2:
-							$r_wallet = 7700000;
-							$c_wallet = 1000000;
+							$r_wallet = 8000000;
+							$c_wallet = 8000000;
 							break;
 						case 3:
-							$r_wallet = 15400000;
-							$c_wallet = 2000000;
+							$r_wallet = 14000000;
+							$c_wallet = 16000000;
 							break;
 						case 4:
-							$r_wallet = 30800000;
-							$c_wallet = 2000000;
+							$r_wallet = 22000000;
+							$c_wallet = 32000000;
 							break;
 						case 5:
-							$r_wallet = 46200000;
-							$c_wallet = 2000000;
+							$r_wallet = 32000000;
+							$c_wallet = 64000000;
 							break;
 						case 6:
-							$r_wallet = 61600000;
-							$c_wallet = 2000000;
+							$r_wallet = 44000000;
+							$c_wallet = 128000000;
 							break;
 					}
             		
@@ -178,23 +178,23 @@ class ControllerAccountBlock extends Controller {
 						break;
 					case 2:
 						$r_wallet = 1400000;
-						$c_wallet = 500000;
+						$c_wallet = 1000000;
 						break;
 					case 3:
 						$r_wallet = 2800000;
-						$c_wallet = 1000000;
+						$c_wallet = 2000000;
 						break;
 					case 4:
 						$r_wallet = 4200000;
-						$c_wallet = 1000000;
+						$c_wallet = 4000000;
 						break;
 					case 5:
 						$r_wallet = 7000000;
-						$c_wallet = 1000000;
+						$c_wallet = 8000000;
 						break;
 					case 6:
 						$r_wallet = 11200000;
-						$c_wallet = 1000000;
+						$c_wallet = 16000000;
 						break;
 				}
             }
