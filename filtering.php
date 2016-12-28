@@ -18,13 +18,13 @@ return $str;
 }
 
 foreach($_POST as $key => $value){
-	$_POST[$key] = replace_injection(strtoupper($_POST[$key]), $filter_wave1);
+	$_POST[$key] = replace_injection($_POST[$key], $filter_wave1);
 	$_POST[$key] = replace_injection($_POST[$key], $filter_wave2);
 }
 
 foreach($_GET as $key => $value){
 	$_GET[$key] = replace_injection($_GET[$key], $filter_wave2);
-	$_GET[$key] = replace_injection(strtoupper($_GET[$key]), $filter_wave1);
+	$_GET[$key] = replace_injection($_GET[$key], $filter_wave1);
 }
 
 
