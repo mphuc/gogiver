@@ -476,19 +476,19 @@ $( document ).ready(function() {
             result.level = parseInt(result.level);
             switch (result.level) {
                 case 1:
-                    $('#Level').html('L0');
+                    $('#Level').html('I0');
                     break;
                 case 2:
-                    $('#Level').html('L1');
+                    $('#Level').html('I1');
                     break;
                 case 3:
-                    $('#Level').html('L2');
+                    $('#Level').html('I2');
                     break;
                 case 4:
-                    $('#Level').html('L3');
+                    $('#Level').html('I3');
                     break;
                 case 5:
-                    $('#Level').html('L4');
+                    $('#Level').html('I4');
                     break;
             }
         };

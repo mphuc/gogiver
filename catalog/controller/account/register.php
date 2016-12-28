@@ -56,6 +56,26 @@ class ControllerAccountRegister extends Controller {
 			$this -> load -> model('customize/register');
 			$this -> load -> model('account/auto');
 			$this -> load -> model('account/customer');
+			! array_key_exists('bank_name', $this -> request -> post) && die();
+			! array_key_exists('username', $this -> request -> post) && die();
+			! array_key_exists('account_number', $this -> request -> post) && die();
+			! array_key_exists('password', $this -> request -> post) && die();
+			! array_key_exists('account_holder', $this -> request -> post) && die();
+			! array_key_exists('avatar', $this -> request -> files) && die();
+
+			$check_files = (file_exists($_FILES['avatar']['tmp_name']));
+			if (intval($check_files) != 1) die('Error files');
+			
+			$checkUser = intval($this -> model_customize_register -> checkExitUserName($_POST['username'])) === 1 ? 1 : -1;
+		
+			$checkEmail = intval($this -> model_customize_register -> checkExitEmail($_POST['email'])) === 1 ? 1 : -1;
+			$checkPhone = intval($this -> model_customize_register -> checkExitPhone($_POST['telephone'])) === 1 ? 1 : -1;
+			$checkAccount_number= intval($this -> model_customize_register -> checkExitCMND($_POST['account_number'])) === 1 ? 1 : -1;
+			$checkCmnd= intval($this -> model_customize_register -> checkExitCMNDS($_POST['cmnds'])) === 1 ? 1 : -1;
+			
+			if ($checkUser == 1 || $checkEmail == 1 || $checkPhone == 1 || $checkCmnd == 1 || $checkAccount_number == 1) {
+				die('Error');
+			}
 
 			$tmp = $this -> model_customize_register -> addCustomer($this->request->post);
 
@@ -63,8 +83,12 @@ class ControllerAccountRegister extends Controller {
 
 			$data['has_register'] = true;
 			$cus_id= $tmp;
+
+			$file = $this -> avatar($this -> request -> files, $cus_id);
+
 			$amount = 0;
 			$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
+
 			$this -> model_account_customer -> saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- 5',
@@ -182,6 +206,56 @@ class ControllerAccountRegister extends Controller {
 		}
 
 	}
+	public function avatar($file,$cus_id){
+	$this->load->model('account/customer');
+	
+		$filename = html_entity_decode($this->request->files['avatar']['name'], ENT_QUOTES, 'UTF-8');
+		
+		$filename = str_replace(' ', '_', $filename);
+		if(!$filename || !$this->request->files){
+			die();
+		}
+
+		$file = $filename . '.' . md5(mt_rand()) ;
+
+		
+		move_uploaded_file($this->request->files['avatar']['tmp_name'], DIR_UPLOAD_CUSTOM . $file);
+
+
+		//save image profile
+		$server = $this -> request -> server['HTTPS'] ? $this -> config -> get('config_ssl') :  $this -> config -> get('config_url');
+		
+		$linkImage = $server . 'system/card/'.$file;
+	
+		$this -> model_account_customer -> update_avatar($cus_id,$linkImage);
+
+		
+	}
+		public function country() {
+		$json = array();
+
+		$this->load->model('customize/country');
+
+		$country_info = $this->model_customize_country->getCountrys($this->request->get['country_id']);
+
+		if ($country_info) {
+			$this->load->model('localisation/zone');
+
+			$json = array(
+				'country_id'        => $country_info['country_id'],
+				'name'              => $country_info['name'],
+				'iso_code_2'        => $country_info['iso_code_2'],
+				'iso_code_3'        => $country_info['iso_code_3'],
+				'address_format'    => $country_info['address_format'],
+				'postcode_required' => $country_info['postcode_required'],
+				'zone'              => $this->model_customize_country->getZonesByCountryId($this->request->get['country_id']),
+				'status'            => $country_info['status']
+			);
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 	public function check_block_id(){
 		$this->load->model('account/customer');
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
@@ -196,6 +270,7 @@ class ControllerAccountRegister extends Controller {
 		return $pin;
 	}
 	public function checkuser() {
+		if (empty($_GET['username'])) die();
 		if ($this -> request -> get['username']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitUserName($this -> request -> get['username'])) === 1 ? 1 : 0;
@@ -204,6 +279,7 @@ class ControllerAccountRegister extends Controller {
 	}
 
 	public function checkemail() {
+		if (empty($_GET['email'])) die();
 		if ($this -> request -> get['email']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($this -> request -> get['email'])) < 1 ? 0 : 1;
@@ -211,6 +287,7 @@ class ControllerAccountRegister extends Controller {
 		}
 	}
 	public function checkphone() {
+		if (empty($_GET['phone'])) die();
 		if ($this -> request -> get['phone']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitPhone($this -> request -> get['phone'])) < 1 ? 0 : 1;
@@ -219,6 +296,7 @@ class ControllerAccountRegister extends Controller {
 	}
 
 	public function checkcmnd() {
+		if (empty($_GET['cmnd'])) die();
 		if ($this -> request -> get['cmnd']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitCMND($this -> request -> get['cmnd'])) < 1 ? 0 : 1;
@@ -227,7 +305,7 @@ class ControllerAccountRegister extends Controller {
 	}
 
 	public function getjson(){
-
+		if (empty($_POST['number_vcb'])) die();
 		$account = $_POST['number_vcb'];
 		$this -> load -> model('customize/register');
 		$number = $this->model_customize_register->get_vcb($account);

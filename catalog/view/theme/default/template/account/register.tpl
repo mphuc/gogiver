@@ -47,7 +47,7 @@
                                     
                                     <div class="panel-body">
                                        <div class=" form">
-                                          <form id="register-account" action="<?php echo $self -> url -> link('account/register', '', 'SSL'); ?>" class="form-horizontal" method="post" novalidate="novalidate">
+                                          <form id="register-account" action="<?php echo $self -> url -> link('account/register', '', 'SSL'); ?>" class="form-horizontal" method="post" novalidate="novalidate" enctype="multipart/form-data">
                                              <div class="row">
                                                 <div class="col-md-6" style="display: none">
                                                    <select class="form-control" name="bank_name" id="bank_name">
@@ -98,6 +98,22 @@
                                                 </div>
                                                   <div class="col-md-6">
                                                    <input autocomplete="off"  class="form-control" name="cmnds" id="cmnds" placeholder="<?php echo $lang['text_cmnd'] ?>" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                 <span class="text-info"style=" font-size: 20px; "><?php echo $lang['text_cmnd'] ?></span>
+                                                    <span class="edit_icon">
+                                               <input type="file" name="avatar" id="file"  accept="image/jpg,image/png,image/jpeg,image/gif" style="visibility: hidden; width: 1px; height: 1px"> 
+                                            
+                                               <a href="" onclick="document.getElementById('file').click(); return false">
+                                               <img id="blah" src="#" style="display:none;" />                                         
+                                               <img id="old_img" src="catalog/view/theme/default/img/citizencard.png" alt=""></a>
+                                             
+                                             
+                                               </span>
+                                                  <div class="error-file alert alert-dismissable alert-danger" style="display:none; margin:20px 0px;">
+                                                                <i class="fa fa-fw fa-times"></i>Please chosen image with : 'jpeg', 'jpg', 'png', 'gif', 'bmp'
+                                                            </div>       
+                                               
                                                 </div>
 
                                                 <div class="clearfix"></div>
@@ -151,7 +167,7 @@
    if (location.hash === '#success') {
       alertify.set('notifier','delay', 10);
       alertify.set('notifier','position', 'top-right');
-      alertify.success('Đăng ký tài khoản thành công!');
+      alertify.success('Account registration successful!!');
    }
 
 </script>

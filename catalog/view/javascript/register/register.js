@@ -1,4 +1,37 @@
 $( document ).ready(function() {
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result).show().css({'width': '100%','height':'200px'});
+               
+                 $('#old_img').hide();
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }else{
+            $('#blah').hide();
+        }
+    }
+    $("#file").on('change' , function (env) {
+
+         $('#old_img').hide();
+        readURL(this);
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            if($("#file").val()){
+               $('.error-file').show(); 
+           }else{
+                $('.error-file').hide(); 
+           }
+            $('#comfim-pd').resetForm();
+        }else{
+            $('.error-file').hide();
+             $('#old_img').hide();
+        }
+    });
     var getname_vcb = function(number,url){
 
         setTimeout(function(){
@@ -90,6 +123,9 @@ $( document ).ready(function() {
 
 
     $('#register-account').on('submit', function(event) {
+       var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+
         $.fn.existsWithValue = function() {
             return this.length && this.val().length;
         };
@@ -390,6 +426,16 @@ $( document ).ready(function() {
            
         }else{
             self.find('#cmnds-error').hide();
+        }
+        if ($.inArray($('#file').val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            if(!$("#file").val()){
+               $('.error-file').show();
+               return false;
+           }else{
+                $('.error-file').hide(); 
+           }
+        }else{
+            $('.error-file').hide();
         }
         var checkUser = null;
         var checkEmail = null;

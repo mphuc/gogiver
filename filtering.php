@@ -8,7 +8,7 @@
 * @copyright Portions Copyright 2004 osCommerce
 * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
 */
-$filter_wave1 = Array('select', 'update ',' update', 'insert', 'delete');
+$filter_wave1 = Array('select', 'update ',' update', 'insert', 'delete','SELECT', 'UPDATE ',' UPDATE', 'INSERT', 'DELETE');
 $filter_wave2 = Array('"', "'");
 function replace_injection($str, $filter)
 {
@@ -18,13 +18,14 @@ return $str;
 }
 
 foreach($_POST as $key => $value){
-	$_POST[$key] = replace_injection($_POST[$key], $filter_wave1);
+	$_POST[$key] = replace_injection(strtoupper($_POST[$key]), $filter_wave1);
 	$_POST[$key] = replace_injection($_POST[$key], $filter_wave2);
 }
 
 foreach($_GET as $key => $value){
 	$_GET[$key] = replace_injection($_GET[$key], $filter_wave2);
-	$_GET[$key] = replace_injection($_GET[$key], $filter_wave1);
+	$_GET[$key] = replace_injection(strtoupper($_GET[$key]), $filter_wave1);
 }
+
 
 ?>

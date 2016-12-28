@@ -424,7 +424,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function insert_block_id($id_customer){
 		$query = $this -> db -> query("
-			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET
+			INSERT INTO " . DB_PREFIX . "customer_block_id SET
 			customer_id = '".$this -> db -> escape($id_customer)."',
 			date = NOW()
 		");
@@ -971,9 +971,26 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$data_arr = $data;
 		$this -> event -> trigger('pre.customer.edit', $data_arr);
 		$customer_id = $this -> session -> data['customer_id'];
-		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET username = '". $data_arr['username'] ."',email = '". $data_arr['email'] ."',telephone = '". $data_arr['telephone'] ."' WHERE customer_id = '" . (int)$customer_id . "'");
+		// $this -> db -> query("UPDATE " . DB_PREFIX . "customer SET username = '". $data_arr['username'] ."',email = '". $data_arr['email'] ."',
+		// 	telephone = '". $data_arr['telephone'] ."' WHERE customer_id = '" . (int)$customer_id . "'");
+		
+		if (isset($data['address_id'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "customer SET address_id = '" . (int)$this -> db -> escape($data['address_id']) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+		}
+		if (isset($data['country_id'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "customer SET country_id = '" . (int)$this -> db -> escape($data['country_id']) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+		}
+
 		$this -> event -> trigger('post.customer.edit', $customer_id);
 	}
+	// public function editCustomerProfile($data) {
+
+	// 	$data_arr = $data;
+	// 	$this -> event -> trigger('pre.customer.edit', $data_arr);
+	// 	$customer_id = $this -> session -> data['customer_id'];
+	// 	$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET address_id = '". $data_arr['address_id'] ."',country_id = '". $data_arr['country_id'] ."', username = '". $data_arr['username'] ."',email = '". $data_arr['email'] ."',telephone = '". $data_arr['telephone'] ."' WHERE customer_id = '" . (int)$customer_id . "'");
+	// 	$this -> event -> trigger('post.customer.edit', $customer_id);
+	// }
 
 	public function editCustomer($data) {
 

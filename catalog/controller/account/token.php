@@ -275,7 +275,7 @@ $block_id = $this -> check_block_id();
 			$this -> load -> model('account/customer');
 			//check customer
 			$customer = $this -> request -> get['customer'];
-$block_id = $this -> check_block_id();
+			$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 			$Tree = $this -> model_account_customer -> checkUserName($this -> customer -> getId());
@@ -372,6 +372,7 @@ $block_id = $this -> check_block_id();
 	}
 
 	public function getaccount() {
+		if (empty($_POST['keyword'])) die();
 		if ($this -> customer -> isLogged() && $this -> request -> post['keyword']) {
 			$this -> load -> model('account/customer');
 
@@ -458,7 +459,7 @@ $block_id = $this -> check_block_id();
 
 		//language
 		
-$block_id = $this -> check_block_id();
+		$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
@@ -473,6 +474,12 @@ $block_id = $this -> check_block_id();
 		$data['priceBTC'] = $this->config->get('config_price_btc_now');
 		$data['base'] = $server;
 		$data['self'] = $this;
+
+		$customer_id_buy_pin = array(434,2323,353,802);
+	
+		$check_buy_pin = in_array($this -> session -> data['customer_id'], $customer_id_buy_pin) ? 1 : 0;
+		
+		if (intval($check_buy_pin) === 0) $this->response->redirect(HTTPS_SERVER . 'login.html');
 
 		//get all invoice
 

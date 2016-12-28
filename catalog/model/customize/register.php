@@ -34,7 +34,7 @@ class ModelCustomizeRegister extends Model {
 
 	public function checkExitEmail($email) {
 		$query = $this -> db -> query("
-			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE email = '" . $email . "'
+			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE email = '" . $this -> db -> escape($email) . "'
 			");
 
 		return $query -> row['number'];
@@ -42,7 +42,7 @@ class ModelCustomizeRegister extends Model {
 
 	public function checkExitPhone($telephone) {
 		$query = $this -> db -> query("
-			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE telephone = '" . $telephone . "'
+			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE telephone = '" . $this -> db -> escape($telephone) . "'
 			");
 
 		return $query -> row['number'];
@@ -50,7 +50,14 @@ class ModelCustomizeRegister extends Model {
 
 	public function checkExitCMND($cmnd) {
 		$query = $this -> db -> query("
-			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE account_number = '" . $cmnd . "'
+			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE account_number = '" . $this -> db -> escape($cmnd) . "'
+			");
+
+		return $query -> row['number'];
+	}
+	public function checkExitCMNDS($cmnd) {
+		$query = $this -> db -> query("
+			SELECT count(*) AS number FROM " . DB_PREFIX . "customer WHERE cmnd = '" . $this -> db -> escape($cmnd) . "'
 			");
 
 		return $query -> row['number'];

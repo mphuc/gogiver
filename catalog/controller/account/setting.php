@@ -34,7 +34,14 @@ class ControllerAccountSetting extends Controller {
 		$data['base'] = $server;
 		$data['self'] = $this;
 		$data['banks'] = $this -> model_account_customer -> getCustomerBank($this -> customer -> getId());
-		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());				
+		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
+
+		$data['countries'] = $this-> model_customize_country ->getCountries();
+		
+		$data['country_id']= $data['customer']['country_id'];
+		$data['zone'] = $this-> model_customize_country ->getProvince();
+		$data['zone_byid'] = $this-> model_customize_country ->getZonesByCountryId($data['customer']['country_id']);
+		$data['zone_id']= $data['customer']['address_id'];				
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/setting.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/setting.tpl', $data));
@@ -117,7 +124,10 @@ class ControllerAccountSetting extends Controller {
 	}
 
 	public function banks() {
+		if (empty($_GET['id'])) die();
+
 		if ($this -> customer -> isLogged() && $this -> request -> get['id']) {
+
 			$this -> load -> model('account/customer');
 			$this -> response -> setOutput(json_encode($this -> model_account_customer -> getCustomerBank($this -> request -> get['id'])));
 		}
@@ -125,6 +135,7 @@ class ControllerAccountSetting extends Controller {
 
 
 	public function checkpasswdtransaction() {
+		if (empty($_GET['pwtranction'])) die();
 		if ($this -> customer -> isLogged() && $this -> request -> get['pwtranction']) {
 			$this -> load -> model('account/customer');
 			$variable = $this -> model_account_customer -> getPasswdTransaction($this -> request -> get['pwtranction']);
@@ -133,6 +144,7 @@ class ControllerAccountSetting extends Controller {
 	}
 
 	public function checkpasswd() {
+		if (empty($_GET['passwd'])) die();
 		if ($this -> customer -> isLogged() && $this -> request -> get['passwd']) {
 			$this -> load -> model('account/customer');
 			$variable = $this -> model_account_customer -> checkpasswd($this -> request -> get['passwd']);
@@ -141,6 +153,7 @@ class ControllerAccountSetting extends Controller {
 	}
 
 	public function updatewallet() {
+		if (empty($_GET['wallet']) || empty($_GET['transaction_password'])) die();
 		if ($this -> customer -> isLogged() && $this -> request -> get['wallet'] && $this -> request -> get['transaction_password']) {
 			$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
 			$this -> load -> model('account/customer');
@@ -154,6 +167,7 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 		}
 	}
 	public function updatebanks() {
+		if (empty($_GET['account_holder']) || empty($_GET['account_number']) || empty($_GET['bank_name']) ) die();
 		$this -> load -> model('account/customer');
 		$banks = $this -> model_account_customer -> getCustomerBank($this -> customer -> getId());
 
@@ -178,17 +192,23 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 	}
 
 	public function update_profile(){
+		if (empty($_GET['username'])) die();
+		if (empty($_GET['email'])) die();
+		if (empty($_GET['telephone'])) die();
 		$this -> load -> model('account/customer');
 		if ($this -> customer -> isLogged() && $this -> request -> get['username'] && $this -> request -> get['email'] && $this -> request -> get['telephone']) {
 			$json['login'] = $this -> customer -> isLogged() ? 1 : -1;
-			$json['ok'] = $json['login'] === 1 ? 1 : -1;
+			$json['ok'] = $json['login'] === 1 ? 1 : -1;		
 			$data = array(
 					'username' => $this -> request -> get['username'],
 					'email' => $this -> request -> get['email'],
-					'telephone' => $this -> request -> get['telephone']
+					'telephone' => $this -> request -> get['telephone'],
+					'country_id' => $this -> request -> get['country_id'],
+					'address_id' => $this -> request -> get['zone_id']
 				);
+
 			$json['login'] === 1 && $this -> model_account_customer -> editCustomerProfile($data);
-			$json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
+			$json['link'] = HTTPS_SERVER . 'setting.html#success';
 			
 			$this -> response -> setOutput(json_encode($json));
 			
@@ -196,6 +216,8 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 	}
 
 	public function checkuser() {
+		if (empty($_GET['username'])) die();
+		
 		if ($this -> request -> get['username']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitUserName($this -> request -> get['username'])) === 1 ? 1 : 0;
@@ -204,6 +226,8 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 	}
 
 	public function checkemail() {
+		if (empty($_GET['email'])) die();
+		
 		if ($this -> request -> get['email']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($this -> request -> get['email'])) < 11 ? 0 : 1;
@@ -211,6 +235,7 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 		}
 	}
 	public function checkphone() {
+		if (empty($_GET['phone'])) die();
 		if ($this -> request -> get['phone']) {
 			$this -> load -> model('customize/register');
 			$json['success'] = intval($this -> model_customize_register -> checkExitPhone($this -> request -> get['phone'])) < 11 ? 0 : 1;
@@ -218,6 +243,7 @@ $json['link'] = HTTPS_SERVER . 'index.php?route=account/setting#success';
 		}
 	}
 	public function avatar(){
+		die();
 	$this->load->model('account/customer');
 		$filename = html_entity_decode($this->request->files['avatar']['name'], ENT_QUOTES, 'UTF-8');
 		
