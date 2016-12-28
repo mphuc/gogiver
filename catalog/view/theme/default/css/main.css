@@ -4285,3 +4285,17 @@ hr {
     }
     
 }
+
+
+.badge-accent {
+    background-color: #E91E63;
+    color: #ffffff;
+    position: absolute;
+    font-size: 10px;
+    padding: 4px;
+    margin: 10px 0 0 -5px;
+    width: 18px;
+    height: 18px;
+    top: -18px;
+    left: 18px;
+  }

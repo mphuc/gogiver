@@ -135,13 +135,14 @@
                
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
+
                         <a href="#" data-toggle="dropdown">
                             <img class="avatar mr5" src="catalog/view/theme/default/img/icon.png" alt="SuggeElson">
                             <span class="user-name"><?php echo $customer['username'] ?></span> 
                             <span class="caret"></span> 
                         </a>
                         <ul class="dropdown-menu right" role="menu">
-                            <li><a href="#"><i class="fa fa-user"></i> My Profile</a>
+                            <li><a href="setting.html"><i class="fa fa-user"></i> My Profile</a>
                             </li>
                             <li><a href="#"><i class="fa fa-calendar"></i> My Shedule</a>
                             </li>
@@ -159,6 +160,14 @@
                 </ul>
 
                <li class="dropdown language-selector pull-right">
+                <a href="#" style=" margin-right: 10px; position: relative;">
+                        PD
+                        <span class="badge badge-accent">0</span>
+                    </a> 
+                 <a href="#" style=" margin-right: 10px; position: relative;">
+                        GD
+                        <span class="badge badge-accent">0</span>
+                    </a> 
                   Language:
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                     <img id="img" src="<?php if ($_SESSION['language_id'] == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />
@@ -179,7 +188,7 @@
                     
                   </ul>
                 </li>
-                   
+
             </nav>
         </header>
 
