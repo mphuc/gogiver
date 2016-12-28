@@ -159,15 +159,43 @@
                     </li>
                 </ul>
 
-               <li class="dropdown language-selector pull-right">
-                <a href="#" style=" margin-right: 10px; position: relative;">
-                        PD
-                        <span class="badge badge-accent">0</span>
-                    </a> 
-                 <a href="#" style=" margin-right: 10px; position: relative;">
-                        GD
-                        <span class="badge badge-accent">0</span>
-                    </a> 
+               <li class="dropdown language-selector pull-right">                
+                <?php switch (intval($pd_march)) {
+                  case 0:
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">0</span> </a>';
+                      break;
+                 case 1:
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">1</span> </a>';
+                      break;
+                 case 2:
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">2</span> </a>';
+                      break;
+                 case 3:
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">3</span> </a>';
+                      break;
+                 case 4:
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">4</span> </a>';
+                      break;
+                
+              } ?>
+                <?php switch (intval($gd_march)) {
+                  case 0:
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">0</span> </a>';
+                      break;
+                 case 1:
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">1</span> </a>';
+                      break;
+                 case 2:
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">2</span> </a>';
+                      break;
+                 case 3:
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">3</span> </a>';
+                      break;
+                 case 4:
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">4</span> </a>';
+                      break;
+                
+              } ?>
                   Language:
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                     <img id="img" src="<?php if ($_SESSION['language_id'] == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />

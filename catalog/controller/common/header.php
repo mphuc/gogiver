@@ -12,6 +12,13 @@ class ControllerCommonHeader extends Controller {
 			$data['date_auto'] = $this -> model_account_customer ->  getDateAuto($this -> session -> data['customer_id']);
 			$data['date_auto'] =  $data['date_auto']['date_auto'];
 			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+
+			$gd_march = $this -> model_account_customer -> getAllTotalGD_Status($this -> session -> data['customer_id']);
+			$data['gd_march'] = intval($gd_march['number']);
+			$pd_march = $this -> model_account_customer -> getAllTotalPD_Status($this -> session -> data['customer_id']);
+			$data['pd_march'] = intval($pd_march['number']);
+		
+
 		}
 		if (!isset($this -> session->data['language_id']))
 		{

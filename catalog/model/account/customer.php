@@ -1808,11 +1808,26 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> row;
 	}
+	public function getAllTotalGD_Status($customer_id){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_get_donation WHERE status = 1 AND customer_id =  ".$customer_id."
+		");
+
+		return $query -> row;
+	}
 	public function getAllTotalPD(){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation
 		");
+
+		return $query -> row;
+	}
+	public function getAllTotalPD_Status($customer_id){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_provide_donation WHERE status = 1 AND customer_id =  ".$customer_id."");
 
 		return $query -> row;
 	}
