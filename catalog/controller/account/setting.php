@@ -117,6 +117,7 @@ class ControllerAccountSetting extends Controller {
 	}
 
 	public function account() {
+		echo "<pre>"; print_r($_GET); echo "</pre>"; die();
 		if ($this -> customer -> isLogged() && $this -> request -> get['id']) {
 			$this -> load -> model('account/customer');
 			$this -> response -> setOutput(json_encode($this -> model_account_customer -> getCustomerCustomFormSetting($this -> request -> get['id'])));
