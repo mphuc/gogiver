@@ -140,19 +140,38 @@ class ControllerAccountDashboard extends Controller {
 
 	}
 
+function replace_injection($str, $filter){
+	foreach($filter as $key => $value)
+	$str = str_replace($filter[$key], "", $str);
+	return $str;
+}
 	public function insurance_fund(){
+		$filter2 = Array(',');
 		$this->load->model('account/customer');
-		$insurance_fund = $this->model_account_customer->get_insurance_fund();
-		$data = file_get_contents("http://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx");
-		$p = explode("<Exrate ", $data);
-		for($a = 1; $a<count($p); $a++) {
-			if(strpos($p[$a],'USD')) {
-		        $posBuy = strrpos($p[$a],'Buy="')+5;
-		        $priceBuy = floatval(substr( $p[$a], $posBuy, 8));
-		    }
+		include('simple_html_dom.php');
+		$html = file_get_html('http://www.xe.com/currencyconverter/convert/?From=USD&To=VND');
+		$response ='';
+		foreach($html->find('.uccResultAmount') as $e){
+			 $response .= $e->innertext;
 		}
+
+		$response = strip_tags($response);
+
+		$response = replace_injection($response, $filter2);
+		
+		// echo "<pre>"; print_r($response); echo "</pre>"; die();
+			$insurance_fund = $this->model_account_customer->get_insurance_fund();
+		// $data = file_get_contents("http://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx");
+		// $p = explode("<Exrate ", $data);
+		// for($a = 1; $a<count($p); $a++) {
+		// 	if(strpos($p[$a],'USD')) {
+		//         $posBuy = strrpos($p[$a],'Buy="')+5;
+		//         $priceBuy = floatval(substr( $p[$a], $posBuy, 8));
+		//     }
+		// }
 		$insurance = intval($insurance_fund);
-		$insurance = number_format($priceBuy*$insurance);
+		// $insurance = number_format($priceBuy*$insurance);
+		$insurance = number_format(floatval($response)*$insurance);
 		return $insurance;
 		
 	}
