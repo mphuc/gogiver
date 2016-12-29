@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-<?php die(); */}  ?>
+<?php die(); } */ ?>
      <div class="row">
         <!-- .row start -->
         <div class="col-md-12">
