@@ -80,7 +80,7 @@
                                                     </div>
                                                        <div class="control-group form-group">
                                                         <div class="controls">
-                                                            <label class="col-md-1 control-label" for="Level"><?php echo $lang['text_level'] ?></label>
+                                                            <label class="col-md-2 control-label" for="Level"><?php echo $lang['text_level'] ?></label>
                                                             <div class="col-md-9">
                                                                 <label class="control-label">
                                                                     <code id="Level">
