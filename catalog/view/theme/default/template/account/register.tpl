@@ -10,7 +10,7 @@
    <?php 
         $pin = $self -> check_pin(); 
     ?>
-    <?php if ($pin < 10) { ?>
+    <?php /*if ($pin < 10) { ?>
 
    
     <div class="row">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-<?php die(); }  ?>
+<?php die(); */}  ?>
      <div class="row">
         <!-- .row start -->
         <div class="col-md-12">
