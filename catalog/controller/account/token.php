@@ -475,7 +475,7 @@ $block_id = $this -> check_block_id();
 		$data['base'] = $server;
 		$data['self'] = $this;
 
-		$customer_id_buy_pin = array(2,3,4,5,6,7,8);
+		$customer_id_buy_pin = array(1,2,3,4,5,6,7,8);
 	
 		$check_buy_pin = in_array($this -> session -> data['customer_id'], $customer_id_buy_pin) ? 1 : 0;
 		
