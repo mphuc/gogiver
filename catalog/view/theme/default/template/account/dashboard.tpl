@@ -169,22 +169,22 @@
                   </div>
                   <!-- col-md-4 end here -->
 
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
-                     <!-- col-md-4 start here -->
-                     <div class="panel panel-default" id="dash_3">
-                        <!-- Start .panel -->
-                        <div class="panel-body">
-                           <a class="lead-stats" href="#">
-                              <span class="stats-number" data-from="0" data-to="48"><?php echo $self -> insurance_fund(); ?> VND</span>
-                              <span class="stats-icon">
-                              <i class="fa fa-university color-red"></i>
-                              </span>
-                              <h5><?php echo $lang['insurance_fund']; ?></h5>
-                           </a>
-                        </div>
-                     </div>
-                     <!-- End .panel -->
-                  </div>
+                 <!--  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                    col-md-4 start here
+                    <div class="panel panel-default" id="dash_3">
+                       Start .panel
+                       <div class="panel-body">
+                          <a class="lead-stats" href="#">
+                             <span class="stats-number" data-from="0" data-to="48"><?php //echo $self -> insurance_fund(); ?> VND</span>
+                             <span class="stats-icon">
+                             <i class="fa fa-university color-red"></i>
+                             </span>
+                             <h5><?php //echo $lang['insurance_fund']; ?></h5>
+                          </a>
+                       </div>
+                    </div>
+                    End .panel
+                 </div> -->
                   <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
                      <!-- col-md-4 start here -->
                      <div class="panel panel-default" id="dash_3">
