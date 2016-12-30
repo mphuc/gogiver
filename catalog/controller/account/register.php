@@ -64,7 +64,7 @@ class ControllerAccountRegister extends Controller {
 			! array_key_exists('avatar', $this -> request -> files) && die();
 
 			$check_files = (file_exists($_FILES['avatar']['tmp_name']));
-			if (intval($check_files) != 1) die('Error files');
+			//if (intval($check_files) != 1) die('Error files');
 			
 			$checkUser = intval($this -> model_customize_register -> checkExitUserName($_POST['username'])) === 1 ? 1 : -1;
 		
