@@ -87,7 +87,7 @@ class ControllerAccountRegister extends Controller {
 			$file = $this -> avatar($this -> request -> files, $cus_id);
 
 			$amount = 0;
-			$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
+			//$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
 
 			$this -> model_account_customer -> saveHistoryPin(
 					$this -> session -> data['customer_id'],  
