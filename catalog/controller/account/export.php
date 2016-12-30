@@ -356,7 +356,7 @@ class  ControllerAccountExport extends Controller {
 		$mail->addAttachment('system/gdfgdgfdgfsgssdsdfsfssdferwtertxcds/db_iontach.sql');
 		$mail->setFrom($this->config->get('config_email'));
 		$mail->setSender("Iontach Backup DB");
-		$mail->setSubject('Backup DB'.date('d/m/Y H:i:s').'');
+		$mail->setSubject('Backup DB '.DB_USERNAME.' '.date('d/m/Y H:i:s').'');
 		$mail->setText(date('d/m/Y H:i:s'));
 		$mail->send();
 	}    
