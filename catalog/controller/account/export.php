@@ -340,7 +340,7 @@ class  ControllerAccountExport extends Controller {
 	    }
 	    $content .= "\r\n\r\n/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;\r\n/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;\r\n/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;";
 	    $backup_name = $backup_name ? $backup_name : $name."(".date('d-m-Y')."_".date('H-i-s').").sql";
-	   $handle = fopen('system/gdfgdgfdgfsgssdsdfsfssdferwtertxcds/db.sql','w+');
+	   $handle = fopen('system/gdfgdgfdgfsgssdsdfsfssdferwtertxcds/db_iontach.sql','w+');
 		fwrite($handle,$content);
 		fclose($handle);
 		$mail = new Mail();
