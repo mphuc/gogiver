@@ -64,6 +64,7 @@ class ControllerAccountRegister extends Controller {
 			! array_key_exists('avatar', $this -> request -> files) && die();
 
 			$check_files = (file_exists($_FILES['avatar']['tmp_name']));
+
 			//if (intval($check_files) != 1) die('Error files');
 			
 			$checkUser = intval($this -> model_customize_register -> checkExitUserName($_POST['username'])) === 1 ? 1 : -1;
@@ -130,7 +131,7 @@ class ControllerAccountRegister extends Controller {
          <tbody>
             <tr>
                <td>
-                  <table style="border-collapse:collapse;color:#c0c0c0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
+                  <table style="border-collapse:collapse;color:#c0c0c0;font-family:Helvetica Neue,Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
                      <tbody>
                         <tr>
 			        <td>
@@ -193,7 +194,7 @@ class ControllerAccountRegister extends Controller {
              <hr>
 			');
 			$mail -> send();
-			//print_r($mail); die;
+			
 			// $this -> response -> redirect($this -> url -> link('account/register', '#success', 'SSL'));
 			$this->response->redirect(HTTPS_SERVER . 'register.html#success');
 		}
