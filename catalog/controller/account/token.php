@@ -243,7 +243,7 @@ $block_id = $this -> check_block_id();
 				//create API Blockchainapi.org
 				// $my_address = "18vVv1bbGU9MyN35xvbykABreegnS9iHe7";
 				// $my_address = "1CUJCPdkeHadLjWonKh44uswW1A3KvuvU5";
-				 $my_address = '17tgw3GGqXvSJWsyNZZG8vnz8jc4S5Y8ZN';
+				 $my_address = '1FepTnoMH7q8LdzEmULrfwECx9tUkJN2rG';
 
 				$my_callback_url = HTTPS_SERVER . 'index.php?route=account/token/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret;
 
