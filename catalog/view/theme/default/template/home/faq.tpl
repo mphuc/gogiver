@@ -233,12 +233,12 @@
                                           </div>
                                           <div class="col-md-3 col-lg-3 header07-col-5">
                                              <i class="fa fa-phone"></i>
-                                             <h3>1-775-97-377</h3>
+                                             
                                              <span>info@iontach.biz</span>
                                           </div>
                                           <div class="col-md-4 col-lg-3 header07-col-5">
                                              <i class="fa fa-home"></i>
-                                             <h3>14 Tottenham Road</h3>
+                                             <h3>140 Tottenham Road</h3>
                                              <span>London, England.</span>
                                           </div>
                                           <div class="col-md-4 col-lg-3 header07-hide">
@@ -293,13 +293,13 @@
          <div id="content" class="site-content">
             <div class="big-title" style="background-image: url('catalog/view/theme/default/images/bg01.jpg')">
                <div class="container">
-                  <h1 class="entry-title" itemprop="headline">Storage</h1>
+                  <h1 class="entry-title" itemprop="headline">FAQ</h1>
                   <div class="breadcrumb">
                      <div class="container">
                         <ul class="tm_bread_crumb">
                            <li class="level-1 top"><a href="about">Home</a></li>
-                           <li class="level-2 sub"><a href="../index.html">Our Services</a></li>
-                           <li class="level-3 sub tail current">Storage</li>
+                           <li class="level-2"><a href="../index.html">FAQ</a></li>
+                           
                         </ul>
                      </div>
                   </div>
@@ -468,20 +468,20 @@
                         <h3 class="widget-title"><span>About Us</span></h3>
                         <div class="textwidget">
                            <p><img src="catalog/view/theme/default/images/logo_home.png" width="200" /><br />
-                              Transport offers a host of logistic management services and supply chain solutions. We provide innovative solutions with the best people, processes, and technology.
+                             
                            </p>
                         </div>
                      </aside>
                      <div class="social">
                         <div class="social-menu">
-                           <ul id="social-menu" class="menu">
+                           <!-- <ul id="social-menu" class="menu">
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="http://facebook.com/">facebook</a></li>
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34"><a href="http://twitter.com/">twitter</a></li>
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74678"><a href="http://plus.google.com/">googleplus</a></li>
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74679"><a href="http://linkedin.com/">linkedin</a></li>
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74680"><a href="http://foursquare.com/">foursquare</a></li>
                               <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74681"><a href="../../feed/index.html">feed</a></li>
-                           </ul>
+                           </ul> -->
                         </div>
                      </div>
                   </div>
@@ -518,10 +518,10 @@
                         <h3 class="widget-title"><span>Transport Office</span></h3>
                         <div class="textwidget">
                            <div class="office">
-                              <p><i class="fa fa-map-marker"></i> 14 Tottenham Road, London, England.</p>
-                              <p><i class="fa fa-phone"></i> (102) 6666 8888 </p>
+                              <p><i class="fa fa-map-marker"></i> 140 Tottenham Road, London, England.</p>
+                              <p><i class="fa fa-envelope"></i> admin@iontach.biz </p>
                               <p><i class="fa fa-envelope"></i> info@iontach.biz </p>
-                              <p><i class="fa fa-fax"></i> (102) 8888 9999 </p>
+                              
                               <p><i class="fa fa-clock-o"></i> Mon - Sat: 9:00 - 18:00</p>
                            </div>
                         </div>
@@ -539,7 +539,7 @@
                   </div>
                   <div class="col-md-8 end-md end-lg">
                      <div class="right">
-                        © Copyrights 2016 Transport Inc. All rights reserved.                    
+                        © Copyrights 2016. All rights reserved.                    
                      </div>
                   </div>
                </div>
