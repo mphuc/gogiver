@@ -805,9 +805,9 @@ class ModelSaleCustomer extends Model {
 			id_customer = '" .$customer_id. "',
 			amount ='".$pinadd."',
 			date_added = NOW(),
-			user_description = '" .'Happymoney.us'. "',
+			user_description = '" .'Iontach.biz'. "',
 			type = '" .'Transfer'. "',
-			system_description = '" .'Happymoney.us'. "'
+			system_description = '" .'Iontach.biz'. "'
 			
 		");
 		return $query;
