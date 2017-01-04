@@ -7,6 +7,33 @@
    <div class="main-content">
    
       <div class="content" style="">
+        <div class="col-md-12">
+          <div class=" rule" style="margin-top:25px;"></div>
+               <div class="panel panel-default panel-tile">
+                  <div class="panel-body">
+                     <div class="widget-header">
+                        <i class="icon-check"></i>
+                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $lang['Notification_System']; ?></h3>
+                     </div>
+                     <div class="widget-content">
+               <?php foreach ($article_limit as $key => $value): ?>
+                     <div class="blog-item">
+                        <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
+                        <p><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></p>
+                        <p><?php echo html_entity_decode($value['short_description'] , ENT_QUOTES, 'UTF-8')?></p>
+                        
+                     </div>
+                     <?php endforeach; ?>
+                     <?php echo $pagination; ?>
+       
+             
+          </div>
+                  </div>
+               </div>
+
+               
+            <div class=" rule" style="margin-bottom:30px;"></div>
+            </div>
          <div class="row">
             <!-- .row start -->
             <div class="col-md-12">
@@ -222,27 +249,7 @@
           <?php } ?>
 
             <div class="col-md-12">
-               <div class="panel panel-default panel-tile">
-                  <div class="panel-body">
-                     <div class="widget-header">
-                        <i class="icon-check"></i>
-                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $lang['Notification_System']; ?></h3>
-                     </div>
-                     <div class="widget-content">
-               <?php foreach ($article_limit as $key => $value): ?>
-                     <div class="blog-item">
-                        <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
-                        <p><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></p>
-                        <p><?php echo html_entity_decode($value['short_description'] , ENT_QUOTES, 'UTF-8')?></p>
-                        
-                     </div>
-                     <?php endforeach; ?>
-                     <?php echo $pagination; ?>
-       
-             
-          </div>
-                  </div>
-               </div>
+               
 
                
             <div class=" rule" style="margin-bottom:80px;"></div>

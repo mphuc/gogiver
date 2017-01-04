@@ -122,3 +122,7 @@ table thead tr td{
 .list_ph .background{
   background: #c1adad;
 }
+.panel.panel-default > .panel-heading{
+  background: #E3AF4A !important;
+  color: #fff !important;
+}
