@@ -809,6 +809,7 @@ class ControllerSaleCustomer extends Controller {
 				'img_profile'    => $result['img_profile'],
 				'hvOff'			 => $result['status'],
 				'hvNew'			 => $hvNew,
+				'cmnd'			 => $result['cmnd'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'ip'             => $result['ip'],
 				'date_birth'     => date($this->language->get('date_format_short'), strtotime($result['date_birth'])),

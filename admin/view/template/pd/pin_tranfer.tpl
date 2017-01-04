@@ -51,14 +51,14 @@
      		<tbody id="result_date"> 
                
                 <?php $stt = 0;
-
+                
                 foreach ($pin as $value) { $stt ++?>
                 
                   <tr>
                     <td><?php echo $stt; ?></td>
                     <td><?php echo $value['username'] ?></td>
                     <td><?php echo $value['amount'] ?></td>
-                    <td><?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
+                    <td><?php echo  date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
                     <td><?php echo $value['type'] ?></td>
                     <td><?php echo $value['system_description'] ?></td>
                 </tr>  

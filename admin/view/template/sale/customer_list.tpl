@@ -277,7 +277,8 @@
                       Username
                   </td>
                    <td style="">Email</td>
-                   <td>Address</td>
+                   <td>Images CMND</td>
+                   <td>Number CMND</td>
                   <td style="width: 110px;">Phone</td>
                   <td style="width: 140px;">Presenter</td>
                   <?php /* ?>
@@ -317,9 +318,12 @@
                  <td class="text-left"><?php echo $customer['email']; ?></td>
                  <td class="text-center">
                   <?php if($customer['img_profile'] != "") { ?>
-                    <img style="width:120px" src="<?php echo $customer['img_profile']; ?>" />
+                  <a href="<?php echo $customer['img_profile']; ?>" target="_blank">
+                    <img style="width:120px;    max-height: 92px;" src="<?php echo $customer['img_profile']; ?>" />
+                  </a>
                   <?php } else {echo "Không có CMND"; }?>
                   </td>
+                  <td><?php echo $customer['cmnd'] ?></td>
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['name_parent']; ?></td>
                   <?php /*?>

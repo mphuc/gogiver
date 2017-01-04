@@ -2957,7 +2957,7 @@ $date_added= date('Y-m-d H:i:s') ;
 	public function get_all_ping_history($limit, $offset){
 
 		$query = $this -> db -> query("
-			SELECT *
+			SELECT A.*,B.username
 			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer
 			ORDER BY A.id DESC
 			LIMIT ".$limit."
