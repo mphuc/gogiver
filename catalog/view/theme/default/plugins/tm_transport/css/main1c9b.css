@@ -4322,3 +4322,13 @@ Visual Composer
   background-position: center center;
 }
 /*# sourceMappingURL=main.css.map */
+.main-navigation,.tm_bread_crumb,.tm_bread_crumb:before,.tm_bread_crumb:before{
+  background-color:  #D78D00 !important;
+  border-left-color: #D78D00 !important;
+}
+.wpb_accordion .wpb_accordion_wrapper .wpb_accordion_header.ui-state-active,.site-footer, .copyright{
+   background-color:  #D78D00 !important;
+}
+.tm_bread_crumb:before,.tm_bread_crumb:before,.tm_bread_crumb a,.site-footer a,.site-footer a:hover,.textwidget .office p,.site-footer, .copyright .right{
+  color: #fff !important;
+}

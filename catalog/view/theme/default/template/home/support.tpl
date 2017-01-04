@@ -235,11 +235,7 @@
                                             
                                              <span>info@iontach.biz</span>
                                           </div>
-                                          <div class="col-md-4 col-lg-3 header07-col-5">
-                                             <i class="fa fa-home"></i>
-                                             <h3>140 Tottenham Road</h3>
-                                             <span>London, England.</span>
-                                          </div>
+                                          
                                           <div class="col-md-4 col-lg-3 header07-hide">
                                              <i class="fa fa-clock-o"></i>
                                              <h3>Mon - Sat : 9AM - 6PM</h3>
