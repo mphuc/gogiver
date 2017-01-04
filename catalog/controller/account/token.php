@@ -78,10 +78,7 @@ class ControllerAccountToken extends Controller {
 	}
 
 	public function callback() {
-
-		$this -> load -> model('account/token');
-
-		$invoice_id_hash = array_key_exists('invoice_id', $this -> request -> get) ? $this -> request -> get['invoice_id'] : "Error";
+		/*$invoice_id_hash = array_key_exists('invoice_id', $this -> request -> get) ? $this -> request -> get['invoice_id'] : "Error";
 		$secret = array_key_exists('secret', $this -> request -> get) ? $this -> request -> get['secret'] : "Error";
 
 		$value_in_satoshi = array_key_exists('value', $this -> request -> get) ? $this -> request -> get['value'] : "Error";
@@ -98,17 +95,42 @@ class ControllerAccountToken extends Controller {
 		$received = intval($invoice['received']) + intval($value_in_satoshi);
 		$this -> model_account_token -> updateReceived($value_in_satoshi, $invoice_id_hash);
 		$invoice = $this -> model_account_token -> getInvoiceByIdAndSecret($invoice_id_hash, $secret);
-		$received = intval($invoice['received']);
-		
-		intval($invoice['confirmations']) >= 3 && die();
-		if ($received >= intval($invoice['amount'])) {
+		$received = intval($invoice['received']);*/
+		$this -> load -> model('account/token');
+		$invoice_id = array_key_exists('invoice', $this -> request -> post) ? $this -> request -> post['invoice'] : "Error";
+        $payment_code = array_key_exists('code', $this -> request -> post) ? $this -> request -> post['code'] : "Error";
+        $tx_hash = array_key_exists('tx_hash', $this -> request -> post) ? $this -> request -> post['tx_hash'] : "Error";
+        $payout_tx_hash = array_key_exists('payout_tx_hash', $this -> request -> post) ? $this -> request -> post['payout_tx_hash'] : "Error";
+        $payout_service_fee = array_key_exists('payout_service_fee', $this -> request -> post) ? $this -> request -> post['payout_service_fee'] : "Error";
+        $payout_miner_fee = array_key_exists('payout_miner_fee', $this -> request -> post) ? $this -> request -> post['payout_miner_fee'] : "Error";
+        $this -> load -> model('account/pd');
+        $this -> load -> model('account/auto');
+        $this -> load -> model('account/customer');
+        
+        $invoice = $this -> model_account_token -> getInvoiceByIdAndSecret_pin($invoice_id, $payment_code);
+        
+        (count($invoice) === 0) && die;
 
+        intval($invoice['confirmations']) >= 3 && die();
+
+        $data = file_get_contents("https://bitaps.com/api/address/". $invoice['input_address']);
+        
+        $respond = json_decode($data); // Response array
+        $received = doubleval($respond->received);
+     
+        $this -> model_account_token -> updateReceived_pin($received, $payment_code);
+       
+        $invoice = $this -> model_account_token -> getInvoiceByIdAndSecret_pin($invoice_id, $payment_code);
+
+        $received = intval($invoice['received']);
+		if ($received >= intval($invoice['amount'])) {
+			
 			//update Pin User
 			$this -> model_account_token -> updatePin($invoice['customer_id'], $invoice['pin']);
 			$this -> model_account_token -> saveHistoryPin($invoice['customer_id'], "+ " . $invoice['pin'], $_SERVER['SERVER_NAME'], 'Buy', $_SERVER['SERVER_NAME']);
 
 			//update confirm
-			$this -> model_account_token -> updateConfirm($invoice_id_hash, 3);
+			$this -> model_account_token -> updateConfirm_pin($payment_code, 3,$tx_hash,$payout_tx_hash,$payout_service_fee,$payout_miner_fee);
 			$this -> model_account_token -> update_customer_insurance_fund(2);
 
 			
@@ -236,9 +258,10 @@ $block_id = $this -> check_block_id();
 				$amount = $amount * 100000000;
 				
 
-				$invoice_id = $this -> model_account_token -> saveInvoice($this -> session -> data['customer_id'], $secret, $amount, $pin);
+				//$invoice_id = $this -> model_account_token -> saveInvoice($this -> session -> data['customer_id'], $secret, $amount, $pin);
 
-				$invoice_id === -1 && die('Server error , Please try again !!!!');
+
+				/*$invoice_id === -1 && die('Server error , Please try again !!!!');
 				$invoice_id_hash = hexdec(crc32(md5($invoice_id)));
 				//create API Blockchainapi.org
 				// $my_address = "18vVv1bbGU9MyN35xvbykABreegnS9iHe7";
@@ -253,9 +276,24 @@ $block_id = $this -> check_block_id();
 				$object = json_decode($response);
 				//update input address and fee_percent
 				$mycallback = HTTPS_SERVER . 'index.php?route=account/token/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret."&value=".$amount."&confirmations=3";
-				!$this -> model_account_token -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination,$mycallback) && die('Server Error !!!!');
+				!$this -> model_account_token -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination,$mycallback) && die('Server Error !!!!');*/
+				$payout_address = "1EtyfHf6jLwH9exV97qPoMR7PMxZsttECV";
+	            $confirmations = 0;
+	            $fee_level = "low";
+	            $callback = urlencode("https://iontach.biz/index.php?route=account/token/callback");
+	            $data = file_get_contents("https://bitaps.com/api/create/payment/". $payout_address. "/" . $callback . "?confirmations=" . $confirmations. "&fee_level=" . $fee_level);
+	            if (!$data) { die("Sever error !"); };
+	            $respond = json_decode($data,true);
+	            $my_wallet = $respond["address"]; 
+	            $secret = $respond["payment_code"]; 
+	            $invoice_id_hash = $respond["invoice"];
+
+	            $invoice_id = $this -> model_account_token -> saveInvoice_pin($this -> session -> data['customer_id'], $secret,$invoice_id_hash, $amount, $pin,$my_wallet,$callback);
+
 				
+
 				$json['error'] = false;
+				
 				$json['text'] = HTTPS_SERVER . 'confirm&invoice_hash=' . $invoice_id_hash;
 				$this -> response -> setOutput(json_encode($json));
 			} 

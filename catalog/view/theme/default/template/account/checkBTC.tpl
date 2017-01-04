@@ -104,7 +104,6 @@
 
 <?php if(!$notCreate) { ?>
 <script type="text/javascript">
-   var str = 'We are waiting 3 confirmation from <a style="color: #f0ad4e;" href="https://blockchain.info/" target="_blank">blokchain.info</a>';
-   $('#websocket').html(str);
+   
 </script>
 <?php }?>
