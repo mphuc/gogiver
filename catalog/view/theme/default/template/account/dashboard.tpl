@@ -19,7 +19,7 @@
                      <div class="widget-content">
                <?php foreach ($article_limit as $key => $value): ?>
                 <?php //print_r($value) ?>
-                     <div class="blog-item">
+                     <div class="blog-item" style="padding-left: 10px;">
                         <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
                         <p><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></p>
                         <p><?php echo html_entity_decode($value['description'] , ENT_QUOTES, 'UTF-8')?></p>
@@ -91,7 +91,7 @@
                <div class="row">
                   
                   <!-- .row start -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
                      <!-- col-md-6 start here -->
                      <div class="panel panel-default" id="dash_0">
                         <!-- Start .panel -->
@@ -109,7 +109,7 @@
                      <!-- End .panel -->
                   </div>
                   <!-- col-md-6 end here -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
                      <!-- col-md-6 start here -->
                      <div class="panel panel-default" id="dash_1">
                         <!-- Start .panel -->
@@ -146,7 +146,7 @@
                      <!-- End .panel -->
                   </div>
                   <!-- col-md-4 end here -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
                      <!-- col-md-4 start here -->
                      <div class="panel panel-default" id="dash_3">
                         <!-- Start .panel -->
@@ -164,7 +164,7 @@
                      <!-- End .panel -->
                   </div>
                   <!-- col-md-4 end here -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
                      <!-- col-md-4 start here -->
                      <div class="panel panel-default" id="dash_4">
                         <!-- Start .panel -->
@@ -181,7 +181,7 @@
                      <!-- End .panel -->
                   </div>
                   <!-- col-md-4 end here -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge ">
                      <!-- col-md-4 start here -->
                      <div class="panel panel-default" id="dash_5">
                         <!-- Start .panel -->
@@ -215,7 +215,7 @@
                     </div>
                     End .panel
                  </div> -->
-                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge">
+                  <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
                      <!-- col-md-4 start here -->
                      <div class="panel panel-default" id="dash_3">
                         <!-- Start .panel -->
@@ -242,7 +242,7 @@
          <!-- / .row -->
          <div class="row">
             <?php for ($i=0; $i < 6; $i++) { ?>
-             <div class="col-md-2 col-sm-2 col-xs-2">
+             <div class="col-md-2 col-sm-2 col-xs-2 ">
                <div class="panel panel-default item_level">
                   <div ><code>I<?php echo $i ?></code></div>
                   <div data-level="<?php echo $i + 1 ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/analytics', '', 'SSL'); ?>" class="analytics-tree analytics-tree-loading">loading ...

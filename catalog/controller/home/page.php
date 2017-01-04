@@ -101,4 +101,27 @@ class ControllerHomePage extends Controller {
 				$mail -> send();
 				$this->response->redirect(HTTPS_SERVER . 'support.html');
 	}
+	
+	public function header() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/home/header.tpl')) {
+			return $this->load->view($this->config->get('config_template') . '/template/home/header.tpl', $data);
+		} else {
+			return $this->load->view('default/template/home/header.tpl', $data);
+		}
+	}
+	public function footer() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/home/footer.tpl')) {
+			return $this->load->view($this->config->get('config_template') . '/template/home/footer.tpl', $data);
+		} else {
+			return $this->load->view('default/template/home/footer.tpl', $data);
+		}
+	}
 }

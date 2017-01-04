@@ -4326,7 +4326,7 @@ Visual Composer
   background-color:  #D78D00 !important;
   border-left-color: #D78D00 !important;
 }
-.wpb_accordion .wpb_accordion_wrapper .wpb_accordion_header.ui-state-active,.site-footer, .copyright{
+.wpb_accordion .wpb_accordion_wrapper .wpb_accordion_header.ui-state-active,.site-footer, .copyright,.services1 .vc_col-sm-6:hover .vc_inner:before{
    background-color:  #D78D00 !important;
 }
 .tm_bread_crumb:before,.tm_bread_crumb:before,.tm_bread_crumb a,.site-footer a,.site-footer a:hover,.textwidget .office p,.site-footer, .copyright .right{

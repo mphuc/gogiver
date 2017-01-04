@@ -1701,6 +1701,8 @@ a:focus {
 .panel.panel-default {
   border-color: #080b0d;
   border: none;
+  border: 3px solid rgba(215, 141, 0, 0.28);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(0, 0, 0, 0.06)
 }
 .panel.panel-default > .panel-heading {
   color: #cfd8dc;
@@ -4585,4 +4587,12 @@ div.fancy-select ul.options li.hover {
 }
 .timeline.timeline-icons li p {
   color: #455a64;
+}
+.custom_padding_right{
+  padding-right: 0px;
+}
+@media screen and (max-width: 768px) {
+  .custom_padding_right{
+    padding-right: 15px;
+  }
 }
