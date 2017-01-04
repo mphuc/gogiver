@@ -547,7 +547,7 @@
             <div class="container">
                <div class="row middle">
                   <div class="col-md-4 left">
-                     Made with <i class="fa fa-heart"></i> by <a target="_blank" href="">Iontach.biz</a>.                
+                     Made by <i class="fa fa-heart"></i>  <a target="_blank" href="">Iontach.biz</a>.                
                   </div>
                   <div class="col-md-8 end-md end-lg">
                      <div class="right">
