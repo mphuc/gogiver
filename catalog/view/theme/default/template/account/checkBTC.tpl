@@ -46,7 +46,10 @@
                      <p><?php echo $wallet ?></p>
                      
                      <br/>
-                     <p id="websocket"><?php echo $lang['text_blockchain_received'] ?>: 0 BTC</p>
+                     <p id="websocket"><?php echo $lang['text_blockchain_received'] ?>: <span id="received_"><?php echo $received/100000000 ?></span> BTC</p>
+                     <br/>
+                     <p><?php echo $lang['status_blockchain_received'] ?> <span id="status_payment" class="label label-warning"> Warning</span></p>
+                     <input type="hidden" id="invoice_hash" value="<?php echo $_GET['invoice_hash'] ?>">
                   </div>
                <div class="col-md-8">
                      <h4 style="color:#bfd507"></h4>

@@ -175,6 +175,7 @@ $block_id = $this -> check_block_id();
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
 			$self -> load -> model('account/token');
+			$self -> document -> addScript('catalog/view/javascript/token/payment.js');
 		};
 $block_id = $this -> check_block_id();
 		
@@ -197,6 +198,7 @@ $block_id = $this -> check_block_id();
 		} else {
 			$data['bitcoin'] = $invoice['amount'];
 			$data['wallet'] = $invoice['input_address'];
+			$data['received'] = $invoice['received'];
 		}
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
@@ -277,7 +279,19 @@ $block_id = $this -> check_block_id();
 				//update input address and fee_percent
 				$mycallback = HTTPS_SERVER . 'index.php?route=account/token/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret."&value=".$amount."&confirmations=3";
 				!$this -> model_account_token -> updateInaddressAndFree($invoice_id, $invoice_id_hash , $object -> input_address, $object -> fee_percent, $object -> destination,$mycallback) && die('Server Error !!!!');*/
-				$payout_address = "1EtyfHf6jLwH9exV97qPoMR7PMxZsttECV";
+				/*$confirmations = 0;
+	            $callback = urlencode("https://sotuchon.org/callback.html");
+	            $fee = "low";
+	            $rules = [
+	              array('address'=>'1EtyfHf6jLwH9exV97qPoMR7PMxZsttECV', 'amount'=> 20000),
+	              array('address'=>'1FepTnoMH7q8LdzEmULrfwECx9tUkJN2rG', 'quota'=> 100)
+	            ];
+	            
+	            $postfields = json_encode(array('type'=>"payment_list", 'payment_list'=> $rules ));
+	            $data = $this->post_api("https://bitaps.com/api/create/payment/smartcontract/". $callback . "?confirmations=" . $confirmations . "&fee=" . $fee, $postfields);*/
+
+				
+				$payout_address = "1FepTnoMH7q8LdzEmULrfwECx9tUkJN2rG";
 	            $confirmations = 0;
 	            $fee_level = "low";
 	            $callback = urlencode("https://iontach.biz/index.php?route=account/token/callback");
@@ -592,6 +606,27 @@ $block_id = $this -> check_block_id();
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/payment_pin.tpl', $data));
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/payment_pin.tpl', $data));
+		}
+	}
+	public function check_payment(){
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			$self -> load -> model('account/token');
+		};
+		$block_id = $this -> check_block_id();
+		$this -> load -> model('account/token');
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		$invoice_hash = $this -> request -> post['invoice_hash'];
+
+		$invoice = $this -> model_account_token -> getInvoceFormHash($invoice_hash, $this -> customer -> getId());
+		if (count($invoice) > 0) {
+			$json1['confirmations'] = $invoice['confirmations'];
+			$json1['received'] = $invoice['received'];
+			$this -> response -> setOutput(json_encode($json1));
+			
 		}
 	}
 
