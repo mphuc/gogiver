@@ -8,8 +8,9 @@
    
       <div class="content" style="">
         <div class="col-md-12">
+          <div class="row">
           <div class=" rule" style="margin-top:25px;"></div>
-               <div class="panel panel-default panel-tile">
+               <div class="panel panel-default panel-tie">
                   <div class="panel-body">
                      <div class="widget-header">
                         <i class="icon-check"></i>
@@ -34,6 +35,7 @@
 
                
             <div class=" rule" style="margin-bottom:30px;"></div>
+            </div>
             </div>
          <div class="row">
             <!-- .row start -->
