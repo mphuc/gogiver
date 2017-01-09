@@ -159,30 +159,105 @@
          -->
    </head>
    <body class="page page-id-74236 page-child parent-pageid-17 page-template-default header01 full-width wpb-js-composer js-comp-ver-4.11.1 vc_responsive">
-      <div class="snap-drawers">
-         <div class="snap-drawer snap-drawer-left">
-            <div class="mobile-menu">
-               <ul id="mobile-menu" class="menu">
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-item">
-                     <a href="index.php?route=home/page">Home</a>
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                     <a href="index.php?route=home/page/faq">FAQ</a>
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                     <a href="index.php?route=home/page/blog">BLOG</a>
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                     <a href="index.php?route=home/page/support">SUPPORT</a>
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                     <a href="index.php?route=home/page/media">MEDIA</a>
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                     <a href="login.html">LOGIN</a>
-                  </li>
-               </ul>
+       <div id="page" class="hfeed site">
+         <header class="site-header">
+            <div class="container">
+               <div class="row middle-xs top-md">
+                  <div class="col-md-2 col-xs-10 site-branding">
+                     <a href="about" rel="home">
+                     <img src="catalog/view/theme/default/images/logo_home.png" style="width:200px"  srcset="catalog/view/theme/default/images/logo_home.png"  alt="Transport &#8211; Transport, Logistic &#038; Warehouse WP"/>
+                     </a>
+                  </div>
+                  <div class="col-xs-2 hidden-md hidden-lg end">
+                     <i id="open-left" class="fa fa-navicon"></i>
+                  </div>
+                  <div class="col-md-10 hidden-xs hidden-sm">
+                     <div class="site-top">
+                        <div class="row middle">
+                           <div class="col-md-7">
+                              <div class="top-menu">
+                                 <ul id="top-menu" class="menu">
+                                    
+                                    <li id="menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31"><a href="" style="opacity:0"></a></li>
+                                    
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="col-md-5 end-md end-lg">
+                              <div class="social-menu">
+                                 <ul id="social-menu-top" class="menu">
+                                    <li id="menu-item-33" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="http://facebook.com/">facebook</a></li>
+                                    <li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34"><a href="http://twitter.com/">twitter</a></li>
+                                    <li id="menu-item-74678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74678"><a href="http://plus.google.com/">googleplus</a></li>
+                                    <li id="menu-item-74679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74679"><a href="http://linkedin.com/">linkedin</a></li>
+                                    <li id="menu-item-74680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74680"><a href="http://foursquare.com/">foursquare</a></li>
+                                    <li id="menu-item-74681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74681"><a href="../../feed/index.html">feed</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="header-right">
+                           <div class="row middle">
+                              <div class="col-lg-11">
+                                 <aside id="text-4" class="widget header-right widget_text">
+                                    <div class="textwidget">
+                                       <div class="row extra-info center header07-end">
+                                          <div class="col-md-1">
+                                          </div>
+                                          <div class="col-md-3 col-lg-3 header07-col-5">
+                                             <i class="fa fa-phone"></i>
+                                             
+                                             <span>info@iontach.biz</span>
+                                          </div>
+                                          
+                                          <div class="col-md-4 col-lg-3 header07-hide">
+                                             <i class="fa fa-clock-o"></i>
+                                             <h3>Mon - Sat : 9AM - 6PM</h3>
+                                             <span>Opening Time</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </aside>
+                              </div>
+                              
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-         </div>
-         <div class="snap-drawer snap-drawer-right"></div>
-      </div>
+         </header>
+         <!-- #masthead -->
+         <nav id="site-navigation" class="main-navigation hidden-xs hidden-sm">
+            <div class="container">
+               <div class="row middle">
+                  <div class="col-md-11">
+                     <div class="primary-menu pull-right">
+                        <ul id="primary-menu" class="menu">
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-">
+                              <a href="index.php?route=home/page">Home</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
+                              <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/faq">FAQ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/blog">BLOG</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/support">SUPPORT</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/media">MEDIA</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="login.html">LOGIN</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </nav>

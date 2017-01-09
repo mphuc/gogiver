@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
                   , "catalog/view/theme/default/assetslg/img/backgrounds/5.jpg"
 	              , "catalog/view/theme/default/assetslg/img/backgrounds/1.jpg"
                   , "catalog/view/theme/default/assetslg/img/backgrounds/4.jpg"
-                  , "catalog/view/theme/default/assetslg/img/backgrounds/6.jpg"
+                 
 	             ], {duration: 3000, fade: 1000});
     
     /*
