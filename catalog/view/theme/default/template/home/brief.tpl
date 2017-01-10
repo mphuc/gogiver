@@ -18,10 +18,11 @@
             </div>
             <div class="container">
                <div class="row">
-                  <div class="col-md-12">
-                     <object height="10400" data="catalog/view/theme/default/images/pdf.pdf" type="application/pdf" width="100%">
-                       
-                     </object>
+                  <div class="col-md-12" style="margin-bottom: 20px;">
+                     <?php for ($i=1;$i<15;$i++) { ?>
+                       <img style="margin-top: 10px;" src="catalog/view/theme/default/images/brief/000<?php echo $i;?>.jpg" alt="">
+                     <?php  }?>
+                    
                   </div>
                </div>
             </div>

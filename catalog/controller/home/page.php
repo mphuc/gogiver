@@ -31,7 +31,7 @@ class ControllerHomePage extends Controller {
 		}
 	}
 	public function brief() {
-
+		
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/brief.tpl')) {

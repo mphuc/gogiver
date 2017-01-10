@@ -146,5 +146,6 @@
       <script type='text/javascript' src='catalog/view/theme/default/plugins/tm_transport/jquery/ui/core.mine899.js?ver=1.11.4'></script>
       <script type='text/javascript' src='catalog/view/theme/default/plugins/tm_transport/jquery/ui/widget.mine899.js?ver=1.11.4'></script>
       <script type='text/javascript' src='catalog/view/theme/default/plugins/tm_transport/jquery/ui/accordion.mine899.js?ver=1.11.4'></script>
+      <script src="catalog/view/javascript/jquery.lazyloadxt.js"></script>
    </body>
 </html>

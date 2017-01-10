@@ -18,14 +18,23 @@
             </div>
             <div class="container">
                <div class="row">
-                  <div class="col-md-12">
-                     <object height="10400" data="catalog/view/theme/default/images/IONTACH_MANUAL.pdf" type="application/pdf" width="100%">
-                       
-                     </object>
+                  <div class="col-md-12" style="margin-bottom: 20px;">
+                     <?php for ($i=1;$i<62;$i++) { ?>
+                       <img style="margin-top: 10px;" class="lazy" src="catalog/view/theme/default/images/manual/00<?php echo $i;?>.jpg" src="" alt="">
+                     <?php  }?>
+                    
                   </div>
                </div>
             </div>
          </div>
+        <script>
+       $(window).on('ajaxComplete', function() {
+           setTimeout(function() {
+               $(window).lazyLoadXT();
+           }, 50);
+       });
+    </script>
+
          <!-- #content -->
         
 <?php echo $self->load->controller('home/page/footer'); ?>  
