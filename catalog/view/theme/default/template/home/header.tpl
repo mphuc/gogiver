@@ -240,9 +240,9 @@
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
                               <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
                            </li>
-                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
-                              <a href="index.php?route=home/page/manual">IONTACH MANUAL</a>
-                           </li>
+                          <!--  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
+                             <a href="index.php?route=home/page/manual">IONTACH MANUAL</a>
+                          </li> -->
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/faq">FAQ</a>
                            </li>
