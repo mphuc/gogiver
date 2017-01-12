@@ -185,13 +185,36 @@
                            </div>
                            <div class="col-md-5 end-md end-lg">
                               <div class="social-menu">
-                                 <ul id="social-menu-top" class="menu">
-                                    <li id="menu-item-33" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="http://facebook.com/">facebook</a></li>
-                                    <li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34"><a href="http://twitter.com/">twitter</a></li>
-                                    <li id="menu-item-74678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74678"><a href="http://plus.google.com/">googleplus</a></li>
-                                    <li id="menu-item-74679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74679"><a href="http://linkedin.com/">linkedin</a></li>
-                                    <li id="menu-item-74680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74680"><a href="http://foursquare.com/">foursquare</a></li>
-                                    <li id="menu-item-74681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74681"><a href="../../feed/index.html">feed</a></li>
+                                 <ul id="" class="">
+                                   <!--  <li class="dropdown language-selector pull-right"> 
+                                   Language:
+                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                                     <img id="img" src="<?php if ($_SESSION['language_id'] == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />
+                                   </a>
+                                   <ul class="dropdown-menu pull-right">
+                                     <li  class="<?php if ($_SESSION['language_id'] == "vietnamese") echo "active" ?>">
+                                       <a id="vn" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
+                                         <img src="catalog/view/theme/default/img/flags/af.png" />
+                                         <span>Việt Nam</span>
+                                       </a>
+                                     </li>
+                                     <li  class="<?php if ($_SESSION['language_id'] == "english") echo "active" ?>">
+                                       <a id="en" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
+                                         <img src="catalog/view/theme/default/img/flags/ae.png" />
+                                         <span>English</span>
+                                       </a>
+                                     </li>
+                                    </li>
+                                                                  <style> 
+                                   .language-selector {
+                                   margin-top: 13px;
+                                   list-style: none;
+                                   margin-right: 20px;
+                                   }
+                                   .language-selector img {
+                                       width: 25px;
+                                   }
+                                                                  </style> -->
                                  </ul>
                               </div>
                            </div>

@@ -1870,19 +1870,7 @@ Header 01
     right: -90px;
   }
   .header01 .site-top .social-menu:before {
-    content: '';
-    top: -40px;
-    bottom: -14px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    display: block;
-    border-left: 1px solid #DDDDDD;
-    border-right: 1px solid #DDDDDD;
-    -webkit-transform: skew(30deg, 0);
-    -moz-transform: skew(30deg, 0);
-    -ms-transform: skew(30deg, 0);
-    -o-transform: skew(30deg, 0);
+  
   }
   .header01 .extra-info > div {
     padding: 35px 15px 0;
