@@ -112,10 +112,13 @@
                 <div></div>
                 <div></div>
                 <div></div>
+
             </div>
+            
         </div>
 
         <header class="top-bar">
+
             <nav class="navbar navbar-default">
                 <ul class="nav navbar-nav">
                     <li class="sidebar-toggle">
@@ -131,6 +134,7 @@
                     <li class="page-title">
                         <h2 id="title_page"></h2>
                     </li>
+                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text">Manual</span>
                 </ul>
                
                 <ul class="nav navbar-nav navbar-right">

@@ -85,10 +85,10 @@
                        </a>
 
                     </li> -->
-                    <li <?php echo $route === 'account/manual' ? "class='active'" : ''  ?>>
+                    <!-- <li <?php echo $route === 'account/manual' ? "class='active'" : ''  ?>>
                       <a href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text">Manual</span>
                       </a>
-                    </li>
+                    </li> -->
 
                     <li>
                         <a href="#">
