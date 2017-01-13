@@ -32,7 +32,7 @@
                         <?php echo $lang['eligible'] ?>.
                      </div>
                      <div id="err-c-wallet" class="alert alert-dismissable alert-danger" style="display:none">
-                        You must withdraw more 5,000,000 VND.
+                        You must withdraw more 10,000,000 VND.
                      </div>
                       <div id="err-c-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
                         You must withdraw is below <?php echo number_format($c_wallet) ?> VNĐ.
@@ -63,7 +63,7 @@
                            <span><?php echo $lang['err_Receivable'] ?></span>
                            </span>
                            <br/>
-                           <p class="help-none" id="c-wallet" data-value="<?php echo $c_wallet ?>"><?php echo $lang['c_wallet'] ?>: <code> <?php echo (number_format(doubleval($c_wallet))) ; ?> VNĐ </code></p>
+                           <p class="help-none" id="c-wallet" data-value="<?php echo $c_wallet*0.7 ?>"><?php echo $lang['c_wallet'] ?>: <code> <?php echo (number_format(doubleval($c_wallet))) ; ?> VNĐ </code></p>
                            <p class="help-none" id="r-wallet" data-value="<?php echo $r_wallet ?>"><?php echo $lang['r_wallet'] ?>: <code> <?php echo (number_format(doubleval($r_wallet))); ?> VNĐ </code></p>
                         </div>
                      </div>
