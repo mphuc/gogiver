@@ -1560,13 +1560,13 @@ $block_id = $this -> check_block_id();
     	$select_tranfer = $this -> model_account_customer ->getTransferList($transfer_code);
     	//print_r($select_tranfer); die;
     	$pd_query = $this -> model_account_customer -> createPD_pnode($select_tranfer['amount'] ,$select_tranfer['amount']*1.15);							
-		$id_history = $this->model_account_customer->saveHistoryPin(
-			$this -> session -> data['customer_id'],  
-			'- 1',
-			'Use Pin for PD'.$pd_query['pd_number'],
-			'PD',
-			'Use Pin for PD'.$pd_query['pd_number']
-		);
+		// $id_history = $this->model_account_customer->saveHistoryPin(
+		// 	$this -> session -> data['customer_id'],  
+		// 	'- 1',
+		// 	'Use Pin for PD'.$pd_query['pd_number'],
+		// 	'PD',
+		// 	'Use Pin for PD'.$pd_query['pd_number']
+		// );
 
 		$this->model_account_customer->createTransferList($pd_query['pd_id'],$select_tranfer['gd_id'],$this->session->data['customer_id'],$select_tranfer['gd_id_customer'],$select_tranfer['amount']);
 		$this -> model_account_customer ->update_status_pnode_pd($select_tranfer['id']);

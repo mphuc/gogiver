@@ -53,12 +53,12 @@
                   <?php if ($language=='english') { ?>
 
                   <div class="alert alert-danger">
-                       <strong><?php echo $value['username'];?> not transfer money</strong> Please create PD with money <?php echo number_format($value['amount']); ?> VND no penalty <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Create PH</a>
+                       <strong><?php echo $value['username'];?> didn't PD </strong> Please get PD the amount  of <?php echo number_format($value['amount']); ?> VND <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Create PD</a>
                      </div>
 
                    <?php }else{ ?>
                      <div class="alert alert-danger">
-                       <strong><?php echo $value['username'];?> chưa chuyển tiền</strong> Bạn vui lòng tạo PD với số tiền <?php echo number_format($value['amount']); ?> VNĐ để không bị phạt <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PH</a>
+                       <strong><?php echo $value['username'];?> chưa PD </strong> Bạn vui lòng kéo PD về với số tiền <?php echo number_format($value['amount']); ?> VNĐ <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PD</a>
                      </div>
                      <?php } ?>
                   <?php

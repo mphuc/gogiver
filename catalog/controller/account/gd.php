@@ -552,7 +552,7 @@ $block_id = $this -> check_block_id();
 					$json['pin'] = 1;
 				}
 				$level = $this -> model_account_customer ->getLevel_by_customerid($this -> session -> data['customer_id']);
-
+				$json['pin'] = 1;
 				switch (intval($level['level'])) {
 					case 1:
 						$amount_gd = 23100000;
@@ -615,20 +615,20 @@ $block_id = $this -> check_block_id();
 						$amount = $this->request->get['amount'];
 						
 						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'C-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from C-Wallet", "Cash Out");
-						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
+						/*$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);*/
 						$returnDate = $this -> model_account_customer -> update_C_Wallet($this->request->get['amount'], $this -> session -> data['customer_id']);
 						$gd_query = $this -> model_account_customer -> createGD($amount);
 
 						//fee 10%
 						//$this -> fee_cashout($gd_query['gd_number'], $amount);
 						// End fee
-						$id_history = $this->model_account_customer->saveHistoryPin(
+						/*$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
 							'Use Pin for GD'.$gd_query['gd_number'],
 							'GD',
 							'Use Pin for cho GD'.$gd_query['gd_number']
-						);
+						);*/
 
 					}
 					else

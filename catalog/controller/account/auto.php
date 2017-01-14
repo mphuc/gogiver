@@ -86,9 +86,9 @@ class ControllerAccountAuto extends Controller {
 		while ($loop) {
 
 			$gdList = $this -> model_account_auto -> getGD7Before();
-			// echo "<pre>"; print_r($gdList); echo "</pre>"; die();
+			
 			$pdList = $this -> model_account_auto -> getPD7Before();
-		
+			//echo "<pre>"; print_r($pdList); echo "</pre>"; die();
 			if(count($gdList) === 0 && count($pdList) > 0){
 
 				//get customer in inventory
@@ -331,7 +331,6 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/customer');
 
 		$allPD = $this -> model_account_auto -> getDayFnPD();
-		
 
 		$tmp = null;
 		$tmp_count = 1;
@@ -340,14 +339,14 @@ public function updateLevel_listID($customer_id){
 				//check and update level
 		
 			$this -> get_p_node($value['customer_id']);
-				$this->model_account_auto->update_PD_finish_thuong($value['id']);
+				// $this->model_account_auto->update_PD_finish_thuong($value['id']);
 				if ($tmp != $value['customer_id']) {
 
 					$this -> model_account_auto -> update_R_Wallet($value['max_profit'], $value['customer_id']);
 					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number']." finish", "Finish PD");
 				}
 					$this -> update_commission($value['customer_id'], $value['filled'], $value['pd_number']);
-
+					$this -> model_account_auto -> updateCryle($value['customer_id']);
 
 		}
 		// echo $tmp_count;
@@ -357,25 +356,36 @@ public function updateLevel_listID($customer_id){
 		$this->load->model('account/customer');
    		$this->load->model('account/auto');
         $customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
+
         $partent = $this -> model_account_customer -> getCustomerCustom($customer['p_node']);
+
         $checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($partent['customer_id']);
 
 			if (intval($checkC_Wallet['number']) === 0) {
 				if (!$this -> model_account_customer -> insertC_Wallet($partent['customer_id'])) {
 					die();
 				}
-			}	
-
+			}
 			$price = ($amount * 10) / 100;
-
+			$percents = 10;
+			if (intval($customer['cycle']) == 1) {
+				$price = ($amount * 7) / 100;
+				$percents = 7;
+			}
+			if (intval($customer['cycle']) >= 2) {
+				$price = ($amount * 4) / 100;
+				$percents = 4;
+			}
+			
 			$this -> model_account_auto -> update_C_Wallet($price, $partent['customer_id']);
-			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Direct Bonus");
+			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of ".$percents."% from ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Direct Bonus");
 	        $priceCurrent = $amount; 
 	        $levelCustomer = intval($customer['level']);
 	        $pNode_ID = $partent['customer_id'];
 	        //F1
 	        $parrent_id = $partent['customer_id'];
 	        $customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
+
 			$customer_first = true ;
 			if(intval($customerGET['p_node']) !== 0){
 				while (true) {
@@ -386,18 +396,21 @@ public function updateLevel_listID($customer_id){
 							
 						switch (intval($customer_p_node['level'])) {
 							case 2 :
-								if ($pNode_ID == $parrent_id) {
+
+								if ($pNode_ID >= $parrent_id) {
 									$percent = 0.1;
 									$percentcommission =0.1/100;
+									$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+									$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								}else{
 									$percent = 0.1;
 									$percentcommission =0.1/100;
 								}
-								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
+
+								
 								break;
 							case 3 :
-								if ($pNode_ID == $parrent_id) {
+								if ($pNode_ID >= $parrent_id) {
 									$percent = 0.5;
 									$percentcommission =0.5/100;
 								}else{
@@ -408,7 +421,7 @@ public function updateLevel_listID($customer_id){
 								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								break;
 							case 4 :
-								if ($pNode_ID == $parrent_id) {
+								if ($pNode_ID >= $parrent_id) {
 									$percent = 1;
 									$percentcommission =1/100;
 								}else{
@@ -420,7 +433,7 @@ public function updateLevel_listID($customer_id){
 								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								break;
 							case 5 :
-								if ($pNode_ID == $parrent_id) {
+								if ($pNode_ID >= $parrent_id) {
 									$percent = 3;
 									$percentcommission =3/100;
 								}else{
@@ -431,7 +444,7 @@ public function updateLevel_listID($customer_id){
 								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
 								break;
 							case 6 :
-								if ($pNode_ID == $parrent_id) {
+								if ($pNode_ID  >= $parrent_id) {
 									$percent = 5;
 									$percentcommission =5/100;
 								}else{
@@ -445,6 +458,7 @@ public function updateLevel_listID($customer_id){
 						}
 
 					}
+					
 					if(intval($customer_p_node['customer_id']) === 1){
 						break;
 					}
@@ -474,6 +488,21 @@ public function updateLevel_listID($customer_id){
         //find and up status pd = 3
         $this -> load -> model('account/auto');
         $query_rp = $this -> model_account_auto -> get_rp_pd();
+      
+        foreach ($query_rp as $key => $value) {
+        	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
+        	$this -> model_account_auto -> update_lock_customer($value['customer_id']);
+        }
+        $this -> model_account_auto -> auto_find_pd_update_status_report();
+       
+        die();
+    }
+
+    public function croll_tab_check_gd_no_confirm() {
+
+        //find and up status pd = 3
+        $this -> load -> model('account/auto');
+        $query_rp = $this -> model_account_auto -> get_gd_notcf();
       
         foreach ($query_rp as $key => $value) {
         	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);

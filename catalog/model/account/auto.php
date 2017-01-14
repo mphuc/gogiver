@@ -488,6 +488,15 @@ public function updateTransferList($transfer_id){
 		");
 		return $query_row -> rows;
 	}
+	public function get_gd_notcf(){
+		$query_row = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE date_finish <= NOW()
+				  AND STATUS =1
+		");
+		return $query_row -> rows;
+	}
 	public function getM_Wallet(){
 		$query = $this -> db -> query("
 			SELECT *
@@ -639,10 +648,10 @@ public function updateTransferList($transfer_id){
 		return $query -> rows;
 	}
 
-	public function updateCryle($customer_id, $cycle){
+	public function updateCryle($customer_id){
 		$query = $this -> db -> query("
 			UPDATE ". DB_PREFIX . "customer
-			SET cycle = ".$cycle."
+			SET cycle = cycle + 1
 			WHERE customer_id = ".$customer_id."
 		");
 		return $query;

@@ -1105,7 +1105,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function getCustomerCustom($customer_id) {
-		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node 
+		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node, c.cycle
 			FROM ". DB_PREFIX ."customer AS c
 				JOIN ". DB_PREFIX ."customer_ml AS ml
 				ON ml.customer_id = c.customer_id
@@ -2336,7 +2336,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function createPD_pnode($amount, $max_profit){
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
+		$date_finish = strtotime ( '+ 1 day' , strtotime ($date_added));
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
@@ -2374,7 +2374,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			gd_id_customer = '".$gd_id_customer."',
 			transfer_code = '".hexdec( crc32($gd_id) ).rand(10,100)."',
 			date_added = NOW(),
-			date_finish = DATE_ADD(NOW() , INTERVAL + 36 HOUR),
+			date_finish = DATE_ADD(NOW() , INTERVAL + 24 HOUR),
 			amount = '".$amount."',
 			pd_satatus = 0,
 			gd_status = 0
