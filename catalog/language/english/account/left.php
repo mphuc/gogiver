@@ -22,3 +22,4 @@ $_['Transaction_Management'] = 'Transaction';
 $_['History_Commission'] = 'R-wallet History';
 $_['History_Refferal'] = 'C-wallet History';
 $_['support'] = 'Support';
+$_['block'] = 'Block/Frozen History';

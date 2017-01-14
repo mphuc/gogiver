@@ -808,7 +808,7 @@ public function updateTransferList($transfer_id){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_get_donation 
-			WHERE status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 
+			WHERE status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0  
 			
 		");
 		return $query -> rows;

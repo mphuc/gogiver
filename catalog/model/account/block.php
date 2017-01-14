@@ -82,6 +82,22 @@ class ModelAccountBlock extends Model {
 		");
 		return $query -> row;
 	}
+	public function get_block_id_gd_list($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> rows;
+	}
+	public function get_block_id_pd_list($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_id
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> rows;
+	}
 	public function get_total_block_id_gd($id_customer){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) as total
@@ -123,6 +139,13 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_get_donation SET
 			check_request_block = 1
+			WHERE id = '".(int)$id."'");
+		return $query;
+	}
+	public function update_check_gd($id){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_get_donation SET
+			check_gd = 1
 			WHERE id = '".(int)$id."'");
 		return $query;
 	}

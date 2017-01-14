@@ -22,3 +22,4 @@ $_['Transaction_Management'] = 'Giao dịch';
 $_['History_Commission'] = 'R-Wallet History';
 $_['History_Refferal'] = 'C-Wallet History';
 $_['support'] = 'Hỗ trợ';
+$_['block'] = 'Lịch Sử Khóa/Đóng Băng';

@@ -192,7 +192,12 @@ class ControllerAccountDashboard extends Controller {
 		$limit = 10;
 		$start = ($page - 1) * 10;
 		$pd_total = $this -> model_account_customer -> tatol_GD_customer($_GET['token']);
-		$pd_total = $pd_total['number'];
+		if (count($pd_total) > 0) {
+			$pd_total = $pd_total['number'];
+		}else{
+			$pd_total = 0;
+		}
+		
 		
 		$pagination = new Pagination();
 		$pagination -> total = $pd_total;

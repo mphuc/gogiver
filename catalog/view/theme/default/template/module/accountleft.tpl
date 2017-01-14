@@ -102,12 +102,16 @@
                             <li>
                                 <a href="<?php echo $self -> url -> link('account/commissionhistory', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> <?php echo $lang['History_Refferal'] ?> </a>
                             </li>
+                            <li>
+                                <a href="<?php echo $self -> url -> link('account/block/block_history', '', 'SSL'); ?>"> <i class="fa fa-caret-right"></i> <?php echo $lang['block'] ?> </a>
+                            </li>
                         </ul>
                        
                     </li> 
                      <li <?php echo $route === 'account/setting' ? "class='active'" : ''  ?>>
                       <a href="setting.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Setting']; ?></span>
                       </a>
+
                     </li>
                     <li <?php echo $route === 'account/support' ? "class='active'" : ''  ?>>
                       <a href="support.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['support']; ?></span>

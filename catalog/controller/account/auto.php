@@ -495,15 +495,22 @@ public function updateLevel_listID($customer_id){
 			}
 	}
 	
-	// sau 3 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
-	public function re_pd(){
+	// sau 2 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
+	public function croll_tab_check_no_re_pd(){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
-		
+		 $this -> load -> model('account/block');
+		// echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
 
-			// $this -> model_account_auto -> update_status_customer($value['customer_id']);
-			$this -> model_account_auto -> update_lock_customer($value['customer_id']);
+			$description ='Change status from ACTIVE to FROZEN Reason: you did not complete Re-PD';
+        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
+        	$this -> model_account_block -> update_check_gd($value['id']);
+        	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+        	if (intval($total) === 2) {
+        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+        	}
+
 		}
 	}
 

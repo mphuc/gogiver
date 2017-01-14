@@ -17,7 +17,9 @@ class ControllerAccountToken extends Controller {
 		$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+$block_id_gd = $this -> check_block_id_gd();
 
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		//language
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
@@ -68,6 +70,13 @@ class ControllerAccountToken extends Controller {
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/token.tpl', $data));
 		}
+	}
+	public function check_block_id_gd(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
+		
+		return intval($block_id);
+
 	}
 	public function check_block_id(){
 		$this->load->model('account/customer');

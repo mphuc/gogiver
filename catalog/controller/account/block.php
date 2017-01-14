@@ -392,4 +392,42 @@ class ControllerAccountBlock extends Controller {
 		}
 	}
 
+	public function block_history() {
+
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
+		};
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/block');
+		//method to call function
+		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+		call_user_func_array("myConfig", array($this));
+
+		//language
+		$this -> load -> model('account/transaction');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
+		$language = new Language($getLanguage);
+		$language -> load('account/transaction');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
+		
+		$data['self'] = $this;
+		$data['block'] = $this -> model_account_block -> get_block_id_gd_list($this -> customer -> getId());
+		$data['block_pd'] = $this -> model_account_block -> get_block_id_pd_list($this -> customer -> getId());
+		
+
+
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/block_history.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/block_history.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/account/block_history.tpl', $data));
+		}
+	}
+	
+
 }
