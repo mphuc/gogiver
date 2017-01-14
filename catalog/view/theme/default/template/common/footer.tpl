@@ -11,7 +11,8 @@
     </div>
     <!-- End #footer  -->
 </div>
-
+<script src="catalog/view/javascript/datatables/jquery.dataTables.min.js"></script>
+<script src="catalog/view/javascript/datatables/dataTables.responsive.min.js"></script>
 </body>
 </html>
        

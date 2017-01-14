@@ -26,7 +26,7 @@ class ControllerAccountDashboard extends Controller {
 		function myConfig($self) {
 			$self -> document -> addScript('catalog/view/javascript/dashboard/dashboard.js');
 			$self -> document -> addScript('catalog/view/javascript/jquery.marquee.js');
-			
+			$self -> document -> addScript('catalog/view/javascript/canvasjs.min.js');
 			$self -> load -> model('simple_blog/article');
 		};
 		
@@ -106,7 +106,7 @@ class ControllerAccountDashboard extends Controller {
 		$pages = isset($this -> request -> get['pages']) ? $this -> request -> get['pages'] : 1;
 
 		//$data['pds'] = $this -> model_account_customer -> getAllPD($limit, $start);
-		
+		$data['self'] = $this;
 		//thong bao RE PD
 		$data['repd'] = $data['pd_user'] = array();
 		$getGD_user = $this -> model_account_customer -> getGD_user($this->session->data['customer_id']);
@@ -123,10 +123,137 @@ class ControllerAccountDashboard extends Controller {
 
 		$data['getPDfinish_child'] = $this -> model_account_customer ->getPDfinish_child($this -> customer -> getId());
 
+
+		$get_childrend = $this -> model_account_customer -> get_childrend($this->session->data['customer_id']);
+		
+		$data['get_childrend'] = $get_childrend;
+
+		$get_childrend_all = $this -> model_account_customer -> get_childrend_all($this->session->data['customer_id']);
+
+
+		$data['get_customer_by_id_in'] = $this -> model_account_customer ->get_customer_by_id_in($get_childrend_all);
 		
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
+		}
+	}
+
+	public function getusername($code){
+		$this->load->model('account/customer');
+		$customer = $this -> model_account_customer -> get_customer_by_id($code);
+		return $customer;
+	}
+
+	public function child_gd(){
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			
+			$self -> load -> model('simple_blog/article');
+		};
+		
+		
+		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
+		call_user_func_array("myConfig", array($this));
+
+		$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+
+		$this->load->model('account/customer');
+		$data['customer'] = $customer = $this -> model_account_customer -> get_customer_by_code($_GET['token']);
+		count($customer) === 0 && die();
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
+		$language = new Language($getLanguage);
+		$language -> load('account/gd');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
+
+		$data['self'] = $this;
+		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
+		$limit = 10;
+		$start = ($page - 1) * 10;
+		$pd_total = $this -> model_account_customer -> tatol_GD_customer($_GET['token']);
+		$pd_total = $pd_total['number'];
+		
+		$pagination = new Pagination();
+		$pagination -> total = $pd_total;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text';
+		$pagination -> url = $this -> url -> link('account/dashboard/child_gd', 'page={page}', 'SSL');
+
+		$data['gds'] = $this -> model_account_customer -> get_GD_customer($_GET['token'], $limit, $start);
+		
+		$data['pagination'] = $pagination -> render();
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/child_gd.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/child_gd.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
+		}
+	}
+	public function child_pd(){
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			
+			$self -> load -> model('simple_blog/article');
+		};
+		
+		
+		!call_user_func_array("myCheckLoign", array($this)) && $this->response->redirect(HTTPS_SERVER . 'login.html');
+		call_user_func_array("myConfig", array($this));
+
+		$block_id = $this -> check_block_id();
+		
+		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+
+		$this->load->model('account/customer');
+		$data['customer'] = $customer = $this -> model_account_customer -> get_customer_by_code($_GET['token']);
+		count($customer) === 0 && die();
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
+		$language = new Language($getLanguage);
+		$language -> load('account/pd');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
+		
+
+		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
+		$data['base'] = $server;
+		$data['self'] = $this;
+		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
+
+		$limit = 10;
+		$start = ($page - 1) * 10;
+		$pd_total = $this -> model_account_customer -> tatol_PD_customer($_GET['token']);
+
+		$pd_total = $pd_total['number'];
+
+		$pagination = new Pagination();
+		$pagination -> total = $pd_total;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text';
+		$pagination -> url = $this -> url -> link('account/phf', 'page={page}', 'SSL');
+
+		$data['pds'] = $this -> model_account_customer -> get_PD_customer($_GET['token'], $limit, $start);
+
+		$data['pagination'] = $pagination -> render();
+		
+		$data['pagination'] = $pagination -> render();
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/child_pd.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/child_pd.tpl', $data));
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
 		}

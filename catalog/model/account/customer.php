@@ -2293,7 +2293,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");
 
 		return $query -> row;
@@ -2302,8 +2302,8 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.gd_id_customer
-			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
-		");
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
+		"); 
 
 		return $query -> rows;
 	}
@@ -2311,7 +2311,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");
 
 		return $query -> row;
@@ -2319,11 +2319,52 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_PD_child($id_customer){
 		$query = $this -> db -> query("
 			SELECT *
-			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."'
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");
 
 		return $query -> rows;
 	}
+
+	public function tatol_GD_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE B.customer_code = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1)
+			GROUP BY A.id
+		");
+
+		return $query -> row;
+	}
+	public function get_GD_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.gd_id_customer
+			WHERE B.customer_code = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1)
+			GROUP BY A.id
+		");
+
+		return $query -> rows;
+	}
+
+	public function tatol_PD_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE B.customer_code = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
+		");
+
+		return $query -> row;
+	}
+	public function get_PD_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.customer_code = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
+		");
+
+		return $query -> rows;
+	}
+
+
 	public function getPDfinish_child($id_customer){
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
@@ -2493,4 +2534,66 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		$data['query'] = $query ? true : false;
 	}
+	public function get_childrend($id_customer){
+		
+		$mang = "";
+		$query = $this -> db -> query("
+			SELECT customer_id
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_node IN (".$id_customer.")
+		");
+		$count = $query->rows;
+		foreach ($query->rows as $value) {
+			$mang .= ",".$value['customer_id'];
+		}
+		$mang = substr($mang,1);
+
+		$querys = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id IN (".$mang.")
+		");
+		return $querys->rows; 
+	}
+	public function get_customer_by_code($code){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_code = '".$this -> db -> escape($code)."'
+		");
+		return $query -> row;
+	}
+	public function get_customer_by_id($code){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id = '".$this -> db -> escape($code)."'
+		");
+		return $query -> row;
+	}
+	public function get_childrend_all($arrId) {
+		$floor = 0;
+		$query = $this -> db -> query("select mlm.customer_id from " . DB_PREFIX . "customer as u Left Join " . DB_PREFIX . "customer_ml as mlm ON mlm.customer_id = u.customer_id  Where mlm.p_node IN (" . $arrId . ")");
+		$arrChild = $query -> rows;
+
+		if (!empty($arrChild)) {
+			$floor += 1;
+			$arrId = '';
+			foreach ($arrChild as $child) {
+				$arrId .= ',' . $child['customer_id'];
+			}
+			$arrId = substr($arrId, 1);
+			$floor += $this -> getSumFloor($arrId);
+		}
+		return $arrId;
+	}
+	public function get_customer_by_id_in($id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY customer_id DESC
+		");
+		return $query -> rows;
+	}
+	
 }

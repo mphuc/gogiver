@@ -10,6 +10,23 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/home.tpl', $data));
 		}
 	}
+	public function changeLange(){
+		if (isset($_SESSION['language_id'])) {
+            if ($_SESSION['language_id'] == "vietnamese")
+            {
+            	$_SESSION['language_id'] = "english";
+            }
+            else
+            {
+            	$_SESSION['language_id'] = "vietnamese";
+            }
+        }
+        else
+        {
+        	$_SESSION['language_id'] = "english";
+        }
+         $this->response->redirect($_SESSION['url_home']);	
+	}
 	public function faq() {
 
 		$data['base'] = HTTPS_SERVER;
@@ -123,7 +140,8 @@ class ControllerHomePage extends Controller {
 	}
 	
 	public function header() {
-
+		
+		$_SESSION['url_home'] = $_SERVER['PHP_SELF'];
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		

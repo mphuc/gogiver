@@ -82,7 +82,8 @@
 
         </script>
  
-		
+		<link href="catalog/view/javascript/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="catalog/view/javascript/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
 		<script src="catalog/view/javascript/jquery.form.min.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/alertifyjs/alertify.js" type="text/javascript"></script>
 		<link href="catalog/view/theme/default/css/al_css/alertify.css" rel="stylesheet">

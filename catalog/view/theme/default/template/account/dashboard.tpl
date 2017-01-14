@@ -45,7 +45,7 @@
                   <?php echo $lang['vongquayketthuc'];?>
                </div>
             <?php } ?>
-               <!-- col-md-8 start here -->
+               
                <?php 
                   if (count($getPDfinish_child) > 0) {
                      foreach ($getPDfinish_child as $value) {
@@ -88,6 +88,69 @@
                    }
                   }
                ?>
+<?php 
+  
+  for ($i=1; $i <=12 ; $i++) { 
+    $month[$i] = 0;
+    foreach ($get_customer_by_id_in as $key => $value) {
+      if (date('m-Y',strtotime($value['date_added'])) == $i."-2017"){
+        $month[$i] +=1;
+      }
+    }
+  }
+?>
+<script type="text/javascript">
+    window.onload = function () {
+      var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Statistics Member 2017"
+        },
+        axisY:{
+          title : "Total Member",
+          titleFontColor: "#5472BA",
+           titleFontSize: 20,
+           lineColor: "#5472BA"
+         },
+         
+         axisX:{
+          title : "Month",
+          titleFontColor: "#5472BA",
+           titleFontSize: 20,
+           lineColor: "#5472BA"
+         },
+       
+        data: [
+        {
+
+          type: "splineArea",
+          dataPoints: [
+          { x: 1, y: <?php echo $month[1] ?> },
+          { x: 2, y: <?php echo $month[2] ?> },
+          { x: 3, y: <?php echo $month[3] ?> },
+          { x: 4, y: <?php echo $month[4] ?> },
+          { x: 5, y: <?php echo $month[5] ?> },
+          { x: 6, y: <?php echo $month[6] ?> },
+          { x: 7, y: <?php echo $month[7] ?> },
+          { x: 8, y: <?php echo $month[8] ?> },
+          { x: 9, y: <?php echo $month[9] ?> },
+          { x: 10, y: <?php echo $month[10] ?> },
+          { x: 11, y: <?php echo $month[11] ?> },
+          { x: 12, y: <?php echo $month[12] ?> }
+        
+      
+          ]
+        }
+        ]
+      });
+
+      chart.render();
+    }
+  </script>
+              <div id="chartContainer" style="height: 400px; width: 100%; margin-bottom: 30px;"></div>
+
+
+
+
                <div class="row">
                   
                   <!-- .row start -->
@@ -250,14 +313,73 @@
                </div>
               </div>
           <?php } ?>
-
-            <div class="col-md-12">
-               
-
-               
-            <div class=" rule" style="margin-bottom:80px;"></div>
+            <div class="clearfix"></div>
+            <div class="row">
+            <div class="col-md-6" id="no-more-tables">
+              <div class="panel panel-default" id="dash_0">
+              <!-- Start .panel -->
+                <div class="panel-heading">
+                   <h4 class="panel-title"><i class="fa fa-align-justify"></i>New Member</h4>
+                </div>
+                <div class="panel-body form-horizontal group-border stripped">
+                  <table id="datatable" class="table table-striped table-bordered dataTable">
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Sponsor</th>
+                    <th>Status</th>
+                  </tr>
+                  <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
+                    <tr>
+                      <td><?php echo $value['customer_id'] ?></td>
+                      <td><?php echo $value['username'] ?></td>
+                      <td>
+                        <?php echo $self->getusername($value['p_node'])['username']; ?>
+                      </td>
+                      <td>
+                        <?php if ($value['status'] == 1) echo "ACTIVE"; else "LOCK"; ?>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                  </table>
+                </div>
+              </div>
             </div>
 
+            <div class="col-md-6" id="no-more-tables">
+              <div class="panel panel-default" id="dash_0">
+              <!-- Start .panel -->
+                <div class="panel-heading">
+                   <h4 class="panel-title"><i class="fa fa-align-justify"></i>Downline PDGD</h4>
+                </div>
+                <div class="panel-body form-horizontal group-border stripped">
+                  <table id="datatable" class="table table-striped table-bordered dataTable">
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Downline PDGD</th>
+                  </tr>
+                  <?php foreach ($get_childrend as $key => $value) { ?>
+                    <tr>
+                      <td><?php echo $value['customer_id'] ?></td>
+                      <td><?php echo $value['username'] ?></td>
+                      <td>
+                        <a href="index.php?route=account/dashboard/child_gd&token=<?php echo $value['customer_code'] ?>">
+                          <button type="button" class="btn btn-primary">GD</button>
+                        </a>
+                        <a href="index.php?route=account/dashboard/child_pd&token=<?php echo $value['customer_code'] ?>">
+                          <button type="button" class="btn btn-success">PD</button>
+                        </a>
+                        </td>
+                    </tr>
+                  <?php } ?>
+                  </table>
+                </div>
+              </div>
+            </div>
+            
+            </div>
+            <div class=" rule" style="margin-bottom:80px;"></div>
 
          </div>
          
@@ -269,6 +391,11 @@
    </div>
    <!-- End / .main-content -->
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatable').dataTable();
+    } );
+</script>
 <div class="clearfix"></div>
 <script type="text/javascript">
    if (location.hash === '#success') {

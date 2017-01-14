@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title_com_his'] ?></h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title_com_his'] ?> <?php echo $customer['username'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -27,12 +27,7 @@
                                    <div class="">
                                 
                                    </div>
-
-
-
                                         <div class="panel-body">
-                                          
-                              
                                     <table  class="table">
                                         <thead>
                                          
@@ -55,31 +50,32 @@
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
-                                       </span> </strong></td>
-                                            <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
-                                       case 0:
-                                           echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
-                                           break;
-                                       case 1:
-                                           echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
-                                           break;
-                                       case 2:
-                                           echo '<span class="label label-success">'.$lang['ketthuc'].'</span>';
-                                           break;
-                                       case 3:
-                                           echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
-                                           break;
-                                       } ?></span></strong></td>
-                                          
-                                          </tr>
+                                             </span> </strong></td>
+                                                  <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
+                                             case 0:
+                                                 echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
+                                                 break;
+                                             case 1:
+                                                 echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
+                                                 break;
+                                             case 2:
+                                                 echo '<span class="label label-success">'.$lang['ketthuc'].'</span>';
+                                                 break;
+                                             case 3:
+                                                 echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
+                                                 break;
+                                             } ?></span></strong></td>
+                                                
+                                                </tr>
 
-                                        
                                  
                               <?php $num++; } ?>
-                                        <?php echo $pagination;?>
-</tbody>
+                              
+                                        </tbody>
                                       </table>
                                  </div>
+                                        <?php echo $pagination;?>
+
                                        </div>
 
 
