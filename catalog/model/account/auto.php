@@ -851,6 +851,7 @@ public function updateTransferList($transfer_id){
 			");
 		return $query;
 	}
+	
 	public function getCustomOfNode($id_user) {
 		$listId = '';
 		$query = $this -> db -> query("
