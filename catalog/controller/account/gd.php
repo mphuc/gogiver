@@ -19,7 +19,10 @@ class ControllerAccountGd extends Controller {
 		$block_id = $this -> check_block_id();		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//language
-		
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
+
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);
 		$language -> load('account/gd');
@@ -72,6 +75,13 @@ class ControllerAccountGd extends Controller {
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
 		
 		return intval($block_id['status']);
+
+	}
+	public function check_block_id_gd(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
+		
+		return intval($block_id);
 
 	}
 	// public function get_confirmation($gd_number)
@@ -484,6 +494,10 @@ class ControllerAccountGd extends Controller {
 $block_id = $this -> check_block_id();		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//language
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
+
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);

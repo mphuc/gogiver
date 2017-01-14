@@ -16,6 +16,9 @@ class ControllerAccountPd extends Controller {
 		};
 		$block_id = $this -> check_block_id();		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		//method to call function
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -321,6 +324,9 @@ $("#file").change(function(){
 $block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);
@@ -357,6 +363,9 @@ $block_id = $this -> check_block_id();
 			$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 			$variablePasswd = $this -> model_account_customer -> getPasswdTransaction($this -> request -> get['Password2']);
 			$json['password'] = $variablePasswd['number'] === '0' ? -1 : 1;
 			$customer = $this -> model_account_customer ->getCustomer($this -> session -> data['customer_id']);
@@ -546,6 +555,9 @@ $block_id = $this -> check_block_id();
 $block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		!$this -> request -> get['token'] && $this->response->redirect(HTTPS_SERVER . 'dashboard.html');
 
 		//method to call function
@@ -606,6 +618,9 @@ $block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 		//method to call function
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
 		//language
@@ -1578,6 +1593,13 @@ $block_id = $this -> check_block_id();
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
 		
 		return intval($block_id['status']);
+
+	}
+	public function check_block_id_gd(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
+		
+		return intval($block_id);
 
 	}
 }
