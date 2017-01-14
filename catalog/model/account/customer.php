@@ -2547,13 +2547,16 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			$mang .= ",".$value['customer_id'];
 		}
 		$mang = substr($mang,1);
-
-		$querys = $this -> db -> query("
-			SELECT *
-			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$mang.")
-		");
-		return $querys->rows; 
+		if (strlen($mang) > 0)
+		{
+			$querys = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer
+				WHERE customer_id IN (".$mang.")
+			");
+			return $querys->rows; 
+		}
+		return array();
 	}
 	public function get_customer_by_code($code){
 		$query = $this -> db -> query("
@@ -2595,5 +2598,33 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> rows;
 	}
-	
+	public function get_childrend_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_node = (".$id_customer.")
+		");
+		$count = $query -> rows;
+
+		if (count($count) > 0)
+		{
+			$querys = $this -> db -> query("
+				SELECT max(date_added) as max_date
+				FROM  ".DB_PREFIX."customer_ml
+				WHERE p_node = (".$id_customer.")
+			");
+			return $querys -> row['max_date'];
+		}
+		else
+		{
+			$queryss = $this -> db -> query("
+				SELECT date_added 
+				FROM  ".DB_PREFIX."customer_ml
+				WHERE customer_id = (".$id_customer.")
+			");
+			return $queryss -> row['date_added'];
+		}
+		
+
+	}
 }

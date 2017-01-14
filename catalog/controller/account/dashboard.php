@@ -27,6 +27,8 @@ class ControllerAccountDashboard extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/dashboard/dashboard.js');
 			$self -> document -> addScript('catalog/view/javascript/jquery.marquee.js');
 			$self -> document -> addScript('catalog/view/javascript/canvasjs.min.js');
+			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$self -> load -> model('simple_blog/article');
 		};
 		
@@ -132,8 +134,11 @@ class ControllerAccountDashboard extends Controller {
 
 
 		$data['get_customer_by_id_in'] = $this -> model_account_customer ->get_customer_by_id_in($get_childrend_all);
+		$get_childrend_customer = $this -> model_account_customer -> get_childrend_customer($this->session->data['customer_id']);
 		
-
+		$date_finish = strtotime ( '+ 45 day' , strtotime ($get_childrend_customer) ) ;
+		$data['date_finish'] = date('Y-m-d H:i:s',$date_finish); // 45 ngày tạo user
+		
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
 		} else {

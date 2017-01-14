@@ -135,11 +135,11 @@
                     <li class="page-title">
                         <h2 id="title_page"></h2>
                     </li>
-                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text">Manual</span>
+                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text">Manual</span></a>
                 </ul>
                
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
+                    <li class="dropdown" >
 
                         <a href="#" data-toggle="dropdown">
                             <img class="avatar mr5" src="catalog/view/theme/default/img/icon.png" alt="SuggeElson">
@@ -163,8 +163,9 @@
                         </ul>
                     </li>
                 </ul>
+              
+               <li class="dropdown language-selector pull-right">
 
-               <li class="dropdown language-selector pull-right">                
                 <?php switch (intval($pd_march)) {
                   case 0:
                       echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">0</span> </a>';
@@ -221,7 +222,7 @@
                     
                   </ul>
                 </li>
-
+                
             </nav>
         </header>
 

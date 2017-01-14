@@ -9,6 +9,10 @@
       <div class="content" style="">
         <div class="col-md-12">
           <div class="row">
+          <div class="pull-left"  style="margin-right: 20px; line-height: 14px;color: red; list-style: none;">
+              Create a user to not be locked after <span data-countdown="<?php echo $date_finish ?>"></span>
+          </div>
+          <div class="clearfix"></div>
           <div class=" rule" style="margin-top:25px;"></div>
                <div class="panel panel-default panel-tie">
                   <div class="panel-body">
@@ -103,7 +107,7 @@
     window.onload = function () {
       var chart = new CanvasJS.Chart("chartContainer", {
         title: {
-          text: "Statistics Member 2017"
+          text: "Membership Growth Chart"
         },
         axisY:{
           title : "Total Member",
@@ -329,6 +333,7 @@
                     <th>Sponsor</th>
                     <th>Status</th>
                   </tr>
+                  
                   <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
                     <tr>
                       <td><?php echo $value['customer_id'] ?></td>
@@ -340,6 +345,7 @@
                         <?php if ($value['status'] == 1) echo "ACTIVE"; else "LOCK"; ?>
                       </td>
                     </tr>
+                  
                   <?php } ?>
                   </table>
                 </div>
