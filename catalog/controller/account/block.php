@@ -42,6 +42,50 @@ class ControllerAccountBlock extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/block.tpl', $data));
 		}
 	}
+
+	public function lock_gd(){
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			$self -> load -> model('account/customer');
+			
+			$self -> document -> addScript('catalog/view/javascript/setting/lock.js');
+		};
+		$block_id = $this -> check_block_id_gd();
+		
+		if (intval($block_id) === 0) $this->response->redirect(HTTPS_SERVER . 'dashboard.html');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$language = new Language($getLanguage);
+		$language -> load('account/gd');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
+
+
+		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
+		$data['base'] = $server;
+		$data['self'] = $this;
+
+		//language
+		$this -> load -> model('account/customer');
+		
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/block_gd.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/block_gd.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/account/block_gd.tpl', $data));
+		}
+
+
+	}
+
+	public function check_block_id_gd(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
+		
+		return intval($block_id);
+
+	}
 	public function check_block_id(){
 		$this->load->model('account/customer');
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
@@ -73,23 +117,63 @@ class ControllerAccountBlock extends Controller {
             }
             $wallet = $this -> return_wallet();
 
-            $block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
-            if (intval($block_id['status']) === 1) {
-            	
-            	if (intval($block_id['total']) === 0) {
-            		$this -> model_account_block -> update_block($this -> customer -> getId());
-            	}
-            	if (intval($block_id['total']) === 1) {
-            		$this -> model_account_block -> update_block($this -> customer -> getId());
-            	}
-            	if (intval($block_id['total']) === 3) {
-            		die();
-            	}
-            	
-            }
+            
+            $this -> model_account_block -> update_block($this -> customer -> getId());
             $this -> model_account_block -> update_block_status($this -> customer -> getId());
-            $this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
-            $this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
+            $getGD = $this -> model_account_block -> get_gd_cwallet_id($this -> customer -> getId());
+          
+            if (count($getGD) > 0 && doubleval($wallet['c_wallet']) < doubleval($getGD['amount'])) {
+            	$this -> model_account_block -> update_GD_amount($wallet['c_wallet'], $this -> customer -> getId(), $getGD['id']);
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete PD", "Lock");
+            }else{
+            	$this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete PD", "Lock");
+            }
+
+            $getGD_R = $this -> model_account_block -> get_gd_rwallet_id($this -> customer -> getId());
+          
+            if (count($getGD_R) > 0 && doubleval($wallet['r_wallet']) < doubleval($getGD_R['amount'])) {
+            	$this -> model_account_block -> update_GD_amount($wallet['r_wallet'], $this -> customer -> getId(), $getGD_R['id']);
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete PD", "Lock");
+            }else{
+            	$this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete PD", "Lock");
+            }
+            $json['link'] = HTTPS_SERVER.'dashboard.html';
+            $json['ok'] = 1;
+        }else{
+        	$json['ok'] = -1;
+        }
+        $this->response->setOutput(json_encode($json));
+	}
+	public function unlock_gd(){
+		
+
+		if( $this -> customer -> isLogged()){
+            $this -> load -> model('account/block');         
+         	$this->load->model('account/customer');
+            $wallet = $this -> return_wallet_gd();
+          
+            $getGD = $this -> model_account_block -> get_gd_cwallet_id($this -> customer -> getId());
+          
+            if (count($getGD) > 0 && doubleval($wallet['c_wallet']) < doubleval($getGD['amount'])) {
+            	$this -> model_account_block -> update_GD_amount($wallet['c_wallet'], $this -> customer -> getId(), $getGD['id']);
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            }else{
+            	$this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            }
+
+            $getGD_R = $this -> model_account_block -> get_gd_rwallet_id($this -> customer -> getId());
+          
+            if (count($getGD_R) > 0 && doubleval($wallet['r_wallet']) < doubleval($getGD_R['amount'])) {
+            	$this -> model_account_block -> update_GD_amount($wallet['r_wallet'], $this -> customer -> getId(), $getGD_R['id']);
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            }else{
+            	$this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            }
+            $this -> model_account_block -> update_block_status_gd($this -> customer -> getId());
             $json['link'] = HTTPS_SERVER.'dashboard.html';
             $json['ok'] = 1;
         }else{
@@ -202,6 +286,56 @@ class ControllerAccountBlock extends Controller {
             $data['r_wallet'] = $r_wallet;
             $data['c_wallet'] = $c_wallet;
            $data['date'] = $block_id['date'];
+           return $data;
+        }
+	}
+	public function return_wallet_gd(){
+		if(	$this -> customer -> isLogged()){
+            $this -> load -> model('account/block');
+         
+             $level = $this -> model_account_block ->getLevel_by_customerid($this -> session -> data['customer_id']);
+
+            $block_id = $this -> model_account_customer -> get_all_block_id_gd($this -> customer -> getId());
+            $total_block_id_gd = $this -> model_account_customer -> get_block_id_gd_total($this -> customer -> getId());		
+            if (intval($total_block_id_gd) === 0) {
+            	
+            	$r_wallet = 0;
+				$c_wallet = 0;
+			}    
+            // status = 3
+            if (intval($total_block_id_gd) >= 1) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 700000;
+						$c_wallet = 500000;
+						break;
+					case 2:
+						$r_wallet = 1400000;
+						$c_wallet = 1000000;
+						break;
+					case 3:
+						$r_wallet = 2800000;
+						$c_wallet = 2000000;
+						break;
+					case 4:
+						$r_wallet = 4200000;
+						$c_wallet = 4000000;
+						break;
+					case 5:
+						$r_wallet = 7000000;
+						$c_wallet = 8000000;
+						break;
+					case 6:
+						$r_wallet = 11200000;
+						$c_wallet = 16000000;
+						break;
+				}
+            }
+            // end status = 3
+            $data['r_wallet'] = $r_wallet;
+            $data['c_wallet'] = $c_wallet;
+           	$data['date'] = $block_id['date'];
+           	$data['description'] = $block_id['description'];
            return $data;
         }
 	}

@@ -457,6 +457,30 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row;
 	}
+	public function get_all_block_id_gd($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function get_block_id_gd($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) as total
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 1
+		");
+		return $query -> row['total'];
+	}
+	public function get_block_id_gd_total($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) as total
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0
+		");
+		return $query -> row['total'];
+	}
 
 	public function updateR_Wallet($id_customer, $amount){
 		$query = $this -> db -> query("

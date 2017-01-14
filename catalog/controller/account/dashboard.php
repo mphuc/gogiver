@@ -40,6 +40,10 @@ class ControllerAccountDashboard extends Controller {
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
+
 		//language
 		$this -> load -> model('account/customer');
 		$this -> model_account_customer -> update_login($this -> session -> data['customer_id']);
@@ -272,6 +276,13 @@ class ControllerAccountDashboard extends Controller {
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
 		
 		return intval($block_id['status']);
+
+	}
+	public function check_block_id_gd(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
+		
+		return intval($block_id);
 
 	}
 
