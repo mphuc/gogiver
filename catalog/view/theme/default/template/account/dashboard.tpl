@@ -9,9 +9,37 @@
       <div class="content" style="">
         <div class="col-md-12">
           <div class="row">
-          <div class="pull-left"  style="margin-right: 20px; line-height: 14px;color: red; list-style: none;">
+          <div class="pull-left"  style="margin-right: 20px; margin-bottom: 25px; line-height: 14px;color: red; list-style: none;">
               Create a user to not be locked after <span data-countdown="<?php echo $date_finish ?>"></span>
           </div>
+          <?php 
+            switch ($date_pd['level']) {
+              case 1:
+                $num_pd = 3;
+                break;
+              case 2:
+                $num_pd = 5;
+                break;
+              case 3:
+                $num_pd = 7;
+                break;
+              case 4:
+                $num_pd = 9;
+                break;
+              case 5:
+                $num_pd = 1;
+                break;
+              case 6:
+                $num_pd = 13;
+                break;
+            }
+          ?>
+          <div class="clearfix"></div>
+          <?php if ($date_pd['count_pd'] < $num_pd) { ?>
+            <div class="pull-left"  style="margin-right: 20px; line-height: 14px;color: red; list-style: none;">
+                <?php echo $date_pd['count_pd'] ?> PD. Time left to create <?php echo $num_pd-$date_pd['count_pd'] ?> PD <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
+            </div>
+          <?php } ?>
           <div class="clearfix"></div>
           <div class=" rule" style="margin-top:25px;"></div>
                <div class="panel panel-default panel-tie">

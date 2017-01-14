@@ -2624,7 +2624,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 			return $queryss -> row['date_added'];
 		}
-		
-
+	}
+	public function date_pd($id_customer){
+		$queryss = $this -> db -> query("
+			SELECT date_added,level
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = (".$id_customer.")
+		");
+		$data_added = $queryss -> row['date_added'];
+		$query = $this -> db -> query("
+			SELECT * 
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = ".$id_customer." AND date_added >= '".date('Y')."-".date('m')."-".date('d H:i:s',strtotime($data_added))."'
+		");
+		$count = $query -> rows;
+		$json['date_pd'] = date('Y')."-".date('m')."-".date('d H:i:s',strtotime($data_added));
+		$json['count_pd'] = count($count);
+		$json['level'] = $queryss -> row['level'];
+		return $json;
 	}
 }
