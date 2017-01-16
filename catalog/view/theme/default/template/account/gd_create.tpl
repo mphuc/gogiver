@@ -34,6 +34,9 @@
                      <div id="err-c-wallet" class="alert alert-dismissable alert-danger" style="display:none">
                         You must withdraw more 10,000,000 VND.
                      </div>
+                     <div id="enter_amount" class="alert alert-dismissable alert-danger" style="display:none">
+                        Please enter the amount GD
+                     </div>
                       <div id="err-c-wallet_max" class="alert alert-dismissable alert-danger" style="display:none">
                         You must withdraw is below <?php echo number_format($c_wallet) ?> VNĐ.
                      </div>

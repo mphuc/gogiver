@@ -39,11 +39,10 @@ $(function() {
 				$('#err-c-wallet_max').hide();
 				$('#createGD button').attr('disabled', true);
 
-				if($('#amount').val() < 5000000){
+				if($('#amount').val() == ""){
 					window.funLazyLoad.reset();
-					$('#err-c-wallet').show();
-					$('#err-r-wallet_max').hide();
-					$('#err-c-wallet_max').hide();
+					$('#enter_amount').show();
+					
 					$('#createGD button').attr('disabled', false);
 					return false;
 
@@ -88,10 +87,21 @@ $(function() {
 				$('#createGD button').attr('disabled', false);
 				
 				result = $.parseJSON(result);
+
 				_.has(result, 'password') && result['password'] === -1 && $('#err-passs').show() && window.funLazyLoad.reset();
 				_.has(result, 'checkConfirmPD') && result['checkConfirmPD'] === -1 && $('#err-checkConfirmPD').show() && window.funLazyLoad.reset();
 				_.has(result, 'pin') && result['pin'] === -1 && $('#err-pin').show() && window.funLazyLoad.reset();
 				_.has(result, 'weekday') && result['weekday'] === -1 && $('#err-weekday').show() && window.funLazyLoad.reset();
+				if (result.amount_c_min == -1)
+				{
+					$('#err-c-wallet').html("You must withdraw more "+result.amount_c_min_gd+" VND.").show();
+					window.funLazyLoad.reset();
+				}
+				if (result.amount_r_min == -1)
+				{
+					$('#err-r-wallet_max').html("You must withdraw more "+result.amount_r_min_gd+" VND.").show();
+					window.funLazyLoad.reset();
+				}
 				if(_.has(result, 'ok') && result['ok'] === 1){
 					if(location.hash === ''){
 						location.href = location.href+'#success';

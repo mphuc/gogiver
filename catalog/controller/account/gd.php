@@ -616,10 +616,35 @@ $block_id = $this -> check_block_id();
 
 					if(intval($formWallet) === 1){
 						$json['checkWaiting'] = 1;
-						
+						switch (intval($level['level'])) {
+							case 1:
+								$amount_c_min = 7700000;
+								break;
+							case 2:
+								$amount_c_min = 15200000;
+								break;
+							case 3:
+								$amount_c_min = 23100000;
+								break;
+							case 4:
+								$amount_c_min = 30800000;
+								break;
+							case 5:
+								$amount_c_min = 38500000;
+								break;
+							case 6:
+								$amount_c_min = 46200000;
+								break;
+						}
+						if ($amount < $amount_c_min){
+							$json['amount_c_min'] = -1;
+							$json['amount_c_min_gd'] = number_format($amount_c_min);
+							return $this -> response -> setOutput(json_encode($json));
+						}
 
 						$c_wallet = $this -> model_account_customer -> getC_Wallet($this -> session -> data['customer_id']);
 						
+
 						$c_wallet = floatval($c_wallet['amount']);
 						if(($c_wallet < $amount) && ($amount < 5000000)){
 							die();
@@ -649,7 +674,31 @@ $block_id = $this -> check_block_id();
 					{
 						$json['checkWaiting'] = 2;
 						
-
+						switch (intval($level['level'])) {
+							case 1:
+								$amount_r_min = 10000000;
+								break;
+							case 2:
+								$amount_r_min = 20000000;
+								break;
+							case 3:
+								$amount_r_min = 30000000;
+								break;
+							case 4:
+								$amount_r_min = 40000000;
+								break;
+							case 5:
+								$amount_r_min = 50000000;
+								break;
+							case 6:
+								$amount_r_min = 60000000;
+								break;
+						}
+						if ($amount < $amount_r_min){
+							$json['amount_r_min'] = -1;
+							$json['amount_r_min_gd'] = number_format($amount_r_min);
+							return $this -> response -> setOutput(json_encode($json));
+						}
 						$c_wallet = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
 						
 						$c_wallet = floatval($c_wallet['amount']);
