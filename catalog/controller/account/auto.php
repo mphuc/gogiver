@@ -340,11 +340,11 @@ public function updateLevel_listID($customer_id){
 				//check and update level
 		
 			$this -> get_p_node($value['customer_id']);
-				$this->model_account_auto->update_PD_finish_thuong($value['id']);
+				//$this->model_account_auto->update_PD_finish_thuong($value['id']);
 				if ($tmp != $value['customer_id']) {
 
 					$this -> model_account_auto -> update_R_Wallet($value['max_profit'], $value['customer_id']);
-					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number']." finish", "Finish PD");
+					// $this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number']." finish", "Finish PD");
 				}
 					$this -> update_commission($value['customer_id'], $value['filled'], $value['pd_number']);
 
@@ -353,148 +353,251 @@ public function updateLevel_listID($customer_id){
 		// echo $tmp_count;
 	}
 
-	public function update_commission($customer_id, $amount, $pd_number){
-	
+	public function update_commission($customer_id, $amount, $pd_number)
+	{
 		$this->load->model('account/customer');
-   		$this->load->model('account/auto');
-        $customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
-        
-        $partent = $this -> model_account_customer -> getCustomerCustom($customer['p_node']);
-        $checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($partent['customer_id']);
+		$this->load->model('account/auto');
+		$customer = $this->model_account_customer->getCustomerCustom($customer_id);
+		$partent = $this->model_account_customer->getCustomerCustom($customer['p_node']);
+		$checkC_Wallet = $this->model_account_customer->checkC_Wallet($partent['customer_id']);
+		if (intval($checkC_Wallet['number']) === 0) {
+			if (!$this->model_account_customer->insertC_Wallet($partent['customer_id'])) {
+				die();
+			}
+		}
 
-			if (intval($checkC_Wallet['number']) === 0) {
-				if (!$this -> model_account_customer -> insertC_Wallet($partent['customer_id'])) {
-					die();
-				}
-			}	
+		$price = ($amount * 10) / 100;
+		$this->model_account_auto->update_C_Wallet($price, $partent['customer_id']);
+		// $this->model_account_customer->saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Direct Bonus");
+		$priceCurrent = $amount;
+		$levelCustomer = intval($customer['level']);
+		$pNode_ID = $partent['customer_id'];
 
-			$price = ($amount * 10) / 100;
+		// F1
+		$child_min_id = $customer_id;
+		$child_ID = $customer_id;
+		$parrent_id = $partent['customer_id'];
+		$customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
+		$customer_first = true;
+		if (intval($customerGET['p_node']) !== 0) {
+			while (true) {
 
-			$this -> model_account_auto -> update_C_Wallet($price, $partent['customer_id']);
-			$this -> model_account_customer -> saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Direct Bonus");
-	        $priceCurrent = $amount; 
-	        $levelCustomer = intval($customer['level']);
-	        $pNode_ID = $partent['customer_id'];
-	        //F1
-	        $child_ID = $customer_id;
-	        $parrent_id = $partent['customer_id'];
-	        $customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
-			$customer_first = true ;
-			if(intval($customerGET['p_node']) !== 0){
-				while (true) {
-					//lay thang cha trong ban Ml
-					$customer_child = $this -> model_account_customer -> getCustomerCustom($child_ID);
-					$customer_p_node = $this -> model_account_customer -> getCustomerCustom($pNode_ID);
-					$levelPnode = intval($customer_p_node['level']);	
-					$levelChild = intval($customer_child['level']);
-						switch ($levelPnode) {
-							case 2 :
-								if ($levelPnode <= $levelChild) {
-									$percent = 0;
-									$percentcommission =0/100;
-								}else {
-									if ($levelChild == 1) {
-										$percent = 0.1;
-										$percentcommission =0.1/100;
-									}
-								}
-								if ($percent > 0) {
-									$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-									$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
-								}
-								
-								break;
-							case 3 :
-								if ($levelPnode <= $levelChild) {
-									$percent = 0;
-									$percentcommission =0.5/100;
-								}else {
-									if ($levelChild == 2) {
-										$percent = 0.4;
-										$percentcommission =0.4/100;
-									}
-									if ($levelChild == 1) {
-										$percent = 0.5;
-										$percentcommission =0.5/100;
-									}
-								}
-								if ($percent > 0) {
-									$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-									$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
-								}
-								break;
-							case 4 :
-								if ($levelPnode <= $levelChild) {
-									$percent = 0.5;
-									$percentcommission =0.5/100;
-								}else {
-									if ($levelChild == 2) {
-										$percent = 0.9;
-										$percentcommission =0.9/100;
-									}
-									if ($levelChild == 1) {
-										$percent = 1;
-										$percentcommission =1/100;
-									}
-								}
+				// lay thang cha trong ban Ml
+
+				$customer_child = $this->model_account_customer->getCustomerCustom($child_ID);
+
+				$customer_p_node = $this->model_account_customer->getCustomerCustom($pNode_ID);
+
+				$levelPnode = intval($customer_p_node['level']);
+				$levelChild = intval($customer_child['level']);
+				// echo ($levelChild-1) .'-'.$customer_child['username'].'======'.($levelPnode-1).'-'.$customer_p_node['username'].'<br>';
+				$levelChild = $this -> get_max_level_child_node($pNode_ID, $child_min_id);
+
+				switch ($levelPnode) {
+					case 2:
 						
-								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
-								break;
-							case 5 :
-								if ($levelPnode <= $levelChild) {
-									$percent = 0.5;
-									$percentcommission =0.5/100;
-								}else {
-									if ($levelChild == 4) {
-										$percent = 2;
-										$percentcommission =2/100;
-									}
-									if ($levelChild == 3) {
-										$percent = 2.5;
-										$percentcommission =2.5/100;
-									}
-									if ($levelChild == 2) {
-										$percent = 2.9;
-										$percentcommission =2.9/100;
-									}
-									if ($levelChild == 1) {
-										$percent = 3;
-										$percentcommission =3/100;
-									}
-								}
-								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
-								break;
-							case 6 :
-								if ($levelPnode <= $levelChild) {
-									$percent = 2;
-									$percentcommission =2/100;
-								}else{
-									$percent = 5;
-									$percentcommission =5/100;
-								}	
-								$this -> model_account_auto -> update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-								$this -> model_account_customer -> saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "".$customerGET['username']." Earn ".$percent." % commission  from - ".$customer['username']." finish PD" . $pd_number." (".number_format($amount)." VND)", "Indirect Bonus");
-								break;
-							
+						if ($levelPnode <= $levelChild) {
+							$percent = 0;
+							$percentcommission = 0 / 100;
+						}
+						else {
+							if ($levelChild == 1) {
+								$percent = 0.1;
+								$percentcommission = 0.1 / 100;
+							}
 						}
 
-				
-					if(intval($customer_p_node['customer_id']) === 1){
+						if ($percent > 0) {
+							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						}
+
 						break;
-					}
-					//lay tiep customer de chay len tren lay thang cha
-					$pNode_ID = $customer_p_node['p_node'];
-					$customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
-					$child_ID = $customer_child['customer_id'];
-					$customer_child = $this -> model_account_customer -> getCustomerCustom($child_ID);
 
+					case 3:
+						if ($levelPnode <= $levelChild) {
+							$percent = 0;
+							$percentcommission = 0 / 100;
+						}
+						else {
+							if ($levelChild == 2) {
+								$percent = 0.4;
+								$percentcommission = 0.4 / 100;
+							}
 
-				} 
+							if ($levelChild == 1) {
+								$percent = 0.5;
+								$percentcommission = 0.5 / 100;
+							}
+						}
+
+						if ($percent > 0) {
+							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						}
+
+						break;
+
+					case 4:
+						if ($levelPnode <= $levelChild) {
+							$percent = 0.5;
+							$percentcommission = 0.5 / 100;
+						}
+						else {
+							if ($levelChild == 3) {
+								$percent = 0.5;
+								$percentcommission = 0.5 / 100;
+							}
+							if ($levelChild == 2) {
+								$percent = 0.9;
+								$percentcommission = 0.9 / 100;
+							}
+
+							if ($levelChild == 1) {
+								$percent = 1;
+								$percentcommission = 1 / 100;
+							}
+						}
+						if ($percent > 0) {
+							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						}
+						break;
+
+					case 5:
+						if ($levelPnode <= $levelChild) {
+							$percent = 0.5;
+							$percentcommission = 0.5 / 100;
+						}
+						else {
+							if ($levelChild == 4) {
+								$percent = 2;
+								$percentcommission = 2 / 100;
+							}
+
+							if ($levelChild == 3) {
+								$percent = 2.5;
+								$percentcommission = 2.5 / 100;
+							}
+
+							if ($levelChild == 2) {
+								$percent = 2.9;
+								$percentcommission = 2.9 / 100;
+							}
+
+							if ($levelChild == 1) {
+								$percent = 3;
+								$percentcommission = 3 / 100;
+							}
+						}
+
+						$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						break;
+
+					case 6:
+						if ($levelPnode <= $levelChild) {
+							$percent = 0.5;
+							$percentcommission = 0.5 / 100;
+						}
+						else {
+							if ($levelChild == 5) {
+								$percent = 2;
+								$percentcommission = 2 / 100;
+							}
+							if ($levelChild == 4) {
+								$percent = 4;
+								$percentcommission = 4 / 100;
+							}
+
+							if ($levelChild == 3) {
+								$percent = 4.5;
+								$percentcommission = 4.5 / 100;
+							}
+
+							if ($levelChild == 2) {
+								$percent = 4.9;
+								$percentcommission = 4.9 / 100;
+							}
+
+							if ($levelChild == 1) {
+								$percent = 5;
+								$percentcommission = 5 / 100;
+							}
+						}
+
+						$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
+						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						break;
+				}
+
+				if (intval($customer_p_node['customer_id']) === 1) {
+					break;
+				}
+
+				// lay tiep customer de chay len tren lay thang cha
+
+				$pNode_ID = $customer_p_node['p_node'];
+				$customerGET = $this->model_account_customer->getCustomerCustom($pNode_ID);
+				$child_ID = $customer_child['p_node'];
+				$customer_child = $this->model_account_customer->getCustomerCustom($child_ID);
+
 			}
+		}
 	}
+
 	
+	public function get_max_level_child_node($p_node, $p_child){
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
+
+		// array child node
+		$array_child_node = $this -> model_account_customer -> get_child_node($p_node);
+		$array_child_node=explode(',', $array_child_node);
+		unset($array_child_node[0]);
+		// array p_node
+		$array_p_node = $this -> model_account_customer -> get_p_node_from_node($p_child);
+		$array_p_node=explode(',', $array_p_node);
+		unset($array_p_node[0]);
+		
+		$array_intersect = array_intersect ($array_child_node, $array_p_node);
+		array_push ($array_intersect, $p_child);
+		
+
+		// array customer_id
+		$arrId = '';
+		foreach ($array_intersect as $value) {
+			$arrId .= ','.$value;
+		}
+		$arrId = substr($arrId, 1);
+		$max_level_child = $this -> model_account_auto -> getMaxLevel($arrId);
+		return intval($max_level_child);
+		
+	}
+	public function get_customer_id_node(){
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
+		$CustomerOfNode = $this -> model_account_customer -> get_p_node_from_node(542);
+		$CustomerOfNode=explode(',', $CustomerOfNode);
+		
+		unset($CustomerOfNode[0]);
+
+		return $CustomerOfNode;
+		
+		// foreach ($CustomerOfNode as $value) {
+		// 	$arrUsername .= ','.$value;
+		// }
+		// $arrUsername = substr($arrUsername, 1);
+		
+			
+		
+		
+	}
+	// public function array_intersect(){
+	// 	$array_child_node = $this -> get_max_level_child_node()
+
+	// 	array_intersect ($array1, $array2) 
+	// }
 	// sau 2 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
 	public function croll_tab_check_no_re_pd(){
 		$this -> load -> model('account/auto');

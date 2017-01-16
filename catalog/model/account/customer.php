@@ -1750,6 +1750,34 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 		return $listId;
 	}
+	public function get_child_node($id_user) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT c.username AS name, c.customer_id AS code FROM ". DB_PREFIX ."customer AS c
+			JOIN ". DB_PREFIX ."customer_ml AS ml
+			ON ml.customer_id = c.customer_id
+			WHERE ml.p_node = ". $id_user."");
+		$array_id = $query -> rows;
+		foreach ($array_id as $item) {
+			$listId .= ',' . $item['code'];
+			$listId .= $this -> get_child_node($item['code']);
+		}
+		return $listId;
+	}
+	public function get_p_node_from_node($id_user) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT c.username AS name, c.customer_id, c.p_node AS code FROM ". DB_PREFIX ."customer AS c
+			JOIN ". DB_PREFIX ."customer_ml AS ml
+			ON ml.customer_id = c.customer_id
+			WHERE ml.customer_id = ". $id_user."");
+		$array_id = $query -> rows;
+		foreach ($array_id as $item) {
+			$listId .= ',' . $item['code'];
+			$listId .= $this -> get_p_node_from_node($item['code']);
+		}
+		return $listId;
+	}
 	public function countLeft($arrId){
 		if($arrId != ''){
 			$query = $this -> db -> query("

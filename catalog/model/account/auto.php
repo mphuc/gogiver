@@ -41,7 +41,14 @@ class ModelAccountAuto extends Model {
 		");
 		return $query -> row;
 	}
-public function updateTransferList($transfer_id){
+	public function getMaxLevel($customer_id){
+		$query = $this -> db -> query("
+			SELECT MAX(level) AS max_level FROM ". DB_PREFIX . "customer_ml
+			WHERE customer_id IN (".$customer_id.")
+		");
+		return $query -> row['max_level'];
+	}
+	public function updateTransferList($transfer_id){
 		$query = $this -> db -> query("
 			UPDATE ". DB_PREFIX . "customer_transfer_list SET 
 			transfer_code = '".hexdec( crc32($transfer_id) )."'
