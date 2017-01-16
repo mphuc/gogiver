@@ -592,6 +592,7 @@ $block_id = $this -> check_block_id();
 				//echo $getGDweekday; die;
 				if (floatval($getGDweekday + floatval($this->request->get['amount']) > $amount_gd)){
 					$json['weekday'] = -1;
+					$json['max_month_gd'] = number_format($amount_gd);
 				}
 				else
 				{
@@ -642,8 +643,13 @@ $block_id = $this -> check_block_id();
 							return $this -> response -> setOutput(json_encode($json));
 						}
 
+
 						$c_wallet = $this -> model_account_customer -> getC_Wallet($this -> session -> data['customer_id']);
 						
+						if ($amount > floatval($c_wallet['amount'])*0.7){
+							$json['amount_c_min_30'] = -1;
+							return $this -> response -> setOutput(json_encode($json));
+						}
 
 						$c_wallet = floatval($c_wallet['amount']);
 						if(($c_wallet < $amount) && ($amount < 5000000)){

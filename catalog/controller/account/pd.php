@@ -371,20 +371,41 @@ $block_id = $this -> check_block_id();
 			$customer = $this -> model_account_customer ->getCustomer($this -> session -> data['customer_id']);
 			$checkAccount_holder = $customer['account_holder'];
 			$amount	= $this -> request -> get['amount'];
-			if(intval($customer['ping']) <= 5){
+			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($this -> session -> data['customer_id']);
+			switch ($level['level']) {
+                  case 1:
+                    $ping = 1;
+                    break;
+                  case 2:
+                    $ping = 2;
+                    break;
+                  case 3:
+                    $ping = 3;
+                    break;
+                  case 4:
+                    $ping = 4;
+                    break;
+                  case 5:
+                    $ping = 5;
+                    break;
+                  case 6:
+                    $ping = 6;
+                    break;
+                }
+			if(intval($customer['ping']) < $ping){
 				// /$this -> response -> redirect($this -> url -> link('account/token/order', 'token='.$pd['id'].'', 'SSL'));
 				$json['pin'] = -1;
 			}else{
 				$json['pin'] = 1;
 			}
-			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($this -> session -> data['customer_id']);
+			
 			switch (intval($level['level'])) {
 				case 1:
 					$number_pd_day = 2;
 					$number_pd_month = 4;
 					break;
 				case 2:
-					$number_pd_day = 4;
+					$number_pd_day = 3;
 					$number_pd_month = 8;
 					break;
 				case 3:
@@ -423,7 +444,10 @@ $block_id = $this -> check_block_id();
 				}
 				
 				$amount	= $this -> request -> get['amount'];
-				$this -> model_account_customer ->updatePin_sub($this -> session -> data['customer_id'], 1 );
+
+
+
+				$this -> model_account_customer ->updatePin_sub($this -> session -> data['customer_id'], $ping );
 				switch ($amount) {
 					case 7700000:
 						$max_profit = 10010000;

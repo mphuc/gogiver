@@ -39,7 +39,7 @@ $_['VND']            = 'VND';
 $_['t_view_btc'] ='View information about a bitcoin transaction:';
 
 $_['create']            = 'Create Get Donation';
-$_['successfull']            = 'Create get donation successfull';
+$_['successfull']            = 'You GD transaction has been saved successfull.';
 $_['eligible']            = 'You are not eligible to create  get donation! Please try again!';
 $_['Receivable']            = 'Receivable Amount';
 

@@ -38,9 +38,30 @@
                      </div>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-12">
+                    <?php switch ($level['level']) {
+                      case 1:
+                        $ping = 1;
+                        break;
+                      case 2:
+                        $ping = 2;
+                        break;
+                      case 3:
+                        $ping = 3;
+                        break;
+                      case 4:
+                        $ping = 4;
+                        break;
+                      case 5:
+                        $ping = 5;
+                        break;
+                      case 6:
+                        $ping = 6;
+                        break;
+                    } ?>
+                      <p style="color: red">This transaction requires <?php echo $ping ?> PIN</p>
                      <form id="submitPD" class="form-horizontal margin-none" name="buy_share_form" action="<?php echo $self -> url -> link('account/pd/submit', '', 'SSL'); ?>" method="post" novalidate="novalidate">
                      <div class="form-group">
-                        <label class="col-md-3 control-label"><?php echo $lang['amount']?></label>
+                        <label class="col-md-4 control-label"><?php echo $lang['amount']?></label>
                         <div class="col-md-8">
                           <select class="form-control valid" id="amount" name="amount">
                                              <option value=""><?php echo $lang['choise']?></option>
@@ -71,7 +92,7 @@
                         </div>
                      </div>
                      <div class="form-group">
-                        <label class="col-md-3 control-label"><?php echo $lang['password']?></label>
+                        <label class="col-md-4 control-label"><?php echo $lang['password']?></label>
                         <div class="col-md-8">
                            <input class="form-control" id="Password2" name="Password2" type="password"/>
                            <span id="Password2-error" class="field-validation-error" style="display: none;">

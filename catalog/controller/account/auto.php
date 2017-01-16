@@ -603,7 +603,7 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
 		 $this -> load -> model('account/block');
-		// echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
+		 //echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
 
 			$description ='Change status from ACTIVE to FROZEN Reason: you did not complete Re-PD';
@@ -638,13 +638,15 @@ public function updateLevel_listID($customer_id){
        
         die();
     }
+
+    
     public function croll_tab_check_no_confirm_gd() {
 
         //find and up status pd = 3
         $this -> load -> model('account/auto');
         $this -> load -> model('account/block');
         $query_rp = $this -> model_account_block -> get_rp_gd_no_fn();
-      	// echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
+      	 //echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
         foreach ($query_rp as $key => $value) {
         	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
         	$description ='Change status from ACTIVE to FROZEN Reason: you did not complete GD';

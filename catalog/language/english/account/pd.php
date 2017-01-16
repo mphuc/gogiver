@@ -47,7 +47,7 @@ $_['err_amount']            = 'Please choose amount';
 
 $_['err_password']            = 'The transaction password field is required';
 
-$_['err_pd']            = '<i class="fa fa-fw fa-times"></i>You are not create provide donation!';
+$_['err_pd']            = '<i class="fa fa-fw fa-times"></i>Your Maximum PD/day has been match!';
 $_['err_account']            = '<i class="fa fa-fw fa-times"></i>Plese setting your account bank!';
 
 $_['err_pin']            = '<i class="fa fa-fw fa-times"></i>You do not have Pin';

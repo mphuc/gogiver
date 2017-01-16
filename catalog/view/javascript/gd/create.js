@@ -47,7 +47,7 @@ $(function() {
 					return false;
 
 				}
-				if ($("#C_Wallet").is(":checked")){
+				/*if ($("#C_Wallet").is(":checked")){
 					if ($('#amount').val() > c_wallet_current){
 						$('#err-c-wallet_max').show();
 						window.funLazyLoad.reset();
@@ -64,7 +64,7 @@ $(function() {
 						$('#createGD button').attr('disabled', false);
 						return false;
 					}
-				}
+				}*/
 				
 				/*if(window.choise === 2 && window.value === 0){
 					window.funLazyLoad.reset();
@@ -91,10 +91,15 @@ $(function() {
 				_.has(result, 'password') && result['password'] === -1 && $('#err-passs').show() && window.funLazyLoad.reset();
 				_.has(result, 'checkConfirmPD') && result['checkConfirmPD'] === -1 && $('#err-checkConfirmPD').show() && window.funLazyLoad.reset();
 				_.has(result, 'pin') && result['pin'] === -1 && $('#err-pin').show() && window.funLazyLoad.reset();
-				_.has(result, 'weekday') && result['weekday'] === -1 && $('#err-weekday').show() && window.funLazyLoad.reset();
+				_.has(result, 'weekday') && result['weekday'] === -1 && $('#err-weekday').show().html('You may only withdraw maxnimum amount of '+result.max_month_gd+' VND') && window.funLazyLoad.reset();
 				if (result.amount_c_min == -1)
 				{
 					$('#err-c-wallet').html("You must withdraw more "+result.amount_c_min_gd+" VND.").show();
+					window.funLazyLoad.reset();
+				}
+				if (result.amount_c_min_30 == -1)
+				{
+					$('#err-c-wallet').html("You must withdraw the maxnimum 70% C-Wallet balance").show();
 					window.funLazyLoad.reset();
 				}
 				if (result.amount_r_min == -1)
