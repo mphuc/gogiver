@@ -660,6 +660,10 @@ public function updateLevel_listID($customer_id){
         die();
     }
 
+    // khoa sau 45 ngay ko tao duoc f1
+
+    // khoa trong 1 tháng ko đạt đủ số lượng PD
+
 	// public function thuongtructiep_bk(){
 	// 	$this -> load -> model('account/auto');
 	// 	$this -> load -> model('account/customer');

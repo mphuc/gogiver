@@ -151,6 +151,7 @@ class ControllerAccountDashboard extends Controller {
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
 		}
+		
 	}
 
 	public function getusername($code){
