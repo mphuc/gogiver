@@ -28,10 +28,10 @@
                        <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual/00<?php echo $i;?>.jpg" src="" alt="">
                      <?php  }?>
                     <?php } else { ?>
-                    <p>Updating... </p>
-                     <!-- <?php //for ($i=1;$i<62;$i++) { ?>
-                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual_en/00<?php //echo $i;?>.jpg" src="" alt=""> -->
-                     <?php // }?>
+                    
+                     <?php for ($i=1;$i<62;$i++) { ?>
+                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual_en/00<?php echo $i;?>.jpg" src="" alt=""> 
+                     <?php  }?>
                      <?php  } ?>
 
                   </div>
