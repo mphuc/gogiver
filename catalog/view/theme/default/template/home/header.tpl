@@ -159,6 +159,39 @@
          -->
    </head>
    <body class="page page-id-74236 page-child parent-pageid-17 page-template-default header01 full-width wpb-js-composer js-comp-ver-4.11.1 vc_responsive">
+    <div off-canvas="slidebar-1 left reveal responsive">
+      <div class="clearfix"></div>
+        <div class="top_menu_responsive"></div>
+
+        <ul class="nav navbar-nav navbar-right nav-respon" id="nav-respon">
+           <li class="">
+               <a href="index.php?route=home/page">Home</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
+            </li>
+           <!--  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
+              <a href="index.php?route=home/page/manual">IONTACH MANUAL</a>
+           </li> -->
+            <li class="">
+               <a href="index.php?route=home/page/faq">FAQ</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/blog">BLOG</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/support">SUPPORT</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/media">MEDIA</a>
+            </li>
+            <li class="">
+               <a href="login.html">LOGIN</a>
+            </li>
+           
+          
+        </ul>
+      </div>
        <div id="page" class="hfeed site">
          <header class="site-header">
             <div class="container">
