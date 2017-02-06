@@ -79,23 +79,23 @@
                                                    <input class="form-control valid" id="confirmpassword" type="password" placeholder="<?php echo $lang['text_Repeat_Password'] ?>" />
                                                 </div>
 
-
-
+                                                <div class="col-md-6">
+                                                   <input autocomplete="off"  class="form-control" name="email" id="email" data-link="<?php echo $self -> url -> link('account/register/checkemail', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_email'] ?>" />
+                                                </div>
+  
                                                  <div class="col-md-6">
                                                    <input  class="form-control" id="password2" name="password2" type="password" placeholder="<?php echo $lang['text_Transaction_Password'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                   <input class="form-control valid" id="confirmpasswordtransaction" type="password" placeholder="<?php echo $lang['text_Repeat_Transaction_Password'] ?>" />
-                                                </div>
-
-
-
-                                                <div class="col-md-6">
-                                                   <input autocomplete="off"  class="form-control" name="email" id="email" data-link="<?php echo $self -> url -> link('account/register/checkemail', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_email'] ?>" />
-                                                </div>
-                                                <div class="col-md-6">
                                                    <input autocomplete="off"  class="form-control" name="telephone" id="phone" data-link="<?php echo $self -> url -> link('account/register/checkphone', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_phone'] ?>" />
                                                 </div>
+                                                <div class="col-md-6">
+                                                   <input class="form-control valid" id="confirmpasswordtransaction" type="password" placeholder="<?php echo $lang['text_Repeat_Transaction_Password'] ?>" />
+                                                </div>
+                                                
+
+                                                
+                                                
                                                   <div class="col-md-6">
                                                    <input autocomplete="off"  class="form-control" name="cmnds" id="cmnds" placeholder="<?php echo $lang['text_cmnd'] ?>" />
                                                 </div>

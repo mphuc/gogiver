@@ -127,11 +127,12 @@
                   }
                ?>
 <?php 
-  
+  //print_r($get_customer_by_id_in); die;
   for ($i=1; $i <=12 ; $i++) { 
     $month[$i] = 0;
     foreach ($get_customer_by_id_in as $key => $value) {
-      if (date('m-Y',strtotime($value['date_added'])) == $i."-2017"){
+      $date= explode("-",$value['date_added']);
+      if ( intval($date[1])."-".$date[0] == $i."-2017"){
         $month[$i] +=1;
       }
     }
