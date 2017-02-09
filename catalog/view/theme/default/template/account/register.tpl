@@ -73,7 +73,7 @@
                                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo $lang['text_Password'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                   <input class="form-control" name="account_holder" id="account_holder" value="" readonly="true" placeholder="<?php echo $lang['name_bank'] ?>"/>
+                                                   <input class="form-control" name="account_holder" id="account_holder" value=""  placeholder="<?php echo $lang['name_bank'] ?>"/>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <input class="form-control valid" id="confirmpassword" type="password" placeholder="<?php echo $lang['text_Repeat_Password'] ?>" />
@@ -87,7 +87,7 @@
                                                    <input  class="form-control" id="password2" name="password2" type="password" placeholder="<?php echo $lang['text_Transaction_Password'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                   <input autocomplete="off"  class="form-control" name="telephone" id="phone" data-link="<?php echo $self -> url -> link('account/register/checkphone', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_phone'] ?>" />
+                                                   <input autocomplete="off" type="number"  class="form-control" name="telephone" id="phone" data-link="<?php echo $self -> url -> link('account/register/checkphone', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_phone'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
                                                    <input class="form-control valid" id="confirmpasswordtransaction" type="password" placeholder="<?php echo $lang['text_Repeat_Transaction_Password'] ?>" />
@@ -97,7 +97,7 @@
                                                 
                                                 
                                                   <div class="col-md-6">
-                                                   <input autocomplete="off"  class="form-control" name="cmnds" id="cmnds" placeholder="<?php echo $lang['text_cmnd'] ?>" />
+                                                   <input type="number" autocomplete="off"  class="form-control" name="cmnds" id="cmnds" placeholder="<?php echo $lang['text_cmnd'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
                                                  <span class="text-info"style=" font-size: 20px; "><?php echo $lang['text_cmnd'] ?></span>

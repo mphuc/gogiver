@@ -131,12 +131,15 @@ class ModelCustomizeRegister extends Model {
 		
 
 		$data['p_node'] = $this -> customer -> getId();
-
+		$email = $data['email'];
+		$email_full = explode("@", $email);
+		$email = str_replace(".","",$email_full[0]);
+		$email_finish = $email."@".$email_full[1];
 
 		$this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer SET
 			p_node = '" . $this -> db -> escape($data['p_node']) . "', 
-			email = '" . $this -> db -> escape($data['email']) . "', 
+			email = '" . $this -> db -> escape($email_finish) . "', 
 			username = '" . $this -> db -> escape($data['username']) . "', 
 			telephone = '" . $this -> db -> escape($data['telephone']) . "', 
 			salt = '" . $this -> db -> escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', 

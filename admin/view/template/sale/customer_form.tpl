@@ -257,7 +257,7 @@
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-6 ">
                                        <label class=" control-label" for="input-cmnd">Level</label>
-                                          <input type="text" name="cmnd" value="<?php echo $level; ?>" placeholder="level" id="input-cmnd" class="form-control "/>
+                                          <input type="text" name="level" value="<?php echo $level; ?>" placeholder="level" id="input-cmnd" class="form-control "/>
                                     </div>   
                                  </div>
                               

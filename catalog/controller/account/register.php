@@ -281,9 +281,14 @@ class ControllerAccountRegister extends Controller {
 
 	public function checkemail() {
 		if (empty($_GET['email'])) die();
+		$email = $this -> request -> get['email'];
+		$email_full = explode("@", $email);
+		$email = str_replace(".","",$email_full[0]);
+		$email_finish = $email."@".$email_full[1];
+		
 		if ($this -> request -> get['email']) {
 			$this -> load -> model('customize/register');
-			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($this -> request -> get['email'])) < 1 ? 0 : 1;
+			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($email_finish)) < 1 ? 0 : 1;
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}

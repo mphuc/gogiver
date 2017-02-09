@@ -11,7 +11,7 @@ $_['text_username']            = 'User Name';
 
 $_['text_Email']            = 'Email Address';
 $_['text_Phone']            = 'Phone Number';
-$_['text_cmnd']            = 'Citizenship Card/Passport No';
+$_['text_cmnd']            = 'Citizenship Card';
 $_['text_Country']            = 'Country';
 $_['text_Country_Select']            = '-- Choose your Country --';
 $_['text_numberbank']            = 'Bank account number';
