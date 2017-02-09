@@ -221,7 +221,7 @@ class ControllerAccountLogin extends Controller {
 		$customer_info = $this->model_account_customer->getCustomerByUsername($this->request->post['email']);
 
 		if ($customer_info && intval($customer_info['status']) === 8) {
-			$this->error['warning'] = $this->language->get('error_approved');
+			$this->error['warning'] = "Warning: Your account is blocked. To unblock, please contact no-reply@Iontach.biz";
 		}
 
 
