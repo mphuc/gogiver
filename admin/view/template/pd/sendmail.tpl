@@ -21,7 +21,7 @@
             <label for="pwd">Content:</label>
             <textarea required="true"  style="width: 100%; height: 200px !important;" class="form-control note-codable" id="description1" name="content"></textarea>
 
-            
+
           </div>
           
             
@@ -31,4 +31,9 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+   if (location.hash === '#success') {
+     alert("Send mail complete !")
+   }
+</script>  
 <?php echo $footer; ?>
