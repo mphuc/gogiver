@@ -1129,7 +1129,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function getCustomerCustom($customer_id) {
-		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node, c.cycle
+		$query = $this -> db -> query("SELECT c.customer_id, c.username, c.telephone, c.customer_id , ml.level, c.p_node, c.cycle, c.status
 			FROM ". DB_PREFIX ."customer AS c
 				JOIN ". DB_PREFIX ."customer_ml AS ml
 				ON ml.customer_id = c.customer_id

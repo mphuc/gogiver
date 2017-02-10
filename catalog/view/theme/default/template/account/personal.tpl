@@ -196,6 +196,7 @@ function update(source) {
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.text; })
+      .style("fill", function(d) { return (d.type == "#000") ? "red" : ""; })
       .style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.

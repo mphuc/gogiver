@@ -112,7 +112,15 @@ class ControllerAccountPersonal extends Controller {
 				$type = 'red';
 				break;
 		}
-$node -> type = $type;
+		
+		if (intval($user['status']) == 8)
+		{
+			$type = '#000';
+		}
+		
+
+		$node -> type = $type;
+		
 		$this -> getBinaryChild($node);
 
 		$node = array($node);
@@ -163,8 +171,15 @@ $node -> type = $type;
 				$type = 'red';
 				break;
 		}
+			if (intval($child['status_cus']) == 8)
+			{
+				$type = '#000';
+			}
 $childNode -> type = $type;
-
+			
+			
+			
+			
 
 			$childNode -> iconCls = "level1";
 			array_push($node -> children, $childNode);
