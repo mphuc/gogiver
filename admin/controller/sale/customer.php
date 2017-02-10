@@ -586,6 +586,7 @@ class ControllerSaleCustomer extends Controller {
 	}
 
 	protected function getList() {
+		$data['seft'] = $this;
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = $this->request->get['filter_name'];
 		} else {
@@ -774,7 +775,8 @@ class ControllerSaleCustomer extends Controller {
 		$customer_total = $this->model_sale_customer->getTotalCustomers($filter_data);
 
 		$results = $this->model_sale_customer->getCustomers($filter_data);
-		//$all_hoivien_phi = 0;
+		$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock();
+ 		//$all_hoivien_phi = 0;
 		//$all_congtac_phi = 0;
 		//$all_total_payout = 0;
 		$date = strtotime(date('Y-m-d'));
@@ -795,6 +797,7 @@ class ControllerSaleCustomer extends Controller {
 		//	$all_hoivien_phi = $all_hoivien_phi + $total_hoivien_phi;
 		//	$all_congtac_phi = $all_congtac_phi + $total_congtac_phi;
 		//	$all_total_payout = $all_total_payout + $total_payout;
+
 			$data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
@@ -1054,6 +1057,10 @@ class ControllerSaleCustomer extends Controller {
 		$this->response->setOutput($this->load->view('sale/customer_list.tpl', $data));
 	}
 
+	public function get_pnode($customer_id){
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_customer($customer_id);
+	}
 	protected function getForm() {
 		$this->load->model('tool/image');
 
@@ -3786,6 +3793,7 @@ public function searchPackage() {
 				'start'        => 0,
 				'limit'        => 5
 			);
+
 
 			$results = $this->model_sale_customer->getCustomers($filter_data);
 

@@ -193,6 +193,18 @@ class ModelSaleCustomer extends Model {
 		return $query->row;
 	}
 
+	public function get_customer($customer_id){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
+
+		return $query->row;
+		}
+
+	public function getCustomers_lock(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8");
+
+		return $query->rows;
+	}
+
 	public function getCustomers($data = array()) {
 
 		//" . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) 
