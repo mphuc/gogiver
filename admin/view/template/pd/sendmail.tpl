@@ -32,7 +32,7 @@
   </div>
 </div>
 <script type="text/javascript">
-   if (location.hash === '#success') {
+   if (location.hash === '#suscces') {
      alert("Send mail complete !")
    }
 </script>  

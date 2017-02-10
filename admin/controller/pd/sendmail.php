@@ -31,7 +31,7 @@ class Controllerpdsendmail extends Controller {
 			$mail -> setSubject("Administrator Support");
 			$mail -> setHtml($_POST['content']);
 			$mail -> send();
-			$this->response->redirect($this->url->link('pd/sendmail#success', 'token=' . $_GET['token'], 'SSL'));
+			$this -> response -> redirect($this -> url -> link('pd/sendmail&token='.$_GET['token'].'#suscces'));
 		}
 	}
 
