@@ -682,22 +682,22 @@ $block_id = $this -> check_block_id();
 						
 						switch (intval($level['level'])) {
 							case 1:
-								$amount_r_min = 10000000;
+								$amount_r_min = 8800000;
 								break;
 							case 2:
-								$amount_r_min = 20000000;
+								$amount_r_min = 17600000;
 								break;
 							case 3:
-								$amount_r_min = 30000000;
+								$amount_r_min = 26400000;
 								break;
 							case 4:
-								$amount_r_min = 40000000;
+								$amount_r_min = 35200000;
 								break;
 							case 5:
-								$amount_r_min = 50000000;
+								$amount_r_min = 44000000;
 								break;
 							case 6:
-								$amount_r_min = 60000000;
+								$amount_r_min = 52800000;
 								break;
 						}
 						if ($amount < $amount_r_min){

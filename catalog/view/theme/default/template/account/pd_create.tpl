@@ -69,7 +69,7 @@
                                              <option value="7700000"><?php echo number_format("7700000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] == 2) {?>
-                                             <option value="15200000"><?php echo number_format("15200000")."<br>"; ?> <?php echo $lang['VND']?></option>
+                                             <option value="15400000"><?php echo number_format("15400000")."<br>"; ?> <?php echo $lang['VND']?></option>
                                              <?php } ?>
                                              <?php if ($level['level'] == 3) {?>
                                              <option value="23100000"><?php echo number_format("23100000")."<br>"; ?> <?php echo $lang['VND']?></option>

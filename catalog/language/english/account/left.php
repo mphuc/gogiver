@@ -23,3 +23,5 @@ $_['History_Commission'] = 'R-wallet History';
 $_['History_Refferal'] = 'C-wallet History';
 $_['support'] = 'Support';
 $_['block'] = 'Block/Frozen History';
+$_['remove_account'] = 'Remove Account';
+$_['blog_create'] = 'Create Blog';

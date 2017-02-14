@@ -117,6 +117,15 @@
                       <a href="support.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['support']; ?></span>
                       </a>
                     </li>
+                    <!-- <li <?php //echo $route === 'account/blog/create' ? "class='active'" : ''  ?>>
+                      <a href="blog_create.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php //echo $lang['blog_create']; ?></span>
+                      </a>
+                    </li> -->
+
+                    <li <?php echo $route === 'account/remove_account' ? "class='active'" : ''  ?>>
+                      <a href="remove_account.html"><i class="fa fa-cog" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['remove_account']; ?></span>
+                      </a>
+                    </li>
                      <li <?php echo $route === 'account/logout' ? "class='active'" : ''  ?>>
                       <a href="logout.html"><i class="fa fa-times" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['logout']; ?></span>
                       </a>

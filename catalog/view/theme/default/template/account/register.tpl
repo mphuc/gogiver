@@ -64,7 +64,7 @@
                                                    <input autocomplete="off"  class="form-control" name="username" id="username" value="" data-link="<?php echo $self -> url -> link('account/register/checkuser', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_username'] ?>"/>               
                                                 </div>
                                                 <div class="col-md-6 conf-vcb">
-                                                   <input data-url="<?php echo $self -> url -> link('account/register/getjson', '', 'SSL'); ?>" autocomplete="off" class="form-control" name="account_number" id="account_number" value="" data-link="<?php echo $self -> url -> link('account/register/checkcmnd', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_numberbank'] ?>"/>
+                                                   <input data-url="<?php echo $self -> url -> link('account/register/getjson', '', 'SSL'); ?>" autocomplete="off" class="form-control" name="account_number"  id="account_number" value="" data-link="<?php echo $self -> url -> link('account/register/checkcmnd', '', 'SSL'); ?>" placeholder="<?php echo $lang['text_numberbank'] ?>"/>
                                                    <span><i class=" fa fa-cog fa-spin fa-fw"></i></span>
                                                 </div>
 
@@ -73,7 +73,7 @@
                                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo $lang['text_Password'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                   <input class="form-control" name="account_holder" id="account_holder" value=""  placeholder="<?php echo $lang['name_bank'] ?>"/>
+                                                   <input class="form-control" name="account_holder" id="account_holder" value="" readonly="true"  placeholder="<?php echo $lang['name_bank'] ?>"/>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <input class="form-control valid" id="confirmpassword" type="password" placeholder="<?php echo $lang['text_Repeat_Password'] ?>" />

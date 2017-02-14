@@ -2825,6 +2825,18 @@ class ModelSaleCustomer extends Model {
 		
 		return $query -> rows;
 	}
+	public function get_all_mail($limit, $offset){
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."account_sendmail A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			ORDER BY A.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+
 	public function get_all_gd($limit, $offset){
 		$query = $this -> db -> query("
 			SELECT B.account_holder,B.username, A.*
@@ -2873,6 +2885,14 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."customer_provide_donation 
+		");
+		return $query -> row;
+	}
+	public function get_count_mail(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."account_sendmail 
 		");
 		return $query -> row;
 	}
@@ -3114,5 +3134,82 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		
 		return $query -> rows;
+	}
+	public function create_block_account($customer_id, $title,$content){
+		
+		$query = $this -> db -> query("
+			INSERT INTO ".DB_PREFIX."blog_customer SET
+			customer_id = '".$customer_id."',
+			title = '".$this -> db -> escape($title)."',
+			description = '".$this -> db -> escape(htmlspecialchars_decode($content))."',
+			date_added = NOW()
+		");
+		
+	}
+
+	public function edit_block_account($customer_id, $title,$content,$id){
+		
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."blog_customer SET
+			title = '".$this -> db -> escape($title)."',
+			description = '".$this -> db -> escape(htmlspecialchars_decode($content))."',
+			date_added = NOW()
+			WHERE customer_id = '".$customer_id."' AND id = '".$id."'
+		");
+		
+	}
+
+	public function getTotalblog(){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."blog_customer
+			WHERE type = 0 AND status = 0
+		");
+
+		return $query -> row;
+	}
+	public function getBlogById($limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."blog_customer AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.type = 0
+			ORDER BY pd.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+	public function getBlogById_admin(){
+
+		$query = $this -> db -> query("
+			SELECT pd.*
+			FROM  ".DB_PREFIX."blog_customer AS pd
+			WHERE type = 1
+			ORDER BY pd.date_added DESC
+		");
+
+		return $query -> rows;
+	}
+	public function getblog_id($id){
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."blog_customer A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE A.id = '".$id."' 
+		");
+
+		return $query -> row;
+	}
+	public function update_status_block_account($id,$status){
+		
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."blog_customer SET
+			status = '".$this -> db -> escape($status)."'
+			WHERE id = '".$id."'
+		");
+		
 	}
 }

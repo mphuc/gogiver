@@ -405,20 +405,24 @@ $block_id = $this -> check_block_id();
 					$number_pd_month = 4;
 					break;
 				case 2:
-					$number_pd_day = 3;
+					$number_pd_day = 2;
 					$number_pd_month = 8;
 					break;
 				case 3:
-					$number_pd_day = 5;
+					$number_pd_day = 3;
 					$number_pd_month = 10;
 					break;
 				case 4:
-					$number_pd_day = 5;
+					$number_pd_day = 4;
 					$number_pd_month = 15;
+					break;
+				case 5:
+					$number_pd_day = 4;
+					$number_pd_month = 20;
 					break;
 				default:
 					$number_pd_day = 5;
-					$number_pd_month = 20;
+					$number_pd_month = 25;
 					break;
 			}
 			$CountDay = $this -> model_account_customer ->CountGDDay($number_pd_day,$number_pd_month);
@@ -452,7 +456,7 @@ $block_id = $this -> check_block_id();
 					case 7700000:
 						$max_profit = 10010000;
 						break;
-					case 15200000:
+					case 15400000:
 						$max_profit = 19760000;
 						break;
 					case 23100000:

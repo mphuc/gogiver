@@ -2695,4 +2695,139 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$json['level'] = $queryss -> row['level'];
 		return $json;
 	}
+
+	public function create_reason($customer_id, $reason){
+
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			INSERT INTO ".DB_PREFIX."account_remove SET
+			customer_id = '".$customer_id."',
+			reason = '".$reason."',
+			date_added = '".$date_added."'
+		");
+		return $query;
+	}
+	public function get_all_pnode($customer_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_node = '".$customer_id."'
+		");
+		return $query -> rows;
+	}
+
+	public function get_ml_customer($customer_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query -> row;
+	}
+
+	public function remove_account($customer_id, $p_node){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer SET
+				p_node = '".$p_node."'
+				WHERE customer_id = '".$customer_id."'
+			");
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_ml SET
+				p_node = '".$p_node."',
+				p_binary = '".$p_node."'
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
+	public function up_status_removeaccount($customer_id, $status){
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer SET
+				status = '".$status."'
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+	public function create_sendmail_account($customer_id, $title,$description){
+
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			INSERT INTO ".DB_PREFIX."account_sendmail SET
+			customer_id = '".$customer_id."',
+			title = '".$title."',
+			description = '".$description."', 
+			date_added = '".$date_added."'
+		");
+		return $query;
+	}
+	
+	public function create_block_account($customer_id, $title,$content){
+		$type = ($this -> session ->data['customer_id'] == 1) ? 1 : 0;
+		$query = $this -> db -> query("
+			INSERT INTO ".DB_PREFIX."blog_customer SET
+			customer_id = '".$customer_id."',
+			title = '".$this -> db -> escape($title)."',
+			description = '".$this -> db -> escape(htmlspecialchars_decode($content))."',
+			date_added = NOW(),
+			type = '".$type."'
+		");
+		
+	}
+
+	public function edit_block_account($customer_id, $title,$content,$id){
+		
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."blog_customer SET
+			title = '".$this -> db -> escape($title)."',
+			description = '".$this -> db -> escape(htmlspecialchars_decode($content))."',
+			date_added = NOW()
+			WHERE customer_id = '".$customer_id."' AND id = '".$id."'
+		");
+		
+	}
+
+	public function getTotalblog(){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."blog_customer
+			WHERE type = 0 AND status = 0
+		");
+
+		return $query -> row;
+	}
+	public function getBlogById($limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."blog_customer AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.type = 0 AND pd.status = 0
+			ORDER BY pd.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+	public function getBlogById_admin(){
+
+		$query = $this -> db -> query("
+			SELECT pd.*
+			FROM  ".DB_PREFIX."blog_customer AS pd
+			WHERE type = 1 AND pd.status = 0
+			ORDER BY pd.date_added DESC
+		");
+
+		return $query -> rows;
+	}
+	public function getblog_id($id){
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."blog_customer A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE A.id = '".$id."' AND A.status = 0
+		");
+
+		return $query -> row;
+	}
 }

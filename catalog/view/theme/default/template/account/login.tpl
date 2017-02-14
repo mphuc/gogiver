@@ -108,6 +108,16 @@
                 </p>
             </div>
         </div>
+        <div class="container">
+            <div class="text-center" style="margin: 0 auto">
+                <img height="50px;" style="margin-right: 20px;" src="catalog/view/theme/default/images/ssl.png" alt="">
+                <img height="50px;" style="margin-right: 20px;" src="catalog/view/theme/default/images/norton.png" alt="">
+                <img height="50px;" style="margin-right: 20px;" src="catalog/view/theme/default/images/mcafee.png" alt="">
+                <img height="50px;" style="margin-right: 20px;" src="catalog/view/theme/default/images/antiddos.png" alt="">
+                <img height="50px;" src="catalog/view/theme/default/images/avg.png" alt="">
+            </div>
+        </div>
+        
 
         <!-- Init plugins olny for this page -->
       

@@ -8,3 +8,4 @@ $_['History']    = 'Lịch sử';
 $_['f1pd']    = 'F1 PH';
 $_['f1gh']    = 'F1 GH';
 $_['Transaction_Management'] = 'Transaction Management';
+$_['remove_account'] = 'Xóa tài khoản';

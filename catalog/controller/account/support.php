@@ -50,7 +50,14 @@ class ControllerAccountSupport extends Controller {
 
 			$this -> load -> model('account/customer');
 			$getCustomer = $this -> model_account_customer -> getCustomer($this->session->data['customer_id']);
-			$mail = new Mail();
+
+			if ($this->request->post)
+			{
+				
+				$this -> model_account_customer -> create_sendmail_account($this->session->data['customer_id'],$this->request->post['name'],$this->request->post['content']);
+			}
+			
+			/*$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
 			$mail->parameter = 'mmocoimax@gmail.com';
 			$mail->smtp_hostname = 'ssl://smtp.gmail.com';
@@ -94,7 +101,7 @@ class ControllerAccountSupport extends Controller {
            </div>';
 			$mail -> setHtml($html_mail); 
 			//print_r($mail); die;
-			$mail -> send();
+			$mail -> send();*/
 			$this -> response -> redirect("support.html#success");
 		}
 	}

@@ -4,6 +4,7 @@
             Copyrights © 2016 <a href="#" class="color-blue strong underline-effect" target="_blank">Iontach</a>. All rights reserved.
         </p>
         <p class="pull-right">
+        <a href="blog.html" class="mr5 strong underline-effect">Blog</a> | 
             <a href="#" class="mr5 strong underline-effect">Terms of use</a>
             |
             <a href="#" class="ml5 mr25 strong underline-effect">Privacy police</a>

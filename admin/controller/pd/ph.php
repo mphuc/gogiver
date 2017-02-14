@@ -27,6 +27,7 @@ error_reporting(-1);
 		$data['show_gh_username'] = $this -> url -> link('pd/ph/show_gh_username&token='.$this->session->data['token']);
 		$data['pin'] =  $this-> model_sale_customer->get_all_pd($limit, $start);
 		$data['pagination'] = $pagination -> render();
+		
 		$data['export'] = $this -> url -> link('pd/ph/export&token='.$this->session->data['token']);
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');

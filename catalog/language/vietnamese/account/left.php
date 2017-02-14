@@ -23,3 +23,5 @@ $_['History_Commission'] = 'R-Wallet History';
 $_['History_Refferal'] = 'C-Wallet History';
 $_['support'] = 'Hỗ trợ';
 $_['block'] = 'Lịch Sử Khóa/Đóng Băng';
+$_['remove_account'] = 'Xóa tài khoản';
+$_['blog_create'] = 'Tạo Blog';

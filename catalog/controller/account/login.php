@@ -223,6 +223,9 @@ class ControllerAccountLogin extends Controller {
 		if ($customer_info && intval($customer_info['status']) === 8) {
 			$this->error['warning'] = "Warning: Your account is blocked. To unblock, please contact no-reply@Iontach.biz";
 		}
+		if ($customer_info && intval($customer_info['status']) === 10) {
+			$this->error['warning'] = "Warning: Account of you removed, please contact no-reply@Iontach.biz";
+		}
 
 
 		if (!$this->error) {

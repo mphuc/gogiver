@@ -25,7 +25,7 @@
         
                                 <p class="name">
                                   <input type="text" name="name" id="name" placeholder="John Doe" required />
-                                  <label for="name">Name</label>
+                                  <label for="name">Title</label>
                                 </p>                                
                                 
                  

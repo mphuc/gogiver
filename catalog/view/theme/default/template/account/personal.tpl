@@ -109,7 +109,7 @@ span.cir {
                  <div class="form-group">
                     <div class="col-lg-12 col-md-12">
                       <div class="input-group input-icon file-upload">
-                       <div class="" style="width: 1039px">
+                       <div class="" style="width: 100%">
                           <div class="panel-body tab-pane bitree active">
                             <div id="tab-tree">
                             </div>
@@ -197,6 +197,7 @@ function update(source) {
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.text; })
       .style("fill", function(d) { return (d.type == "#000") ? "red" : ""; })
+
       .style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
@@ -206,7 +207,7 @@ function update(source) {
 
   nodeUpdate.select("circle")
       .attr("r", 8, function(d) { return d.value; }) 
-      .style("fill", function(d) { return d._children ? "d.type" : "#fff"; });
+      .style("fill", function(d) { return d._children ? "d.type" : (d.type == "#000") ? "#4e4b4b" : ""; });
 
   nodeUpdate.select("text")
       .style("fill-opacity", 1);

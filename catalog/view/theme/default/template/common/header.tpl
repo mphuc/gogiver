@@ -33,6 +33,7 @@
 		<script src="catalog/view/javascript/jquery.nicescroll.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/jquery.app.js"></script>
        
+    
 		
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all' rel='stylesheet' type='text/css'>
@@ -58,6 +59,10 @@
 		<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/jquery.animateNumber.min.js" type="text/javascript"></script>
 		<script src="catalog/view/javascript/smooth-sliding-menu.js" type="text/javascript"></script>
+    <!-- <script src="catalog/view/theme/default/ckeditor/ckeditor.js" ></script>
+    <script src="catalog/view/theme/default/ckeditor/samples/js/sample.js" ></script>
+    <link href="catalog/view/theme/default/ckeditor/samples/css/samples.css" rel="stylesheet" />
+    <link href="catalog/view/theme/default/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css" rel="stylesheet" /> -->
 		<?php foreach ($scripts as $script) { ?>
 		<script src="<?php echo $script; ?>" type="text/javascript"></script>
 		<?php } ?>
@@ -135,7 +140,7 @@
                     <li class="page-title">
                         <h2 id="title_page"></h2>
                     </li>
-                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text">Manual</span></a>
+                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text btn btn-success">Manual</span></a>
                 </ul>
                
                 <ul class="nav navbar-nav navbar-right">
