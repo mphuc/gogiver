@@ -457,7 +457,7 @@ $block_id = $this -> check_block_id();
 						$max_profit = 10010000;
 						break;
 					case 15400000:
-						$max_profit = 19760000;
+						$max_profit = 20020000;
 						break;
 					case 23100000:
 						$max_profit = 30030000;

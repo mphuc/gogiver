@@ -569,22 +569,22 @@ $block_id = $this -> check_block_id();
 				$json['pin'] = 1;
 				switch (intval($level['level'])) {
 					case 1:
-						$amount_gd = 23100000;
+						$amount_gd = 20000000;
 						break;
 					case 2:
 						$amount_gd = 44000000;
 						break;
 					case 3:
-						$amount_gd = 77000000;
+						$amount_gd = 69000000;
 						break;
 					case 4:
-						$amount_gd = 121000000;
+						$amount_gd = 99000000;
 						break;
 					case 5:
-						$amount_gd = 176000000;
+						$amount_gd = 177000000;
 						break;
 					case 6:
-						$amount_gd = 242000000;
+						$amount_gd = 1332000000;
 						break;
 				}
 
@@ -622,7 +622,7 @@ $block_id = $this -> check_block_id();
 								$amount_c_min = 7700000;
 								break;
 							case 2:
-								$amount_c_min = 15200000;
+								$amount_c_min = 15400000;
 								break;
 							case 3:
 								$amount_c_min = 23100000;
