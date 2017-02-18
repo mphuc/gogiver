@@ -48,7 +48,7 @@
                      </div>
                      
                      <div id="err-passs" class="alert alert-dismissable alert-danger" style="display:none">
-                        You password transction error. Please try agin !
+                        You password transction error. Please try again !
                      </div>
                      <div id="err-pin" class="alert alert-dismissable alert-danger" style="display:none">
                         Please buy pin packet !
