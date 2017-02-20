@@ -64,7 +64,7 @@ $block_id_gd = $this -> check_block_id_gd();
 
 		$data['base'] = $server;
 		$data['self'] = $this;
-
+		
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/token.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/token.tpl', $data));
 		} else {
@@ -440,7 +440,7 @@ $block_id = $this -> check_block_id();
 			$tree = $this -> model_account_customer -> getCustomLike($this -> request -> post['keyword'], $this -> customer -> getId());
 
 			foreach ($tree as $key => $value) {
-				echo $value ? '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');">' . $value['name'] . '</li>' : '';
+				echo $value ? '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');"><div>Username: ' . $value['name'] . '</div><div>' . $value['account_holder'] . '</div></li>' : '';
 			}
 		}
 	}
@@ -496,7 +496,7 @@ $block_id = $this -> check_block_id();
 		$data['history'] = $this -> model_account_customer -> getTokenHistoryById($this -> customer -> getId(), $limit, $start);
 
 		$data['pagination'] = $pagination -> render();
-
+		$data['getCustomer'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/token_transfer.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/token_transfer.tpl', $data));
 		} else {

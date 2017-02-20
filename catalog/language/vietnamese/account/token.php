@@ -53,3 +53,4 @@ $_['btn_search'] = 'Tìm Kiếm';
 $_['success'] = 'Thành công';
 $_['complete_transpin'] = 'Chuyển pin thành công';
 $_['status_blockchain_received'] = "Trạng thái";
+$_['Your_Ping'] = "Ping của bạn";

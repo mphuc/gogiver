@@ -697,7 +697,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getCustomLike($name, $customer_id) {
 		$listId = '';
 		$query = $this -> db -> query("
-			SELECT username AS name FROM ". DB_PREFIX ."customer
+			SELECT username AS name, account_holder FROM ". DB_PREFIX ."customer
 			WHERE username Like '%".$this->db->escape($name)."%' AND customer_id <> ".$customer_id." 
 			LIMIT 12
 		") ;

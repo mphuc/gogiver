@@ -60,7 +60,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    
+                                        <div class="text-center">
+                                         <b style="color:red; font-size: 20px;"> <?php echo $lang['Your_Ping'] ?>: <?php echo $getCustomer['ping']; ?></b>
+                                        </div>
                                 </div>
                             </div>
                            <div class="panel panel-default" id="dash_0">
