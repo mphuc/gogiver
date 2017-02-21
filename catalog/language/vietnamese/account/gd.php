@@ -21,7 +21,7 @@ $_['ID_received']            = 'NGƯỜI NHẬN';
 $_['You']            = 'BẠN';
 $_['Bill']            = 'Hóa Đơn';
 
-$_['AMOUNT']            = 'SỐ LƯỢNG';
+$_['AMOUNT']            = 'SỐ TIỀN';
 
 $_['danhnhan']            = 'ĐÃ NHẬN';
 $_['DATE_CREATED']            = 'NGÀY TẠO';
@@ -86,4 +86,4 @@ $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
 $_['heading_title_com_his'] = "Lịch sử GD F1";
 $_['support'] = "Hỗ trợ";
-
+$_['useridph'] = 'GD';

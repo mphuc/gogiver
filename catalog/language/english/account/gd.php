@@ -89,4 +89,5 @@ $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
 $_['heading_title_com_his'] = "History GD F1";
 $_['support'] = "Support";
+$_['useridph'] = 'User ID GH';
 

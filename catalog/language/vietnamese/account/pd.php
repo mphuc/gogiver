@@ -17,7 +17,7 @@ $_['DATE_CREATED']            = 'NGÀY TẠO';
 
 $_['PD_NUMBER']            = 'MÃ PD';
 
-$_['FILLED']            = 'SỐ LƯỢNG';
+$_['FILLED']            = 'SỐ TIỀN';
 
 $_['MAX_PROFIT']            = 'LỢI NHUẬN';
 
@@ -99,3 +99,4 @@ $_['err_title_blog'] = 'Vui lòng nhập tiêu đề blog';
 $_['error_content_blog'] = 'Vui lòng nhập nội dung blog';
 $_['create_blog'] = 'Tạo blog';
 $_['edit_blog'] = 'Sửa blog';
+$_['useridph'] = 'PD';

@@ -49,3 +49,4 @@ $_['error_email']       = 'Please enter email address';
 $_['text_success_account']       = 'Edit account successfull';
 $_['text_success_password']       = 'Edit login password successfull';
  $_['text_success_tranpassword']       = 'Edit transaction password successfull';
+ $_['Citizenship_Card_Passport']       = 'Citizenship Card/Passport';

@@ -42,7 +42,7 @@
                                 <a data-toggle="tab" href="#BitcoinWallet"><?php echo $lang['text_bank'] ?></a>
                             </li>
                              <li>
-                                <a data-toggle="tab" href="#Verify">Citizenship Card/Passport</a>
+                                <a data-toggle="tab" href="#Verify"><?php echo $lang['Citizenship_Card_Passport'] ?></a>
                             </li>
 
                         </ul>

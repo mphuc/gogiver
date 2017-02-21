@@ -102,3 +102,4 @@ $_['content_blog'] = 'Blog content';
 $_['error_content_blog'] = 'Please enter your blog content';
 $_['create_blog'] = 'Create blog';
 $_['edit_blog'] = 'Edit blog';
+$_['useridph'] = 'User ID PH';
