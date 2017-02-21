@@ -64,7 +64,12 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->language('common/header');
 		$this->load->language('common/footer');
-
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$language = new Language($getLanguage);
+		$language -> load('common/header');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
+		
 		$data['text_home'] = $this->language->get('text_home');
 		$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
 		$data['text_shopping_cart'] = $this->language->get('text_shopping_cart');

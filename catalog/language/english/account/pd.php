@@ -12,11 +12,11 @@ $_['NO']            = 'NO';
 $_['ACCOUNT']            = 'ACCOUNT';
 
 $_['ACCOUNT_RECEIVED']            = 'ACCOUNT RECEIVED';
-$_['DATE_CREATED']            = 'DATE CREATED	';
+$_['DATE_CREATED']            = 'DATE';
 $_['detail']            = 'DETAIL';
 $_['PD_NUMBER']            = 'PD NUMBER';
 
-$_['FILLED']            = 'FILLED';
+$_['FILLED']            = 'AMOUNT';
 
 $_['MAX_PROFIT']            = 'PROFIT';
 

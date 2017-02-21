@@ -140,7 +140,7 @@
                     <li class="page-title">
                         <h2 id="title_page"></h2>
                     </li>
-                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text btn btn-success">Manual</span></a>
+                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="<?php echo $self -> url -> link('account/manual', '', 'SSL'); ?>"> <span class="nav-item-text btn btn-success"><?php echo $lang['Manual'] ?></span></a>
                 </ul>
                
                 <ul class="nav navbar-nav navbar-right">

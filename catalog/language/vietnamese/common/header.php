@@ -21,4 +21,5 @@ $_['text_checkout'] = 'Thanh toán';
 $_['text_language'] = 'Ngôn ngữ';
 $_['text_currency'] = 'Tiền tệ';
 $_['text_all']           = 'Xem tất cả';
+$_['Manual']           = 'Tài liệu Iontach';
 ?>

@@ -4,7 +4,7 @@ $_['heading_title']     = 'Get Donation (GD)';
 // Text
 $_['text_home']            = 'Home';
 $_['text_register_user']            = 'List of Get Donation';
-$_['text_button_create']            = 'Create Get Donation';
+$_['text_button_create']            = 'Create Get Donation (GD)';
 
 
 $_['NO']            = 'NO';
@@ -25,8 +25,8 @@ $_['Send']            = 'Send';
 
 $_['AMOUNT']            = 'AMOUNT';
 
-$_['danhnhan']            = 'RECEIVED';
-$_['DATE_CREATED']            = 'DATE CREATED	';
+$_['danhnhan']            = 'AMOUNT';
+$_['DATE_CREATED']            = 'DATE';
 
 $_['GD_NUMBER']            = 'GD NUMBER';
 $_['detail']            = 'DETAIL';

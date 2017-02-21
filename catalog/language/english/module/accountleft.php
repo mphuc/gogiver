@@ -8,7 +8,7 @@ $_['title_account']    = 'Your account';
 
 //menu top
 $_['dashboard']    = 'Dashboard';
-$_['registerUser']    = 'Register User';
+$_['registerUser']    = 'Register New User';
 $_['token']    = 'Token';
 $_['provideDonation']    = 'Provide Donation (PD)';
 $_['getDonation']    = 'Get Donation (GD)';

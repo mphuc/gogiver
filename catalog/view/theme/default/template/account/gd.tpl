@@ -42,7 +42,7 @@
                                         
                                           <tr>
                                             <td><?php echo $lang['DATE_CREATED'] ?></td>
-                                            <td>UserID GD</td>
+                                            <td>User ID GD</td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
                                             <td><?php echo $lang['danhnhan'] ?></td>
                                             <td><?php echo $lang['transferTime'] ?></td>

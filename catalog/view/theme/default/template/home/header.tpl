@@ -164,15 +164,41 @@
         <div class="top_menu_responsive"></div>
 
         <ul class="nav navbar-nav navbar-right nav-respon" id="nav-respon">
-           <li class="">
+           
+           
+           
+           <?php  
+            if (isset($_SESSION['language_id'])) {
+               if ($_SESSION['language_id'] == "vietnamese") { ?>
+               <li class="">
+               <a href="index.php?route=home/page">Trang chủ</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/brief">Hiểu nhanh</a>
+            </li>
+           
+            <li class="">
+               <a href="index.php?route=home/page/faq">Câu hỏi thường gặp</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/blog">Chia sẽ</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/support">Hỗ trợ</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/media">Sự kiện</a>
+            </li>
+            <li class="">
+               <a href="login.html">Đăng nhập</a>
+            </li>
+            <?php } else { ?>
+               <li class="">
                <a href="index.php?route=home/page">Home</a>
             </li>
             <li class="">
                <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
             </li>
-           <!--  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
-              <a href="index.php?route=home/page/manual">IONTACH MANUAL</a>
-           </li> -->
             <li class="">
                <a href="index.php?route=home/page/faq">FAQ</a>
             </li>
@@ -188,7 +214,29 @@
             <li class="">
                <a href="login.html">LOGIN</a>
             </li>
-           
+            <?php } } else { ?>
+              <li class="">
+               <a href="index.php?route=home/page">Home</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/faq">FAQ</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/blog">BLOG</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/support">SUPPORT</a>
+            </li>
+            <li class="">
+               <a href="index.php?route=home/page/media">MEDIA</a>
+            </li>
+            <li class="">
+               <a href="login.html">LOGIN</a>
+            </li>
+            <?php } ?>
           
         </ul>
       </div>
@@ -304,15 +352,38 @@
                   <div class="col-md-11">
                      <div class="primary-menu pull-right">
                         <ul id="primary-menu" class="menu">
-                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-">
+                     
+                            <?php  
+                              if (isset($_SESSION['language_id'])) {
+                                 if ($_SESSION['language_id'] == "vietnamese") { ?>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-">
+                              <a href="index.php?route=home/page">Trang chủ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
+                              <a href="index.php?route=home/page/brief">Hiểu nhanh</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/faq">Câu hỏi thường gặp</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/blog">Chia sẽ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/support">Hỗ trợ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/media">Sự kiện</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="login.html">Đăng nhập</a>
+                           </li>
+                              <?php } else { ?>
+                               <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-">
                               <a href="index.php?route=home/page">Home</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
                               <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
                            </li>
-                          <!--  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
-                             <a href="index.php?route=home/page/manual">IONTACH MANUAL</a>
-                          </li> -->
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/faq">FAQ</a>
                            </li>
@@ -328,6 +399,29 @@
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="login.html">LOGIN</a>
                            </li>
+                              <?php } } else { ?>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-">
+                              <a href="index.php?route=home/page">Home</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 -menu-item">
+                              <a href="index.php?route=home/page/brief">IONTACH BRIEF</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/faq">FAQ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/blog">BLOG</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/support">SUPPORT</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/media">MEDIA</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="login.html">LOGIN</a>
+                           </li>
+                              <?php } ?>
                         </ul>
                      </div>
                   </div>

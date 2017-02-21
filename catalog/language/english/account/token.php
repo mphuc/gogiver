@@ -48,4 +48,4 @@ $_['err_text_account_passwd'] = 'Wrong transaction password, please try again';
 $_['success'] = 'Success';
 $_['complete_transpin'] = 'Transfer successful Pin';
 $_['status_blockchain_received'] = "Status";
-$_['Your_Ping'] = "Your Ping";
+$_['Your_Ping'] = "Your Pin";

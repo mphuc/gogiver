@@ -5,7 +5,7 @@ $_['heading_title']     = 'Nhận Về (GD)';
 // Text
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh Sách Nhận Về';
-$_['text_button_create']            = 'Rút Về';
+$_['text_button_create']            = 'Rút Về (GD)';
 
 
 $_['NO']            = 'STT';
