@@ -5,7 +5,7 @@ $_['heading_title']     = 'Provide Donation (PD)';
 $_['text_home']            = 'Home';
 $_['text_register_user']            = 'List of Provide Donation';
 
-$_['text_button_create']            = 'Create Provide Donation';
+$_['text_button_create']            = 'Provide Donation (PD)';
 
 $_['NO']            = 'NO';
 
