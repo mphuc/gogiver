@@ -64,9 +64,18 @@ class ControllerCommonHeader extends Controller {
 
 		$this->load->language('common/header');
 		$this->load->language('common/footer');
-		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		if (!isset($this -> session -> data['customer_id']))
+		{
+			$id_login = 1;
+		}
+		else
+		{
+			$id_login = $this->session->data['customer_id'];
+		}
+		$getLanguage = $this -> model_account_customer -> getLanguage($id_login);
 		$language = new Language($getLanguage);
 		$language -> load('common/header');
+
 		$data['lang'] = $language -> data;
 		$data['getLanguage'] = $getLanguage;
 		
