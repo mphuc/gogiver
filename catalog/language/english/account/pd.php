@@ -28,7 +28,7 @@ $_['TIME_REMAIN']            = 'TIME REMAIN';
 
 
 
-$_['createPD']            = 'Providonation';
+$_['createPD']            = 'Provide Donation (PD)';
 $_['text_blockchain_received'] = 'Received';
 $_['text_btc'] = 'Total BTC';
 $_['text_blockchain'] = 'Blockchain QR code';
