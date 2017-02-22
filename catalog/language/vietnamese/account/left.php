@@ -2,8 +2,8 @@
 
 $_['dashboard'] = 'Bảng điều khiển';
 $_['Register'] = 'Đăng Ký';
-$_['provideDonation']    = 'PD - Cho';
-$_['getDonation']    = 'GD - nhận';
+$_['provideDonation']    = 'PD - Giúp đỡ';
+$_['getDonation']    = 'GD - nhận về';
 $_['downlineTree']    = 'Hoa hồng';
 $_['Refferal(S)']    = 'Thành viên';
 $_['Transaction']    = 'Lịch Sử Giao Dịch';

@@ -269,27 +269,27 @@
                                  <li class="dropdown language-selector pull-right">                
                 
                                     <ul class="dropdown-menu pull-right" style="margin-left: -27px;">
-                                    <?php  
+                                    <?php 
                                        if (isset($_SESSION['language_id'])) {
                                        if ($_SESSION['language_id'] == "vietnamese") { ?>
                                        <li >
-                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
+                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
                                           <img src="catalog/view/theme/default/img/flags/af.png">
                                           <span style="margin-top: -5px;float: right;margin-left: 10px;">Việt Nam</span>
                                         </a>
                                       </li>
                                     <?php } else { ?>
                                        <li class="">
-                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
+                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
                                           <img src="catalog/view/theme/default/img/flags/ae.png">
                                           <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
                                         </a>
                                       </li>
                                     <?php } } else { ?>
-                                       <li >
+                                       <li class="">
                                         <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/af.png">
-                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">Việt Nam</span>
+                                          <img src="catalog/view/theme/default/img/flags/ae.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
                                         </a>
                                       </li>
                                     <?php } ?>

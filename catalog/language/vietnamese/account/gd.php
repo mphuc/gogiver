@@ -5,7 +5,7 @@ $_['heading_title']     = 'Nhận Về (GD)';
 // Text
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh Sách Nhận Về';
-$_['text_button_create']            = 'Rút Về (GD)';
+$_['text_button_create']            = 'Nhận Về (GD)';
 
 
 $_['NO']            = 'STT';
@@ -40,7 +40,7 @@ $_['Send']            = 'Gửi';
 $_['create']            = 'Tạo GD';
 $_['successfull']            = 'Tạo GD thành công';
 $_['eligible']            = 'Bạn không đủ điều kiện để tạo GD';
-$_['Receivable']            = 'Số lượng cần rút';
+$_['Receivable']            = 'Số tiền';
 
 $_['err_Receivable']            = 'Vui lòng nhập số lượng';
 $_['c_wallet'] = 'Ví - C';
@@ -87,3 +87,7 @@ $_['baocao']            = 'Báo cáo';
 $_['heading_title_com_his'] = "Lịch sử GD F1";
 $_['support'] = "Hỗ trợ";
 $_['useridph'] = 'GD';
+$_['create_ghh'] = 'Đặt lệnh chờ';
+$_['Creategh'] = 'Đặt lệnh nhận về (GD)';
+$_['Date_create_f1_hs'] = 'Ngày đặt lệnh';
+ 

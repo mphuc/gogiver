@@ -118,7 +118,7 @@
                                                             <label class="control-label" for="Country">Country</label>
                                                             <div class="">
                                                                  <select name="country_id" id="input-country" class="form-control">
-                                                                    <option value="">--Please Select--</option>
+                                                                    <option value="">--<?php echo $lang['Please_Select_dn'] ?>--</option>
                                                                     <?php foreach ($countries as $country) { ?>
                                                                     <?php if ($country['country_id'] == $country_id) { ?>
                                                                     <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
@@ -137,7 +137,7 @@
                                                             <label class="control-label" for="Country">Province</label>
                                                             <div class="">
                                                                  <select name="zone_id" id="input-country" class="form-control">
-                                                                    <option value="">--Please Select--</option>
+                                                                    <option value="">--<?php echo $lang['Please_Select_tp'] ?>--</option>
 
                                                                     <?php foreach ($zone_byid as $country) { ?>
                                                                     <?php if ($country['zone_id'] == $zone_id) { ?>

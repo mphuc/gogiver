@@ -7,7 +7,7 @@ $_['text_home']            = 'Home';
 $_['text_button']            = 'Pin Transfer';
 $_['text_type']            = 'TYPE';
 $_['text_AMOUNT']            = 'AMOUNT';
-$_['text_SYSTEM']            = 'SYSTEM DESCRIPTION';
+$_['text_SYSTEM']            = 'DESCRIPTION';
 $_['text_USER']            = 'USER DESCRIPTION';
 $_['text_DATE']            = 'DATE TIME';
 
@@ -27,7 +27,7 @@ $_['text_Message'] = 'Message';
 $_['text_not_buy'] = 'You can not create more orders please pay the following orders';
 $_['text_successfull'] = 'Transfer successfull';
 $_['text_ok_buy'] = 'Buy';
-$_['text_ok'] = 'Agree To Transfer';
+$_['text_ok'] = 'Transfer';
 $_['text_cancel'] = 'Cancel';
 $_['text_back'] = 'Cancel';
 $_['text_blockchain_received'] = 'Received';

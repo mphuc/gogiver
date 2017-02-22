@@ -23,8 +23,8 @@
                            <div class="">
                               <div class="">
                                  
-                                 <div class="btn-toolbar pull-right" style="margin-bottom:20px;">
-                                    <a href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-default"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
+                                 <div class="btn-toolbar pull-right " style="margin-bottom:20px;">
+                                    <a style="width: 220px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
                                  </div>
                                  <!-- <div class="clearfix"></div> -->
                               </div>

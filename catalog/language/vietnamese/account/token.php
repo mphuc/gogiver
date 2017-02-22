@@ -28,7 +28,7 @@ $_['text_Message'] = 'Thông điệp';
 
 $_['text_successfull'] = 'Giao dịch thành công.';
 $_['text_not_buy'] = 'Bạn không thể tạo thêm đơn hàng xin vui lòng thanh toán đơn hàng sau';
-$_['text_ok'] = 'Đồng ý Chuyển';
+$_['text_ok'] = 'Chuyển';
 $_['text_status'] = 'Trang thái';
 $_['text_ok_buy'] = 'Mua';
 $_['text_cancel'] = 'Hủy bỏ';

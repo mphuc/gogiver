@@ -5,7 +5,7 @@ $_['heading_title']     = 'Cho Đi (PD)';
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh sách cho đi';
 
-$_['text_button_create']            = 'Thêm Một PD';
+$_['text_button_create']            = 'Đặt lệnh giúp đỡ';
 
 $_['NO']            = 'STT';
 
@@ -27,7 +27,7 @@ $_['TRANSFER']            = 'Danh sách chuyển';
 $_['VND']            = 'VNĐ';
 $_['TIME_REMAIN']            = 'THỜI GIAN CHỜ';
 $_['action']            = 'HÀNH ĐỘNG';
-$_['createPD']            = 'Tạo (PD)';
+$_['createPD']            = 'Giúp đỡ (PD)';
 $_['detail']            = 'Chi Tiết';
 $_['amount']            = 'Số lượng';
 
@@ -45,8 +45,8 @@ $_['err_text_account'] = 'Vui lòng nhập tài khoản nhận';
 $_['text_btc'] = 'Số BTC';
 $_['err_password']            = 'Vui lòng nhập mật khẩu giao dịch';
 
-$_['err_pd']            = '<i class="fa fa-fw fa-times"></i>Bạn không được tạo PD!';
-$_['err_account']            = '<i class="fa fa-fw fa-times"></i>Vui lòng cập nhật tài khoản của bạn trước khi tạo PD!';
+$_['err_pd']            = '<i class="fa fa-fw fa-times"></i>Bạn không được giúp đỡ PD!';
+$_['err_account']            = '<i class="fa fa-fw fa-times"></i>Vui lòng cập nhật tài khoản của bạn trước khi giúp đỡ PD!';
 
 $_['err_pin']            = '<i class="fa fa-fw fa-times"></i>Bạn không đủ Pin';
 $_['err_password_2']            = 'Mật khẩu giao dịch sai, xin vui lòng thử lại';
@@ -100,3 +100,5 @@ $_['error_content_blog'] = 'Vui lòng nhập nội dung blog';
 $_['create_blog'] = 'Tạo blog';
 $_['edit_blog'] = 'Sửa blog';
 $_['useridph'] = 'PD';
+$_['dat_lenh_cho'] = 'Đặt lệnh chờ';
+$_['This_transaction_requires'] = 'Giao dịch này cần có';

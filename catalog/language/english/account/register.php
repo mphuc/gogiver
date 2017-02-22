@@ -15,14 +15,14 @@ $_['text_cmnd']            = 'Citizenship Card';
 $_['text_Country']            = 'Country';
 $_['text_Country_Select']            = '-- Choose your Country --';
 $_['text_numberbank']            = 'Bank account number';
-$_['name_bank'] = 'Full name as on unsigned ATM card';
+$_['name_bank'] = 'Bank account holder name';
 $_['text_Password']            = 'Password For Login';
 $_['text_Repeat_Password']            = 'Repeat Password For Login';
 
 $_['text_Transaction_Password']            = 'Transaction Password';
-$_['text_phone'] = 'Phone numbers are used to get information from the system';
+$_['text_phone'] = 'Phone numbers';
 $_['text_Repeat_Transaction_Password']            = 'Repeat Transaction Password';
-$_['text_email'] = 'Email is used to get information from the system';
+$_['text_email'] = 'Email';
 $_['text_Agree_Transaction_Password']            = 'Agree to our Terms and Condition';
 $_['text_Submit']            = 'Submit';
 $_['buy_more_pin']            = 'Please buy more pin to continue!';
@@ -39,7 +39,5 @@ $_['err_text_Transaction_Password']            = 'Please enter transaction passw
 $_['err_Repeat_Transaction_Password']            = 'Repeat Transaction Password is not correct';
 
 $_['ok']            = 'Create account successfull';
-$_['text_register'] = '<P> Note: The system supports only account Iontach vietcombank. </ P>
-                                             <P> Enter the correct bank account number vietcombank, the system will automatically take the name from your account. </ P>
-                                             <P> Each account can only register vietcombank 1 account. </ P>';
+$_['text_register'] = '<P> Note: Only supports for Vietcombank account </ P>';
 $_['url_link'] = 'Copy the link below to send your friends to join the system';

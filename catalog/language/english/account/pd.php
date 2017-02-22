@@ -103,3 +103,6 @@ $_['error_content_blog'] = 'Please enter your blog content';
 $_['create_blog'] = 'Create blog';
 $_['edit_blog'] = 'Edit blog';
 $_['useridph'] = 'User ID PH';
+$_['dat_lenh_cho'] = 'Provide Donation';
+$_['This_transaction_requires'] = 'This transaction requires';
+$_['Date_create_f1_hs'] = 'Date create';

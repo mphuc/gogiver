@@ -49,3 +49,5 @@ $_['text_success_account']       = 'Cập nhật tài khoản thành công';
 $_['text_success_password']       = 'Cập nhật mật khẩu thành công';
 $_['text_success_tranpassword']       = 'Cập nhật mật khẩu giao dịch thành công';
 $_['Citizenship_Card_Passport']       = 'Chứng minh nhân dân';
+$_['Please_Select_dn']       = 'Đất nước';
+$_['Please_Select_tp']       = 'Tỉnh/thành phố';

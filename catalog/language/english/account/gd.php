@@ -90,4 +90,6 @@ $_['baocao']            = 'Report';
 $_['heading_title_com_his'] = "History GD F1";
 $_['support'] = "Support";
 $_['useridph'] = 'User ID GH';
-
+$_['create_ghh'] = 'Get Donation';
+$_['Creategh'] = 'Create';
+$_['Date_create_f1_hs'] = 'Date';

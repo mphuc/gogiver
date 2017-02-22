@@ -4,38 +4,38 @@
 <!--[if IE 9 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
-	<!--<![endif]-->
+  <!--<![endif]-->
 
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title> <?php echo $title; ?> - Empowering Communitees, Ending Poverty </title>
-		<meta http-equiv="cache-control" content="no-cache"/>
-		<base href="<?php echo $base; ?>" />
-		
-		<meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
-	
-		<meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> <?php echo $title; ?> - Empowering Communitees, Ending Poverty </title>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <base href="<?php echo $base; ?>" />
+    
+    <meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
+  
+    <meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
 <meta name="robots" content="index, follow"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" href="catalog/view/theme/default/img/icon.png">
-		<script src="catalog/view/javascript/jquery/underscorejs/underscorejs.js" type="text/javascript"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="catalog/view/theme/default/img/icon.png">
+    <script src="catalog/view/javascript/jquery/underscorejs/underscorejs.js" type="text/javascript"></script>
 
-		<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/jquery/jquery.easyui.min.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/jquery/jquery-ui.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery/jquery-ui.js" type="text/javascript"></script>
 
-		<script src="catalog/view/javascript/jquery/jquery.quick.pagination.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery/jquery.quick.pagination.min.js" type="text/javascript"></script>
         
-		<script src="catalog/view/javascript/loading.js" type="text/javascript"></script>
-		
-		
-		<script src="catalog/view/javascript/jquery.nicescroll.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/jquery.app.js"></script>
+    <script src="catalog/view/javascript/loading.js" type="text/javascript"></script>
+    
+    
+    <script src="catalog/view/javascript/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery.app.js"></script>
        
     
-		
-		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all' rel='stylesheet' type='text/css'>
         <!-- Css files -->
         <!-- Icons -->
@@ -53,21 +53,21 @@
         
         <link href="catalog/view/theme/default/css/custom.css" rel="stylesheet" />
         <link href="catalog/view/theme/default/stylesheet/fakeloader.css" rel="stylesheet">
-		<?php foreach ($styles as $style) { ?>
-		<link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
-		<?php } ?>
-		<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/jquery.animateNumber.min.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/smooth-sliding-menu.js" type="text/javascript"></script>
+    <?php foreach ($styles as $style) { ?>
+    <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
+    <?php } ?>
+    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery.animateNumber.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/smooth-sliding-menu.js" type="text/javascript"></script>
     <!-- <script src="catalog/view/theme/default/ckeditor/ckeditor.js" ></script>
     <script src="catalog/view/theme/default/ckeditor/samples/js/sample.js" ></script>
     <link href="catalog/view/theme/default/ckeditor/samples/css/samples.css" rel="stylesheet" />
     <link href="catalog/view/theme/default/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css" rel="stylesheet" /> -->
-		<?php foreach ($scripts as $script) { ?>
-		<script src="<?php echo $script; ?>" type="text/javascript"></script>
-		<?php } ?>
-		<?php echo $google_analytics; ?>
-		 <script type="text/javascript">
+    <?php foreach ($scripts as $script) { ?>
+    <script src="<?php echo $script; ?>" type="text/javascript"></script>
+    <?php } ?>
+    <?php echo $google_analytics; ?>
+     <script type="text/javascript">
             window.funLazyLoad = {
                 start : function() {
                     $("#fakeloader").fakeLoader({
@@ -87,33 +87,33 @@
 
         </script>
  
-		<link href="catalog/view/javascript/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="catalog/view/javascript/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="catalog/view/javascript/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-		<script src="catalog/view/javascript/jquery.form.min.js" type="text/javascript"></script>
-		<script src="catalog/view/javascript/alertifyjs/alertify.js" type="text/javascript"></script>
-		<link href="catalog/view/theme/default/css/al_css/alertify.css" rel="stylesheet">
-		<script src="catalog/view/javascript/bootstrap/bootstrap.js"></script>
+    <script src="catalog/view/javascript/jquery.form.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/alertifyjs/alertify.js" type="text/javascript"></script>
+    <link href="catalog/view/theme/default/css/al_css/alertify.css" rel="stylesheet">
+    <script src="catalog/view/javascript/bootstrap/bootstrap.js"></script>
         <!-- Core plugins ( not remove ) -->
         <script src="catalog/view/javascript/libs/modernizr.custom.js"></script>
         <script src="catalog/view/javascript/libs/jRespond.js"></script>
-		<script src="catalog/view/javascript/jquery.adminPlugin.js"></script>
+    <script src="catalog/view/javascript/jquery.adminPlugin.js"></script>
         <script src="catalog/view/javascript/main.js"></script>
          <script src="catalog/view/javascript/changeLang.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			var chkReadyState = setInterval(function() {
-			    if (document.readyState == "complete") {
-			        // clear the interval
-			        clearInterval(chkReadyState);
-			        jQuery('.preloader').hide()
-			        // finally your page is loaded.
-			    }
-			}, 100);
-		</script>
-	</head>
+    <script type="text/javascript">
+      var chkReadyState = setInterval(function() {
+          if (document.readyState == "complete") {
+              // clear the interval
+              clearInterval(chkReadyState);
+              jQuery('.preloader').hide()
+              // finally your page is loaded.
+          }
+      }, 100);
+    </script>
+  </head>
 
-	<body class="loading ball-scale-multiple top-bar-fixed left-sidebar-fixed page-footer ovh">
+  <body class="loading ball-scale-multiple top-bar-fixed left-sidebar-fixed page-footer ovh">
     <div id="fakeloader"></div>
-		<div class="preloader">
+    <div class="preloader">
             <div class="loader-inner">
                 <div></div>
                 <div></div>
@@ -209,16 +209,16 @@
               } ?>
                   Language:
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img id="img" src="<?php if ($_SESSION['language_id'] == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />
+                    <img id="img" src="<?php if (trim($_SESSION['language_id']) == "vietnamese") echo "catalog/view/theme/default/img/flags/af.png"; else echo "catalog/view/theme/default/img/flags/ae.png" ?>" />
                   </a>
                   <ul class="dropdown-menu pull-right">
-                    <li  class="<?php if ($_SESSION['language_id'] == "vietnamese") echo "active" ?>">
+                    <li  class="<?php if (trim($_SESSION['language_id']) == "vietnamese") echo "active" ?>">
                       <a id="vn" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/af.png" />
                         <span>Việt Nam</span>
                       </a>
                     </li>
-                    <li  class="<?php if ($_SESSION['language_id'] == "english") echo "active" ?>">
+                    <li  class="<?php if (trim($_SESSION['language_id']) == "english") echo "active" ?>">
                       <a id="en" href="javascript:void(0)" data-link="<?php echo $changelanguage ?>">
                         <img src="catalog/view/theme/default/img/flags/ae.png" />
                         <span>English</span>

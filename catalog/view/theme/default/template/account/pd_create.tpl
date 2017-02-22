@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('Create PH'); 
+   $self -> document -> setTitle('Provide Donation'); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Tạo PH</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['dat_lenh_cho'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -58,7 +58,7 @@
                         $ping = 6;
                         break;
                     } ?>
-                      <p style="color: red">This transaction requires <?php echo $ping ?> PIN</p>
+                      <p style="color: red"><?php echo $lang['This_transaction_requires']?> <?php echo $ping ?> PIN</p>
                      <form id="submitPD" class="form-horizontal margin-none" name="buy_share_form" action="<?php echo $self -> url -> link('account/pd/submit', '', 'SSL'); ?>" method="post" novalidate="novalidate">
                      <div class="form-group">
                         <label class="col-md-4 control-label"><?php echo $lang['amount']?></label>
@@ -101,12 +101,12 @@
                         </div>
                      </div>
                      <div class="control-group form-group">
-                        <div class="controls">
-                           <div class="col-md-offset-4">
+                        <label class="col-md-4 control-label"></label>
+                           <div class="col-md-8">
                               <div class="loading"></div>
-                              <button type="submit" class="btn-register btn btn-primary"> <?php echo $lang['text_button_create'] ?></button>
+                              <button style="width: 100%" type="submit" class="btn-register btn btn-primary"> <?php echo $lang['text_button_create'] ?></button>
                            </div>
-                        </div>
+                        
                      </div>
                   </div>
                </div>

@@ -2343,7 +2343,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function tatol_GD_child($id_customer){
 		$query = $this -> db -> query("
-			SELECT COUNT( * ) AS number
+			SELECT count(*) AS number
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
 			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");

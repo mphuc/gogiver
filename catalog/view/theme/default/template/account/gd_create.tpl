@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Tạo GH</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['create_ghh'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -95,12 +95,12 @@
                         </div>
                      </div>
                      <div class="control-group form-group">
-                        <div class="controls">
-                           <div class="col-md-offset-4">
+                        <label class="col-md-4 control-label"></label>
+                           <div class="col-md-8">
                               <div class="loading"></div>
-                              <button type="submit" class="btn-register btn btn-primary">Create</button>
+                              <button style="width: 100%" type="submit" class="btn-register btn btn-primary"><?php echo $lang['Creategh'] ?></button>
                            </div>
-                        </div>
+                    
                      </div>
                   </form>
                   </div>
