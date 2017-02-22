@@ -101,16 +101,16 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_02.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591475985704_c1b58e5b30dbb9e3926aaf942c22bb58.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74762 eg-howardtaft-element-0 esg-slide" data-delay="0.15">MAN MEGA 13.6</div>
+                                                            <div class="esg-center eg-post-74762 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74762 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
-                                                            <div class="esg-center eg-post-74762 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74762 esgbox" href="../wp-content/uploads/2015/07/image_1440x900_02.jpg" lgtitle="MAN MEGA 13.6"><i class="eg-icon-search"></i></a></div>
+                                                            <div class="esg-center eg-post-74762 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74762 esgbox" href="catalog/view/theme/default/images/thitruong/z591475985704_c1b58e5b30dbb9e3926aaf942c22bb58.jpg" lgtitle="IONTACH"><i class="eg-icon-search"></i></a></div>
                                                             <div class="esg-center eg-post-74762 esg-click-to-play-video eg-howardtaft-element-7 esg-slide" data-delay="0.35"><i class="eg-icon-play"></i></div>
                                                          </div>
                                                          <!-- END OF THE CONTENT IN THE ENTRY -->
@@ -123,12 +123,12 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_01.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591476151386_8a3b14e621c034e2c3d072b57f80bb37.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74763 eg-howardtaft-element-0 esg-slide" data-delay="0.15">MAN JUMBO 15.2</div>
+                                                            <div class="esg-center eg-post-74763 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74763 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
@@ -145,12 +145,12 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_12.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591476173284_59d01bb18fe0f4294e6c9d7a51616ab6.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591476173284_59d01bb18fe0f4294e6c9d7a51616ab6.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74764 eg-howardtaft-element-0 esg-slide" data-delay="0.15">SCANIA MEGA 12.4</div>
+                                                            <div class="esg-center eg-post-74764 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74764 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
@@ -167,16 +167,16 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_07.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591476756569_9d4f91374b9a003764900d190ef51450.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591476756569_9d4f91374b9a003764900d190ef51450.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74767 eg-howardtaft-element-0 esg-slide" data-delay="0.15">MAN MEGA 13.6</div>
+                                                            <div class="esg-center eg-post-74767 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74767 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
-                                                            <div class="esg-center eg-post-74767 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74767 esgbox" href="../wp-content/uploads/2015/07/image_1440x900_07.jpg" lgtitle="MAN MEGA 13.6"><i class="eg-icon-search"></i></a></div>
+                                                            <div class="esg-center eg-post-74767 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74767 esgbox" href="../wp-content/uploads/2015/07/image_1440x900_07.jpg" lgtitle="IONTACH"><i class="eg-icon-search"></i></a></div>
                                                             <div class="esg-center eg-post-74767 esg-click-to-play-video eg-howardtaft-element-7 esg-slide" data-delay="0.35"><i class="eg-icon-play"></i></div>
                                                          </div>
                                                          <!-- END OF THE CONTENT IN THE ENTRY -->
@@ -189,12 +189,12 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_08.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591476787789_5eecd8bfb52fffca44db0120923daaf2.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591476787789_5eecd8bfb52fffca44db0120923daaf2.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74768 eg-howardtaft-element-0 esg-slide" data-delay="0.15">SCANIA JUMBO 16.7</div>
+                                                            <div class="esg-center eg-post-74768 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74768 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
@@ -211,12 +211,52 @@
                                                       <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
                                                       <div class="esg-media-cover-wrapper">
                                                          <!-- THE MEDIA OF THE ENTRY -->
-                                                         <div class="esg-entry-media"><img src="../wp-content/plugins/essential-grid/public/assets/images/300x200transparent.png" data-lazysrc="http://transport.iontach.biz/wp-content/uploads/2015/07/image_1440x900_13.jpg" alt=""></div>
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591476803952_0a1f6798b627bad32bfa1e3fd9c7102a.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591476803952_0a1f6798b627bad32bfa1e3fd9c7102a.jpg" alt=""></div>
                                                          <!-- THE CONTENT OF THE ENTRY -->
                                                          <div class="esg-entry-cover">
                                                             <!-- THE COLORED OVERLAY -->
                                                             <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
-                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-0 esg-slide" data-delay="0.15">MAN MEGA 12.8</div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
+                                                            <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
+                                                            <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74770 esgbox" href="../wp-content/uploads/2015/07/image_1440x900_13.jpg" lgtitle="MAN MEGA 12.8"><i class="eg-icon-search"></i></a></div>
+                                                            <div class="esg-center eg-post-74770 esg-click-to-play-video eg-howardtaft-element-7 esg-slide" data-delay="0.35"><i class="eg-icon-play"></i></div>
+                                                         </div>
+                                                         <!-- END OF THE CONTENT IN THE ENTRY -->
+                                                      </div>
+                                                      <!-- END OF THE CONTAINER FOR THE MEDIA AND COVER/HOVER EFFECTS -->
+                                                   </li>
+                                                   <li class="filterall filter-vehicles eg-howardtaft-wrapper eg-post-id-74770" data-date="1438314890">
+                                                      <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
+                                                      <div class="esg-media-cover-wrapper">
+                                                         <!-- THE MEDIA OF THE ENTRY -->
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591477436751_06feafcdc86d54de1d7f26d07b20b4b7.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591477436751_06feafcdc86d54de1d7f26d07b20b4b7.jpg" alt=""></div>
+                                                         <!-- THE CONTENT OF THE ENTRY -->
+                                                         <div class="esg-entry-cover">
+                                                            <!-- THE COLORED OVERLAY -->
+                                                            <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
+                                                            <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
+                                                            <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-6-a esg-slide" data-delay="0.35"><a class="eg-howardtaft-element-6 eg-post-74770 esgbox" href="../wp-content/uploads/2015/07/image_1440x900_13.jpg" lgtitle="MAN MEGA 12.8"><i class="eg-icon-search"></i></a></div>
+                                                            <div class="esg-center eg-post-74770 esg-click-to-play-video eg-howardtaft-element-7 esg-slide" data-delay="0.35"><i class="eg-icon-play"></i></div>
+                                                         </div>
+                                                         <!-- END OF THE CONTENT IN THE ENTRY -->
+                                                      </div>
+                                                      <!-- END OF THE CONTAINER FOR THE MEDIA AND COVER/HOVER EFFECTS -->
+                                                   </li>
+                                                   <li class="filterall filter-vehicles eg-howardtaft-wrapper eg-post-id-74770" data-date="1438314890">
+                                                      <!-- THE CONTAINER FOR THE MEDIA AND THE COVER EFFECTS -->
+                                                      <div class="esg-media-cover-wrapper">
+                                                         <!-- THE MEDIA OF THE ENTRY -->
+                                                         <div class="esg-entry-media"><img src="catalog/view/theme/default/images/thitruong/z591477446733_b44556e65518bd1c2cca8f91ae3aaf6c.jpg" data-lazysrc="catalog/view/theme/default/images/thitruong/z591477446733_b44556e65518bd1c2cca8f91ae3aaf6c.jpg" alt=""></div>
+                                                         <!-- THE CONTENT OF THE ENTRY -->
+                                                         <div class="esg-entry-cover">
+                                                            <!-- THE COLORED OVERLAY -->
+                                                            <div class="esg-overlay esg-slide eg-howardtaft-container" data-delay="0"></div>
+                                                            <div class="esg-center eg-post-74770 eg-howardtaft-element-0 esg-slide" data-delay="0.15">IONTACH</div>
                                                             <div class="esg-center eg-howardtaft-element-1 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
                                                             <div class="esg-center eg-post-74770 eg-howardtaft-element-2 esg-zoomback" data-delay="0.25">anemptytextlline</div>
                                                             <div class="esg-center eg-howardtaft-element-3 esg-none esg-clear" style="height: 5px; visibility: hidden;"></div>
