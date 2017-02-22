@@ -51,7 +51,7 @@
                                         <thead>
                                           <tr>
                                             <td><?php echo $lang['DATE_CREATED'] ?></td>
-                                            <td>UserID PH</td>
+                                            <td>ID</td>
                                             <td><?php echo $lang['FILLED'] ?></td>
                                             <td><?php echo $lang['MAX_PROFIT'] ?></td>
                                             <td><?php echo $lang['TIME_REMAIN'] ?></td>
