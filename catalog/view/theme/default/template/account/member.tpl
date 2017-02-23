@@ -77,7 +77,7 @@
                            
                              <td data-title="Pin"><?php echo $value['ping'] ?></td>
                              <td data-title="<?php echo $lang['Guardian'] ?>"><?php echo $self -> getParrent($value['p_node']) ?></td>
-                             <td data-title="<?php echo $lang['status'] ?>"><span class="text-warning"><?php echo (intval($self -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">Kích hoạt</span>' : '<span class="text-warning">Đang chờ</span>') ?></span></td>
+                             <td data-title="<?php echo $lang['status'] ?>"><span class="text-warning"><?php echo (intval($self -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">'.$lang['Active'].'</span>' : '<span class="text-warning">'.$lang['Waiting'].'</span>') ?></span></td>
                           </tr>
 
                         <!--  <tr <?php echo $value['check_Newuser'] > 0 ? 'style="color:#0000ff"' : 'style="color:#ff0000"' ?> >

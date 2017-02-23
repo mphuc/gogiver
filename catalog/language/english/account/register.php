@@ -20,7 +20,7 @@ $_['text_Password']            = 'Password For Login';
 $_['text_Repeat_Password']            = 'Repeat Password For Login';
 
 $_['text_Transaction_Password']            = 'Transaction Password';
-$_['text_phone'] = 'Phone numbers';
+$_['text_phone'] = 'Phone number';
 $_['text_Repeat_Transaction_Password']            = 'Repeat Transaction Password';
 $_['text_email'] = 'Email';
 $_['text_Agree_Transaction_Password']            = 'Agree to our Terms and Condition';
@@ -41,3 +41,4 @@ $_['err_Repeat_Transaction_Password']            = 'Repeat Transaction Password 
 $_['ok']            = 'Create account successfull';
 $_['text_register'] = '<P> Note: Only supports for Vietcombank account </ P>';
 $_['url_link'] = 'Copy the link below to send your friends to join the system';
+$_['Submit_dk']            = 'Submit';

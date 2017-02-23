@@ -14,4 +14,6 @@ $_['bank_number'] = 'Số tài khoản';
 $_['telephone'] = 'Số điện thoại';
 $_['Guardian'] = "Người bảo trợ";
 $_['status'] = "Trạng thái PD";
+$_['Waiting'] = "Đang chờ";
+$_['Active'] = "Kích hoạt";
 ?>

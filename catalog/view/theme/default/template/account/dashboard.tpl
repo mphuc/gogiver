@@ -371,7 +371,7 @@
                   
                   <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
                     <tr>
-                      <td><?php echo $value['customer_id'] ?></td>
+                      <td><?php echo ($value['customer_id'] > 61 ) ? $value['customer_id'] + 1000 : $value['customer_id'] ?></td>
                       <td><?php echo $value['username'] ?></td>
                       <td>
                         <?php echo $self->getusername($value['p_node'])['username']; ?>
@@ -402,7 +402,7 @@
                   </tr>
                   <?php foreach ($get_childrend as $key => $value) { ?>
                     <tr>
-                      <td><?php echo $value['customer_id'] ?></td>
+                      <td><?php echo ($value['customer_id'] > 61 ) ? $value['customer_id'] + 1000 : $value['customer_id']  ?></td>
                       <td><?php echo $value['username'] ?></td>
                       <td>
                         <a href="index.php?route=account/dashboard/child_gd&token=<?php echo $value['customer_code'] ?>">

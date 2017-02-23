@@ -16,3 +16,4 @@ $_['text_account']       = 'Account';
 $_['text_transaction']   = 'Your Transactions';
 $_['text_total']         = 'Your current balance is:';
 $_['text_empty']         = 'You do not have any transactions!';
+$_['heading_title_Frozen']      = ' Block/Frozen History';

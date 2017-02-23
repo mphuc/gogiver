@@ -24,7 +24,7 @@ $_['Bill']            = 'Hóa Đơn';
 $_['AMOUNT']            = 'SỐ TIỀN';
 
 $_['danhnhan']            = 'ĐÃ NHẬN';
-$_['DATE_CREATED']            = 'NGÀY TẠO';
+$_['DATE_CREATED']            = 'NGÀY';
 $_['fee']            = 'PHÍ RÚT';
 $_['GD_NUMBER']            = 'MÃ GD';
 $_['detail']            = 'Chi tiết';
@@ -86,7 +86,7 @@ $_['ketthuc']            = 'Kết thúc';
 $_['baocao']            = 'Báo cáo';
 $_['heading_title_com_his'] = "Lịch sử GD F1";
 $_['support'] = "Hỗ trợ";
-$_['useridph'] = 'GD';
+$_['useridph'] = 'ID';
 $_['create_ghh'] = 'Đặt lệnh chờ';
 $_['Creategh'] = 'Đặt lệnh nhận về (GD)';
 $_['Date_create_f1_hs'] = 'Ngày đặt lệnh';

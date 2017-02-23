@@ -39,3 +39,4 @@ $_['err_Repeat_Transaction_Password']            = 'Vui lòng lặp lại mật 
 $_['ok']            = 'Thành công';
 $_['text_register'] = '<p>Lưu ý: Chỉ hỗ trợ cho tài khoản Vietcombank';
 $_['url_link'] = 'Sao chép đường dẫn bên dưới để gửi cho bạn bè cùng tham gia hệ thống';
+$_['Submit_dk']            = 'Đăng ký';

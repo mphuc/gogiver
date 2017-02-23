@@ -16,4 +16,5 @@ $_['text_account']       = 'Tài khoản';
 $_['text_transaction']   = 'Lịch sử giao dịch';
 $_['text_total']         = 'Số dư hiện tại:';
 $_['text_empty']         = 'Bạn không có tiền tích lũy!';
+$_['heading_title_Frozen']      = 'Lịch sử khóa/đóng băng';
 ?>

@@ -13,7 +13,7 @@ $_['ACCOUNT']            = 'TÀI KHOẢN';
 $_['ACCOUNT_RECEIVED']            = 'TÀI KHOẢN NHẬN';
 
 
-$_['DATE_CREATED']            = 'NGÀY TẠO';
+$_['DATE_CREATED']            = 'NGÀY';
 
 $_['PD_NUMBER']            = 'MÃ PD';
 
@@ -99,6 +99,6 @@ $_['err_title_blog'] = 'Vui lòng nhập tiêu đề blog';
 $_['error_content_blog'] = 'Vui lòng nhập nội dung blog';
 $_['create_blog'] = 'Tạo blog';
 $_['edit_blog'] = 'Sửa blog';
-$_['useridph'] = 'PD';
+$_['useridph'] = 'ID';
 $_['dat_lenh_cho'] = 'Đặt lệnh chờ';
 $_['This_transaction_requires'] = 'Giao dịch này cần có';

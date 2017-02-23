@@ -83,7 +83,7 @@ $_['C_titleUpload']            = 'Please chosen image with';
 
 $_['khoplenh']            = 'Matched';
 $_['dangcho']            = 'Waiting';
-$_['ketthuc']            = 'Finish';
+$_['ketthuc']            = 'Finished';
 $_['baocao']            = 'Report';
 $_['heading_title_comis'] = 'History Commission';
 $_['heading_title_com_his'] = 'History Refferal';
@@ -102,7 +102,7 @@ $_['content_blog'] = 'Blog content';
 $_['error_content_blog'] = 'Please enter your blog content';
 $_['create_blog'] = 'Create blog';
 $_['edit_blog'] = 'Edit blog';
-$_['useridph'] = 'User ID PH';
+$_['useridph'] = 'ID';
 $_['dat_lenh_cho'] = 'Provide Donation';
 $_['This_transaction_requires'] = 'This transaction requires';
 $_['Date_create_f1_hs'] = 'Date create';

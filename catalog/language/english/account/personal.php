@@ -8,10 +8,12 @@ $_['top'] = 'Back to top';
 $_['member_manager'] = 'Manage member';
 $_['member'] = 'Member';
 $_['No'] = 'No';
-$_['id_hethong'] = 'ID system';
+$_['id_hethong'] = 'ID';
 $_['full_name'] = 'Full name';
 $_['bank_number'] = 'Account number';
 $_['telephone'] = 'Telephone';
 $_['Guardian'] = "Guardian";
 $_['status'] = "Status PD";
+$_['Waiting'] = "Waiting";
+$_['Active'] = "Active";
 ?>

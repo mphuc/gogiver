@@ -120,7 +120,7 @@
                                                 <div id="success"></div>
                                                 <br/>
                                                 <div class="col-md-12">
-                                                   <button type="submit" class="btn-register btn btn-warning pull-right ">Submit</button>
+                                                   <button type="submit" style="width: 300px; font-size: 18px;" class="btn-register btn btn-success pull-right "><?php echo $lang['Submit_dk'] ?></button>
                                                 </div>
                                              </div>
                                           </form>

@@ -34,7 +34,7 @@
                               <div class="list_ph" style="margin-bottom: 30px">
                                  <div class="Head" role="tab" id="headingOne<?php echo $key['gd_number'] ?>">
                                     
-                                    <h4 style=" width: 200px;float: left;">GD : <strong>GH<?php echo $key['gd_number'] ?></strong></h4>
+                                    <h4 style=" width: 200px;float: left;">GD : <strong>GD<?php echo $key['gd_number'] ?></strong></h4>
                                     <div class="clearfix"></div>
                                     <table  class="table">
                                         <thead>
@@ -59,23 +59,23 @@
                                         <tbody>
                                           <tr>
                                             <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
-                                            <td data-title="UserID GH"><strong><?php echo $key['username'] ?></strong></td>
+                                            <td data-title="ID"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
                                        </span> </strong></td>
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
-                                           echo '<span class="label label-default">'.$lang['dangcho'].'</span>';
+                                           echo '<span style="width:80px;" class="btn btn-warning">'.$lang['dangcho'].'</span>';
                                            break;
                                        case 1:
-                                           echo '<span class="label label-info">'.$lang['khoplenh'].'</span>';
+                                           echo '<span class="btn btn-info">'.$lang['khoplenh'].'</span>';
                                            break;
                                        case 2:
-                                           echo '<span class="label label-success">'.$lang['ketthuc'].'</span>';
+                                           echo '<span style="width:80px;background-color: #9a9292; color: #fff;"  class="btn btn-success">'.$lang['ketthuc'].'</span>';
                                            break;
                                        case 3:
-                                           echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
+                                           echo '<span style="width:80px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
                                            break;
                                        } ?></span></strong></td>
                                          

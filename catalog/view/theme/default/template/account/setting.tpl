@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="control-group form-group">
                                                         <div class="controls">
-                                                            <label class="control-label" for="Country">Country</label>
+                                                            <label class="control-label" for="Country"><?php echo $lang['Please_Select_dn'] ?></label>
                                                             <div class="">
                                                                  <select name="country_id" id="input-country" class="form-control">
                                                                     <option value="">--<?php echo $lang['Please_Select_dn'] ?>--</option>
@@ -134,7 +134,7 @@
 
                                                     <div class="control-group form-group">
                                                         <div class="controls">
-                                                            <label class="control-label" for="Country">Province</label>
+                                                            <label class="control-label" for="Country"><?php echo $lang['Please_Select_tp'] ?></label>
                                                             <div class="">
                                                                  <select name="zone_id" id="input-country" class="form-control">
                                                                     <option value="">--<?php echo $lang['Please_Select_tp'] ?>--</option>

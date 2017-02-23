@@ -25,7 +25,7 @@ $_['Send']            = 'Send';
 
 $_['AMOUNT']            = 'AMOUNT';
 
-$_['danhnhan']            = 'AMOUNT';
+$_['danhnhan']            = 'RECEIVED';
 $_['DATE_CREATED']            = 'DATE';
 
 $_['GD_NUMBER']            = 'GD NUMBER';
@@ -55,7 +55,7 @@ $_['err_wallet'] = 'Please check the type of wallet';
 $_['Password'] = 'Transaction Password';
 $_['err_Receivable']= 'Please enter your receivable amount';
 $_['err_Password'] = 'Please enter your password';
-$_['submit'] = 'Create';
+$_['submit'] = 'Get Donation (GD)';
 $_['err_Receivable_2']            = 'The field receivable amount must be a number';
 
 $_['err_Password_2']            = 'Wrong transaction password, please try again';
@@ -89,7 +89,7 @@ $_['ketthuc']            = 'Finish';
 $_['baocao']            = 'Report';
 $_['heading_title_com_his'] = "History GD F1";
 $_['support'] = "Support";
-$_['useridph'] = 'User ID GH';
+$_['useridph'] = 'ID';
 $_['create_ghh'] = 'Get Donation';
 $_['Creategh'] = 'Create';
 $_['Date_create_f1_hs'] = 'Date';
