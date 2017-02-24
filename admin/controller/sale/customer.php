@@ -815,6 +815,7 @@ class ControllerSaleCustomer extends Controller {
 				'cmnd'			 => $result['cmnd'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'ip'             => $result['ip'],
+				'date_addeds' => $result['date_addeds'],
 				'date_birth'     => date($this->language->get('date_format_short'), strtotime($result['date_birth'])),
 		//		'total_hoivien_phi'   => $total_hoivien_phi,
 		//		'total_congtac_phi' => $total_congtac_phi,

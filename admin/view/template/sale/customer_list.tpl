@@ -283,6 +283,7 @@
                       Username
                   </td>
                    <td style="">Email</td>
+                   <td style="width: 140px;"> Date</td>
                    <td>Images CMND</td>
                    <td>Number CMND</td>
                   <td style="width: 110px;">Phone</td>
@@ -310,18 +311,16 @@
               <tbody>
                 <?php if ($customers) { $n=1;?>
                 <?php foreach ($customers as $customer) { 
-                  //print_r($customer); die;
+                  $date_added = date('Y-m-d',strtotime($customer['date_addeds']));
                 ?>
-                <tr class="<?php // if($customer['hvOff'] == 1) { echo $customer['hvNew'] == true? 'hvNew ':'';} else echo 'hvOff';?>">
-                  <!-- <td class="text-center"><?php if (in_array($customer['customer_id'], $selected)) { ?>
-                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" checked="checked" />
-                    <?php } else { ?>
-                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" />
-                    <?php } ?></td> -->
+                <?php if (date('Y-m-d',strtotime($customer['date_addeds'])) == date('Y-m-d')) $class = "red"; else  $class =""; ?>
+               
+                <tr class="<?php echo $class ?>">
                   <td><?php echo $n;?></td>
                   
                   <td class="text-left"><?php echo $customer['username']; ?></td>
                  <td class="text-left"><?php echo $customer['email']; ?></td>
+                 <td style="width: 180px;float: left; border-bottom: none;" class="text-left"><?php echo $customer['date_addeds']; ?></td>
                  <td class="text-center">
                   <?php if($customer['img_profile'] != "") { ?>
                   <a href="<?php echo $customer['img_profile']; ?>" target="_blank">
@@ -883,4 +882,9 @@ $('.date').datetimepicker({
 	pickTime: false
 });
 //--></script></div>
+<style type="text/css">
+  tr.red{
+    background: rgba(0, 255, 126, 0.42);
+  }
+</style>
 <?php echo $footer; ?> 

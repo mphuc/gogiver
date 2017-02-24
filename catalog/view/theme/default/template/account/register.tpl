@@ -47,7 +47,7 @@
                                     
                                     <div class="panel-body">
                                        <div class=" form">
-                                          <form id="register-account" action="<?php echo $self -> url -> link('account/register', '', 'SSL'); ?>" class="form-horizontal" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                                          <form id="register-account" action="<?php echo $self -> url -> link('account/register', '', 'SSL'); ?>" class="form-horizontal" method="post" novalidate="novalidate" enctype="multipart/form-data" autocomplete="off" >
                                              <div class="row">
                                                 <div class="col-md-6" style="display: none">
                                                    <select class="form-control" name="bank_name" id="bank_name">

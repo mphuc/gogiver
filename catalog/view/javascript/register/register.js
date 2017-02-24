@@ -17,19 +17,25 @@ $( document ).ready(function() {
     }
     $("#file").on('change' , function (env) {
 
-         $('#old_img').hide();
-        readURL(this);
+         
+        
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
         if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-            if($("#file").val()){
+            if($("#file").val())
+            {
+                  
                $('.error-file').show(); 
-           }else{
+           }
+           else
+           {
                 $('.error-file').hide(); 
            }
             $('#comfim-pd').resetForm();
-        }else{
+        }else
+        {
+            readURL(this);
             $('.error-file').hide();
-             $('#old_img').hide();
+            $('#old_img').hide();
         }
     });
     var getname_vcb = function(number,url){
@@ -399,6 +405,11 @@ $( document ).ready(function() {
         } else {
             validate.init($(this));
             self.find('#phone').parent().addClass('has-success');
+        }
+        if ($('#blah').attr('src') == "#")
+        {
+            $('.error-file').show();
+            return false;
         }
         // if (validate.cmnd($(this)) === false) {
         //     return false;

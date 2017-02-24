@@ -208,7 +208,7 @@ class ModelSaleCustomer extends Model {
 	public function getCustomers($data = array()) {
 
 		//" . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) 
-		 $sql = "SELECT c.*,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
+		 $sql = "SELECT c.*,c.date_added as date_addeds,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
 		 FROM " . DB_PREFIX . "customer c
 		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
 		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id)";
@@ -295,12 +295,12 @@ class ModelSaleCustomer extends Model {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
 			//$sql .= " ORDER BY name";
-			$sql .= " ORDER BY c.customer_id ";
+			$sql .= " ORDER BY c.date_added ";
 		}
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
 			$sql .= " DESC";
 		} else {
-			$sql .= " ASC";
+			$sql .= " DESC";
 		}
 
 		if (isset($data['start']) || isset($data['limit'])) {
