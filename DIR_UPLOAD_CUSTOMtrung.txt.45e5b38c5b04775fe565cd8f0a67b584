@@ -1,0 +1,84 @@
+// server 104.171.119.74
+1F3pGw6gr1dDtqLJJANcb81g92dx2342314 : dzung 
+  
+1F3pGw6gr1dDt23432412423LJJANcb81g92 : root
+
+// hung thinh phat
+	http://104.171.119.74/phpmyadmin/
+	root    S6zMRdCid3lh9T96*
+
+// server coimax
+root : 0eWkRLvxZQj8mhHdj5850SDDES
+
+// BD
+bizmax.net : W1Q4ct4zGMdejOBS
+
+
+kigiland
+
+198.54.121.109
+root: XiKPHb1AvJeaJ
+
+mysql root: XiKPHb1AvJeaJ1F3pGw6gr1dDtqLJJANcb81g92dx2342314**
+
+mysql kigiland.org : XiKPHb1AvJeaJ1F3pGw6gr1dDtqA1hlebAyW0J8ulAJ*
+
+// server sfccoin.com
+	198.54.112.72 
+	root 
+	13dvadJVf3DifYvrJsWB9Fj3hmdX98a12z
+	
+	DB
+	user: sfccoin.com
+	password: QpfGR4MVGA7HF4WUKfw6grqLJJANcb81g92dx2342314**
+	
+	passs  mail : W1Q4ct4zGYvrJsWB9MdejOBS
+	noreply@sfccoin.com
+	VKYFQNxn9o66
+
+mezidas
+198.187.30.204
+D?_eyfSnNu!J4  mezidas
+php phpmysql: root   |   198.187.30.204
+
+
+pass pin blockio coinmax2016: 0eWkRLvxZQj8mhHdj5850SDDESiKPHb1AvJeaJ1F  --- pass: 0eWkRLvxZQj8mhHdj5850SDDES
+
+pass pin blockio mphuc2790: XiKPHb1AvJeaJ1F3pGw6gr11dDt23432412423LJJAN
+
+
+pass sfccoin:  pin: eaJ1F3pGw6grqLJJANcb81g92dx      --------  pass:  AvJeaJ1F3pGw6gr11dDt23432WkRLvxZQj8mh 
+
+alexa : sfccoin@123	
+
+
+fundbtc.net
+phpmyadmin:trustfund.dev         yYaAqAWJ1F3pGw6gr11dDt23432412423LJnsEX6Vytn
+
+
+
+aircoin.org
+
+mail : noreply@aircoin.org | aircoin.org@123
+
+blockio: AvJeaJ1F3pGw6gr1dDtqA1hleb  |    PHb1AvJeaJ1F3pGw6gr1dDtqLJJAN
+
+phpmyadmin: aircoin.org   |  DuZh2uV8SaSt9R5mWJ1F3pGw6gr11dDt23432412423LJ
+
+
+5 * * * * https://smartmony.net/index.php?route=account/account/cron_tab_auto_update_day_r_payment
+*/30 * * * * curl https://sfccoin.com/index.php?route=account/account/withdraw_btc
+0 */2 * * * curl https://sfccoin.com/index.php?route=account/export/db
+0 * * * * curl https://fundbtc.net/index.php?route=account/account/hour_payment
+*/30 * * * * curl https://fundbtc.net/index.php?route=account/account/withdraw_btc
+0 0 * * * curl https://fundbtc.net/index.php?route=account/account/add_date
+
+
+Thuenhasing.net
+   phpmyadmin : thunhasing.net Vp5JDFB4o844s9SZc5aEADrITmSj130y
+
+
+sotuchon.org 
+	phpmyadmin: sotuchon.org   XDLHErFoFoGldFK14o844s9SZc5aEADrITm
+admin@sotuchon.org
+hGGM1sPekwDa
