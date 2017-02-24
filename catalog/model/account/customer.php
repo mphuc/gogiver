@@ -2646,7 +2646,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY customer_id DESC
+			WHERE customer_id IN (".$this -> db -> escape($id).")
 		");
 		return $query -> rows;
 	}
