@@ -2592,7 +2592,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT customer_id
 			FROM  ".DB_PREFIX."customer_ml
-			WHERE p_node IN (".$id_customer.")
+			WHERE p_node IN (".$id_customer.") ORDER BY date_added DESC
 		");
 		$count = $query->rows;
 		foreach ($query->rows as $value) {
@@ -2604,7 +2604,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			$querys = $this -> db -> query("
 				SELECT *
 				FROM  ".DB_PREFIX."customer
-				WHERE customer_id IN (".$mang.")
+				WHERE customer_id IN (".$mang.") ORDER BY date_added DESC
 			");
 			return $querys->rows; 
 		}
@@ -2646,7 +2646,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY username ASC
+			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY date_added DESC
 		");
 		return $query -> rows;
 	}
