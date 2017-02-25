@@ -371,7 +371,19 @@
                   
                   <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
                     <tr>
-                      <td><?php echo $value['customer_id'] ?></td>
+                      <td><?php if ($value['customer_id'] > 61 )
+	{
+		$customer_id = $value['customer_id'] + 1000; 
+	}
+	else
+	{
+		$customer_id = $value['customer_id'];
+	}
+	if ($value['customer_id'] == 64 )	$customer_id = 1060;
+	if ($value['customer_id'] == 65 )	$customer_id = 1061;
+	 
+?>
+	<?php echo $customer_id  ?></td>
                       <td><?php echo $value['username'] ?></td>
                       <td>
                         <?php echo $self->getusername($value['p_node'])['username']; ?>
