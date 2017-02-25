@@ -238,4 +238,45 @@ class ModelCustomizeRegister extends Model {
 
 		return $customer_id;
 	}
+
+	public function getParrent_abc($username){
+		$query = $this->db->query("SELECT customer_id
+			FROM " . DB_PREFIX . "customer WHERE username = '".$username."'");
+		
+		return $query->row['customer_id'];
+	}
+
+
+	public function addCustomer_abc($u_pnode,$username,$account_holder,$id) {
+		
+		$this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer SET
+			p_node = '" . $this -> getParrent_abc($u_pnode). "', 
+			
+			username = '" . $username . "', 
+			
+			salt = '" . $this -> db -> escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', 
+			 
+			status = '1',
+			
+			
+			date_added = NOW(),
+			check_Newuser = 0,
+			language = 'vietnamese',
+			account_holder = '".$this -> db -> escape($account_holder)."'
+		");
+
+		$customer_id = $this -> db -> getLastId();
+
+		// p_binary = '" . $data['p_node'] . "',
+		$this -> db -> query("INSERT INTO " . DB_PREFIX . "customer_ml SET 
+			customer_id = '" . (int)$customer_id . "',
+			level = '1', 
+			p_binary = '" . $this -> getParrent_abc($u_pnode) . "', 
+			p_node = '" . $this -> getParrent_abc($u_pnode) . "', 
+			date_added = NOW()");
+
+		return $customer_id;
+
+	}
 }
