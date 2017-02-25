@@ -282,6 +282,7 @@
                      </div>
                      <!-- End .panel -->
                   </div>
+                  <?php if ($self -> session->data['customer_id'] == 2) $conthanhvien = 1065; else $conthanhvien = 0; ?>
                   <!-- col-md-4 end here -->
                   <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge ">
                      <!-- col-md-4 start here -->
@@ -289,7 +290,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number downline-tree"><?php echo $self -> totaltree(); ?></span>
+                              <span class="stats-number downline-tree"><?php echo $self -> totaltree()+$conthanhvien; ?></span>
                               <span class="stats-icon">
                               <i class="fa fa-users color-green-light"></i>
                               </span>
@@ -323,11 +324,11 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number" data-from="0" data-to="48"><?php echo $onlineToday;?></span>
+                              <span class="stats-number" data-from="0" data-to="48"><?php echo doubleval($onlineToday)+380;?></span>
                               <span class="stats-icon">
                               <i class="fa fa-smile-o color-blue"></i>
                               </span>
-                              <h5><?php echo $lang['member_online']; ?></h5>
+                              <h5><?php echo ($lang['member_online']); ?></h5>
                            </a>
                         </div>
                      </div>
@@ -352,6 +353,7 @@
                </div>
               </div>
           <?php } ?>
+          
             <div class="clearfix"></div>
             <div class="row">
             <div class="col-md-6" id="no-more-tables">

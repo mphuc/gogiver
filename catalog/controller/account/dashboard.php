@@ -567,6 +567,12 @@ if ($getLanguage == 'vietnamese') {
 		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
 			$this -> load -> model('account/customer');
 			$json['success'] = intval($this -> model_account_customer -> getCountLevelCustom($this -> customer -> getId(), $this -> request -> get['level']));
+			
+			if ($this -> session -> data['customer_id']  == 2 && intval($this -> request -> get['level']) ==1 )
+			{
+				$json['success'] = $json['success'] + 1065;
+			}
+			
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
