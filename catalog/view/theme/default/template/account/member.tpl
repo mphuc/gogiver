@@ -69,9 +69,8 @@
                         <tr>
                              <td data-title="<?php echo $lang['No'] ?>" align="center"><?php echo $Num;  ?></td>
                              <td data-title="<?php echo $lang['id_hethong'] ?>"><?php echo $value['username']; ?></td>
+                             <td data-title="<?php echo $lang['full_name'] ?>"><?php echo $value['account_holder'] ?></td>
                              
-                             <td data-title="<?php echo $lang['telephone'] ?>"><?php echo $value['telephone'] ?></td>
-                           
                              <td data-title="Pin"><?php echo $value['ping'] ?></td>
                              <td data-title="<?php echo $lang['Guardian'] ?>"><?php echo $self -> getParrent($value['p_node']) ?></td>
                              <td data-title="<?php echo $lang['status'] ?>"><span class="text-warning"><?php echo (intval($self -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">'.$lang['Active'].'</span>' : '<span class="text-warning">'.$lang['Waiting'].'</span>') ?></span></td>
