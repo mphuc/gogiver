@@ -402,7 +402,22 @@
                   </tr>
                   <?php foreach ($get_childrend as $key => $value) { ?>
                     <tr>
-                      <td><td><?php echo $value['customer_id'] ?></td></td>
+                      <td>
+	<?php if ($value['customer_id'] > 61 )
+	{
+		$customer_id = $value['customer_id'] + 1000; 
+	}
+	else
+	{
+		$customer_id = $value['customer_id'];
+	}
+	if ($value['customer_id'] == 64 )	$customer_id = 1060;
+	if ($value['customer_id'] == 65 )	$customer_id = 1061;
+	 
+?>
+	<?php echo $customer_id  ?>
+	
+</td>
                       <td><?php echo $value['username'] ?></td>
                       <td>
                         <a href="index.php?route=account/dashboard/child_gd&token=<?php echo $value['customer_code'] ?>">

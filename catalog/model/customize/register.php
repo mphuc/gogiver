@@ -268,7 +268,7 @@ class ModelCustomizeRegister extends Model {
 
 		$customer_id = $this -> db -> getLastId();
 
-		// p_binary = '" . $data['p_node'] . "',
+		
 		$this -> db -> query("INSERT INTO " . DB_PREFIX . "customer_ml SET 
 			customer_id = '" . (int)$customer_id . "',
 			level = '1', 
