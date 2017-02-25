@@ -4,7 +4,7 @@ class ControllerAccountAccount extends Controller {
 	
 	public function add_customer()
 	{
-		//die;
+		die;
 		$myXMLData = "<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <row>
