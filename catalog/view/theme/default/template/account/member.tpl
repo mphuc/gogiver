@@ -56,8 +56,6 @@
                            <th><?php echo $lang['No'] ?></th>
                            <th><?php echo $lang['id_hethong'] ?></th>
                            <th><?php echo $lang['full_name'] ?></th>
-                           <th><?php echo $lang['bank_number'] ?></th>
-                           <th><?php echo $lang['telephone'] ?></th>
                            
                            <th>Pin</th>
                            <th><?php echo $lang['Guardian'] ?></th>
@@ -71,8 +69,7 @@
                         <tr>
                              <td data-title="<?php echo $lang['No'] ?>" align="center"><?php echo $Num;  ?></td>
                              <td data-title="<?php echo $lang['id_hethong'] ?>"><?php echo $value['username']; ?></td>
-                             <td data-title="<?php echo $lang['full_name'] ?>"><?php echo $value['account_holder'] ?></td>
-                             <td data-title="<?php echo $lang['bank_number'] ?>"><?php echo $value['account_number'] ?></td>
+                             
                              <td data-title="<?php echo $lang['telephone'] ?>"><?php echo $value['telephone'] ?></td>
                            
                              <td data-title="Pin"><?php echo $value['ping'] ?></td>
