@@ -324,7 +324,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number" data-from="0" data-to="48"><?php echo doubleval($onlineToday)+380;?></span>
+                              <span class="stats-number" data-from="0" data-to="48"><?php echo doubleval($onlineToday)+389;?></span>
                               <span class="stats-icon">
                               <i class="fa fa-smile-o color-blue"></i>
                               </span>
