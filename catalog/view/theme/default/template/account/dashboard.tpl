@@ -282,7 +282,7 @@
                      </div>
                      <!-- End .panel -->
                   </div>
-                  <?php if ($self -> session->data['customer_id'] == 2) $conthanhvien = 1065; else $conthanhvien = 0; ?>
+                  <?php if ($self -> session->data['customer_id'] == 2) $conthanhvien = 1000; else $conthanhvien = 0; ?>
                   <!-- col-md-4 end here -->
                   <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge ">
                      <!-- col-md-4 start here -->
@@ -373,16 +373,16 @@
                   
                   <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
                     <tr>
-                      <td><?php if ($value['customer_id'] > 61 )
-	{
+                      <td><?php //if ($value['customer_id'] > 61 )
+	//{
 		$customer_id = $value['customer_id'] + 1000; 
-	}
+	/*}
 	else
 	{
 		$customer_id = $value['customer_id'];
 	}
 	if ($value['customer_id'] == 64 )	$customer_id = 1060;
-	if ($value['customer_id'] == 65 )	$customer_id = 1061;
+	if ($value['customer_id'] == 65 )	$customer_id = 1061;*/
 	 
 ?>
 	<?php echo $customer_id  ?></td>
@@ -417,16 +417,16 @@
                   <?php foreach ($get_childrend as $key => $value) { ?>
                     <tr>
                       <td>
-	<?php if ($value['customer_id'] > 61 )
-	{
+	<?php //if ($value['customer_id'] > 61 )
+	//{
 		$customer_id = $value['customer_id'] + 1000; 
-	}
+	/*}
 	else
 	{
 		$customer_id = $value['customer_id'];
 	}
 	if ($value['customer_id'] == 64 )	$customer_id = 1060;
-	if ($value['customer_id'] == 65 )	$customer_id = 1061;
+	if ($value['customer_id'] == 65 )	$customer_id = 1061;*/
 	 
 ?>
 	<?php echo $customer_id  ?>

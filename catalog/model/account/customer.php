@@ -2646,7 +2646,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY date_added DESC
+			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY date_added DESC 
+		");
+		return $query -> rows;
+	}
+	public function get_customer_by_id_in_new(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer ORDER BY customer_id DESC LIMIT 10
 		");
 		return $query -> rows;
 	}

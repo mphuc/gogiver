@@ -302,9 +302,7 @@ class ControllerAccountMember extends Controller {
 					$fl .= '       	<th class="text-center">STT</th>';
 					$fl .= '           <th>ID Hệ Thống</th>';
 					$fl .= '           <th>Họ Tên</th>';  
-					$fl .= '           <th>Số Tài Khoản</th>';
-					$fl .= '           <th>Số Điện Thoại</th>';
-					// $fl .= '           <th>EMail</th>';
+					
 					$fl .= '           <th>Pin</th>';
 					$fl .= '           <th>Người Bảo Trợ</th>';
 					// $fl .= '           <th>Investment Package</th>';
@@ -319,9 +317,7 @@ class ControllerAccountMember extends Controller {
 						$fl .= '<td data-title="STT" align="center">'.$count.'</td>';
 						$fl .= '<td data-title="ID Hệ Thống">'.$value['name'].'</td>';
 						$fl .= '<td data-title="Họ Tên">'.$value['account_holder'].'</td>';
-						$fl .= '<td data-title="Số Tài Khoản">'.$value['account_number'].'</td>';
-
-						$fl .= '<td data-title="Số Điện Thoại">'.$value['telephone'].'</td>';
+						
 						// $fl .= '<td data-title="Mail">'.$value['email'].'</td>';
 						$fl .= '<td data-title="Pin">'.$value['ping'].'</td>';
 						$fl .= '<td data-title="Người Bảo Trợ">'.$this -> getParrent($value['p_node']).'</td>';

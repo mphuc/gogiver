@@ -137,7 +137,9 @@ class ControllerAccountDashboard extends Controller {
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all($this->session->data['customer_id']);
 
 
-		$data['get_customer_by_id_in'] = $this -> model_account_customer ->get_customer_by_id_in($get_childrend_all);
+		//$data['get_customer_by_id_in'] = $this -> model_account_customer ->get_customer_by_id_in($get_childrend_all);
+
+		$data['get_customer_by_id_in'] = $this -> model_account_customer ->get_customer_by_id_in_new();
 		$get_childrend_customer = $this -> model_account_customer -> get_childrend_customer($this->session->data['customer_id']);
 		
 		$date_finish = strtotime ( '+ 45 day' , strtotime ($get_childrend_customer) ) ;
