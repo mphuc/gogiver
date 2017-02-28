@@ -22,7 +22,8 @@
                if ($_SESSION['language_id'] == "vietnamese") { ?>
                <!-- viet -->
                <?php for ($i=1;$i<34;$i++) { ?>
-                 <img style="margin-top: 10px;" class="lazy" src="catalog/view/theme/default/images/thitruongvn/PHAT TRIEN 6 TINH MIEN TAY-<?php echo $i;?>.jpg" src="" alt="">
+                 <img class="img-responsive" style="margin-top: 10px; height: 100% !important; width: 100%" class="lazy" src="catalog/view/theme/default/images/thitruongvn/PHAT TRIEN 6 TINH MIEN TAY-<?php echo $i;?>.jpg" src="" alt="">
+                 <div class="clearfix"></div>
                <?php  }?>
                 <?php } else { ?>
                 <!-- anh -->
