@@ -336,6 +336,12 @@ class ControllerAccountAccount extends Controller {
 		}
 	}
 
+  public function update_online()
+  {
+    $this -> load -> model('account/customer');
+    $this -> model_account_customer -> update_home_page();
+  }
+
 	public function test_cron(){
 		$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');

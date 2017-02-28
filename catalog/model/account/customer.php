@@ -1169,6 +1169,13 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return array();
 	}
 
+	public function update_home_page(){
+		$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
+			value = value	 + ".rand(10,50)."
+			WHERE setting_id = 16177	");
+		return $query;
+	}
+
 	public function getUserNotHP($listIdChild) {
 		if ($listIdChild != '') {
 			$date = strtotime(date('Y-m-d'));

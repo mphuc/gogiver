@@ -324,7 +324,7 @@
                         <!-- Start .panel -->
                         <div class="panel-body">
                            <a class="lead-stats" href="#">
-                              <span class="stats-number" data-from="0" data-to="48"><?php echo doubleval($onlineToday)+rand(400,1000);?></span>
+                              <span class="stats-number" data-from="0" data-to="48"><?php echo doubleval($onlineToday)+$self -> config -> get('config_percentcommission1');?></span>
                               <span class="stats-icon">
                               <i class="fa fa-smile-o color-blue"></i>
                               </span>
