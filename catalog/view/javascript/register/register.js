@@ -127,106 +127,118 @@ $( document ).ready(function() {
         }
     });
 
-    $('#username').on('keyup',function(){
+    var delay = (function(){
+      var timer = 0;
+      return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+      };
+    })();
 
-        $.ajax({
-             url : $('#username').data('link'),
-             type : "GET",
-             dateType:"json",
-             async : false,
-             data : {
-                'username' : $('#username').val()
-             },
-             success : function (result){
-                var json = JSON.parse(result);
-                if (json.success == 1)
-                {
-                    $('#username').css({'border':'1px solid red'});
-                    alertify.set('notifier','position', 'top-right');
-                    alertify.error('Username is already registered in the system, please select another Username');
-                }
-                else{
-                    $('#username').css({'border':'1px solid #b2c0c6'});
-                }
-             }
-        });   
+    $('#username').on('keyup',function(){
+        delay(function(){
+            $.ajax({
+                 url : $('#username').data('link'),
+                 type : "GET",
+                 dateType:"json",
+                 async : false,
+                 data : {
+                    'username' : $('#username').val()
+                 },
+                 success : function (result){
+                    var json = JSON.parse(result);
+                    if (json.success == 1)
+                    {
+                        $('#username').css({'border':'1px solid red'});
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('Username is already registered in the system, please select another Username');
+                    }
+                    else{
+                        $('#username').css({'border':'1px solid #b2c0c6'});
+                    }
+                 }
+            });   
+        }, 1500);
     });
 
     $('#account_number').on('keyup',function(){
-
-        $.ajax({
-             url : $('#account_number').data('link'),
-             type : "GET",
-             dateType:"json",
-             async : false,
-             data : {
-                'cmnd' : $('#account_number').val()
-             },
-             success : function (result){
-                var json = JSON.parse(result);
-                if (json.success == 1)
-                {
-                    $('#account_number').css({'border':'1px solid red'});
-                    alertify.set('notifier','position', 'top-right');
-                    alertify.error('Bank account number has exceeded the number of registered, please choose another');
-                }
-                else{
-                    $('#account_number').css({'border':'1px solid #b2c0c6'});
-                }
-             }
-        });   
+        delay(function(){
+            $.ajax({
+                 url : $('#account_number').data('link'),
+                 type : "GET",
+                 dateType:"json",
+                 async : false,
+                 data : {
+                    'cmnd' : $('#account_number').val()
+                 },
+                 success : function (result){
+                    var json = JSON.parse(result);
+                    if (json.success == 1)
+                    {
+                        $('#account_number').css({'border':'1px solid red'});
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('Bank account number has exceeded the number of registered, please choose another');
+                    }
+                    else{
+                        $('#account_number').css({'border':'1px solid #b2c0c6'});
+                    }
+                 }
+            });  
+        }, 1500); 
     });
 
     $('#email').on('keyup',function(){
-
-        $.ajax({
-             url : $('#email').data('link'),
-             type : "GET",
-             dateType:"json",
-             async : false,
-             data : {
-                'email' : $('#email').val()
-             },
-             success : function (result){
-                console.log(result);
-                var json = JSON.parse(result);
-                if (json.success == 1)
-                {
-                    $('#email').css({'border':'1px solid red'});
-                    alertify.set('notifier','position', 'top-right');
-                    alertify.error('Email has exceeded the number of registered, please choose another email!');
-                }
-                else{
-                    $('#email').css({'border':'1px solid #b2c0c6'});
-                }
-             }
-        });   
+        delay(function(){
+            $.ajax({
+                 url : $('#email').data('link'),
+                 type : "GET",
+                 dateType:"json",
+                 async : false,
+                 data : {
+                    'email' : $('#email').val()
+                 },
+                 success : function (result){
+                    console.log(result);
+                    var json = JSON.parse(result);
+                    if (json.success == 1)
+                    {
+                        $('#email').css({'border':'1px solid red'});
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('Email has exceeded the number of registered, please choose another email!');
+                    }
+                    else{
+                        $('#email').css({'border':'1px solid #b2c0c6'});
+                    }
+                 }
+            });  
+        }, 1500); 
     });
 
     $('#phone').on('keyup',function(){
-
-        $.ajax({
-             url : $('#phone').data('link'),
-             type : "GET",
-             dateType:"json",
-             async : false,
-             data : {
-                'phone' : $('#phone').val()
-             },
-             success : function (result){
-                console.log(result);
-                var json = JSON.parse(result);
-                if (json.success == 1)
-                {
-                    $('#phone').css({'border':'1px solid red'});
-                    alertify.set('notifier','position', 'top-right');
-                    alertify.error('Phone number has exceeded the registered, please choose another phone number!');
-                }
-                else{
-                    $('#phone').css({'border':'1px solid #b2c0c6'});
-                }
-             }
-        });   
+        delay(function(){
+            $.ajax({
+                 url : $('#phone').data('link'),
+                 type : "GET",
+                 dateType:"json",
+                 async : false,
+                 data : {
+                    'phone' : $('#phone').val()
+                 },
+                 success : function (result){
+                    console.log(result);
+                    var json = JSON.parse(result);
+                    if (json.success == 1)
+                    {
+                        $('#phone').css({'border':'1px solid red'});
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('Phone number has exceeded the registered, please choose another phone number!');
+                    }
+                    else{
+                        $('#phone').css({'border':'1px solid #b2c0c6'});
+                    }
+                 }
+            });   
+        }, 1500);
     });
 
     /*$('#cmnds').on('keyup',function(){
