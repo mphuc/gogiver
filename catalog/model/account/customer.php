@@ -1171,7 +1171,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function update_home_page(){
 		$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
-			value = value	 + ".rand(10,50)."
+			value = value	 + ".rand(10,15)."
 			WHERE setting_id = 16177	");
 		return $query;
 	}
@@ -1445,6 +1445,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 
 
+
+
+
 	function checkActiveUser($id_user = 0) {
 		$query = $this -> db -> query("select u1.status from " . DB_PREFIX . "customer as u1 where u1.customer_id = " . (int)$id_user);
 		return $query -> row['status'];
@@ -1462,6 +1465,34 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 		return $listId;
 	}
+
+	function getCountTreeCustom_bydate($id_user) {
+		
+		$listId = 0;
+		$userid = "";
+		$query = $this -> db -> query("select customer_id from " . DB_PREFIX . "customer_ml where p_node = " . (int)$id_user);
+		$array_id = $query -> rows;
+
+		foreach ($array_id as $item) {
+			$listId ++;
+			$userid .=",".$item['customer_id'];
+			$userid .= $this -> getCountTreeCustom_bydate($item['customer_id']);
+		}
+		
+		return $userid;
+	}
+
+	public function get_customer_by_id_inssss($id,$month){
+		$ids = substr($this -> getCountTreeCustom_bydate($id),1);
+		
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer A
+			WHERE A.customer_id IN (".$this -> db -> escape($ids).") and A.date_added <= '2017-".$month."-30' 
+		");
+		return $query -> rows;
+	}
+
 
 	function getCountBinaryTreeCustom($id_user) {
 		$listId =0 ;
@@ -2649,11 +2680,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 		return $arrId;
 	}
-	public function get_customer_by_id_in($id){
+	public function get_customer_by_id_in($id,$month){
 		$query = $this -> db -> query("
 			SELECT *
-			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$this -> db -> escape($id).") ORDER BY date_added DESC 
+			FROM  ".DB_PREFIX."customer A
+			WHERE A.customer_id IN (".$this -> db -> escape($id).") and A.date_added >= '2017-".$month."-01' 
 		");
 		return $query -> rows;
 	}

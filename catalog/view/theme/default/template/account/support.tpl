@@ -25,21 +25,41 @@
         
                                 <p class="name">
                                   <input type="text" name="name" id="name" placeholder="John Doe" required />
-                                  <label for="name">Title</label>
+                                  <label for="name"><?php echo $lang['Title'] ?></label>
                                 </p>                                
                                 
                  
                               
                                 <p class="text">
-                                  <textarea name="content" placeholder="Write something to us" required ></textarea>
+                                  <textarea name="content" placeholder="<?php echo $lang['Write_something_to_us'] ?>" required ></textarea>
                                 </p>
                                 <p>
-                                <input style="width: 150px; margin-left: 10px; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" required />
-                                <img class="img_capcha" style="float: right" src="captcha_code.php"/>
+                                  <span class="input-group-btn pull-left"> 
+                                      <a href="kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
+                                          <?php echo $lang['Images'] ?>
+                                      </a>
+                                  </span>
+                                  <input style="width: 80%;" type="text" class="form-control" id="fieldID" name="Image" required minlenght="3" placeholder="<?php echo $lang['urlImages'] ?>">
+                                  
+                                  <div class="clearfix"></div>
+                                    
+                                  <div class="image_item text-center"> 
+                                      <img style="margin-top: 15px; width: 200px;" id="thumb_image" class="fancybox_image" src="catalog/view/theme/default/images/notFound.png"> 
+                                  </div>
+                                
                               </p>
+                                <p>
+                                <img class="img_capcha" style="float: left" src="captcha_code.php"/>
+                                <input style="width: 150px; margin-left: 10px; float: left" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" required />
+                                
+                              </p>
+                              <div class="form-group "> 
+                              
+                            
+                          </div>       
                                 <div class="clearfix"></div>
                                 <p class="submit">
-                                  <input type="submit" value="Send" />
+                                  <input type="submit" value="<?php echo $lang['Send'] ?>" />
                                 </p>
                               </form>
                           </div>

@@ -38,3 +38,6 @@ $_['accounttree']    = 'Downline';
 $_['Notification_System']    = 'Notification System';
 $_['Notification']    = 'Notification';
 $_['url_link']    = 'Referrer <small> (copy and share with your friends) </small> :';
+$_['Membership_Growth_Chart']    = 'Membership Growth Chart';
+$_['Total_Member']    = 'Total Member';
+$_['Month']    = 'Month';

@@ -130,29 +130,30 @@
   //print_r($get_customer_by_id_in); die;
   for ($i=1; $i <=12 ; $i++) { 
     $month[$i] = 0;
-    foreach ($get_customer_by_id_in as $key => $value) {
-      $date= explode("-",$value['date_added']);
-      if ( intval($date[1])."-".$date[0] == $i."-2017"){
-        $month[$i] +=1;
+      if ($i<10) $num = "0".$i; else $num = $i;
+      $count_user = $self -> model_account_customer ->get_customer_by_id_inssss($self->session->data['customer_id'],$num);
+      if ($num <= intval(date('m')))
+      {
+        $month[$i] = count($count_user);
       }
-    }
+      
   }
 ?>
 <script type="text/javascript">
     window.onload = function () {
       var chart = new CanvasJS.Chart("chartContainer", {
         title: {
-          text: "Membership Growth Chart"
+          text: "<?php echo $lang['Membership_Growth_Chart'] ?>"
         },
         axisY:{
-          title : "Total Member",
+          title : "<?php echo $lang['Total_Member'] ?>",
           titleFontColor: "#5472BA",
            titleFontSize: 20,
            lineColor: "#5472BA"
          },
          
          axisX:{
-          title : "Month",
+          title : "<?php echo $lang['Month'] ?>",
           titleFontColor: "#5472BA",
            titleFontSize: 20,
            lineColor: "#5472BA"
@@ -184,6 +185,8 @@
 
       chart.render();
     }
+   
+
   </script>
               <div id="chartContainer" style="height: 400px; width: 100%; margin-bottom: 30px;"></div>
 

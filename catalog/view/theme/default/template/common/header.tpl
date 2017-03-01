@@ -35,6 +35,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all' rel='stylesheet' type='text/css'>
         <!-- Css files -->
         <!-- Icons -->
+        <link href="catalog/view/theme/default/css/jquery.fancybox.css" rel="stylesheet" type="text/css" /> 
         <link href="catalog/view/theme/default/css/icons/font-awesome.css" rel="stylesheet" />
       
         <link href="catalog/view/theme/default/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -52,6 +53,7 @@
     <?php foreach ($styles as $style) { ?>
     <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
     <?php } ?>
+    <script  src="catalog/view/javascript/jquery.fancybox.pack.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/jquery.animateNumber.min.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/smooth-sliding-menu.js" type="text/javascript"></script>

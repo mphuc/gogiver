@@ -90,4 +90,8 @@ $_['useridph'] = 'ID';
 $_['create_ghh'] = 'Đặt lệnh chờ';
 $_['Creategh'] = 'Đặt lệnh nhận về (GD)';
 $_['Date_create_f1_hs'] = 'Ngày đặt lệnh';
- 
+$_['Send'] = 'Gửi';
+$_['Title'] = 'Tiêu đề';
+$_['Write_something_to_us'] = 'Nội dung hỗ trợ';
+$_['Images'] = 'Chọn ảnh...';
+$_['urlImages'] = 'Đường dẫn hình ảnh...';

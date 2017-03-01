@@ -37,3 +37,6 @@ $_['member_online']    = 'Thành viên đang hoạt động';
 $_['Notification_System']    = 'Thông báo hệ thống';
 $_['Notification']    = 'Thông báo';
 $_['url_link']    = 'Liên kết giới thiệu <small>(sao chép và chia sẻ cho bạn bè của bạn): </small>';
+$_['Membership_Growth_Chart']    = 'Biểu đồ tăng trưởng thành viên';
+$_['Total_Member']    = 'Tổng thành viên';
+$_['Month']    = 'Tháng';
