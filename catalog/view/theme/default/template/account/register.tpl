@@ -118,7 +118,7 @@
                                                 <div class="col-md-6">
                                                   <br>
                                                   <?php echo $lang['text_Submitssss'] ?>
-                                                  <p style="margin-top: 30px;"><input id="toi_dong_y" style="float: left;" type="checkbox" name=""><b class="toi_dong_y" style="float: left;margin-top: -10px;margin-left: 32px;"><?php echo $lang['toi_dong_y'] ?></b></p>
+                                                  <p style="margin-top: 30px;"><input id="toi_dong_y" style="float: left;" type="checkbox" name=""><b class="toi_dong_y" style="float: left;margin-top: -18px;margin-left: 32px;"><?php echo $lang['toi_dong_y'] ?></b></p>
                                                 </div>
                                                 <div class="clearfix"></div>
                                                 <div id="success"></div>
