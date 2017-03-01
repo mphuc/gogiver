@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle($lang['heading_title']); 
+   $self -> document -> setTitle("Support"); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -35,7 +35,7 @@
                                 </p>
                                 <p>
                                   <span class="input-group-btn pull-left"> 
-                                      <a href="kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
+                                      <a href="<?php echo HTTPS_SERVER ?>kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
                                           <?php echo $lang['Images'] ?>
                                       </a>
                                   </span>
@@ -44,7 +44,7 @@
                                   <div class="clearfix"></div>
                                     
                                   <div class="image_item text-center"> 
-                                      <img style="margin-top: 15px; width: 200px;" id="thumb_image" class="fancybox_image" src="catalog/view/theme/default/images/notFound.png"> 
+                                      <img style="margin-top: 15px; width: 200px;" id="thumb_image" class="fancybox_image" src="<?php echo HTTPS_SERVER ?>catalog/view/theme/default/images/notFound.png"> 
                                   </div>
                                 
                               </p>

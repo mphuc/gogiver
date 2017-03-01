@@ -127,11 +127,137 @@ $( document ).ready(function() {
         }
     });
 
+    $('#username').on('keyup',function(){
+
+        $.ajax({
+             url : $('#username').data('link'),
+             type : "GET",
+             dateType:"json",
+             async : false,
+             data : {
+                'username' : $('#username').val()
+             },
+             success : function (result){
+                var json = JSON.parse(result);
+                if (json.success == 1)
+                {
+                    $('#username').css({'border':'1px solid red'});
+                    alertify.set('notifier','position', 'top-right');
+                    alertify.error('Username is already registered in the system, please select another Username');
+                }
+                else{
+                    $('#username').css({'border':'1px solid #b2c0c6'});
+                }
+             }
+        });   
+    });
+
+    $('#account_number').on('keyup',function(){
+
+        $.ajax({
+             url : $('#account_number').data('link'),
+             type : "GET",
+             dateType:"json",
+             async : false,
+             data : {
+                'cmnd' : $('#account_number').val()
+             },
+             success : function (result){
+                var json = JSON.parse(result);
+                if (json.success == 1)
+                {
+                    $('#account_number').css({'border':'1px solid red'});
+                    alertify.set('notifier','position', 'top-right');
+                    alertify.error('Bank account number has exceeded the number of registered, please choose another');
+                }
+                else{
+                    $('#account_number').css({'border':'1px solid #b2c0c6'});
+                }
+             }
+        });   
+    });
+
+    $('#email').on('keyup',function(){
+
+        $.ajax({
+             url : $('#email').data('link'),
+             type : "GET",
+             dateType:"json",
+             async : false,
+             data : {
+                'email' : $('#email').val()
+             },
+             success : function (result){
+                console.log(result);
+                var json = JSON.parse(result);
+                if (json.success == 1)
+                {
+                    $('#email').css({'border':'1px solid red'});
+                    alertify.set('notifier','position', 'top-right');
+                    alertify.error('Email has exceeded the number of registered, please choose another email!');
+                }
+                else{
+                    $('#email').css({'border':'1px solid #b2c0c6'});
+                }
+             }
+        });   
+    });
+
+    $('#phone').on('keyup',function(){
+
+        $.ajax({
+             url : $('#phone').data('link'),
+             type : "GET",
+             dateType:"json",
+             async : false,
+             data : {
+                'phone' : $('#phone').val()
+             },
+             success : function (result){
+                console.log(result);
+                var json = JSON.parse(result);
+                if (json.success == 1)
+                {
+                    $('#phone').css({'border':'1px solid red'});
+                    alertify.set('notifier','position', 'top-right');
+                    alertify.error('Phone number has exceeded the registered, please choose another phone number!');
+                }
+                else{
+                    $('#phone').css({'border':'1px solid #b2c0c6'});
+                }
+             }
+        });   
+    });
+
+    /*$('#cmnds').on('keyup',function(){
+
+        $.ajax({
+             url : $('#cmnds').data('link'),
+             type : "GET",
+             dateType:"json",
+             async : false,
+             data : {
+                'phone' : $('#phone').val()
+             },
+             success : function (result){
+                console.log(result);
+                var json = JSON.parse(result);
+                if (json.success == 1)
+                {
+                    $('#cmnds').css({'border':'1px solid red'});
+                    alertify.error('The Citizenship card has exceeded the registered!');
+                }
+                else{
+                    $('#cmnds').css({'border':'1px solid #b2c0c6'});
+                }
+             }
+        });   
+    })*/
+    
 
     $('#register-account').on('submit', function(event) {
        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-
-
+       
         $.fn.existsWithValue = function() {
             return this.length && this.val().length;
         };
@@ -334,9 +460,9 @@ $( document ).ready(function() {
             
         };
 
-
         validate.init($(this));
         if (validate.account_number($(this)) === false) {
+
             return false;
         } else {
             validate.init($(this));
@@ -410,6 +536,17 @@ $( document ).ready(function() {
         {
             $('.error-file').show();
             return false;
+        }
+        if ($('#toi_dong_y').is(":checked"))
+       {
+        //check
+        
+       }
+        else
+        {
+            $('.toi_dong_y').css({'color':'red'});
+            // ko check
+           return false;
         }
         // if (validate.cmnd($(this)) === false) {
         //     return false;

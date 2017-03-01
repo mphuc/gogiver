@@ -106,7 +106,7 @@
                                             
                                                <a href="" onclick="document.getElementById('file').click(); return false">
                                                <img id="blah" src="#" style="display:none;" />                                         
-                                               <img id="old_img" src="catalog/view/theme/default/img/citizencard.png" alt=""></a>
+                                               <img style="margin: 0 auto" id="old_img" src="catalog/view/theme/default/img/citizencard.png" alt=""></a>
                                              
                                              
                                                </span>
@@ -115,22 +115,23 @@
                                                             </div>       
                                                
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                  <br>
+                                                  <?php echo $lang['text_Submitssss'] ?>
+                                                  <p style="margin-top: 30px;"><input id="toi_dong_y" style="float: left;" type="checkbox" name=""><b class="toi_dong_y" style="float: left;margin-top: -10px;margin-left: 32px;"><?php echo $lang['toi_dong_y'] ?></b></p>
+                                                </div>
                                                 <div class="clearfix"></div>
                                                 <div id="success"></div>
                                                 <br/>
-                                                <div class="col-md-12">
-                                                   <button type="submit" style="width: 300px; font-size: 18px;" class="btn-register btn btn-success pull-right "><?php echo $lang['Submit_dk'] ?></button>
+                                                <div class="col-md-12 text-center">
+                                                   <button type="submit" style="width: 45%; font-size: 18px;" class="btn-register btn btn-success "><?php echo $lang['Submit_dk'] ?></button>
                                                 </div>
                                              </div>
                                           </form>
                                        </div>
                                        <div class="row">
 
-                                          <div class="col-md-12" >
-                                             <?php echo $lang['text_register'] ?>
-                                             <br/>
-                                          </div>
+                                          
 
                                           <div class="col-md-12">
                                              <!-- <p><?php echo $lang['url_link'] ?>:</p>

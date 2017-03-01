@@ -40,3 +40,12 @@ $_['ok']            = 'Thành công';
 $_['text_register'] = '<p>Lưu ý: Chỉ hỗ trợ cho tài khoản Vietcombank';
 $_['url_link'] = 'Sao chép đường dẫn bên dưới để gửi cho bạn bè cùng tham gia hệ thống';
 $_['Submit_dk']            = 'Đăng ký';
+$_['text_Submitssss']            = '<p>Thông tin đăng ký hợp lệ bao gồm: <p>
+                              <p> - Hình Chứng Minh Nhân Dân (hình ảnh rõ, không bị mờ số)</p>
+                              <p> - Tài khoản ngân hàng (chỉ hỗ trợ cho tài khoản Vietcombank)</p>
+                              <p> - Số điện thoại, Email.</p>
+                              <p><u><b>Lưu ý:</b></u>  Để đảm bảo tích xác thực của thông tin, Iontach chỉ chấp nhận Chứng Minh Nhân Dân, không chấp nhận Passport và Bằng Lái Xe.</p>
+                              <p>Tên chủ tài khoản ngân hàng phải khớp với chứng minh nhân dân</p>
+                              <p>Tôi hoàn toàn chịu trách nhiệm với những thông tin đăng ký trên.</p>
+                              <p>Tham gia vào Iontach là hoàn toàn tự nguyện.</p>';
+$_['toi_dong_y']            = 'Tôi đồng ý';

@@ -403,10 +403,10 @@ $block_id = $this -> check_block_id();
 
 				//save history cho user chuyen di
 
-				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer Pin', 'ID Receive '. $customerReceived['username']);
+				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer', 'ID Receive '. $customerReceived['username']);
 
 				//save history cho user nhan token
-				$id_history = $this -> model_account_customer -> saveHistoryPin($customerReceived['customer_id'], '+ ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer Pin', ' '. $customerSend['username']);
+				$id_history = $this -> model_account_customer -> saveHistoryPin($customerReceived['customer_id'], '+ ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer', ' '. $customerSend['username']);
 				//update 3840000 VND
 				//get r-wallet of user received
 				$checkR_Wallet = $this -> model_account_customer -> checkR_Wallet($customerReceived['customer_id']);

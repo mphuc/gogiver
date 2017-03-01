@@ -42,3 +42,12 @@ $_['ok']            = 'Create account successfull';
 $_['text_register'] = '<P> Note: Only supports for Vietcombank account </ P>';
 $_['url_link'] = 'Copy the link below to send your friends to join the system';
 $_['Submit_dk']            = 'Submit';
+$_['text_Submitssss']            = '<p>Vaild information including: <p>
+                              <p> - The indentity Card\'s picture</p>
+                              <p> - Bank account (only support for Vietcombank)</p>
+                              <p> - Phone number, Email.</p>
+                              <p><u><b>Note:</b></u>  To ansure the authenticity of information, Iontach only accepts the indentity Cart, Not Passport and Drivers License.</p>
+                              <p>Bank account holder\'s name must match the Identity Cart</p>
+                              <p>I\'m in change of the registration information</p>
+                              <p>Joining Iontach is completely voluntary.</p>';
+$_['toi_dong_y']            = 'I Agree';

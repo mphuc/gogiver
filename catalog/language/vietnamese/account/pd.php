@@ -5,7 +5,7 @@ $_['heading_title']     = 'Cho Đi (PD)';
 $_['text_home']            = 'Trang Chủ';
 $_['text_register_user']            = 'Danh sách cho đi';
 
-$_['text_button_create']            = 'Đặt lệnh giúp đỡ';
+$_['text_button_create']            = 'Đặt lệnh giúp đỡ (PD)';
 
 $_['NO']            = 'STT';
 

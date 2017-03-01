@@ -41,3 +41,11 @@ $_['url_link']    = 'Referrer <small> (copy and share with your friends) </small
 $_['Membership_Growth_Chart']    = 'Membership Growth Chart';
 $_['Total_Member']    = 'Total Member';
 $_['Month']    = 'Month';
+
+$_['New_Member']    = 'New Member';
+$_['Username']    = 'Username';
+$_['Status']    = 'Status';
+$_['Active']    = 'Active';
+$_['locks']    = 'Lock';
+$_['Sponsor']    = 'Sponsor';
+$_['Downline_PDGD']    = 'Downline_PDGD';

@@ -299,15 +299,13 @@ class ControllerAccountMember extends Controller {
 					$fl .= '<table id="" class="table table-striped table-bordered " >';
 			        $fl .= '   <thead>';
 			        $fl .= '      <tr  class="header">';
-					$fl .= '       	<th class="text-center">STT</th>';
-					$fl .= '           <th>ID Hệ Thống</th>';
-					$fl .= '           <th>Họ Tên</th>';  
-					
-					$fl .= '           <th>Pin</th>';
-					$fl .= '           <th>Người Bảo Trợ</th>';
-					// $fl .= '           <th>Investment Package</th>';
-					$fl .= '           <th>Trạng Thái PH</th>';
-					// $fl .= '           <th>Country</th>';
+					$fl .= '       	<th>'.$lang['No'].'</th>
+                           <th>'.$lang['id_hethong'].'</th>
+                           <th>'.$lang['full_name'].'</th>
+                           
+                           <th>Pin</th>
+                           <th>'.$lang['Guardian'].'</th>
+                           <th>'.$lang['status'].'</th>';
 			        $fl .= '      </tr>';
 			        $fl .= '       </thead>';
 					$fl .= '<tbody>';
@@ -323,7 +321,7 @@ class ControllerAccountMember extends Controller {
 						$fl .= '<td data-title="Người Bảo Trợ">'.$this -> getParrent($value['p_node']).'</td>';
 						// $fl .= '<td data-title="Investment">'.$this -> getPD($value['customer_id']).' BTC </td>';
 						
-						$fl .= '<td data-title="Trạng Thái PH">'.(intval($this -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">Kích hoạt</span>' : '<span class="text-warning">Đang chờ</span>').'</td>';
+						$fl .= '<td data-title="Trạng Thái PH">'.(intval($this -> checkPD($value['customer_id'])) === 1 ? '<span class="text-success">Kích hoạt</span>' : '<span class="text-warning">'.$lang['Waiting'].'	</span>').'</td>';
 						 // $fl .= '<td data-title="Country">'.$this -> getCountry($value['country_id']).'</td>';
 					
 						$fl .= '</tr>';
@@ -331,9 +329,9 @@ class ControllerAccountMember extends Controller {
 					}
 					$fl .= '</tbody>';
 					$fl .= '</table>';
-					$fl .= '<button id="Prev" type="button" class="btn btn-primary">Trang sau</button>'; 
+					$fl .= '<button id="Prev" type="button" class="btn btn-primary">'.$lang['trang_truoc'].'</button>'; 
 					$fl .= '<input id="next_page" type="hidden" name="next" value="'.$limits.'">
-						<button id="Next" type="button" class="btn btn-primary">Trang tiếp</button>'; 
+						<button id="Next" type="button" class="btn btn-primary">'.$lang['trang_sau'].'</button>'; 
 					
 					$json['fl'.$i] = $fl;
 					$fl = null;

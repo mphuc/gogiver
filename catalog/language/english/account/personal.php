@@ -16,4 +16,7 @@ $_['Guardian'] = "Guardian";
 $_['status'] = "Status PD";
 $_['Waiting'] = "Waiting";
 $_['Active'] = "Active";
+$_['trang_sau'] = "Next page";
+$_['trang_truoc'] = "Previous page";
+
 ?>

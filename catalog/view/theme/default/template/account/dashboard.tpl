@@ -363,15 +363,15 @@
               <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
                 <div class="panel-heading">
-                   <h4 class="panel-title"><i class="fa fa-align-justify"></i>New Member</h4>
+                   <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['New_Member']; ?></h4>
                 </div>
                 <div class="panel-body form-horizontal group-border stripped">
                   <table id="datatable" class="table table-striped table-bordered dataTable">
                   <tr>
                     <th>ID</th>
-                    <th>Username</th>
-                    <th>Sponsor</th>
-                    <th>Status</th>
+                    <th><?php echo $lang['Username']; ?></th>
+                    <th><?php echo $lang['Sponsor']; ?></th>
+                    <th><?php echo $lang['Status']; ?></th>
                   </tr>
                   
                   <?php foreach ($get_customer_by_id_in as $key => $value) { ?>
@@ -394,7 +394,7 @@
                         <?php echo $self->getusername($value['p_node'])['username']; ?>
                       </td>
                       <td>
-                        <?php if ($value['status'] == 1) echo "ACTIVE"; else "LOCK"; ?>
+                        <?php if ($value['status'] == 1) echo $lang['Active']; else $lang['locks']; ?>
                       </td>
                     </tr>
                   
@@ -408,14 +408,14 @@
               <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
                 <div class="panel-heading">
-                   <h4 class="panel-title"><i class="fa fa-align-justify"></i>Downline PDGD</h4>
+                   <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['Downline_PDGD']; ?></h4>
                 </div>
                 <div class="panel-body form-horizontal group-border stripped">
                   <table id="datatable" class="table table-striped table-bordered dataTable">
                   <tr>
                     <th>ID</th>
-                    <th>Username</th>
-                    <th>Downline PDGD</th>
+                    <th><?php echo $lang['Username']; ?></th>
+                    <th><?php echo $lang['Downline_PDGD']; ?></th>
                   </tr>
                   <?php foreach ($get_childrend as $key => $value) { ?>
                     <tr>

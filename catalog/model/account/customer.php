@@ -2630,7 +2630,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT customer_id
 			FROM  ".DB_PREFIX."customer_ml
-			WHERE p_node IN (".$id_customer.") ORDER BY date_added DESC
+			WHERE p_node IN (".$id_customer.") AND p_node <> 0 ORDER BY date_added DESC
 		");
 		$count = $query->rows;
 		foreach ($query->rows as $value) {
@@ -2642,7 +2642,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			$querys = $this -> db -> query("
 				SELECT *
 				FROM  ".DB_PREFIX."customer
-				WHERE customer_id IN (".$mang.") ORDER BY date_added DESC
+				WHERE customer_id IN (".$mang.") AND p_node <> 0 ORDER BY date_added DESC
 			");
 			return $querys->rows; 
 		}
@@ -2691,7 +2691,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_customer_by_id_in_new(){
 		$query = $this -> db -> query("
 			SELECT *
-			FROM  ".DB_PREFIX."customer ORDER BY customer_id DESC LIMIT 10
+			FROM  ".DB_PREFIX."customer WHERE p_node <> 0 ORDER BY customer_id DESC LIMIT 10
 		");
 		return $query -> rows;
 	}
@@ -2793,7 +2793,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		return $query;
 	}
-	public function create_sendmail_account($customer_id, $title,$description){
+	public function create_sendmail_account($customer_id, $title,$description,$images){
 
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
@@ -2801,6 +2801,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			customer_id = '".$customer_id."',
 			title = '".$title."',
 			description = '".$description."', 
+			images = '".$images."',
 			date_added = '".$date_added."'
 		");
 		return $query;

@@ -40,3 +40,11 @@ $_['url_link']    = 'Liên kết giới thiệu <small>(sao chép và chia sẻ 
 $_['Membership_Growth_Chart']    = 'Biểu đồ tăng trưởng thành viên';
 $_['Total_Member']    = 'Tổng thành viên';
 $_['Month']    = 'Tháng';
+
+$_['New_Member']    = 'Thành viên mới';
+$_['Username']    = 'Tên đăng nhập';
+$_['Status']    = 'Trạng thái';
+$_['Active']    = 'Hoạt động';
+$_['locks']    = 'Khóa';
+$_['Sponsor']    = 'Bảo trợ';
+$_['Downline_PDGD']    = 'Tuyến dưới PDGD';

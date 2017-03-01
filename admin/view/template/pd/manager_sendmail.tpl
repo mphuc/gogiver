@@ -19,6 +19,7 @@
             <th>Username</th>
             <th>Title</th>
             <th>Content</th>
+            <th>Imgages</th>
             <th>Date_added</th>
           </tr>
         </thead>
@@ -30,6 +31,7 @@
             <td><?php echo $value['username'] ?></td>
             <td><?php echo $value['title'] ?></td>
             <td><?php echo $value['description'] ?></td>
+            <td><img style="width: 100px;" src="<?php echo $value['images'] ?>" /></td>
             <td><?php echo  date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
           </tr>
 

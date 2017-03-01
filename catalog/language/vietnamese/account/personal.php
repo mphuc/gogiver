@@ -16,4 +16,6 @@ $_['Guardian'] = "Người bảo trợ";
 $_['status'] = "Trạng thái PD";
 $_['Waiting'] = "Đang chờ";
 $_['Active'] = "Kích hoạt";
+$_['trang_sau'] = "Trang sau";
+$_['trang_truoc'] = "Trang trước";
 ?>
