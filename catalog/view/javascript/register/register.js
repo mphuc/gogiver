@@ -238,7 +238,7 @@ $( document ).ready(function() {
                     }
                  }
             });   
-        }, 1500);
+        }, 1500);   
     });
 
     /*$('#cmnds').on('keyup',function(){
@@ -265,6 +265,17 @@ $( document ).ready(function() {
              }
         });   
     })*/
+    $('#toi_dong_y').on('change',function(){
+        if ($('#toi_dong_y').is(":checked"))
+       {
+        $('#register-account button').removeAttr('disabled');
+       }
+       else{
+        $('#register-account button').attr("disabled","disabled");
+       }
+       
+    })
+
     
 
     $('#register-account').on('submit', function(event) {

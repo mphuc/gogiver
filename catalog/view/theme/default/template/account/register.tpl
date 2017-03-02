@@ -124,7 +124,7 @@
                                                 <div id="success"></div>
                                                 <br/>
                                                 <div class="col-md-12 text-center">
-                                                   <button type="submit" style="width: 45%; font-size: 18px;" class="btn-register btn btn-success "><?php echo $lang['Submit_dk'] ?></button>
+                                                   <button type="submit" style="width: 45%; font-size: 18px;" class="btn-register btn btn-success " disabled><?php echo $lang['Submit_dk'] ?></button>
                                                 </div>
                                              </div>
                                           </form>
