@@ -274,7 +274,7 @@ $( document ).ready(function() {
         $('#register-account button').attr("disabled","disabled");
        }
        
-    })
+    }) 
 
     
 
