@@ -261,6 +261,8 @@
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">All</a></li>
     <li><a data-toggle="tab" href="#menu1">User Lock</a></li>
+    <li><a data-toggle="tab" href="#menu2">Special User</a></li>
+    <li><a data-toggle="tab" href="#menu3">Frozen user</a></li>
   </ul>
 
   <div class="tab-content">
@@ -428,6 +430,157 @@
         </form>
         </div>
         </div>
+
+
+        <div id="menu2" class="tab-pane fade">
+          <div class="row">
+          <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <!-- <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td> -->
+                  <td style="width: 40px;" >STT</td>
+                 
+                  <td style="width: 140px;" class="text-left" >Username
+                  </td>
+                   <td style="">Email</td>
+                   <td>Images CMND</td>
+                   <td>Number CMND</td>
+                  <td style="width: 110px;">Phone</td>
+                  <td style="width: 140px;">Presenter</td>
+                  
+                  <td style="width: 110px;" class="text-right"><?php echo $column_action; ?></td>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if ($customer_spicel) { $n=1;?>
+                <?php foreach ($customer_spicel as $customer) { 
+                  //print_r($customer); die;
+                ?>
+                <tr class="">
+                  <!-- <td class="text-center"><?php if (in_array($customer['customer_id'], $selected)) { ?>
+                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" checked="checked" />
+                    <?php } else { ?>
+                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" />
+                    <?php } ?></td> -->
+                  <td><?php echo $n;?></td>
+                  
+                  <td class="text-left"><?php echo $customer['username']; ?></td>
+                 <td class="text-left"><?php echo $customer['email']; ?></td>
+                 <td class="text-center">
+                  <?php if($customer['img_profile'] != "") { ?>
+                  <a href="<?php echo $customer['img_profile']; ?>" target="_blank">
+                    <img style="width:120px;    max-height: 92px;" src="<?php echo $customer['img_profile']; ?>" />
+                  </a>
+                  <?php } else {echo "Không có CMND"; }?>
+                  </td>
+                  <td><?php echo $customer['cmnd'] ?></td>
+                  <td class="text-left"><?php echo $customer['telephone']; ?></td>
+                  <td class="text-left">
+                    <?php 
+                   
+                    if (count($seft->get_pnode($customer['p_node'])) > 0)
+                    {
+                      echo $seft->get_pnode($customer['p_node'])['username']; 
+                    }
+                   
+                    ?>
+                    
+                  </td>
+                  <td>
+                    <a href="index.php?route=sale/customer/edit&token=<?php echo $_GET['token']; ?>&customer_id=<?php echo $customer['customer_id']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                <?php $n++; } ?>
+
+                <?php } else { ?>
+                <tr>
+                  <td class="text-center" colspan="8"><?php echo $text_no_results; ?></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </form>
+        </div>
+        </div>
+
+
+        <div id="menu3" class="tab-pane fade">
+          <div class="row">
+          <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <!-- <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td> -->
+                  <td style="width: 40px;" >STT</td>
+                 
+                  <td style="width: 140px;" class="text-left" >Username
+                  </td>
+                   <td style="">Email</td>
+                   <td>Images CMND</td>
+                   <td>Number CMND</td>
+                  <td style="width: 110px;">Phone</td>
+                  <td style="width: 140px;">Presenter</td>
+                  
+                  <td style="width: 110px;" class="text-right"><?php echo $column_action; ?></td>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if ($getCustomers_forzen) { $n=1;?>
+                <?php foreach ($getCustomers_forzen as $customer) { 
+                  //print_r($customer); die;
+                ?>
+                <tr class="">
+                  <!-- <td class="text-center"><?php if (in_array($customer['customer_id'], $selected)) { ?>
+                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" checked="checked" />
+                    <?php } else { ?>
+                    <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" />
+                    <?php } ?></td> -->
+                  <td><?php echo $n;?></td>
+                  
+                  <td class="text-left"><?php echo $customer['username']; ?></td>
+                 <td class="text-left"><?php echo $customer['email']; ?></td>
+                 <td class="text-center">
+                  <?php if($customer['img_profile'] != "") { ?>
+                  <a href="<?php echo $customer['img_profile']; ?>" target="_blank">
+                    <img style="width:120px;    max-height: 92px;" src="<?php echo $customer['img_profile']; ?>" />
+                  </a>
+                  <?php } else {echo "Không có CMND"; }?>
+                  </td>
+                  <td><?php echo $customer['cmnd'] ?></td>
+                  <td class="text-left"><?php echo $customer['telephone']; ?></td>
+                  <td class="text-left">
+                    <?php 
+                   
+                    if (count($seft->get_pnode($customer['p_node'])) > 0)
+                    {
+                      echo $seft->get_pnode($customer['p_node'])['username']; 
+                    }
+                   
+                    ?>
+                    
+                  </td>
+                  <td>
+                    <a href="index.php?route=sale/customer/edit&token=<?php echo $_GET['token']; ?>&customer_id=<?php echo $customer['customer_id']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                <?php $n++; } ?>
+
+                <?php } else { ?>
+                <tr>
+                  <td class="text-center" colspan="8"><?php echo $text_no_results; ?></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </form>
+        </div>
+        </div>
+
+
+
       </div>
       </div>
     </div>

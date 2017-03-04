@@ -166,17 +166,36 @@
           dataPoints: [
           { x: 1, y: <?php echo $month[1] ?> },
           { x: 2, y: <?php echo $month[2] ?> },
+          <?php if (intval(date('m')) == 3) { ?>
           { x: 3, y: <?php echo $month[3] ?> },
+          <?php } ?>
+          <?php if (intval(date('m')) > 3) { ?>
           { x: 4, y: <?php echo $month[4] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 4) { ?>
           { x: 5, y: <?php echo $month[5] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 5) { ?>
           { x: 6, y: <?php echo $month[6] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 6) { ?>
           { x: 7, y: <?php echo $month[7] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 7) { ?>
           { x: 8, y: <?php echo $month[8] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 8) { ?>
           { x: 9, y: <?php echo $month[9] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 9) { ?>
           { x: 10, y: <?php echo $month[10] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 10) { ?>
           { x: 11, y: <?php echo $month[11] ?> },
+          <?php } ?>
+           <?php if (intval(date('m')) > 11) { ?>
           { x: 12, y: <?php echo $month[12] ?> }
-        
+          <?php } ?>
       
           ]
         }

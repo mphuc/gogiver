@@ -13,7 +13,7 @@
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
-                 <h4 class="panel-title"><i class="fa fa-align-justify"></i>Mua PIN</h4>
+                 <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_buy'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
@@ -60,19 +60,19 @@
                                  <div class="col-lg-12">
                                     <div class="pd-panel" style="padding-bottom:20px;">
                      <div class="col-md-12">
-                       <h3>Lịch sử mua PIN</h3>
+                       <h3><?php echo $lang['history_Ping'] ?></h3>
                      </div>
                      <div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
                                         <table id="" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                   <th class="text-center">STT</th>
-                                                          <th>Ngày Tạo</th>
+                                                   <th class="text-center"><?php echo $lang['stt'] ?></th>
+                                                          <th><?php echo $lang['date'] ?></th>
                                                           <th>Pin</th>
-                                                          <th>Số BTC</th>
-                                                          <th>Đã Nhận (BTC)</th>
-                                                          <th>Trạng Thái</th>
-                                                          <th>Ví</th>
+                                                          <th><?php echo $lang['Amount'] ?></th>
+                                                          <th><?php echo $lang['text_blockchain_received'] ?></th>
+                                                          <th><?php echo $lang['status_blockchain_received'] ?></th>
+                                                          <th><?php echo $lang['wallet'] ?></th>
                                                           <th>QR</th>
                                                 </tr>
                                             </thead>
@@ -82,14 +82,14 @@
                      <?php for ($i=0; $i < count($invoice); $i++) { ?> 
       
                                                             <tr>
-                                                               <td data-title="STT" align="center"><?php echo $i+1 ?></td>
-                                                                <td data-title="Ngày Tạo"><?php echo date("Y-m-d H:i:A", strtotime($invoice[$i]['date_created'])); ?></td>
+                                                               <td data-title="<?php echo $lang['stt'] ?>" align="center"><?php echo $i+1 ?></td>
+                                                                <td data-title="<?php echo $lang['date'] ?>"><?php echo date("Y-m-d H:i:A", strtotime($invoice[$i]['date_created'])); ?></td>
                                                                 <td data-title="Pin"><?php echo $invoice[$i]['pin'] ?></td>
-                                                                <td data-title="Số BTC"><?php echo (intval($invoice[$i]['amount']) / 100000000) ?></td>
-                                                                <td data-title="Đã Nhận (BTC)">
+                                                                <td data-title="<?php echo $lang['Amount'] ?>"><?php echo (intval($invoice[$i]['amount']) / 100000000) ?></td>
+                                                                <td data-title="<?php echo $lang['text_blockchain_received'] ?>">
                                                                     <?php echo (intval($invoice[$i]['received']) / 100000000) ?>
                                                                 </td>
-                                                                <td data-title="Trạng Thái">
+                                                                <td data-title="<?php echo $lang['status_blockchain_received'] ?>">
                                                                    <span class="label <?php echo intval($invoice[$i]['confirmations']) === 0 ? "label-warning" : 'label-success' ?>"><?php echo intval($invoice[$i]['confirmations']) === 0 ? "Pending" : 'Finish' ?></span>
                                                                 </td>
                                                                 <td data-title="Ví">

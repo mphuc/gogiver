@@ -104,7 +104,7 @@
         <div class="container">
             <div class="footer-links">
                 
-                <p class="text-center mb5"><a href="forgot.html" class="color-gray-lighter color-hover-white s16 transition" style=" color: #48ae00 !important; "> Forgot your password ?</a>
+                <p class="text-center mb5"><a href="forgot.html" class="color-gray-lighter color-hover-white s16 transition" style=" color: #fff !important; "> Forgot your password ?</a>
                 </p>
             </div>
         </div>

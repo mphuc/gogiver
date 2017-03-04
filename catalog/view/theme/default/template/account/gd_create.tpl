@@ -98,7 +98,7 @@
                         <label class="col-md-4 control-label"></label>
                            <div class="col-md-8">
                               <div class="loading"></div>
-                              <button style="width: 100%" type="submit" class="btn-register btn btn-primary"><?php echo $lang['Creategh'] ?></button>
+                              <button style="width: 100%" type="submit" class="btn-register btn btn-primary"><?php echo $lang['Creategh_s'] ?></button>
                            </div>
                     
                      </div>

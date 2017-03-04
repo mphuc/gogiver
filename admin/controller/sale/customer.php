@@ -776,6 +776,12 @@ class ControllerSaleCustomer extends Controller {
 
 		$results = $this->model_sale_customer->getCustomers($filter_data);
 		$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock();
+
+		$data['customer_spicel'] = $this-> model_sale_customer-> getCustomers_spicel();
+
+
+		$data['getCustomers_forzen'] = $this-> model_sale_customer-> getCustomers_forzen();
+		
  		//$all_hoivien_phi = 0;
 		//$all_congtac_phi = 0;
 		//$all_total_payout = 0;

@@ -54,3 +54,9 @@ $_['success'] = 'Thành công';
 $_['complete_transpin'] = 'Chuyển pin thành công';
 $_['status_blockchain_received'] = "Trạng thái";
 $_['Your_Ping'] = "Pin của bạn";
+
+$_['history_Ping'] = "Lịch sử mua pin";
+$_['stt'] = "STT";
+$_['date'] = "Ngày tạo";
+$_['Amount'] = "Số BTC";
+$_['wallet'] = "Ví";

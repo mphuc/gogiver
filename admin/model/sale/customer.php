@@ -200,10 +200,23 @@ class ModelSaleCustomer extends Model {
 		}
 
 	public function getCustomers_lock(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8 AND (customer_id < 72 OR customer_id > 124)");
 
 		return $query->rows;
 	}
+	public function getCustomers_spicel(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id >=72 AND customer_id <= 124 OR (customer_id = 64 OR customer_id = 65)");
+
+		return $query->rows;
+	}
+
+	public function getCustomers_forzen(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 100 AND (customer_id < 72 OR customer_id > 124)");
+
+		return $query->rows;
+	}
+
+
 
 	public function getCustomers($data = array()) {
 
@@ -211,7 +224,7 @@ class ModelSaleCustomer extends Model {
 		 $sql = "SELECT c.*,c.date_added as date_addeds,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
 		 FROM " . DB_PREFIX . "customer c
 		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
-		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id)";
+		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id) WHERE (c.customer_id < 72 OR c.customer_id > 124) AND c.customer_id <> 64 AND c.customer_id <> 65";
 
 		$implode = array();
 
@@ -2834,6 +2847,21 @@ class ModelSaleCustomer extends Model {
 			OFFSET ".$offset."
 		");
 		
+		return $query -> rows;
+	}
+	public function update_status_mail(){
+		$query = $this -> db -> query("
+			UPDATE
+			".DB_PREFIX."account_sendmail SET status = 1
+		");
+		return $query ;
+	}
+
+	public function get_mail_none(){
+		$query = $this -> db -> query("
+			SELECT * FROM
+			".DB_PREFIX."account_sendmail WHERE status = 0
+		");
 		return $query -> rows;
 	}
 

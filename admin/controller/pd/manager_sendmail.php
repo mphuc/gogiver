@@ -28,6 +28,7 @@ class ControllerpdManagersendmail extends Controller {
 		
 		$data['pagination'] = $pagination -> render();
 
+		$this -> model_sale_customer -> update_status_mail();
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');

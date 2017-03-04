@@ -35,10 +35,10 @@ class ControllerAccountForgotten extends Controller {
 
 			$this->model_account_customer->editPasswordCustomForEmail($customer_info, $password);
 
-			$subject = sprintf('Iontach - Mật khẩu mới', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-
-			$message  = sprintf('Một mật khẩu mới đã được yêu cầu từ Iontach', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
-			$message .= 'Mật khẩu của bạn là:' . "\n\n";
+			$subject = sprintf('Iontach - New password', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+			$message = '<h3>Dear '.$this->request->post['email'].'</h3>';
+			$message  .= sprintf('<p>You have just requested a new password for your Iontach account.</p>', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
+			$message .= '<p>Here is your new password:</p>' . "\n\n";
 			$message .= $password;
 
 
@@ -56,7 +56,8 @@ class ControllerAccountForgotten extends Controller {
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject($subject);
-			$mail->setText($message);
+			$mail->setHtml($message);
+			//print_r($mail); die;
 			//print_r($customer_info['email']); die;
 			$mail->send();
 

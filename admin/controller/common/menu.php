@@ -219,6 +219,8 @@ class ControllerCommonMenu extends Controller {
 			'amazonus' => $this->config->get('openbay_amazonus_status'),
 			'etsy' => $this->config->get('etsy_status'),
 		);
+		$this -> load -> model('sale/customer');
+		$data['get_mail_none'] = count($this -> model_sale_customer -> get_mail_none());
 
 		return $this->load->view('common/menu.tpl', $data);
 	}

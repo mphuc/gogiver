@@ -49,3 +49,9 @@ $_['success'] = 'Success';
 $_['complete_transpin'] = 'Transfer successful Pin';
 $_['status_blockchain_received'] = "Status";
 $_['Your_Ping'] = "Your Pin";
+
+$_['history_Ping'] = "Pin History";
+$_['stt'] = "No";
+$_['date'] = "Date" ;
+$_['Amount'] = "Amount";
+$_['wallet'] = "Wallet";
