@@ -4,326 +4,38 @@ class ControllerAccountAccount extends Controller {
 	
 	public function add_customer()
 	{
-		die;
+		
 		$myXMLData = "<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>ngochoa</Customer_id1>
-    <Customer_id2>tran tha hoa</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
+    <Customer_id1>hoaiphuong</Customer_id1>
+    <Customer_id2>DINH HOAI PHUONG</Customer_id2>
+    <Customer_id3>ngocminh</Customer_id3>
   </row>
   <row>
-    <Customer_id>96</Customer_id>
-    <Customer_id1>THANHHA</Customer_id1>
-    <Customer_id2>Nguyan tha Thanh Ha</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>ngoccho</Customer_id1>
+    <Customer_id2>NGUYEN NGOC HO</Customer_id2>
+    <Customer_id3>ngocminh</Customer_id3>
   </row>
   <row>
-    <Customer_id>107</Customer_id>
-    <Customer_id1>minhthuy</Customer_id1>
-    <Customer_id2>Tran Minh Thay</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>TRAMANH</Customer_id1>
+    <Customer_id2>NGUYEN TRAM ANH</Customer_id2>
+    <Customer_id3>bichhung</Customer_id3>
   </row>
   <row>
-    <Customer_id>139</Customer_id>
-    <Customer_id1>thanhthao</Customer_id1>
-    <Customer_id2>Traang Thanh Thao</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>MIA</Customer_id1>
+    <Customer_id2>TRAN THI MY</Customer_id2>
+    <Customer_id3>tuandieu</Customer_id3>
   </row>
   <row>
-    <Customer_id>146</Customer_id>
-    <Customer_id1>bichthao</Customer_id1>
-    <Customer_id2>Tran tha Bach Thao</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>159</Customer_id>
-    <Customer_id1>minhduong</Customer_id1>
-    <Customer_id2>Nguyan Minh Daang</Customer_id2>
-    <Customer_id3>THOATHOA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>203</Customer_id>
-    <Customer_id1>Hoangchi</Customer_id1>
-    <Customer_id2>Va Hoang Cha</Customer_id2>
-    <Customer_id3>NgocMinh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>236</Customer_id>
-    <Customer_id1>thutrang</Customer_id1>
-    <Customer_id2>Huynh Thu Trang</Customer_id2>
-    <Customer_id3>NgocMinh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>257</Customer_id>
-    <Customer_id1>HaiHai</Customer_id1>
-    <Customer_id2>Ta Tha Hai</Customer_id2>
-    <Customer_id3>NgocMinh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>285</Customer_id>
-    <Customer_id1>minhanh</Customer_id1>
-    <Customer_id2>ha tha minh anh</Customer_id2>
-    <Customer_id3>NgocMinh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>307</Customer_id>
-    <Customer_id1>jacky</Customer_id1>
-    <Customer_id2>vuquantien</Customer_id2>
-    <Customer_id3>NgocMinh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>334</Customer_id>
-    <Customer_id1>nguyenha</Customer_id1>
-    <Customer_id2>Nguyan Thanh ha</Customer_id2>
-    <Customer_id3>HoXuan</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>349</Customer_id>
-    <Customer_id1>Trung79</Customer_id1>
-    <Customer_id2>Nguyan aac Trung</Customer_id2>
-    <Customer_id3>HoXuan</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>365</Customer_id>
-    <Customer_id1>Lananh</Customer_id1>
-    <Customer_id2>Thai Tha Lan</Customer_id2>
-    <Customer_id3>HoXuan</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>398</Customer_id>
-    <Customer_id1>Pen</Customer_id1>
-    <Customer_id2>Tran Trung Minh</Customer_id2>
-    <Customer_id3>HoXuan</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>402</Customer_id>
-    <Customer_id1>Minhngoc</Customer_id1>
-    <Customer_id2>Ta Minh Ngac</Customer_id2>
-    <Customer_id3>THANHHA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>415</Customer_id>
-    <Customer_id1>Diem68</Customer_id1>
-    <Customer_id2>Nguyan Tha Diam</Customer_id2>
-    <Customer_id3>THANHHA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>432</Customer_id>
-    <Customer_id1>hongloan</Customer_id1>
-    <Customer_id2>Phan Tha Hang Loan</Customer_id2>
-    <Customer_id3>THANHHA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>478</Customer_id>
-    <Customer_id1>bali</Customer_id1>
-    <Customer_id2>Tran Thian Phac</Customer_id2>
-    <Customer_id3>THANHHA</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>493</Customer_id>
-    <Customer_id1>bichhung</Customer_id1>
-    <Customer_id2>Nguyan Tha Bach</Customer_id2>
-    <Customer_id3>bichthao</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>521</Customer_id>
-    <Customer_id1>Tuandieu</Customer_id1>
-    <Customer_id2>Nguyan Tha Diau</Customer_id2>
-    <Customer_id3>bichthao</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>532</Customer_id>
-    <Customer_id1>anhngoc</Customer_id1>
-    <Customer_id2>Taang tha anh Ngac</Customer_id2>
-    <Customer_id3>bichthao</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>543</Customer_id>
-    <Customer_id1>Phuongthanh</Customer_id1>
-    <Customer_id2>Vua Thanh Phaang</Customer_id2>
-    <Customer_id3>bichthao</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>546</Customer_id>
-    <Customer_id1>Dactrong</Customer_id1>
-    <Customer_id2>Tran aac Trang</Customer_id2>
-    <Customer_id3>bichthao</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>579</Customer_id>
-    <Customer_id1>nbich85</Customer_id1>
-    <Customer_id2>Hoang Ngac Bach</Customer_id2>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>thanh69</Customer_id1>
+    <Customer_id2>NGUYEN VAN THANH</Customer_id2>
     <Customer_id3>minhduong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>587</Customer_id>
-    <Customer_id1>minhminh</Customer_id1>
-    <Customer_id2>Tran Minh Phat</Customer_id2>
-    <Customer_id3>minhduong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>648</Customer_id>
-    <Customer_id1>tandat</Customer_id1>
-    <Customer_id2>Phan Tan aat</Customer_id2>
-    <Customer_id3>minhduong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>689</Customer_id>
-    <Customer_id1>Hangdinh</Customer_id1>
-    <Customer_id2>ainh Tha Hang</Customer_id2>
-    <Customer_id3>minhduong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>701</Customer_id>
-    <Customer_id1>trieuphu</Customer_id1>
-    <Customer_id2>Nguyan Minh Thanh</Customer_id2>
-    <Customer_id3>minhduong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>745</Customer_id>
-    <Customer_id1>ngochuong</Customer_id1>
-    <Customer_id2>Nguyan Ngac Haang</Customer_id2>
-    <Customer_id3>Hoangchi</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>763</Customer_id>
-    <Customer_id1>HONGQUE</Customer_id1>
-    <Customer_id2>Phan Hang Qua</Customer_id2>
-    <Customer_id3>Hoangchi</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>784</Customer_id>
-    <Customer_id1>Hanhvo</Customer_id1>
-    <Customer_id2>Va Tha Hanh</Customer_id2>
-    <Customer_id3>Hoangchi</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>804</Customer_id>
-    <Customer_id1>Son66</Customer_id1>
-    <Customer_id2>Nguyan Van San</Customer_id2>
-    <Customer_id3>HaiHai</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>816</Customer_id>
-    <Customer_id1>vanle</Customer_id1>
-    <Customer_id2>La Van khai</Customer_id2>
-    <Customer_id3>HaiHai</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>839</Customer_id>
-    <Customer_id1>haha79</Customer_id1>
-    <Customer_id2>Hoang Tha Ha</Customer_id2>
-    <Customer_id3>HaiHai</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>857</Customer_id>
-    <Customer_id1>tanvo</Customer_id1>
-    <Customer_id2>Va Van Tan</Customer_id2>
-    <Customer_id3>HaiHai</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>886</Customer_id>
-    <Customer_id1>elina</Customer_id1>
-    <Customer_id2>ainh tha Duyan</Customer_id2>
-    <Customer_id3>minhanh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>904</Customer_id>
-    <Customer_id1>nguyenanhhong</Customer_id1>
-    <Customer_id2>Nguyan anh Hang</Customer_id2>
-    <Customer_id3>minhanh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>916</Customer_id>
-    <Customer_id1>hung6868</Customer_id1>
-    <Customer_id2>Nguyan Van Hang</Customer_id2>
-    <Customer_id3>minhanh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>935</Customer_id>
-    <Customer_id1>buile</Customer_id1>
-    <Customer_id2>Bai Tha La</Customer_id2>
-    <Customer_id3>minhanh</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>958</Customer_id>
-    <Customer_id1>dinhhoa</Customer_id1>
-    <Customer_id2>Traang ainh Haa</Customer_id2>
-    <Customer_id3>Diem68</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>984</Customer_id>
-    <Customer_id1>manman</Customer_id1>
-    <Customer_id2>Mai Tha Man</Customer_id2>
-    <Customer_id3>Diem68</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>994</Customer_id>
-    <Customer_id1>thanh95</Customer_id1>
-    <Customer_id2>Lam Van Hai</Customer_id2>
-    <Customer_id3>Diem68</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1000</Customer_id>
-    <Customer_id1>hoaidang</Customer_id1>
-    <Customer_id2>aang Ngac Hoai</Customer_id2>
-    <Customer_id3>manman</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1004</Customer_id>
-    <Customer_id1>nguyenly</Customer_id1>
-    <Customer_id2>Nguyan Tha La</Customer_id2>
-    <Customer_id3>manman</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1016</Customer_id>
-    <Customer_id1>thanhphuoc</Customer_id1>
-    <Customer_id2>Nguyan Thanh Phaac</Customer_id2>
-    <Customer_id3>manman</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1023</Customer_id>
-    <Customer_id1>giaminh</Customer_id1>
-    <Customer_id2>Pham Tha Lan</Customer_id2>
-    <Customer_id3>manman</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1034</Customer_id>
-    <Customer_id1>binhan</Customer_id1>
-    <Customer_id2>Nga Banh An</Customer_id2>
-    <Customer_id3>thanh95</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1048</Customer_id>
-    <Customer_id1>thanhngoc</Customer_id1>
-    <Customer_id2>Ha La Thanh Ngac</Customer_id2>
-    <Customer_id3>thanh95</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1050</Customer_id>
-    <Customer_id1>THANH2000</Customer_id1>
-    <Customer_id2>aang Van aaac</Customer_id2>
-    <Customer_id3>Dactrong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1055</Customer_id>
-    <Customer_id1>NGUYENLAN</Customer_id1>
-    <Customer_id2>Nguyan Thi Lan</Customer_id2>
-    <Customer_id3>Dactrong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1057</Customer_id>
-    <Customer_id1>baminh</Customer_id1>
-    <Customer_id2>Tran Ba Minh</Customer_id2>
-    <Customer_id3>Dactrong</Customer_id3>
-  </row>
-  <row>
-    <Customer_id>1059</Customer_id>
-    <Customer_id1>ngocha</Customer_id1>
-    <Customer_id2>Phan Ngac Ha</Customer_id2>
-    <Customer_id3>Hangdinh</Customer_id3>
   </row>
 </root>
 ";
