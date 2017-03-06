@@ -2880,7 +2880,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_tranfer_12h($customer_id)
 	{
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '-12 hour' , strtotime ( $date_added ) ) ;
+		$date_finish = strtotime ( '+12 hour' , strtotime ( $date_added ) ) ;
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 
 		$query = $this -> db -> query("

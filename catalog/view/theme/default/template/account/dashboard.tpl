@@ -47,6 +47,31 @@
            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
           <strong>Your downline have <span data-countdown="2017-01-16 23:00:00"></span> <?php //echo "trungdoan";?></strong> to comple PD. Do you want to <a class="btn btn-success">Get PD</a></a> 
           </div> -->
+          <!-- repd -->
+<div class="clearfix"></div>
+          <?php 
+
+                  if (intval($repd) != 0) {
+                    
+                    
+                  ?>
+                
+                  <?php if ($language=='english') { ?>
+                  
+                    <div class="alert alert-danger">
+                       <strong>Notification! </strong> Please create PH to freezing or locked accounts. <a class="btn btn-success" href="provide-donation.html">Create PH</a>
+                     </div>
+                  <?php }else{ ?>
+                  
+                     <div class="alert alert-danger">
+                       <strong>Thông báo! </strong> Bạn vui lòng tạo PH để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
+                     </div>
+
+                  <?php
+                   }
+                  }
+               ?>
+
           <div class="clearfix"></div>
           <!-- node pd -->
           <?php 
@@ -70,20 +95,22 @@
            ?>
            <div class="clearfix"></div>
            <!-- 12h tb -->
-           <!-- <?php if (count($get_tranfer_12h) > 0) {?>
+            <?php if (count($get_tranfer_12h) > 0) {?>
            <?php foreach ($get_tranfer_12h as $value) { ?>
             <?php if ($language=='english') { ?>
               
                <div class="alert alert-danger">
-                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
+                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> PD unfinished. <?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> remaining time <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
                  </div>
             <?php }else{ ?>
 
-
+               <div class="alert alert-danger">
+                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> chưa hoàn thành PD.  Thời gian còn lại của <?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
+                 </div>
 
             <?php } ?>
             <?php } ?>
-            <?php } ?> -->
+            <?php } ?> 
 
            <div class="clearfix"></div>
           <div class=" rule" style="margin-top:25px;"></div>
@@ -125,28 +152,7 @@
                
                
 
-               <?php 
-
-                  if (intval($repd) != 0) {
-                    
-                    
-                  ?>
-                
-                  <?php if ($language=='english') { ?>
-                  
-                    <div class="alert alert-danger">
-                       <strong>Notification! </strong> Please create PH to freezing or locked accounts. <a class="btn btn-success" href="provide-donation.html">Create PH</a>
-                     </div>
-                  <?php }else{ ?>
-                  
-                     <div class="alert alert-danger">
-                       <strong>Thông báo! </strong> Bạn vui lòng tạo PH để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
-                     </div>
-
-                  <?php
-                   }
-                  }
-               ?>
+               
 <?php 
   //print_r($get_customer_by_id_in); die;
   for ($i=1; $i <=12 ; $i++) { 

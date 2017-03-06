@@ -199,32 +199,32 @@ class ModelSaleCustomer extends Model {
 		return $query->row;
 		}
 
-	public function getCustomers_lock(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8 AND (customer_id < 72 OR customer_id > 124)");
+	public function getCustomers_lock($maao){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8 AND customer_id NOT IN (".$maao.")");
 
 		return $query->rows;
 	}
-	public function getCustomers_spicel(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id >=72 AND customer_id <= 124 OR (customer_id = 64 OR customer_id = 65)");
-
-		return $query->rows;
-	}
-
-	public function getCustomers_forzen(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 100 AND (customer_id < 72 OR customer_id > 124)");
+	public function getCustomers_spicel($maao){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id IN (".$maao.")");
 
 		return $query->rows;
 	}
 
+	public function getCustomers_forzen($maao){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 100 AND customer_id IN (".$maao.")");
+
+		return $query->rows;
+	}
 
 
-	public function getCustomers($data = array()) {
+
+	public function getCustomers($data = array(),$maao) {
 
 		//" . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) 
 		 $sql = "SELECT c.*,c.date_added as date_addeds,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
 		 FROM " . DB_PREFIX . "customer c
 		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
-		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id) WHERE (c.customer_id < 72 OR c.customer_id > 124) AND c.customer_id <> 64 AND c.customer_id <> 65";
+		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id) WHERE c.customer_id NOT IN(".$maao.")";
 
 		$implode = array();
 
@@ -536,6 +536,97 @@ class ModelSaleCustomer extends Model {
 		return $query->row['total'];
 	}
 	
+	public function getTotalCustomerssss($data = array(),$maao) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c
+		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
+		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id)
+		";
+
+		$implode = array();
+
+		if (!empty($data['filter_name'])) {
+			$implode[] = " CONCAT(lastname, ' ',firstname ) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
+		if (!empty($data['filter_email'])) {
+			$implode[] = "email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
+		}
+		
+		if (!empty($data['filter_username'])) {
+			$implode[] = " username LIKE '%" . $this->db->escape($data['filter_username']) . "%'";
+		}
+		
+		if (!empty($data['filter_customer_code'])) {
+			$implode[] = "customer_code LIKE '%" . $this->db->escape($data['filter_customer_code']) . "%'";
+		}
+
+
+		if (!empty($data['filter_phone'])) {
+			$implode[] = "telephone LIKE '" . $this->db->escape($data['filter_phone']) . "%'";
+		}
+
+		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
+			$implode[] = "newsletter = '" . (int)$data['filter_newsletter'] . "'";
+		}
+
+		if (!empty($data['filter_customer_group_id'])) {
+			$implode[] = "customer_group_id = '" . (int)$data['filter_customer_group_id'] . "'";
+		}
+
+		if (!empty($data['filter_ip'])) {
+			$implode[] = "customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
+		}
+
+	
+		if (!empty($data['filter_status'])) {
+			$implode[] = "c.status = " . $this->db->escape($data['filter_status']);
+		}
+		if (!empty($data['filter_status_pd'])) {
+			switch ($data['filter_status_pd']) {
+				case 1:
+					$data['filter_status_pd'] = 0;
+					break;
+				case 2:
+					$data['filter_status_pd'] = 1;
+					break;
+				default:
+					$data['filter_status_pd'] = 2;
+					break;
+			}
+			$implode[] = "pd.status = " . $this->db->escape($data['filter_status_pd']) ;
+		}
+		if (!empty($data['filter_status_gd'])) {
+			switch ($data['filter_status_gd']) {
+				case 1:
+					$data['filter_status_gd'] = 0;
+					break;
+				case 2:
+					$data['filter_status_gd'] = 1;
+					break;
+				default:
+					$data['filter_status_gd'] = 2;
+					break;
+			}
+			$implode[] = "gd.status = " . $this->db->escape($data['filter_status_gd']);
+		}
+
+		if (isset($data['filter_approved']) && !is_null($data['filter_approved'])) {
+			$implode[] = "approved = '" . (int)$data['filter_approved'] . "'";
+		}
+
+		if (!empty($data['filter_date_added'])) {
+			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+		}
+
+		if ($implode) {
+			$sql .= " WHERE " . implode(" AND ", $implode);
+		}
+		//$sql .= " GROUP BY c.customer_id ";
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c WHERE c.customer_id NOT IN (".$maao.")");
+
+		return $query->row['total'];
+	}
+
 	public function getCustomersNew($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -3239,5 +3330,20 @@ $date_added= date('Y-m-d H:i:s') ;
 			WHERE id = '".$id."'
 		");
 		
+	}
+
+	public function get_childrend_all_tree($customer_id){
+		$array ="";
+		$query = $this -> db -> query("
+			SELECT customer_id
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_node IN (".$customer_id.")
+		");
+		$child = $query -> rows;
+		foreach ($child as $value) {
+			$array .= ",".$value['customer_id'];
+			$array .= $this ->  get_childrend_all_tree($value['customer_id']);
+		}
+		return $array;
 	}
 }

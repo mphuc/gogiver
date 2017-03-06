@@ -772,15 +772,22 @@ class ControllerSaleCustomer extends Controller {
 			'limit'                    => $this->config->get('config_limit_admin')
 		);
 
-		$customer_total = $this->model_sale_customer->getTotalCustomers($filter_data);
+		$maao = $this -> model_sale_customer -> get_childrend_all_tree(64);
 
-		$results = $this->model_sale_customer->getCustomers($filter_data);
-		$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock();
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(65);
 
-		$data['customer_spicel'] = $this-> model_sale_customer-> getCustomers_spicel();
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+		$customer_total = $this->model_sale_customer->getTotalCustomerssss($filter_data,$maao);
+
+		
+		$results = $this->model_sale_customer->getCustomers($filter_data,$maao);
+		$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock($maao);
+
+		$data['customer_spicel'] = $this-> model_sale_customer-> getCustomers_spicel($maao);
 
 
-		$data['getCustomers_forzen'] = $this-> model_sale_customer-> getCustomers_forzen();
+		$data['getCustomers_forzen'] = $this-> model_sale_customer-> getCustomers_forzen($maao);
 		
  		//$all_hoivien_phi = 0;
 		//$all_congtac_phi = 0;
