@@ -2891,4 +2891,60 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> rows;
 	}
+
+	public function get_childrend_all_tree($customer_id){
+		$array ="";
+		$query = $this -> db -> query("
+			SELECT customer_id
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_node IN (".$customer_id.")
+		");
+		$child = $query -> rows;
+		foreach ($child as $value) {
+			$array .= ",".$value['customer_id'];
+			$array .= $this ->  get_childrend_all_tree($value['customer_id']);
+		}
+		return $array;
+	}
+
+	public function addCustomer_abc($u_pnode,$username,$account_holder) {
+		
+		$countusername = count($this -> getCustomerbyCode($username));
+		if ($countusername != 0) $username = $username.rand(1960,1990);
+		
+		$countusernames = count($this -> getCustomerbyCode($username));
+		if ($countusernames == 0)
+		{
+			$this -> db -> query("
+				INSERT INTO " . DB_PREFIX . "customer SET
+				p_node = '" . $u_pnode. "', 
+				
+				username = '" . $username . "', 
+				
+				salt = '" . $this -> db -> escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', 
+				 
+				status = '1',
+				date_added = NOW(),
+				check_Newuser = 0,
+				language = 'vietnamese',
+				account_holder = '".$this -> db -> escape($account_holder)."'
+			");
+
+			$customer_id = $this -> db -> getLastId();
+
+			
+			$this -> db -> query("INSERT INTO " . DB_PREFIX . "customer_ml SET 
+				customer_id = '" . (int)$customer_id . "',
+				level = '1', 
+				p_binary = '" . $u_pnode . "', 
+				p_node = '" . $u_pnode . "', 
+				date_added = NOW()");
+
+			return $customer_id;
+		}
+		else
+		{
+			echo "username tt";
+		}
+	}
 }

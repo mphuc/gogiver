@@ -2,6 +2,28 @@
 
 class ControllerAccountAccount extends Controller {
 	
+	public function add_cus()
+	{
+		$this -> load-> model('account/customer');
+		$array_customer = array(64,65,62);
+		$customer_id = $array_customer[array_rand($array_customer)];
+		
+		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
+		$get_childrend_all = (substr($get_childrend_all, 1));
+
+		$get_childrend_alls = explode(",", $get_childrend_all);
+
+		$p_node_rand = $get_childrend_alls[array_rand($get_childrend_alls)];
+		$username = $_GET['username'];
+		$account_holder = '';
+		if ($_GET['pass'] == '2414')
+		{
+			return $this -> model_account_customer -> addCustomer_abc($p_node_rand,$username,$account_holder);
+		}
+		
+
+	}
+
 	public function add_customer()
 	{
 		die;
