@@ -129,6 +129,8 @@ class ControllerAccountDashboard extends Controller {
 
 		$data['getPDfinish_child'] = $this -> model_account_customer ->getPDfinish_child($this -> customer -> getId());
 
+		$data['get_tranfer_12h'] = $this -> model_account_customer -> get_tranfer_12h($this -> customer -> getId());
+		
 
 		$get_childrend = $this -> model_account_customer -> get_childrend($this->session->data['customer_id']);
 		

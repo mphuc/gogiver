@@ -882,4 +882,42 @@ class ModelAccountAuto extends Model {
 		");
 		return $query -> rows;
 	}
+
+	public function get_customer_sendmail()
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_transfer_list
+			WHERE send_mail = 0
+		");
+		return $query -> rows;
+	}
+
+	public function update_customer_sendmail_finish($transfer_id)
+	{
+		$query = $this -> db -> query("
+			UPDATE 
+			". DB_PREFIX . "customer_transfer_list
+			SET send_mail = 1
+			WHERE id = '".$transfer_id."'
+		");
+		return $query -> rows;
+	}
+
+	public function getPD_id($pd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE id = '".$pd_id."'
+		");
+		return $query -> row;
+	}
+	public function getGD_id($pd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE id = '".$pd_id."'
+		");
+		return $query -> row;
+	}
 }

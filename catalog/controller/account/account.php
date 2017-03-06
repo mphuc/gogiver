@@ -4,38 +4,68 @@ class ControllerAccountAccount extends Controller {
 	
 	public function add_customer()
 	{
-		die;
+		//die;
 		$myXMLData = "<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>hoaiphuong</Customer_id1>
-    <Customer_id2>DINH HOAI PHUONG</Customer_id2>
-    <Customer_id3>ngocminh</Customer_id3>
+    <Customer_id1>maihoa</Customer_id1>
+    <Customer_id2>MAI THI HOA</Customer_id2>
+    <Customer_id3>haihai</Customer_id3>
   </row>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>ngoccho</Customer_id1>
-    <Customer_id2>NGUYEN NGOC HO</Customer_id2>
-    <Customer_id3>ngocminh</Customer_id3>
+    <Customer_id1>PHUONGTRANH</Customer_id1>
+    <Customer_id2>HOANG MAI TRANH</Customer_id2>
+    <Customer_id3>thanh95</Customer_id3>
   </row>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>TRAMANH</Customer_id1>
-    <Customer_id2>NGUYEN TRAM ANH</Customer_id2>
-    <Customer_id3>bichhung</Customer_id3>
+    <Customer_id1>baphuong</Customer_id1>
+    <Customer_id2>NGUYEN BA PHUONG</Customer_id2>
+    <Customer_id3>hoaidang</Customer_id3>
   </row>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>MIA</Customer_id1>
-    <Customer_id2>TRAN THI MY</Customer_id2>
-    <Customer_id3>tuandieu</Customer_id3>
+    <Customer_id1>THANHDAT</Customer_id1>
+    <Customer_id2>VO THANH DAT</Customer_id2>
+    <Customer_id3>nguyenly</Customer_id3>
   </row>
   <row>
     <Customer_id>75</Customer_id>
-    <Customer_id1>thanh69</Customer_id1>
-    <Customer_id2>NGUYEN VAN THANH</Customer_id2>
-    <Customer_id3>minhduong</Customer_id3>
+    <Customer_id1>DUYPHU</Customer_id1>
+    <Customer_id2>DANG DUY PHU</Customer_id2>
+    <Customer_id3>thanhphuoc</Customer_id3>
+  </row>
+  <row>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>THANHHOA</Customer_id1>
+    <Customer_id2>NGUYEN THI HOA</Customer_id2>
+    <Customer_id3>giaminh</Customer_id3>
+  </row>
+  <row>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>doananh</Customer_id1>
+    <Customer_id2>DOANH NGOC ANH</Customer_id2>
+    <Customer_id3>binhan</Customer_id3>
+  </row>
+  <row>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>bachi</Customer_id1>
+    <Customer_id2>TRAN BA CHI</Customer_id2>
+    <Customer_id3>hoangchi</Customer_id3>
+  </row>
+  <row>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>honda</Customer_id1>
+    <Customer_id2>NGUYEN THI HON</Customer_id2>
+    <Customer_id3>thutrang</Customer_id3>
+  </row>
+  <row>
+    <Customer_id>75</Customer_id>
+    <Customer_id1>quachha</Customer_id1>
+    <Customer_id2>QUACH THANH HA</Customer_id2>
+    <Customer_id3>haihai</Customer_id3>
   </row>
 </root>
 ";

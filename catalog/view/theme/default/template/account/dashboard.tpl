@@ -41,10 +41,49 @@
                 <?php echo $date_pd['count_pd'] ?> PD. Time left to create <?php echo $num_pd-$date_pd['count_pd'] ?> PD <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
             </div>
           <?php } ?>
+
+
           <!-- <div class="clearfix"></div>
            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
           <strong>Your downline have <span data-countdown="2017-01-16 23:00:00"></span> <?php //echo "trungdoan";?></strong> to comple PD. Do you want to <a class="btn btn-success">Get PD</a></a> 
           </div> -->
+          <div class="clearfix"></div>
+          <!-- node pd -->
+          <?php 
+              if (count($getPDfinish_child) > 0) {
+                 foreach ($getPDfinish_child as $value) {
+              ?>
+              <?php if ($language=='english') { ?>
+
+              <div class="alert alert-danger">
+                 <strong><?php echo $value['username'];?> didn't PD </strong> Please get PD the amount  of <?php echo number_format($value['amount']); ?> VND <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Create PD</a>
+               </div>
+
+               <?php }else{ ?>
+                 <div class="alert alert-danger">
+                   <strong><?php echo $value['username'];?> chưa PD </strong> Bạn vui lòng kéo PD về với số tiền <?php echo number_format($value['amount']); ?> VNĐ <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PD</a>
+                 </div>
+                 <?php } ?>
+              <?php
+                 }
+              }
+           ?>
+           <div class="clearfix"></div>
+           <!-- 12h tb -->
+           <!-- <?php if (count($get_tranfer_12h) > 0) {?>
+           <?php foreach ($get_tranfer_12h as $value) { ?>
+            <?php if ($language=='english') { ?>
+              
+               <div class="alert alert-danger">
+                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
+                 </div>
+            <?php }else{ ?>
+
+
+
+            <?php } ?>
+            <?php } ?>
+            <?php } ?> -->
 
            <div class="clearfix"></div>
           <div class=" rule" style="margin-top:25px;"></div>
@@ -84,25 +123,7 @@
                </div>
             <?php } ?>
                
-               <?php 
-                  if (count($getPDfinish_child) > 0) {
-                     foreach ($getPDfinish_child as $value) {
-                  ?>
-                  <?php if ($language=='english') { ?>
-
-                  <div class="alert alert-danger">
-                       <strong><?php echo $value['username'];?> didn't PD </strong> Please get PD the amount  of <?php echo number_format($value['amount']); ?> VND <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Create PD</a>
-                     </div>
-
-                   <?php }else{ ?>
-                     <div class="alert alert-danger">
-                       <strong><?php echo $value['username'];?> chưa PD </strong> Bạn vui lòng kéo PD về với số tiền <?php echo number_format($value['amount']); ?> VNĐ <a class="btn btn-success" onclick="return confirm('Are you sure?')" href="index.php?route=account/pd/createpd_child&token=<?php echo $value['transfer_code'];?>">Tạo PD</a>
-                     </div>
-                     <?php } ?>
-                  <?php
-                     }
-                  }
-               ?>
+               
 
                <?php 
 

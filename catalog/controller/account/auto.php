@@ -72,6 +72,60 @@ class ControllerAccountAuto extends Controller {
 		$mail->send();
 	}
 
+	public function sendmail_khoplenh($email,$subject,$content)
+	{
+		$mail = new Mail();
+		$mail -> protocol = $this -> config -> get('config_mail_protocol');
+		$mail -> parameter = $this -> config -> get('config_mail_parameter');
+		$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
+		$mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
+		$mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+		$mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
+		$mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
+
+		$mail->setTo($email);
+		$mail -> setFrom($this -> config -> get('config_email'));
+		$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
+		$mail -> setSubject($subject);
+		$mail -> setHtml($content);
+		print_r($mail);
+		$mail->send();
+
+	}
+
+	public function sendmail_tranferlis()
+	{
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
+		$customer_sendmail = $this -> model_account_auto -> get_customer_sendmail();
+		foreach ($customer_sendmail as $value) {
+			// customer_id PD
+			$getCustomer_PD = $this -> model_account_customer -> getCustomer($value['pd_id_customer']);
+			$subject = 'Your PD #'.$this -> get_pd($value['pd_id'])['pd_number'].' has been matched';
+			$content = '<p>Dear '.$getCustomer_PD['username'].'</p><p>Congratulations, Your <b>PD #'.$this -> get_pd($value['pd_id'])['pd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>Iontach Community Team.</p>';
+
+			$this -> sendmail_khoplenh($getCustomer_PD['email'],$subject,$content);
+			
+			// customer_id GD
+			$getCustomer_GD = $this -> model_account_customer -> getCustomer($value['gd_id_customer']);
+			$subject = 'Your GD #'.$this -> get_gd($value['gd_id'])['gd_number'].' has been matched';
+			$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>hw_GetChildDocColl(connection, objectID) #'.$this -> get_gd($value['pd_id'])['gd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>Iontach Community Team.</p>';
+			$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
+
+			$this -> model_account_auto -> update_customer_sendmail_finish($value['id']);
+		}
+	}
+
+	public function get_pd($pd_id)
+	{
+		$this -> load -> model('account/auto');
+		return $this -> model_account_auto -> getPD_id($pd_id);
+	}
+	public function get_gd($gd_id)
+	{
+		$this -> load -> model('account/auto');
+		return $this -> model_account_auto -> getGD_id($gd_id);
+	}
 
 	public function autoPDGD() {
 		$this -> load -> model('account/auto');
@@ -85,9 +139,9 @@ class ControllerAccountAuto extends Controller {
 		$i=1;
 		while ($loop) {
 
-			$gdList = $this -> model_account_auto -> getGD7Before();
+			$gdList = $this -> model_account_auto -> getGD7Before(); //date finish
 			// echo "<pre>"; print_r($gdList); echo "</pre>"; die();
-			$pdList = $this -> model_account_auto -> getPD7Before();
+			$pdList = $this -> model_account_auto -> getPD7Before(); //date finish
 		
 			if(count($gdList) === 0 && count($pdList) > 0){
 
@@ -109,8 +163,9 @@ class ControllerAccountAuto extends Controller {
 
 				$gdResiver = floatval($gdList['amount'] - $gdList['filled']);
 
-				$inventory = $this -> model_account_auto ->getCustomerInventory();
 
+				$inventory = $this -> model_account_auto ->getCustomerInventory();
+				// lay id ao cho phan du
 				$inventoryID = $inventory['customer_id'];
 
 				$this -> model_account_auto -> createPDInventory($gdResiver, $inventoryID);

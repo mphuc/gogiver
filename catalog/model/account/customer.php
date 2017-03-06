@@ -2876,4 +2876,19 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> row;
 	}
+
+	public function get_tranfer_12h($customer_id)
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '-12 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+		$query = $this -> db -> query("
+			SELECT A.*
+			FROM  ".DB_PREFIX."customer_transfer_list A INNER JOIN ".DB_PREFIX."customer B ON A.pd_id_customer = B.customer_id
+			WHERE A.pd_satatus = 0 AND A.gd_status = 0 AND date_finish < '".$date_finish."' AND B.p_node = '".$customer_id."'
+		");
+
+		return $query -> rows;
+	}
 }
