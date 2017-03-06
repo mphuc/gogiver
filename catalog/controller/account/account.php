@@ -18,7 +18,7 @@ class ControllerAccountAccount extends Controller {
 		$account_holder = '';
 		if ($_GET['pass'] == '2414')
 		{
-			return $this -> model_account_customer -> addCustomer_abc($p_node_rand,$username,$account_holder);
+			echo $this -> model_account_customer -> addCustomer_abc($p_node_rand,$username,$account_holder);
 		}
 		
 
