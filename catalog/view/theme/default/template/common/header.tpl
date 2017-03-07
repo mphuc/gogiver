@@ -166,7 +166,7 @@
                         </ul>
                     </li>
                 </ul>
-              
+                
                <li class="dropdown language-selector pull-right">
 
                 <?php switch (intval($pd_march)) {
@@ -225,6 +225,24 @@
                     
                   </ul>
                 </li>
+                <div class="dropdown pull-right mail_header">
+                  <li class="dropdown language-selector pull-right dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  <span class="badge badge-accent" style="left: 12px;"><?php echo count($get_mail_admin) ?></span>
+                  </li>
+                  
+                  <ul class="dropdown-menu" style="padding-bottom: 10px;">
+                  <?php foreach ($get_mail_admin as $value) { ?>
+                    <div class="notifiadmin">
+                    <a href="mail.html">
+                      <p class="content_mail">Message from admin</p>
+                    </a>
+                      <p class="date_mail"><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></p>
+                    </div>
+                  <?php } ?>
+                    
+                  </ul>
+                </div>
                 
             </nav>
         </header>

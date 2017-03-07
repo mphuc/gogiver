@@ -28,6 +28,29 @@ class ControllerpdManagersendmail extends Controller {
 		
 		$data['pagination'] = $pagination -> render();
 
+
+		$page = isset($this -> request -> get['page_admin']) ? $this -> request -> get['page_admin'] : 1;
+
+		$limit = 30;
+		$start = ($page - 1) * 30;
+
+		$ts_history = $this -> model_sale_customer -> get_count_mail_admin();
+
+		$ts_history = $ts_history['number'];
+
+		$pagination = new Pagination();
+		$pagination -> total = $ts_history;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text'; 
+		$pagination -> url = $this -> url -> link('pd/manager_sendmail', 'page_admin={page}&token='.$this->session->data['token'].'', 'SSL');
+		
+		$data['get_all_mail_admin'] =  $this-> model_sale_customer->get_all_mail_admin($limit, $start);
+		
+		$data['paginations'] = $pagination -> render();
+
+
 		$this -> model_sale_customer -> update_status_mail();
 
 		$data['header'] = $this->load->controller('common/header');

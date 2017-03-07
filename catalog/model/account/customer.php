@@ -2947,4 +2947,30 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			echo "username tt";
 		}
 	}
+
+	public function get_mail_admin($customer_id){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."account_sendmail_admin
+			WHERE customer_id = '".$customer_id."' AND status = 0
+		");
+		return $query -> rows;
+	}
+	public function u_viewmail_admin($customer_id){
+
+		$query = $this -> db -> query("
+			UPDATE  ".DB_PREFIX."account_sendmail_admin SET status = 1
+			WHERE customer_id = '".$customer_id."'
+		");
+	}
+	public function get_mail_admin_all($customer_id){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."account_sendmail_admin
+			WHERE customer_id = '".$customer_id."' ORDER BY date_added DESC
+		");
+		return $query -> rows;
+	}
 }

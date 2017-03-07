@@ -268,6 +268,14 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
      <div class="row">
+        <form class="form-inline" style="margin: 0 auto">
+          <div class="form-group">
+            <label for="email">Username</label>
+            <input type="text" placeholder="Search" name="username" id="key_username" class="form-control">
+          </div>
+         
+        </form>
+        <div class="clearfix" style="margin-top: 20px;"></div>
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -310,7 +318,7 @@
                   <td style="width: 110px;" class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="appen_search">
                 <?php if ($customers) { $n=1;?>
                 <?php foreach ($customers as $customer) { 
                   $date_added = date('Y-m-d',strtotime($customer['date_addeds']));
@@ -333,14 +341,14 @@
                   <td><?php echo $customer['cmnd'] ?></td>
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['name_parent']; ?></td>
-                  <?php /*?>
-                  <td class="text-left"><?php echo $customer['email']; ?></td>
-                  <td><?php $le_hp = is_int($customer['total_hoivien_phi']+0)? 0:3; echo number_format($customer['total_hoivien_phi'],$le_hp,'.',','); ?></td>
-                  <td><?php $le_ctp = is_int($customer['total_congtac_phi']+0)? 0:3; echo number_format($customer['total_congtac_phi'],$le_ctp,'.',','); ?></td>
-                  <td><?php $le_po = is_int($customer['total_payout']+0)? 0:3; echo number_format($customer['total_payout'],$le_po,'.',','); ?></td>
-                  <?php */?>
+                  
                   <td>
-                    <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                    <a style="float: left;" href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+
+                    <a style="float: left;" href="index.php?route=pd/sendmail_customer&token=<?php echo $_GET['token']; ?>&customer_id=<?php echo $customer['customer_id']; ?>" data-toggle="tooltip" title="Send mail" class="btn btn-primary"><i class="fa fa-envelope-o"></i></a>
+                    </td>
+
+                    
                 </tr>
                 <?php $n++; } ?>
 
@@ -527,7 +535,7 @@
                   <td style="width: 110px;" class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 <?php if ($getCustomers_forzen) { $n=1;?>
                 <?php foreach ($getCustomers_forzen as $customer) { 
                   //print_r($customer); die;
@@ -1041,3 +1049,20 @@ $('.date').datetimepicker({
   }
 </style>
 <?php echo $footer; ?> 
+<script type="text/javascript">
+  $('#key_username').keyup(function(){
+    var username = $('#key_username').val();
+    $('.pagination').hide();
+    $.ajax({
+        url : "index.php?route=sale/customer/search&token=<?php echo $_GET['token'] ?>",
+        type : "post",
+        dateType:"text",
+        data : {
+             'username' : username
+        },
+        success : function (result){
+            $('#appen_search').html(result);
+        }
+    });
+  })
+</script>

@@ -220,7 +220,7 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
-		
+		$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);

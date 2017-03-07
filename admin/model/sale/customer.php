@@ -2940,6 +2940,17 @@ class ModelSaleCustomer extends Model {
 		
 		return $query -> rows;
 	}
+	public function get_all_mail_admin($limit, $offset){
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."account_sendmail_admin A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			ORDER BY A.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
 	public function update_status_mail(){
 		$query = $this -> db -> query("
 			UPDATE
@@ -3012,6 +3023,14 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."account_sendmail 
+		");
+		return $query -> row;
+	}
+	public function get_count_mail_admin(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."account_sendmail_admin
 		");
 		return $query -> row;
 	}
@@ -3345,5 +3364,23 @@ $date_added= date('Y-m-d H:i:s') ;
 			$array .= $this ->  get_childrend_all_tree($value['customer_id']);
 		}
 		return $array;
+	}
+	public function getlikeusername($id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE username LIKE '%".$id."%' 
+		");
+
+		return $query -> rows;
+	}
+	public function get_username_node($id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id = '".$id."' 
+		");
+
+		return $query -> row;
 	}
 }

@@ -3983,5 +3983,49 @@ public function searchPackage() {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+	public function search(){
+		$this ->  load-> model('sale/customer');
+		$username = $this -> request -> post['username'];
+		$get_customer = $this -> model_sale_customer -> getlikeusername($username);
+		$n = 0;
+		foreach ($get_customer as $customer) {
+			
+		?>
+		<tr class="<?php echo $class ?>">
+      <td><?php echo $n;?></td>
+      
+      <td class="text-left"><?php echo $customer['username']; ?></td>
+	     <td class="text-left"><?php echo $customer['email']; ?></td>
+	     <td style="width: 180px;float: left; border-bottom: none;" class="text-left"><?php echo $customer['date_added']; ?></td>
+	     <td class="text-center">
+	      <?php if($customer['img_profile'] != "") { ?>
+	      <a href="<?php echo $customer['img_profile']; ?>" target="_blank">
+	        <img style="width:120px;    max-height: 92px;" src="<?php echo $customer['img_profile']; ?>" />
+	      </a>
+	      <?php } else {echo "Không có CMND"; }?>
+	      </td>
+	      <td><?php echo $customer['cmnd'] ?></td>
+	      <td class="text-left"><?php echo $customer['telephone']; ?></td>
+	      <td class="text-left"><?php echo $this -> get_pnode_a($customer['p_node']) ?></td>
+	      
+	      <td>
+        <a style="float: left;" href="index.php?route=sale/customer/edit&token=<?php echo $_GET['token']; ?>&customer_id=<?php echo $customer['customer_id']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
 
+        <a style="float: left;" href="index.php?route=pd/sendmail_customer&token=<?php echo $_GET['token']; ?>&customer_id=<?php echo $customer['customer_id']; ?>" data-toggle="tooltip" title="Send mail" class="btn btn-primary"><i class="fa fa-envelope-o"></i></a>
+        </td>
+
+        
+    </tr>
+
+
+
+		<?php
+		$n++;
+		}
+	}
+
+	public function get_pnode_a($customer_id){
+		count($this -> model_sale_customer -> get_username_node($customer_id)) > 0 ? $username = $this -> model_sale_customer -> get_username_node($customer_id)['username'] : $username = "";
+		return $username;
+	}
 }
