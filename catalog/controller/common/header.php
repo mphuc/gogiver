@@ -17,6 +17,7 @@ class ControllerCommonHeader extends Controller {
 			$data['gd_march'] = intval($gd_march['number']);
 			$pd_march = $this -> model_account_customer -> getAllTotalPD_Status($this -> session -> data['customer_id']);
 			$data['pd_march'] = intval($pd_march['number']);
+			$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
 		
 
 		}
@@ -220,7 +221,7 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
-		$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
+		
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
