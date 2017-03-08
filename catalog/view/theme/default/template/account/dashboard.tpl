@@ -180,6 +180,8 @@
                         <p><?php echo html_entity_decode($value['description'] , ENT_QUOTES, 'UTF-8')?></p>
                         
                      </div>
+
+                     <hr>
                      <?php endforeach; ?>
                      <?php echo $pagination; ?>
        
