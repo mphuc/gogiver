@@ -172,7 +172,7 @@
                      </div>
                      <div class="widget-content">
                 
-               <?php foreach ($article_limit as $key => $value): ?>
+               <?php $zz=1; foreach ($article_limit as $key => $value): ?>
                 <?php //print_r($value) ?>
                      <div class="blog-item" style="padding-left: 10px;">
                         <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
@@ -180,8 +180,9 @@
                         <p><?php echo html_entity_decode($value['description'] , ENT_QUOTES, 'UTF-8')?></p>
                         
                      </div>
-
+                     <?php if ($zz ==1 ){ ?>
                      <hr>
+                     <?php } $zz++; ?>
                      <?php endforeach; ?>
                      <?php echo $pagination; ?>
        
