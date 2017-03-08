@@ -10,7 +10,7 @@
       <div class="content" style="">
         <div class="col-md-12">
           <div class="row">
-          <div class="pull-left"  style="margin-right: 20px; margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
+          <div class="pull-left"  style="margin-right: 20px; margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece; display: none;">
               You have <span data-countdown="<?php echo $date_finish ?>"></span>  to have a new member
           </div>
           <?php 
@@ -36,7 +36,7 @@
             }
           ?>
           
-          <?php if ($date_pd['count_pd'] < $num_pd) { ?>
+          <?php if ($date_pd['count_pd'] < $num_pd && 1==2) { ?>
             <div class="pull-right"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
                 <?php echo $date_pd['count_pd'] ?> PD. Time left to create <?php echo $num_pd-$date_pd['count_pd'] ?> PD <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
             </div>
