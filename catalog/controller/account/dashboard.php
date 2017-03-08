@@ -103,6 +103,7 @@ class ControllerAccountDashboard extends Controller {
 			$Language_id = 1;
 		}
 		$data['article_limit'] = $this -> model_simple_blog_article -> getArticleLimit($limit,$start, $Language_id);
+		
 		$data['onlineToday'] = $this -> model_account_customer ->onlineToday();
 		$data['pagination'] = $pagination->render();
 

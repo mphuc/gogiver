@@ -10,6 +10,56 @@
       <div class="content" style="">
         <div class="col-md-12">
           <div class="row">
+            <script type="text/javascript">
+                $(document).ready(function() {
+                
+                var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+                var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+                 
+                
+                var newDate = new Date();
+               
+
+
+                newDate.setDate(newDate.getDate());
+                
+                $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+                 
+                setInterval( function() {
+                    
+                    var seconds = new Date().getSeconds();
+                   
+                    $("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+                    },1000);
+                 
+                setInterval( function() {
+                   
+                    var minutes = new Date().getMinutes();
+                   
+                    $("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+                    },1000);
+                 
+                setInterval( function() {
+                    
+                    var hours = new Date().getHours();
+                   
+                    $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+                    }, 1000);
+                });
+              </script>
+
+          <div class="clock">
+            <div id="Date"></div>
+              <ul>
+                  <li id="hours"></li>
+                  <li id="point">:</li>
+                  <li id="min"></li>
+                  <li id="point">:</li>
+                  <li id="sec"></li>
+              </ul>
+          </div>
+
+
           <div class="pull-left"  style="margin-right: 20px; margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece; display: none;">
               You have <span data-countdown="<?php echo $date_finish ?>"></span>  to have a new member
           </div>
@@ -121,6 +171,7 @@
                         <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> Notification System</h3>
                      </div>
                      <div class="widget-content">
+                
                <?php foreach ($article_limit as $key => $value): ?>
                 <?php //print_r($value) ?>
                      <div class="blog-item" style="padding-left: 10px;">
