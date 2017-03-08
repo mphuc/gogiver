@@ -39,7 +39,11 @@
                   <td><?php echo $value['username'] ?></td>
                   <td><?php echo $value['title'] ?></td>
                   <td><?php echo $value['description'] ?></td>
-                  <td><img style="width: 100px;" src="<?php echo $value['images'] ?>" /></td>
+                  <td>
+                    <a href="<?php echo $value['images'] ?>" target="_blank">
+                    <img style="width: 100px;" src="<?php echo $value['images'] ?>" />
+                    </a>
+                  </td>
                   <td><?php echo  date('d/m/Y H:i:s',strtotime($value['date_added'])) ?></td>
                   <td>
                     <a href="index.php?route=pd/sendmail_customer&token=<?php echo $_GET['token'] ?>&customer_id=<?php echo $value['customer_id'] ?>">
