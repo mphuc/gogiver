@@ -27,6 +27,8 @@
 <link type="text/css" href="view/stylesheet/easyui.css" rel="stylesheet">
 <link type="text/css" href="view/stylesheet/tree.css" rel="stylesheet">
 <link type="text/css" href="view/stylesheet/icon.css" rel="stylesheet">
+<script  src="../catalog/view/javascript/jquery.fancybox.pack.js" type="text/javascript"></script>
+<link href="../catalog/view/theme/default/css/jquery.fancybox.css" rel="stylesheet" type="text/css" /> 
 <?php foreach ($styles as $style) { ?>
 <link type="text/css" href="<?php echo $style['href']; ?>" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>

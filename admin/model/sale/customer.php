@@ -87,6 +87,7 @@ class ModelSaleCustomer extends Model {
 			bank_name = '" . $this->db->escape($data['bank_name']) . "',
 			account_number = '" . $this->db->escape($data['account_number']) . "',	
 			branch_bank = '" . $this->db->escape($data['branch_bank']) . "',
+			img_profile = '" . $this->db->escape($data['img_profile']) . "',
 			date_added = '".$date_create."' WHERE customer_id = '" . (int)$customer_id . "'");
 
 		if ($data['password']) {

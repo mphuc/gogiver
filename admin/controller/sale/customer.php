@@ -1420,6 +1420,15 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$data['account_holder'] = '';
 		}
+
+		if (isset($this->request->post['img_profile'])) {
+			$data['img_profile'] = $this->request->post['img_profile'];
+		} elseif (!empty($customer_info)) {
+			$data['img_profile'] = $customer_info['img_profile'];
+		} else {
+			$data['img_profile'] = '';
+		}
+
 		if (isset($this->request->post['bank_name'])) {
 			$data['bank_name'] = $this->request->post['bank_name'];
 		} elseif (!empty($customer_info)) {
@@ -1663,7 +1672,9 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$data['password'] = '';
 		}
+
 		
+
 		if (isset($this->request->post['confirm'])) {
 			$data['confirm'] = $this->request->post['confirm'];
 		} else {
@@ -1693,6 +1704,8 @@ class ControllerSaleCustomer extends Controller {
 		$data['pin'] = $customer_info['ping'];
 		$data['level'] = $customer_info['level'];
 
+
+		
 		//check if not empty in table sm_customer_r_wallet
 		$this -> load -> model('sale/customer');
 
