@@ -41,7 +41,7 @@
                                             <td><?php echo $lang['useridph'] ?></td>
                                             <td><?php echo $lang['FILLED'] ?></td>
                                             <!-- <td><?php //echo $lang['MAX_PROFIT'] ?></td> -->
-                                            <td><?php echo $lang['TIME_REMAIN'] ?></td>
+                                            <!-- <td><?php //echo $lang['TIME_REMAIN'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             <td rowspan="2">
                                             <a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">
@@ -56,20 +56,20 @@
                                             <td data-title="UserID PH"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <!-- <td data-title="<?php //echo $lang['MAX_PROFIT'] ?>"><strong><?php //echo number_format($key['max_profit']); ?> <?php //echo $lang['VND'] ?></strong></td> -->
-                                            <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
-                                         </span> </strong></td>
+                                            <!-- <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
+                                         </span> </strong></td> -->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
-                                             echo '<span style="width:80px;" class="btn-warning btn">'.$lang['dangcho'].'</span>';
+                                             echo '<span style="width:100px;" class="btn-warning btn">'.$lang['dangcho'].'</span>';
                                              break;
                                          case 1:
-                                             echo '<span style="width:80px;" class="btn btn-info">'.$lang['khoplenh'].'</span>';
+                                             echo '<span style="width:100px;" class="btn btn-info">'.$lang['khoplenh'].'</span>';
                                              break;
                                          case 2:
-                                             echo '<span style="width:80px;background-color: #9a9292; color: #fff;" class="btn btn-default">'.$lang['ketthuc'].'</span>';
+                                             echo '<span style="width:100px;background-color: #9a9292; color: #fff;" class="btn btn-default">'.$lang['ketthuc'].'</span>';
                                              break;
                                          case 3:
-                                             echo '<span style="width:80px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
+                                             echo '<span style="width:100px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
                                              break;
                                          } ?></span></strong></td>
                                             <td class="click_pd"><a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">

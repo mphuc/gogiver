@@ -14,7 +14,7 @@ $_['ACCOUNT']            = 'ACCOUNT';
 $_['ACCOUNT_RECEIVED']            = 'ACCOUNT RECEIVED';
 $_['DATE_CREATED']            = 'DATE';
 $_['detail']            = 'DETAIL';
-$_['PD_NUMBER']            = 'PD NUMBER';
+$_['PD_NUMBER']            = 'YOUR PD';
 
 $_['FILLED']            = 'AMOUNT';
 

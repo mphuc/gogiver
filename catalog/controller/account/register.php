@@ -155,7 +155,7 @@ class ControllerAccountRegister extends Controller {
                         </tr>
                      </tbody>
                   </table>
-                  <table style="width:600px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
+                  <table style="width:800px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
          <tbody>
             <tr>
                <td align="center" valign="top">
@@ -172,10 +172,10 @@ class ControllerAccountRegister extends Controller {
                   </table>
                </td>
             </tr>
-            <table style="background:#FFF; padding:25px;width:600px">
+            <table style="background:#FFF; padding:25px 15px;width:400px; float:left; border-right:1px solid #eee">
                <tbody>
                   <tr>
-                     <td style="padding:30px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
+                     <td style="padding:10px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
                   <p><span>Hello <b>'.$_POST['username'].'</b>,</span></p>
                   <p><span>Congratulations Your Registration is Confirmed!</span></p>
                   <p><strong>Your account holder: <span style="color:#5cb85c">'.$_POST['account_holder'].'</span></strong></p>
@@ -191,8 +191,28 @@ class ControllerAccountRegister extends Controller {
                   </tr>
                </tbody>
             </table>
+            <table style="background:#FFF; padding:25px 15px;width:400px;float:left">
+               <tbody>
+                  <tr>
+                     <td style="padding:10px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
+                  <p><span>Xin chào <b>'.$_POST['username'].'</b>,</span></p>
+                  <p><span>Xin chúc mừng, đăng ký của bạn đã được xác nhận!</span></p>
+                  <p><strong>Chủ tài khoản: <span style="color:#5cb85c">'.$_POST['account_holder'].'</span></strong></p>
+                  <p><strong>Ngân hàng: <span style="color:#5cb85c">'.$_POST['bank_name'].'</span></strong></p>
+                  <p><strong>Số tài khoản: <span style="color:#5cb85c">'.$_POST['account_number'].'</span></strong></p>
+                  <p><strong>Email: <span style="color:#5cb85c">'.$_POST['email'].'</span></strong></p>
+                  <p><strong>Điện thoại: <span style="color:#5cb85c">'.$_POST['telephone'].'</span></strong></p>
+                  <p><strong>Tên đăng nhập: <span style="color:#5cb85c">'.$_POST['username'].'</span></strong></p>
+                  <p><strong>Mật khẩu đăng nhập: <span style="color:#5cb85c">'.$_POST['password'].'</span></strong></p>
+            <p><strong>Mật khẩu giao dịch: <span style="color:#5cb85c">'.$_POST['password2'].'</span></strong></p>
+                  <p><strong>Ngày<strong>: '.date('d/m/Y H:i:s').'</p></td></p>
+                   
+                  </tr>
+               </tbody>
+            </table>
              <hr>
 			');
+			//print_r($mail);die;
 			$mail -> send();
 			
 			// $this -> response -> redirect($this -> url -> link('account/register', '#success', 'SSL'));

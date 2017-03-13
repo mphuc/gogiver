@@ -15,7 +15,7 @@ $_['ACCOUNT_RECEIVED']            = 'TÀI KHOẢN NHẬN';
 
 $_['DATE_CREATED']            = 'NGÀY';
 
-$_['PD_NUMBER']            = 'MÃ PD';
+$_['PD_NUMBER']            = 'PD CỦA BẠN';
 
 $_['FILLED']            = 'SỐ TIỀN';
 

@@ -102,14 +102,14 @@ class ControllerAccountAuto extends Controller {
 			// customer_id PD
 			$getCustomer_PD = $this -> model_account_customer -> getCustomer($value['pd_id_customer']);
 			$subject = 'Your PD #'.$this -> get_pd($value['pd_id'])['pd_number'].' has been matched';
-			$content = '<p>Dear '.$getCustomer_PD['username'].'</p><p>Congratulations, Your <b>PD #'.$this -> get_pd($value['pd_id'])['pd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>Iontach Community Team.</p>';
+			$content = '<p>Dear '.$getCustomer_PD['username'].'</p><p>Congratulations, Your <b>PD #'.$this -> get_pd($value['pd_id'])['pd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
 
 			$this -> sendmail_khoplenh($getCustomer_PD['email'],$subject,$content);
 			
 			// customer_id GD
 			$getCustomer_GD = $this -> model_account_customer -> getCustomer($value['gd_id_customer']);
 			$subject = 'Your GD #'.$this -> get_gd($value['gd_id'])['gd_number'].' has been matched';
-			$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>hw_GetChildDocColl(connection, objectID) #'.$this -> get_gd($value['pd_id'])['gd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>Iontach Community Team.</p>';
+			$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>GD #'.$this -> get_gd($value['pd_id'])['gd_number'].'</b> has been matched. Please log on to your account to review your bank account, ensure it correct. Please approve the transactions for sender whenever you recived money as soon as possible.</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
 			$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
 
 			$this -> model_account_auto -> update_customer_sendmail_finish($value['id']);
@@ -661,7 +661,7 @@ public function updateLevel_listID($customer_id){
 		 //echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
 
-			$description ='Change status from ACTIVE to FROZEN Reason: you did not complete Re-PD';
+			$description ='You did not complete Re-PD';
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
         	$this -> model_account_block -> update_check_gd($value['id']);
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
@@ -682,7 +682,7 @@ public function updateLevel_listID($customer_id){
       
         foreach ($query_rp as $key => $value) {
         	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
-        	$description ='Change status from ACTIVE to BLOCK Reason: you did not complete PD';
+        	$description ='You did not complete PD';
         	$this -> model_account_block -> update_check_block_pd($value['customer_id'],$description, $value['pd_number']);
         	 $total = $this -> model_account_block -> get_total_block_id_pd($value['customer_id']);
 		       	if (intval($total) === 2) {

@@ -96,4 +96,4 @@ $_['Write_something_to_us'] = 'Nội dung hỗ trợ';
 $_['Images'] = 'Chọn ảnh...';
 $_['urlImages'] = 'Đường dẫn hình ảnh...';
 $_['Creategh_s'] = 'Đặt lệnh nhận về (GD)';
-
+$_['Your_GD'] = 'GD CỦA BẠN';

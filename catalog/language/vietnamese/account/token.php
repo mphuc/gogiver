@@ -7,9 +7,9 @@ $_['text_home']            = 'Trang chủ';
 $_['text_button']            = 'Chuyển Pin';
 $_['text_type']            = 'LOẠI';
 $_['text_AMOUNT']            = 'SỐ LƯỢNG';
-$_['text_SYSTEM']            = 'MÔ TẢ HỆ THỐNG';
+$_['text_SYSTEM']            = 'MÔ TẢ';
 $_['text_USER']            = 'MÔ TẢ NGƯỜI DÙNG';
-$_['text_DATE']            = 'NGÀY THÁNG';
+$_['text_DATE']            = 'NGÀY';
 
 
 $_['text_create']            = 'Chuyển Pin và Lịch Sử Chuyển Pin';

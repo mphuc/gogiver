@@ -207,7 +207,7 @@ class ControllerAccountPd extends Controller {
    </div>
    
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-cloud-upload"> UserID PD :</i> 
+      <i class="fa fa-cloud-upload"> ID PD :</i> 
       <strong class="text-primary"> Bạn ('.$this->getParrent($value['pd_id_customer']).')</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
@@ -215,7 +215,7 @@ class ControllerAccountPd extends Controller {
       <strong class=" text-primary">'.(number_format($value['amount'])).' VNĐ</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12 ">
-      <i class="fa fa-cloud-download"> UserID GD : </i> 
+      <i class="fa fa-cloud-download"> ID GD : </i> 
       <strong class=" text-primary">'.$value['username'].'</strong>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">

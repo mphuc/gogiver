@@ -99,3 +99,4 @@ $_['Write_something_to_us'] = 'Write something to us';
 $_['Images'] = 'Images';
 $_['urlImages'] = 'Link Images';
 $_['Creategh_s'] = 'Get Donation (GD)';
+$_['Your_GD'] = 'YOUR GD';

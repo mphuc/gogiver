@@ -114,7 +114,7 @@
                   <?php }else{ ?>
                   
                      <div class="alert alert-danger">
-                       <strong>Thông báo! </strong> Bạn vui lòng tạo PH để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
+                       <strong>Thông báo! </strong> Bạn vui lòng RePD để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
                      </div>
 
                   <?php
@@ -150,12 +150,12 @@
             <?php if ($language=='english') { ?>
               
                <div class="alert alert-danger">
-                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> PD unfinished. <?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> remaining time <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
+                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?>-Your Downline's remaining time fo PD is: <span data-countdown="<?php echo $value['date_finish'] ?>">, </span>You can GET PD when the time runs out   <a class="btn btn-success">GET PD</a>
                  </div>
             <?php }else{ ?>
 
                <div class="alert alert-danger">
-                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> chưa hoàn thành PD.  Thời gian còn lại của <?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> <span data-countdown="<?php echo $value['date_finish'] ?>"></span>
+                   <strong>Thời gian còn lại của <?php echo $self-> getusername($value['pd_id_customer'])['username'] ?> <span data-countdown="<?php echo $value['date_finish'] ?>"></span> để hoàn thành PD. Bạn có quyền GET PD khi hết thời gian <a class="btn btn-success">GET PD</a>
                  </div>
 
             <?php } ?>

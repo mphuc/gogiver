@@ -34,7 +34,7 @@
                               <div class="list_ph" style="margin-bottom: 30px">
                                  <div class="Head" role="tab" id="headingOne<?php echo $key['gd_number'] ?>">
                                     
-                                    <h4 style=" width: 200px;float: left;">GD : <strong>GD<?php echo $key['gd_number'] ?></strong></h4>
+                                    <h4 style=" width: 300px;float: left;"><?php echo $lang['Your_GD'] ?> : <strong>GD<?php echo $key['gd_number'] ?></strong></h4>
                                     <div class="clearfix"></div>
                                     <table  class="table">
                                         <thead>
@@ -45,7 +45,7 @@
                                             <td><?php echo $lang['useridph'] ?></td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
                                             <td><?php echo $lang['danhnhan'] ?></td>
-                                            <td><?php echo $lang['transferTime'] ?></td>
+                                            <!-- <td><?php //echo $lang['transferTime'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             
                                             <td rowspan="2">
@@ -62,8 +62,8 @@
                                             <td data-title="ID"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
-                                       </span> </strong></td>
+                                            <!-- <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
+                                       </span> </strong></td> -->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
                                            echo '<span style="width:80px;" class="btn btn-warning">'.$lang['dangcho'].'</span>';
