@@ -97,6 +97,7 @@ class ControllerAccountAuto extends Controller {
 	{
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
+		// send mail send_mail == 0
 		$customer_sendmail = $this -> model_account_auto -> get_customer_sendmail();
 		foreach ($customer_sendmail as $value) {
 			// customer_id PD

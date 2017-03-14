@@ -575,7 +575,7 @@ if ($getLanguage == 'vietnamese') {
 			
 			if ($this -> session -> data['customer_id']  == 2 && intval($this -> request -> get['level']) ==1 )
 			{
-				$json['success'] = $json['success'] + 1065;
+				$json['success'] = $json['success'] + 1000;
 			}
 			
 			$this -> response -> setOutput(json_encode($json));

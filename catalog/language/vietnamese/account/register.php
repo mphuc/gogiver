@@ -12,6 +12,7 @@ $_['text_numberbank']            = 'Số tài khoản ngân hàng';
 $_['text_Email']            = 'Địa chỉ email';
 $_['text_Phone']            = 'Số điện thoại';
 $_['text_cmnd']            = 'Số chứng minh nhân dân';
+$_['text_cmnd_img']            = 'Chứng minh nhân dân';
 $_['text_Country']            = 'Quốc gia';
 $_['text_Country_Select']            = '-- Chọn quốc gia của bạn --';
 
@@ -44,7 +45,7 @@ $_['text_Submitssss']            = '<p>Thông tin đăng ký hợp lệ bao gồ
                               <p> - Hình Chứng Minh Nhân Dân (hình ảnh rõ, không bị mờ số)</p>
                               <p> - Tài khoản ngân hàng (chỉ hỗ trợ cho tài khoản Vietcombank)</p>
                               <p> - Số điện thoại, Email.</p>
-                              <p><u><b>Lưu ý:</b></u>  Để đảm bảo tích xác thực của thông tin, Iontach chỉ chấp nhận Chứng Minh Nhân Dân, không chấp nhận Passport và Bằng Lái Xe.</p>
+                              <p><u><b>Lưu ý:</b></u>  Để đảm bảo tính xác thực của thông tin, Iontach chỉ chấp nhận Chứng Minh Nhân Dân, không chấp nhận Passport và Bằng Lái Xe.</p>
                               <p>Tên chủ tài khoản ngân hàng phải khớp với chứng minh nhân dân</p>
                               <p>Tôi hoàn toàn chịu trách nhiệm với những thông tin đăng ký trên.</p>
                               <p>Tham gia vào Iontach là hoàn toàn tự nguyện.</p>';

@@ -272,7 +272,7 @@ class ControllerAccountGd extends Controller {
 				       </tr>
 				       <tr>
 				       <td style="background:#fff">
-				       	<p class="text-center" style="font-size:20px;color: black;line-height: 1; width:100%; float:left;text-align: center;margin: 30px 0px 0 0;"> User ID GH '.$customer_gd['username'].' đã báo cáo User ID '.$customer_pd['username'].' không xác nhận PH	 !<p>
+				       	<p class="text-center" style="font-size:20px;color: black;line-height: 1; width:100%; float:left;text-align: center;margin: 30px 0px 0 0;"> User ID GD '.$customer_gd['username'].' đã báo cáo User ID '.$customer_pd['username'].' không xác nhận PH!<p>
 				       	<p class="text-center" style="color: black; width:100%; float:left;text-align: center;line-height: 15px;margin-bottom:30px;">Bạn vui lòng liên hệ với Admin để xác nhận! Nếu không tài khoản của bạn sẽ bị khóa sau 24h</p>
        
 				       </td>
@@ -387,22 +387,22 @@ class ControllerAccountGd extends Controller {
 			$html .= '<div class="row">
    <div class="col-lg-12 col-sm-12 col-xs-12 height">
       <i class="fa fa-code-fork" aria-hidden="true"></i> '.$lang['GD_NUMBER'].': </i> 
-      <strong class=" text-danger">GH'.$value["transfer_code"].'</strong>
+      <strong class=" text-danger">GD'.$value["transfer_code"].'</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-calendar"> '.$lang['DATE_CREATED'].':</i> 
       <strong class=" text-primary">'.date("d/m/Y", strtotime($value['date_added'])).'</strong>
    </div>
    
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-cloud-upload"> '.$lang['id_transfer'].' :</i> 
       <strong class="text-primary">'.$this->getParrent($value['pd_id_customer']).'</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-money"> '.$lang['AMOUNT'].' :</i> 
       <strong class=" text-primary">'.(number_format($value['amount'])).' '.$lang['VND'].'</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-cloud-download"> '.$lang['ID_received'].' : </i> 
       <strong class=" text-primary">'.$lang['You'].' ('.$value['username'].' )</strong>
    </div>
@@ -444,9 +444,9 @@ class ControllerAccountGd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Message</h4>
+               <h4 class="modal-title">'.$lang['Message'].'</h4>
             </div>
-            <form id="comfim-pd" action="'.$this -> url -> link('account/gd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
+            <form id="comfim-pd" style="background: #fff;" action="'.$this -> url -> link('account/gd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
     text-align: left;
 ">
                <input type="hidden" value="'.$value['id'].'" name="token" />
@@ -465,12 +465,13 @@ class ControllerAccountGd extends Controller {
                   	'.$this->getMessages($value['id']).'
                   </div>
                </div>
-               <div class="modal-footer">
-               <center>
+               <div class="modal-footer text-right" style="padding:10px">
+               
                		'.$btnconfirm.'
-                  <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['Close'].'</button>
+                  
                   <button type="submit" class="btn btn-primary">'.$lang['Send'].'</button>
-                 </center>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['Close'].'</button>
+                 
                </div>
             </form>
          </div>

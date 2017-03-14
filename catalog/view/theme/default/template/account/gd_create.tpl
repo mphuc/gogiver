@@ -71,7 +71,7 @@
                         </div>
                      </div>
                      <div class="form-group">
-                        <label class="col-md-4 control-label">Chọn Ví: </label>
+                        <label class="col-md-4 control-label"><?php echo $lang['wallet'] ?>: </label>
                         <div class="col-md-8" style="margin-top: 10px;">
                            <!-- Please check the type of wallet -->
                            <!-- <label class="radio"></label> -->

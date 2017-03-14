@@ -44,7 +44,7 @@
                                             <td><?php echo $lang['DATE_CREATED'] ?></td>
                                             <td><?php echo $lang['useridph'] ?></td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
-                                            <td><?php echo $lang['danhnhan'] ?></td>
+                                            <!-- <td><?php //echo $lang['danhnhan'] ?></td> -->
                                             <!-- <td><?php //echo $lang['transferTime'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             
@@ -61,7 +61,7 @@
                                             <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
                                             <td data-title="ID"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
+                                            <!-- <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td> -->
                                             <!-- <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
                                        </span> </strong></td> -->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
@@ -138,7 +138,7 @@
 <script type="text/javascript">
 
   $('.gh_confirm').on('click', function() {
-    var result = confirm("Confirm Bill?");
+    var result = confirm("<?php echo $lang['Confirm_Bill']; ?>");
     var code = $(this).data().value;
     if (result) {
       url = 'confirmgh.html&token='+code;
@@ -146,7 +146,7 @@
     }
   });
    $('.gh_report').on('click', function() {
-    var result = confirm("Confirm Report ID PH?");
+    var result = confirm("<?php echo $lang['Confirm_Report_ID_PD']; ?>");
     var code = $(this).data().value;
     if (result) {
       url = 'reportgh.html&token='+code;

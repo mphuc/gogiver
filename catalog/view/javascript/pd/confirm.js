@@ -36,7 +36,7 @@ $(function() {
     $('.comfim-pd').on('submit', function(){
         $(this).ajaxSubmit({
             beforeSubmit : function(arr, $form, options) { 
-               var user_choice = window.confirm('Would you like to continue?');
+               var user_choice = true;
                 if(user_choice==true) {
                      return true;
                 } else {

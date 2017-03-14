@@ -55,3 +55,4 @@ $_['stt'] = "No";
 $_['date'] = "Date" ;
 $_['Amount'] = "Amount";
 $_['wallet'] = "Wallet";
+$_['stt'] = "No.";

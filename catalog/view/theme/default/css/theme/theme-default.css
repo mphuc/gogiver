@@ -182,7 +182,7 @@ body.ball-clip-rotate-multiple .preloader .loader-inner > div:last-child {
    position: fixed;
     bottom: 0px;
     margin-top: 50px;
-    z-index: 999999999;
+    z-index: 99;
 }
 /* -----------------------------------------
   Theme default - Accordions ( panel groups )

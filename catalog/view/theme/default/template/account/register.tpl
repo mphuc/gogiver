@@ -100,7 +100,7 @@
                                                    <input type="number" autocomplete="off"  class="form-control" name="cmnds" id="cmnds" placeholder="<?php echo $lang['text_cmnd'] ?>" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                 <span class="text-info"style=" font-size: 20px; "><?php echo $lang['text_cmnd'] ?></span>
+                                                 <span class="text-info"style=" font-size: 20px; "><?php echo $lang['text_cmnd_img'] ?></span>
                                                     <span class="edit_icon">
                                                <input type="file" name="avatar" id="file"  accept="image/jpg,image/png,image/jpeg,image/gif" style="visibility: hidden; width: 1px; height: 1px"> 
                                             

@@ -99,47 +99,54 @@ class ControllerAccountPd extends Controller {
 		return $html;
 	}
 	public function show_confirm($id_transfer){
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$language = new Language($getLanguage);
+		$language -> load('account/pd');
+		$lang = $language -> data;
+
+
 		$transfer_confirm = $this -> model_account_customer -> getPDTranferByID($id_transfer);
 
 		$html = '';
 		$html .= '<table class="table table-bordered table-condensed table-hover ">
    <thead>
       <tr>
-         <th colspan="2" class="fade in"> Information Transfer : <br>Information Bank</th>
+         <th colspan="2" class="fade in"> '.$lang['Information_Transfer'].'</th>
       </tr>
    </thead>
    <tbody>
    	  <tr>
-         <td>Amount</td>
+         <td>'.$lang['FILLED'].'</td>
          <td>'.number_format($transfer_confirm['amount']).' VNĐ</td>
       </tr>
       <tr>
-         <td>Bank</td>
+         <td>'.$lang['C_titleBank'].'</td>
          <td>Vietcombank</td>
       </tr>
      
       <tr>
-         <td>Account Holder</td>
+         <td>'.$lang['C_titleAccount_Holder'].'</td>
          <td>'.$transfer_confirm['account_holder'].'</td>
       </tr>
       <tr>
-         <td>Account Number</td>
+         <td>'.$lang['C_titleBank_Number'].'</td>
          <td>'.$transfer_confirm['account_number'].'</td>
       </tr>
       <tr>
-         <td>Phone Number</td>
+         <td>'.$lang['telephone'].'</td>
          <td>'.$transfer_confirm['telephone'].'</td>
       </tr>
       <tr>
-         <th colspan="2" class="fade in"><strong>Contact Info </strong></th>
+         <th colspan="2" class="fade in"><strong>'.$lang['Contact_Info'].' </strong></th>
       </tr>
       <tr>
-         <td>Information ID Receive </td>
-         <td>Name: <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>Phone:<strong> '.$transfer_confirm['telephone'].'</strong></td>
+         <td>'.$lang['Information_ID_Receive'].' </td>
+         <td>'.$lang['name'].': <strong>'.$transfer_confirm['account_holder'].' ('.$transfer_confirm['username'].')</strong><br>'.$lang['telephone'].':<strong> '.$transfer_confirm['telephone'].'</strong></td>
       </tr>
       <tr>
-         <td>Information Sponsor ID Receive </td>
-         <td>Name: <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>Phone:<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
+         <td>'.$lang['Information_Sponsor_ID_Receive'].' </td>
+         <td>'.$lang['name'].': <strong>'.$this->getAccountHolder($transfer_confirm['p_node']).' ('.$this->getParrent($transfer_confirm['p_node']).')</strong><br>'.$lang['telephone'].':<strong> '.$this->getPhone($transfer_confirm['p_node']).'</strong></td>
       </tr>
    </tbody>
 </table>';
@@ -148,6 +155,12 @@ class ControllerAccountPd extends Controller {
 		return $html;
 	}
 	public function show_transfer($pd_id){
+
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$language = new Language($getLanguage);
+		$language -> load('account/pd');
+		$lang = $language -> data;
 
 			/*$this -> load -> model('account/customer');
 			$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
@@ -162,27 +175,27 @@ class ControllerAccountPd extends Controller {
 		foreach ($transferList as $key => $value) {
 			
 			if (intval($value['pd_satatus']) === 0){
-			$status = '<span class="label label-default">Waitting</span>';
+			$status = '<span class="label label-default">'.$lang['dangcho'].'</span>';
 		}
 		if (intval($value['pd_satatus']) === 1){
-			$status = '<span class="label label-success">Finish</span>';
+			$status = '<span class="label label-success">'.$lang['ketthuc'].'</span>';
 		}
 		if (intval($value['pd_satatus']) === 2){
-			$status = '<span class="label label-danger">Report</span>';
+			$status = '<span class="label label-danger">'.$lang['baocao'].'</span>';
 		}
 		if (intval($value['gd_status']) === 0){
-			$status_gd = '<span class="label label-warning">Waitting</span>';
+			$status_gd = '<span class="label label-warning">'.$lang['dangcho'].'</span>';
 		}
 		if (intval($value['gd_status']) === 1){
-			$status_gd = '<span class="label label-success">Finish</span>';
+			$status_gd = '<span class="label label-success">'.$lang['ketthuc'].'</span>';
 		}
 		if (intval($value['gd_status']) === 2){
-			$status_gd = '<span class="label label-danger">Report</span>';
+			$status_gd = '<span class="label label-danger">'.$lang['baocao'].'</span>';
 		}
 
 			if(!$value['image']){
 				$image = ' <div class="fileUpload btn btn-primary">
-	    <span>Upload Bill</span>
+	    <span>'.$lang['Upload_Bill'].'</span>
 	   	
 	   	<input type="file" class="upload" name="avatar" id="file" accept="image/jpg,image/png,image/jpeg,image/gif"/>
 	</div>    
@@ -198,20 +211,20 @@ class ControllerAccountPd extends Controller {
 			$html .= '<div class="row">
    
    <div class="col-lg-12 col-sm-12 col-xs-12 height">
-      <i class="fa fa-code-fork" aria-hidden="true"></i> Trade Code:
-      <strong class=" text-danger">'.$value["transfer_code"].'</strong>
+      <i class="fa fa-code-fork" aria-hidden="true"></i> '.$lang['PD_NUMBER'].':
+      <strong class=" text-danger">PD'.$value["transfer_code"].'</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-calendar"> </i> Date Created:
+      <i class="fa fa-calendar"> </i> '.$lang['DATE_CREATED'].':
       <strong class=" text-primary">'.date("d/m/Y", strtotime($value['date_added'])).'</strong>
    </div>
    
    <div class="col-lg-3 col-sm-6 col-xs-12">
       <i class="fa fa-cloud-upload"> ID PD :</i> 
-      <strong class="text-primary"> Bạn ('.$this->getParrent($value['pd_id_customer']).')</strong>
+      <strong class="text-primary"> '.$lang['Your'].' ('.$this->getParrent($value['pd_id_customer']).')</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-money"> Số Tiền :</i> 
+      <i class="fa fa-money"> '.$lang['FILLED'].' :</i> 
       <strong class=" text-primary">'.(number_format($value['amount'])).' VNĐ</strong>
    </div>
    <div class="col-lg-3 col-sm-6 col-xs-12 ">
@@ -219,17 +232,17 @@ class ControllerAccountPd extends Controller {
       <strong class=" text-primary">'.$value['username'].'</strong>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success">Status PD: </i>
+      <i class="fa fa-check-circle-o text-success">'.$lang['STATUS'].' PD: </i>
       <span class="text-success">'.$status .'</span>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
-      <i class="fa fa-check-circle-o text-success"> Status GD:  </i>
+      <i class="fa fa-check-circle-o text-success"> '.$lang['STATUS'].' GD:  </i>
       <span class="text-success">'.$status_gd.'</span>
    </div>
    <div class="col-lg-4 col-sm-6 col-xs-12 height">
       <span class="pull-left">
-      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Confirm Bill</a>
-      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">Detail </a>
+      <a class="btn btn-xs btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">'.$lang['Confirm_Bill'].'</a>
+      <a class="btn btn-xs btn-info showdetails" data-toggle="modal" href="#modal-'.$value['transfer_code'].'">'.$lang['Detail'].' </a>
       </span>
    </div>
    <div class="modal fade" id="modal-'.$value['transfer_code'].'">
@@ -237,14 +250,14 @@ class ControllerAccountPd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Confirm PD for '.$value['username'].'</h4>
+               <h4 class="modal-title">'.$lang['Confirm_PD_for'].' '.$value['username'].'</h4>
             </div>
             <div class="modal-body">
                '.$this->show_confirm($value['id']).'
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">Confirm Transfer</a>
+               <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['close'].'</button>
+               <a class="btn btn-primary" data-toggle="modal" href="#modal-id-'.$value['transfer_code'].'">'.$lang['confirm'].'</a>
             </div>
          </div>
       </div>
@@ -254,7 +267,7 @@ class ControllerAccountPd extends Controller {
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Message</h4>
+               <h4 class="modal-title">'.$lang['Message'].'</h4>
             </div>
             <form class="comfim-pd" action="'.$this -> url -> link('account/pd/confirmSubmit', '', 'SSL').'" method="POST" enctype="multipart/form-data" style="
     text-align: left;
@@ -270,15 +283,15 @@ class ControllerAccountPd extends Controller {
                      </div>
                   </div>
                   <div class="form-group">
-                     <textarea autofocus="" placeholder="Message" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
+                     <textarea autofocus="" placeholder="'.$lang['Message'].'" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
                   </div>
                   <div class="form-group">
                   	'.$this->getMessages($value['id']).'
                   </div>
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Confirm</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">'.$lang['close'].'</button>
+                  <button type="submit" class="btn btn-primary">'.$lang['confirm'].'</button>
                </div>
             </form>
          </div>

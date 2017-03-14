@@ -80,7 +80,7 @@
                                                     <table id="datatable" class="table table-bordered">
                                                        <thead>
                                                           <tr>
-                                                             <th>STT</th>
+                                                             <th><?php echo $lang['stt'] ?></th>
                                                              <th><?php echo $lang['text_type'] ?></th>
                                                              <th><?php echo $lang['text_AMOUNT'] ?></th>
                                                              <th><?php echo $lang['text_SYSTEM'] ?></th>

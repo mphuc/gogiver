@@ -60,3 +60,4 @@ $_['stt'] = "STT";
 $_['date'] = "Ngày tạo";
 $_['Amount'] = "Số BTC";
 $_['wallet'] = "Ví";
+$_['stt'] = "STT";

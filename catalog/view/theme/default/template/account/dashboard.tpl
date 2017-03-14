@@ -101,7 +101,7 @@
 <div class="clearfix"></div>
           <?php 
 
-                  if (intval($repd) != 0) {
+                  if (count($repd) != 0) {
                     
                     
                   ?>
@@ -109,12 +109,12 @@
                   <?php if ($language=='english') { ?>
                   
                     <div class="alert alert-danger">
-                       <strong>Notification! </strong> Please create PH to freezing or locked accounts. <a class="btn btn-success" href="provide-donation.html">Create PH</a>
+                      You have <span data-countdown="<?php echo $repd['date_added'] ?>"></span> for RePD <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
                   <?php }else{ ?>
                   
                      <div class="alert alert-danger">
-                       <strong>Thông báo! </strong> Bạn vui lòng RePD để không bị đóng băng hoặc bị khóa tài khoản. <a class="btn btn-success" href="provide-donation.html">Tạo PH</a>
+                      Bạn còn <span data-countdown="<?php echo $repd['date_added'] ?>"></span> để RePD  <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
 
                   <?php
@@ -150,7 +150,7 @@
             <?php if ($language=='english') { ?>
               
                <div class="alert alert-danger">
-                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?>-Your Downline's remaining time fo PD is: <span data-countdown="<?php echo $value['date_finish'] ?>">, </span>You can GET PD when the time runs out   <a class="btn btn-success">GET PD</a>
+                   <strong><?php echo $self-> getusername($value['pd_id_customer'])['username'] ?>-Your Downline's remaining time for PD is: <span data-countdown="<?php echo $value['date_finish'] ?>">, </span>. You can GET PD when the time run out   <a style="margin-left: 10px;" class="btn btn-success">GET PD</a>
                  </div>
             <?php }else{ ?>
 

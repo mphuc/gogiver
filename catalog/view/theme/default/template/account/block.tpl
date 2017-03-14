@@ -25,11 +25,16 @@
             <div class="block_panel text-center">
                 <!-- Start .panel -->
                 <div class="panel-body p0">
-                    <h1 class="text-center">Account Locked</h1>
+                    <h1 class="text-center">Account FROZEN</h1>
                      <?php $wallet = $self -> return_wallet(); ?>
-                    <p class="text-center s20">Your account has been locked at <code><?php echo date("d/m/Y", strtotime($wallet['date'])); ?></code>.</p>
+                     
+
+                    <p class="text-center s20"> Your account has been locked at <code><?php echo date("d/m/Y", strtotime($wallet['date'])); ?></code>.</p>
+                    <p class="text-center s20">Reason: You did not complete PD</p>
+                    <p class="text-center s20">Status: Change from ACTIVE to FROZEN</p>
+
                     <p class="text-center s20">To unlock your account will be penalized as follows.</p>
-                  
+                    
                     <p class="text-center s20">Deduct R-Wallet amount: <code><?php echo number_format($wallet['r_wallet']) ?> VND</code></p>
                     <p class="text-center s20">Deduct C-Wallet amount: <code><?php echo number_format($wallet['c_wallet']) ?> VND</code></p>
                    
