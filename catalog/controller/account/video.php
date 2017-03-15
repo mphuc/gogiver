@@ -28,6 +28,4 @@ class ControllerAccountVideo extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/video.tpl', $data));
 		}
 	}
-
-	
 }

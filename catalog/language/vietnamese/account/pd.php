@@ -119,4 +119,4 @@ $_['Message'] = 'Tin nhắn';
 $_['Upload_Bill'] = 'Biên lai chuyển tiền';
 $_['id_transfer']            = 'NGƯỜI CHUYỂN';
 $_['ID_received']            = 'NGƯỜI NHẬN';
-
+$_['video_huongdan']            = 'Video Hướng dẫn';

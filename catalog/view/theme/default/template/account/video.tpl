@@ -13,16 +13,35 @@
 <div class="panel panel-default" id="dash_0">
    <!-- Start .panel -->
    <div class="panel-heading">
-      <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['Remove_Account'] ?></h4>
+      <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['video_huongdan'] ?></h4>
    </div>
    <div class="panel-body form-horizontal group-border stripped">
       <div class="form-group">
          <div class="col-lg-12 col-md-12">
             <div class="input-group input-icon file-upload">
-               <div class="widget-content" style="padding:10px">
-                
+               <div class="widget-content all_video" style="padding:10px" >
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/3TQxWr0M72Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/XOsAl8wxthA?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/mixxIbEHKfI?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/BmYKBX635vk?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/FqDsbEwFZ6U?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/srtuTBYwY9U?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
 
-
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/ofzoI516fio?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
                </div>
             </div>
          </div>

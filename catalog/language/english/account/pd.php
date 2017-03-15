@@ -123,3 +123,4 @@ $_['Message'] = 'Message';
 $_['Upload_Bill'] = 'Upload Bill';
 $_['id_transfer']            = 'ID TRANSFER';
 $_['ID_received']            = 'ID RECEIVED';
+$_['video_huongdan']            = 'Video tutorial';
