@@ -214,21 +214,21 @@ class ControllerAccountPd extends Controller {
       <i class="fa fa-code-fork" aria-hidden="true"></i> '.$lang['PD_NUMBER'].':
       <strong class=" text-danger">PD'.$value["transfer_code"].'</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-calendar"> </i> '.$lang['DATE_CREATED'].':
       <strong class=" text-primary">'.date("d/m/Y", strtotime($value['date_added'])).'</strong>
    </div>
    
-   <div class="col-lg-3 col-sm-6 col-xs-12">
-      <i class="fa fa-cloud-upload"> ID PD :</i> 
+   <div class="col-lg-6 col-sm-6 col-xs-12">
+      <i class="fa fa-cloud-upload"> '.$lang['id_transfer'].' :</i> 
       <strong class="text-primary"> '.$lang['Your'].' ('.$this->getParrent($value['pd_id_customer']).')</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12">
+   <div class="col-lg-6 col-sm-6 col-xs-12">
       <i class="fa fa-money"> '.$lang['FILLED'].' :</i> 
       <strong class=" text-primary">'.(number_format($value['amount'])).' VNĐ</strong>
    </div>
-   <div class="col-lg-3 col-sm-6 col-xs-12 ">
-      <i class="fa fa-cloud-download"> ID GD : </i> 
+   <div class="col-lg-6 col-sm-6 col-xs-12 ">
+      <i class="fa fa-cloud-download"> '.$lang['ID_received'].' : </i> 
       <strong class=" text-primary">'.$value['username'].'</strong>
    </div>
    <div class="col-lg-4  col-sm-6 col-xs-12 height">
@@ -491,9 +491,9 @@ $block_id = $this -> check_block_id();
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- 1',
-					'Use Pin for PD'.$pd_query['pd_number'],
+					$pd_query['pd_number'],
 					'PD',
-					'Use Pin for PD'.$pd_query['pd_number']
+					$pd_query['pd_number']
 				);
 
 				$json['data_link']= $this->url->link('account/pd/');
@@ -1632,7 +1632,6 @@ $block_id = $this -> check_block_id();
     public function check_block_id(){
 		$this->load->model('account/customer');
 		$block_id = $this -> model_account_customer -> get_block_id($this -> customer -> getId());
-		
 		return intval($block_id['status']);
 
 	}

@@ -101,3 +101,7 @@ $_['Confirm_Bill'] = 'Bạn có đồng ý xác nhận?';
 $_['Confirm_Report_ID_PD'] = 'Bạn có đồng ý báo cáo?';
 $_['Message'] = 'Tin nhắn';
 $_['wallet'] = 'Chọn ví';
+$_['Other_reasons'] = 'Lý do khác';
+$_['Idonotgetmoney'] = 'Tôi chưa nhận được tiền';
+$_['Are_you_sure_to_Report'] = 'Bạn có chắc chắn Báo cáo?';
+$_['Reasons'] = 'Lý do';

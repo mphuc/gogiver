@@ -403,7 +403,7 @@ $block_id = $this -> check_block_id();
 
 				//save history cho user chuyen di
 
-				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer', 'ID Receive '. $customerReceived['username']);
+				$id_history = $this -> model_account_customer -> saveHistoryPin($this -> customer -> getId(), '- ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer',$customerReceived['username']);
 
 				//save history cho user nhan token
 				$id_history = $this -> model_account_customer -> saveHistoryPin($customerReceived['customer_id'], '+ ' . $this -> request -> get['pin'], $this -> request -> get['description'], 'Transfer', ' '. $customerSend['username']);

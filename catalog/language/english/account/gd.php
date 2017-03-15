@@ -104,3 +104,9 @@ $_['Confirm_Bill'] = 'Are you sure to Confirm?';
 $_['Confirm_Report_ID_PD'] = 'Are you sure to Report?';
 $_['Message'] = 'Message';
 $_['wallet'] = 'Wallet';
+$_['Other_reasons'] = 'Other reasons';
+$_['Idonotgetmoney'] = 'I do not get money';
+$_['Are_you_sure_to_Report'] = 'Are you sure to Report?';
+$_['Reasons'] = 'Reasons';
+
+

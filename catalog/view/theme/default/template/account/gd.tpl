@@ -133,8 +133,43 @@
      </div>
 
   </div>
+<button style="display: none;" type="button" class="btn btn-info btn-lg" data-toggle="modal" id="myModal_gdreport" data-target="#myModal_GD">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal_GD" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><?php echo $lang['btn_report'] ?></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="radio">
+            <label><input type="radio" name="optradio" checked="true"><?php echo $lang['Idonotgetmoney'] ?></label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio"><?php echo $lang['Other_reasons'] ?></label>
+          </div>
+          <div class="radio" style="margin-left: 20px;">
+            <textarea style="width: 100%; height: 50px;border: 1px solid #eee; border-radius: 4px; padding: 4px;" placeholder="<?php echo $lang['Reasons'] ?>"></textarea>
+          </div>
+          <h3 class="text-center"><?php echo $lang['Are_you_sure_to_Report'] ?></h3>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-value="" class="gh_report_confirm btn btn-danger" style=""><?php echo $lang['btn_report'] ?></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang['Close'] ?></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
   <div class="clearfix" style="margin-top: 80px;"></div>
 </div>
+
 <script type="text/javascript">
 
   $('.gh_confirm').on('click', function() {
@@ -146,13 +181,29 @@
     }
   });
    $('.gh_report').on('click', function() {
-    var result = confirm("<?php echo $lang['Confirm_Report_ID_PD']; ?>");
+    var code = $(this).data().value;
+    $('#myModal_GD .gh_report_confirm').attr('data-value',code);
+    $('#myModal_gdreport').trigger('click');
+    
+    /*var result = confirm("<?php echo $lang['Confirm_Report_ID_PD']; ?>");
     var code = $(this).data().value;
     if (result) {
       url = 'reportgh.html&token='+code;
       location = url;
-    }
+    }*/
+  });
+
+    $('.gh_report_confirm').on('click', function() {
+    var id = $(this).data('value');
+      url = 'reportgh.html&token='+id;
+      location = url;
   });
 </script>
-      
+
 <?php echo $self->load->controller('common/footer') ?>
+<style type="text/css">
+  .radio-custom{
+    float: left;
+    margin-top: 0px;
+  }
+</style>

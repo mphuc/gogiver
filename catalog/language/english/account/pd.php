@@ -121,3 +121,5 @@ $_['close'] = 'Close';
 $_['confirm'] = 'Confirm';
 $_['Message'] = 'Message';
 $_['Upload_Bill'] = 'Upload Bill';
+$_['id_transfer']            = 'ID TRANSFER';
+$_['ID_received']            = 'ID RECEIVED';
