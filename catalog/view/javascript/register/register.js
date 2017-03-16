@@ -19,7 +19,7 @@ $( document ).ready(function() {
 
          
         
-        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        var fileExtension = [ 'jpg', 'png', 'gif'];
         if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
             if($("#file").val())
             {
