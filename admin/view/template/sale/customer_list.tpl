@@ -283,7 +283,7 @@
                 <tr>
                   <!-- <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td> -->
                   <td style="width: 40px;" >STT</td>
-                 
+                  <td style="width: 40px;" >ID</td>
                   <td style="width: 140px;" class="text-left" >
                     <!--   <?php if ($sort == 'name') { ?>
                       <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
@@ -327,7 +327,22 @@
                
                 <tr class="<?php echo $class ?>">
                   <td><?php echo $n;?></td>
+                  <?php if ($customer['customer_id'] > 61 )
+                    {
+                      $customer_id = $customer['customer_id'] + 1000; 
+                    }
+                    else
+                    {
+                      $customer_id = $customer['customer_id'];
+                    }
+                    if ($customer['customer_id'] == 64 ) $customer_id = 1060;
+                    if ($customer['customer_id'] == 65 ) $customer_id = 1061;
+                     
+                  ?>
+                    
+
                   
+                  <td><?php echo $customer_id ;?></td>
                   <td class="text-left"><?php echo $customer['username']; ?></td>
                  <td class="text-left"><?php echo $customer['email']; ?></td>
                  <td style="width: 180px;float: left; border-bottom: none;" class="text-left"><?php echo $customer['date_addeds']; ?></td>
