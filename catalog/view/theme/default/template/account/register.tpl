@@ -102,18 +102,24 @@
                                                 <div class="col-md-6">
                                                  <span class="text-info"style=" font-size: 20px; "><?php echo $lang['text_cmnd_img'] ?></span>
                                                     <span class="edit_icon">
-                                               <input type="file" name="avatar" id="file"  accept="image/jpg,image/png,image/jpeg,image/gif" style="visibility: hidden; width: 1px; height: 1px"> 
-                                            
-                                               <a href="" onclick="document.getElementById('file').click(); return false">
-                                               <img id="blah" src="#" style="display:none;" />                                         
-                                               <img style="margin: 0 auto" id="old_img" src="catalog/view/theme/default/img/citizencard.png" alt=""></a>
-                                             
-                                             
-                                               </span>
+                                               <span class="input-group-btn pull-left"> 
+                                              
+                                                </span>
+                                              <div class="" style="position: relative;">
+                                                <a style="position: absolute; width: 100%;
+                                                height: 260px; opacity: 0" href="<?php echo HTTPS_SERVER ?>kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
+                                              </a>
+                                                <input style="width: 100%;" type="hidden" class="form-control" id="fieldID" name="Image"">
+                                                
+                                                <div class="clearfix"></div>
+                                                  
+                                                <div class="image_item text-center"> 
+                                                    <img style="margin-top: 15px; width: 100%; height: 250px" id="thumb_image" class="fancybox_image" src="<?php echo HTTPS_SERVER ?>catalog/view/theme/default/images/notFound.png"> 
+                                                </div> 
                                                   <div class="error-file alert alert-dismissable alert-danger" style="display:none; margin:20px 0px;">
                                                                 <i class="fa fa-fw fa-times"></i>Please chosen image with : 'jpeg', 'jpg', 'png', 'gif', 'bmp'
                                                             </div>       
-                                               
+                                              </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                   <br>

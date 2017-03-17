@@ -555,7 +555,7 @@ $( document ).ready(function() {
             validate.init($(this));
             self.find('#phone').parent().addClass('has-success');
         }
-        if ($('#blah').attr('src') == "#")
+        if ($('#fieldID').val() == "")
         {
             $('.error-file').show();
             return false;

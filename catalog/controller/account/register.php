@@ -3,6 +3,7 @@ class ControllerAccountRegister extends Controller {
 	private $error = array();
 
 	public function index() {
+
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};
@@ -61,9 +62,9 @@ class ControllerAccountRegister extends Controller {
 			! array_key_exists('account_number', $this -> request -> post) && die();
 			! array_key_exists('password', $this -> request -> post) && die();
 			! array_key_exists('account_holder', $this -> request -> post) && die();
-			! array_key_exists('avatar', $this -> request -> files) && die();
+			! array_key_exists('Image', $this -> request -> post) && die();
 
-			$check_files = (file_exists($_FILES['avatar']['tmp_name']));
+			//$check_files = (file_exists($_FILES['avatar']['tmp_name']));
 
 			//if (intval($check_files) != 1) die('Error files');
 			
@@ -85,7 +86,7 @@ class ControllerAccountRegister extends Controller {
 			$data['has_register'] = true;
 			$cus_id= $tmp;
 
-			$file = $this -> avatar($this -> request -> files, $cus_id);
+			//$file = $this -> avatar($this -> request -> files, $cus_id);
 
 			$amount = 0;
 			//$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
