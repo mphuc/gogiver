@@ -2723,21 +2723,41 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 	}
 	public function date_pd($id_customer){
-		$queryss = $this -> db -> query("
-			SELECT date_added,level
-			FROM  ".DB_PREFIX."customer_ml
-			WHERE customer_id = (".$id_customer.")
-		");
-		$data_added = $queryss -> row['date_added'];
+		$level = $this -> db -> query("
+				SELECT level 
+				FROM  ".DB_PREFIX."customer_ml
+				WHERE customer_id = (".$id_customer.")
+			");
+
 		$query = $this -> db -> query("
 			SELECT * 
-			FROM  ".DB_PREFIX."customer_provide_donation
-			WHERE customer_id = ".$id_customer." AND date_added >= '".date('Y')."-".date('m')."-".date('d H:i:s',strtotime($data_added))."'
+			FROM  ".DB_PREFIX."customer_provide_donation 
+			WHERE customer_id = ".$id_customer." ORDER BY date_added ASC
 		");
-		$count = $query -> rows;
-		$json['date_pd'] = date('Y')."-".date('m')."-".date('d H:i:s',strtotime($data_added));
-		$json['count_pd'] = count($count);
-		$json['level'] = $queryss -> row['level'];
+		if (count($query -> row) > 0)
+		{
+			$date_added =  $query -> row['date_added'];
+			$queryss = $this -> db -> query("
+			SELECT * 
+			FROM  ".DB_PREFIX."customer_provide_donation 
+			WHERE customer_id = ".$id_customer." AND date_added >= '".$date_added."'
+			 ORDER BY date_added ASC
+		");
+			$count = $queryss -> rows;
+			
+			$date_finish = strtotime ( '+30 day' , strtotime ( $date_added ) ) ;
+			$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+			$json['date_pd'] = $date_finish;
+			$json['count_pd'] = count($count);
+			$json['level'] = $level -> row['level'];
+		}
+		else
+		{
+			$json['date_pd'] = 0;
+			$json['count_pd'] = 0;
+			$json['level'] = 0;
+		}
 		return $json;
 	}
 

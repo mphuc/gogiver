@@ -63,6 +63,8 @@
           <div class="pull-left"  style="margin-right: 20px; margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece; display: none;">
               You have <span data-countdown="<?php echo $date_finish ?>"></span>  to have a new member
           </div>
+
+        <?php if ($date_pd['level'] > 0) { ?>
           <?php 
             switch ($date_pd['level']) {
               case 1:
@@ -86,13 +88,19 @@
             }
           ?>
           
-          <?php if ($date_pd['count_pd'] < $num_pd && 1==2) { ?>
-            <div class="pull-right"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
+          <?php if ($date_pd['count_pd'] < $num_pd) { ?>
+            <?php if ($language=='english') { ?>
+            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
                 <?php echo $date_pd['count_pd'] ?> PD. Time left to create <?php echo $num_pd-$date_pd['count_pd'] ?> PD <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
             </div>
-          <?php } ?>
+            <?php }else{ ?> 
+            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
+                <?php echo $date_pd['count_pd'] ?> PD. Thời gian còn lại để tạo ra <?php echo $num_pd-$date_pd['count_pd'] ?> PD là <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
+            </div>
 
+          <?php } } ?>
 
+      <?php } ?>
           <!-- <div class="clearfix"></div>
            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
           <strong>Your downline have <span data-countdown="2017-01-16 23:00:00"></span> <?php //echo "trungdoan";?></strong> to comple PD. Do you want to <a class="btn btn-success">Get PD</a></a> 

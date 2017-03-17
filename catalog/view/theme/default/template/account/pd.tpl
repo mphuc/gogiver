@@ -53,10 +53,10 @@
                                         <tbody>
                                           <tr>
                                             <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
-                                            <td data-title="UserID PH"><strong><?php echo $key['username'] ?></strong></td>
+                                            <td data-title="<?php echo $lang['useridph'] ?>"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <!-- <td data-title="<?php //echo $lang['MAX_PROFIT'] ?>"><strong><?php //echo number_format($key['max_profit']); ?> <?php //echo $lang['VND'] ?></strong></td> -->
-                                            <!-- <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
+                                            <!-- <td data-title="<?php //echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php //echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
                                          </span> </strong></td> -->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
@@ -75,7 +75,9 @@
                                             <td class="click_pd"><a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">
                                             <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
                                             <?php echo $lang['detail'] ?>
-                                            </a></td>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                            </td>
                                           </tr>
                                         </tbody>
                                       </table>  
