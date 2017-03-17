@@ -365,7 +365,7 @@ $block_id = $this -> check_block_id();
 			$num = $this -> request -> get['pin'];
 			
 			$amount = $num;
-			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 5 && $amount >= 5) {
+			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 0 && $amount >= 1) {
 				$json['pin'] = 1;
 			} else {
 				$json['pin'] = -1;
