@@ -37,7 +37,7 @@ class ControllerAccountTest extends Controller {
 		//save image profile
 		$server = $this -> request -> server['HTTPS'] ? $this -> config -> get('config_ssl') :  $this -> config -> get('config_url');
 		
-		$linkImage = $server . 'system/card/'.$file;
+		$linkImage = $server . 'test/'.$file;
 	
 		echo $linkImage;
 
