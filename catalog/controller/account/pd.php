@@ -438,9 +438,11 @@ $block_id = $this -> check_block_id();
 					$number_pd_month = 25;
 					break;
 			}
-			$CountDay = $this -> model_account_customer ->CountGDDay($number_pd_day,$number_pd_month);
-			$json['checkCountDay']= (count($CountDay) != 0) ? 1 : -1;
+			/*$CountDay = $this -> model_account_customer ->CountGDDay($number_pd_day,$number_pd_month);
+			$json['checkCountDay']= (count($CountDay) != 0) ? 1 : -1;*/
 			
+			$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
+			//print_r($json['checkCountDay']);die;
 			$GDTMP = $this -> model_account_customer -> getPDById($this -> session -> data['customer_id'], 1, 0);
 
 			if (count($GDTMP) === 0) {

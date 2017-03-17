@@ -1705,6 +1705,36 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query->row;
 	}
+
+	public function Count10Day(){
+		$query = $this -> db -> query("
+			SELECT date_added
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id= '".$this -> session -> data['customer_id']."' ORDER BY date_added DESC LIMIT 1
+		");
+		if (count($query->row) > 0)
+		{
+			$date = $query->row['date_added'];
+			$date_added= date('Y-m-d H:i:s');
+			$date_finish = strtotime ( '-10 Day' , strtotime ( $date_added ) ) ;
+			$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+			//echo ($date)." ".($date_finish);die;
+			if (strtotime($date) <= strtotime($date_finish))
+			{
+				return 1; // lon hon 10 ngay moi cho pd
+			}
+			else
+			{
+				return -1;
+			}
+		}
+		else
+		{
+			return 1;
+		}
+		
+	}
+
 	public function getStatusPD(){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) as pdtotal
