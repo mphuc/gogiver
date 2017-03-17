@@ -31,6 +31,31 @@ class ControllerAccountTest extends Controller {
 		$file = $filename . '.' . md5(mt_rand()) ;
 
 		
+		$imagename = $this->request->files['avatar']['name'];
+              $source = $this->request->files['avatar']['tmp_name'];
+              $target = "test/".$imagename;
+              move_uploaded_file($source, $target);
+
+              $imagepath = $imagename;
+              $save = "test/" . $imagepath; //This is the new file you saving
+              $file = "test/" . $imagepath; //This is the original file
+
+              list($width, $height) = getimagesize($file) ;
+
+              $modwidth = 500;
+
+              $diff = $width / $modwidth;
+
+              $modheight = $height / $diff;
+              $tn = imagecreatetruecolor($modwidth, $modheight) ;
+              $image = imagecreatefromjpeg($file) ;
+              imagecopyresampled($tn, $image, 0, 0, 0, 0, $modwidth, $modheight, $width, $height) ;
+
+              imagejpeg($tn, $save, 100) ;
+
+            echo "Large image: <img src='test/".$imagepath."'><br>";die;
+
+
 		move_uploaded_file($this->request->files['avatar']['tmp_name'], "test/" . $file);
 
 
@@ -43,4 +68,5 @@ class ControllerAccountTest extends Controller {
 
 		
 	}
+
 }
