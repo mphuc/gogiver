@@ -99,4 +99,21 @@ $( document ).ready(function() {
         })
         return false;
     });
+
+    $('#select_serach_user').on("change",function(){
+        $('#appen_html_search').html('<td colspan="5">Pendding...</td>');
+        var username = $(this).val();
+        $.ajax({
+            url : "index.php?route=account/token/search_history",
+            type : "post",
+            dateType:"hmtl",
+            data : {
+                 'username' : username
+            },
+            success : function (result){
+                $('.pagination_full').hide();
+                $('#appen_html_search').html(result);
+            }
+        });
+    })
 });

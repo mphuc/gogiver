@@ -396,11 +396,11 @@ public function updateLevel_listID($customer_id){
 				//check and update level
 		
 			$this -> get_p_node($value['customer_id']);
-				//$this->model_account_auto->update_PD_finish_thuong($value['id']);
+				$this->model_account_auto->update_PD_finish_thuong($value['id']);
 				if ($tmp != $value['customer_id']) {
 
 					$this -> model_account_auto -> update_R_Wallet($value['max_profit'], $value['customer_id']);
-					// $this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number']." finish", "Finish PD");
+					$this -> model_account_customer -> saveTranstionHistory($value['customer_id'], 'R-wallet', '+ ' . number_format($value['max_profit']) . ' VND', "Your PD" . $value['pd_number']." finish", "Finish PD");
 				}
 					$this -> update_commission($value['customer_id'], $value['filled'], $value['pd_number']);
 
@@ -424,7 +424,7 @@ public function updateLevel_listID($customer_id){
 
 		$price = ($amount * 10) / 100;
 		$this->model_account_auto->update_C_Wallet($price, $partent['customer_id']);
-		// $this->model_account_customer->saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Direct Bonus");
+		$this->model_account_customer->saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Direct Bonus");
 		$priceCurrent = $amount;
 		$levelCustomer = intval($customer['level']);
 		$pNode_ID = $partent['customer_id'];
@@ -446,7 +446,7 @@ public function updateLevel_listID($customer_id){
 
 				$levelPnode = intval($customer_p_node['level']);
 				$levelChild = intval($customer_child['level']);
-				// echo ($levelChild-1) .'-'.$customer_child['username'].'======'.($levelPnode-1).'-'.$customer_p_node['username'].'<br>';
+				echo ($levelChild-1) .'-'.$customer_child['username'].'======'.($levelPnode-1).'-'.$customer_p_node['username'].'<br>';
 				$levelChild = $this -> get_max_level_child_node($pNode_ID, $child_min_id);
 
 				switch ($levelPnode) {

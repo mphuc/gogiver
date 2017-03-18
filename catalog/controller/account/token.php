@@ -455,6 +455,8 @@ $block_id = $this -> check_block_id();
 			$self -> document -> addScript('catalog/view/javascript/autocomplete/jquery.easy-autocomplete.min.js');
 			$self -> document -> addScript('catalog/view/javascript/transfer/transfer.js');
 			$self -> document -> addStyle('catalog/view/theme/default/stylesheet/autocomplete/easy-autocomplete.min.css');
+			$self -> document -> addStyle('catalog/view/javascript/bootstrap-select.min.css');
+			$self -> document -> addScript('catalog/view/javascript/bootstrap-select.min.js');
 		};
 
 		//language
@@ -495,6 +497,10 @@ $block_id = $this -> check_block_id();
 
 		$data['history'] = $this -> model_account_customer -> getTokenHistoryById($this -> customer -> getId(), $limit, $start);
 
+		$get_childrend = $this -> model_account_customer -> getListIdChild($this->session->data['customer_id']);
+		
+		$data['get_childrends'] = $this -> model_account_customer -> get_customer_by_in_id(substr($get_childrend, 1));
+		
 		$data['pagination'] = $pagination -> render();
 		$data['getCustomer'] = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/token_transfer.tpl')) {
@@ -503,6 +509,51 @@ $block_id = $this -> check_block_id();
 			$this -> response -> setOutput($this -> load -> view('default/template/account/token_transfer.tpl', $data));
 		}
 
+	}
+
+	public function search_history()
+	{
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+
+		};
+
+		//language
+		$this -> load -> model('account/customer');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
+		$language = new Language($getLanguage);
+		$language -> load('account/token');
+		$lang = $language -> data;
+
+		$getToken_username = $this -> model_account_customer -> getToken_username($this->request->post['username']);
+		if (count($getToken_username) > 0)
+		{
+			$stt =1;
+			foreach ($getToken_username as $key) { ?>
+				<tr>
+                 <td data-title="<?php echo $lang['stt'] ?>" align="left"><?php echo $stt ?></td>
+                 <td data-title="<?php echo $lang['text_type'] ?>" align="left"><?php echo $key['type'] ?></td>
+                 <td data-title="<?php echo $lang['text_AMOUNT'] ?>" align="left">
+                    <strong class="amount"><?php echo $key['amount'] ?></strong>
+                 </td>
+                 <td data-title="<?php echo $lang['text_SYSTEM'] ?>" align="left"><?php echo $key['system_description'] ?></td>
+                 <td data-title="<?php echo $lang['text_DATE'] ?>" align="left">
+                    <span class="title-date"><?php echo date("d/m/Y H:i:s", strtotime($key['date_added'])); ?></span>
+                 </td>
+              </tr>	
+			<?php $stt++; }
+		}
+		else
+		{
+			?>
+			<tr>
+			<td colspan="5"><?php echo $lang['nonde_Data'] ?></td>
+			</tr>
+			<?php
+		}
 	}
 
 	public function buypin() {

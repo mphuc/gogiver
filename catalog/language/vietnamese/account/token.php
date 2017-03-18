@@ -61,3 +61,6 @@ $_['date'] = "Ngày tạo";
 $_['Amount'] = "Số BTC";
 $_['wallet'] = "Ví";
 $_['stt'] = "STT";
+$_['order_by'] = "Tìm kiếm theo";
+$_['chsesuser'] = "Chọn username";
+$_['nonde_Data'] = "Không có dữ liệu";

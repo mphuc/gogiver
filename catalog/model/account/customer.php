@@ -973,6 +973,17 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> rows;
 	}
 
+	public function getToken_username($username){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."ping_history
+			WHERE system_description = '".$this -> db -> escape($username)."'
+			ORDER BY date_added DESC
+		");
+
+		return $query -> rows;
+	}
+
 	public function editCustomerWallet($wallet) {
 
 		$data['wallet'] = $wallet;
@@ -3020,6 +3031,15 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT *
 			FROM  ".DB_PREFIX."account_sendmail_admin
 			WHERE customer_id = '".$customer_id."' ORDER BY date_added DESC
+		");
+		return $query -> rows;
+	}
+
+	public function get_customer_by_in_id($customer_id){
+		$query = $this -> db -> query("
+			SELECT customer_id,username, account_holder
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id IN (".$this -> db -> escape($customer_id).") ORDER BY username ASC
 		");
 		return $query -> rows;
 	}

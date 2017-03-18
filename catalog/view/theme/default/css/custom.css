@@ -237,3 +237,9 @@ h1.post-title.entry-title a, h2.post-title.entry-title a {
 .all_video .video_item{
   margin-bottom: 30px;
 }
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 300px !important;
+}
+.bootstrap-select.btn-group .dropdown-menu.inner{
+  margin-left: 0px !important; 
+}

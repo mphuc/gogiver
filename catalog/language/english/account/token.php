@@ -56,3 +56,6 @@ $_['date'] = "Date" ;
 $_['Amount'] = "Amount";
 $_['wallet'] = "Wallet";
 $_['stt'] = "No.";
+$_['order_by'] = "Search by";
+$_['chsesuser'] = "Select username";
+$_['nonde_Data'] = "No data";

@@ -166,10 +166,10 @@ class ControllerAccountForgotten extends Controller {
 
 			$this->model_account_customer->editPasswordTransactionCustomForEmail($customer_info, $password);
 
-			$subject = sprintf('Iontach - Mật khẩu giao dịch mới', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+			$subject = sprintf('Iontach - New transaction password', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
 
-			$message  = sprintf('Một mật khẩu giao dịch mới đã được yêu cầu từ Iontach', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
-			$message .= 'Mật khẩu của bạn là:' . "\n\n";
+			$message  = sprintf("Dear ".$customer_info['username']."". "\n\n ".'You have just requested a new transaction password for your Iontach account.', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
+			$message .= 'Here is your new transaction password:' . "\n\n";
 			$message .= $password;
 
 			$mail = new Mail();

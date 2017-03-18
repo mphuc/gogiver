@@ -74,7 +74,25 @@
                                     
                                     <div class="form-group">
                                         <div class="">
+
                                             <?php if(count($history) > 0){ $stt = 1; ?>
+
+                                            <div class="form-group row">
+                                              <div class="col-md-2" style="line-height: 30px;">
+                                                <?php echo $lang['order_by'] ?> 
+                                              </div>
+                                              <div class="col-md-5">
+                                                 
+                                                  <select id="select_serach_user" style="width: 100%" class="selectpicker" data-show-subtext="true" data-live-search="true">
+                                                    <option> <?php echo $lang['chsesuser'] ?> </option>
+                                                    <?php foreach ($get_childrends as $value) { ?>
+                                                      <option value="<?php echo $value['username'] ?>" data-subtext="<?php echo $value['account_holder'] ?>"> <?php echo $value['username'] ?></option>
+                                                    <?php } ?>
+                                                    
+                                                    </select>
+                                              </div>
+                                            </div>
+
                                               <div class="">
                                                  <div id="no-more-tables">
                                                     <table id="datatable" class="table table-bordered">
@@ -87,23 +105,25 @@
                                                              <th><?php echo $lang['text_DATE'] ?></th>
                                                           </tr>
                                                        </thead>
-                                                       <tbody>
+                                                       <tbody id="appen_html_search">
                                                           <?php foreach ($history as $value => $key){ ?>
                                                           <tr>
-                                                             <td data-title="Stt" align="left"><?php echo $stt ?></td>
-                                                             <td data-title="Loại" align="left"><?php echo $key['type'] ?></td>
-                                                             <td data-title="Số lượng" align="left">
+                                                             <td data-title="<?php echo $lang['stt'] ?>" align="left"><?php echo $stt ?></td>
+                                                             <td data-title="<?php echo $lang['text_type'] ?>" align="left"><?php echo $key['type'] ?></td>
+                                                             <td data-title="<?php echo $lang['text_AMOUNT'] ?>" align="left">
                                                                 <strong class="amount"><?php echo $key['amount'] ?></strong>
                                                              </td>
-                                                             <td data-title="Mô tả hệ thống" align="left"><?php echo $key['system_description'] ?></td>
-                                                             <td data-title="Ngày tháng" align="left">
+                                                             <td data-title="<?php echo $lang['text_SYSTEM'] ?>" align="left"><?php echo $key['system_description'] ?></td>
+                                                             <td data-title="<?php echo $lang['text_DATE'] ?>" align="left">
                                                                 <span class="title-date"><?php echo date("d/m/Y H:i:s", strtotime($key['date_added'])); ?></span>
                                                              </td>
                                                           </tr>
                                                           <?php $stt++; } ?>
                                                        </tbody>
                                                     </table>
+                                                    <div class="pagination_full">
                                                     <?php echo $pagination; ?>
+                                                    </div>
                                                  </div>
                                               </div>
                                           <?php } ?>
