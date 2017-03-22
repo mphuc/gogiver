@@ -145,6 +145,10 @@ class ControllerHomePage extends Controller {
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		
+		if (!isset($_SESSION['language_id'])) {
+			$this -> session -> data['language_id'] = "vietnamese";
+        }
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/home/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/home/header.tpl', $data);
 		} else {

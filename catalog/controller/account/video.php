@@ -21,7 +21,7 @@ class ControllerAccountVideo extends Controller {
 		$data['lang'] = $language -> data;
 		$data['getLanguage'] = $getLanguage;
 
-
+		$data['language']= $getLanguage;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/video.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/video.tpl', $data));
 		} else {

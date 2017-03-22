@@ -2,7 +2,9 @@
 class ControllerCommonHeader extends Controller {
 	public function index() {
 		$data['title'] = $this->document->getTitle();
-
+		if (!isset($_SESSION['language_id'])) {
+			$this -> session -> data['language_id'] = "vietnamese";
+        }
 		$this -> load -> model('account/customer');
 
 		if(isset($this -> session -> data['customer_id'])){

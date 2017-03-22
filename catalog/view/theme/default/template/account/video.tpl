@@ -20,32 +20,61 @@
          <div class="col-lg-12 col-md-12">
             <div class="input-group input-icon file-upload">
                <div class="widget-content all_video" style="padding:10px" >
+                <?php if ($language=='english') { ?>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/3TQxWr0M72Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/EQuv3B-sgP0?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/XOsAl8wxthA?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/KIYV_fLn4GE?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/mixxIbEHKfI?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/EdAMqlW2Dcw?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/BmYKBX635vk?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/b5hzzdiQJEA?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/FqDsbEwFZ6U?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/rQykCaf1wIk?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/srtuTBYwY9U?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/IB65g92Lhkc?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
 
                   <div class="col-md-6 video_item">
-                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/ofzoI516fio?ecver=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/3TQxWr0M72Y?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
 
                   <div class="col-md-6 video_item">
                     <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/VffT5iRfcOc?ecver=1" frameborder="0" allowfullscreen></iframe>
                   </div>
+                <?php } else { ?>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/eMkKnWlugVI?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/mrlU7pymbV4?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/-S0XAQu-8bA?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/QbVB3Lyivac?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/rqb8BXfo4kw?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/VE0MNBv24F4?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/dikrj7pHXsQ?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+
+                  <div class="col-md-6 video_item">
+                    <iframe style="width: 100%" height="315" src="https://www.youtube.com/embed/G_LTz8sZsP8?ecver=1" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                <?php } ?>
                </div>
             </div>
          </div>
