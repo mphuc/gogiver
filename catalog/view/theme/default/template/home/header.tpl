@@ -228,7 +228,7 @@
                <a href="index.php?route=home/page/blog">BLOG</a>
             </li>
             <li class="">
-               <a href="index.php?route=home/page/support">SUPPORT</a>
+               <a href="index.php?route=home/page/support">Culture - Activities</a>
             </li>
             <li class="">
                <a href="index.php?route=home/page/media">MEDIA</a>
@@ -369,7 +369,7 @@
                               <a href="https://shop.iontach.biz/">Quảng cáo thương mại</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                              <a href="index.php?route=home/page/support">Hỗ trợ</a>
+                              <a href="index.php?route=home/page/support">Văn hóa - Hoạt động</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/media">Sự kiện</a>
@@ -391,7 +391,7 @@
                               <a href="index.php?route=home/page/blog">BLOG</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                              <a href="index.php?route=home/page/support">SUPPORT</a>
+                              <a href="index.php?route=home/page/support">Culture - Activities</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/media">MEDIA</a>
@@ -413,7 +413,7 @@
                               <a href="index.php?route=home/page/blog">BLOG</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
-                              <a href="index.php?route=home/page/support">SUPPORT</a>
+                              <a href="index.php?route=home/page/support">Culture - Activities</a>
                            </li>
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/media">MEDIA</a>
