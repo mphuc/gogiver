@@ -23,9 +23,9 @@
                   <?php if (isset($_SESSION['language_id'])) {
                if ($_SESSION['language_id'] == "vietnamese") { ?>
                <img class="img-responsive" style="width: 100%;height: 100% !important" src="catalog/view/theme/default/images/Slide1-min.PNG" src="" alt="">
-                
-                <hr style="margin-top: 10px; border: 1px solid #eee">
-                17/03/2017
+                 <h3 style="margin-top: 40px;">17/03/2017</h3>
+                <hr style="margin-top: 10px; border: 1px solid #eee; height: 1px; width: 100%; float: left;">
+               
                <div class="col-md-12">
                <p style="text-indent: 20px; font-size: 26px; text-transform: uppercase;">Gửi các thành viên Iontach thân mến !!!</p>
                <p style="text-indent: 20px; font-size: 26px;"> Chúng ta đã trải qua rất nhiều sóng gió trong nghành CHO – NHẬN tại Việt Nam. Điều đó nhắc nhở trong mỗi cá nhân chúng ra rằng cần phải xây dựng 1 sân chơi mang lại giá trị lâu dài, 1 quỹ tương hỗ đúng nghĩa để giúp đỡ cộng đồng người Việt. Trong bối cảnh CHO - NHẬN Việt Nam tưởng chừng như không thể tồn tại thì Iontach ra đời với biết bao hy vọng, sự mong đợi và cả những niềm tin của rất nhiều trái tim tâm huyết. Chúng ta đã làm được những điều tưởng chừng như không thể khi setup 2000 ID chỉ trong vòng chưa đầy nửa tháng. </p>

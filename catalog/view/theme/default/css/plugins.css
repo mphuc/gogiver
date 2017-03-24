@@ -8046,10 +8046,10 @@ a.fc-more:hover {
 /* -----------------------------------------
    Vector maps
 ----------------------------------------- */
-svg {
+/*svg {
   -ms-touch-action: none;
   touch-action: none;
-}
+}*/
 .jvectormap-container {
   width: 100%;
   height: 100%;
