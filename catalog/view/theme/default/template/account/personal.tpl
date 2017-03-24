@@ -91,14 +91,14 @@ span.cir {
 </style>
 </div>
 <div class="main-content">
-<!-- Start .content -->
+
   <div class="content" style="">
      <div class="row">
-        <!-- .row start -->
+       
         <div class="col-md-12">
-           <!-- col-md-12 start here -->
+        
            <div class="panel panel-default" id="dash_0">
-              <!-- Start .panel -->
+             
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
               </div>

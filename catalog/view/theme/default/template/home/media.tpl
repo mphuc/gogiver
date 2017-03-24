@@ -23,7 +23,8 @@
                   <?php if (isset($_SESSION['language_id'])) {
                if ($_SESSION['language_id'] == "vietnamese") { ?>
                <img class="img-responsive" style="width: 100%;height: 100% !important" src="catalog/view/theme/default/images/Slide1-min.PNG" src="" alt="">
-                <hr>
+                
+                <hr style="margin-top: 10px; border: 1px solid #eee">
 
                <div class="col-md-12">
                <p style="text-indent: 20px; font-size: 26px; text-transform: uppercase;">Gửi các thành viên Iontach thân mến !!!</p>
