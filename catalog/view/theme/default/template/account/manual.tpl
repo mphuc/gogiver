@@ -25,12 +25,12 @@
                      if ($_SESSION['language_id'] == "vietnamese") {
                   ?>
                     <?php for ($i=1;$i<62;$i++) { ?>
-                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual/00<?php echo $i;?>.jpg" src="" alt="">
+                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual/00<?php echo $i;?>-min.jpg" src="" alt="">
                      <?php  }?>
                     <?php } else { ?>
                     
                      <?php for ($i=1;$i<62;$i++) { ?>
-                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual_en/00<?php echo $i;?>.jpg" src="" alt=""> 
+                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/manual_en/00<?php echo $i;?>-min.jpg" src="" alt=""> 
                      <?php  }?>
                      <?php  } ?>
 

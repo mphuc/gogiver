@@ -85,15 +85,15 @@ $( document ).ready(function() {
 
     switch (paramt['success']) {
         case 'account':
-            $('.alert-edit-account').show().html('<i class="fa fa-check"></i>  Edit account successfull');
+            $('.alert-edit-account').show();
             break;
         case 'password':
             $('.page-tabs ul li a[href="#ChangePassword"]').trigger('click')
-            $('.alert-edit-account').show().html('<i class="fa fa-check"></i>  Edit login password successfull');
+            $('.alert-edit-account').show();
             break;
         case 'transaction':
             $('.page-tabs ul li a[href="#ChangePassword2"]').trigger('click')
-            $('.alert-edit-account').show().html('<i class="fa fa-check"></i>  Edit transaction password successfull');
+            $('.alert-edit-account').show();
             break;
     }
 

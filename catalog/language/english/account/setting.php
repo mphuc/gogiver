@@ -52,3 +52,4 @@ $_['text_success_password']       = 'Edit login password successfull';
  $_['Citizenship_Card_Passport']       = 'Citizenship Card';
  $_['Please_Select_dn']       = 'Country';
 $_['Please_Select_tp']       = 'Province';
+$_['Edit_account_successfull']       = 'Edit account successfull';
