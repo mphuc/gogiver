@@ -465,7 +465,7 @@ public function updateLevel_listID($customer_id){
 
 						if ($percent > 0) {
 							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						}
 
 						break;
@@ -489,7 +489,7 @@ public function updateLevel_listID($customer_id){
 
 						if ($percent > 0) {
 							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						}
 
 						break;
@@ -516,7 +516,7 @@ public function updateLevel_listID($customer_id){
 						}
 						if ($percent > 0) {
 							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						}
 						break;
 
@@ -548,7 +548,7 @@ public function updateLevel_listID($customer_id){
 						}
 
 						$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						break;
 
 					case 6:
@@ -583,7 +583,7 @@ public function updateLevel_listID($customer_id){
 						}
 
 						$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Indirect Bonus");
+						$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						break;
 				}
 
