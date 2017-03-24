@@ -242,7 +242,7 @@
                       <p class="date_mail"><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></p>
                     </div>
                   <?php } ?>
-                    
+                    <p class="text-center" style="margin-top: 10px;"><a href="mail.html">View Mail</a></p>
                   </ul>
                 </div>
                 

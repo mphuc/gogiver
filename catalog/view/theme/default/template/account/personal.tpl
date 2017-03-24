@@ -89,6 +89,7 @@ span.cir {
     overflow-x: scroll;
 }
 </style>
+</div>
 <div class="main-content">
 <!-- Start .content -->
   <div class="content" style="">
@@ -101,22 +102,23 @@ span.cir {
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
               </div>
-              <div class="panel-body form-horizontal group-border stripped">
+              <div class="clearfix"></div>
+              <div class="panel-body">
                 <span class="cir lv0"></span> I0 - <span class="cir lv1"></span> I1 - <span class="cir lv2"></span> I2 - 
                <span class="cir lv3"></span> I3 - 
                <span class="cir lv4"></span> I4 - 
                <span class="cir lv5"></span> I5
-                 <div class="form-group">
+                 <div class="">
                     <div class="col-lg-12 col-md-12">
-                      <div class="input-group input-icon file-upload">
-                       <div class="" style="width: 100%">
+                      
+                       <div class="" style="">
                           <div class="panel-body tab-pane bitree active">
-                            <div id="tab-tree">
+                            <div id="tab-tree" style="width: 100%;z-index: 9999">
                             </div>
                           </div>
                         
                       </div>    
-                      </div>
+                      
                  </div>
               </div>
            </div>
