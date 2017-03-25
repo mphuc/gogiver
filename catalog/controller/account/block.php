@@ -298,12 +298,6 @@ class ControllerAccountBlock extends Controller {
             $block_id = $this -> model_account_customer -> get_all_block_id_gd($this -> customer -> getId());
             $total_block_id_gd = $this -> model_account_customer -> get_block_id_gd_total($this -> customer -> getId());		
             if (intval($total_block_id_gd) === 0) {
-            	
-            	$r_wallet = 0;
-				$c_wallet = 0;
-			}    
-            // status = 3
-            if (intval($total_block_id_gd) >= 1) {
             	switch (intval($level['level'])) {
 					case 1:
 						$r_wallet = 700000;
@@ -330,12 +324,70 @@ class ControllerAccountBlock extends Controller {
 						$c_wallet = 16000000;
 						break;
 				}
+			}    
+            if (intval($total_block_id_gd) == 1) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 2000000;
+						$c_wallet = 2000000;
+						break;
+					case 2:
+						$r_wallet = 4000000;
+						$c_wallet = 4000000;
+						break;
+					case 3:
+						$r_wallet = 7000000;
+						$c_wallet = 8000000;
+						break;
+					case 4:
+						$r_wallet = 11000000;
+						$c_wallet = 16000000;
+						break;
+					case 5:
+						$r_wallet = 16000000;
+						$c_wallet = 32000000;
+						break;
+					case 6:
+						$r_wallet = 22000000;
+						$c_wallet = 64000000;
+						break;
+				}
             }
+            if (intval($total_block_id_gd) == 2) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 4000000;
+						$c_wallet = 4000000;
+						break;
+					case 2:
+						$r_wallet = 8000000;
+						$c_wallet = 8000000;
+						break;
+					case 3:
+						$r_wallet = 14000000;
+						$c_wallet = 16000000;
+						break;
+					case 4:
+						$r_wallet = 22000000;
+						$c_wallet = 32000000;
+						break;
+					case 5:
+						$r_wallet = 32000000;
+						$c_wallet = 64000000;
+						break;
+					case 6:
+						$r_wallet = 44000000;
+						$c_wallet = 128000000;
+						break;
+				}
+            }
+            
             // end status = 3
             $data['r_wallet'] = $r_wallet;
             $data['c_wallet'] = $c_wallet;
            	$data['date'] = $block_id['date'];
            	$data['description'] = $block_id['description'];
+           	$data['total_block_id_gd'] = intval($total_block_id_gd);
            return $data;
         }
 	}

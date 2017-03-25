@@ -25,6 +25,11 @@
         
     <script src="catalog/view/javascript/loading.js" type="text/javascript"></script>
     
+    <!-- chart -->
+    <script src="catalog/view/theme/default/css/chart/raphael-min.js" type="text/javascript"></script>
+    <script src="catalog/view/theme/default/css/chart/morris.js" type="text/javascript"></script>
+    <link href='catalog/view/theme/default/css/chart/morris.css' rel='stylesheet' type='text/css'>
+    <!-- chart -->
     
     <script src="catalog/view/javascript/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/jquery.app.js"></script>

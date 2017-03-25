@@ -24,12 +24,13 @@
                                     
             <div class="block_panel text-center">
                 <!-- Start .panel -->
+                <?php $wallet = $self -> return_wallet_gd(); ?>
                 <div class="panel-body p0">
-                    <h1 class="text-center">Account FROZEN </h1>
-                     <?php $wallet = $self -> return_wallet_gd(); ?>
+                    <h1 class="text-center">Account <?php echo ($wallet['total_block_id_gd'] == 0) ? "FROZEN" : "LOCK"; ?>  </h1>
+                     
                     <p class="text-center s20">Your account has been locked at <code><?php echo date("d/m/Y", strtotime($wallet['date'])); ?></code>.</p>
 
-                    <p class="text-center s20">Status: Change from ACTIVE to FROZEN</p>
+                    <p class="text-center s20">Status: Change from ACTIVE to <?php echo ($wallet['total_block_id_gd'] == 0) ? "FROZEN" : "LOCK"; ?></p>
 
                     <p class="text-center s20">Reason: <?php echo $wallet['description'] ?>.</p>
                     <p class="text-center s20">To unlock your account will be penalized as follows.</p>

@@ -666,7 +666,7 @@ public function updateLevel_listID($customer_id){
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
         	$this -> model_account_block -> update_check_gd($value['id']);
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
-        	if (intval($total) === 2) {
+        	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
         	}
 

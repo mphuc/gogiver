@@ -237,80 +237,56 @@
       
   }
 ?>
-<script type="text/javascript">
-    window.onload = function () {
-      var chart = new CanvasJS.Chart("chartContainer", {
-        title: {
-          text: "<?php echo $lang['Membership_Growth_Chart'] ?>"
-        },
-        axisY:{
-          title : "<?php echo $lang['Total_Member'] ?>",
-          titleFontColor: "#5472BA",
-           titleFontSize: 20,
-           lineColor: "#5472BA"
-         },
-         
-         axisX:{
-          title : "<?php echo $lang['Month'] ?>",
-          titleFontColor: "#5472BA",
-           titleFontSize: 20,
-           lineColor: "#5472BA"
-         },
-       
-        data: [
-        {
-
-          type: "splineArea",
-          dataPoints: [
-          { x: 1, y: <?php echo $month[1] ?> },
-          { x: 2, y: <?php echo $month[2] ?> },
-          <?php if (intval(date('m')) == 3) { ?>
-          { x: 3, y: <?php echo $month[3] ?> },
-          <?php } ?>
-          <?php if (intval(date('m')) > 3) { ?>
-          { x: 4, y: <?php echo $month[4] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 4) { ?>
-          { x: 5, y: <?php echo $month[5] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 5) { ?>
-          { x: 6, y: <?php echo $month[6] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 6) { ?>
-          { x: 7, y: <?php echo $month[7] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 7) { ?>
-          { x: 8, y: <?php echo $month[8] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 8) { ?>
-          { x: 9, y: <?php echo $month[9] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 9) { ?>
-          { x: 10, y: <?php echo $month[10] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 10) { ?>
-          { x: 11, y: <?php echo $month[11] ?> },
-          <?php } ?>
-           <?php if (intval(date('m')) > 11) { ?>
-          { x: 12, y: <?php echo $month[12] ?> }
-          <?php } ?>
-      
-          ]
-        }
-        ]
-      });
-
-      chart.render();
-    }
-   
-
-  </script>
-              <div id="chartContainer" style="height: 400px; width: 100%; margin-bottom: 30px;"></div>
-
-
-
-
-               <div class="row">
+<div class="panel panel-default panel-tie">
+  <div id="graph"></div>
+</div>
+  <script type="text/javascript">
+  // Use Morris.Area instead of Morris.Line
+Morris.Area({
+  element: 'graph',
+  data: [
+    { x: "2017-01", y: <?php echo $month[1] ?> },
+    { x: "2017-02", y: <?php echo $month[2] ?> },
+    <?php if (intval(date('m')) == 3) { ?>
+    { x: "2017-03", y: <?php echo $month[3] ?> },
+    <?php } ?>
+    <?php if (intval(date('m')) > 3) { ?>
+    { x: "2017-04", y: <?php echo $month[4] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 4) { ?>
+    { x: "2017-05", y: <?php echo $month[5] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 5) { ?>
+    { x: "2017-06", y: <?php echo $month[6] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 6) { ?>
+    { x: "2017-07", y: <?php echo $month[7] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 7) { ?>
+    { x: "2017-08", y: <?php echo $month[8] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 8) { ?>
+    { x: "2017-09", y: <?php echo $month[9] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 9) { ?>
+    { x: "2017-10", y: <?php echo $month[10] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 10) { ?>
+    { x: "2017-11", y: <?php echo $month[11] ?> },
+    <?php } ?>
+     <?php if (intval(date('m')) > 11) { ?>
+    { x: "2017-12", y: <?php echo $month[12] ?> }
+    <?php } ?>
+    
+  ],
+  xkey: 'x',
+  ykeys: ['y'],
+  labels: ['Account number']
+}).on('click', function(i, row){
+  console.log(i, row);
+});
+</script>
+            <div class="row">
                   
                   <!-- .row start -->
                   <div class="col-lg-4 col-md-6 col-xs-6 col-small-enlarge custom_padding_right">
