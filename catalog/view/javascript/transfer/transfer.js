@@ -91,6 +91,8 @@ $( document ).ready(function() {
                         $('#TransferPassword').val('').parent().removeClass('has-success');
                         $('#Description').val('').parent().removeClass('has-success');
                         $('.alertsuccess').show();
+                        setTimeout(function(){ location.reload(true); }, 1000);
+                        
                     }
 
                     window.funLazyLoad.reset();

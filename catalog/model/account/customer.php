@@ -3054,11 +3054,15 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function get_customer_by_in_id($customer_id){
-		$query = $this -> db -> query("
-			SELECT customer_id,username, account_holder
-			FROM  ".DB_PREFIX."customer
-			WHERE customer_id IN (".$this -> db -> escape($customer_id).") ORDER BY username ASC
-		");
-		return $query -> rows;
+		if ($customer_id)
+		{
+			$query = $this -> db -> query("
+				SELECT customer_id,username, account_holder
+				FROM  ".DB_PREFIX."customer
+				WHERE customer_id IN (".$this -> db -> escape($customer_id).") ORDER BY username ASC
+			");
+			return $query -> rows;
+		}
+		
 	}
 }
