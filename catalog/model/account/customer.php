@@ -1495,13 +1495,17 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function get_customer_by_id_inssss($id,$month){
 		$ids = substr($this -> getCountTreeCustom_bydate($id),1);
+		$check_id = explode(",", $ids);
+		if (count($check_id) > 1)
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer A
+				WHERE A.customer_id IN (".$this -> db -> escape($ids).") and A.date_added <= '2017-".$month."-30' 
+			");
+			return $query -> rows;
+		}
 		
-		$query = $this -> db -> query("
-			SELECT *
-			FROM  ".DB_PREFIX."customer A
-			WHERE A.customer_id IN (".$this -> db -> escape($ids).") and A.date_added <= '2017-".$month."-30' 
-		");
-		return $query -> rows;
 	}
 
 
