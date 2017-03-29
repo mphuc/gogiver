@@ -699,7 +699,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT username AS name, account_holder FROM ". DB_PREFIX ."customer
 			WHERE (username = '".$this->db->escape($name)."' OR username Like '%".$this->db->escape($name)."%') AND customer_id <> ".$customer_id." 
-			LIMIT 20
+			LIMIT 50
 		") ;
 		$array_id = $query -> rows;
 
