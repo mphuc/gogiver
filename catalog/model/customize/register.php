@@ -153,8 +153,8 @@ class ModelCustomizeRegister extends Model {
 			date_added = NOW(),
 			check_Newuser = 0,
 			language = 'vietnamese',
-			account_holder = '".$this -> db -> escape($data['account_holder'])."',
-			img_profile = '" .HTTPS_SERVER.substr($this -> db -> escape($data['Image']), 1). "'
+			account_holder = '".$this -> db -> escape($data['account_holder'])."'
+			
 		");
 
 		$customer_id = $this -> db -> getLastId();

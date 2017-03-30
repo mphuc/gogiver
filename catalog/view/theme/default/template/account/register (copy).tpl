@@ -105,7 +105,7 @@
                                                <span class="input-group-btn pull-left"> 
                                               
                                                 </span>
-                                              <!-- <div class="" style="position: relative;">
+                                              <div class="" style="position: relative;">
                                                 <a style="position: absolute; width: 100%;
                                                 height: 260px; opacity: 0" href="<?php echo HTTPS_SERVER ?>kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
                                               </a>
@@ -119,21 +119,7 @@
                                                   <div class="error-file alert alert-dismissable alert-danger" style="display:none; margin:20px 0px;">
                                                                 <i class="fa fa-fw fa-times"></i>Please chosen image with : 'jpeg', 'jpg', 'png', 'gif', 'bmp'
                                                             </div>       
-                                              </div> -->
-
-
-                                            <div class="" style="position: relative;">
-                                              <input type="file" id="file" name="avatar" style="position: absolute; width: 100%;
-                                                height: 270px; opacity: 0;left: 0;top: 0">
-
-                                              <img style="display: none;" id="blah" style="margin-top: 15px; width: 100%; height: 250px" id="thumb_image" class="fancybox_image" src=""> 
-                                              <img id="old_img" style="margin-top: 15px; width: 100%; height: 250px" src="<?php echo HTTPS_SERVER ?>catalog/view/theme/default/images/notFound.png">
-                                              <div class="error-file alert alert-dismissable alert-danger" style="display:none; margin:20px 0px;">
-                                                                <i class="fa fa-fw fa-times"></i>Please chosen image with : 'jpeg', 'jpg', 'png', 'gif', 'bmp'
-                                                            </div>       
-                                            </div>
-
-
+                                              </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                   <br>
@@ -177,30 +163,6 @@
               </div>
            </div>
         </div>
-
-
-   
-    <script type="text/javascript">
-      $('#upload_form').on('submit',function(){
-          var form_data = new FormData('#upload_form');
-          $.ajax({
-            url : "index.php?route=account/register/update_file",
-            type: "POST",
-            data : form_data,
-            contentType: false,
-            cache: false,
-            processData:false,
-            mimeType:"multipart/form-data"
-          }).done(function(res){ //
-            
-          });
-
-          return false;
-      })
-      
-    </script>
-
-
         <div class="clearfix" style="margin-top: 100px;"></div>
      </div>
   </div>

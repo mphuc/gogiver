@@ -62,7 +62,7 @@ class ControllerAccountRegister extends Controller {
 			! array_key_exists('account_number', $this -> request -> post) && die();
 			! array_key_exists('password', $this -> request -> post) && die();
 			! array_key_exists('account_holder', $this -> request -> post) && die();
-			! array_key_exists('Image', $this -> request -> post) && die();
+			
 
 			//$check_files = (file_exists($_FILES['avatar']['tmp_name']));
 
@@ -79,6 +79,7 @@ class ControllerAccountRegister extends Controller {
 				die('Error');
 			}
 
+
 			$tmp = $this -> model_customize_register -> addCustomer($this->request->post);
 
 			$this -> model_customize_register -> update_customer_code($tmp);
@@ -86,7 +87,7 @@ class ControllerAccountRegister extends Controller {
 			$data['has_register'] = true;
 			$cus_id= $tmp;
 
-			//$file = $this -> avatar($this -> request -> files, $cus_id);
+			$file = $this -> avatar($this -> request -> files, $cus_id);
 
 			$amount = 0;
 			//$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );
@@ -229,54 +230,95 @@ class ControllerAccountRegister extends Controller {
 
 	}
 	public function avatar($file,$cus_id){
-	$this->load->model('account/customer');
-	
-		$filename = html_entity_decode($this->request->files['avatar']['name'], ENT_QUOTES, 'UTF-8');
+		$this->load->model('account/customer');
 		
-		$filename = str_replace(' ', '_', $filename);
-		if(!$filename || !$this->request->files){
-			die();
-		}
 
-		$file = $filename . '.' . md5(mt_rand()) ;
-
+		$imagename = $_FILES['avatar']['name'];
+		$size = $_FILES['avatar']['size'];
 		
-		move_uploaded_file($this->request->files['avatar']['tmp_name'], DIR_UPLOAD_CUSTOM . $file);
+		$ext = strtolower($this->getExtension($imagename));
+		
+		
+		$actual_image_name = time().".".$ext;
+		$uploadedfile = $_FILES['avatar']['tmp_name'];
+		$path = "system/card/";
+		$newwidth = 200;
+		$filename = $this -> compressImage($ext,$uploadedfile,$path,$actual_image_name,$newwidth);
+		
 
-
-		//save image profile
 		$server = $this -> request -> server['HTTPS'] ? $this -> config -> get('config_ssl') :  $this -> config -> get('config_url');
 		
-		$linkImage = $server . 'system/card/'.$file;
-	
+		$linkImage = $server.$filename;
+		
 		$this -> model_account_customer -> update_avatar($cus_id,$linkImage);
 
 		
 	}
-		public function country() {
-		$json = array();
+	public function getExtension($str)
+	{
+		$i = strrpos($str,".");
+		if (!$i)
+		{
+		return "";
+		}
+		$l = strlen($str) - $i;
+		$ext = substr($str,$i+1,$l);
+		return $ext;
+	}
 
-		$this->load->model('customize/country');
+	public function compressImage($ext,$uploadedfile,$path,$actual_image_name,$newwidth)
+	{
 
-		$country_info = $this->model_customize_country->getCountrys($this->request->get['country_id']);
-
-		if ($country_info) {
-			$this->load->model('localisation/zone');
-
-			$json = array(
-				'country_id'        => $country_info['country_id'],
-				'name'              => $country_info['name'],
-				'iso_code_2'        => $country_info['iso_code_2'],
-				'iso_code_3'        => $country_info['iso_code_3'],
-				'address_format'    => $country_info['address_format'],
-				'postcode_required' => $country_info['postcode_required'],
-				'zone'              => $this->model_customize_country->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']
-			);
+		if($ext=="jpg" || $ext=="jpeg" )
+		{
+		$src = imagecreatefromjpeg($uploadedfile);
+		}
+		else if($ext=="png")
+		{
+		$src = imagecreatefrompng($uploadedfile);
+		}
+		else if($ext=="gif")
+		{
+		$src = imagecreatefromgif($uploadedfile);
+		}
+		else
+		{
+		$src = imagecreatefrombmp($uploadedfile);
 		}
 
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
+		list($width,$height)=getimagesize($uploadedfile);
+		$newheight=($height/$width)*$newwidth;
+		$tmp=imagecreatetruecolor($newwidth,$newheight);
+		imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
+		$filename = $path.$newwidth.'_'.$actual_image_name.md5(mt_rand()); //PixelSize_TimeStamp.jpg
+		imagejpeg($tmp,$filename,100);
+		imagedestroy($tmp);
+		return $filename;
+		}
+			public function country() {
+			$json = array();
+
+			$this->load->model('customize/country');
+
+			$country_info = $this->model_customize_country->getCountrys($this->request->get['country_id']);
+
+			if ($country_info) {
+				$this->load->model('localisation/zone');
+
+				$json = array(
+					'country_id'        => $country_info['country_id'],
+					'name'              => $country_info['name'],
+					'iso_code_2'        => $country_info['iso_code_2'],
+					'iso_code_3'        => $country_info['iso_code_3'],
+					'address_format'    => $country_info['address_format'],
+					'postcode_required' => $country_info['postcode_required'],
+					'zone'              => $this->model_customize_country->getZonesByCountryId($this->request->get['country_id']),
+					'status'            => $country_info['status']
+				);
+			}
+
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
 	}
 	public function check_block_id(){
 		$this->load->model('account/customer');
@@ -353,6 +395,9 @@ class ControllerAccountRegister extends Controller {
 
 	}
 
+	public function update_file(){
+		print_r($this ->request);
+	}
 
 
 }

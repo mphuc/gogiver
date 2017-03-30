@@ -6,7 +6,7 @@ $( document ).ready(function() {
 
             reader.onload = function (e) {
                 $('#blah').attr('src', e.target.result).show().css({'width': '100%','height':'200px'});
-               
+                
                  $('#old_img').hide();
             }
 
@@ -555,11 +555,19 @@ $( document ).ready(function() {
             validate.init($(this));
             self.find('#phone').parent().addClass('has-success');
         }
-        if ($('#fieldID').val() == "")
+        
+        /*if ($('#blah').attr('src') == "")
         {
             $('.error-file').show();
             return false;
         }
+*/
+        /*if ($('#check_img').val() == "")
+        {
+            $('.error-file').show();
+            return false;
+        }*/
+
         if ($('#toi_dong_y').is(":checked"))
        {
         //check
