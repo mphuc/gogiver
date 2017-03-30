@@ -3086,7 +3086,7 @@ $date_added= date('Y-m-d H:i:s') ;
 
 		$query = $this -> db -> query("
 			SELECT *
-			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE date(A.date_added) = '".$date."'
+			FROM  ".DB_PREFIX."ping_history A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.id_customer WHERE A.date_added >= '".$date." 00:00:00' AND A.date_added <= '".$date." 23:59:59'
 			ORDER BY A.id DESC
 		");
 		

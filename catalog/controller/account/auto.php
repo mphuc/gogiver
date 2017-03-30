@@ -424,7 +424,7 @@ public function updateLevel_listID($customer_id){
 
 		$price = ($amount * 10) / 100;
 		$this->model_account_auto->update_C_Wallet($price, $partent['customer_id']);
-		$this->model_account_customer->saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct bonus of 10% from " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Direct commission");
+		$this->model_account_customer->saveTranstionHistory($partent['customer_id'], 'C-wallet', '+ ' . number_format($price) . ' VND', "Direct commission of 10% from " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Direct commission");
 		$priceCurrent = $amount;
 		$levelCustomer = intval($customer['level']);
 		$pNode_ID = $partent['customer_id'];
