@@ -395,9 +395,5 @@ class ControllerAccountRegister extends Controller {
 
 	}
 
-	public function update_file(){
-		print_r($this ->request);
-	}
-
-
+	
 }

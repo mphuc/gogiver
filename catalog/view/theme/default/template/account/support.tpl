@@ -21,7 +21,7 @@
                       <div class="input-group input-icon file-upload">
                         <div class="widget-content" style="padding:10px">
                           <div class="col-md-10 col-md-push-1">
-                              <form class="form" id="support" method="post" action="index.php?route=account/support/sendmail">
+                              <form class="form" id="support" method="post" action="index.php?route=account/support/sendmail" enctype="multipart/form-data" >
         
                                 <p class="name">
                                   <input type="text" name="name" id="name" placeholder="John Doe" required />
@@ -31,10 +31,10 @@
                  
                               
                                 <p class="text">
-                                  <textarea name="content" placeholder="<?php echo $lang['Write_something_to_us'] ?>" required ></textarea>
+                                  <textarea id="content" name="content" placeholder="<?php echo $lang['Write_something_to_us'] ?>" required ></textarea>
                                 </p>
                                 <p>
-                                  <span class="input-group-btn pull-left"> 
+                                  <!-- <span class="input-group-btn pull-left"> 
                                       <a href="<?php echo HTTPS_SERVER ?>kcfinder/browse.php?type=image" class="iframe-btn btn btn-default" type="button" onclick="openKCFinder()">
                                           <?php echo $lang['Images'] ?>
                                       </a>
@@ -45,8 +45,19 @@
                                     
                                   <div class="image_item text-center"> 
                                       <img style="margin-top: 15px; width: 200px;" id="thumb_image" class="fancybox_image" src="<?php echo HTTPS_SERVER ?>catalog/view/theme/default/images/notFound.png"> 
+                                  </div> -->
+                                <div class="" style="position: relative;">
+                                    <input type="file" id="file" name="avatar" style="position: absolute; width: 100%;
+                                      height: 211px; opacity: 0;left: 0;top: 0">
+
+                                    <img style="display: none;" id="blah" style="margin-top: 15px; width: 100%; height: 211px" id="thumb_image" class="fancybox_image" src=""> 
+                                    <img id="old_img" style="margin-top: 15px; width: 100%; height: 270px" src="<?php echo HTTPS_SERVER ?>catalog/view/theme/default/images/notFound.png">
+                                    <div class="error-file alert alert-dismissable alert-danger" style="display:none; margin:20px 0px;">
+                                                      <i class="fa fa-fw fa-times"></i>Please chosen image with : 'jpeg', 'jpg', 'png', 'gif', 'bmp'
+                                                  </div>       
                                   </div>
-                                
+
+
                               </p>
                                 <p>
                                 <img class="img_capcha" style="float: left" src="captcha_code.php"/>

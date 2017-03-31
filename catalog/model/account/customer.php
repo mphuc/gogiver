@@ -2876,7 +2876,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		return $query;
 	}
-	public function create_sendmail_account($customer_id, $title,$description,$images){
+	public function create_sendmail_account($customer_id, $title,$description){
 
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
@@ -2884,10 +2884,22 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			customer_id = '".$customer_id."',
 			title = '".$title."',
 			description = '".$description."', 
-			images = '".$images."',
 			date_added = '".$date_added."'
 		");
-		return $query;
+		$customer_id = $this -> db -> getLastId();
+		return $customer_id;
+	}
+
+	public function up_img_sendmail_account($images,$id){
+
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."account_sendmail SET
+			images = '".$images."'
+			WHERE id = '".$id."'
+		");
+		$customer_id = $this -> db -> getLastId();
+		return $customer_id;
 	}
 	
 	public function create_block_account($customer_id, $title,$content){

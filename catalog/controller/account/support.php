@@ -8,8 +8,8 @@ class ControllerAccountSupport extends Controller {
 
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
-			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
-			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
+			
+			$self -> document -> addScript('catalog/view/javascript/support/support.js');
 		};
 
 		//method to call function
@@ -48,15 +48,85 @@ class ControllerAccountSupport extends Controller {
 					$this -> response -> redirect("support.html#error");
 		    }
 
+
+
 			$this -> load -> model('account/customer');
 			$getCustomer = $this -> model_account_customer -> getCustomer($this->session->data['customer_id']);
 
 			if ($this->request->post)
 			{
-				$this -> model_account_customer -> create_sendmail_account($this->session->data['customer_id'],$this->request->post['name'],$this->request->post['content'],$this->request->post['Image']);
+				$cus_id = $this -> model_account_customer -> create_sendmail_account($this->session->data['customer_id'],$this->request->post['name'],$this->request->post['content']);
+
+				$file = $this -> avatar($this -> request -> files, $cus_id);
 			}
 			$this -> response -> redirect("support.html#success");
 		}
 	}
 
+	public function avatar($file,$cus_id){
+		$this->load->model('account/customer');
+		
+		
+		$imagename = $_FILES['avatar']['name'];
+		$size = $_FILES['avatar']['size'];
+		
+		$ext = strtolower($this->getExtension($imagename));
+		
+		
+		$actual_image_name = time().".".$ext;
+		$uploadedfile = $_FILES['avatar']['tmp_name'];
+		$path = "system/upload/";
+		$newwidth = 200;
+		$filename = $this -> compressImage($ext,$uploadedfile,$path,$actual_image_name,$newwidth);
+		
+
+		$server = $this -> request -> server['HTTPS'] ? $this -> config -> get('config_ssl') :  $this -> config -> get('config_url');
+		
+		$linkImage = $server.$filename;
+		
+		$this -> model_account_customer -> up_img_sendmail_account($linkImage,$cus_id);
+
+		
+	}
+	public function getExtension($str)
+	{
+		$i = strrpos($str,".");
+		if (!$i)
+		{
+		return "";
+		}
+		$l = strlen($str) - $i;
+		$ext = substr($str,$i+1,$l);
+		return $ext;
+	}
+
+	public function compressImage($ext,$uploadedfile,$path,$actual_image_name,$newwidth)
+	{
+
+		if($ext=="jpg" || $ext=="jpeg" )
+		{
+		$src = imagecreatefromjpeg($uploadedfile);
+		}
+		else if($ext=="png")
+		{
+		$src = imagecreatefrompng($uploadedfile);
+		}
+		else if($ext=="gif")
+		{
+		$src = imagecreatefromgif($uploadedfile);
+		}
+		else
+		{
+		$src = imagecreatefrombmp($uploadedfile);
+		}
+
+		list($width,$height)=getimagesize($uploadedfile);
+		$newheight=($height/$width)*$newwidth;
+		$tmp=imagecreatetruecolor($newwidth,$newheight);
+		imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
+		$filename = $path.$newwidth.'_'.$actual_image_name.md5(mt_rand()); //PixelSize_TimeStamp.jpg
+		imagejpeg($tmp,$filename,100);
+		imagedestroy($tmp);
+		return $filename;
+		}
 }
