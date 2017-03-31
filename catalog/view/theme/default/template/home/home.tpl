@@ -5,15 +5,15 @@
             <div class="big-title" style="background-image: url('catalog/view/theme/default/images/bg01.jpg')">
                <div class="container">
                   <h1 class="entry-title" itemprop="headline"></h1> 
-                  <div class="breadcrumb">
+                  <!-- <div class="breadcrumb">
                      <div class="container">
                         <ul class="tm_bread_crumb">
                            <li class="level-1 top"><a href="about">Home</a></li>
                            <li class="level-2 sub"><a href="../index.html">Our Services</a></li>
-                           <!-- <li class="level-3 sub tail current">Our Services &#8211; Layout 2</li> -->
+                           <li class="level-3 sub tail current">Our Services &#8211; Layout 2</li>
                         </ul>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
             <div class="container">
@@ -21,6 +21,11 @@
                   <div class="col-md-12">
                      <div class="content">
                         <article id="post-74236">
+                           <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
+                              <img src="catalog/view/theme/default/images/0001.jpg">
+                           <?php } ?>
+                        </article>
+                       <!--  <article id="post-74236">
                            <div class="entry-content">
                               <div class="vc_row wpb_row vc_row-fluid services1 vc_custom_1435835587561">
                                  <div class="wpb_column vc_column_container vc_col-sm-6">
@@ -377,8 +382,8 @@
                               </div>
                               <div class="vc_row-full-width vc_clearfix"></div>
                            </div>
-                           <!-- .entry-content -->
-                        </article>
+                           
+                        </article> -->
                         <!-- #post-## -->
                      </div>
                   </div>
