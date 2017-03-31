@@ -15,7 +15,7 @@
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_register_user'] ?></h4>
               </div>
-              <div class="panel-body form-horizontal group-border stripped">
+              <div class="panel-body form-horizontal group-border stripped" style="background: rgba(221, 158, 38, 0.18)">
                  <div class="form-group">
                     <div class="col-lg-12 col-md-12">
                       <div class="input-group input-icon file-upload">
