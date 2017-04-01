@@ -8,13 +8,20 @@
   <div class="content" style="">
      <div class="row">
         <!-- .row start -->
+      <div class="col-md-12">
+        <div class="btn-toolbar pull-right " style="margin-bottom:20px;">
+            <a style="width: 220px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
+         </div>
+      </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
+
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_register_user'] ?></h4>
               </div>
+
               <div class="panel-body form-horizontal group-border stripped" style="background: rgba(221, 158, 38, 0.18)">
                  <div class="form-group">
                     <div class="col-lg-12 col-md-12">
@@ -23,9 +30,7 @@
                            <div class="">
                               <div class="">
                                  
-                                 <div class="btn-toolbar pull-right " style="margin-bottom:20px;">
-                                    <a style="width: 220px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
-                                 </div>
+                                 
                                  <!-- <div class="clearfix"></div> -->
                               </div>
                               <?php if($gds){ ?>

@@ -11,6 +11,11 @@
      <div class="row">
         <!-- .row start -->
         <div class="col-md-12">
+          <div style="margin-bottom: 20px; float:right;" class="col-md-12">
+                                <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create"><i class="fa fa-fw fa-plus"></i> <?php echo $lang['createPD'] ?></a>
+                             </div>
+        </div>
+        <div class="col-md-12">
            <!-- col-md-12 start here -->
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
@@ -22,9 +27,7 @@
                     <div class="col-lg-12 col-md-12">
                        <div class="input-group input-icon file-upload">
                         <div class="widget-content" style="padding:10px">
-                             <div style="margin-bottom: 20px; float:right;" class="col-md-12">
-                                <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create"><?php echo $lang['createPD'] ?></a>
-                             </div>
+                             
                              <div class="clearfix"></div>
                             
 
