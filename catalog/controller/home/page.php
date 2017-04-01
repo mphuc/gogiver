@@ -87,6 +87,17 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/media.tpl', $data));
 		}
 	}
+
+	public function redbook() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/redbook.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/home/redbook.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/home/redbook.tpl', $data));
+		}
+	}
 	
 	public function supportSubmit(){
 

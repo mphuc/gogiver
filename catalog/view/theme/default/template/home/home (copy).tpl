@@ -2,26 +2,27 @@
     
          <!-- #site-navigation -->
          <div id="content" class="site-content">
-            <!-- <div class="big-title" style="background-image: url('catalog/view/theme/default/images/bg01.jpg')">
+            <div class="big-title" style="background-image: url('catalog/view/theme/default/images/bg01.jpg')">
                <div class="container">
                   <h1 class="entry-title" itemprop="headline"></h1> 
-               
+                  <!-- <div class="breadcrumb">
+                     <div class="container">
+                        <ul class="tm_bread_crumb">
+                           <li class="level-1 top"><a href="about">Home</a></li>
+                           <li class="level-2 sub"><a href="../index.html">Our Services</a></li>
+                           <li class="level-3 sub tail current">Our Services &#8211; Layout 2</li>
+                        </ul>
+                     </div>
+                  </div> -->
                </div>
-            </div> -->
+            </div>
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
                      <div class="content">
-                        <article id="post-74236" style="margin-top: 20px;">
+                        <article id="post-74236">
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
-                              <div class="col-md-2" style="float: left;">
-                                 <a href="index.php?route=home/page/redbook">
-                                  <img src="catalog/view/theme/default/images/khottrithuc.png">
-                                 </a>
-                              </div>
-                              <div class="col-md-10" style="float: left;">
-                                 <img src="catalog/view/theme/default/images/0001.jpg">
-                              </div>
+                              <img src="catalog/view/theme/default/images/0001.jpg">
                            <?php } ?>
                         </article>
                        <!--  <article id="post-74236">

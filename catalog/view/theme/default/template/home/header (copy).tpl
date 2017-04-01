@@ -145,14 +145,7 @@
       <![endif]-->
       <meta name="generator" content="Powered by Slider Revolution 5.2.4.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
       <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1437983641514{margin-bottom: 0px !important;}.vc_custom_1460444400596{padding-top: 0px !important;padding-right: 0px !important;padding-bottom: 0px !important;padding-left: 0px !important;}.vc_custom_1460444407087{padding-top: 0px !important;padding-bottom: 0px !important;}.vc_custom_1460444412521{padding-top: 0px !important;padding-bottom: 0px !important;}.vc_custom_1460444417954{padding-top: 0px !important;padding-bottom: 0px !important;}.vc_custom_1460444425015{margin-bottom: 0px !important;padding-top: 50px !important;}.vc_custom_1437984364084{margin-bottom: 30px !important;}.vc_custom_1437984514181{margin-bottom: 30px !important;}.vc_custom_1437984552518{margin-bottom: 30px !important;}.vc_custom_1437984616949{margin-bottom: 30px !important;}.vc_custom_1437984648326{margin-bottom: 30px !important;}.vc_custom_1437984710618{margin-bottom: 30px !important;}.vc_custom_1437984745860{margin-bottom: 30px !important;}.vc_custom_1437985110959{margin-bottom: 30px !important;}.vc_custom_1437984915163{margin-bottom: 30px !important;}.vc_custom_1437984948945{margin-bottom: 30px !important;}.vc_custom_1437984983151{margin-bottom: 30px !important;}.vc_custom_1437985016796{margin-bottom: 30px !important;}.vc_custom_1437985075252{margin-bottom: 30px !important;}.vc_custom_1437985103771{margin-bottom: 30px !important;}.vc_custom_1437985206351{margin-bottom: 30px !important;}.vc_custom_1437985221532{margin-bottom: 30px !important;}.vc_custom_1437985253212{margin-bottom: 30px !important;}.vc_custom_1437985284853{margin-bottom: 30px !important;}.vc_custom_1437985331263{margin-bottom: 30px !important;}.vc_custom_1437985139839{margin-bottom: 30px !important;}.vc_custom_1437984827403{margin-bottom: 30px !important;}</style>
-      <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1435835587561{margin-bottom: 0px !important;padding-bottom: 0px !important;}.vc_custom_1435835593836{margin-bottom: 0px !important;}.vc_custom_1435835644373{margin-bottom: 50px !important;}.vc_custom_1460370468420{margin-bottom: 0px !important;border-top-width: 1px !important;padding-top: 50px !important;padding-bottom: 50px !important;background-color: #eeeeee !important;border-top-color: #dddddd !important;border-top-style: solid !important;}.vc_custom_1437450002294{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449347466{margin-bottom: 20px !important;}.vc_custom_1437539228564{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449298380{margin-bottom: 20px !important;}.vc_custom_1437539246519{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449464280{margin-bottom: 20px !important;}.vc_custom_1437450038799{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449409473{margin-bottom: 20px !important;}.vc_custom_1437539270431{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449531024{margin-bottom: 20px !important;}.vc_custom_1437539285140{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449626249{margin-bottom: 20px !important;}.vc_custom_1460370445562{padding-top: 0px !important;padding-bottom: 0px !important;}.vc_custom_1460370459389{padding-top: 0px !important;padding-bottom: 0px !important;}
-      .extra-info span{
-         color: #fff;
-      }
-      #content{
-         background: #D78D00 !important
-      }
-      </style>
+      <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1435835587561{margin-bottom: 0px !important;padding-bottom: 0px !important;}.vc_custom_1435835593836{margin-bottom: 0px !important;}.vc_custom_1435835644373{margin-bottom: 50px !important;}.vc_custom_1460370468420{margin-bottom: 0px !important;border-top-width: 1px !important;padding-top: 50px !important;padding-bottom: 50px !important;background-color: #eeeeee !important;border-top-color: #dddddd !important;border-top-style: solid !important;}.vc_custom_1437450002294{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449347466{margin-bottom: 20px !important;}.vc_custom_1437539228564{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449298380{margin-bottom: 20px !important;}.vc_custom_1437539246519{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449464280{margin-bottom: 20px !important;}.vc_custom_1437450038799{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449409473{margin-bottom: 20px !important;}.vc_custom_1437539270431{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449531024{margin-bottom: 20px !important;}.vc_custom_1437539285140{margin-bottom: 10px !important;padding-top: 15px !important;}.vc_custom_1437449626249{margin-bottom: 20px !important;}.vc_custom_1460370445562{padding-top: 0px !important;padding-bottom: 0px !important;}.vc_custom_1460370459389{padding-top: 0px !important;padding-bottom: 0px !important;}</style>
       <noscript>
          <style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style>
       </noscript>
@@ -195,9 +188,6 @@
             </li>
             <li class="">
                <a href="index.php?route=home/page/media">Sự kiện</a>
-            </li>
-            <li class="">
-               <a href="index.php?route=home/page/redbook">Sách nói</a>
             </li>
             <li class="">
                <a href="login.html">Đăng nhập</a>
@@ -251,7 +241,7 @@
         </ul>
       </div>
        <div id="page" class="hfeed site">
-         <header class="site-header" style="background-image: url('catalog/view/theme/default/images/bg01.jpg')">
+         <header class="site-header">
             <div class="container">
                <div class="row middle-xs top-md">
                   <div class="col-md-2 col-xs-10 site-branding">
@@ -274,10 +264,58 @@
                                  </ul>
                               </div>
                            </div>
-                           
+                           <div class="col-md-5 end-md end-lg">
+                              <div class="social-menu">
+                                 <li class="dropdown language-selector pull-right">                
+                
+                                    <ul class="dropdown-menu pull-right" style="margin-left: -27px;">
+                                    <?php 
+                                       if (isset($_SESSION['language_id'])) {
+                                       if ($_SESSION['language_id'] == "vietnamese") { ?>
+                                       <li >
+                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/af.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">Việt Nam</span>
+                                        </a>
+                                      </li>
+                                    <?php } else { ?>
+                                       <li class="">
+                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/ae.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
+                                        </a>
+                                      </li>
+                                    <?php } } else { ?>
+                                       <li class="">
+                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/ae.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
+                                        </a>
+                                      </li>
+                                    <?php } ?>
+                                      
+                                      
+                                      
+                                    </ul>
+                              </li>
+                              <style type="text/css" media="screen">
+                                 .language-selector {
+    margin-top: 13px;
+    list-style: none;
+    margin-right: 20px;
+}
+.language-selector img {
+    width: 25px;
+}
+.language-selector li{
+   list-style: none;
+}
+                              </style>
+                              </div>
+                           </div>
                         </div>
                         <div class="header-right">
-                           <!-- <div class="row middle">
+                           <div class="row middle">
                               <div class="col-lg-11">
                                  <aside id="text-4" class="widget header-right widget_text">
                                     <div class="textwidget">
@@ -301,7 +339,7 @@
                               </div>
                               
                            </div>
-                        </div> -->
+                        </div>
                      </div>
                   </div>
                </div>
@@ -311,8 +349,8 @@
          <nav id="site-navigation" class="main-navigation hidden-xs hidden-sm">
             <div class="container">
                <div class="row middle">
-                  <div class="col-md-10">
-                     <div class="primary-menu pull-left">
+                  <div class="col-md-11">
+                     <div class="primary-menu pull-right">
                         <ul id="primary-menu" class="menu">
                      
                             <?php  
@@ -336,7 +374,6 @@
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="index.php?route=home/page/media">Sự kiện</a>
                            </li>
-                            
                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
                               <a href="login.html">Đăng nhập</a>
                            </li>
@@ -388,56 +425,6 @@
                         </ul>
                      </div>
                   </div>
-                  <div class="col-md-2 end-md end-lg">
-                              <div class="social-menu">
-                                 <li class="dropdown language-selector pull-right">                
-                
-                                    <ul class="dropdown-menu pull-right" style="margin-left: -27px;">
-                                    <?php 
-                                       if (isset($_SESSION['language_id'])) {
-                                       if ($_SESSION['language_id'] == "vietnamese") { ?>
-                                       <li >
-                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/af.png">
-                                          <span style="margin-top: -3px;float: right;margin-left: 10px; color: #fff;    text-transform: uppercase;">Việt Nam</span>
-                                        </a>
-                                      </li>
-                                    <?php } else { ?>
-                                       <li class="">
-                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/ae.png">
-                                          <span style="margin-top: -3px;float: right;margin-left: 10px; color: #fff;    text-transform: uppercase;">English</span>
-                                        </a>
-                                      </li>
-                                    <?php } } else { ?>
-                                       <li class="">
-                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/ae.png">
-                                          <span style="margin-top: -3px;float: right;margin-left: 10px; color: #fff;    text-transform: uppercase;">English</span>
-                                        </a>
-                                      </li>
-                                    <?php } ?>
-                                      
-                                      
-                                      
-                                    </ul>
-                              </li>
-                              <style type="text/css" media="screen">
-                                 .language-selector {
-    margin-top: 13px;
-    list-style: none;
-    margin-right: 20px;
-}
-.language-selector img {
-    width: 25px;
-}
-.language-selector li{
-   list-style: none;
-}
-                              </style>
-                              </div>
-                           </div>
-
                </div>
             </div>
          </nav>
