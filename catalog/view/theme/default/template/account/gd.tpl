@@ -8,14 +8,14 @@
   <div class="content" style="">
      <div class="row">
         <!-- .row start -->
-      <div class="col-md-12">
-        <div class="btn-toolbar pull-right " style="margin-bottom:20px;">
-            <a style="width: 220px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
+      <div class="">
+        <div class="btn-toolbar pull-right col-md-4" style="margin-bottom:20px;">
+            <a style="width: 100%" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
          </div>
       </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
-
+           <?php $num = 1; foreach ($gds as $value => $key){ ?>
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
@@ -35,7 +35,7 @@
                               </div>
                               <?php if($gds){ ?>
                               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                              <?php $num = 1; foreach ($gds as $value => $key){ ?>
+                              
                               <div class="list_ph" style="margin-bottom: 30px">
                                  <div class="Head" role="tab" id="headingOne<?php echo $key['gd_number'] ?>">
                                     
@@ -104,7 +104,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <?php $num++; } ?>
+                              
                            </div>
                            <!-- panel-group -->
                            <div class="clearfix" ></div>
@@ -135,6 +135,7 @@
               </div>
            </div>
         </div>
+        <?php $num++; } ?>
      </div>
 
   </div>

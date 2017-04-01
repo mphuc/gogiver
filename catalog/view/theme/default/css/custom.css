@@ -78,6 +78,13 @@ table thead tr td{
 	#frmCreatePin input{
 		margin-bottom: 10px;
 	}
+  .panel.panel-default{
+    margin-top: 50px;
+  }
+  .page-container .main-content {
+   
+    margin-top: 50px;
+}
 	
 }
 @media screen and (max-width: 600px) {

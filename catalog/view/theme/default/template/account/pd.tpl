@@ -10,20 +10,22 @@
   <div class="content" style="">
      <div class="row">
         <!-- .row start -->
-        <div class="col-md-12">
+        <div class="">
           <div style="margin-bottom: 20px; float:right;" class="col-md-12">
-                                <a class="pull-right btn-register btn btn-primary" href="index.php?route=account/pd/create"><i class="fa fa-fw fa-plus"></i> <?php echo $lang['createPD'] ?></a>
-                             </div>
+            <a class="pull-right btn-register btn btn-primary col-md-4"  href="index.php?route=account/pd/create"><i class="fa fa-fw fa-plus"></i> <?php echo $lang['createPD'] ?></a>
+         </div>
         </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
+           <?php $num = 1; foreach ($pds as $value => $key){ ?>
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
+              
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['text_register_user'] ?></h4>
               </div>
               <div class="panel-body form-horizontal group-border stripped" style="background: rgba(84, 114, 186, 0.22);">
-                 <div class="form-group">
+                 <div class="form-group" style="padding-bottom: 0px;">
                     <div class="col-lg-12 col-md-12">
                        <div class="input-group input-icon file-upload">
                         <div class="widget-content" style="padding:10px">
@@ -32,8 +34,8 @@
                             
 
                              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <?php $num = 1; foreach ($pds as $value => $key){ ?>
-                                <div class="list_ph" style="padding-bottom: 20px;">
+                                
+                                <div class="list_ph" >
                                    <div class="Head" role="tab" id="headingOne<?php echo $key['pd_number'] ?>">
                                       
                                       <h4><?php echo $lang['PD_NUMBER'];?> : <strong>PD<?php echo $key['pd_number'] ?></strong></h4>
@@ -99,19 +101,10 @@
                                       </div>
                                    </div>
                                 </div>
-                                <?php $num++; } ?>
+                                
                              </div>
                              <!-- panel-group -->
-                             <script>
-                                function toggleIcon(e) {
-                                    $(e.target)
-                                        .prev('.Head')
-                                        .find(".short-full")
-                                        .toggleClass('glyphicon-plus glyphicon-minus');
-                                }
-                                $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-                                $('.panel-group').on('shown.bs.collapse', toggleIcon);
-                             </script>
+                             
                              
                              <!-- panel-body -->
                           </div>
@@ -119,8 +112,21 @@
                     </div>
                  </div>
               </div>
+            </div>
+              <?php $num++; } ?>
 
-           </div>
+              <script>
+                function toggleIcon(e) {
+                    $(e.target)
+                        .prev('.Head')
+                        .find(".short-full")
+                        .toggleClass('glyphicon-plus glyphicon-minus');
+                }
+                $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+                $('.panel-group').on('shown.bs.collapse', toggleIcon);
+             </script>
+
+           
            <div class="clearfix" style="margin-top:80px;"></div>
         </div>
         <!-- col-md-12 end here -->
