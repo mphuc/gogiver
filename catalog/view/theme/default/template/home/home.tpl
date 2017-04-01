@@ -12,7 +12,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="content">
-                        <article id="post-74236">
+                        <article id="post-74236" style="margin-top: 20px;">
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
                               <img src="catalog/view/theme/default/images/0001.jpg">
                            <?php } ?>
