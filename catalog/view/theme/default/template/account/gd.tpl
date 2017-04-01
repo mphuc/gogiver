@@ -10,12 +10,12 @@
         <!-- .row start -->
       <div class="">
         <div class="btn-toolbar pull-right col-md-4" style="margin-bottom:20px;">
-            <a style="width: 100%" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
+            <a style="min-width: 250px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
          </div>
       </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
-           
+           <?php $num = 1; foreach ($gds as $value => $key){ ?>
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
@@ -30,7 +30,7 @@
                            <div class="">
                               <div class="">
                                  
-                                 <?php $num = 1; foreach ($gds as $value => $key){ ?>
+                                 
                                  <!-- <div class="clearfix"></div> -->
                               </div>
                               <?php if($gds){ ?>
@@ -104,7 +104,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <?php $num++; } ?>
+                              
                            </div>
                            <!-- panel-group -->
                            <div class="clearfix" ></div>
@@ -135,7 +135,7 @@
               </div>
            </div>
         </div>
-        
+        <?php $num++; } ?>
      </div>
 
   </div>

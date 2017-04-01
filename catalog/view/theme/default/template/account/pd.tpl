@@ -11,8 +11,8 @@
      <div class="row">
         <!-- .row start -->
         <div class="">
-          <div style="margin-bottom: 20px; float:right;" class="col-md-12">
-            <a class="pull-right btn-register btn btn-primary col-md-4"  href="index.php?route=account/pd/create"><i class="fa fa-fw fa-plus"></i> <?php echo $lang['createPD'] ?></a>
+          <div style="margin-bottom: 20px; float:right; " class="col-md-12">
+            <a style="min-width: 250px;" class="pull-right btn-register btn btn-primary col-md-4"  href="index.php?route=account/pd/create"><i class="fa fa-fw fa-plus"></i> <?php echo $lang['createPD'] ?></a>
          </div>
         </div>
         <div class="col-md-12">
