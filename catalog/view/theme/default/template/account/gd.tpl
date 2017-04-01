@@ -15,7 +15,7 @@
       </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
-           <?php $num = 1; foreach ($gds as $value => $key){ ?>
+           
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               <div class="panel-heading">
@@ -30,7 +30,7 @@
                            <div class="">
                               <div class="">
                                  
-                                 
+                                 <?php $num = 1; foreach ($gds as $value => $key){ ?>
                                  <!-- <div class="clearfix"></div> -->
                               </div>
                               <?php if($gds){ ?>
@@ -104,7 +104,7 @@
                                     </div>
                                  </div>
                               </div>
-                              
+                              <?php $num++; } ?>
                            </div>
                            <!-- panel-group -->
                            <div class="clearfix" ></div>
@@ -135,7 +135,7 @@
               </div>
            </div>
         </div>
-        <?php $num++; } ?>
+        
      </div>
 
   </div>
