@@ -706,30 +706,42 @@ $block_id = $this -> check_block_id();
 							$json['amount_r_min_gd'] = number_format($amount_r_min);
 							return $this -> response -> setOutput(json_encode($json));
 						}
-						$c_wallet = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
+
+						$r_wallet = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
 						
-						$c_wallet = floatval($c_wallet['amount']);
-						if(($c_wallet < $amount) && ($amount < 5000000)){
+						$r_wallet = floatval($r_wallet['amount']);
+						if(($r_wallet < $amount) && ($amount < 5000000)){
 							die();
 						}
+
+						if ($r_wallet < floatval($this->request->get['amount']))
+						{
+							$json['amount_none_r_wallet'] = -1;
+							$json['amount_r_min_gd'] = number_format($amount_r_min);
+							return $this -> response -> setOutput(json_encode($json));
+						}
+
 						//get level customer
 						
 						$amount = $this->request->get['amount'];
 						
 						$this -> model_account_customer -> saveTranstionHistory($this -> session -> data['customer_id'], 'R-wallet', '- ' . number_format($amount) . ' VND', "Your Cash Out ".number_format($amount)."VND from R-Wallet", "Cash Out");
-						$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
+
+						//$this -> model_account_customer -> updatePin_rutping($this->session->data['customer_id'], 1);
+
 						$returnDate = $this -> model_account_customer -> updateRWallet($this->request->get['amount'], $this -> session -> data['customer_id']);
+
 						$gd_query = $this -> model_account_customer -> createGD($amount);
 						//fee 10%
 					//	$this -> fee_cashout($gd_query['gd_number'], $amount);
 						// End fee
-						$id_history = $this->model_account_customer->saveHistoryPin(
+						/*$id_history = $this->model_account_customer->saveHistoryPin(
 							$this -> session -> data['customer_id'],  
 							'- 1',
 							'Use Pin for GD'.$gd_query['gd_number'],
 							'GD',
 							'Use Pin for cho GD'.$gd_query['gd_number']
-						);
+						);*/
 						//get 10 Percent for funds
 										
 

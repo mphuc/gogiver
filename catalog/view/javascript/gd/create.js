@@ -107,6 +107,11 @@ $(function() {
 					$('#err-r-wallet_max').html("You must withdraw more "+result.amount_r_min_gd+" VND.").show();
 					window.funLazyLoad.reset();
 				}
+				if (result.amount_none_r_wallet == -1)
+				{
+					$('#err-amount_none_r_wallet').html("Your money is not enough").show();
+					window.funLazyLoad.reset();
+				}
 				if(_.has(result, 'ok') && result['ok'] === 1){
 					if(location.hash === ''){
 						location.href = location.href+'#success';

@@ -56,6 +56,9 @@
                      <div id="err-checkConfirmPD" class="alert alert-dismissable alert-danger" style="display:none">
                         Please create new request PD !
                      </div>
+                     <div id="err-amount_none_r_wallet" class="alert alert-dismissable alert-danger" style="display:none">
+                        Your money is not enough !
+                     </div>
                      <form id="createGD" action="<?php echo $self -> url -> link('account/gd/submit', '', 'SSL'); ?>" class="form-horizontal margin-none" method="post" novalidate="novalidate">
                      <div class="form-group">
                         <label class="col-md-4 control-label"><?php echo $lang['Receivable'] ?>:</label>
