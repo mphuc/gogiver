@@ -271,58 +271,10 @@
                                  </ul>
                               </div>
                            </div>
-                           <div class="col-md-5 end-md end-lg">
-                              <div class="social-menu">
-                                 <li class="dropdown language-selector pull-right">                
-                
-                                    <ul class="dropdown-menu pull-right" style="margin-left: -27px;">
-                                    <?php 
-                                       if (isset($_SESSION['language_id'])) {
-                                       if ($_SESSION['language_id'] == "vietnamese") { ?>
-                                       <li >
-                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/af.png">
-                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">Việt Nam</span>
-                                        </a>
-                                      </li>
-                                    <?php } else { ?>
-                                       <li class="">
-                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/ae.png">
-                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
-                                        </a>
-                                      </li>
-                                    <?php } } else { ?>
-                                       <li class="">
-                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
-                                          <img src="catalog/view/theme/default/img/flags/ae.png">
-                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
-                                        </a>
-                                      </li>
-                                    <?php } ?>
-                                      
-                                      
-                                      
-                                    </ul>
-                              </li>
-                              <style type="text/css" media="screen">
-                                 .language-selector {
-    margin-top: 13px;
-    list-style: none;
-    margin-right: 20px;
-}
-.language-selector img {
-    width: 25px;
-}
-.language-selector li{
-   list-style: none;
-}
-                              </style>
-                              </div>
-                           </div>
+                           
                         </div>
                         <div class="header-right">
-                           <div class="row middle">
+                           <!-- <div class="row middle">
                               <div class="col-lg-11">
                                  <aside id="text-4" class="widget header-right widget_text">
                                     <div class="textwidget">
@@ -346,7 +298,7 @@
                               </div>
                               
                            </div>
-                        </div>
+                        </div> -->
                      </div>
                   </div>
                </div>
@@ -356,8 +308,8 @@
          <nav id="site-navigation" class="main-navigation hidden-xs hidden-sm">
             <div class="container">
                <div class="row middle">
-                  <div class="col-md-11">
-                     <div class="primary-menu pull-right">
+                  <div class="col-md-10">
+                     <div class="primary-menu pull-left">
                         <ul id="primary-menu" class="menu">
                      
                             <?php  
@@ -432,6 +384,56 @@
                         </ul>
                      </div>
                   </div>
+                  <div class="col-md-2 end-md end-lg">
+                              <div class="social-menu">
+                                 <li class="dropdown language-selector pull-right">                
+                
+                                    <ul class="dropdown-menu pull-right" style="margin-left: -27px;">
+                                    <?php 
+                                       if (isset($_SESSION['language_id'])) {
+                                       if ($_SESSION['language_id'] == "vietnamese") { ?>
+                                       <li >
+                                        <a id="en" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/af.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">Việt Nam</span>
+                                        </a>
+                                      </li>
+                                    <?php } else { ?>
+                                       <li class="">
+                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/ae.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
+                                        </a>
+                                      </li>
+                                    <?php } } else { ?>
+                                       <li class="">
+                                        <a id="vn" href="index.php?route=home/page/changeLange" data-link="">
+                                          <img src="catalog/view/theme/default/img/flags/ae.png">
+                                          <span style="margin-top: -5px;float: right;margin-left: 10px;">English</span>
+                                        </a>
+                                      </li>
+                                    <?php } ?>
+                                      
+                                      
+                                      
+                                    </ul>
+                              </li>
+                              <style type="text/css" media="screen">
+                                 .language-selector {
+    margin-top: 13px;
+    list-style: none;
+    margin-right: 20px;
+}
+.language-selector img {
+    width: 25px;
+}
+.language-selector li{
+   list-style: none;
+}
+                              </style>
+                              </div>
+                           </div>
+
                </div>
             </div>
          </nav>

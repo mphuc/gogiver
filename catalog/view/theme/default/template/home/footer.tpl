@@ -1,9 +1,10 @@
+<?php if ($_SESSION['language_id'] == "vietnamese") { ?>
 <footer class="site-footer">
             <div class="container">
                <div class="row">
                   <div class="col-md-4">
                      <aside id="text-2" class="widget widget_text">
-                        <h3 class="widget-title"><span>About Us</span></h3>
+                        
                         <div class="textwidget">
                            <p><img src="catalog/view/theme/default/images/logo_home.png" width="200" /><br />
                               
@@ -13,12 +14,89 @@
                      <div class="social">
                         <div class="social-menu">
                            <ul id="social-menu" class="menu">
-                              <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="http://facebook.com/">facebook</a></li>
-                              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34"><a href="http://twitter.com/">twitter</a></li>
-                              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74678"><a href="http://plus.google.com/">googleplus</a></li>
-                              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74679"><a href="http://linkedin.com/">linkedin</a></li>
-                              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74680"><a href="http://foursquare.com/">foursquare</a></li>
-                              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74681"><a href="../../feed/index.html">feed</a></li> -->
+                            
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <aside id="better-menu-widget-2" class="widget better-menu-widget">
+                        <h3 class="widget-title"><span>Thông tin </span></h3>
+                        <div class="menu-information-container">
+                           <ul id="menu-information" class="menu">
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 current-menu-item">
+                              <a href="index.php?route=home/page">Trang chủ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/faq">Văn hóa hoạt động</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/blog">BLOG</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/support">Hỗ trợ</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="index.php?route=home/page/media">Sự kiện</a>
+                           </li>
+                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25">
+                              <a href="login.html">Đăng nhập</a>
+                           </li>
+                              
+                           </ul>
+                        </div>
+                     </aside>
+                  </div>
+                  <div class="col-md-4">
+                     <aside id="text-3" class="widget widget_text">
+                        <h3 class="widget-title"><span>Liên hệ</span></h3>
+                        <div class="textwidget">
+                           <div class="office">
+                              
+                              <p><i class="fa fa-envelope"></i> info@iontach.biz </p>
+                              <p><i class="fa fa-envelope"></i> admin@iontach.biz </p>
+                              <!-- <p><i class="fa fa-fax"></i> (102) 8888 9999 </p> -->
+                              <p><i class="fa fa-clock-o"></i> Mon - Sat: 9:00 - 18:00</p>
+                           </div>
+                        </div>
+                     </aside>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- #colophon -->
+         <!-- <div class="copyright">
+            <div class="container">
+               <div class="row middle">
+                  <div class="col-md-4 left">
+                     Made by <i class="fa fa-heart"></i>  <a target="_blank" href="">Iontach.biz</a>.                
+                  </div>
+                  <div class="col-md-8 end-md end-lg">
+                     <div class="right">
+                        © Copyrights 2016. All rights reserved.                    
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+      </div>
+<?php } else {?>
+<footer class="site-footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-4">
+                     <aside id="text-2" class="widget widget_text">
+                        
+                        <div class="textwidget">
+                           <p><img src="catalog/view/theme/default/images/logo_home.png" width="200" /><br />
+                              
+                           </p>
+                        </div>
+                     </aside>
+                     <div class="social">
+                        <div class="social-menu">
+                           <ul id="social-menu" class="menu">
+                            
                            </ul>
                         </div>
                      </div>
@@ -69,7 +147,7 @@
             </div>
          </footer>
          <!-- #colophon -->
-         <div class="copyright">
+         <!-- <div class="copyright">
             <div class="container">
                <div class="row middle">
                   <div class="col-md-4 left">
@@ -82,8 +160,9 @@
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
       </div>
+      <?php } ?>
       <!-- #page -->
       <a class="scrollup"><i class="fa fa-angle-up"></i></a>
       <script>
