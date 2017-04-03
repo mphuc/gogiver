@@ -31,11 +31,11 @@ class ControllerAccountGhf extends Controller {
 		$data['base'] = $server;
 		$data['self'] = $this;
 		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
-		$pd_total['number'] = 0;
+
 		$limit = 10;
 		$start = ($page - 1) * 10;
 		$pd_total = $this -> model_account_customer -> tatol_GD_child($this -> customer -> getId());
-		
+		print_r($pd_total);die;
 		$pd_total = $pd_total['number'];
 		
 		$pagination = new Pagination();
