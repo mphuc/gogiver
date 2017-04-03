@@ -2453,7 +2453,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function get_GD_child($id_customer){
 		$query = $this -> db -> query("
-			SELECT *
+			SELECT A.*,B.username
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id LEFT JOIN ".DB_PREFIX."customer_transfer_list C ON A.customer_id = C.gd_id_customer
 			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		"); 
@@ -2471,7 +2471,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function get_PD_child($id_customer){
 		$query = $this -> db -> query("
-			SELECT *
+			SELECT B.username,A.*
 			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");
 
