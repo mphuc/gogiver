@@ -16,7 +16,7 @@
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
                               <div class="col-md-2 col-sm-2 col-xs-4" style="float: left;">
                                  <a href="index.php?route=home/page/redbook">
-                                  <img src="catalog/view/theme/default/images/khottrithuc.png" style="border: 7px solid #fff">
+                                  <img src="catalog/view/theme/default/images/khottrithuc.png" style="border: 1px solid #fff">
                                  </a>
                               </div>
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
