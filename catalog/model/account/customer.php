@@ -2510,7 +2510,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function get_PD_customer($id_customer){
 		$query = $this -> db -> query("
-			SELECT *
+			SELECT A.*,B.username,B.customer_code
 			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.customer_code = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
 		");
 
