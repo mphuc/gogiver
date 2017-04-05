@@ -3,14 +3,15 @@
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
-<div class="main-content">
+</div>
+<div class="main-content" style="margin-top: 50px;">
 <!-- Start .content -->
   <div class="content" style="">
      <div class="row">
         <!-- .row start -->
       <div class="">
         <div class="btn-toolbar pull-right col-md-4" style="margin-bottom:20px;">
-            <a style="min-width: 250px" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
+            <a style="min-width: 100%" href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
          </div>
       </div>
         <div class="col-md-12">
