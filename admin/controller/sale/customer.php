@@ -4000,13 +4000,28 @@ public function searchPackage() {
 		$this ->  load-> model('sale/customer');
 		$username = $this -> request -> post['username'];
 		$get_customer = $this -> model_sale_customer -> getlikeusername($username);
-		$n = 0;
+		$n = 1;
 		foreach ($get_customer as $customer) {
 			
 		?>
 		<tr class="<?php echo $class ?>">
       <td><?php echo $n;?></td>
+       <?php if ($customer['customer_id'] > 61 )
+        {
+          $customer_id = $customer['customer_id'] + 1000; 
+        }
+        else
+        {
+          $customer_id = $customer['customer_id'];
+        }
+        if ($customer['customer_id'] == 64 ) $customer_id = 1060;
+        if ($customer['customer_id'] == 65 ) $customer_id = 1061;
+         
+      ?>
+        
+
       
+      <td><?php echo $customer_id ;?></td>
       <td class="text-left"><?php echo $customer['username']; ?></td>
 	     <td class="text-left"><?php echo $customer['email']; ?></td>
 	     <td style="width: 180px;float: left; border-bottom: none;" class="text-left"><?php echo $customer['date_added']; ?></td>
