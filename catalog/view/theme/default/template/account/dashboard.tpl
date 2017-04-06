@@ -188,7 +188,7 @@
                         <p><?php echo html_entity_decode($value['description'] , ENT_QUOTES, 'UTF-8')?></p>
                         
                      </div>
-                     <?php if ($zz ==1 ){ ?>
+                     <?php if ($zz >=1 ){ ?>
                      <hr>
                      <?php } $zz++; ?>
                      <?php endforeach; ?>
