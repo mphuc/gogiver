@@ -184,11 +184,11 @@
                 <?php //print_r($value) ?>
                      <div class="blog-item" style="padding-left: 10px;">
                         <p class="blog-title"><a href="blog&token=<?php echo $value["simple_blog_article_id"]; ?>"><?php echo $value['article_title'] ?></a></p>
-                        <p><?php $value['date_added'] == "2017-01-07 10:20:00"; echo date("d/m/Y H:i:A", strtotime($value['date_added'])); ?></p>
+                        <p><?php echo date("d/m/Y H:i:A", strtotime($value['date_added'])); ?></p>
                         <p><?php echo html_entity_decode($value['description'] , ENT_QUOTES, 'UTF-8')?></p>
                         
                      </div>
-                     <?php if ($zz >=1 ){ ?>
+                     <?php if ($zz >=1 && $zz < count($article_limit) ){ ?>
                      <hr>
                      <?php } $zz++; ?>
                      <?php endforeach; ?>
