@@ -60,6 +60,9 @@
                         </ul>
                         <!-- / .sub-nav  -->
                     </li>
+                    <li <?php echo $route === 'account/article' ? "class='active'" : ''  ?>><a href="<?php echo $self -> url -> link('account/article', '', 'SSL'); ?>"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['bvcn']; ?></span>
+                       </a>
+                     </li>
                     <li>
                         <a href="#">
                             <i class="fa fa-outdent" aria-hidden="true"></i> <span class="nav-item-text"><?php echo $lang['Transaction_Management']; ?></span>

@@ -25,3 +25,4 @@ $_['support'] = 'Hỗ trợ';
 $_['block'] = 'Lịch Sử Khóa/Đóng Băng';
 $_['remove_account'] = 'Xóa tài khoản';
 $_['blog_create'] = 'Tạo Blog';
+$_['bvcn'] = 'Bài viết cảm nhận';

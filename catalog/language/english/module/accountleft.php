@@ -23,3 +23,4 @@ $_['f1pd']    = 'F1 PD';
 $_['f1gh']    = 'F1 GD';
 $_['Transaction_Management'] = 'Transaction Management';
 $_['remove_account'] = 'Remove Account';
+$_['bvcn'] = 'The article feels';

@@ -25,3 +25,4 @@ $_['support'] = 'Support';
 $_['block'] = 'Block/Frozen History';
 $_['remove_account'] = 'Remove Account';
 $_['blog_create'] = 'Create Blog';
+$_['bvcn'] = 'The article feels';
