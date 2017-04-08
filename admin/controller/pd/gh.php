@@ -11,7 +11,7 @@ class ControllerPdGh extends Controller {
 		$limit = 30;
 		$start = ($page - 1) * 30;
 
-		$ts_history = $this -> model_sale_customer -> get_count_ph();
+		$ts_history = $this -> model_sale_customer -> get_count_gh();
 
 		$ts_history = $ts_history['number'];
 
