@@ -724,17 +724,17 @@ public function updateLevel_listID($customer_id){
     {
     	$this -> load -> model('account/block');
     	$get_all_customer = $this -> model_account_block -> get_all_customer();
-    	/*foreach ($get_all_customer as $value) {
+    	foreach ($get_all_customer as $value) {
     		//add all user
     		$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
 
     		// add count_pd
-    		$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
-    		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);
+    		/*$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
+    		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);*/
 
-    	}*/
+    	}
 
-
+    	die;
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	foreach ($get_block_month_pd as $values) {
     		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
@@ -758,7 +758,7 @@ public function updateLevel_listID($customer_id){
                 $num_pd = 13;
                 break;
             }
-           
+
             if ($values['total_pd'] < $num_pd)
             {
             	$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
