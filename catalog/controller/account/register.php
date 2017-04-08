@@ -23,7 +23,8 @@ class ControllerAccountRegister extends Controller {
 		$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
-
+		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
+		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$language = new Language($getLanguage);
 		$language -> load('account/register');
@@ -81,7 +82,7 @@ class ControllerAccountRegister extends Controller {
 
 
 			$tmp = $this -> model_customize_register -> addCustomer($this->request->post);
-
+			$this -> model_account_customer -> insert_block_id_pd_month($tmp);
 			$this -> model_customize_register -> update_customer_code($tmp);
 
 			$data['has_register'] = true;

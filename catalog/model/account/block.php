@@ -184,4 +184,112 @@ class ModelAccountBlock extends Model {
 		return $query;
 	}
 
+	public function get_all_customer()
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+		");
+		return $query -> rows;
+	}
+
+
+	public function insert_block_id_pd_month($customer_id)
+	{
+		$querys = $this -> db -> query("
+			SELECT count(*) as number FROM  " . DB_PREFIX . "customer_block_pd_month 
+			WHERE customer_id = '".$customer_id."'
+		");
+		if ($querys -> row['number'] == 0)
+		{
+			$query = $this -> db -> query("
+				INSERT INTO  " . DB_PREFIX . "customer_block_pd_month SET
+				customer_id = '".$customer_id."'
+			");
+		}
+	}
+
+	public function get_count_pd($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$customer_id."'
+		");
+		$result['count'] = $query -> row['number'];
+		if ($result['count'] > 0)
+		{
+			$querys = $this -> db -> query("
+				SELECT date_added
+				FROM  ".DB_PREFIX."customer_provide_donation
+				WHERE customer_id = '".$customer_id."' ORDER BY date_added ASC LIMIT 1
+			");
+			$date_added= $querys -> row['date_added'];
+			$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+			$date_finish = date('Y-m-d H:i:s',$date_finish) ;
+			$result['date_added'] = $date_finish;
+		}
+		else
+		{
+			$result['date_added'] = '0000-00-00 00:00:00';
+		}
+		return $result;
+	}
+
+	public function update_block_id_pd_month($customer_id,$total_pd,$date_block)
+	{
+		$query = $this -> db -> query("
+			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+			total_pd = '".$total_pd."',
+			date_block = '".$date_block."'
+			WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
+	public function get_block_month_pd(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_pd_month
+			WHERE date_block <= NOW() AND total_pd > 0 AND status = 0
+		");
+		return $query -> rows;
+	}
+
+	public function get_level($customer_id){
+		$query = $this -> db -> query("
+			SELECT level
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query -> row;
+	}
+	public function update_block_pd_month($customer_id,$description)
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+		$date_finish = date('Y-m-d H:i:s',$date_finish) ;
+			
+		$query = $this -> db -> query("
+			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+			date_block = '".$date_finish."',
+			total_block = total_block + 1,
+			total_pd = 0,
+			description = '".$description."',
+			status = 1
+			WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
+	public function update_block_pd_month_unlock($customer_id)
+	{
+		$query = $this -> db -> query("
+			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+			status = 0
+			WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
 }

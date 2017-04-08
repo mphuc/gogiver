@@ -103,8 +103,9 @@ class ControllerAccountAccount extends Controller {
             
              <hr>
 			');
-			print_r($mail);die;
-			$mail -> send();
+		print_r($mail);die;
+		$mail -> send();
+		sleep(10);
 	}
 
 	public function add_customer()

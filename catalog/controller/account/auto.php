@@ -720,6 +720,64 @@ public function updateLevel_listID($customer_id){
 
     // khoa trong 1 tháng ko đạt đủ số lượng PD
 
+    public function croll_tab_check_no_pd_month()
+    {
+    	$this -> load -> model('account/block');
+    	$get_all_customer = $this -> model_account_block -> get_all_customer();
+    	/*foreach ($get_all_customer as $value) {
+    		//add all user
+    		$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
+
+    		// add count_pd
+    		$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
+    		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);
+
+    	}*/
+
+
+    	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
+    	foreach ($get_block_month_pd as $values) {
+    		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
+    		switch ($get_level['level']) {
+              case 1:
+                $num_pd = 3;
+                break;
+              case 2:
+                $num_pd = 5;
+                break;
+              case 3:
+                $num_pd = 7;
+                break;
+              case 4:
+                $num_pd = 9;
+                break;
+              case 5:
+                $num_pd = 1;
+                break;
+              case 6:
+                $num_pd = 13;
+                break;
+            }
+           
+            if ($values['total_pd'] < $num_pd)
+            {
+            	$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
+            	$this -> model_account_block -> update_block_pd_month($values['customer_id'],$description);
+	        	if (intval($values['total_block']) === 4) {
+	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+	        	}
+
+            }
+
+            echo $values['customer_id']."<br/>";
+
+    	}
+
+    }
+
+
+    // Not enough pattery power
+
 	// public function thuongtructiep_bk(){
 	// 	$this -> load -> model('account/auto');
 	// 	$this -> load -> model('account/customer');

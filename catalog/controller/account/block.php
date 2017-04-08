@@ -75,8 +75,46 @@ class ControllerAccountBlock extends Controller {
 		} else {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/block_gd.tpl', $data));
 		}
+	}
+
+	public function lock_pd_month(){
+		function myCheckLoign($self) {
+			return $self -> customer -> isLogged() ? true : false;
+		};
+
+		function myConfig($self) {
+			$self -> load -> model('account/customer');
+			
+			$self -> document -> addScript('catalog/view/javascript/setting/lock.js');
+		};
+		$block_id = $this -> check_block_pd_month();
+		
+		if (intval($block_id) === 0) $this->response->redirect(HTTPS_SERVER . 'dashboard.html');
+		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
+		$language = new Language($getLanguage);
+		$language -> load('account/gd');
+		$data['lang'] = $language -> data;
+		$data['getLanguage'] = $getLanguage;
 
 
+		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
+		$data['base'] = $server;
+		$data['self'] = $this;
+
+		//language
+		$this -> load -> model('account/customer');
+		
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/block_pd_month.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/block_pd_month.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/account/block_pd_month.tpl', $data));
+		}
+	}
+
+	public function check_block_pd_month(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_pd_month($this -> customer -> getId());
+		return intval($block_id['status']);
 	}
 
 	public function check_block_id_gd(){
@@ -181,6 +219,35 @@ class ControllerAccountBlock extends Controller {
         }
         $this->response->setOutput(json_encode($json));
 	}
+
+	public function unlock_pd_month(){
+		
+
+		if( $this -> customer -> isLogged()){
+            $this -> load -> model('account/block');         
+         	$this->load->model('account/customer');
+            $wallet = $this -> return_wallet_month_pd();
+          	
+          	
+            	
+        	$this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
+        	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: Did not complete minimum PD within a month", "Lock");
+           
+            
+        	$this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
+        	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: Did not complete minimum PD within a month", "Lock");
+            
+            $this -> model_account_block -> update_block_pd_month_unlock($this -> customer -> getId());
+
+
+            $json['link'] = HTTPS_SERVER.'dashboard.html';
+            $json['ok'] = 1;
+        }else{
+        	$json['ok'] = -1;
+        }
+        $this->response->setOutput(json_encode($json));
+	}
+
 	public function return_wallet(){
 		if(	$this -> customer -> isLogged()){
             $this -> load -> model('account/block');
@@ -391,6 +458,114 @@ class ControllerAccountBlock extends Controller {
            return $data;
         }
 	}
+
+
+	public function return_wallet_month_pd(){
+		if(	$this -> customer -> isLogged()){
+            $this -> load -> model('account/block');
+         
+             $level = $this -> model_account_block ->getLevel_by_customerid($this -> session -> data['customer_id']);
+
+            $block_id = $this -> model_account_customer -> get_block_pd_month_customer($this -> customer -> getId());
+
+            if (intval($block_id['total_block']) === 1) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 700000;
+						$c_wallet = 500000;
+						break;
+					case 2:
+						$r_wallet = 1400000;
+						$c_wallet = 1000000;
+						break;
+					case 3:
+						$r_wallet = 2800000;
+						$c_wallet = 2000000;
+						break;
+					case 4:
+						$r_wallet = 4200000;
+						$c_wallet = 4000000;
+						break;
+					case 5:
+						$r_wallet = 7000000;
+						$c_wallet = 8000000;
+						break;
+					case 6:
+						$r_wallet = 11200000;
+						$c_wallet = 16000000;
+						break;
+				}
+			}    
+            if (intval($block_id['total_block']) == 2) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 2000000;
+						$c_wallet = 2000000;
+						break;
+					case 2:
+						$r_wallet = 4000000;
+						$c_wallet = 4000000;
+						break;
+					case 3:
+						$r_wallet = 7000000;
+						$c_wallet = 8000000;
+						break;
+					case 4:
+						$r_wallet = 11000000;
+						$c_wallet = 16000000;
+						break;
+					case 5:
+						$r_wallet = 16000000;
+						$c_wallet = 32000000;
+						break;
+					case 6:
+						$r_wallet = 22000000;
+						$c_wallet = 64000000;
+						break;
+				}
+            }
+            if (intval($block_id['total_block']) == 3) {
+            	switch (intval($level['level'])) {
+					case 1:
+						$r_wallet = 4000000;
+						$c_wallet = 4000000;
+						break;
+					case 2:
+						$r_wallet = 8000000;
+						$c_wallet = 8000000;
+						break;
+					case 3:
+						$r_wallet = 14000000;
+						$c_wallet = 16000000;
+						break;
+					case 4:
+						$r_wallet = 22000000;
+						$c_wallet = 32000000;
+						break;
+					case 5:
+						$r_wallet = 32000000;
+						$c_wallet = 64000000;
+						break;
+					case 6:
+						$r_wallet = 44000000;
+						$c_wallet = 128000000;
+						break;
+				}
+            }
+            
+            // end status = 3
+            $data['r_wallet'] = $r_wallet;
+            $data['c_wallet'] = $c_wallet;
+            $date_added= $block_id['date_block'];
+			$date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
+			$date_finish = date('Y-m-d H:i:s',$date_finish) ;
+           	$data['date'] = $date_finish;
+           	$data['description'] = $block_id['description'];
+           	$data['block_id'] = intval($block_id);
+           return $data;
+        }
+	}
+
 	public function sendmail(){
 		if ($this->request->post)
 		{

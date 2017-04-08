@@ -20,6 +20,9 @@ class ControllerAccountPd extends Controller {
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		//method to call function
+		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
+		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
+		
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
 		
@@ -489,7 +492,10 @@ $block_id = $this -> check_block_id();
 						die();
 						break;
 				}
-				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);							
+				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);		
+
+				$this -> model_account_customer -> update_total_block_id_pd_month($this -> session -> data['customer_id']);					
+
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- 1',

@@ -44,6 +44,9 @@ class ControllerAccountDashboard extends Controller {
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 
+		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
+		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
+		
 		//language
 		$this -> load -> model('account/customer');
 		$this -> model_account_customer -> update_login($this -> session -> data['customer_id']);
@@ -183,6 +186,7 @@ class ControllerAccountDashboard extends Controller {
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 
+
 		$this->load->model('account/customer');
 		$data['customer'] = $customer = $this -> model_account_customer -> get_customer_by_code($_GET['token']);
 		count($customer) === 0 && die();
@@ -295,7 +299,12 @@ class ControllerAccountDashboard extends Controller {
 		$block_id = $this -> model_account_customer -> get_block_id_gd($this -> customer -> getId());
 		
 		return intval($block_id);
+	}
 
+	public function check_block_pd_month(){
+		$this->load->model('account/customer');
+		$block_id = $this -> model_account_customer -> get_block_pd_month($this -> customer -> getId());
+		return intval($block_id['status']);
 	}
 
 function replace_injection($str, $filter){

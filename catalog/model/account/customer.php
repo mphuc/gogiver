@@ -3081,4 +3081,49 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 		
 	}
+
+	public function insert_block_id_pd_month($customer_id)
+	{
+		$querys = $this -> db -> query("
+			SELECT count(*) as number FROM  " . DB_PREFIX . "customer_block_pd_month 
+			WHERE customer_id = '".$customer_id."'
+		");
+		if ($querys -> row['number'] == 0)
+		{
+			$query = $this -> db -> query("
+				INSERT INTO  " . DB_PREFIX . "customer_block_pd_month SET
+				customer_id = '".$customer_id."'
+			");
+		}
+	}
+
+	public function update_total_block_id_pd_month($customer_id)
+	{
+		$query = $this -> db -> query("
+			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+			total_pd = total_pd +1 
+			WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
+	public function get_block_pd_month_customer($customer_id){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_pd_month
+			WHERE customer_id = '".$customer_id."' AND status = 1
+		");
+		return $query -> row;
+	}
+
+	public function get_block_pd_month($customer_id){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_pd_month
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query -> row;
+	}
 }
