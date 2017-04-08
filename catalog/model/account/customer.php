@@ -199,7 +199,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function updateStusGD($gd_id){
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_get_donation SET
-				status = 1
+				status = 2
 				WHERE id = '".$gd_id."'
 			");
 		return $query;

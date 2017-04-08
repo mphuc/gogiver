@@ -139,24 +139,31 @@ class ControllerAccountAuto extends Controller {
 		// $count = 0;
 		$i=1;
 		while ($loop) {
-
+			die;
+			
 			$gdList = $this -> model_account_auto -> getGD7Before(); //date finish
-			// echo "<pre>"; print_r($gdList); echo "</pre>"; die();
+			//echo "<pre>"; print_r($gdList); echo "</pre>"; die();
 			$pdList = $this -> model_account_auto -> getPD7Before(); //date finish
-		
+			//echo "<pre>"; print_r($pdList); echo "</pre>"; die();
+			
 			if(count($gdList) === 0 && count($pdList) > 0){
-
+				print_r($gdList);echo "<br/>";
+				
 				//get customer in inventory
 				$inventory = $this -> model_account_auto ->getCustomerInventory();
 				
 				
 				$pdSend = floatval($pdList['filled'] - $pdList['amount']);
+				
+					$inventoryID = $inventory['customer_id'];
 
-				$inventoryID = $inventory['customer_id'];
-
-				//create GD cho inventory
-				$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
-				// continue;
+					//create GD cho inventory
+					
+					$this -> model_account_auto -> createGDInventory($pdSend, $inventoryID);
+					
+					// continue;
+				
+				
 				
 			}
 
@@ -164,14 +171,16 @@ class ControllerAccountAuto extends Controller {
 
 				$gdResiver = floatval($gdList['amount'] - $gdList['filled']);
 
+				
+					$inventory = $this -> model_account_auto ->getCustomerInventory();
+					// lay id ao cho phan du
+					$inventoryID = $inventory['customer_id'];
 
-				$inventory = $this -> model_account_auto ->getCustomerInventory();
-				// lay id ao cho phan du
-				$inventoryID = $inventory['customer_id'];
-
-				$this -> model_account_auto -> createPDInventory($gdResiver, $inventoryID);
-				// continue;
-				// die('2');
+					$this -> model_account_auto -> createPDInventory($gdResiver, $inventoryID);
+					// continue;
+					// die('2');
+				
+				
 			}
 			
 			if (count($pdList) === 0 && count($gdList) === 0) {
@@ -184,21 +193,36 @@ class ControllerAccountAuto extends Controller {
 
 				$pdSend = intval($pdList['filled'] - $pdList['amount']);
 				$gdResiver = intval($gdList['amount'] - $gdList['filled']);
-
+				echo $pdSend." ------------ ".$gdResiver."<br/>";
 				if ($pdSend === $gdResiver) {
 
 					$data['pd_id'] = $pdList['id'];
 					$data['gd_id'] = $gdList['id'];
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
+
+					if ($pdSend > 2600000)
+					{
+						$pdSend = 2600000;
+					}
+					if ($pdSend < 2600000)
+					{
+						$pdSend = $pdSend;
+					}
+
 					$data['amount'] = $pdSend;
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-					
-					$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
-					$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					if ($pdSend < 2600000)
+					{
+						echo "PD-GD"."<br/>";
+						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
+					
+					echo "bang<br/>";
 					continue;
 				}
 
@@ -207,14 +231,36 @@ class ControllerAccountAuto extends Controller {
 					$data['gd_id'] = $gdList['id'];
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
+
+					if ($pdSend > 2600000)
+					{
+						$pdSend = 2600000;
+					}
+					if ($pdSend < 2600000)
+					{
+						$pdSend = $pdSend;
+					}
+
 					$data['amount'] = $pdSend;
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-					$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+					if ($pdSend < 2600000)
+					{	
+						echo "PD"."<br/>";
+						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
-					continue;
+					
+					$getPD_id = $this -> model_account_auto -> getPD_id($pdList['id']);
 
+					if (intval($getPD_id['filled']) - intval($getPD_id['amount']) == 0)
+					{
+						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+					}
+
+					echo "pd < gd<br/>";
+					continue;
 				}
 
 				if ($pdSend > $gdResiver) {
@@ -223,19 +269,45 @@ class ControllerAccountAuto extends Controller {
 					$data['gd_id'] = $gdList['id'];
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
+
+					if ($gdResiver > 2600000)
+					{
+						$gdResiver = 2600000;
+					}
+					if ($gdResiver < 2600000)
+					{
+						$gdResiver = $gdResiver;
+					}
+
 					$data['amount'] = $gdResiver;
 
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-
-					$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					if ($gdResiver < 2600000)
+					{
+						echo "GD"."<br/>";
+						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $gdResiver);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $gdResiver);
 
+					$getGD_id = $this -> model_account_auto -> getGD_id($gdList['id']);
+					
+					if (intval($getGD_id['amount']) - intval($getGD_id['filled']) == 0)
+					{
+						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					}
+
+					
+					echo "pd > gd<br/>";
+
 					continue;
 				}
+
+
 			}
 			
+
 			echo $i.'<br>';
 			$i++;
 			

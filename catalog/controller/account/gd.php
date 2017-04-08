@@ -160,10 +160,13 @@ class ControllerAccountGd extends Controller {
 		$GDCustomer = $Customer_Tranferlist['gd_id'];
 		
 		$countNotGDFinish = $this -> model_account_customer -> countStatusGDTransferList($GDCustomer);
+
 		if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
 			$this -> model_account_customer -> updateStusGD($GDCustomer);
-		}
+			
 
+		}
+		//print_r($countNotGDFinish);die;
 		$this->response->redirect(HTTPS_SERVER . 'getdonation.html#success');
 	}
 	public function report_submit($customer_id){

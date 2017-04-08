@@ -155,7 +155,17 @@ class ModelAccountAuto extends Model {
 		return $data;
 	}
 
-
+	public function getGD7Before_(){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT A.id , A.customer_id, A.amount , A.filled,B.username
+			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B 
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			AND A.status = 0 ORDER BY A.date_added ASC LIMIT 1
+		");
+		return $query -> row;
+	}
 
 	public function getGD7Before(){
 		$date_added= date('Y-m-d H:i:s');
@@ -201,7 +211,7 @@ class ModelAccountAuto extends Model {
 			FROM ". DB_PREFIX . "customer_provide_donation
 			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND STATUS =0
-			ORDER BY date_added ASC
+			ORDER BY amount ASC
 			LIMIT 1
 		");
 		return $query -> row;
@@ -919,5 +929,22 @@ class ModelAccountAuto extends Model {
 			WHERE id = '".$pd_id."'
 		");
 		return $query -> row;
+	}
+
+	public function getPD_id_none(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE status = 0 AND amount > 0
+		");
+		return $query -> rows;
+	}
+	public function getGD_id_none(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE status = 0 AND filled > 0 
+		");
+		return $query -> rows;
 	}
 }
