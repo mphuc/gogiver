@@ -17,7 +17,41 @@
    </div>
    <div class="panel-body form-horizontal group-border stripped">
       <div class="form-group">
-         
+         <div class="col-lg-12 col-md-12">
+            <div class="input-group input-icon file-upload">
+               <div class="widget-content" style="padding:10px">
+                <div class="col-md-12">
+                  <div class="col-md-3">
+                  <p><img style="width: 200px;" src="catalog/view/theme/default/images/586502d3e0900dce5481.jpg"> </p>
+                  </div>  
+                  <p>THANHPHAM ID -534   UPLINE KATY </p>
+                  <p>Ngày 08 tháng 04 năm 2017</p>
+                  
+                  <p>Chào gia đình Iontach.</p>
+                  <p>Hiện nay với xu thế phát triển nghành công nghệ thông tin như vũ bảo mỗi sáng thức dậy là tiếp nhận vô số thông tin , vậy trong các thông tin hằng ngày chúng ta nhận được ,ta  có nhận ra được cơ hội gì trong các thông tin mà ta nhận được  chăng ? </p>
+                  <p>Trân trọng !!!</p>
+                  <p>Ai là người nhận ra cơ hội và nắm bắt nhanh ứng dụng cho phù hợp với từng cá nhân và hoàn cảnh kinh tế từng người ? </p>
+                  <p>Mỗi người có quan điểm và nhìn nhận một vấn đề kinh tế khác nhau để đưa ra quyết định cho riêng mình .</p>
+                  <p>Cá nhân tôi tham gia vào Iontach cũng thông qua bạn bè may mắn tôi được biết ...</p>
+                  <p>Tôi nhìn thấy được một chiến lược cụ thể và có tính xây dựng lâu dài mà Iontach đưa ra .</p>
+                  <p>Trong nghành tài chính hay làm kinh tế đều không nói đến 100% chắc như đinh đóng cột được , nhưng rủi ro cho phép và rủi ro không cho phép</p>
+                  <p>Chúng ta cùng thử làm bài tính phân tích rủi ro nếu 1 người  tham gia vào Iontach thì gặp những rủi ro gì  , được  và mất gì ? sao đó ta quyết định !!! </p>
+                  <p>Cá nhân tôi phân tích </p>
+                  <p>Iontach đưa ra quy định chỉ được tham gia 1 ID và chỉ có 7,7 triệu việt nam đồng 
+bằng khoảng 350 USD nếu như nhìn trong quy chế của Iontach ngay trong tháng đầu tiên tôi đi được 3 vòng từ  7triệu 7 thì tôi đã thu hồi về gần đủ vốn .</p>
+                  <p>Và tôi quyết định cho mình một cơ hội ,vì tôi thiết nghĩ không có kinh doanh gì mà không bỏ đồng vốn nào ra , bất cứ mô hình kinh doanh dù nhỏ như quán cà phê vệ đường hay bán một sạp tạp hóa nhỏ  cũng phải bỏ mấy chục triệu, lớn hơn chút thì vài trăm triệu , và vài tỷ sau đó phải có thời gian và thu vốn dần ,, </p>
+                  <p>đôi khi còn bị rủi ro không chắc trong vài tháng thu được vốn về vì vốn dĩ đã kinh doanh là có rủi ro mà ,đúng không các anh chị </p>
+                  <p>Trong khi tham gia trong Iontach chỉ có vốn ban đầu khởi điểm là 7.7triệu mà trong 1 tháng là biết ngay vốn có thu hồi về không ? và lợi nhuận thì cũng đã rõ , vậy nếu tôi xui rủi ngay tháng đầu tôi mất đi 7.7 triệu thì số tiền  mất trên không làm cho tôi phải chết hay gia đình tôi nghèo đi , mà số tiền 7.7 triệu kia lại  hổ trợ được 1 người trong cộng đồng của chúng ta .</p>
+                  <p>Nên tôi quyết định cho mình một cơ hội và tôi mong muốn đồng hành và phát triển cùng Iontach nghiêm túc .</p>
+                  <p>Cảm ơn Ban Tổ Chức Iontach đã tạo điều kiện cho tôi chia sẽ cảm nghĩ của riêng mình .</p>
+                  <p>Chúc tôi và các bạn thành công .</p>
+                  <p>Chúc Gia Đinh Iontach Thành Công .</p>
+                  <p>PHAM VAN THANH</p>
+                </div>
+               </div>
+            </div>
+         </div>
+         <hr style="margin-top: 30px; width: 100%; border: 1px solid #eee; float: left; margin-bottom: 30px;">
          <div class="col-lg-12 col-md-12">
             <div class="input-group input-icon file-upload">
                <div class="widget-content" style="padding:10px">
