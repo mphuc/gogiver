@@ -23,6 +23,9 @@
                                   <img src="catalog/view/theme/default/images/newss.png" style="border: 2px solid #fff">
                                  </a>
 
+                                 <a href="index.php?route=home/page/hr" style="margin-top: 15px; float: left;">
+                                  <img src="catalog/view/theme/default/images/caunoinhansu.png" style="border: 2px solid #fff">
+                                 </a>
                               </div>
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
                                  <img src="catalog/view/theme/default/images/0001.jpg">

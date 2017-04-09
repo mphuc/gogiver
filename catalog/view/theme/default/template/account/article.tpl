@@ -26,7 +26,7 @@
                   </div>  
                   <p>THANHPHAM ID -534   UPLINE KATY </p>
                   <p>Ngày 08 tháng 04 năm 2017</p>
-                  
+                  <p>Email: thanhpham56@gmail.com</p>
                   <p>Chào gia đình Iontach.</p>
                   <p>Hiện nay với xu thế phát triển nghành công nghệ thông tin như vũ bảo mỗi sáng thức dậy là tiếp nhận vô số thông tin , vậy trong các thông tin hằng ngày chúng ta nhận được ,ta  có nhận ra được cơ hội gì trong các thông tin mà ta nhận được  chăng ? </p>
                   <p>Trân trọng !!!</p>

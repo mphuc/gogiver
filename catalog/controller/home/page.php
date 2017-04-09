@@ -109,6 +109,17 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/news.tpl', $data));
 		}
 	}
+
+	public function hr() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/hr.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/home/hr.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/home/hr.tpl', $data));
+		}
+	}
 	
 	public function supportSubmit(){
 
