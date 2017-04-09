@@ -29,7 +29,7 @@
                   <p>Email: thanhpham56@gmail.com</p>
                   <p>Chào gia đình Iontach.</p>
                   <p>Hiện nay với xu thế phát triển nghành công nghệ thông tin như vũ bảo mỗi sáng thức dậy là tiếp nhận vô số thông tin , vậy trong các thông tin hằng ngày chúng ta nhận được ,ta  có nhận ra được cơ hội gì trong các thông tin mà ta nhận được  chăng ? </p>
-                  <p>Trân trọng !!!</p>
+                 
                   <p>Ai là người nhận ra cơ hội và nắm bắt nhanh ứng dụng cho phù hợp với từng cá nhân và hoàn cảnh kinh tế từng người ? </p>
                   <p>Mỗi người có quan điểm và nhìn nhận một vấn đề kinh tế khác nhau để đưa ra quyết định cho riêng mình .</p>
                   <p>Cá nhân tôi tham gia vào Iontach cũng thông qua bạn bè may mắn tôi được biết ...</p>
