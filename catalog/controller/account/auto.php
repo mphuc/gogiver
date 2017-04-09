@@ -795,7 +795,7 @@ public function updateLevel_listID($customer_id){
     public function croll_tab_check_no_pd_month()
     {
     	$this -> load -> model('account/block');
-    	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
+    	$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
     		//add all user
     		$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
@@ -804,7 +804,7 @@ public function updateLevel_listID($customer_id){
     		$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
     		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);
 
-    	}*/
+    	}
 
     	die;
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
