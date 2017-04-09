@@ -2794,25 +2794,13 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		$query = $this -> db -> query("
 			SELECT * 
-			FROM  ".DB_PREFIX."customer_provide_donation 
-			WHERE customer_id = ".$id_customer." ORDER BY date_added ASC
+			FROM  ".DB_PREFIX."customer_block_pd_month 
+			WHERE customer_id = ".$id_customer."
 		");
-		if (count($query -> row) > 0)
+		if ($query -> row['total_pd'] > 0)
 		{
-			$date_added =  $query -> row['date_added'];
-			$queryss = $this -> db -> query("
-			SELECT * 
-			FROM  ".DB_PREFIX."customer_provide_donation 
-			WHERE customer_id = ".$id_customer." AND date_added >= '".$date_added."'
-			 ORDER BY date_added ASC
-		");
-			$count = $queryss -> rows;
-			
-			$date_finish = strtotime ( '+30 day' , strtotime ( $date_added ) ) ;
-			$date_finish= date('Y-m-d H:i:s',$date_finish) ;
-
-			$json['date_pd'] = $date_finish;
-			$json['count_pd'] = count($count);
+			$json['date_pd'] = $query -> row['date_block'];
+			$json['count_pd'] = $query -> row['total_pd'];
 			$json['level'] = $level -> row['level'];
 		}
 		else
@@ -3103,7 +3091,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT count(*) as number FROM  " . DB_PREFIX . "customer_provide_donation
 			WHERE customer_id = '".$customer_id."'
 		");
-		
+
 		if ($querys -> row['number'] > 0)
 		{
 			$query = $this -> db -> query("
