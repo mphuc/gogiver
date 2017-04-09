@@ -840,6 +840,10 @@ public function updateLevel_listID($customer_id){
 	        	}
 
             }
+            else
+            {
+            	
+            }
 
             echo $values['customer_id']."<br/>";
 

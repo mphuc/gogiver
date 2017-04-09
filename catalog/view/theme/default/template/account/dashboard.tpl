@@ -106,7 +106,7 @@
           <strong>Your downline have <span data-countdown="2017-01-16 23:00:00"></span> <?php //echo "trungdoan";?></strong> to comple PD. Do you want to <a class="btn btn-success">Get PD</a></a> 
           </div> -->
           <!-- repd -->
-<div class="clearfix"></div>
+          <div class="clearfix"></div>
           <?php 
 
                   if (count($repd) != 0) {
