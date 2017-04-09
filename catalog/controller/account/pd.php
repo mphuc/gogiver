@@ -492,9 +492,11 @@ $block_id = $this -> check_block_id();
 						die();
 						break;
 				}
+				$this -> model_account_customer -> update_total_block_id_pd_month($this -> session -> data['customer_id']);		
+				
 				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);		
 
-				$this -> model_account_customer -> update_total_block_id_pd_month($this -> session -> data['customer_id']);					
+							
 
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  

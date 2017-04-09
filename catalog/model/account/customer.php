@@ -3099,11 +3099,32 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function update_total_block_id_pd_month($customer_id)
 	{
-		$query = $this -> db -> query("
-			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
-			total_pd = total_pd +1 
+		$querys = $this -> db -> query("
+			SELECT count(*) as number FROM  " . DB_PREFIX . "customer_provide_donation
 			WHERE customer_id = '".$customer_id."'
+		");
+		
+		if ($querys -> row['number'] > 0)
+		{
+			$query = $this -> db -> query("
+				UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+				total_pd = total_pd +1 
+				WHERE customer_id = '".$customer_id."'
 			");
+		}
+		else
+		{
+			$date_added= date('Y-m-d H:i:s');
+			$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+			$date_finish = date('Y-m-d H:i:s',$date_finish) ;
+			$query = $this -> db -> query("
+				UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
+				total_pd = total_pd +1,
+				date_block = '".$date_finish."'
+				WHERE customer_id = '".$customer_id."'
+			");
+		}
+		
 		return $query;
 	}
 
