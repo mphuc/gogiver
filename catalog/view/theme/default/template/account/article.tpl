@@ -41,6 +41,7 @@
                </div>
             </div>
          </div>
+         <hr style="margin-top: 30px; width: 100%; border: 1px solid #eee; float: left; margin-bottom: 30px;">
          <div class="col-lg-12 col-md-12">
             <div class="input-group input-icon file-upload">
                <div class="widget-content" style="padding:10px">
@@ -65,7 +66,7 @@ Cảm ơn Ban Tổ Chức và Upline đã động viên tôi viết lên c
             </div>
          </div>
 
-         <hr style="margin-top: 30px; width: 100%; border: 1px solid #eee; float: left; margin-bottom: 30px;">
+         
       </div>
    </div>
    <!-- End Row -->
