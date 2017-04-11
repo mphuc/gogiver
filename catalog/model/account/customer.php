@@ -2442,6 +2442,18 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query;
 	}
+
+	public function updateStatusGDTransferList_reportss($transferID,$text_report){
+
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_transfer_list SET
+				
+				gd_status = 2,
+				text_report = '".$text_report."'	
+				WHERE id = '".$this->db->escape($transferID)."'
+		");
+		return $query;
+	}
 	public function tatol_GD_child($id_customer){
 		$query = $this -> db -> query("
 			SELECT count(*) AS number

@@ -736,12 +736,13 @@ $block_id = $this -> check_block_id();
 			//neu chua finish thi chua cho finish
 			$GDCustomer = $Customer_Tranferlist['gd_id'];
 
-			
-
+		
 			//count status
 			$countNotPDFinsh = $this -> model_account_customer -> countStatusPDTransferList($PDCustomer);
 			
 			$countNotGDFinish = $this -> model_account_customer -> countStatusGDTransferList($GDCustomer);
+
+			
 
 			if(count($countNotPDFinsh) > 0 && intval($countNotPDFinsh['number']) === 0){
 				// $this -> model_account_customer -> updateStusPDActive($PDCustomer, 1);
@@ -751,6 +752,7 @@ $block_id = $this -> check_block_id();
 					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.25);
 					
 				}
+
 				$total2day = $this -> model_account_customer -> count_2date($PDCustomer);
 				if (count($total2day) > 0) {
 					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.19);
@@ -761,7 +763,7 @@ $block_id = $this -> check_block_id();
 				
 			}
 			if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
-				$this -> model_account_customer -> updateStusGD($GDCustomer);
+				//$this -> model_account_customer -> updateStusGD($GDCustomer);
 			}
 			$json['ok'] = 1;
 			//$this->response->redirect(HTTPS_SERVER . 'provide-donation.html');

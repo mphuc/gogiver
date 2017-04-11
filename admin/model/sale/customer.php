@@ -217,6 +217,12 @@ class ModelSaleCustomer extends Model {
 		return $query->rows;
 	}
 
+	public function getCustomers_admin(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE quy_bao_tro = 1");
+
+		return $query->rows;
+	}
+
 
 
 	public function getCustomers($data = array(),$maao) {
@@ -3384,4 +3390,29 @@ $date_added= date('Y-m-d H:i:s') ;
 
 		return $query -> row;
 	}
+
+	public function get_all_tranfer_list_date()
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
+			FROM  ".DB_PREFIX."customer_transfer_list A
+			WHERE A.date_added >= '".$date." 00:00:00' and `date_added` <='".$date." 23:59:59'
+		");
+
+		return $query -> rows;
+	}
+
+	public function show_matchings_username($username)
+	{
+		$date= $username;
+		$query = $this -> db -> query("
+			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
+			FROM  ".DB_PREFIX."customer_transfer_list A
+			WHERE A.date_added >= '".$date." 00:00:00' and `date_added` <='".$date." 23:59:59'
+		");
+		
+		return $query -> rows;
+	}
+
 }

@@ -187,11 +187,11 @@ class ControllerAccountGd extends Controller {
 
 
 		intval($checkTransfer['number']) === 0  && $this->response->redirect(HTTPS_SERVER . 'login.html');
-		$this-> model_account_customer -> updateStatusGDTransferList_report($this->request->get['token']);
+		$this-> model_account_customer -> updateStatusGDTransferList_reportss($this->request->get['token'],$this->request->get['textareald']);
 
 		$transfer_customer = $this->model_account_customer -> getTransferList_All($this->request->get['token']);
-		$this->mail_report($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);
-		$this->mail_report_for_ph($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);
+		/*$this->mail_report($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);
+		$this->mail_report_for_ph($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);*/
 		$this->response->redirect(HTTPS_SERVER . 'getdonation.html#success');
 	}
 	public function mail_report($pd_id_customer, $gd_id_customer, $id_transfer, $amount, $image){

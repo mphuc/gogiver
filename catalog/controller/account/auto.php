@@ -139,7 +139,6 @@ class ControllerAccountAuto extends Controller {
 		// $count = 0;
 		$i=1;
 		while ($loop) {
-			die;
 			
 			$gdList = $this -> model_account_auto -> getGD7Before(); //date finish
 			//echo "<pre>"; print_r($gdList); echo "</pre>"; die();
@@ -222,6 +221,19 @@ class ControllerAccountAuto extends Controller {
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
 					
+					$getPD_id = $this -> model_account_auto -> getPD_id($pdList['id']);
+
+					if (intval($getPD_id['filled']) - intval($getPD_id['amount']) == 0)
+					{
+						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+					}
+					$getGD_id = $this -> model_account_auto -> getGD_id($gdList['id']);
+					
+					if (intval($getGD_id['amount']) - intval($getGD_id['filled']) == 0)
+					{
+						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+					}
+
 					echo "bang<br/>";
 					continue;
 				}
@@ -537,7 +549,7 @@ public function updateLevel_listID($customer_id){
 
 						if ($percent > 0) {
 							$this->model_account_auto->update_C_Wallet($priceCurrent * $percentcommission, $customer_p_node['customer_id']);
-							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " Earn " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
+							$this->model_account_customer->saveTranstionHistory($customer_p_node['customer_id'], 'C-wallet', '+ ' . number_format($priceCurrent * $percentcommission) . ' VND', "" . $customerGET['username'] . " get " . $percent . " % commission  from - " . $customer['username'] . " finish PD" . $pd_number . " (" . number_format($amount) . " VND)", "Network commission");
 						}
 
 						break;
@@ -733,7 +745,6 @@ public function updateLevel_listID($customer_id){
 		 $this -> load -> model('account/block');
 		 //echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
-
 			$description ='You did not complete Re-PD';
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
         	$this -> model_account_block -> update_check_gd($value['id']);
@@ -806,7 +817,7 @@ public function updateLevel_listID($customer_id){
 
     	}*/
 
-    	die;
+    	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	foreach ($get_block_month_pd as $values) {
     		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
@@ -852,7 +863,7 @@ public function updateLevel_listID($customer_id){
     }
 
 
-    // Not enough pattery power
+    // Did not get PD from your downline (THOATHOA)
 
 	// public function thuongtructiep_bk(){
 	// 	$this -> load -> model('account/auto');

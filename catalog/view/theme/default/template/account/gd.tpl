@@ -159,7 +159,7 @@
             <label><input type="radio" name="optradio"><?php echo $lang['Other_reasons'] ?></label>
           </div>
           <div class="radio" style="margin-left: 20px;">
-            <textarea style="width: 100%; height: 50px;border: 1px solid #eee; border-radius: 4px; padding: 4px;" placeholder="<?php echo $lang['Reasons'] ?>"></textarea>
+            <textarea id="textareald" style="width: 100%; height: 50px;border: 1px solid #eee; border-radius: 4px; padding: 4px;" placeholder="<?php echo $lang['Reasons'] ?>"></textarea>
           </div>
           <h3 class="text-center"><?php echo $lang['Are_you_sure_to_Report'] ?></h3>
 
@@ -202,7 +202,21 @@
 
     $('.gh_report_confirm').on('click', function() {
     var id = $(this).data('value');
-      url = 'reportgh.html&token='+id;
+    if ($('#radio0').is(":checked"))
+    {
+      var textareald = "no_money";
+    }
+    if ($('#radio1').is(":checked"))
+    {
+      if ($('#textareald').val() == "")
+      {
+        $('#textareald').css({'border':'1px solid red'});
+        return false;
+      }
+      var textareald = $('#textareald').val();
+    }
+    
+      url = 'reportgh.html&token='+id+'&textareald='+textareald;
       location = url;
   });
 </script>

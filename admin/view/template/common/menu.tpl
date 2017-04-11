@@ -9,6 +9,7 @@
   <li id="pin" ><a href="index.php?route=pd/blog&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Manager Blog</span></a></li>
   <li id="pin" ><a href="<?php echo $phmenu;?>"><i class="fa fa-dashboard fa-fw"></i> <span>List PH</span></a></li>
   <li id="pin" ><a href="<?php echo $ghmenu;?>"><i class="fa fa-dashboard fa-fw"></i> <span>List GH</span></a></li>
+  <li id="pin" ><a href="index.php?route=pd/matched&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Matched</span></a></li>
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
     <ul>
