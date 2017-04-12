@@ -28,6 +28,7 @@
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
                               <div class="col-md-6 col-md-push-2" style="margin-left: 28%">
                                  <h3 class="text-center" style="text-align: center;margin-bottom: 25px;">Tỷ giá quy đổi</h3>
+                                 <p class="text-center" style="font-size: 13px;    text-align: center; color: #fff; margin-top: -15px;">(Áp dụng tại Hội sở chính NHTMCP Ngoại thương Việt Nam)</p>
                                  <form>
                                     <div class="col-md-6" style="float: left;">
                                          <div class="form-group input1">
