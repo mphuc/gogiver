@@ -3049,6 +3049,26 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> row;
 	}
+
+	public function get_count_matched(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_transfer_list 
+		");
+		return $query -> row;
+	}
+
+
+	public function get_count_matched_rp(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_transfer_list  WHERE gd_status = 2 OR pd_satatus = 2
+		");
+		return $query -> row;
+	}
+
 	public function get_count_ph_waiting(){
 
 		$query = $this -> db -> query("
@@ -3391,13 +3411,29 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
-	public function get_all_tranfer_list_date()
+	public function get_all_tranfer_list_date($limit,$offset)
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
 			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
 			FROM  ".DB_PREFIX."customer_transfer_list A
-			WHERE A.date_added >= '".$date." 00:00:00' and `date_added` <='".$date." 23:59:59'
+			
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function get_all_tranfer_list_date_rp($limit,$offset)
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username 
+			FROM  ".DB_PREFIX."customer_transfer_list A
+			WHERE A.gd_status = 2 OR A.pd_satatus = 2
+			LIMIT ".$limit."
+			OFFSET ".$offset."
 		");
 
 		return $query -> rows;

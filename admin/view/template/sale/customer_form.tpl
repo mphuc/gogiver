@@ -232,7 +232,7 @@
                                        <div class="col-sm-1 "></div>
                                        <div class="col-sm-6">
                                           <label class=" control-label" for="input-username">Username</label>
-                                          <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username" id="input-username" class="form-control" />
+                                          <input type="text" name="username" readonly value="<?php echo $username; ?>" placeholder="Username" id="input-username" class="form-control" />
                                           <?php if ($error_username) { ?>
                                           <div class="text-danger"><?php echo $error_username; ?></div>
                                           <?php } ?>

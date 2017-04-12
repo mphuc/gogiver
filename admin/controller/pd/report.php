@@ -1,17 +1,18 @@
 <?php
-class ControllerPdGh extends Controller {
+class ControllerPdReport extends Controller {
 	public function index() {
 				ini_set('display_startup_errors', 1);
 		ini_set('display_errors', 1);
 		error_reporting(-1);
 		$this->document->setTitle('Provide Help');
 		$this->load->model('sale/customer');
+		
 		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
 
-		$limit = 30;
-		$start = ($page - 1) * 30;
+		$limit = 50;
+		$start = ($page - 1) * 50;
 
-		$ts_history = $this -> model_sale_customer -> get_count_gh();
+		$ts_history = $this -> model_sale_customer -> get_count_matched_rp();
 
 		$ts_history = $ts_history['number'];
 
@@ -21,20 +22,25 @@ class ControllerPdGh extends Controller {
 		$pagination -> limit = $limit;
 		$pagination -> num_links = 5;
 		$pagination -> text = 'text'; 
-		$pagination -> url = $this -> url -> link('pd/gh', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
-		
-		$data['load_pin_date'] = $this -> url -> link('pd/gh/load_pin_date&token='.$this->session->data['token']);
+		$pagination -> url = $this -> url -> link('pd/report', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+
+		$data['pagination'] = $pagination -> render();
+
+		$data['pin'] =  $this-> model_sale_customer->get_all_tranfer_list_date_rp($limit, $start);
+
+		$data['load_pin_date'] = $this -> url -> link('pd/matched/load_pin_date&token='.$this->session->data['token']);
 		$data['show_gh_username'] = $this -> url -> link('pd/gh/show_gh_username&token='.$this->session->data['token']);
 		$data['export'] = $this -> url -> link('pd/gh/export&token='.$this->session->data['token']);
-		$data['pin'] =  $this-> model_sale_customer->get_all_gd($limit, $start);
-		$data['pagination'] = $pagination -> render();
+
+		
+		
 		$data['getaccount'] = $this->url->link('pd/gh/getaccount&token='.$this->session->data['token'], '', 'SSL');
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('pd/list_gh.tpl', $data));
+		$this->response->setOutput($this->load->view('pd/report.tpl', $data));
 	}
 
 	public function getaccount() {
@@ -53,8 +59,9 @@ class ControllerPdGh extends Controller {
 	public function show_gh_username()
 	{
 		$username = $this -> request ->post['username'];
+		echo $username;die;
 		$this->load->model('sale/customer');
-		$load_pin_date = $this -> model_sale_customer -> show_gh_username($username);
+		$load_pin_date = $this -> model_sale_customer -> show_matchings_username($username);
 		$stt = 0;
 		if (count($load_pin_date) > 0)
 		{
@@ -103,7 +110,7 @@ class ControllerPdGh extends Controller {
 	{
 		$date = date('Y-m-d',strtotime($this -> request ->post['date']));
 		$this->load->model('sale/customer');
-		$load_pin_date = $this -> model_sale_customer -> load_gh_date($date);
+		$load_pin_date = $this -> model_sale_customer -> show_matchings_username($date);
 		$stt = 0;
 		if (count($load_pin_date) > 0)
 		{
@@ -112,29 +119,92 @@ class ControllerPdGh extends Controller {
 			foreach ($load_pin_date as $value) { $stt++;?>
 		?>
 			<tr>
-		        <td><?php echo $stt; ?></td>
-				<td><?php echo $value['username'] ?></td>
-				<td><?php echo $value['account_holder'] ?></td>
-		        <td><?php echo number_format($value['filled']) ?> VNĐ</td>
-		        <td><?php 
-		         if ($value['status'] == 0) {
-                        echo "<span class='label label-default'>Đang chờ</span>";
+                    <td><?php echo $stt; ?></td>
+                    
+                    <td><?php echo $value['pd_username'] ?></td>
+                    <td><?php echo $value['gd_username'] ?></td>
+                    <td><?php echo number_format($value['amount']) ?> VNĐ</td>
+                    <td><?php 
+
+                    if ($value['pd_satatus'] == 0) {
+                        echo "<span class='label label-default'>Watting</span>";
                     }
-                    if ($value['status'] == 1) {
-                        echo "<span class='label label-info'>Khớp lệnh</span>";
+                    if ($value['pd_satatus'] == 1) { ?>
+                       <span style="cursor: pointer;" class='label label-success' data-toggle="modal" data-target="#myModalPD<?php echo $value['transfer_code'] ?>" >Finish</span> 
+                    <?php } 
+                    if ($value['pd_satatus'] == 2) {
+                        echo "<span class='label label-danger'>Report</span>";
                     }
-                    if ($value['status'] == 2) {
-                        echo "<span class='label label-success'>Hoàn thành</span>";
+                    ?> </td>
+                    
+                    <td><?php 
+
+                    if ($value['gd_status'] == 0) {
+                        echo "<span class='label label-default'>Watting</span>";
                     }
-                    if ($value['status'] == 3) {
-                        echo "<span class='label label-danger'>Báo cáo</span>";
-                    }
-		         ?></td>
-		       
-				<td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></td>
-				<td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
-                     </span> </td>
-			</tr>
+                   
+                    if ($value['gd_status'] == 1) {
+                        echo "<span class='label label-success' >Finish</span>";
+                    } 
+                    if ($value['gd_status'] == 2) {?> 
+                        <span style="cursor: pointer;" class='label label-danger' data-toggle="modal" data-target="#myModalGD<?php echo $value['transfer_code'] ?>" >Report</span> 
+                   <?php }
+                    ?> </td>
+                   
+                    <td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></td>
+                    
+                </tr>  
+              
+               <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
+                  <div class="modal-dialog">
+                  
+                   
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="myModalLabelSTAR2017040554482">PD Finish <?php echo $value['pd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row-fluid">
+                            <img style="width: 100%" src="<?php echo $value['image'];?>">
+                           
+                        </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                     
+                    </div>
+                    
+                  </div>
+
+              
+               <div class="modal fade" id="myModalGD<?php echo $value['transfer_code'] ?>" role="dialog">
+                  <div class="modal-dialog">
+                  
+                   
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="">GD Report <?php echo $value['gd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+                      </div>
+                      <div class="modal-body">
+
+                        <div class="row-fluid">
+                            <p style="margin-bottom: 20px;">
+                            
+                            <?php echo ($value['text_report'] == "no_money") ? "Lý do: tôi chưa nhận được tiền" : "Lý do: ".$value['text_report']; ?>
+                            </p>
+                            <img style="width: 100%" src="<?php echo $value['image'];?>">
+                           
+                        </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                     
+                    </div>
+                    
+                  </div>
+
 	               
 		<?php 
 			}
@@ -148,6 +218,71 @@ class ControllerPdGh extends Controller {
 		}
 	}
 
+	public function get_popup()
+	{
+		$date = date('Y-m-d',strtotime($this -> request ->post['date']));
+		$this->load->model('sale/customer');
+		$load_pin_date = $this -> model_sale_customer -> show_matchings_username($date);
+		$stt = 0;
+		
+		foreach ($load_pin_date as $value) { $stt++;?>
+		?>
+       <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
+          <div class="modal-dialog">
+          
+           
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="myModalLabelSTAR2017040554482">PD Finish <?php echo $value['pd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row-fluid">
+                    <img style="width: 100%" src="<?php echo $value['image'];?>">
+                   
+                </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+             
+            </div>
+            
+          </div>
+
+      
+       <div class="modal fade" id="myModalGD<?php echo $value['transfer_code'] ?>" role="dialog">
+          <div class="modal-dialog">
+          
+           
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="">GD Report <?php echo $value['gd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+              </div>
+              <div class="modal-body">
+
+                <div class="row-fluid">
+                    <p style="margin-bottom: 20px;">
+                    
+                    <?php echo ($value['text_report'] == "no_money") ? "Lý do: tôi chưa nhận được tiền" : "Lý do: ".$value['text_report']; ?>
+                    </p>
+                    <img style="width: 100%" src="<?php echo $value['image'];?>">
+                   
+                </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+             
+            </div>
+            
+          </div>
+	               
+		<?php 
+			}
+		
+	
+		
+	}
 	public function export(){
 		error_reporting(E_ALL);
 		ini_set('display_errors', TRUE);

@@ -120,7 +120,16 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/hr.tpl', $data));
 		}
 	}
-	
+	public function curentcy() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/curentcy.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/home/curentcy.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/home/curentcy.tpl', $data));
+		}
+	}
 	public function supportSubmit(){
 
 		$email = $this->request->post['Mail'];

@@ -2,14 +2,14 @@
 <div id="content">
 <div class="page-header">
   <div class="container-fluid">
-    <h1>List Matched</h1>
+    <h1>List report</h1>
 
   </div>
 </div>
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">List Matched</h3>
+      <h3 class="panel-title">List report</h3>
     </div>
     <div class="panel-body">
         <div class="pull-left row">

@@ -7,8 +7,26 @@ class ControllerPdMatched extends Controller {
 		$this->document->setTitle('Provide Help');
 		$this->load->model('sale/customer');
 		
+		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
 
-		$data['pin'] =  $this-> model_sale_customer->get_all_tranfer_list_date();
+		$limit = 50;
+		$start = ($page - 1) * 50;
+
+		$ts_history = $this -> model_sale_customer -> get_count_matched();
+
+		$ts_history = $ts_history['number'];
+
+		$pagination = new Pagination();
+		$pagination -> total = $ts_history;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text'; 
+		$pagination -> url = $this -> url -> link('pd/matched', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+
+		$data['pagination'] = $pagination -> render();
+
+		$data['pin'] =  $this-> model_sale_customer->get_all_tranfer_list_date($limit, $start);
 
 		$data['load_pin_date'] = $this -> url -> link('pd/matched/load_pin_date&token='.$this->session->data['token']);
 		$data['show_gh_username'] = $this -> url -> link('pd/gh/show_gh_username&token='.$this->session->data['token']);
@@ -137,13 +155,10 @@ class ControllerPdMatched extends Controller {
                     
                 </tr>  
               
-                
-                <?php echo $value['transfer_code'] ?>
-               <!-- PD -->
                <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
                   <div class="modal-dialog">
                   
-                    <!-- Modal content-->
+                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -162,11 +177,11 @@ class ControllerPdMatched extends Controller {
                     
                   </div>
 
-                <!-- GD -->
+              
                <div class="modal fade" id="myModalGD<?php echo $value['transfer_code'] ?>" role="dialog">
                   <div class="modal-dialog">
                   
-                    <!-- Modal content-->
+                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -189,6 +204,7 @@ class ControllerPdMatched extends Controller {
                     </div>
                     
                   </div>
+
 	               
 		<?php 
 			}
@@ -202,6 +218,71 @@ class ControllerPdMatched extends Controller {
 		}
 	}
 
+	public function get_popup()
+	{
+		$date = date('Y-m-d',strtotime($this -> request ->post['date']));
+		$this->load->model('sale/customer');
+		$load_pin_date = $this -> model_sale_customer -> show_matchings_username($date);
+		$stt = 0;
+		
+		foreach ($load_pin_date as $value) { $stt++;?>
+		?>
+       <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
+          <div class="modal-dialog">
+          
+           
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="myModalLabelSTAR2017040554482">PD Finish <?php echo $value['pd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row-fluid">
+                    <img style="width: 100%" src="<?php echo $value['image'];?>">
+                   
+                </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+             
+            </div>
+            
+          </div>
+
+      
+       <div class="modal fade" id="myModalGD<?php echo $value['transfer_code'] ?>" role="dialog">
+          <div class="modal-dialog">
+          
+           
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="">GD Report <?php echo $value['gd_username'] ?> | <?php echo number_format($value['amount']) ?> VNĐ</h4>
+              </div>
+              <div class="modal-body">
+
+                <div class="row-fluid">
+                    <p style="margin-bottom: 20px;">
+                    
+                    <?php echo ($value['text_report'] == "no_money") ? "Lý do: tôi chưa nhận được tiền" : "Lý do: ".$value['text_report']; ?>
+                    </p>
+                    <img style="width: 100%" src="<?php echo $value['image'];?>">
+                   
+                </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+             
+            </div>
+            
+          </div>
+	               
+		<?php 
+			}
+		
+	
+		
+	}
 	public function export(){
 		error_reporting(E_ALL);
 		ini_set('display_errors', TRUE);
