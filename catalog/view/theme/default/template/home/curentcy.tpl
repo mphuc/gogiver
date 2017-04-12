@@ -65,8 +65,9 @@
           </div>
 
            <div class="col-md-12">
+            
               <script type="text/javascript" src="http://giavangvn.org/TyGiaScript/short/Widgets"> </script>
-
+<noscript> Vui lòng bật javascript để xem <a href="http://giavangvn.org/">tỷ giá</a></noscript>
            </div>
         </div>
         <div class="col-md-6" style="float: left;">
