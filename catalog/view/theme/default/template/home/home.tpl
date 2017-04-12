@@ -475,41 +475,51 @@
          <!-- #content -->
 <script type="text/javascript">
    jQuery(document).ready(function(){
-      
+      var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+          clearTimeout (timer);
+          timer = setTimeout(callback, ms);
+        };
+      })();
       jQuery("#amount").on('input propertychange', function() {
          jQuery('.input2 i').show();
-          jQuery.ajax({
-              url : "index.php?route=home/page/conver_buy",
-              type : "post",
-              dateType:"text",
-              data : {
-                  'amount' : jQuery('#amount').val(),
-                  'curent_1' : jQuery('#curent_1').val(),
-                  'curent_2' : jQuery('#curent_2').val()
-              },
-              success : function (result){
-                  jQuery('.input2 i').hide();
-                  jQuery('#amount_qd').val(result);
-              }
-          });
+         delay(function(){
+             jQuery.ajax({
+                 url : "index.php?route=home/page/conver_buy",
+                 type : "post",
+                 dateType:"text",
+                 data : {
+                     'amount' : jQuery('#amount').val(),
+                     'curent_1' : jQuery('#curent_1').val(),
+                     'curent_2' : jQuery('#curent_2').val()
+                 },
+                 success : function (result){
+                     jQuery('.input2 i').hide();
+                     jQuery('#amount_qd').val(result);
+                 }
+             });
+          }, 800 );
        });
 
       jQuery("#amount_qd").on('input propertychange', function() {
          jQuery('.input1 i').show();
-          jQuery.ajax({
-              url : "index.php?route=home/page/conver_buy",
-              type : "post",
-              dateType:"text",
-              data : {
-                  'amount' : jQuery('#amount_qd').val(),
-                  'curent_2' : jQuery('#curent_1').val(),
-                  'curent_1' : jQuery('#curent_2').val()
-              },
-              success : function (result){
-                  jQuery('.input1 i').hide();
-                  jQuery('#amount').val(result);
-              }
-          });
+         delay(function(){
+             jQuery.ajax({
+                 url : "index.php?route=home/page/conver_buy",
+                 type : "post",
+                 dateType:"text",
+                 data : {
+                     'amount' : jQuery('#amount_qd').val(),
+                     'curent_2' : jQuery('#curent_1').val(),
+                     'curent_1' : jQuery('#curent_2').val()
+                 },
+                 success : function (result){
+                     jQuery('.input1 i').hide();
+                     jQuery('#amount').val(result);
+                 }
+             });
+         }, 800 );
        });
       jQuery("#curent_2").on('change', function() {
           jQuery('#amount').val('');
