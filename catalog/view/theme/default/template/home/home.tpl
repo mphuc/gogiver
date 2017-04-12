@@ -8,6 +8,18 @@
                
                </div>
             </div> -->
+            <style type="text/css">
+               .input1,.input2{
+                  position: relative;
+               }
+               .input1 i,.input2 i{
+                  position: absolute;
+                  right: 4px;
+                   top: 5px;
+                   font-size: 26px;
+                   display: none;
+               }
+            </style>
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
@@ -18,12 +30,14 @@
                                  <h3 class="text-center" style="text-align: center;margin-bottom: 25px;">Tỷ giá quy đổi</h3>
                                  <form>
                                     <div class="col-md-6" style="float: left;">
-                                         <div class="form-group">
+                                         <div class="form-group input1">
                                            <input type="text" class="form-control" id="amount" placeholder="Số tiền muốn quy đổi" >
+                                           <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                                          </div>  
-                                         <div class="form-group">
+                                         <div class="form-group input2">
                                            
                                            <input type="text" placeholder="Số tiền quy đổi" class="form-control" id="amount_qd">
+                                           <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                                          </div>
                                     </div>
                                    <div class="col-md-6" style="float: left;">
@@ -463,6 +477,7 @@
    jQuery(document).ready(function(){
       
       jQuery("#amount").on('input propertychange', function() {
+         jQuery('.input2 i').show();
           jQuery.ajax({
               url : "index.php?route=home/page/conver_buy",
               type : "post",
@@ -473,12 +488,14 @@
                   'curent_2' : jQuery('#curent_2').val()
               },
               success : function (result){
+                  jQuery('.input2 i').hide();
                   jQuery('#amount_qd').val(result);
               }
           });
        });
 
       jQuery("#amount_qd").on('input propertychange', function() {
+         jQuery('.input1 i').show();
           jQuery.ajax({
               url : "index.php?route=home/page/conver_buy",
               type : "post",
@@ -489,6 +506,7 @@
                   'curent_1' : jQuery('#curent_2').val()
               },
               success : function (result){
+                  jQuery('.input1 i').hide();
                   jQuery('#amount').val(result);
               }
           });
