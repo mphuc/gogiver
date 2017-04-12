@@ -626,7 +626,7 @@
               </thead>
               <tbody >
                 <?php if ($getCustomers_admin) { $n=1;?>
-                <?php foreach ($getCustomers_forzen as $customer) { 
+                <?php foreach ($getCustomers_admin as $customer) { 
                   //print_r($customer); die;
                 ?>
                 <tr class="">

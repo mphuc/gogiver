@@ -138,7 +138,7 @@ class ControllerPdMatched extends Controller {
                 </tr>  
               
                 
-                
+                <?php echo $value['transfer_code'] ?>
                <!-- PD -->
                <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
                   <div class="modal-dialog">

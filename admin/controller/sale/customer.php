@@ -789,6 +789,7 @@ class ControllerSaleCustomer extends Controller {
 
 		$data['getCustomers_forzen'] = $this-> model_sale_customer-> getCustomers_forzen($maao);
 		$data['getCustomers_admin'] = $this-> model_sale_customer-> getCustomers_admin();
+		
  		//$all_hoivien_phi = 0;
 		//$all_congtac_phi = 0;
 		//$all_total_payout = 0;
