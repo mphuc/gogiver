@@ -199,4 +199,54 @@ class ControllerHomePage extends Controller {
 			return $this->load->view('default/template/home/footer.tpl', $data);
 		}
 	}
+
+	public function conver_buy()
+	{
+		if ($this -> request -> post)
+		{
+			if ($this -> request -> post['amount'])
+			{
+				if ($this -> request -> post['curent_1'] == "VND")
+				{
+					$price = $this -> conver($this -> request -> post['curent_2']);
+					echo round(($this -> request -> post['amount']/$price),8);
+				}
+				if ($this -> request -> post['curent_2'] == "VND")
+				{
+					$price = $this -> conver($this -> request -> post['curent_1']);
+					echo round(($this -> request -> post['amount']*$price),8);
+				}
+			}
+
+		}
+	}
+
+	public function conver($currency)
+	{
+		$data = file_get_contents("http://www.vietcombank.com.vn/exchangerates/ExrateXML.aspx"); 
+		$p = explode("<Exrate ", $data); 	
+		$TG = array(); 
+
+		for($a = 1; $a<count($p); $a++) { 
+	        if(strpos($p[$a],$currency)) { 
+	        $posCurrencyCode = strrpos($p[$a],'CurrencyCode="')+14; 
+	        $CurrencyCode = substr( $p[$a], $posCurrencyCode, 3); 
+	        
+	        $posBuy = strrpos($p[$a],'Buy="')+5; 
+	        $priceBuy = floatval(substr( $p[$a], $posBuy, 8)); //
+	        
+	        $posTransfer  = strrpos($p[$a],'Transfer="')+10; 
+	        $priceTransfer = floatval(substr( $p[$a],$posTransfer, 6)); //
+	       
+	        $posSell = strrpos($p[$a],'Sell="')+6; 
+	        $priceSell = floatval(substr( $p[$a], $posSell, 8)); //
+	        return $priceBuy;
+	    }
+
+		      
+	}
+}
+
+	
+
 }

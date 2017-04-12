@@ -14,6 +14,53 @@
                      <div class="content">
                         <article id="post-74236" style="margin-top: 20px;">
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
+                              <div class="col-md-6 col-md-push-2" style="margin-left: 28%">
+                                 <h3 class="text-center" style="text-align: center;margin-bottom: 25px;">Tỷ giá quy đổi</h3>
+                                 <form>
+                                    <div class="col-md-6" style="float: left;">
+                                         <div class="form-group">
+                                           <input type="text" class="form-control" id="amount" placeholder="Số tiền muốn quy đổi" >
+                                         </div>  
+                                         <div class="form-group">
+                                           
+                                           <input type="text" placeholder="Số tiền quy đổi" class="form-control" id="amount_qd">
+                                         </div>
+                                    </div>
+                                   <div class="col-md-6" style="float: left;">
+                                         <div class="form-group">
+                                          <select class="form-control" id="curent_1">
+                                             <option value="VND" selected="selected">Vietnamese Dong</option>
+                                           </select>
+                                           
+                                         </div>
+                                         <div class="form-group">
+                                             <select class="form-control" id="curent_2">
+                                             <option value="USD" selected="selected">USD</option>
+                                              <option value="AUD">AUD</option>
+                                              <option value="CAD">CAD</option>
+                                              <option value="CHF">CHF</option>
+                                              <!-- <option value="DKK">DKK</option> -->
+                                              <option value="EUR">EUR</option>
+                                              <option value="GBP">GBP</option>
+                                              <option value="HKD">HKD</option>
+                                              <!-- <option value="INR">INR</option> -->
+                                              <option value="JPY">JPY</option>
+                                              <option value="KRW">KRW</option>
+                                              <!-- <option value="KWD">KWD</option> -->
+                                              <!-- <option value="MYR">MYR</option> -->
+                                              <!-- <option value="NOK">NOK</option> -->
+                                             <!--  <option value="RUB">RUB</option>
+                                              <option value="SAR">SAR</option>
+                                              <option value="SEK">SEK</option> -->
+                                              <option value="SGD">SGD</option>
+                                              <option value="THB">THB</option>
+                                              
+                                           </select>
+                                         </div>
+                                    </div>
+                                 </form>
+                              </div>
+                              <div class="clearfix" style="clear: both;"></div>
                               <div class="col-md-2 col-sm-2 col-xs-4" style="float: left;">
                                  <a href="index.php?route=home/page/redbook">
                                   <img src="catalog/view/theme/default/images/khottrithuc.png" style="border: 2px solid #fff">
@@ -412,5 +459,46 @@
             </div>
          </div>
          <!-- #content -->
-         
+<script type="text/javascript">
+   jQuery(document).ready(function(){
+      
+      jQuery("#amount").on('input propertychange', function() {
+          jQuery.ajax({
+              url : "index.php?route=home/page/conver_buy",
+              type : "post",
+              dateType:"text",
+              data : {
+                  'amount' : jQuery('#amount').val(),
+                  'curent_1' : jQuery('#curent_1').val(),
+                  'curent_2' : jQuery('#curent_2').val()
+              },
+              success : function (result){
+                  jQuery('#amount_qd').val(result);
+              }
+          });
+       });
+
+      jQuery("#amount_qd").on('input propertychange', function() {
+          jQuery.ajax({
+              url : "index.php?route=home/page/conver_buy",
+              type : "post",
+              dateType:"text",
+              data : {
+                  'amount' : jQuery('#amount_qd').val(),
+                  'curent_2' : jQuery('#curent_1').val(),
+                  'curent_1' : jQuery('#curent_2').val()
+              },
+              success : function (result){
+                  jQuery('#amount').val(result);
+              }
+          });
+       });
+      jQuery("#curent_2").on('change', function() {
+          jQuery('#amount').val('');
+          jQuery('#amount_qd').val('');
+       });
+
+   });
+</script>
 <?php echo $self->load->controller('home/page/footer'); ?>  
+

@@ -4343,3 +4343,9 @@ Visual Composer
 body.snapjs-left #nav-respon{
   display: block;
 }
+input, select, textarea {
+    box-shadow: none;
+    color: #888;
+    padding: 9px 25px;
+    width: 100%;
+}
