@@ -65,12 +65,13 @@
           </div>
 
            <div class="col-md-12">
-              <script type="text/javascript" src="http://giavangvn.org/TyGiaScript/short/Widgets"> </script>
-              
+             <!--  <script type="text/javascript" src="http://giavangvn.org/TyGiaScript/short/Widgets"> </script> -->
+              <script type="text/javascript" src="http://tygiadola.com/GiavangFullScript/dat-gia-vang/Widgets"> </script>
            </div>
         </div>
         <div class="col-md-6" style="float: left;">
-            <script type="text/javascript" src="http://giavangvn.org/GiavangFullScript/dat-gia-vang/Widgets"> </script>
+            <!-- <script type="text/javascript" src="http://giavangvn.org/GiavangFullScript/dat-gia-vang/Widgets"> </script> -->
+            <script type="text/javascript" src="http://tygiadola.com/GiavangFullScript/dat-gia-vang/Widgets"> </script>
         </div>
         <div class="" style="clear: both;"></div>
       <?php } ?>
