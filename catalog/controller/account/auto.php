@@ -3,6 +3,7 @@
 class ControllerAccountAuto extends Controller {
 
 	public function auto_create_pd_new_user(){
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 		$users = $this -> model_account_auto -> new_user_pd();
@@ -136,8 +137,9 @@ class ControllerAccountAuto extends Controller {
 
 		$loop = true;
 		
-		// $count = 0;
-		$i=1;
+		$numday = intval($this -> config -> get('config_percentcommission'));
+
+		$count_auto = 0;
 		while ($loop) {
 			
 			$gdList = $this -> model_account_auto -> getGD7Before(); //date finish
@@ -217,6 +219,9 @@ class ControllerAccountAuto extends Controller {
 						echo "PD-GD"."<br/>";
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
 						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
+
+						$count_auto ++;
+
 					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
@@ -226,6 +231,7 @@ class ControllerAccountAuto extends Controller {
 					if (intval($getPD_id['filled']) - intval($getPD_id['amount']) == 0)
 					{
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+						$count_auto ++;
 					}
 					$getGD_id = $this -> model_account_auto -> getGD_id($gdList['id']);
 					
@@ -260,6 +266,10 @@ class ControllerAccountAuto extends Controller {
 					{	
 						echo "PD"."<br/>";
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+
+						$count_auto ++;
+
+
 					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
@@ -269,6 +279,9 @@ class ControllerAccountAuto extends Controller {
 					if (intval($getPD_id['filled']) - intval($getPD_id['amount']) == 0)
 					{
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
+
+						$count_auto ++;
+
 					}
 
 					echo "pd < gd<br/>";
@@ -319,9 +332,7 @@ class ControllerAccountAuto extends Controller {
 
 			}
 			
-
-			echo $i.'<br>';
-			$i++;
+			echo $count_auto."<br/>";
 			
 		}
 

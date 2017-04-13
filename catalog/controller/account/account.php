@@ -1612,4 +1612,139 @@ class ControllerAccountAccount extends Controller {
 	}
 	
 
+	public function check_autoPDGD()
+	{
+		$this -> load -> model('account/customer');
+		$getPD7Before = $this -> model_account_customer -> getPD7Before();
+		
+		?>
+		<h1 style="text-align: center;"><?php echo intval($this -> config -> get('config_percentcommission')); ?> KHOP</h1>
+		<table style="border: 1px solid #ccc; float: left;">
+			<thead>
+				<tr>
+					<th colspan="5" >PD <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">ID_PD</th>
+					<th style="border: 1px solid #ccc">username</th>
+					<th style="border: 1px solid #ccc">customer_id</th>
+					<th style="border: 1px solid #ccc">amount PD (filled)</th>
+					<th style="border: 1px solid #ccc">amount PD (amount)</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php $i = 0;$total_PD = 0; foreach ($getPD7Before as $value) { $i++; $total_PD +=$value['filled']; ?>
+				<tr>
+					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['filled'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
+				</tr>
+			<?php } ?>
+			</tbody>
+			<tr>
+				<td colspan="5"><?php echo $total_PD ?></td>
+			</tr>
+		</table>
+		<?php
+
+		$getGD7Before = $this -> model_account_customer -> getGD7Before();
+		
+		?>
+		<table style="border: 1px solid #ccc; float: right">
+			<thead>
+				<tr>
+					<th colspan="5" >GD <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">ID_PD</th>
+					<th style="border: 1px solid #ccc">username</th>
+					<th style="border: 1px solid #ccc">customer_id</th>
+					<th style="border: 1px solid #ccc">amount GD (amount)</th>
+					<th style="border: 1px solid #ccc">amount GD (filled)</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php $i = 0; $total_GD = 0; foreach ($getGD7Before as $value) { $i++; $total_GD +=$value['amount']; ?>
+				<tr>
+					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['filled'] ?></td>
+				</tr>
+			<?php } ?>
+			<tr>
+				<td colspan="5"><?php echo $total_GD ?></td>
+			</tr>
+			</tbody>
+		</table>
+		<?php
+
+		$getCustomer_quybaotro = $this -> model_account_customer -> getCustomer_quybaotro();
+		?>
+		<table style="border: 1px solid #ccc; float: left; margin-left: 50px;">
+			<thead>
+				<tr>
+					<th colspan="5" >QUY BAO TRO</th>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">username</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php $i = 0; foreach ($getCustomer_quybaotro as $value) { $i++; ?>
+				<tr>
+					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
+					
+					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
+					
+				</tr>
+			<?php } ?>
+			</tbody>
+		</table>
+		<?php
+		$get_all_tranfer = $this -> model_account_customer -> get_all_tranfer_list_date();
+		?>
+		<table style="border: 1px solid #ccc; float: left;width: 100%; margin-top: 40px;">
+			<thead>
+				<tr>
+					<th colspan="5" >TRANFER LISH <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">ID_PD</th>
+					<th style="border: 1px solid #ccc">ID_GD</th>
+					<th style="border: 1px solid #ccc">User PD</th>
+					<th style="border: 1px solid #ccc">User GD</th>
+					<th style="border: 1px solid #ccc">Amount</th>
+					<th style="border: 1px solid #ccc">Status PD</th>
+					<th style="border: 1px solid #ccc">Status GD</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php $i = 0; foreach ($get_all_tranfer as $value) { $i++; ?>
+				<tr>
+					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['pd_id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['gd_id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['pd_username'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['gd_username'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['pd_satatus'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
+				</tr>
+			<?php } ?>
+			
+			</tbody>
+		</table>
+		<?php
+	}
+
 }

@@ -3147,4 +3147,47 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row;
 	}
+
+	public function getGD7Before(){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT A.id , A.customer_id, A.amount , A.filled,B.username
+			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			AND A.status = 0 ORDER BY A.date_added ASC
+		");
+		return $query -> rows;
+	}
+
+	public function getPD7Before(){
+		$date_added= date('Y-m-d H:i:s');
+		
+		$query = $this -> db -> query("
+			SELECT A.id ,B.username, A.customer_id , A.amount , A.filled
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			AND A.STATUS =0
+			ORDER BY A.amount ASC
+		");
+		return $query -> rows;
+	}
+
+	public function get_all_tranfer_list_date()
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
+			FROM  ".DB_PREFIX."customer_transfer_list A
+			WHERE date_added >= '".$date." 00:00:00' AND date_added <= '".$date." 23:59:59'
+		");
+
+		return $query -> rows;
+	}
+
+	public function getCustomer_quybaotro() {
+		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.quy_bao_tro = 1 ORDER BY date_added ASC");
+		return $query -> rows;
+	}
 }

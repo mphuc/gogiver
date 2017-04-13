@@ -77,7 +77,7 @@ class ModelSaleCustomer extends Model {
 		$this->db->query("
 			UPDATE " . DB_PREFIX . "customer SET 	
 			email = '" . $this->db->escape($data['email']) . "', 
-			username = '" . $this->db->escape($data['username']) . "',
+			
 			telephone = '" . $this->db->escape($data['telephone']) . "', 
 			cmnd = '" . $this->db->escape($data['cmnd']) . "',
 			account_bank = '" . $this->db->escape($data['account_bank']) . "', 
@@ -97,23 +97,7 @@ class ModelSaleCustomer extends Model {
 		if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
-		$this->db->query("DELETE FROM " . DB_PREFIX . "address WHERE customer_id = '" . (int)$customer_id . "'");
-
-		if (isset($data['address'])) {
-			foreach ($data['address'] as $address) {
-				if (!isset($address['custom_field'])) {
-					$address['custom_field'] = array();
-				}
-
-				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET address_id = '" . (int)$address['address_id'] . "', customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape(isset($address['custom_field']) ? serialize($address['custom_field']) : '') . "'");
-
-				if (isset($address['default'])) {
-					$address_id = $this->db->getLastId();
-
-					$this->db->query("UPDATE " . DB_PREFIX . "customer SET address_id = '" . (int)$address_id . "' WHERE customer_id = '" . (int)$customer_id . "'");
-				}
-			}
-		}
+		
 	}
 	public function update_status($status,$customer_id){		
 		$query = $this -> db -> query("
