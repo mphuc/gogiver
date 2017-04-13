@@ -26,6 +26,9 @@
                      <div class="content">
                         <article id="post-74236" style="margin-top: 20px;">
                            <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
+
+
+    
                               <div class="col-md-6 col-md-push-2" style="margin-left: 28%">
                                  <!-- <h3 class="text-center" style="text-align: center;margin-bottom: 25px;">Tỷ giá quy đổi</h3>
                                  <p class="text-center" style="font-size: 13px;    text-align: center; color: #fff; margin-top: -15px;">(Áp dụng tại Hội sở chính NHTMCP Ngoại thương Việt Nam)</p>
@@ -86,8 +89,27 @@
                                  <a href="index.php?route=home/page/curentcy" style="margin-top: 15px; float: left;">
                                   <img src="catalog/view/theme/default/images/tygia.png" style="border: 2px solid #fff">
                                  </a>
+                                 <a href="index.php?route=home/page/na" style="margin-top: 15px; float: left;">
+                                  <img src="catalog/view/theme/default/images/ncna.png" style="border: 2px solid #fff">
+                                 </a>
                               </div>
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
+                                <p style="text-align: center;color: #fff; margin-bottom: 5px;">“Nếu là con chim, chiếc lá,</p>
+                           <p style="text-align: center;color: #fff; margin-bottom: 5px;">Thì con chim phải hót, chiếc lá phải xanh,</p>
+                           <p style="text-align: center;color: #fff; margin-bottom: 5px;">Lẽ nào vay mà không trả,</p>
+                           <p style="text-align: center;color: #fff; margin-bottom: 5px;">Sống là cho, đâu chỉ nhận riêng mình,”</p>
+                           <p style="text-align: center;color: #fff; margin-bottom: 5px;">(Một Khúc Ca Xuân – Tố hữu)</p><br>
+
+                           <p style="color: #fff">- CHO và NHẬN là sự tuần hoàn của cuộc sống, từ những việc nhỏ nhặt như người nông dân chăm chỉ cày cấy  tới cuối mùa vụ thì bội thu, đến những thứ gần chúng ta nhất như điện, nồi cơm, bếp ga, chiếc điện thoại, chiếc xe chúng ta dùng đều là sản phẩm của sự cho đi của những nhà phát minh với mong muốn ban đầu là đem lại sự tiện dụng cho con người.
+Xã hội sẽ nhân văn và ý vị hơn khi người người đều trân trọng và cảm nhận được sự cho đi và nhận lại trong từng lời nói, hành động. </p>
+                              
+                            <p style="color: #fff">- Chỉ cần 1 nụ cười của bạn có thể đem lại cho một ai đó cảm thấy yêu đời hơn, đôi khi chỉ một hành động đỗ xe bên lề đường thay vì để giữa đoạn đường nhiều người qua lại chính là giúp người sau di chuyển dễ dàng hơn. </p>
+                            <p style="color: #fff">- Cho đi ở đây không nhất thiết phải là vật chất, tiền bạc mà có thể đấy là những “tài sản” tinh thần, tài sản phi vật chất của cá nhân. Anh A là người học giỏi, anh có thể dùng tri thức, kinh nghiệm của mình để dạy lại cho người khác, như thế là anh đã cho đi. Chị B là người nấu ăn, thêu may giỏi, chị có thể chỉ bày cho người khác nấu ăn, may thêu là chị đang cho đi.</p>
+                            <p style="color: #fff">- Ở đâu đó xung quanh chúng ta luôn có những mảnh đời bất hạnh cần được sẻ chia giúp đỡ. Chúng ta không ngần ngại mà hãy giúp đỡ,bao dung và rộng lượng khi còn có thể. Chúng ta trao đi yêu thương thì chúng ta sẽ được nhận lại niềm vui từ trong tâm hồn của mình. Không hẳn là cho đi rồi sẽ trông chờ người ta trả lại cho mình là vui mà niềm vui bắt nguồn từ chính cảm xúc,nhận lại được những điều thực sự ý nghĩa.</p>
+                            <p style="color: #fff">- Chúng ta đều biết các hoạt động xã hội tình nguyện mang lại lợi ích cho mọi người có tính 'lây lan' rất nhanh. Hôm nay bạn là người nhận được sự giúp đỡ thì ngày mai bạn sẽ giúp đỡ được nhiều người khác hơn. Nhờ vậy mà sợi dây kết nối có thể kéo dài vô tận, mang đến hạnh phúc  bền vững. Bạn quyên góp tiền cho một tổ chức nghĩa là cùng với bạn bè tạo ra một sự giúp đỡ to lớn hơn cho người khó khăn. Bằng nhiều cách, bạn hoàn toàn có thể mang hạnh phúc đến cho nhiều người.</p>
+                            <p style="color: #fff">- Lòng tốt không phân biệt việc nhỏ, to, không phân biệt mối quan hệ. Chắc chắn khi giúp đỡ người khác chính là bạn đang trang bị cho mình một loại thuốc tinh thần giúp cuộc sống ý nghĩa hơn.</p>
+                            <p style="color: #fff">“Cho đi là hạnh phúc hơn nhận về”.</p>
+
                                  <img src="catalog/view/theme/default/images/0001.jpg">
                               </div>
                            <?php } else { ?>
@@ -102,6 +124,7 @@
 
                               </div>
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
+
                                  <img style="width: 100%" src="catalog/view/theme/default/images/gtcl1.png">
                               </div>
                            <?php } ?>

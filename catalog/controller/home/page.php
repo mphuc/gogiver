@@ -120,6 +120,18 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/hr.tpl', $data));
 		}
 	}
+
+	public function na() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/na.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/home/na.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/home/na.tpl', $data));
+		}
+	}
+
 	public function curentcy() {
 
 		$data['base'] = HTTPS_SERVER;
