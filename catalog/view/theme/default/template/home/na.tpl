@@ -25,7 +25,7 @@
             </a>
             <a target="_blank" href="http://tuthienthat.vn/">
               <img src="catalog/view/theme/default/images/na3.png">
-            </a>
+            </a><br>
             <a target="_blank" href="http://kenhtuthien.vn">
               <img src="catalog/view/theme/default/images/na4.jpg">
             </a>
