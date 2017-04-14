@@ -106,7 +106,7 @@ class ModelSaleCustomer extends Model {
 		if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
-		
+		die;
 	}
 
 
