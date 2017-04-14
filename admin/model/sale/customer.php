@@ -67,7 +67,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function editCustomer($customer_id, $data) {
-		print_r($data);
+		//print_r($data);
 		if($data['date_create'] == ''){
 			$date_create = date('Y-m-d');
 		}else{
@@ -106,7 +106,7 @@ class ModelSaleCustomer extends Model {
 		if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
-		die;
+		//die;
 	}
 
 
