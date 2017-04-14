@@ -76,7 +76,7 @@
                               <div class="clearfix" style="clear: both;"></div>
                               <div class="col-md-2 col-sm-2 col-xs-4" style="float: left;">
                                 <iframe style="border: 2px solid #fff" width="100%" height="115" src="https://www.youtube.com/embed/PGiNAww8N3c?ecver=1" frameborder="0" allowfullscreen></iframe>
-                                 <a href="index.php?route=home/page/redbook"  style="margin-top: 15px;">
+                                 <a href="index.php?route=home/page/redbook"  style="margin-top: 25px;">
                                   <img src="catalog/view/theme/default/images/khottrithuc.png" style="border: 2px solid #fff">
                                  </a>
 
