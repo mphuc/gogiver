@@ -109,7 +109,7 @@ Xã hội sẽ nhân văn và ý vị hơn khi người người đều trân tr
                             <p style="color: #fff">- Chúng ta đều biết các hoạt động xã hội tình nguyện mang lại lợi ích cho mọi người có tính 'lây lan' rất nhanh. Hôm nay bạn là người nhận được sự giúp đỡ thì ngày mai bạn sẽ giúp đỡ được nhiều người khác hơn. Nhờ vậy mà sợi dây kết nối có thể kéo dài vô tận, mang đến hạnh phúc  bền vững. Bạn quyên góp tiền cho một tổ chức nghĩa là cùng với bạn bè tạo ra một sự giúp đỡ to lớn hơn cho người khó khăn. Bằng nhiều cách, bạn hoàn toàn có thể mang hạnh phúc đến cho nhiều người.</p>
                             <p style="color: #fff">- Lòng tốt không phân biệt việc nhỏ, to, không phân biệt mối quan hệ. Chắc chắn khi giúp đỡ người khác chính là bạn đang trang bị cho mình một loại thuốc tinh thần giúp cuộc sống ý nghĩa hơn.</p>
                             <p style="color: #fff">“Cho đi là hạnh phúc hơn nhận về”.</p> -->
-                              <img src="catalog/view/theme/default/images/0002.jpg" style="margin-bottom: 30px">
+                              <img src="catalog/view/theme/default/images/0002.jpg" style="margin-bottom: 30px; width: 90%; margin: 0 auto">
                                  <img src="catalog/view/theme/default/images/0001.jpg">
                               </div>
                            <?php } else { ?>
