@@ -3,6 +3,7 @@ class ControllerCrolltabCrol extends Controller {
 
 	function auto_get_PD(){
 		// check PD >24h
+		die;
 		$this -> load -> model('account/auto');
 		// PD user
 		$getallPD = $this -> model_account_auto -> getPD_all24h();

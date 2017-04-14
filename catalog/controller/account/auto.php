@@ -222,6 +222,7 @@ class ControllerAccountAuto extends Controller {
 
 						$count_auto ++;
 
+
 					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
 					$this -> model_account_auto -> updateFilledGD($gdList['id'], $pdSend);
@@ -232,6 +233,7 @@ class ControllerAccountAuto extends Controller {
 					{
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
 						$count_auto ++;
+						
 					}
 					$getGD_id = $this -> model_account_auto -> getGD_id($gdList['id']);
 					
@@ -269,6 +271,7 @@ class ControllerAccountAuto extends Controller {
 
 						$count_auto ++;
 
+						
 
 					}
 					$this -> model_account_auto -> updateAmountPD($pdList['id'], $pdSend);
@@ -281,6 +284,8 @@ class ControllerAccountAuto extends Controller {
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
 
 						$count_auto ++;
+
+						
 
 					}
 
@@ -332,7 +337,7 @@ class ControllerAccountAuto extends Controller {
 
 			}
 			
-			echo $count_auto."<br/>";
+			echo "Count PD ".$count_auto."<br/>";
 			
 		}
 

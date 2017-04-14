@@ -162,7 +162,7 @@ class ModelAccountAuto extends Model {
 			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B 
 			ON A.customer_id = B.customer_id
 			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
-			AND A.status = 0 ORDER BY A.date_added ASC LIMIT 1
+			AND A.status = 0 ORDER BY A.filled DESC LIMIT 1
 		");
 		return $query -> row;
 	}

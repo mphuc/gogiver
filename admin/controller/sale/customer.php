@@ -340,7 +340,7 @@ class ControllerSaleCustomer extends Controller {
 					
 			$this->model_sale_customer->update_status($this->request->post['status'], $this->request->get['customer_id']);
 			
-			$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
+			//$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
