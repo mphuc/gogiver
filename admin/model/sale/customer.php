@@ -94,11 +94,27 @@ class ModelSaleCustomer extends Model {
 		if ($data['password']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
+
+		if ($data['password_transaction']) {
+			$salt = $this -> getCustomer_all_salt($customer_id);
+			
+			$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
+			transaction_password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password_transaction'])))) . "'
+			WHERE customer_id = '" . $this -> db -> escape($customer_id) . "'");
+		}
+
 		if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
 		
 	}
+
+
+	public function getCustomer_all_salt($customer_id){
+		$query = $this -> db -> query("SELECT c.salt FROM " . DB_PREFIX . "customer c  WHERE c.customer_id = '" . (int)$customer_id . "'");
+		return $query -> row['salt'];
+	}
+
 	public function update_status($status,$customer_id){		
 		$query = $this -> db -> query("
 		UPDATE " . DB_PREFIX . "customer SET 
