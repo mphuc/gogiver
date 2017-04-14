@@ -68,13 +68,13 @@
              <!--  <script type="text/javascript" src="http://giavangvn.org/TyGiaScript/short/Widgets"> </script> -->
               <iframe id="fr51" style="border: none;" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=1&amp;rate=1&amp;expa
 nd=0&amp;color=eeeeee&amp;titlecolor=111111&amp;bgcolor=ffffff&amp;upcolor=00aa00&amp;downcolor=bb0000&amp;textcolor=333333&amp;ngan
-hang=VIETCOM&amp;fontsize=80&amp;ngoaite=usd,jpy,chf,eur,gbp,aud,cad,hkd,krw,sgd,thb,dkk,inr,sek,sar,rub,nok,myr,kwd&amp;change=1&amp;column=2&amp;css=%23SJC_N_ng{display:%20table-row%20!important;}" width="100%" height="535"></iframe>
+hang=VIETCOM&amp;fontsize=110&amp;ngoaite=usd,jpy,chf,eur,gbp,aud,cad,hkd,krw,sgd,thb,dkk,inr,sek,sar,rub,nok,myr,kwd&amp;change=1&amp;column=2&amp;css=%23SJC_N_ng{display:%20table-row%20!important;}" width="100%" height="735"></iframe>
            </div>
         </div>
         <div class="col-md-6" style="float: left;">
             <!-- <script type="text/javascript" src="http://giavangvn.org/GiavangFullScript/dat-gia-vang/Widgets"> </script> -->
             <iframe id="fr4" style="border: none; width: 100%;" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=1&amp;rat
-e=0&amp;expand=2&amp;color=284C84&amp;nganhang=VIETCOM&amp;fontsize=80&amp;change=0" width="100%" height="680"></iframe>
+e=0&amp;expand=2&amp;color=284C84&amp;nganhang=VIETCOM&amp;fontsize=110&amp;change=0" width="100%" height="960"></iframe>
         </div>
         <div class="" style="clear: both;"></div>
       <?php } ?>
