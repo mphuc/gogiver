@@ -67,6 +67,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function editCustomer($customer_id, $data) {
+		print_r($data);
 		if($data['date_create'] == ''){
 			$date_create = date('Y-m-d');
 		}else{
