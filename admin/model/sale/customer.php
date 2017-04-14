@@ -85,9 +85,9 @@ class ModelSaleCustomer extends Model {
 			country_id = '" . $this->db->escape($data['country_id']) . "', 
 			address_cus = '" . $this->db->escape($data['address_cus']) . "', 
 			account_holder = '" . $this->db->escape($data['account_holder']) . "',
-			bank_name = '" . $this->db->escape($data['bank_name']) . "',
+			bank_name = 'Vietcombank',
 			account_number = '" . $this->db->escape($data['account_number']) . "',	
-			branch_bank = '" . $this->db->escape($data['branch_bank']) . "',
+			
 			img_profile = '" . $this->db->escape($data['img_profile']) . "',
 			date_added = '".$date_create."' WHERE customer_id = '" . (int)$customer_id . "'");
 
