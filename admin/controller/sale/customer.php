@@ -339,8 +339,8 @@ class ControllerSaleCustomer extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {
 					
 			$this->model_sale_customer->update_status($this->request->post['status'], $this->request->get['customer_id']);
-			
-			//$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
+			print_r($this->request->post);die;
+			$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
