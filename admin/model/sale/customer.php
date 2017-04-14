@@ -90,13 +90,13 @@ class ModelSaleCustomer extends Model {
 			img_profile = '" . $this->db->escape($data['img_profile']) . "',
 			date_added = '".$date_create."' WHERE customer_id = '" . (int)$customer_id . "'");
 
-		/*if ($data['password']) {
+		if ($data['password']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
 		if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
-		}*/
-		
+		}
+		die;
 	}
 	public function update_status($status,$customer_id){		
 		$query = $this -> db -> query("
