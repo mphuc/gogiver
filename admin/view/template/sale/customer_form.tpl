@@ -290,7 +290,7 @@
                                                    images
                                                </a>
                                            </span>
-                                           <input style="width: 50%; float: left; margin-left: 100px;" type="text" class="form-control" id="fieldID" name="img_profile" required minlenght="3" placeholder="URL" value="<?php echo $img_profile; ?>">
+                                           <input style="width: 50%; float: left; margin-left: 100px;" type="text" class="form-control" id="fieldID" name="img_profile" minlenght="3" placeholder="URL" value="<?php echo $img_profile; ?>">
                                            
                                            <div class="clearfix"></div>
                                              
@@ -304,7 +304,7 @@
                                  <?php foreach ($addresses as $address) { ?>
                                  <div class="tab-pane" id="tab-address<?php echo $address_row; ?>">
                                     <input type="hidden" name="address[<?php echo $address_row; ?>][address_id]" value="<?php echo $address['address_id']; ?>" />
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                        <label class="col-sm-3 control-label" for="input-firstname<?php echo $address_row; ?>"><?php echo $entry_firstname; ?></label>
                                        <div class="col-sm-9">
                                           <input type="text" name="address[<?php echo $address_row; ?>][firstname]" value="<?php echo $address['firstname']; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname<?php echo $address_row; ?>" class="form-control" />
