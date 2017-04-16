@@ -135,6 +135,9 @@ class ControllerAccountAuto extends Controller {
 	}
 
 	public function autoPDGD() {
+
+		die;
+
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
 		$this -> load -> model('account/pd');
