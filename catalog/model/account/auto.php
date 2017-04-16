@@ -77,13 +77,13 @@ class ModelAccountAuto extends Model {
 				gd_number = '".$gd_number."'
 				WHERE id = '".$gd_id."'
 			");
-		if($query){
+		/*if($query){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
 				date_added = NOW()
 				WHERE customer_id = '".$customer_id."'
 			");
-		}
+		}*/
 		$data['query'] = $query ? true : false;
 		$data['gd_number'] = $gd_number;
 		return $data;
@@ -211,7 +211,7 @@ class ModelAccountAuto extends Model {
 			FROM ". DB_PREFIX . "customer_provide_donation
 			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND STATUS =0
-			ORDER BY amount ASC
+			ORDER BY amount,date_finish ASC
 			LIMIT 1
 		");
 		return $query -> row;
