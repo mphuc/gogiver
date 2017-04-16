@@ -594,7 +594,8 @@ $block_id = $this -> check_block_id();
 				}
 
 				$getGDweekday = $this->model_account_customer->getGDweekday($this -> session -> data['customer_id']);
-				//echo $getGDweekday; die;
+
+				
 				if (floatval($getGDweekday + floatval($this->request->get['amount']) > $amount_gd)){
 					$json['weekday'] = -1;
 					$json['max_month_gd'] = number_format($amount_gd);
@@ -603,6 +604,7 @@ $block_id = $this -> check_block_id();
 				{
 					$json['weekday'] = 1;
 				}
+				
 				if($json['pin'] === -1 || $json['weekday'] == -1){
 					$json['ok'] = -1;
 					$this -> response -> setOutput(json_encode($json));

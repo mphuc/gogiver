@@ -26,6 +26,11 @@ $(function() {
 		);
 	});*/
 
+	$("#amount").on('input propertychange', function() {
+	    if ($("#amount").val() > 10000000){
+	    	$("#amount").val(10000000);
+	    }
+	});
 
 	$('#createGD').on('submit', function() {
 		$(this).ajaxSubmit({

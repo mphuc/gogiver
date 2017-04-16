@@ -2611,7 +2611,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("SELECT sum(amount) as sum
 		FROM " . DB_PREFIX . "customer_get_donation
-		WHERE YEARWEEK(date_added)=YEARWEEK('".$date_added."')
+		WHERE YEARWEEK(date_added)=YEARWEEK('".$date_added."') AND customer_id = '".$customer_id."'
 		");
 		return $query->row['sum'];
 	}

@@ -89,7 +89,8 @@ class ControllerAccountAuto extends Controller {
 		$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
 		$mail -> setSubject($subject);
 		$mail -> setHtml($content);
-		print_r($mail);
+		print_r($content);
+		
 		$mail->send();
 
 	}
@@ -492,6 +493,7 @@ public function updateLevel_listID($customer_id){
 
 		$allPD = $this -> model_account_auto -> getDayFnPD();
 		
+		//print_r($allPD);die;
 
 		$tmp = null;
 		$tmp_count = 1;

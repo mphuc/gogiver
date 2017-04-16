@@ -1640,13 +1640,13 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['filled'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['filled']) ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 				</tr>
 			<?php } ?>
 			</tbody>
 			<tr>
-				<td colspan="5"><?php echo $total_PD ?></td>
+				<td colspan="5"><?php echo number_format($total_PD) ?></td>
 			</tr>
 		</table>
 		<?php
@@ -1675,12 +1675,12 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['filled'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['filled']) ?></td>
 				</tr>
 			<?php } ?>
 			<tr>
-				<td colspan="5"><?php echo $total_GD ?></td>
+				<td colspan="5"><?php echo number_format($total_GD) ?></td>
 			</tr>
 			</tbody>
 		</table>
@@ -1736,7 +1736,7 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_username'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_username'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['amount'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_satatus'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
 				</tr>
