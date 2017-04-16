@@ -81,8 +81,9 @@
                                             <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
                                             <?php echo $lang['detail'] ?>
                                             </a>
-                                            <div class="clearfix"></div>
+                                            
                                             </td>
+                                            <div class="clearfix"></div>
                                           </tr>
                                         </tbody>
                                       </table>  

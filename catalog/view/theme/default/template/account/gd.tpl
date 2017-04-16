@@ -54,9 +54,10 @@
                                             <!-- <td><?php //echo $lang['transferTime'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             
-                                            <td rowspan="2">
+                                            <td rowspan="2" style="height: 50px;">
                                               <a style="margin-top:15px;" class="pull-right btn btn-primary " role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['gd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['gd_number'] ?>">
                                               <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
+
                                               <?php echo $lang['detail'] ?>
                                               </a>
                                             </td>
@@ -87,7 +88,13 @@
                                          
                                              
                                           </tr>
+                                          <td rowspan="2" class="click_pd">
+                                              <a style="margin-top:-6px;" class="pull-right btn btn-primary " role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['gd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['gd_number'] ?>">
+                                              <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
 
+                                              <?php echo $lang['detail'] ?>
+                                              </a>
+                                            </td>
                                         </tbody>
                                       </table>
                                  </div>
