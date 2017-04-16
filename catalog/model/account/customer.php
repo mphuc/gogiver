@@ -3190,4 +3190,13 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.quy_bao_tro = 1 ORDER BY date_added ASC");
 		return $query -> rows;
 	}
+
+	public function get_check_pd_newuser($customer_id)
+	{
+		$querys = $this -> db -> query("
+			SELECT count(*) as number FROM  " . DB_PREFIX . "customer_provide_donation 
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $querys -> row['number'];
+	}
 }
