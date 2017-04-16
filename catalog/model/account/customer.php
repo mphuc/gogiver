@@ -3169,7 +3169,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			ON A.customer_id = B.customer_id
 			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
 			AND A.STATUS =0
-			ORDER BY A.amount.date_finish ASC
+			ORDER BY A.amount,A.date_finish ASC
 		");
 		return $query -> rows;
 	}
