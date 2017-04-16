@@ -893,12 +893,22 @@ class ModelAccountAuto extends Model {
 		return $query -> rows;
 	}
 
-	public function get_customer_sendmail()
+	public function get_customer_sendmail_pd()
 	{
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0
+			WHERE send_mail = 0 GROUP BY pd_id_customer
+		");
+		return $query -> rows;
+	}
+
+	public function get_customer_sendmail_gd()
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_transfer_list
+			WHERE send_mail = 0 GROUP BY gd_id_customer
 		");
 		return $query -> rows;
 	}
