@@ -911,7 +911,7 @@ class ModelAccountAuto extends Model {
 			SET send_mail = 1
 			WHERE id = '".$transfer_id."'
 		");
-		return $query -> rows;
+		return $query;
 	}
 
 	public function getPD_id($pd_id){
