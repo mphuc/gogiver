@@ -898,7 +898,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 AND pd_id_customer IN (148,145,84) GROUP BY pd_id
+			WHERE send_mail = 0 GROUP BY pd_id
 		");
 		return $query -> rows;
 	}
@@ -908,7 +908,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 AND gd_id_customer IN (148,145,84) GROUP BY gd_id
+			WHERE send_mail = 0 GROUP BY gd_id
 		");
 		return $query -> rows;
 	}

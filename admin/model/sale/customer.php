@@ -3417,7 +3417,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
 			FROM  ".DB_PREFIX."customer_transfer_list A
-			
+			ORDER BY date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");

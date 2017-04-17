@@ -59,20 +59,22 @@
      			<tr>
      				<th>TT</th>
                     <!-- <th>ID</th> -->
-                    <th>Amount</th>
-     				<th>Username PD</th>
-                    <th>Username GD</th>
                     
+     				         <th>Username PD</th>
+                    <th>Username GD</th>
+                    <th>Amount</th>
                     <th>Status PD</th>
                     <th>Status GD</th>
                     <th>Date</th>
      			</tr>
      		</thead>
-            
+           
      		<tbody id="result_date"> 
                 <?php $stt = 0;
+                $data_add = date('Y-m-d');
                 foreach ($pin as $value) { $stt ++?>
-                  <tr>
+                
+                  <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
                     <td><?php echo $stt; ?></td>
                     
                     <td><?php echo $value['pd_username'] ?></td>
@@ -108,7 +110,7 @@
                     <td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></td>
                     
                 </tr>  
-              
+                
              
                <!-- PD -->
                <div class="modal fade" id="myModalPD<?php echo $value['transfer_code'] ?>" role="dialog">
