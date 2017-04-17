@@ -22,7 +22,25 @@
                <div class="widget-content" style="padding:10px">
                 <div class="col-md-12">
                   <div class="col-md-3">
-                  <p><img style="width: 200px;" src="catalog/view/theme/default/images/586502d3e0900dce5481.jpg"> </p>
+                  <p><img style="width: 100%;" src="catalog/view/theme/default/images/lam63.png"> </p>
+                  </div>  
+                  <p>ID: 10 – USER lam63 - UPLINE: NUONGDO</p>
+                  <p>Email: nguyenvietlam1963@gmail.com</p>
+                  <p>VIỆT LÂM CHÀO TẤT CẢ THÀNH VIÊN TRONG NGÔI NHÀ IONTACH</p>
+                  <p>Qua những ngày tháng bắt đầu thành lập ngôi nhà iontach có rất nhiều người đã gắn bó với cộng đồng cũng có người chưa hiểu họ  vẫn vào tham gia rồi đúc kết lại chúng ta cùng hòa mình vào cộng đồng iontach một gđ mà ta đúc rút được nhiều kỷ năng cũng như kinh nghiệm và lời nói ngiã cử  hay ta còn cảm nhận được đầy ắp tình người ở nơi đay vậy tôi đang thật sự hòa mình vào cộng đồng gđ iontach là một nơi hội tụ của tất cả anh em cùng nhau chia sẽ những gì ta đã trải qua dù bạn có là lãnh vực nào cấp độ nào thì chúng ta vào ngôi nhà iontach này ta không quen phải có cái tâm biết chia sẽ và dám cho đi sau mới nhận về ta biết lắng nghe cộng đồng dù ai có ý định chia rẻ ta hãy cùng nhau hóa đồng tâm thái xd cộng đồng vững mạnh một ngày không xa nữa  mọi người  chúng ta  sẽ  gặt hái thành công vậy tôi muốn gửi lời chia sẽ đến tất cả mọi người dù bạn có đang ở nơi đâu làm bất cứ lãnh vực nào hãy chung tay xem ngôi nhà iontach là mái nhà thứ 2 của mình đoàn kết một lòng tương hỗ lẫn nhau vậy đến ngày hôm nay tôi đã được sự giúp đỡ của mọi người ở nơi đây nhất là chị hp người đã hy sinh tất cả vì công̣ đồng sau cơn bão tài chính  vừa qua  vachúng ta hãy tự tin vào chị và cộng đồng tôi tin rằng tuong lai rộng  lớn đang phía  trước mặt chúng ta vậy tôi chân thành cảm ơn mọi người và hứa sẽ tiếp tục nổ lực hơn nữa để cùng nhau góp sức xây dựng gđ iontach ngày càng vững mạnh mãi mãi mang lại lợi ích  cho  cả toàn khắp đất nước ba miền bắc trung nam vĩ đại lời của tôi là VIỆT LÂM - lam63</p>
+                </div>
+               </div>
+            </div>
+         </div>
+         <hr style="margin-top: 30px; width: 100%; border: 1px solid #eee; float: left; margin-bottom: 30px;">
+
+
+         <div class="col-lg-12 col-md-12">
+            <div class="input-group input-icon file-upload">
+               <div class="widget-content" style="padding:10px">
+                <div class="col-md-12">
+                  <div class="col-md-3">
+                  <p><img style="width: 100%;" src="catalog/view/theme/default/images/586502d3e0900dce5481.jpg"> </p>
                   </div>  
                   <p>THANHPHAM ID -534   UPLINE KATY </p>
                   <p>Ngày 08 tháng 04 năm 2017</p>
@@ -57,7 +75,7 @@ bằng khoảng 350 USD nếu như nhìn trong quy chế của Iontach ngay 
                <div class="widget-content" style="padding:10px">
                 <div class="col-md-12">
                   <div class="col-md-3">
-                  <p><img style="width: 200px;" src="catalog/view/theme/default/images/nguyenthuchoan.png"> </p>
+                  <p><img style="width: 100%;" src="catalog/view/theme/default/images/nguyenthuchoan.png"> </p>
                   </div>  
                   <p>Nguyễn Tư Thoan – ID: 0004 – Winwin</p>
                   <p>Ngày 08 tháng 04 năm 2017</p>
@@ -81,7 +99,7 @@ bằng khoảng 350 USD nếu như nhìn trong quy chế của Iontach ngay 
                <div class="widget-content" style="padding:10px">
                 <div class="col-md-12">
                   <div class="col-md-3">
-                  <p><img style="width: 200px;" src="catalog/view/theme/default/images/thaothao.png"> </p>
+                  <p><img style="width: 100%;" src="catalog/view/theme/default/images/thaothao.png"> </p>
                   </div>  
                   <p>ID 1073 - THANHHA  UPLINE  THOATHOA</p>
                   <p>Ngày 04 tháng  04 năm 2017</p>

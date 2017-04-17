@@ -154,17 +154,24 @@ class ControllerAccountGd extends Controller {
 		
 		!$this->request->get['token'] && $this->response->redirect(HTTPS_SERVER . 'login.html');
 		$checkTransfer =  $this -> model_account_customer -> getTransferList_byId($this->request->get['token']);
+
 		intval($checkTransfer['number']) === 0  && $this->response->redirect(HTTPS_SERVER . 'login.html');
-		$this-> model_account_customer -> updateStatusGDTransferList($this->request->get['token']);
-		$Customer_Tranferlist = $this -> model_account_customer -> getPDByTranferID($this -> request -> get['token']);
-		$GDCustomer = $Customer_Tranferlist['gd_id'];
-		
-		$countNotGDFinish = $this -> model_account_customer -> countStatusGDTransferList($GDCustomer);
 
-		if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
-			$this -> model_account_customer -> updateStusGD($GDCustomer);
+		$getTransferList_Id = $this -> model_account_customer -> getTransferList_Id($this->request->get['token']);
+
+		if ($getTransferList_Id['pd_satatus'] == 1)
+		{
+			$this-> model_account_customer -> updateStatusGDTransferList($this->request->get['token']);
+			$Customer_Tranferlist = $this -> model_account_customer -> getPDByTranferID($this -> request -> get['token']);
+			$GDCustomer = $Customer_Tranferlist['gd_id'];
 			
+			$countNotGDFinish = $this -> model_account_customer -> countStatusGDTransferList($GDCustomer);
 
+			if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
+				$this -> model_account_customer -> updateStusGD($GDCustomer);
+				
+
+			}
 		}
 		//print_r($countNotGDFinish);die;
 		$this->response->redirect(HTTPS_SERVER . 'getdonation.html#success');
@@ -187,11 +194,16 @@ class ControllerAccountGd extends Controller {
 
 
 		intval($checkTransfer['number']) === 0  && $this->response->redirect(HTTPS_SERVER . 'login.html');
-		$this-> model_account_customer -> updateStatusGDTransferList_reportss($this->request->get['token'],$this->request->get['textareald']);
+		$getTransferList_Id = $this -> model_account_customer -> getTransferList_Id($this->request->get['token']);
 
-		$transfer_customer = $this->model_account_customer -> getTransferList_All($this->request->get['token']);
-		/*$this->mail_report($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);
-		$this->mail_report_for_ph($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);*/
+		if ($getTransferList_Id['pd_satatus'] == 1)
+		{
+			$this-> model_account_customer -> updateStatusGDTransferList_reportss($this->request->get['token'],$this->request->get['textareald']);
+
+			$transfer_customer = $this->model_account_customer -> getTransferList_All($this->request->get['token']);
+			/*$this->mail_report($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);
+			$this->mail_report_for_ph($transfer_customer['pd_id_customer'], $transfer_customer['gd_id_customer'], $transfer_customer['id'], $transfer_customer['amount'],$transfer_customer['image']);*/
+		}
 		$this->response->redirect(HTTPS_SERVER . 'getdonation.html#success');
 	}
 	public function mail_report($pd_id_customer, $gd_id_customer, $id_transfer, $amount, $image){
@@ -993,5 +1005,24 @@ $block_id = $this -> check_block_id();
 			$this -> response -> setOutput($this -> load -> view('default/template/account/gd_confirm.tpl', $data));
 		}
 	}
+
+	public function get_transfer_gd_id($gd_id)
+	{
+		$this->load->model('account/customer');
+		$total_finish = 0;
+		$getTransferList_gd_id = $this -> model_account_customer -> getTransferList_gd_id($gd_id);
+		if (count($getTransferList_gd_id) >0)
+		{
+			foreach ($getTransferList_gd_id as $value) {
+				if ($value['gd_status'] == 1)
+				{
+					$total_finish++;
+				}
+			}
+		}
+		$json['total'] = count($getTransferList_gd_id);
+		$json['finish'] = $total_finish;
+		return $json;
+	}	
 
 }

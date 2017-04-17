@@ -286,6 +286,7 @@ class ControllerAccountPd extends Controller {
                      </div>
                   </div>
                   <div class="form-group">
+                  		<label>'.$value['username'].'</label>
                      <textarea autofocus="" placeholder="'.$lang['Message'].'" name="message" id="textmessages" class="form-control" style="width:100%" rows="2"></textarea>
                   </div>
                   <div class="form-group">
@@ -766,7 +767,7 @@ $block_id = $this -> check_block_id();
 				if (count($total2day) > 0) {
 					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.19);
 				}
-
+	// update date finish pd = now()
 				$this -> model_account_customer -> updateStusPD($PDCustomer);
 				$this -> model_account_customer -> updateCheck_R_WalletPD($PDCustomer);
 				
@@ -1663,4 +1664,23 @@ $block_id = $this -> check_block_id();
 		return intval($block_id);
 
 	}
+
+	public function get_transfer_pd_id($pd_id)
+	{
+		$this->load->model('account/customer');
+		$total_finish = 0;
+		$getTransferList_pd_id = $this -> model_account_customer -> getTransferList_pd_id($pd_id);
+		if (count($getTransferList_pd_id) >0)
+		{
+			foreach ($getTransferList_pd_id as $value) {
+				if ($value['pd_satatus'] == 1)
+				{
+					$total_finish++;
+				}
+			}
+		}
+		$json['total'] = count($getTransferList_pd_id);
+		$json['finish'] = $total_finish;
+		return $json;
+	}	
 }

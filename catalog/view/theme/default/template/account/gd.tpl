@@ -40,7 +40,25 @@
                               <div class="list_ph" style="margin-bottom: 30px">
                                  <div class="Head" role="tab" id="headingOne<?php echo $key['gd_number'] ?>">
                                     
-                                    <h4 style=" width: 300px;float: left;"><?php echo $lang['Your_GD'] ?> : <strong>GD<?php echo $key['gd_number'] ?></strong></h4>
+                                    <h4 style=" width: 350px;float: left;"><?php echo $lang['Your_GD'] ?> : <strong>GD<?php echo $key['gd_number'] ?></strong></h4>
+
+                                    <?php $progress = ($self -> get_transfer_gd_id($key['id'])); 
+                                        if ($progress['finish'] == 0)
+                                        {
+                                          $percent = 0;
+                                        }
+                                        else
+                                        {
+                                          $percent = round($progress['finish']/$progress['total']*100,2);
+                                        }
+                                        
+                                      ?>
+                                      <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percent ?>%">
+                                          <?php echo $percent ?>%
+                                        </div>
+                                      </div>
+
                                     <div class="clearfix"></div>
                                     <table  class="table">
                                         <thead>
@@ -69,24 +87,25 @@
                                             <td data-title="ID"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <!-- <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td> -->
-                                            <!-- <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
-                                       </span> </strong></td> -->
+                                            
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
-                                           echo '<span style="width:80px;" class="btn btn-warning">'.$lang['dangcho'].'</span>';
+                                           echo '<span style="width:100px;" class="btn btn-warning">'.$lang['dangcho'].'</span>';
                                            break;
                                        case 1:
                                            echo '<span class="btn btn-info">'.$lang['khoplenh'].'</span>';
                                            break;
                                        case 2:
-                                           echo '<span style="width:80px;background-color: #9a9292; color: #fff;"  class="btn btn-success">'.$lang['ketthuc'].'</span>';
+                                           echo '<span style="width:100px;background-color: #9a9292; color: #fff;"  class="btn btn-success">'.$lang['ketthuc'].'</span>';
                                            break;
                                        case 3:
-                                           echo '<span style="width:80px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
+                                           echo '<span style="width:100px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
                                            break;
                                        } ?></span></strong></td>
-                                         
-                                             
+                                       <?php if ($key['status'] == 1) { ?>
+                                         <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
+                                       </span> </strong></td> 
+                                        <?php } ?>
                                           </tr>
                                           <td rowspan="2" class="click_pd">
                                               <a style="margin-top:-6px;" class="pull-right btn btn-primary " role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['gd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['gd_number'] ?>">

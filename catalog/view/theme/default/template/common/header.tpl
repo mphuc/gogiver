@@ -178,37 +178,37 @@
 
                 <?php switch (intval($pd_march)) {
                   case 0:
-                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">0</span> </a>';
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> PD <span class="badge badge-accent">0</span> </a>';
                       break;
                  case 1:
-                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">1</span> </a>';
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> PD <span class="badge badge-accent">1</span> </a>';
                       break;
                  case 2:
-                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">2</span> </a>';
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> PD <span class="badge badge-accent">2</span> </a>';
                       break;
                  case 3:
-                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">3</span> </a>';
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> PD <span class="badge badge-accent">3</span> </a>';
                       break;
                  case 4:
-                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;"> PD <span class="badge badge-accent">4</span> </a>';
+                      echo '<a href="provide-donation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> PD <span class="badge badge-accent">4</span> </a>';
                       break;
                 
               } ?>
                 <?php switch (intval($gd_march)) {
                   case 0:
-                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">0</span> </a>';
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> GD <span class="badge badge-accent">0</span> </a>';
                       break;
                  case 1:
-                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">1</span> </a>';
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> GD <span class="badge badge-accent">1</span> </a>';
                       break;
                  case 2:
-                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">2</span> </a>';
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> GD <span class="badge badge-accent">2</span> </a>';
                       break;
                  case 3:
-                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">3</span> </a>';
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> GD <span class="badge badge-accent">3</span> </a>';
                       break;
                  case 4:
-                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;"> GD <span class="badge badge-accent">4</span> </a>';
+                      echo '<a href="getdonation.html" style=" margin-right: 5px; position: relative;font-size: 16px;"> GD <span class="badge badge-accent">4</span> </a>';
                       break;
                 
               } ?>
@@ -234,7 +234,7 @@
                 </li>
                 <div class="dropdown pull-right mail_header">
                   <li class="dropdown language-selector pull-right dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  <i style="font-size: 18px;" class="fa fa-envelope-o" aria-hidden="true"></i>
                   <span class="badge badge-accent" style="left: 12px;"><?php echo count($get_mail_admin) ?></span>
                   </li>
                   
@@ -249,6 +249,17 @@
                   <?php } ?>
                     <p class="text-center" style="margin-top: 10px;"><a href="mail.html">View Mail</a></p>
                   </ul>
+
+                  <ul class="nav navbar-nav hidden-xs pull-right" style="line-height: 50px; margin-right: 30px;">
+                  <a href="index.php?route=account/gd/create">
+                  <?php if (doubleval($self -> getCWallet()) > 0) { ?>
+                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span>
+                  <?php } ?>
+                  <?php if (doubleval($self -> getRWallet()) > 0)  { ?>
+                    R Wallet: <span class="label label-primary"><?php echo $self -> getRWallet() ?> VNĐ</span>
+                  <?php } ?>
+                  </a>
+                 </ul>
                 </div>
                 
             </nav>

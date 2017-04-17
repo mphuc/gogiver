@@ -253,3 +253,23 @@ h1.post-title.entry-title a, h2.post-title.entry-title a {
 #update_profile input{
   border: 1px solid #eee;
 }
+.pcc-percents-wrapper{
+  width: 50px;
+  height: 50px;
+  background: #eeeeee;
+  border-radius: 50%;
+  line-height: 50px;
+  text-align: center;
+  color: #4CAF50;
+  font-weight: bold;
+  border:3px solid #4CAF50;
+}
+
+.progress{
+  width: 200px;
+  float: right;
+}
+.progress .progress-bar {
+    box-shadow: none;
+    background-color: #4CAF50;
+}

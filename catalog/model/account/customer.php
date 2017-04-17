@@ -174,7 +174,8 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function updateStusPD($pd_id){
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				status = 2
+				status = 2,
+				date_finish = NOW()
 				WHERE id = '".$pd_id."'
 			");
 		return $query;
@@ -3198,5 +3199,32 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			WHERE customer_id = '".$customer_id."'
 		");
 		return $querys -> row['number'];
+	}
+
+	public function getTransferList_Id($id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_transfer_list
+			WHERE id = '".$id."'
+		");
+		return $query -> row;
+	}
+
+	public function getTransferList_pd_id($pd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_transfer_list
+			WHERE pd_id = '".$pd_id."'
+		");
+		return $query -> rows;
+	}
+
+	public function getTransferList_gd_id($gd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_transfer_list
+			WHERE gd_id = '".$gd_id."'
+		");
+		return $query -> rows;
 	}
 }

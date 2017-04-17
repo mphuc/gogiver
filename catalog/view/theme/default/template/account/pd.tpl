@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-12">
            <!-- col-md-12 start here -->
-           <?php $num = 1; foreach ($pds as $value => $key){ ?>
+           <?php $finish_pd = 0;;$num = 1; foreach ($pds as $value => $key){ ?>
            <div class="panel panel-default" id="dash_0">
               <!-- Start .panel -->
               
@@ -38,7 +38,26 @@
                                 <div class="list_ph" >
                                    <div class="Head" role="tab" id="headingOne<?php echo $key['pd_number'] ?>">
                                       
-                                      <h4><?php echo $lang['PD_NUMBER'];?> : <strong>PD<?php echo $key['pd_number'] ?></strong></h4>
+                                      <h4 style="float: left;"><?php echo $lang['PD_NUMBER'];?> : <strong>PD<?php echo $key['pd_number'] ?></strong></h4> 
+
+                                      <?php $progress = ($self -> get_transfer_pd_id($key['id'])); 
+                                        if ($progress['finish'] == 0)
+                                        {
+                                          $percent = 0;
+                                        }
+                                        else
+                                        {
+                                          $percent = round($progress['finish']/$progress['total']*100,2);
+                                        }
+                                        
+                                      ?>
+                                      <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percent ?>%">
+                                          <?php echo $percent ?>%
+                                        </div>
+                                      </div>
+
+
                                       <table  class="table">
                                         <thead>
                                           <tr>
@@ -61,8 +80,7 @@
                                             <td data-title="<?php echo $lang['useridph'] ?>"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <!-- <td data-title="<?php //echo $lang['MAX_PROFIT'] ?>"><strong><?php //echo number_format($key['max_profit']); ?> <?php //echo $lang['VND'] ?></strong></td> -->
-                                            <!-- <td data-title="<?php //echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php //echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
-                                         </span> </strong></td> -->
+                                            
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
                                              echo '<span style="width:100px;" class="btn-warning btn">'.$lang['dangcho'].'</span>';
@@ -77,6 +95,10 @@
                                              echo '<span style="width:100px;" class="btn btn-danger">'.$lang['baocao'].'</span>';
                                              break;
                                          } ?></span></strong></td>
+                                            <?php if ($key['status'] == 1) { ?>
+                                             <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish'] : $key['date_finish']; ?>">
+                                         </span> </strong></td> 
+                                            <?php } ?>
                                             <td class="click_pd"><a class="pull-right btn btn-primary" style="margin-top:15px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?php echo $key['pd_number'] ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $key['pd_number'] ?>">
                                             <i class="short-full fa  fa-list glyphicon-plus glyphicon-minus"></i>
                                             <?php echo $lang['detail'] ?>
@@ -175,6 +197,7 @@
    }
 </style>
 <script type="text/javascript">
+
    function viewImage (image) {
      alertify.confirm('Your Bill', '<img style="width:100%" src="'+image+'"/>', function(){  }, function(){ });
    }

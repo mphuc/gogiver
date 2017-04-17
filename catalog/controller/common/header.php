@@ -22,6 +22,7 @@ class ControllerCommonHeader extends Controller {
 			$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
 		
 
+
 		}
 		if (!isset($this -> session->data['language_id']))
 		{
@@ -35,7 +36,7 @@ class ControllerCommonHeader extends Controller {
 		}
 		$data['changelanguage'] = $this->url->link('account/dashboard/changeLange', '', 'SSL');
 		$data['base'] = $server;
-		$data['self'] = $this;
+		
 		$data['description'] = $this->document->getDescription();
 		$data['keywords'] = $this->document->getKeywords();
 		$data['links'] = $this->document->getLinks();
@@ -229,6 +230,64 @@ class ControllerCommonHeader extends Controller {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {
 			return $this->load->view('default/template/common/header.tpl', $data);
+		}
+	}
+
+	public function getRWallet(){
+		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
+			$this -> load -> model('account/customer');
+			$checkR_Wallet = $this -> model_account_customer -> checkR_Wallet($this -> customer -> getId());
+			if(intval($checkR_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertR_Wallet($this -> customer -> getId())){
+					die();
+				}
+			}
+			$total = $this -> model_account_customer -> getR_Wallet($this -> customer -> getId());
+			$total = count($total) > 0 ? $total['amount'] : 0;
+			$json['success'] = $total;
+			$total = null;
+
+			$checkR_Wallet = $this -> model_account_customer -> checkR_Wallet($this -> customer -> getId());
+			if(intval($checkR_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertR_Wallet($this -> customer -> getId())){
+					die();
+				}
+			}
+			//get r-wallet of user received
+			//$customerReceived = $this->model_account_customer->getCustomer($this -> customer -> getId());
+			$getRwallet = $this -> model_account_customer -> getR_Wallet($this -> customer -> getId());
+			$getGDRecived = $this -> model_account_customer -> getTotalGD($this -> customer -> getId());
+			// if(intval($getGDRecived['number']) === 0 && intval($getRwallet['amount']) === 0 && intval($customerReceived['ping']) >= 6){
+			// 	$this -> model_account_customer -> updateR_Wallet($customerReceived['customer_id'] , 3840000);
+			// 	$this -> model_account_customer -> updateCheckNEwuser($customerReceived['customer_id']);
+			// }
+			$total = $this -> model_account_customer -> getR_Wallet($this -> customer -> getId());
+			$total = count($total) > 0 ? $total['amount'] : 0;
+			$json['success'] = $total;
+			return $json['success'] = number_format($json['success']);
+			// $this -> response -> setOutput(json_encode($json));
+		}
+	}
+
+	public function getCWallet(){
+
+		if ($this -> customer -> isLogged() && $this -> customer -> getId()) {
+			$this -> load -> model('account/customer');
+
+			$checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($this -> customer -> getId());
+
+
+			if(intval($checkC_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertC_Wallet($this -> customer -> getId())){
+					die();
+				}
+			}
+			$total = $this -> model_account_customer -> getC_Wallet($this -> customer -> getId());
+			$total = count($total) > 0 ? $total['amount'] : 0;
+			$json['success'] = $total;
+			$total = null;
+			return  $json['success'] = number_format($json['success']);
+			// $this -> response -> setOutput(json_encode($json));
 		}
 	}
 }
