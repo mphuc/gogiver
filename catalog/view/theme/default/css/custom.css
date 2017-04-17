@@ -268,8 +268,14 @@ h1.post-title.entry-title a, h2.post-title.entry-title a {
 .progress{
   width: 200px;
   float: right;
+  
 }
 .progress .progress-bar {
     box-shadow: none;
     background-color: #4CAF50;
+
+}
+.progress-bar{
+  color: #1976d2;
+    font-size: 15px;
 }
