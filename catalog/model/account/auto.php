@@ -898,7 +898,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 GROUP BY pd_id_customer
+			WHERE send_mail = 0 AND pd_id_customer IN (148,145,84) GROUP BY pd_id
 		");
 		return $query -> rows;
 	}
@@ -908,18 +908,29 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 GROUP BY gd_id_customer
+			WHERE send_mail = 0 AND gd_id_customer IN (148,145,84) GROUP BY gd_id
 		");
 		return $query -> rows;
 	}
 
-	public function update_customer_sendmail_finish($transfer_id)
+	public function update_customer_sendmail_finish_pd($pd_id)
 	{
 		$query = $this -> db -> query("
 			UPDATE 
 			". DB_PREFIX . "customer_transfer_list
 			SET send_mail = 1
-			WHERE id = '".$transfer_id."'
+			WHERE pd_id = '".$pd_id."'
+		");
+		return $query;
+	}
+
+	public function update_customer_sendmail_finish_gd($gd_id)
+	{
+		$query = $this -> db -> query("
+			UPDATE 
+			". DB_PREFIX . "customer_transfer_list
+			SET send_mail = 1
+			WHERE gd_id = '".$gd_id."'
 		");
 		return $query;
 	}
