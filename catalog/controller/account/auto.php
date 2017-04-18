@@ -849,7 +849,7 @@ public function updateLevel_listID($customer_id){
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
-    	print_r($get_block_month_pd);die;
+    	//print_r($get_block_month_pd);die;
     	foreach ($get_block_month_pd as $values) {
     		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
     		switch ($get_level['level']) {
@@ -878,16 +878,16 @@ public function updateLevel_listID($customer_id){
             	$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
             	$this -> model_account_block -> update_block_pd_month($values['customer_id'],$description);
 	        	if (intval($values['total_block']) === 4) {
-	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+	        		$this -> model_account_auto -> updateStatusCustomer($values['customer_id']);
 	        	}
-
+	        	echo $values['customer_id']."<br/>";
             }
             else
             {
-            	
+            	$this -> model_account_block -> update_block_none($values['customer_id']);
             }
 
-            echo $values['customer_id']."<br/>";
+            
 
     	}
 
