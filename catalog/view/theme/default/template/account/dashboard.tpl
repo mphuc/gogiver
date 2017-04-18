@@ -111,18 +111,18 @@
 
                   if (count($repd) != 0) {
                     
-                    
+                    $date_finish = strtotime ( '+ 1 day' , strtotime ($repd['date_finish']));
                   ?>
                 
                   <?php if ($language=='english') { ?>
-                  
+                    
                     <div class="alert alert-danger">
-                      You have <span data-countdown="<?php echo $repd['date_finish'] ?>"></span> for RePD <a class="btn btn-success" href="provide-donation.html">RePD</a>
+                      You have <span data-countdown="<?php echo $date_finish ?>"></span> for RePD <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
                   <?php }else{ ?>
                   
                      <div class="alert alert-danger">
-                      Bạn còn <span data-countdown="<?php echo $repd['date_finish'] ?>"></span> để RePD  <a class="btn btn-success" href="provide-donation.html">RePD</a>
+                      Bạn còn <span data-countdown="<?php echo $date_finish ?>"></span> để RePD  <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
 
                   <?php
