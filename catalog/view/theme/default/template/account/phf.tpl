@@ -54,8 +54,8 @@
                                             <td>ID</td>
                                             <td><?php echo $lang['FILLED'] ?></td>
                                             <!-- <td><?php echo $lang['MAX_PROFIT'] ?></td>
-                                            <td><?php echo $lang['TIME_REMAIN'] ?></td>
-                                            <td><?php echo $lang['STATUS'] ?></td> -->
+                                            <td><?php echo $lang['TIME_REMAIN'] ?></td>-->
+                                            <td><?php echo $lang['STATUS'] ?></td> 
                                             
                                           </tr>
                                         </thead>
@@ -67,7 +67,7 @@
                                             <td data-title="<?php echo $lang['FILLED'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <!-- <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><strong><?php echo number_format($key['max_profit']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
-                                         </span> </strong></td>
+                                         </span> </strong></td>-->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                          case 0:
                                              echo '<span class="label label-warning">'.$lang['dangcho'].'</span>';
@@ -81,7 +81,7 @@
                                          case 3:
                                              echo '<span class="label label-danger">'.$lang['baocao'].'</span>';
                                              break;
-                                         } ?></span></strong></td> -->
+                                         } ?></span></strong></td> 
                                         <?php $num++; } ?>
                                           </tr>
                                           
