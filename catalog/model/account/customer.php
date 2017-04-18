@@ -2800,22 +2800,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		}
 	}
 	public function date_pd($id_customer){
+
 		$level = $this -> db -> query("
 				SELECT level 
 				FROM  ".DB_PREFIX."customer_ml
 				WHERE customer_id = (".$id_customer.")
 			");
-
 		$query = $this -> db -> query("
 			SELECT * 
 			FROM  ".DB_PREFIX."customer_block_pd_month 
-			WHERE customer_id = ".$id_customer."
+			WHERE customer_id = ".$id_customer." AND date_block > NOW()
 		");
-		if ($query -> row['total_pd'] > 0)
+		
+		if (count($query -> row) > 0)
 		{
 			$json['date_pd'] = $query -> row['date_block'];
 			$json['count_pd'] = $query -> row['total_pd'];
-			$json['level'] = $level -> row['level'];
+			$json['level'] = $level->row['level'];
 		}
 		else
 		{

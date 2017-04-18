@@ -87,16 +87,16 @@
                 break;
             }
           ?>
-          
+          <div class="clearfix"></div>
           <?php if ($date_pd['count_pd'] < $num_pd) { ?>
             <?php if ($language=='english') { ?>
-            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
+            <div class="alert alert-danger repd">
                 <?php echo $date_pd['count_pd'] ?> PD. Time left to create <?php echo $num_pd-$date_pd['count_pd'] ?> PD <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
             </div>
             <?php }else{ ?> 
-            <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
-                <?php echo $date_pd['count_pd'] ?> PD. Thời gian còn lại để tạo ra <?php echo $num_pd-$date_pd['count_pd'] ?> PD là <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
-            </div>
+            <div class="alert alert-danger repd">
+               <?php echo $date_pd['count_pd'] ?> PD. Thời gian còn lại để tạo ra <?php echo $num_pd-$date_pd['count_pd'] ?> PD là <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
+               </div>
 
           <?php } } ?>
 
