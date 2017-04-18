@@ -250,11 +250,11 @@
                     <p class="text-center" style="margin-top: 10px;"><a href="mail.html">View Mail</a></p>
                   </ul>
 
-                  <ul class="nav navbar-nav hidden-xs pull-right" style="line-height: 50px; margin-right: 30px;">
+                  <ul class="nav navbar-nav hidden-xs pull-right" style="line-height: 25px; margin-right: 30px;">
                   <a href="index.php?route=account/gd/create">
                   
-                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span> | 
-                  
+                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span>
+                    <br>
                     R Wallet: <span class="label label-primary"><?php echo $self -> getRWallet() ?> VNĐ</span>
                   
                   </a>

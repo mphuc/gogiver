@@ -280,3 +280,30 @@ h1.post-title.entry-title a, h2.post-title.entry-title a {
   color: #1976d2;
     font-size: 15px;
 }
+
+
+@-webkit-keyframes glowing {
+  0% { background-color: #ffebee; -webkit-box-shadow: 0 0 2px #ea94a2; }
+  50% { background-color: #ecb5be; -webkit-box-shadow: 0 0 5px #ea94a2; }
+  100% { background-color: #ea94a2; -webkit-box-shadow: 0 0 2px #ea94a2; }
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #ffebee; -moz-box-shadow: 0 0 2px #ea94a2; }
+  50% { background-color: #ecb5be; -moz-box-shadow: 0 0 5px #ea94a2; }
+  100% { background-color: #ea94a2; -moz-box-shadow: 0 0 2px #ea94a2; }
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #ffebee; box-shadow: 0 0 2px #ea94a2; }
+  50% { background-color: #ecb5be; box-shadow: 0 0 5px #ea94a2; }
+  100% { background-color: #ea94a2; box-shadow: 0 0 2px #ea94a2; }
+}
+
+
+.alert.alert-danger.repd {
+  -webkit-animation: glowing 1100ms infinite;
+  -moz-animation: glowing 1100ms infinite;
+  -o-animation: glowing 1100ms infinite;
+  animation: glowing 1100ms infinite;
+  font-size: 18px;
+  text-align: center;
+}

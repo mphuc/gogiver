@@ -118,12 +118,12 @@
                 
                   <?php if ($language=='english') { ?>
                     
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger repd">
                       You have <span data-countdown="<?php echo $date_finish ?>"></span> for RePD <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
                   <?php }else{ ?>
                   
-                     <div class="alert alert-danger">
+                     <div class="alert alert-danger repd">
                       Bạn còn <span data-countdown="<?php echo $date_finish ?>"></span> để RePD  <a class="btn btn-success" href="provide-donation.html">RePD</a>
                      </div>
 
