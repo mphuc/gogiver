@@ -111,7 +111,7 @@
 
                   if (count($repd) != 0) {
                     
-                    $date_finish = $repd['date_finish']);
+                    $date_finish = $repd['date_finish'];
                     //$date_finish= date('Y-m-d H:i:s',$date_finish) ;
                     //echo $date_finish;die;
                   ?>
