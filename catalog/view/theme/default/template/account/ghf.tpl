@@ -41,8 +41,8 @@
                                             <td><?php echo $lang['Date_create_f1_hs'] ?></td>
                                             <td>ID</td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
-                                            <td><?php echo $lang['danhnhan'] ?></td>
-                                            <td><?php echo $lang['transferTime'] ?></td>
+                                           <!--  <td><?php echo $lang['danhnhan'] ?></td>
+                                            <td><?php echo $lang['transferTime'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             
                                           </tr>
@@ -53,9 +53,9 @@
                                             <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
                                             <td data-title="UserID GH"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
+                                           <!--  <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
-                                       </span> </strong></td>
+                                       </span> </strong></td> -->
                                             <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                        case 0:
                                            echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';

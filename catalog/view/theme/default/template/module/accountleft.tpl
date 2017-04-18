@@ -78,12 +78,12 @@
                                 </a> 
                           </li>
                             <li>
-                                 <a href="phf.html"><i class="fa fa-caret-right"></i></i>
+                                 <a href="ghf.html"><i class="fa fa-caret-right"></i></i>
                                     <span><?php echo $lang['f1gh']; ?></span> 
                                 </a> 
                             </li>
                             <li>
-                                 <a href="ghf.html"><i class="fa fa-caret-right"></i><?php echo $lang['f1pd']; ?>
+                                 <a href="phf.html"><i class="fa fa-caret-right"></i><?php echo $lang['f1pd']; ?>
                                 </a> 
                             </li>
                         </ul>
