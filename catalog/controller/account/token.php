@@ -364,7 +364,8 @@ $block_id = $this -> check_block_id();
 			$customerSend = $this -> model_account_customer -> getCustomer($this -> customer -> getId());
 			$pin = $customerSend['ping'];
 
-			$num = $this -> request -> get['pin'];
+			$num = str_replace(",","",$this -> request -> get['pin']);
+			$num = str_replace(".","",$num);
 			
 			$amount = $num;
 			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 0 && $amount >= 1) {

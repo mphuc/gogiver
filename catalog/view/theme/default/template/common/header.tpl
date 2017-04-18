@@ -253,9 +253,9 @@
                   <ul class="nav navbar-nav hidden-xs pull-right" style="line-height: 25px; margin-right: 30px;">
                   <a href="index.php?route=account/gd/create">
                   
-                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span>
+                    <?php echo $lang['C-Wallet'] ?>: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span>
                     <br>
-                    R Wallet: <span class="label label-primary"><?php echo $self -> getRWallet() ?> VNĐ</span>
+                    <?php echo $lang['R-Wallet'] ?>: <span class="label label-primary"><?php echo $self -> getRWallet() ?> VNĐ</span>
                   
                   </a>
                  </ul>

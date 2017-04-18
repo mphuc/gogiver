@@ -15,3 +15,5 @@ $_['text_checkout']      = 'Checkout';
 $_['text_search']        = 'Search';
 $_['text_all']           = 'Show All';
 $_['Manual']           = 'Manual';
+$_['C-Wallet']           = 'C-Wallet';
+$_['R-Wallet']           = 'R-Wallet';
