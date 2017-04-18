@@ -2628,12 +2628,12 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function repd($customer_id){
 		$date_added= date('Y-m-d H:i:s');
-		$date_added = strtotime ( '+ 2 day' , strtotime ($date_added));
-		$date_added= date('Y-m-d H:i:s',$date_added) ;
+		$date_finish = strtotime ( '+48 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE status = 2 AND date_finish <= '".$date_added."' AND check_gd = 0 AND customer_id = ".$customer_id."
+			WHERE status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 AND customer_id = ".$customer_id."
 		");
 		return $query -> row;
 	}
