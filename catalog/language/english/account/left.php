@@ -26,3 +26,5 @@ $_['block'] = 'Block/Frozen History';
 $_['remove_account'] = 'Remove Account';
 $_['blog_create'] = 'Create Blog';
 $_['bvcn'] = 'The article feels';
+$_['pd_finish'] = 'PD History';
+$_['gd_finish'] = 'GD History';

@@ -26,3 +26,5 @@ $_['block'] = 'Lịch Sử Khóa/Đóng Băng';
 $_['remove_account'] = 'Xóa tài khoản';
 $_['blog_create'] = 'Tạo Blog';
 $_['bvcn'] = 'Bài viết cảm nhận';
+$_['pd_finish'] = 'Lịch sử PD';
+$_['gd_finish'] = 'Lịch sử GD';

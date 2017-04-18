@@ -60,7 +60,7 @@
                         </ul>
                         <!-- / .sub-nav  -->
                     </li>
-                    <li <?php echo $route === 'account/article' ? "class='active'" : ''  ?>><a href="<?php echo $self -> url -> link('account/article', '', 'SSL'); ?>"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['bvcn']; ?></span>
+                    <li <?php echo $route === 'account/article' ? "class='active'" : ''  ?>><a href="article.html"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span class="nav-item-text"><?php echo $lang['bvcn']; ?></span>
                        </a>
                      </li>
                     <li>
@@ -69,13 +69,21 @@
                         </a>
                         <!-- .sub-nav  -->
                         <ul class="sub-nav" role="menu">
+                         <li>
+                               <a href="phfinish.html"><i class="fa fa-caret-right"></i><?php echo $lang['pd_finish']; ?>
+                              </a> 
+                          </li>
+                          <li>
+                                 <a href="ghfinish.html"><i class="fa fa-caret-right"></i><?php echo $lang['gd_finish']; ?>
+                                </a> 
+                          </li>
                             <li>
-                                 <a href="<?php echo $self -> url -> link('account/ghf', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i></i>
+                                 <a href="phf.html"><i class="fa fa-caret-right"></i></i>
                                     <span><?php echo $lang['f1gh']; ?></span> 
                                 </a> 
                             </li>
                             <li>
-                                 <a href="<?php echo $self -> url -> link('account/phf', '', 'SSL'); ?>"><i class="fa fa-caret-right"></i><?php echo $lang['f1pd']; ?>
+                                 <a href="ghf.html"><i class="fa fa-caret-right"></i><?php echo $lang['f1pd']; ?>
                                 </a> 
                             </li>
                         </ul>

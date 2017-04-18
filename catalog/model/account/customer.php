@@ -291,8 +291,24 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM  ".DB_PREFIX."customer_provide_donation AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."'
-			ORDER BY pd.date_added DESC
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (pd.status <> 2 AND pd.date_finish >= NOW() )
+			ORDER BY pd.date_added ASC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function getPDById_finish($id_customer, $limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."customer_provide_donation AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (pd.status = 2 AND pd.date_finish <= NOW() )
+			ORDER BY pd.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");
@@ -505,11 +521,22 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status <> 2 AND date_finish >= NOW())
 		");
 
 		return $query -> row;
 	}
+
+	public function getTotalPD_finish($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
+		");
+
+		return $query -> row;
+	}
+
 	public function getTotalcommission($id_customer){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
@@ -726,11 +753,22 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_get_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status <> 2 AND date_finish >= NOW())
 		");
 
 		return $query -> row;
 	}
+
+	public function getTotalGD_finish($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT( * ) AS number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
+		");
+
+		return $query -> row;
+	}
+
 	public function countPDINProvide(){
 		$query = $this -> db -> query("
 			SELECT *
@@ -753,8 +791,21 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*, B.username
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
-			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."'
-			ORDER BY A.date_added DESC
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND (A.status <> 2 AND A.date_finish >= NOW())
+			ORDER BY A.date_added ASC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function getGDById_finish($id_customer, $limit, $offset){
+		$query = $this -> db -> query("
+			SELECT A.*, B.username
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND (A.status = 2 AND A.date_finish <= NOW())
+			ORDER BY A.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");
@@ -2459,7 +2510,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT count(*) AS number
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
+			WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id ORDER BY A.date_added DESC
 		");
 
 		return $query -> row;
@@ -2485,7 +2536,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_PD_child($id_customer){
 		$query = $this -> db -> query("
 			SELECT B.username,A.*
-			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1) GROUP BY A.id
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE B.p_node = '".$this -> db -> escape($id_customer)."' AND (A.status = 0 or A.status = 1)  GROUP BY A.id ORDER BY A.date_added DESC
 		");
 
 		return $query -> rows;
