@@ -2629,6 +2629,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function repd($customer_id){
 		$date_added= date('Y-m-d H:i:s');
 		$date_added = strtotime ( '+ 2 day' , strtotime ($date_added));
+		$date_added= date('Y-m-d H:i:s',$date_added) ;
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_get_donation
