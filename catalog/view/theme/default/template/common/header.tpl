@@ -252,12 +252,11 @@
 
                   <ul class="nav navbar-nav hidden-xs pull-right" style="line-height: 50px; margin-right: 30px;">
                   <a href="index.php?route=account/gd/create">
-                  <?php if (doubleval($self -> getCWallet()) > 0) { ?>
-                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span>
-                  <?php } ?>
-                  <?php if (doubleval($self -> getRWallet()) > 0)  { ?>
+                  
+                    C-Wallet: <span class="label label-warning"><?php echo $self -> getCWallet() ?> VNĐ </span> | 
+                  
                     R Wallet: <span class="label label-primary"><?php echo $self -> getRWallet() ?> VNĐ</span>
-                  <?php } ?>
+                  
                   </a>
                  </ul>
                 </div>
