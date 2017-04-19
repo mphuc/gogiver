@@ -885,10 +885,8 @@ public function updateLevel_listID($customer_id){
             else
             {
             	$this -> model_account_block -> update_block_none($values['customer_id']);
+            	echo "user not block".$values['customer_id']."<br/>";
             }
-
-            
-
     	}
 
     }
