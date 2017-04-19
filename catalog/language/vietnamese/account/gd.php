@@ -33,7 +33,7 @@ $_['t_view_btc'] ='Xem thông tin về giao dịch Bitcoin:';
 $_['TRANSFER']            = 'CHUYỂN KHOẢN';
 $_['TRANSFER_']            = 'Chuyển khoản';
 $_['VND']            = 'VNĐ';
-$_['ConfirmPHfor']            = 'Xác Nhận PH cho';
+$_['ConfirmPHfor']            = 'Xác Nhận PD cho';
 $_['Close']            = 'Đóng';
 $_['Send']            = 'Gửi';
 
