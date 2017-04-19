@@ -1684,6 +1684,7 @@ class ControllerAccountAccount extends Controller {
 			</tr>
 			</tbody>
 		</table>
+
 		<?php
 
 		$getCustomer_quybaotro = $this -> model_account_customer -> getCustomer_quybaotro();
@@ -1709,6 +1710,7 @@ class ControllerAccountAccount extends Controller {
 			<?php } ?>
 			</tbody>
 		</table>
+		<h1 style="clear: both;">PD - GD = <?php echo number_format($total_PD - $total_GD) ?> VND</h1>
 		<?php
 		$get_all_tranfer = $this -> model_account_customer -> get_all_tranfer_list_date();
 		?>
@@ -1744,6 +1746,7 @@ class ControllerAccountAccount extends Controller {
 			
 			</tbody>
 		</table>
+
 		<?php
 	}
 
