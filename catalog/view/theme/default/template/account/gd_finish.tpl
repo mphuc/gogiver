@@ -49,7 +49,7 @@
                                         <tbody>
                                         <?php $num = 1; foreach ($gds as $value => $key){ ?>
                                           <tr>
-                                            <td data-title="<?php echo $lang['Your_GD'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['gd_number'])); ?></strong></td>
+                                            <td data-title="<?php echo $lang['Your_GD'] ?>"><strong>GD<?php echo $key['gd_number']; ?></strong></td>
                                             <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><strong><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></strong></td>
                                             <td data-title="UserID GH"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
