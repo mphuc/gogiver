@@ -248,10 +248,11 @@ class ModelAccountBlock extends Model {
 	}
 
 	public function get_block_month_pd(){
+		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_block_pd_month
-			WHERE date_block <= NOW() AND total_pd > 0 AND status = 0
+			WHERE date_block <= '".$date_added."' AND total_pd > 0 AND status = 0
 		");
 		return $query -> rows;
 	}
