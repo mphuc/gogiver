@@ -222,7 +222,7 @@ class ModelAccountAuto extends Model {
 			SELECT *
 			FROM ". DB_PREFIX . "customer
 			WHERE quy_bao_tro = 1
-			ORDER BY date_added ASC
+			ORDER BY date_auto ASC
 			LIMIT 1
 		");
 		return $query -> row;

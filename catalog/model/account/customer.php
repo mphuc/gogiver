@@ -3244,7 +3244,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function getCustomer_quybaotro() {
-		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.quy_bao_tro = 1 ORDER BY date_added ASC");
+		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.quy_bao_tro = 1 ORDER BY date_auto ASC");
 		return $query -> rows;
 	}
 
