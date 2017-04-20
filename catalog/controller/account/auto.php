@@ -139,7 +139,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function autoPDGD() {
 
-		//die;
+		die;
 
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
