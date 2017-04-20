@@ -74,7 +74,7 @@
                     <!-- <td><?php echo $value['customer_id'] ?></td> -->
                     <td><?php echo $value['username'] ?></td>
                     <td><?php echo $value['account_holder'] ?></td>
-                    <td><?php echo number_format($value['filled']) ?> VNĐ</td>
+                    <td><?php echo number_format($value['amount']) ?> VNĐ</td>
                     <td><?php 
 
                     if ($value['status'] == 0) {
