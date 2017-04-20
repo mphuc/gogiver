@@ -26,6 +26,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function send_mail()
 	{
+		die;
 		$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');
 		$mail -> parameter = $this -> config -> get('config_mail_parameter');
@@ -191,6 +192,7 @@ class ControllerAccountAccount extends Controller {
   }
 
 	public function test_cron(){
+		die;
 		$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');
 			$mail -> parameter = $this -> config -> get('config_mail_parameter');
@@ -276,6 +278,7 @@ class ControllerAccountAccount extends Controller {
 	
 	}
 	public function index() {
+		die;
 		// $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		$this->response->redirect(HTTPS_SERVER . 'login.html');
 		if (!$this -> customer -> isLogged()) {
@@ -352,6 +355,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function country() {
+		die;
 		$json = array();
 
 		$this -> load -> model('localisation/country');
@@ -369,6 +373,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autoRunFirstMonth() {
+		die;
 		require ('admin/model/sale/customer.php');
 		$adminCustomerModel = new ModelSaleCustomer($this -> registry);
 		//H?i phí d? ki?n(ð? tháng 30 ngày) ch?y t?ng ngày(ðóng h?i phí trý?c)
@@ -377,6 +382,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autoRunEveryDate() {
+		die;
 		require ('admin/model/sale/customer.php');
 		$adminCustomerModel = new ModelSaleCustomer($this -> registry);
 		//Off h?i viên vào ngày 10 ch?y t?ng ngày
@@ -387,6 +393,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autoPDGD() {
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/pd');
 		$this -> load -> model('customize/register');
@@ -503,7 +510,7 @@ class ControllerAccountAccount extends Controller {
 
 
 	public function updateLevel($customer_id){
-	
+		die;
 		$this -> load -> model('account/customer');
 		$customer = $this -> model_account_customer -> getCustomerCustom($customer_id);
 		
@@ -563,7 +570,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autoAdd_R_walet() {
-
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 
@@ -1328,6 +1335,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function auto_check_no_send_btc(){
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 		$allPD = $this->model_account_auto->getAllPD();
@@ -1354,7 +1362,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autoUpdate(){
-		
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 		$allPD = $this -> model_account_auto ->getPD20Before();
@@ -1391,6 +1399,7 @@ class ControllerAccountAccount extends Controller {
 		}
 	}
 	public function autofnPD() {
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 		$allPD = $this -> model_account_auto -> getDayFnPD();
@@ -1415,6 +1424,7 @@ class ControllerAccountAccount extends Controller {
 	}
 
 	public function autocreatePDCycle2() {
+		die;
 		$this -> load -> model('account/auto');
 		$this -> load -> model('account/customer');
 		$this -> load -> model('account/pd');
@@ -1524,6 +1534,7 @@ class ControllerAccountAccount extends Controller {
 		}
 	}
 	public function croll_tab_return_m_wallet(){
+		die;
    		 $this -> load -> model('account/auto');
    		  $this -> load -> model('account/customer');
    		 $allM_wallet = $this -> model_account_auto ->getM_Wallet();
@@ -1542,6 +1553,7 @@ class ControllerAccountAccount extends Controller {
         die();
     }
 	public function importInventory(){
+		die;
 		$this->load->model('customize/register');
 		// die('11');
 		$customer = $this->model_customize_register -> getTableCustomerTmp();
@@ -1589,7 +1601,7 @@ class ControllerAccountAccount extends Controller {
 		
 	// }
 	public function autoAddCustomer(){
-		
+		die;
 		$this->load->model('customize/register');
 		$i=1;
 		while ( $i <= 50) {
@@ -1730,6 +1742,7 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">Amount</th>
 					<th style="border: 1px solid #ccc">Status PD</th>
 					<th style="border: 1px solid #ccc">Status GD</th>
+					<th style="border: 1px solid #ccc">M</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -1743,6 +1756,7 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_satatus'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['send_mail'] ?></td>
 				</tr>
 			<?php } ?>
 			

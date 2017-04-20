@@ -110,7 +110,7 @@ class ControllerAccountAuto extends Controller {
 
 			$this -> sendmail_khoplenh($getCustomer_PD['email'],$subject,$content);
 
-			$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['pd_id']);
+//$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['pd_id']);
 		}
 
 		
@@ -123,7 +123,7 @@ class ControllerAccountAuto extends Controller {
 			$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>GD #'.$this -> get_gd($value['pd_id'])['gd_number'].'</b> has been matched. Please log on to your account to review your bank account, ensure it correct. Please approve the transactions for sender whenever you recived money as soon as possible.</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
 			$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
 
-			$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['gd_id']);
+//$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['gd_id']);
 		}
 	}
 
@@ -140,7 +140,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function autoPDGD() {
 
-		die;
+		//die;
 
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
