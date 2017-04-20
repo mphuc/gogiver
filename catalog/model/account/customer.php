@@ -292,7 +292,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM  ".DB_PREFIX."customer_provide_donation AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.check_return_profit = 0
 			ORDER BY pd.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -308,7 +308,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			FROM  ".DB_PREFIX."customer_provide_donation AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (pd.status = 2 AND pd.date_finish <= NOW() )
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.check_return_profit = 1
 			ORDER BY pd.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -522,7 +522,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation 
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND check_return_profit = 0
 		");
 
 		return $query -> row;
@@ -532,7 +532,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_provide_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND check_return_profit = 1
 		");
 
 		return $query -> row;
