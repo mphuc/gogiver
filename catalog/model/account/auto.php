@@ -897,8 +897,8 @@ class ModelAccountAuto extends Model {
 	{
 		$query = $this -> db -> query("
 			SELECT *
-			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 GROUP BY pd_id
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE sendmail = 0 AND status = 1
 		");
 		return $query -> rows;
 	}
@@ -907,8 +907,8 @@ class ModelAccountAuto extends Model {
 	{
 		$query = $this -> db -> query("
 			SELECT *
-			FROM ". DB_PREFIX . "customer_transfer_list
-			WHERE send_mail = 0 GROUP BY gd_id
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE sendmail = 0 AND status = 1
 		");
 		return $query -> rows;
 	}
@@ -917,9 +917,9 @@ class ModelAccountAuto extends Model {
 	{
 		$query = $this -> db -> query("
 			UPDATE 
-			". DB_PREFIX . "customer_transfer_list
-			SET send_mail = 1
-			WHERE pd_id = '".$pd_id."'
+			". DB_PREFIX . "customer_provide_donation
+			SET sendmail = 1
+			WHERE id = '".$pd_id."'
 		");
 		return $query;
 	}
@@ -928,9 +928,9 @@ class ModelAccountAuto extends Model {
 	{
 		$query = $this -> db -> query("
 			UPDATE 
-			". DB_PREFIX . "customer_transfer_list
-			SET send_mail = 1
-			WHERE gd_id = '".$gd_id."'
+			". DB_PREFIX . "customer_get_donation
+			SET sendmail = 1
+			WHERE id = '".$gd_id."'
 		");
 		return $query;
 	}
