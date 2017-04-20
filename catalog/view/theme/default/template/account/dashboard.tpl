@@ -109,7 +109,7 @@
           <div class="clearfix"></div>
           <?php 
 
-                  if (count($repd) != 0) {
+                  if (count($repd) != 0 && 2==1) {
                     
                     $date_finish = $repd['date_finish'];
                     //$date_finish= date('Y-m-d H:i:s',$date_finish) ;
