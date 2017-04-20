@@ -91,7 +91,7 @@ class ControllerAccountAuto extends Controller {
 		$mail -> setHtml($content);
 		print_r($content);
 		
-		//$mail->send();
+		$mail->send();
 
 	}
 
