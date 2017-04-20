@@ -96,13 +96,13 @@ class ModelAccountAuto extends Model {
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
 			customer_id = '".$customer_id."',
-			date_added = '".$date_finish."',
+			date_added = '".$date_added."',
 			date_finish = '".$date."',
 			filled = '".$filled."',
 			amount = 0,
 			status = 0
 		");
-		$amount	= 7700000;
+		$amount	= $filled;
 
 		$gd_id = $this->db->getLastId();
 
@@ -114,14 +114,14 @@ class ModelAccountAuto extends Model {
 				max_profit = '".$amount."'
 				WHERE id = '".$gd_id."'
 			");
-		if($query){
+		/*if($query){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
 				date_added = NOW()
 
 				WHERE customer_id = '".$customer_id."'
 			");
-		}
+		}*/
 		$data['query'] = $query ? true : false;
 		$data['gd_number'] = $gd_number;
 		return $data;
@@ -172,7 +172,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id, amount , filled
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			AND status = 0 ORDER BY date_added ASC LIMIT 1
 		");
 		return $query -> row;
@@ -209,7 +209,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT id , customer_id , amount , filled
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE date_finish <= '".$date_added."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			AND STATUS =0
 			ORDER BY amount,date_finish ASC
 			LIMIT 1

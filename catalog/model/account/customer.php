@@ -3211,7 +3211,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT A.id , A.customer_id, A.amount , A.filled,B.username
 			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B
 			ON A.customer_id = B.customer_id
-			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			AND A.status = 0 ORDER BY A.date_added ASC
 		");
 		return $query -> rows;
@@ -3224,7 +3224,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT A.id ,B.username, A.customer_id , A.amount , A.filled
 			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
 			ON A.customer_id = B.customer_id
-			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8)
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			AND A.STATUS =0
 			ORDER BY A.amount,A.date_finish ASC
 		");
