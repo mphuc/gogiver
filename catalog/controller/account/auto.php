@@ -879,12 +879,12 @@ public function updateLevel_listID($customer_id){
 	        	if (intval($values['total_block']) === 4) {
 	        		$this -> model_account_auto -> updateStatusCustomer($values['customer_id']);
 	        	}
-	        	echo "user block".$values['customer_id']."<br/>";
+	        	echo "user block ".$values['customer_id']."<br/>";
             }
             else
             {
-            	$this -> model_account_block -> update_block_none($values['customer_id']);
-            	echo "user not block".$values['customer_id']."<br/>";
+            	$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
+            	echo "user not block " .$values['customer_id']."<br/>";
             }
     	}
 

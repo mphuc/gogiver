@@ -293,7 +293,7 @@ class ModelAccountBlock extends Model {
 		return $query;
 	}
 
-	public function update_block_none($customer_id)
+	public function update_block_none($customer_id,$total_pd)
 	{	
 		$date_added= date('Y-m-d H:i:s');
 		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
@@ -301,7 +301,7 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
 			date_block = '".$date_finish."',
-			total_pd = 0
+			total_pd = '".$total_pd."',
 			WHERE customer_id = '".$customer_id."'
 			");
 		return $query;
