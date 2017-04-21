@@ -3292,11 +3292,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getDayFnPD(){
 		$date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
-			SELECT *
-			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= '".$date_added."' AND status = 2 AND check_return_profit = 0
+			SELECT A.*, B.username
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.status = 2 AND A.check_return_profit = 0
 		");
-		print_r($query -> rows); die;
+		
 		return $query -> rows;
 	}
 }
