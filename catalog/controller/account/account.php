@@ -1783,7 +1783,7 @@ class ControllerAccountAccount extends Controller {
 				</tr>
 			</thead>
 			<tbody>
-			<?php $i = 0; foreach ($get_all_tranfer as $value) { $i++; ?>
+			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
 				<tr>
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
