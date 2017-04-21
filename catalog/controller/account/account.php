@@ -1726,6 +1726,43 @@ class ControllerAccountAccount extends Controller {
 		</table>
 		<h1 style="clear: both;">PD - GD = <?php echo number_format($total_PD - $total_GD) ?> VND</h1>
 		<?php
+		$getDayFnPD = $this -> model_account_customer -> getDayFnPD();
+		?>
+		<table style="border: 1px solid #ccc; float: left;width: 100%; margin-top: 40px;">
+			<thead>
+				<tr>
+					<th colspan="5" >Payment <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">ID_PD</th>
+					<th style="border: 1px solid #ccc">ID_user</th>
+					<th style="border: 1px solid #ccc">User PD</th>
+					<th style="border: 1px solid #ccc">Profit</th>
+					<th style="border: 1px solid #ccc">Date Finish</th>
+					<th style="border: 1px solid #ccc">Status PD</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
+				<tr>
+					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo number_format($value['max_profit']) ?></td>
+					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y H:i:s' ,strtotime($value['date_finish'])) ?></td>
+					
+					<td style="border: 1px solid #ccc"><?php echo $value['status'] ?></td>
+					
+				</tr>
+			<?php } ?>
+			
+			</tbody>
+		</table>
+		
+		<?php
 		$get_all_tranfer = $this -> model_account_customer -> get_all_tranfer_list_date();
 		?>
 		<table style="border: 1px solid #ccc; float: left;width: 100%; margin-top: 40px;">
@@ -1763,42 +1800,7 @@ class ControllerAccountAccount extends Controller {
 			</tbody>
 		</table>
 
-		<?php
-		$getDayFnPD = $this -> model_account_customer -> getDayFnPD();
-		?>
-		<table style="border: 1px solid #ccc; float: left;width: 100%; margin-top: 40px;">
-			<thead>
-				<tr>
-					<th colspan="5" >Payment <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
-				</tr>
-				<tr>
-					<th style="border: 1px solid #ccc">TT</th>
-					<th style="border: 1px solid #ccc">ID_PD</th>
-					<th style="border: 1px solid #ccc">ID_user</th>
-					<th style="border: 1px solid #ccc">User PD</th>
-					<th style="border: 1px solid #ccc">Profit</th>
-					<th style="border: 1px solid #ccc">Date Finish</th>
-					<th style="border: 1px solid #ccc">Status PD</th>
-					
-				</tr>
-			</thead>
-			<tbody>
-			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
-				<tr>
-					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo number_format($value['max_profit']) ?></td>
-					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y H:i:s' ,strtotime($value['date_finish'])) ?></td>
-					
-					<td style="border: 1px solid #ccc"><?php echo $value['status'] ?></td>
-					
-				</tr>
-			<?php } ?>
-			
-			</tbody>
-		</table>
+
 
 		<?php
 	}
