@@ -454,9 +454,10 @@ $block_id = $this -> check_block_id();
 				$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
 			}
 			
+			$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
 			
 			//print_r($json['checkCountDay']);die;
-			$GDTMP = $this -> model_account_customer -> getPDById($this -> session -> data['customer_id'], 1, 0);
+			$GDTMP = $this -> model_account_customer -> getPDByIdssss($this -> session -> data['customer_id'], 1, 0);
 
 			if (count($GDTMP) === 0) {
 				$json['checkCountDay'] = 1;

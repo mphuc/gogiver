@@ -285,6 +285,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> rows;
 	}
+
+	public function getPDByIdssss($id_customer, $limit, $offset){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT pd.*, c.username
+			FROM  ".DB_PREFIX."customer_provide_donation AS pd
+			JOIN ". DB_PREFIX ."customer AS c
+			ON pd.customer_id = c.customer_id
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."'
+			ORDER BY pd.date_added ASC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
 	public function getPDById($id_customer, $limit, $offset){
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
