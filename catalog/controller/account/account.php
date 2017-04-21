@@ -1774,7 +1774,7 @@ class ControllerAccountAccount extends Controller {
 				<tr>
 					<th style="border: 1px solid #ccc">TT</th>
 					<th style="border: 1px solid #ccc">ID_PD</th>
-					
+					<th style="border: 1px solid #ccc">ID_user</th>
 					<th style="border: 1px solid #ccc">User PD</th>
 					<th style="border: 1px solid #ccc">Profit</th>
 					<th style="border: 1px solid #ccc">Date Finish</th>
@@ -1787,6 +1787,7 @@ class ControllerAccountAccount extends Controller {
 				<tr>
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
+					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['max_profit']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y H:i:s' ,strtotime($value['date_finish'])) ?></td>
