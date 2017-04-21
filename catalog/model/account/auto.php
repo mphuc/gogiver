@@ -449,10 +449,11 @@ class ModelAccountAuto extends Model {
 	}
 
 	public function getDayFnPD(){
+		$date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <=  NOW() AND status = 2 AND check_return_profit = 0
+			WHERE date_finish <= '".$date_added."' AND status = 2 AND check_return_profit = 0
 		");
 
 		return $query -> rows;
