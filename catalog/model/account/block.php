@@ -301,7 +301,7 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
 			date_block = '".$date_finish."',
-			total_pd = '".$total_pd."',
+			total_pd = '".$total_pd."'
 			WHERE customer_id = '".$customer_id."'
 			");
 		return $query;
