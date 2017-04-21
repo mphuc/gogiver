@@ -755,8 +755,8 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
-			FROM  ".DB_PREFIX."customer_get_donation 
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' NOT IN (status = 2 AND date_finish <= '".$date_added."')
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' 
 		");
 
 		return $query -> row;
@@ -795,7 +795,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*, B.username
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
-			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' NOT IN (A.status = 2 AND A.date_finish <= '".$date_added."')
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."'
 			ORDER BY A.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
