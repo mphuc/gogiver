@@ -14,7 +14,7 @@ error_reporting(-1);
 		$ts_history = $this -> model_sale_customer -> get_count_ph();
 
 		$ts_history = $ts_history['number'];
-
+		
 		$pagination = new Pagination();
 		$pagination -> total = $ts_history;
 		$pagination -> page = $page;

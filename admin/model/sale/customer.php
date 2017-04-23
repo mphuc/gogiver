@@ -2928,7 +2928,7 @@ class ModelSaleCustomer extends Model {
 	public function get_all_pd($limit, $offset){
 		$query = $this -> db -> query("
 			SELECT B.account_holder,B.username, A.*
-			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id WHERE A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			ORDER BY A.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -2978,6 +2978,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this -> db -> query("
 			SELECT B.account_holder,B.username, A.*
 			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			WHERE A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			ORDER BY A.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3022,6 +3023,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."customer_provide_donation 
+			WHERE  customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 		");
 		return $query -> row;
 	}
@@ -3046,6 +3048,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."customer_get_donation 
+			WHERE customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 		");
 		return $query -> row;
 	}
