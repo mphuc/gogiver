@@ -178,11 +178,12 @@
                     <th>TT</th>
                     <!-- <th>ID</th> -->
                     <th>Username</th>
-                    <th>Full name</th>
                     <th>Amount</th>
-                    
                     <th>Date</th>
-                    
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Account Holder</th>
+                    <th>Account Number</th>
                 </tr>
             </thead>
             <tbody id="result_date"> 
@@ -197,13 +198,12 @@
                     <td><?php echo $stt; ?></td>
                     <!-- <td><?php echo $value['customer_id'] ?></td> -->
                     <td><?php echo $valuess['username'] ?></td>
-                    <td><?php echo $values['account_holder'] ?></td>
                     <td><?php echo number_format($valuess['filled']) ?> VNĐ</td>
-                    
-                    
-                   
                     <td><?php echo date('d/m/Y H:i',strtotime($valuess['date_added'])) ?></td>
-                    
+                    <td><?php echo $valuess['telephone'] ?></td>
+                    <td><?php echo $valuess['email'] ?></td>
+                    <td><?php echo $valuess['account_holder'] ?></td>
+                    <td><?php echo $valuess['account_number'] ?></td>
                 </tr>  
               
                 <?php } ?>
