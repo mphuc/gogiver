@@ -54,6 +54,14 @@
         <!-- <a href="index.php?route=report/exportCustomer/xuatpin&token=<?php echo $_GET['token'];?>" style="margin-bottom:10px; float:right">
             <div class="btn btn-success pull-right">Xuất Excel</div>
         </a> -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Toàn bộ PD</a></li>
+          <li><a data-toggle="tab" href="#menu1">PD không khớp</a></li>
+          <li><a data-toggle="tab" href="#menu2">PD khớp ngày mai</a></li>
+        </ul>
+        <div class="tab-content row">
+          <div id="home" class="tab-pane fade in active">
+         
      	<table class="table table-bordered table-hover">
      		<thead>
      			<tr>
@@ -106,6 +114,123 @@
      		</tbody>
      	</table>
         <?php echo $pagination ?>
+
+        </div>
+          <div id="menu1" class="tab-pane fade">
+            <h3 class="text-center">PD bị khóa tài khoản hoặc xóa tài khoản</h3>
+            <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <!-- <th>ID</th> -->
+                    <th>Username</th>
+                    <th>Full name</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                     <th>Time-Remain</th>
+                </tr>
+            </thead>
+            <tbody id="result_date"> 
+               
+                <?php $stt = 0;
+                foreach ($get_all_pd_lock as $values) { $stt ++?>
+               
+                  <tr>
+                    <td><?php echo $stt; ?></td>
+                    <!-- <td><?php echo $value['customer_id'] ?></td> -->
+                    <td><?php echo $values['username'] ?></td>
+                    <td><?php echo $values['account_holder'] ?></td>
+                    <td><?php echo number_format($values['filled']) ?> VNĐ</td>
+                    <td><?php 
+
+                    if ($values['status'] == 0) {
+                        echo "<span class='label label-default'>Watiing</span>";
+                    }
+                    if ($values['status'] == 1) {
+                        echo "<span class='label label-info'>Matched</span>";
+                    }
+                    if ($values['status'] == 2) {
+                        echo "<span class='label label-success'>Finish</span>";
+                    }
+                    if ($values['status'] == 3) {
+                        echo "<span class='label label-danger'>Report</span>";
+                    }
+                    ?> </td>
+                    
+                   
+                    <td><?php echo date('d/m/Y H:i',strtotime($values['date_added'])) ?></td>
+                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $values['date_finish']; ?>">
+                     </span> </td>
+                </tr>  
+              
+                <?php } ?>
+                
+               
+            </tbody>
+        </table>
+          </div>
+          <div id="menu2" class="tab-pane fade">
+            <h3 class="text-center">Danh sách PD có thể khớp vào ngày mai</h3>
+             <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <!-- <th>ID</th> -->
+                    <th>Username</th>
+                    <th>Full name</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                     <th>Time-Remain</th>
+                </tr>
+            </thead>
+            <tbody id="result_date"> 
+               
+                <?php $stt = 0;
+                $total_pd = 0;
+                foreach ($getPD7Before as $valuess) { $stt ++;
+                    $total_pd += $valuess['filled'];
+                ?>
+               
+                  <tr>
+                    <td><?php echo $stt; ?></td>
+                    <!-- <td><?php echo $value['customer_id'] ?></td> -->
+                    <td><?php echo $valuess['username'] ?></td>
+                    <td><?php echo $values['account_holder'] ?></td>
+                    <td><?php echo number_format($valuess['filled']) ?> VNĐ</td>
+                    <td><?php 
+
+                    if ($valuess['status'] == 0) {
+                        echo "<span class='label label-default'>Watiing</span>";
+                    }
+                    if ($valuess['status'] == 1) {
+                        echo "<span class='label label-info'>Matched</span>";
+                    }
+                    if ($valuess['status'] == 2) {
+                        echo "<span class='label label-success'>Finish</span>";
+                    }
+                    if ($valuess['status'] == 3) {
+                        echo "<span class='label label-danger'>Report</span>";
+                    }
+                    ?> </td>
+                    
+                   
+                    <td><?php echo date('d/m/Y H:i',strtotime($valuess['date_added'])) ?></td>
+                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $valuess['date_finish']; ?>">
+                     </span> </td>
+                </tr>  
+              
+                <?php } ?>
+                <tr>
+                    <td colspan="5" class="text-right"><b>Total PD</b></td>
+                    <td colspan="2"><b><?php echo number_format($total_pd) ?> VNĐ</b></td>
+                </tr>
+               
+            </tbody>
+        </table>
+          </div>
+        </div>
     </div>
   </div>
 </div>

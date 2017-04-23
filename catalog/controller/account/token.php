@@ -443,7 +443,7 @@ $block_id = $this -> check_block_id();
 			$tree = $this -> model_account_customer -> getCustomLike($this -> request -> post['keyword'], $this -> customer -> getId());
 
 			foreach ($tree as $key => $value) {
-				echo $value ? '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');"><div>Username: ' . $value['name'] . '</div><div>' . $value['account_holder'] . '</div></li>' : '';
+				echo $value ? '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');"><div>Username: ' . $value['name'] . '</div><div style="text-transform: uppercase">' . $value['account_holder'] . '</div></li>' : '';
 			}
 		}
 	}

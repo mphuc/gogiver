@@ -2936,6 +2936,31 @@ class ModelSaleCustomer extends Model {
 		
 		return $query -> rows;
 	}
+
+	public function getPD7Before(){
+		$date_added= date('Y-m-d H:i:s');
+		
+		$query = $this -> db -> query("
+			SELECT A.id ,B.username, A.customer_id , A.amount , A.filled
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			AND A.STATUS =0
+			ORDER BY A.amount,A.date_finish ASC
+		");
+		return $query -> rows;
+	}
+
+	public function get_all_pd_lock(){
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id WHERE A.customer_id IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			ORDER BY A.date_added DESC
+		");
+		
+		return $query -> rows;
+	}
+
 	public function get_all_mail($limit, $offset){
 		$query = $this -> db -> query("
 			SELECT B.account_holder,B.username, A.*
@@ -2986,6 +3011,32 @@ class ModelSaleCustomer extends Model {
 		
 		return $query -> rows;
 	}
+
+
+	public function get_all_gd_lock(){
+		$query = $this -> db -> query("
+			SELECT B.account_holder,B.username, A.*
+			FROM  ".DB_PREFIX."customer_get_donation A LEFT JOIN ".DB_PREFIX."customer B ON B.customer_id = A.customer_id
+			WHERE A.customer_id IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			ORDER BY A.date_added DESC
+			
+		");
+		
+		return $query -> rows;
+	}
+
+	public function getGD7Before(){
+		$date_added= date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT A.id , A.customer_id, A.amount , A.filled,B.username
+			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			AND A.status = 0 ORDER BY A.date_added ASC
+		");
+		return $query -> rows;
+	}
+
 	public function get_all_pd_waiting($limit, $offset){
 $date_added= date('Y-m-d H:i:s') ;
 		$date_finish = strtotime ( '-1 day' , strtotime ( $date_added ) ) ;

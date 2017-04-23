@@ -752,10 +752,12 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$this -> event -> trigger('post.customer.edit.password');
 	}
 	public function getCustomLike($name, $customer_id) {
+		$getCustomer = $this -> getCustomer($customer_id);
+		$user_dowline = $getCustomer['p_node'].$this->checkUserName_customer_id($customer_id);
 		$listId = '';
 		$query = $this -> db -> query("
 			SELECT username AS name, account_holder FROM ". DB_PREFIX ."customer
-			WHERE (username = '".$this->db->escape($name)."' OR username Like '%".$this->db->escape($name)."%') AND customer_id <> ".$customer_id." 
+			WHERE (username = '".$this->db->escape($name)."' OR username Like '%".$this->db->escape($name)."%') AND customer_id <> ".$customer_id."  AND customer_id IN (".$user_dowline.")
 			LIMIT 50
 		") ;
 		$array_id = $query -> rows;
@@ -773,6 +775,21 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		foreach ($array_id as $item) {
 			$listId .= ',' . $item['name'];
 			$listId .= $this -> checkUserName($item['code']);
+		}
+		return $listId;
+	}
+
+	public function checkUserName_customer_id($id_user) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT c.customer_id AS code FROM ". DB_PREFIX ."customer AS c
+			JOIN ". DB_PREFIX ."customer_ml AS ml
+			ON ml.customer_id = c.customer_id
+			WHERE ml.p_node = ". $id_user ."");
+		$array_id = $query -> rows;
+		foreach ($array_id as $item) {
+			$listId .= ',' . $item['code'];
+			$listId .= $this -> checkUserName_customer_id($item['code']);
 		}
 		return $listId;
 	}

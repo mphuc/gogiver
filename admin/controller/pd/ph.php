@@ -26,6 +26,11 @@ error_reporting(-1);
 		$data['getaccount'] = $this->url->link('pd/ph/getaccount&token='.$this->session->data['token'], '', 'SSL');
 		$data['show_gh_username'] = $this -> url -> link('pd/ph/show_gh_username&token='.$this->session->data['token']);
 		$data['pin'] =  $this-> model_sale_customer->get_all_pd($limit, $start);
+
+		$data['get_all_pd_lock'] = $this -> model_sale_customer -> get_all_pd_lock();
+
+		$data['getPD7Before'] = $this -> model_sale_customer -> getPD7Before();
+		
 		$data['pagination'] = $pagination -> render();
 		
 		$data['export'] = $this -> url -> link('pd/ph/export&token='.$this->session->data['token']);

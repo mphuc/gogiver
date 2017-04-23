@@ -34,6 +34,10 @@ class ControllerPdGh extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
+
+		$data['get_all_gd_lock'] = $this-> model_sale_customer->get_all_gd_lock();
+		$data['getGD7Before'] = $this-> model_sale_customer->getGD7Before();
+
 		$this->response->setOutput($this->load->view('pd/list_gh.tpl', $data));
 	}
 
