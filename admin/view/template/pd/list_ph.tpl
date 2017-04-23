@@ -208,8 +208,8 @@
               
                 <?php } ?>
                 <tr>
-                    <td colspan="5" class="text-right"><b>Total PD</b></td>
-                    <td colspan="2"><b><?php echo number_format($total_pd) ?> VNĐ</b></td>
+                    <td colspan="2" class="text-right"><b>Total PD</b></td>
+                    <td colspan="6"><b><?php echo number_format($total_pd) ?> VNĐ</b></td>
                 </tr>
                
             </tbody>
