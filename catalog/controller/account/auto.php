@@ -139,7 +139,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function autoPDGD() {
 
-		//die;
+		die;
 
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
@@ -499,7 +499,7 @@ public function updateLevel_listID($customer_id){
 
 		$allPD = $this -> model_account_auto -> getDayFnPD();
 		
-		//print_r($allPD);die;
+		print_r($allPD);die;
 
 		$tmp = null;
 		$tmp_count = 1;
