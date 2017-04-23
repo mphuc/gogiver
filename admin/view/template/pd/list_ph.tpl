@@ -171,7 +171,7 @@
         </table>
           </div>
           <div id="menu2" class="tab-pane fade">
-            <h3 class="text-center">Danh sách PD có thể khớp vào ngày mai</h3>
+            <h3 class="text-center">Danh sách PD có thể khớp vào lần khớp tới</h3>
              <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -180,9 +180,9 @@
                     <th>Username</th>
                     <th>Full name</th>
                     <th>Amount</th>
-                    <th>Status</th>
+                    
                     <th>Date</th>
-                     <th>Time-Remain</th>
+                    
                 </tr>
             </thead>
             <tbody id="result_date"> 
@@ -199,26 +199,11 @@
                     <td><?php echo $valuess['username'] ?></td>
                     <td><?php echo $values['account_holder'] ?></td>
                     <td><?php echo number_format($valuess['filled']) ?> VNĐ</td>
-                    <td><?php 
-
-                    if ($valuess['status'] == 0) {
-                        echo "<span class='label label-default'>Watiing</span>";
-                    }
-                    if ($valuess['status'] == 1) {
-                        echo "<span class='label label-info'>Matched</span>";
-                    }
-                    if ($valuess['status'] == 2) {
-                        echo "<span class='label label-success'>Finish</span>";
-                    }
-                    if ($valuess['status'] == 3) {
-                        echo "<span class='label label-danger'>Report</span>";
-                    }
-                    ?> </td>
+                    
                     
                    
                     <td><?php echo date('d/m/Y H:i',strtotime($valuess['date_added'])) ?></td>
-                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $valuess['date_finish']; ?>">
-                     </span> </td>
+                    
                 </tr>  
               
                 <?php } ?>
