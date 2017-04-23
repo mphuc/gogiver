@@ -2941,7 +2941,7 @@ class ModelSaleCustomer extends Model {
 		$date_added= date('Y-m-d H:i:s');
 		
 		$query = $this -> db -> query("
-			SELECT A.id ,B.username, A.customer_id , A.amount , A.filled,A.date_add
+			SELECT A.id ,B.username, A.customer_id , A.amount , A.filled,A.date_added
 			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
 			ON A.customer_id = B.customer_id
 			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
