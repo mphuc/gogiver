@@ -166,7 +166,7 @@
         </table>
           </div>
           <div id="menu2" class="tab-pane fade">
-            <h3 class="text-center">Danh sách PD có thể khớp vào ngày mai</h3>
+            <h3 class="text-center">Danh sách GD có thể khớp vào lần khớp tới</h3>
             
              <table class="table table-bordered table-hover">
             <thead>
