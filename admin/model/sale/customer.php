@@ -3028,7 +3028,7 @@ class ModelSaleCustomer extends Model {
 	public function getGD7Before(){
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
-			SELECT A.id , A.customer_id, A.amount , A.filled,B.username
+			SELECT A.id , A.customer_id, A.amount , A.filled,B.username,A.date_added,B.telephone,B.email,B.account_holder,B.account_number
 			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B
 			ON A.customer_id = B.customer_id
 			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)

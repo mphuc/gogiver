@@ -174,11 +174,14 @@
                     <th>TT</th>
                     <!-- <th>ID</th> -->
                     <th>Username</th>
-                    <th>Full name</th>
+                    
                     <th>Amount</th>
-                    <th>Status</th>
+                    
                     <th>Date</th>
-                     <th>Time-Remain</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Account Holder</th>
+                    <th>Account Number</th>
                 </tr>
             </thead>
             <tbody id="result_date"> 
@@ -191,34 +194,20 @@
                     <td><?php echo $stt; ?></td>
                     <!-- <td><?php echo $value['customer_id'] ?></td> -->
                     <td><?php echo $valuess['username'] ?></td>
-                    <td><?php echo $valuess['account_holder'] ?></td>
-                    <td><?php echo number_format($valuess['amount']) ?> VNĐ</td>
-                    <td><?php 
-
-                    if ($valuess['status'] == 0) {
-                        echo "<span class='label label-default'>Watting</span>";
-                    }
-                    if ($valuess['status'] == 1) {
-                        echo "<span class='label label-info'>Matched</span>";
-                    }
-                    if ($valuess['status'] == 2) {
-                        echo "<span class='label label-success'>Finish</span>";
-                    }
-                    if ($valuess['status'] == 3) {
-                        echo "<span class='label label-danger'>Report</span>";
-                    }
-                    ?> </td>
                     
+                    <td><?php echo number_format($valuess['amount']) ?> VNĐ</td>
                    
                     <td><?php echo date('d/m/Y H:i',strtotime($valuess['date_added'])) ?></td>
-                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $valuess['date_finish']; ?>">
-                     </span> </td>
+                    <td><?php echo $valuess['telephone'] ?></td>
+                    <td><?php echo $valuess['email'] ?></td>
+                    <td><?php echo $valuess['account_holder'] ?></td>
+                    <td><?php echo $valuess['account_number'] ?></td>
                 </tr>  
               
                 <?php } ?>
                  <tr>
-                    <td colspan="5" class="text-right"><b>Total PD</b></td>
-                    <td colspan="2"><b><?php echo number_format($total_gd) ?> VNĐ</b></td>
+                    <td colspan="2" class="text-right"><b>Total PD</b></td>
+                    <td colspan="6"><b><?php echo number_format($total_gd) ?> VNĐ</b></td>
                 </tr>
                
             </tbody>
