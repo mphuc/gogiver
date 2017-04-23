@@ -170,7 +170,7 @@
             </tbody>
         </table>
           </div>
-          <div id="menu2" class="tab-pane fade" style="width: 110%">
+          <div id="menu2" class="tab-pane fade" style="width: 115%">
             <h3 class="text-center">Danh sách PD có thể khớp vào lần khớp tới</h3>
              <table class="table table-bordered table-hover">
             <thead>

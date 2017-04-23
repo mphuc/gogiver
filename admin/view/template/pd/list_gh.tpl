@@ -58,7 +58,7 @@
           <li><a data-toggle="tab" href="#menu1">GD không khớp</a></li>
           <li><a data-toggle="tab" href="#menu2">GD khớp ngày mai</a></li>
         </ul>
-        <div class="tab-content row">
+        <div class="tab-content row" style="overflow-x: scroll;">
           <div id="home" class="tab-pane fade in active">
      	<table class="table table-bordered table-hover">
      		<thead>
@@ -165,7 +165,7 @@
             </tbody>
         </table>
           </div>
-          <div id="menu2" class="tab-pane fade">
+          <div id="menu2" class="tab-pane fade" style="width: 115%">
             <h3 class="text-center">Danh sách GD có thể khớp vào lần khớp tới</h3>
             
              <table class="table table-bordered table-hover">
