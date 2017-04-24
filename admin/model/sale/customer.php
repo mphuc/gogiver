@@ -211,8 +211,8 @@ class ModelSaleCustomer extends Model {
 		return $query->rows;
 	}
 
-	public function getCustomers_forzen($maao){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 100 AND customer_id IN (".$maao.")");
+	public function getCustomers_forzen(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 OR  status = 8");
 
 		return $query->rows;
 	}
@@ -3113,6 +3113,16 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
+	public function get_count_pd_month(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_block_pd_month WHERE date_block <> '0000-00-00 00:00:00' 
+			AND DATE_ADD(date_block,INTERVAL - 3 DAY) < NOW()
+		");
+		return $query -> row;
+	}
+
 
 	public function get_count_matched_rp(){
 
@@ -3477,6 +3487,30 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 
 		return $query -> rows;
+	}
+
+	public function get_all_pd_month($limit,$offset)
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
+			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 3 DAY) < NOW()
+			ORDER BY A.date_block ASC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function get_level($customer_id){
+		$query = $this -> db -> query("
+			SELECT level
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query -> row;
 	}
 
 	public function get_all_tranfer_list_date_rp($limit,$offset)

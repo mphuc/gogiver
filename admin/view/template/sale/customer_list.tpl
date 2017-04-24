@@ -262,7 +262,7 @@
     <li class="active"><a data-toggle="tab" href="#home">All</a></li>
     <li><a data-toggle="tab" href="#menu1">User Lock</a></li>
     <li><a data-toggle="tab" href="#menu2">Special User</a></li>
-    <li><a data-toggle="tab" href="#menu3">Frozen user</a></li>
+    <li><a data-toggle="tab" href="#menu3">Lock user</a></li>
     <li><a data-toggle="tab" href="#menu4">Administrator User</a></li>
   </ul>
 
@@ -534,6 +534,7 @@
           <div class="row">
           <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
           <div class="table-responsive">
+            <p>Màu đỏ: Tài khoản đã xóa</p>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -556,7 +557,7 @@
                 <?php foreach ($getCustomers_forzen as $customer) { 
                   //print_r($customer); die;
                 ?>
-                <tr class="">
+                <tr class="" style="background: <?php echo ($customer['status'] == 10) ? 'rgba(255, 0, 0, 0.37)' : ''; ?>">
                   <!-- <td class="text-center"><?php if (in_array($customer['customer_id'], $selected)) { ?>
                     <input type="checkbox" class="select_cus" name="selected[]" value="<?php echo $customer['customer_id']; ?>" checked="checked" />
                     <?php } else { ?>
