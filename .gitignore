@@ -1,6 +1,6 @@
 .htaccess
 .project
-
+.htpasswd
 /config.php
 admin/config.php
 
