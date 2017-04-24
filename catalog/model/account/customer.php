@@ -2810,8 +2810,6 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
 				max_profit = '".$max_profit."',
-				date_finish = '".$date_finish."',
-				status = 2
 				WHERE id = '".$pd_id."'
 			");
 		$data['query'] = $query ? true : false;
