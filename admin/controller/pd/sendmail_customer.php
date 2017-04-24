@@ -17,7 +17,7 @@ class Controllerpdsendmailcustomer extends Controller {
 			
 			$this -> load -> model('pd/pd');
 			$this -> model_pd_pd -> sendmail_admin($this-> request -> post);
-			die;
+			//die;
 			$this -> response -> redirect($this -> url -> link('pd/sendmail_customer&token='.$_GET['token'].'#suscces'));
 		}
 	}
