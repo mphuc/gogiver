@@ -57,7 +57,12 @@ class ControllerAccountSupport extends Controller {
 			{
 				$cus_id = $this -> model_account_customer -> create_sendmail_account($this->session->data['customer_id'],$this->request->post['name'],$this->request->post['content']);
 
-				$file = $this -> avatar($this -> request -> files, $cus_id);
+				
+				if ($this->request->files['avatar']['name'])
+				{
+					$file = $this -> avatar($this -> request -> files, $cus_id);
+				}
+				
 			}
 			$this -> response -> redirect("support.html#success");
 		}

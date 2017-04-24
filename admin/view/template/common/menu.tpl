@@ -4,7 +4,7 @@
   <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_simple_blog_article; ?></span></a></li>
   <li id="pin" ><a href="index.php?route=pd/pin&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Manage pin - BTC</span></a></li>
   <li id="pin" ><a href="index.php?route=pd/pin/pin_tranfer&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Manage pin - Member</span></a></li>
-  <li id="pin" ><a href="index.php?route=pd/sendmail&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Send Mail</span></a></li>
+  <!-- <li id="pin" ><a href="index.php?route=pd/sendmail&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Send Mail</span></a></li> -->
   <li id="pin" ><a href="index.php?route=pd/manager_sendmail&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Manager Mail <span class="pull-right"><?php echo $get_mail_none ?></span></span></a></li>
   <li id="pin" ><a href="index.php?route=pd/blog&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Manager Blog</span></a></li>
   <li id="pin" ><a href="<?php echo $phmenu;?>"><i class="fa fa-dashboard fa-fw"></i> <span>List PH</span></a></li>
