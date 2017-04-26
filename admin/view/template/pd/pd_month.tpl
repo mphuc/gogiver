@@ -16,7 +16,7 @@
      	<table class="table table-bordered table-hover">
      		<thead>
      			<tr>
-     				<th>TT</th>
+     				<!-- <th>TT</th> -->
             <th>Username</th>
             <th>Number PD</th>
             <th>Max PD</th>
@@ -54,7 +54,7 @@
                    ?>
                   
                   <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
-                    <td><?php echo $stt; ?></td>
+                    <!-- <td><?php echo $stt; ?></td> -->
                     
                     <td><?php echo $value['username'] ?></td>
                     <td><?php echo $value['total_pd'] ?></td>
