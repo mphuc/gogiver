@@ -32,5 +32,8 @@
    if (location.hash === '#suscces') {
      alert("Send mail complete !")
    }
+   if (location.hash === '#error') {
+     alert("Send mail Fail!")
+   }
 </script>  
 <?php echo $footer; ?>

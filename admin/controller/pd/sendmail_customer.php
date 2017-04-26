@@ -16,9 +16,16 @@ class Controllerpdsendmailcustomer extends Controller {
 		if ($this-> request -> post){
 			
 			$this -> load -> model('pd/pd');
-			$this -> model_pd_pd -> sendmail_admin($this-> request -> post);
-			//die;
-			$this -> response -> redirect($this -> url -> link('pd/sendmail_customer&token='.$_GET['token'].'#suscces'));
+			$id = $this -> model_pd_pd -> sendmail_admin($this-> request -> post);
+			if ($id)
+			{
+				$this -> response -> redirect($this -> url -> link('pd/sendmail_customer&token='.$_GET['token'].'#suscces'));
+			}
+			else
+			{
+				$this -> response -> redirect($this -> url -> link('pd/sendmail_customer&token='.$_GET['token'].'#error'));
+			}
+			
 		}
 	}
 

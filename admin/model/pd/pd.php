@@ -175,13 +175,13 @@ class ModelPdPd extends Model {
 	}
 	public function sendmail_admin($data){
 		
-		$this -> db -> query("
-			INSERT INTO ". DB_PREFIX . "account_sendmail_admin SET
-			customer_id = '".$data['customer_id']."',
-			title = '".$data['title']."',
-			description = '".$data['content']."',
+		$this -> db -> query('
+			INSERT INTO '. DB_PREFIX . 'account_sendmail_admin SET
+			customer_id = "'.$data['customer_id'].'",
+			title = "'.$data['title'].'",
+			description = "'.$data['content'].'",
 			date_added = NOW()
-		");
-		
+		');
+		return $pd_id = $this->db->getLastId();
 	}
 }
