@@ -3495,7 +3495,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		$query = $this -> db -> query("
 			SELECT A.*,B.username
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
-			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 3 DAY) < NOW()
+			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 8 DAY) < NOW()
 			ORDER BY A.date_block ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
