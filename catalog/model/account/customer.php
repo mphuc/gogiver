@@ -175,8 +175,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				status = 2,
-				date_finish = '".$date_added."'
+				status = 2
 				WHERE id = '".$pd_id."'
 			");
 		return $query;

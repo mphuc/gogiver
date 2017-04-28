@@ -169,9 +169,14 @@ class ControllerAccountGd extends Controller {
 
 			if(count($countNotGDFinish) > 0 && intval($countNotGDFinish['number']) === 0){
 				$this -> model_account_customer -> updateStusGD($GDCustomer);
-				
-
 			}
+
+			$PDCustomer = $Customer_Tranferlist['pd_id'];
+			$countNotPDFinsh = $this -> model_account_customer -> countStatusPDTransferList($PDCustomer);
+			if(count($countNotPDFinsh) > 0 && intval($countNotPDFinsh['number']) === 0){
+				$this -> model_account_customer -> updateDate_finishPD($PDCustomer);
+			}
+
 		}
 		//print_r($countNotGDFinish);die;
 		$this->response->redirect(HTTPS_SERVER . 'getdonation.html#success');
