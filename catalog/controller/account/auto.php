@@ -511,7 +511,7 @@ public function updateLevel_listID($customer_id){
 		foreach ($allPD as $key => $value) {
 				//check and update level
 		
-			$this -> get_p_node($value['customer_id']);
+			//$this -> get_p_node($value['customer_id']);
 				$this->model_account_auto->update_PD_finish_thuong($value['id']);
 				if ($tmp != $value['customer_id']) {
 

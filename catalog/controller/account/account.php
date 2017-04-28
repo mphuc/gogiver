@@ -26,7 +26,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function send_mail()
 	{
-		die;
+		
 		$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');
 		$mail -> parameter = $this -> config -> get('config_mail_parameter');
@@ -38,75 +38,15 @@ class ControllerAccountAccount extends Controller {
 
 		//$mail -> setTo($this -> config -> get('config_email'));
 	
-		$mail->setTo($email);
+		$mail->setTo("trungdoanict@gmail.com");
 		$mail -> setFrom($this -> config -> get('config_email'));
 		$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
-		$mail -> setSubject("Congratulations Your Registration is Confirmed!");
-		$mail -> setHtml('
-            
-         <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" style="background:#eeeeee;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important">
-         <tbody>
-            <tr>
-               <td>
-                  <table style="border-collapse:collapse;margin:auto;max-width:635px;min-width:320px;width:100%">
-         <tbody>
-            <tr>
-               <td>
-                  <table style="border-collapse:collapse;color:#c0c0c0;font-family:Helvetica Neue,Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
-                     <tbody>
-                        <tr>
-			        <td>
-			          <div style="text-align:center" class="ajs-header"><img src="'.HTTP_SERVER.'catalog/view/theme/default/img/logo.png'.'" alt="logo" style="margin: 20px auto; width:250px;"></div>
-			        </td>
-			       </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-            <tr>
-               <td>
-                  <table style="width:600px;" align="center" border="0" cellspacing="0" style="border-collapse:collapse;border-radius:3px;color:#545454;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:20px;margin:0 auto;width:100%">
-         <tbody>
-            <tr>
-               <td>
-                  <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:separate;font-size:1px;height:2px;line-height:3px;width:100%">
-                     <tbody>
-                        <tr>
-                           <td bgcolor="#9B59B6" valign="top"> </td>
-                        </tr>
-                     </tbody>
-                  </table>
-                  <table style="width:800px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
-         <tbody>
-            <tr>
-               <td align="center" valign="top">
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                     <tbody>
-                        <tr>
-                           <td align="center" style="background:#ffffff">
-                              <a href="https://iontach.biz" target="_blank" data-saferedirecturl="">
-                                 <h1 style="margin-top:30px; font-weight:bold;">Iontach.biz</h1>
-                              </a>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-            <table style="background:#FFF; padding:25px 15px;width:100%; float:left; border-right:1px solid #eee">
-               <tbody>
-                  <tr>
-                     <td style="padding:10px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:20px;line-height:22px;overflow:hidden;text-align:center">
-                  <p style="text-align:center;"><a href="https://iontach.biz" style="background:#D78D00; padding:12px; border-radius:5px;color:#fff;text-decoration:none"><span><b style="font-size:20px; text-align:center">ĐIỀU KỲ DIỆU IONTACH </b></a></span></p>
-                  </tr>
-               </tbody>
-            </table>
-            
-             <hr>
+		$mail -> setSubject("Test crontab");
+		$mail -> setHtml('Test crontab gogiver 8h00
 			');
-		print_r($mail);die;
+		
 		$mail -> send();
-		sleep(10);
+		
 	}
 
 	public function add_customer()

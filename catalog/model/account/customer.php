@@ -713,7 +713,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function createGD($amount){
 		$date_added= date('Y-m-d H:i:s');
-		$date_finish = strtotime ( '+168 hour' , strtotime ( $date_added ) ) ;
+		$date_finish = strtotime ( '+144 hour' , strtotime ( $date_added ) ) ;
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;	
 
 		$this -> db -> query("
