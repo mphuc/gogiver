@@ -37,7 +37,7 @@
                                             <td>ID</td>
                                             <td><?php echo $lang['AMOUNT'] ?></td>
                                             <td><?php echo $lang['danhnhan'] ?></td>
-                                            <td><?php echo $lang['transferTime'] ?></td>
+                                           <!--  <td><?php //echo $lang['transferTime'] ?></td> -->
                                             <td><?php echo $lang['STATUS'] ?></td>
                                             
                                           </tr>
@@ -49,8 +49,8 @@
                                             <td data-title="ID"><strong><?php echo $key['username'] ?></strong></td>
                                             <td data-title="<?php echo $lang['AMOUNT'] ?>"><strong><?php echo number_format($key['amount']); ?> <?php echo $lang['VND'] ?></strong></td>
                                             <td data-title="<?php echo $lang['danhnhan'] ?>"><strong><?php echo number_format($key['filled']); ?> <?php echo $lang['VND'] ?></strong></td>
-                                            <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
-                                             </span> </strong></td>
+                                            <!-- <td data-title="<?php echo $lang['transferTime'] ?>"><strong><span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdown="<?php echo $key['date_finish']; ?>">
+                                             </span> </strong></td> -->
                                                   <td data-title="<?php echo $lang['STATUS'] ?>"><strong><span class=""><?php switch ($key['status']) {
                                              case 0:
                                                  echo '<span class="label label-inverse">'.$lang['dangcho'].'</span>';
