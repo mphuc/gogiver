@@ -167,10 +167,20 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM ". DB_PREFIX ."customer_transfer_list
-			WHERE gd_id = '". $pd_id ."' AND pd_satatus = 0
+			WHERE gd_id = '". $pd_id ."' AND gd_status = 0
 			");
 		return $query -> row;
 	}
+
+	public function countStatusPD_GDTransferList($pd_id){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM ". DB_PREFIX ."customer_transfer_list
+			WHERE pd_id = '". $pd_id ."' AND pd_satatus = 1 AND gd_status = 0
+			");
+		return $query -> row;
+	}
+
 	public function updateStusPD($pd_id){
 		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
