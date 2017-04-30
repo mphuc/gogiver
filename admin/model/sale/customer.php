@@ -3585,7 +3585,7 @@ $date_added= date('Y-m-d H:i:s') ;
 	public function count_get_all_customer(){
 		$query = $this -> db -> query("
 			SELECT count(*) as number
-			FROM  ".DB_PREFIX."customer_ml A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer_ml WHERE p_node = A.customer_id) > 4
+			FROM  ".DB_PREFIX."customer_ml A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer_ml WHERE p_node = A.customer_id) > 5
 			
 		");
 		return $query -> row;
