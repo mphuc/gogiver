@@ -3460,7 +3460,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		$querys = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer
-			WHERE username = '%".$id."%' OR customer_id LIKE '%".$id."%'
+			WHERE username = '".$id."' OR customer_id LIKE '%".$id."%'
 		");
 		if (count($querys -> rows) == 0)
 		{
