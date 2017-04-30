@@ -3457,13 +3457,26 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $array;
 	}
 	public function getlikeusername($id){
-		$query = $this -> db -> query("
+		$querys = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer
-			WHERE username LIKE '%".$id."%' OR customer_id LIKE '%".$id."%'
+			WHERE username = '%".$id."%' OR customer_id LIKE '%".$id."%'
 		");
+		if (count($querys -> rows) == 0)
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer
+				WHERE username LIKE '%".$id."%' OR customer_id LIKE '%".$id."%'
+			");
+			return $query -> rows;
+		}
+		else
+		{
+			return $querys -> rows;
+		}
 
-		return $query -> rows;
+		
 	}
 	public function get_username_node($id){
 		$query = $this -> db -> query("
