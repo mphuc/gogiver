@@ -235,12 +235,13 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row;
 	}
 	public function updateStatusPDTransferList($transferID, $img){
-
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_transfer_list SET
 				pd_satatus = 1,
 				
-				image ='".$img."'
+				image ='".$img."',
+				date_finish = '".$date_added."'
 				WHERE id = '".$this->db->escape($transferID)."'
 		");
 		return $query;

@@ -80,20 +80,20 @@
                     <td><?php echo $value['pd_username'] ?></td>
                     <td><?php echo $value['gd_username'] ?></td>
                     <td><?php echo number_format($value['amount']) ?> VNĐ</td>
-                    <td><?php 
+                    <td class="text-center"><?php 
 
                     if ($value['pd_satatus'] == 0) {
                         echo "<span class='label label-default'>Watting</span>";
                     }
                     if ($value['pd_satatus'] == 1) { ?>
-                       <span style="cursor: pointer;" class='label label-success' data-toggle="modal" data-target="#myModalPD<?php echo $value['transfer_code'] ?>" >Finish</span> 
+                       <span style="cursor: pointer;" class='label label-success' data-toggle="modal" data-target="#myModalPD<?php echo $value['transfer_code'] ?>" >Finish <?php echo date('d-m H:i:s', strtotime($value['date_finish'])) ?></span> 
                     <?php } 
                     if ($value['pd_satatus'] == 2) {
                         echo "<span class='label label-danger'>Report</span>";
                     }
                     ?> </td>
                     
-                    <td><?php 
+                    <td class="text-center"><?php 
 
                     if ($value['gd_status'] == 0) {
                         echo "<span class='label label-default'>Watting</span>";

@@ -175,6 +175,18 @@ class ControllerAccountGd extends Controller {
 			$countNotPDFinsh = $this -> model_account_customer -> countStatusPD_GDTransferList($PDCustomer);
 
 			if(count($countNotPDFinsh) > 0 && intval($countNotPDFinsh['number']) === 0){
+				
+				$total = $this -> model_account_customer -> count_1date($PDCustomer);
+				if (count($total) > 0) {
+					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total['filled'])*1.25,1);
+					
+				}
+
+				$total2day = $this -> model_account_customer -> count_2date($PDCustomer);
+				if (count($total2day) > 0) {
+					$this -> model_account_customer -> update_max_profit($PDCustomer, floatval($total2day['filled'])*1.19,2);
+				}
+
 				$this -> model_account_customer -> updateDate_finishPD($PDCustomer);
 			}
 
