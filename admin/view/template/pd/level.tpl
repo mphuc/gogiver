@@ -40,27 +40,27 @@
                     <td class="text-center"><?php echo $value['username'] ?></td>
                     
                     <td class="text-center"><?php echo $selt -> get_level($value['customer_id']) ?></td>
-                    <td class="text-center"><?php echo $value['level'] ?></td>
+                    <td class="text-center"><?php echo $value['level']-1 ?></td>
                     <td class="text-center">
                       <?php switch ($value['level']) {
                         case 1:
                           $p_node = 6;
                           break;
-                        case 1:
+                        case 2:
                           $p_node = 36;
                           break;
-                        case 1:
+                        case 3:
                           $p_node = 216;
                           break;
-                        case 1:
+                        case 4:
                           $p_node = 1296;
                           break;
-                        case 1:
+                        case 5:
                           $p_node = 7776;
                           break;
                       }  
                         if (intval($selt -> get_level($value['customer_id'])) >= $p_node) { ?>
-                          <span class="label label-success">Đủ điều kiện lên cấp <?php echo $value['level']+1 ?></span>
+                          <span class="label label-success">Đủ điều kiện lên level <?php echo $value['level'] ?></span>
                       <?php   } else {  ?>
                         <span class="label label-warning">Chưa đủ điều kiện lên cấp</span>
                         <?php }
