@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Home || Iontach - Empowering Communitees, Ending Poverty</title>
       <meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
-   
+      <meta name="google-site-verification" content="7cVDY2XlmkdtXi-JL6ajTuVA6GZ7_KISY-UeJBMjGyA" />
       <meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
 <meta name="robots" content="index, follow"/>
 <link rel="icon" href="catalog/view/theme/default/img/icon.png">

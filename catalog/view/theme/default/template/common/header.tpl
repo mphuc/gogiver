@@ -8,7 +8,7 @@
     <title> <?php echo $title; ?> - Empowering Communitees, Ending Poverty </title>
     <meta http-equiv="cache-control" content="no-cache"/>
     <base href="<?php echo $base; ?>" />
-    
+    <meta name="google-site-verification" content="7cVDY2XlmkdtXi-JL6ajTuVA6GZ7_KISY-UeJBMjGyA" />
     <meta name="description" content="Iontach is a community where people help each other.Iontach is not a bank, Iontach does not collect your money, Iontach is not an online business, HYIP, investment or MLM program. Iontach is a community where people help each other." />
   
     <meta name="keyword" content="Iontach Community, Iontach Corporation, mlm,mml">
