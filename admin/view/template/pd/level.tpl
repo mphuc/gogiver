@@ -40,7 +40,7 @@
                     <td class="text-center"><?php echo $value['username'] ?></td>
                     
                     <td class="text-center"><?php echo $selt -> get_level($value['customer_id']) ?></td>
-                    <td class="text-center"><?php echo $value['level']-1 ?></td>
+                    <td class="text-center"><span class="label label-info"> Level <?php echo $value['level']-1 ?></span></td>
                     <td class="text-center">
                       <?php switch ($value['level']) {
                         case 1:
