@@ -284,6 +284,7 @@
         width: 94%;
         background: #fff;
         color: #000;
+        z-index: 99999999999
     }
     #suggesstion-box li.list-group-item,#suggesstion li.list-group-item {
         cursor: pointer;
