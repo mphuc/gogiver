@@ -353,7 +353,7 @@ class  ControllerAccountExport extends Controller {
 		$mail->parameter = 'admin@iontach.biz';
 		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
 		$mail->smtp_username = 'admin@iontach.biz';
-		$mail->smtp_password = 'nneqxaiywrvqddfz';
+		$mail->smtp_password = 'ttqwnsxtfgvrlrao';
 		
 		$mail->smtp_port = '465';
 		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
