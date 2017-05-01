@@ -129,7 +129,7 @@ class ModelCustomizeRegister extends Model {
 	}
 
 	public function addCustomer($data) {
-		
+		$date_added = date('Y-m-d H:i:s');
 
 		$data['p_node'] = $this -> customer -> getId();
 		$email = $data['email'];
@@ -150,7 +150,7 @@ class ModelCustomizeRegister extends Model {
 			cmnd = '" . $this -> db -> escape($data['cmnds']) . "', 
 			account_number = '" . $this -> db -> escape($data['account_number']) . "', 
 			transaction_password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password2'])))) . "',
-			date_added = NOW(),
+			date_added = '".$date_added."',
 			check_Newuser = 0,
 			language = 'vietnamese',
 			account_holder = '".$this -> db -> escape($data['account_holder'])."'
