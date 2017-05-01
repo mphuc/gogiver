@@ -116,6 +116,36 @@ bằng khoảng 350 USD nếu như nhìn trong quy chế của Iontach ngay 
                </div>
             </div>
          </div>
+
+          <hr style="margin-top: 30px; width: 100%; border: 1px solid #eee; float: left; margin-bottom: 30px;">
+         <div class="col-lg-12 col-md-12">
+            <div class="input-group input-icon file-upload">
+               <div class="widget-content" style="padding:10px">
+                <div class="col-md-12">
+                  <div class="col-md-3">
+                  <p><img style="width: 100%;" src="catalog/view/theme/default/images/Screenshot from 2017-05-01 20-31-00.png"> </p>
+                  </div>  
+                  <p>NGUYENLAN  ID 1112  UPLINE – DACTRONG</p>
+                  <p>Ngày 29/3/2017</p>
+                  <p>Email: lannguyen46471@yahoo.com </p>
+                  <p>Hôm nay trong buổi tiệc mừng thôi nôi con người bạn và cũng là một downline của Lan , nhìn mọi người cười nói vui vẻ , ánh mắt rạng ngời hạnh phúc Lan  thấy vui lây , trong câu chuyên  mọi người nói râm rang với nhau về Iontach rất chất phát , Lan xin viết lại nguyên văn câu chuyện .......</p>
+                  <p>Downline tôi nói ... Cái bánh sinh nhật con gái tôi hôm nay là tôi nhận tiền từ quỹ hổ trợ Iontach , lần đầu tiên trong đời tôi thấy cái quỹ tương hổ nầy có ý nghĩa vô cùng và tôi chỉ cần giữ vốn 7trệu 7 thì mỗi tháng tôi có đủ tiền chợ cho mẹ con sắp nhỏ  tôi rồi chị Lan ạ,</p>
+                  <p>Tôi cảm ơn chị đã cho tôi một cơ hội quá tuyệt vời nầy , chị cho tôi gửi lời cảm ơn đến BAN TỔ CHỨC QUỸ IONTACH nhé chị .</p>
+                  <p>Tôi cảm nhận được niềm hạnh phúc của gia đình downline tôi và tôi thấy cay cay nới khóe mắt , bởi niềm hạnh phúc đơn giản và nhỏ nhoi gia đình của anh làm tôi liên tưởng đến nhiều hạnh phúc khác, như người thân, gia đình , bạn bè chung quanh tôi cũng những hạnh phúc rất đơn giản nhỏ nhoi như vậyj mà sao tôi cảm thấy hạnh phúc và ấm tình người đến vậy .</p>
+                  <p>Xin chia sẽ về .. Lan .... cũng là người đã trãi qua các sân cho nhận trong những ngày đầu du nhập về việt nam , bởi dân đa cấp hơn 10 năm trong nghề , tôi cũng như  nhiều anh chị khác khi làm về tài chính , cũng mất mát , và trả giá nhiều và gần như mất hết niềm tin vào sân cho nhận</p>
+                  <p>Tôi đến với Iontach chỉ một điều duy nhất đó là tin vào chị , chứ không tin vào cho nhận ở việt nam ...  Chị đã thuyết phục tôi  dù xã hội  hiện nay người xấu nhiều không điếm được nhưng trong đó chị vẫn nhìn thấy còn nhiều người mong muốn chính nghĩa và trong số đó có tôi , chị nói vậy.   Tôi đồng ý nhưng tôi lặng lẽ âm thầm theo dõi và đón nhận những chuyển biến và lộ trình của Iontach không dám lộ diện ra mặt bởi nhiều yếu tố  ,Lan  vừa vui mừng nhưng nổi lo không kém , Lan cũng như một số anh chị đã trãi qua mất mát nên cần lắm thời gian để minh chứng các giá trị mà Iontach đem lại , bởi mọi thứ đang vẫn còn ở phía trước , không đa nghi cũng không được ... </p>
+                  <p>Lan  nói về chị chắc thành viên biết chị là ai rồi ???</p>
+                  <p>Lan  chưa có dịp may mắn được làm việc trực tiếp với chị , nhưng Anh Trai thứ Ba  của Lan  đã từng làm việc với chị mấy dự án lớn , nên được nghe anh Ba kể về chị vào những năm 2002 có lần Lan may man  được dự thính buổi hội thảo về tài chính hơn 300 người tham dự ,Chị lại là một Diễn Giả , bài thuyết trình của chị là một ấn tượng đã theo Lan trong  những năm tháng qua ....</p>
+                  <p>Hôm nay Lan  muốn nói lên vài lời vì có lẽ do cảm nhận được những điều mà chị đang làm cho cộng đồng , những hạnh phúc rất đời thường đơn giản và quá nhỏ bé so với những người giàu có nhưng nó vô cùng hạnh phúc với những con người còn nhiều khó khăn trong cộng đồng việt nam hiện nay...</p>
+                  <p>Lan  cảm nhận và hạnh phúc khi được làm việc với chị và cảm ơn chị đã cho Lan  dần cảm nhận sâu sắc những giá trị mà chị đang xây dựng .</p>
+                  <p>Lan  tự hứa ngày nào vẫn còn ở quê hương  việt nam ,xin được đóng góp sức nhỏ nầy cùng chị .</p>
+                  <p>Chúc chị  luôn có sức khỏe, và trẻ đẹp .</p>
+                  <p>Chúc Iontach.biz thành công .</p>
+                  <p>Chào Thân Ái .</p>
+                </div>
+               </div>
+            </div>
+         </div>
          
 
 
