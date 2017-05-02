@@ -18,4 +18,4 @@
 
 	header("Content-type: image/jpeg");
 
-	imagejpeg($newImage);
+	imagejpeg($newImage); 
