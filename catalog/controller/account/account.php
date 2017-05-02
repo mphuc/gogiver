@@ -24,10 +24,31 @@ class ControllerAccountAccount extends Controller {
 
 	}
 
+	public function send_mail_test()
+	{
+		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+	    $email = array(
+	        'html' => '<p>Hello!</p>',
+	        'text' => 'text',
+	        'subject' => 'Mail subject',
+	        'from' => array(
+	            'name' => 'Iontach Biz',
+	            'email' => 'admin@iontach.biz'
+	        ),
+	        'to' => array(
+	            array(
+	                'name' => 'Iontach',
+	                'email' => 'trungdoanict@gmail.com'
+	            )
+	        )
+	    );
+	    var_dump($SPApiProxy->smtpSendMail($email));
+	}
+
 	public function send_mail()
 	{
 		
-		$mail = new Mail();
+		/*$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');
 		$mail -> parameter = $this -> config -> get('config_mail_parameter');
 		$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
@@ -43,9 +64,26 @@ class ControllerAccountAccount extends Controller {
 		$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
 		$mail -> setSubject("Test crontab");
 		$mail -> setHtml('Test crontab gogiver 8h00
-			');
+			');*/
 		
-		$mail -> send();
+		$mail = new Mail();
+		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail->parameter = 'admin@iontach.biz';
+		$mail->smtp_hostname = 'ssl://smtp-pulse.com';
+		$mail->smtp_username = 'admin@iontach.biz';
+		$mail->smtp_password = 'CasrDb9RcRqCasrDb9RcRq';
+		$mail->smtp_port = '465';
+		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+		
+		$mail->setTo('noreplymmo2016@gmail.com');
+		
+		$mail->setFrom($this->config->get('config_email'));
+		$mail->setSender("Iontach Backup DB");
+		$mail->setSubject('Backup DB '.DB_USERNAME.' '.date('d/m/Y H:i:s').'');
+		$mail->setText(date('d/m/Y H:i:s'));
+		$mail->send();
+
+		
 		
 	}
 

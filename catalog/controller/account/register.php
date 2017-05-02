@@ -109,7 +109,7 @@ class ControllerAccountRegister extends Controller {
 			$this -> model_account_customer -> insert_block_id($cus_id);
 			$this -> model_account_customer -> insertC_Wallet($cus_id);
 			
-			$mail = new Mail();
+			/*$mail = new Mail();
 			$mail -> protocol = $this -> config -> get('config_mail_protocol');
 			$mail -> parameter = $this -> config -> get('config_mail_parameter');
 			$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
@@ -123,8 +123,8 @@ class ControllerAccountRegister extends Controller {
 			$mail->setTo(array(0 => ''.$_POST['email'].'', 1 => 'mmo.hyipcent@gmail.com'));
 			$mail -> setFrom($this -> config -> get('config_email'));
 			$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
-			$mail -> setSubject("Congratulations Your Registration is Confirmed!");
-			$mail -> setHtml('
+			$mail -> setSubject("Congratulations Your Registration is Confirmed!");*/
+			$content = '
             
          <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" style="background:#eeeeee;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important">
          <tbody>
@@ -175,7 +175,7 @@ class ControllerAccountRegister extends Controller {
                   </table>
                </td>
             </tr>
-            <table style="background:#FFF; padding:25px 15px;width:400px; float:left; border-right:1px solid #eee">
+            <table style="background:#FFF; padding:25px 15px;width:50%; float:left; border-right:1px solid #eee">
                <tbody>
                   <tr>
                      <td style="padding:10px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
@@ -194,7 +194,7 @@ class ControllerAccountRegister extends Controller {
                   </tr>
                </tbody>
             </table>
-            <table style="background:#FFF; padding:25px 15px;width:400px;float:left">
+            <table style="background:#FFF; padding:25px 15px;width:50%;float:left">
                <tbody>
                   <tr>
                      <td style="padding:10px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
@@ -214,10 +214,27 @@ class ControllerAccountRegister extends Controller {
                </tbody>
             </table>
              <hr>
-			');
+			';
 			//print_r($mail);die;
-			$mail -> send();
+			//$mail -> send();
 			
+			$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+		    $email = array(
+		        'html' => $content,
+		        'text' => 'text',
+		        'subject' => "Congratulations Your Registration is Confirmed!",
+		        'from' => array(
+		            'name' => 'Iontach Community',
+		            'email' => 'admin@iontach.biz'
+		        ),
+		        'to' => array(
+		            array(
+		                'name' => 'Iontach Community',
+		                'email' => $_POST['email']
+		            )
+		        )
+		    );
+		    $SPApiProxy->smtpSendMail($email);
 			// $this -> response -> redirect($this -> url -> link('account/register', '#success', 'SSL'));
 			$this->response->redirect(HTTPS_SERVER . 'register.html#success');
 		}

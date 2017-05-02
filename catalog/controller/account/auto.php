@@ -73,9 +73,28 @@ class ControllerAccountAuto extends Controller {
 		$mail->send();
 	}
 
-	public function sendmail_khoplenh($email,$subject,$content)
+	public function sendmail_khoplenh($emails,$subject,$content)
 	{
-		$mail = new Mail();
+		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+	    $email = array(
+	        'html' => $content,
+	        'text' => 'text',
+	        'subject' => $subject,
+	        'from' => array(
+	            'name' => 'Iontach Community',
+	            'email' => 'admin@iontach.biz'
+	        ),
+	        'to' => array(
+	            array(
+	                'name' => 'Iontach Community',
+	                'email' => $emails
+	            )
+	        )
+	    );
+	    print_r($SPApiProxy->smtpSendMail($email));
+		print_r($content);
+		
+		/*$mail = new Mail();
 		$mail -> protocol = $this -> config -> get('config_mail_protocol');
 		$mail -> parameter = $this -> config -> get('config_mail_parameter');
 		$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
@@ -91,7 +110,7 @@ class ControllerAccountAuto extends Controller {
 		$mail -> setHtml($content);
 		print_r($content);
 		
-		$mail->send();
+		$mail->send();*/
 
 	}
 
