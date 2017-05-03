@@ -522,7 +522,7 @@ public function updateLevel_listID($customer_id){
 
 		$allPD = $this -> model_account_auto -> getDayFnPD();
 		
-		print_r($allPD);die;
+		//print_r($allPD);die;
 
 		$tmp = null;
 		$tmp_count = 1;
