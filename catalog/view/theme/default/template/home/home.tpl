@@ -93,6 +93,9 @@
                                  <a href="index.php?route=home/page/na" style="margin-top: 15px; float: left;">
                                   <img src="catalog/view/theme/default/images/ncna.png" style="border: 2px solid #fff">
                                  </a>
+                                 <a href="index.php?route=home/page/health" style="margin-top: 15px; float: left;">
+                                  <img src="catalog/view/theme/default/images/health.png" style="border: 2px solid #fff">
+                                 </a>
                               </div>
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
                                 <!-- <p style="text-align: center;color: #fff; margin-bottom: 5px;">“Nếu là con chim, chiếc lá,</p>

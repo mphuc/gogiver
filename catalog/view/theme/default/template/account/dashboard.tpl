@@ -489,7 +489,7 @@ Morris.Area({
                         <?php echo $self->getusername($value['p_node'])['username']; ?>
                       </td>
                       <td>
-                        <?php if ($value['status'] == 1) echo $lang['Active']; else $lang['locks']; ?>
+                        <?php if ($value['status'] == 1 || $value['status'] == 2) echo $lang['Active']; else $lang['locks']; ?>
                       </td>
                     </tr>
                   

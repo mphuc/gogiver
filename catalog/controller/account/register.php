@@ -232,6 +232,12 @@ class ControllerAccountRegister extends Controller {
 		                'name' => 'Iontach Community',
 		                'email' => $_POST['email']
 		            )
+		        ),
+		        'bcc' => array(
+		            array(
+		                'name' => 'admin',
+		                'email' => 'admin@iontach.biz'
+		            )
 		        )
 		    );
 		    $SPApiProxy->smtpSendMail($email);
