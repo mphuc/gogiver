@@ -5,7 +5,7 @@ class ControllerAccountAccount extends Controller {
 	public function add_cus()
 	{
 		$this -> load-> model('account/customer');
-		$array_customer = array(64,65,62);
+		$array_customer = array(65);
 		$customer_id = $array_customer[array_rand($array_customer)];
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
