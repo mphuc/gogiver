@@ -18,7 +18,7 @@ class ControllerAccountAccount extends Controller {
 		$account_holder = '';
 		if ($_GET['pass'] == '2414')
 		{
-			echo $this -> model_account_customer -> addCustomer_abc(87,$username,$account_holder);
+			echo $this -> model_account_customer -> addCustomer_abc(65,$username,$account_holder);
 		}
 		
 
