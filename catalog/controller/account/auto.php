@@ -236,11 +236,11 @@ class ControllerAccountAuto extends Controller {
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
 
-					if ($pdSend > 2600000)
+					if ($pdSend > 4000000)
 					{
-						$pdSend = 2600000;
+						$pdSend = 4000000;
 					}
-					if ($pdSend < 2600000)
+					if ($pdSend < 4000000)
 					{
 						$pdSend = $pdSend;
 					}
@@ -248,7 +248,7 @@ class ControllerAccountAuto extends Controller {
 					$data['amount'] = $pdSend;
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-					if ($pdSend < 2600000)
+					if ($pdSend < 4000000)
 					{
 						echo "PD-GD"."<br/>";
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
@@ -286,11 +286,11 @@ class ControllerAccountAuto extends Controller {
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
 
-					if ($pdSend > 2600000)
+					if ($pdSend > 4000000)
 					{
-						$pdSend = 2600000;
+						$pdSend = 4000000;
 					}
-					if ($pdSend < 2600000)
+					if ($pdSend < 4000000)
 					{
 						$pdSend = $pdSend;
 					}
@@ -298,7 +298,7 @@ class ControllerAccountAuto extends Controller {
 					$data['amount'] = $pdSend;
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-					if ($pdSend < 2600000)
+					if ($pdSend < 4000000)
 					{	
 						echo "PD"."<br/>";
 						$this -> model_account_auto -> updateStatusPD($pdList['id'], 1);
@@ -334,11 +334,11 @@ class ControllerAccountAuto extends Controller {
 					$data['pd_id_customer'] = $pdList['customer_id'];
 					$data['gd_id_customer'] = $gdList['customer_id'];
 
-					if ($gdResiver > 2600000)
+					if ($gdResiver > 4000000)
 					{
-						$gdResiver = 2600000;
+						$gdResiver = 4000000;
 					}
-					if ($gdResiver < 2600000)
+					if ($gdResiver < 4000000)
 					{
 						$gdResiver = $gdResiver;
 					}
@@ -347,7 +347,7 @@ class ControllerAccountAuto extends Controller {
 
 					$id_transfer = $this -> model_account_auto -> createTransferList($data);
 					$this -> model_account_auto -> updateTransferList($id_transfer);
-					if ($gdResiver < 2600000)
+					if ($gdResiver < 4000000)
 					{
 						echo "GD"."<br/>";
 						$this -> model_account_auto -> updateStatusGD($gdList['id'], 1);
