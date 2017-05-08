@@ -3362,4 +3362,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		
 		return $query -> rows;
 	}
+
+	public function update_show_gd(){
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."customer_get_donation SET show_gd = 1
+			WHERE status = 2
+		");
+	}
 }

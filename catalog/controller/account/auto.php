@@ -499,6 +499,7 @@ public function updateLevel_listID($customer_id){
 			}
 		}
 	}
+	
 	public function get_p_node($customer_id){
 
 		$this -> load -> model('account/auto');
@@ -542,6 +543,7 @@ public function updateLevel_listID($customer_id){
 
 		}
 		// echo $tmp_count;
+		$this -> model_account_customer -> update_show_gd();
 	}
 
 	public function update_commission($customer_id, $amount, $pd_number)
