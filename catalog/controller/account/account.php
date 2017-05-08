@@ -194,9 +194,10 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">TT</th>
 					<th style="border: 1px solid #ccc">ID_PD</th>
 					<th style="border: 1px solid #ccc">username</th>
-					<th style="border: 1px solid #ccc">customer_id</th>
-					<th style="border: 1px solid #ccc">amount PD (filled)</th>
-					<th style="border: 1px solid #ccc">amount PD (amount)</th>
+					<th style="border: 1px solid #ccc">Customer_id</th>
+					<th style="border: 1px solid #ccc">Amount PD (filled)</th>
+					<th style="border: 1px solid #ccc">Amount PD (amount)</th>
+					<th style="border: 1px solid #ccc">Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -208,6 +209,7 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['filled']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
+					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y h:i',strtotime($value['date_added']))  ?></td>
 				</tr>
 			<?php } ?>
 			</tbody>
@@ -227,11 +229,12 @@ class ControllerAccountAccount extends Controller {
 				</tr>
 				<tr>
 					<th style="border: 1px solid #ccc">TT</th>
-					<th style="border: 1px solid #ccc">ID_PD</th>
+					<th style="border: 1px solid #ccc">ID_GD</th>
 					<th style="border: 1px solid #ccc">username</th>
 					<th style="border: 1px solid #ccc">customer_id</th>
 					<th style="border: 1px solid #ccc">amount GD (amount)</th>
 					<th style="border: 1px solid #ccc">amount GD (filled)</th>
+					<th style="border: 1px solid #ccc">Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -243,6 +246,7 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['filled']) ?></td>
+					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y h:i',strtotime($value['date_added']))  ?></td>
 				</tr>
 			<?php } ?>
 			<tr>
