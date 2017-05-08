@@ -820,7 +820,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getTotalGD_finish($id_customer){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
-AND status <> 2			FROM  ".DB_PREFIX."customer_get_donation
+			FROM  ".DB_PREFIX."customer_get_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
 		");
 
