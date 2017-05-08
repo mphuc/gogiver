@@ -811,7 +811,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_get_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' 
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( status <> 2 AND date_finish > '".$date_added."' )
 		");
 
 		return $query -> row;
@@ -820,7 +820,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getTotalGD_finish($id_customer){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
-			FROM  ".DB_PREFIX."customer_get_donation
+AND status <> 2			FROM  ".DB_PREFIX."customer_get_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
 		");
 
@@ -850,7 +850,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*, B.username
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
-			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."'
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND ( A.status <> 2 AND A.date_finish > '".$date_added."' )
 			ORDER BY A.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
