@@ -195,8 +195,8 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">ID_PD</th>
 					<th style="border: 1px solid #ccc">username</th>
 					<th style="border: 1px solid #ccc">Customer_id</th>
-					<th style="border: 1px solid #ccc">Amount PD (filled)</th>
-					<th style="border: 1px solid #ccc">Amount PD (amount)</th>
+					<th style="border: 1px solid #ccc">(filled)</th>
+					<th style="border: 1px solid #ccc">(amount)</th>
 					<th style="border: 1px solid #ccc">Date</th>
 				</tr>
 			</thead>
@@ -232,8 +232,8 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">ID_GD</th>
 					<th style="border: 1px solid #ccc">username</th>
 					<th style="border: 1px solid #ccc">customer_id</th>
-					<th style="border: 1px solid #ccc">amount GD (amount)</th>
-					<th style="border: 1px solid #ccc">amount GD (filled)</th>
+					<th style="border: 1px solid #ccc">(amount)</th>
+					<th style="border: 1px solid #ccc">(filled)</th>
 					<th style="border: 1px solid #ccc">Date</th>
 				</tr>
 			</thead>
