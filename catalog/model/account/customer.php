@@ -193,9 +193,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function updateDate_finishPD($pd_id){
 		$date_added = date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+ 1 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d 07:55:00',$date_finish) ;
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				date_finish = '".$date_added."'
+				date_finish = '".$date_finish."'
 				WHERE id = '".$pd_id."'
 			");
 		return $query;
@@ -821,7 +823,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT( * ) AS number
 			FROM  ".DB_PREFIX."customer_get_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 2 AND date_finish <= NOW())
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND show_gd = 1
 		");
 
 		return $query -> row;
@@ -863,7 +865,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*, B.username
 			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
-			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND (A.status = 2 AND A.date_finish <= NOW())
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND A.show_gd = 1
 			ORDER BY A.date_added ASC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3369,7 +3371,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*, B.username,B.customer_id
 			FROM ". DB_PREFIX . "customer_provide_donation A LEFT JOIN ". DB_PREFIX . "customer B ON A.customer_id = B.customer_id
-			WHERE A.date_finish <= '".$date_added."' AND A.status = 2 AND A.check_return_profit = 0
+			WHERE A.status = 2 AND A.check_return_profit = 0
 		");
 		
 		return $query -> rows;
