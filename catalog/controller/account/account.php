@@ -324,7 +324,7 @@ class ControllerAccountAccount extends Controller {
 		<table style="border: 1px solid #ccc; float: left;width: 100%; margin-top: 40px;">
 			<thead>
 				<tr>
-					<th colspan="5" >TRANFER LISH <?php echo $date_added= date('Y-m-d H:i:s'); ?></th>
+					<th colspan="5" >TRANFER LISH</th>
 				</tr>
 				<tr>
 					<th style="border: 1px solid #ccc">TT</th>
@@ -339,8 +339,18 @@ class ControllerAccountAccount extends Controller {
 				</tr>
 			</thead>
 			<tbody>
-			<?php $i = 0; foreach ($get_all_tranfer as $value) { $i++; ?>
-				<tr>
+			<?php $i = 0; foreach ($get_all_tranfer as $value) { $i++; 
+				$date = date('Y-m-d');
+				if (date('Y-m-d',strtotime($value['date_added'])) == $date)
+				{
+					$color = 'rgba(76, 175, 80, 0.68)';
+				}
+				else
+				{
+					$color = "rgba(251, 17, 0, 0.58)";
+				}
+			?>
+				<tr style="background: <?php echo $color; ?>">
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_id'] ?></td>

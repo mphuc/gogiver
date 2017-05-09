@@ -3306,7 +3306,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username
 			FROM  ".DB_PREFIX."customer_transfer_list A
-			WHERE date_added >= '".$date." 00:00:00' AND date_added <= '".$date." 23:59:59'
+			WHERE A.pd_satatus = 0 OR A.gd_status = 0 ORDER BY A.date_added DESC
 		");
 
 		return $query -> rows;
