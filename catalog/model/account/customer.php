@@ -1293,6 +1293,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function update_home_page(){
 		$hour = date('H');
+		echo $hour; die;
 		if ($hour >= 20 && $hour <= 6)
 		{
 			$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
