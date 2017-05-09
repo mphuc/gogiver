@@ -343,7 +343,7 @@ class ControllerAccountAccount extends Controller {
 				$date = date('Y-m-d');
 				if (date('Y-m-d',strtotime($value['date_added'])) == $date)
 				{
-					$color = 'rgba(76, 175, 80, 0.68)';
+					$color = '#fff';
 				}
 				else
 				{
