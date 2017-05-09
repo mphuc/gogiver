@@ -160,6 +160,20 @@ class ModelAccountBlock extends Model {
 		");
 		return $query_row -> rows;
 	}
+
+
+	public function get_confirm_gd_no()
+	{
+		$date_now= date('Y-m-d H:i:s');
+		$query_row = $this -> db -> query("
+			SELECT A.* 
+			FROM ". DB_PREFIX . "customer_transfer_list A INNER JOIN ". DB_PREFIX . "customer_get_donation B ON A.gd_id = B.id
+			WHERE DATE_ADD(A.date_finish,INTERVAL 12 HOUR) <= '".$date_now."'
+				  AND A.pd_satatus = 1 AND A.gd_status = 0 AND B.check_request_block <> 1
+		");
+		return $query_row -> rows;
+	}
+
 	public function insert_block_id_gd($id_customer,$description,$id_gd){
 		$date_now= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("

@@ -162,7 +162,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function autoPDGD() {
 
-		die;
+		//die;
 
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
@@ -793,6 +793,7 @@ public function updateLevel_listID($customer_id){
 	// }
 	// sau 2 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
 	public function croll_tab_check_no_re_pd(){
+		die;
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
 		 $this -> load -> model('account/block');
@@ -837,16 +838,16 @@ public function updateLevel_listID($customer_id){
         //find and up status pd = 3
         $this -> load -> model('account/auto');
         $this -> load -> model('account/block');
-        $query_rp = $this -> model_account_block -> get_rp_gd_no_fn();
-      	 //echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
+        $query_rp = $this -> model_account_block -> get_confirm_gd_no();
+      	//echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
         foreach ($query_rp as $key => $value) {
         	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
-        	$description ='Change status from ACTIVE to FROZEN Reason: you did not complete GD';
-        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
-        	$this -> model_account_block -> update_check_block_gd($value['id']);
-        	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+        	$description ='Change status from ACTIVE to FROZEN Reason: You did not complete GD';
+        	$this -> model_account_block -> insert_block_id_gd($value['gd_id_customer'], $description, $value['gd_id']);
+        	$this -> model_account_block -> update_check_block_gd($value['gd_id']);
+        	$total = $this -> model_account_block -> get_total_block_id_gd($value['gd_id_customer']);
         	if (intval($total) === 2) {
-        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+        		$this -> model_account_auto -> updateStatusCustomer($value['gd_id_customer']);
         	}
         }       
         die();

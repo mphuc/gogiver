@@ -3515,16 +3515,40 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
-	public function get_all_pd_month($limit,$offset)
+	public function get_all_pd_month()
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
 			SELECT A.*,B.username
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
 			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 8 DAY) < NOW()
+			ORDER BY B.date_added ASC
+		");
+
+		return $query -> rows;
+	}
+
+	public function pd_user_all_node()
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
+			ON A.customer_id = B.customer_id WHERE A.date_block = '0000-00-00 00:00:00'
 			ORDER BY A.date_block ASC
-			LIMIT ".$limit."
-			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function pd_user_all()
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
+			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00'
+			ORDER BY A.date_block ASC
 		");
 
 		return $query -> rows;

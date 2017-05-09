@@ -12,62 +12,186 @@
       <h3 class="panel-title">Danh sách nhắc nhở PD</h3>
     </div>
     <div class="panel-body">
-     
-     	<table class="table table-bordered table-hover">
-     		<thead>
-     			<tr>
-     				<!-- <th>TT</th> -->
-            <th>Username</th>
-            <th>Number PD</th>
-            <th>Max PD</th>
-            <th>Date Lock</th>
-     			</tr>
-     		</thead>
-           
-     		<tbody id="result_date"> 
-                <?php $stt = 0;
-                $data_add = date('Y-m-d');
-                foreach ($pin as $value) { $stt ++?>
-                  <?php $get_level = $seft -> get_level($value['customer_id']);
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Nhắc nhở PD</a></li>
+        <li><a data-toggle="tab" href="#menu1">PD thành viên đang hoạt động</a></li>
+        <li><a data-toggle="tab" href="#menu2">ID chưa PD lần nào</a></li>
+      </ul>
 
-                    switch ($get_level['level']) {
-                          case 1:
-                            $num_pd = 3;
-                            break;
-                          case 2:
-                            $num_pd = 5;
-                            break;
-                          case 3:
-                            $num_pd = 7;
-                            break;
-                          case 4:
-                            $num_pd = 9;
-                            break;
-                          case 5:
-                            $num_pd = 1;
-                            break;
-                          case 6:
-                            $num_pd = 13;
-                            break;
-                  }
-                  if ($value['total_pd'] < $num_pd) {
-                   ?>
-                  
-                  <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
-                    <!-- <td><?php echo $stt; ?></td> -->
+      <div class="tab-content row">
+        <div id="home" class="tab-pane fade in active">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <!-- <th>TT</th> -->
+                <th>Username</th>
+                <th>Number PD</th>
+                <th>Max PD</th>
+                <th>Date Lock</th>
+              </tr>
+            </thead>
+               
+            <tbody id="result_date"> 
+                    <?php $stt = 0;
+                    $data_add = date('Y-m-d');
+                    foreach ($pin as $value) { $stt ++?>
+                      <?php $get_level = $seft -> get_level($value['customer_id']);
+
+                        switch ($get_level['level']) {
+                              case 1:
+                                $num_pd = 3;
+                                break;
+                              case 2:
+                                $num_pd = 5;
+                                break;
+                              case 3:
+                                $num_pd = 7;
+                                break;
+                              case 4:
+                                $num_pd = 9;
+                                break;
+                              case 5:
+                                $num_pd = 1;
+                                break;
+                              case 6:
+                                $num_pd = 13;
+                                break;
+                      }
+                      if ($value['total_pd'] < $num_pd) {
+                       ?>
+                      
+                      <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
+                        <!-- <td><?php echo $stt; ?></td> -->
+                        
+                        <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['total_pd'] ?></td>
+                        <td><?php echo $num_pd ?></td>
+                        <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
+                        
+                    </tr>  
                     
-                    <td><?php echo $value['username'] ?></td>
-                    <td><?php echo $value['total_pd'] ?></td>
-                    <td><?php echo $num_pd ?></td>
-                    <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
+                 
+                    <?php } }?>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div id="menu1" class="tab-pane fade">
+            <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <!-- <th>TT</th> -->
+                <th>Username</th>
+                <th>Number PD</th>
+                <th>Max PD</th>
+                <th>Date Lock</th>
+              </tr>
+            </thead>
+               
+            <tbody id="result_date"> 
+                    <?php $stt = 0;
+                    $data_add = date('Y-m-d');
+                    foreach ($pd_user_all as $value) { $stt ++?>
+                      <?php $get_level = $seft -> get_level($value['customer_id']);
+
+                        switch ($get_level['level']) {
+                              case 1:
+                                $num_pd = 3;
+                                break;
+                              case 2:
+                                $num_pd = 5;
+                                break;
+                              case 3:
+                                $num_pd = 7;
+                                break;
+                              case 4:
+                                $num_pd = 9;
+                                break;
+                              case 5:
+                                $num_pd = 1;
+                                break;
+                              case 6:
+                                $num_pd = 13;
+                                break;
+                      }
+                      if ($value['total_pd'] < $num_pd) {
+                       ?>
+                      
+                      <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
+                        <!-- <td><?php echo $stt; ?></td> -->
+                        
+                        <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['total_pd'] ?></td>
+                        <td><?php echo $num_pd ?></td>
+                        <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
+                        
+                    </tr>  
                     
-                </tr>  
-                
-             
-                <?php } }?>
-     		</tbody>
-     	</table>
-      <?php echo $pagination ?>
+                 
+                    <?php } }?>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div id="menu2" class="tab-pane fade">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <!-- <th>TT</th> -->
+                <th>Username</th>
+                <th>Number PD</th>
+                <th>Max PD</th>
+                <th>Date Lock</th>
+              </tr>
+            </thead>
+               
+            <tbody id="result_date"> 
+                    <?php $stt = 0;
+                    $data_add = date('Y-m-d');
+                    foreach ($pd_user_all_node as $value) { $stt ++?>
+                      <?php $get_level = $seft -> get_level($value['customer_id']);
+
+                        switch ($get_level['level']) {
+                              case 1:
+                                $num_pd = 3;
+                                break;
+                              case 2:
+                                $num_pd = 5;
+                                break;
+                              case 3:
+                                $num_pd = 7;
+                                break;
+                              case 4:
+                                $num_pd = 9;
+                                break;
+                              case 5:
+                                $num_pd = 1;
+                                break;
+                              case 6:
+                                $num_pd = 13;
+                                break;
+                      }
+                      if ($value['total_pd'] < $num_pd) {
+                       ?>
+                      
+                      <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
+                        <!-- <td><?php echo $stt; ?></td> -->
+                        
+                        <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['total_pd'] ?></td>
+                        <td><?php echo $num_pd ?></td>
+                        <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
+                        
+                    </tr>  
+                    
+                 
+                    <?php } }?>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

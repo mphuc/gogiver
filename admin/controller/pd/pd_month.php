@@ -7,26 +7,13 @@ class Controllerpdpdmonth extends Controller {
 		$this->document->setTitle('Provide Help');
 		$this->load->model('sale/customer');
 		
-		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
 
-		$limit = 50;
-		$start = ($page - 1) * 50;
+		$data['pin'] =  $this-> model_sale_customer->get_all_pd_month();
 
-		$ts_history = $this -> model_sale_customer -> get_count_pd_month();
+		$data['pd_user_all'] = $this-> model_sale_customer->pd_user_all();
 
-		$ts_history = $ts_history['number'];
-
-		$pagination = new Pagination();
-		$pagination -> total = $ts_history;
-		$pagination -> page = $page;
-		$pagination -> limit = $limit;
-		$pagination -> num_links = 5;
-		$pagination -> text = 'text'; 
-		$pagination -> url = $this -> url -> link('pd/pd_month', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
-
-		$data['pagination'] = $pagination -> render();
-
-		$data['pin'] =  $this-> model_sale_customer->get_all_pd_month($limit, $start);
+		$data['pd_user_all_node'] = $this-> model_sale_customer->pd_user_all_node();
+		
 
 		$data['load_pin_date'] = $this -> url -> link('pd/matched/load_pin_date&token='.$this->session->data['token']);
 		$data['show_gh_username'] = $this -> url -> link('pd/gh/show_gh_username&token='.$this->session->data['token']);
