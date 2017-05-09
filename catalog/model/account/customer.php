@@ -1294,7 +1294,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function update_home_page(){
 		$hour = date('H');
 
-		if (intval($hour) >= 20 && intval($hour) <= 6)
+		if (intval($hour) >= 20 or intval($hour) <= 6)
 		{
 			$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
 			value = value - ".rand(10,15)."
