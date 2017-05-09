@@ -1292,9 +1292,20 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function update_home_page(){
-		$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
+		$hour = date('H');
+		if ($hour >= 20 && $hour <= 6)
+		{
+			$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
+			value = value - ".rand(10,15)."
+			WHERE setting_id = 16177	");
+		}
+		else
+		{
+			$query = $this -> db -> query("	UPDATE " . DB_PREFIX . "setting SET
 			value = value	 + ".rand(10,15)."
 			WHERE setting_id = 16177	");
+		}
+		
 		return $query;
 	}
 
