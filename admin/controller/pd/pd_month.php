@@ -7,12 +7,17 @@ class Controllerpdpdmonth extends Controller {
 		$this->document->setTitle('Provide Help');
 		$this->load->model('sale/customer');
 		
+		$maao = $this -> model_sale_customer -> get_childrend_all_tree(64);
 
-		$data['pin'] =  $this-> model_sale_customer->get_all_pd_month();
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(65);
 
-		$data['pd_user_all'] = $this-> model_sale_customer->pd_user_all();
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+		$data['pin'] =  $this-> model_sale_customer->get_all_pd_month($maao);
 
-		$data['pd_user_all_node'] = $this-> model_sale_customer->pd_user_all_node();
+		$data['pd_user_all'] = $this-> model_sale_customer->pd_user_all($maao);
+
+		$data['pd_user_all_node'] = $this-> model_sale_customer->pd_user_all_node($maao);
 		
 
 		$data['load_pin_date'] = $this -> url -> link('pd/matched/load_pin_date&token='.$this->session->data['token']);
