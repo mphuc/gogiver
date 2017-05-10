@@ -2814,16 +2814,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function count_1date($pd_id){
-		$date_added = date('Y-m-d H:i:s');
+		
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+2 day' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
 		$query = $this->db->query("SELECT * 
-			FROM sm_customer_provide_donation WHERE DATE_ADD(date_finish,INTERVAL - 2 DAY) < NOW() AND id = '".$pd_id."'");
+			FROM sm_customer_provide_donation WHERE date_finish < '".$date_finish."' AND id = '".$pd_id."'");
 		
 		return $query->row;
 	}
 	public function count_2date($pd_id){
-		$date_added = date('Y-m-d H:i:s');
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+1 day' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
 		$query = $this->db->query("SELECT *
-			FROM sm_customer_provide_donation WHERE DATE_ADD(date_finish,INTERVAL - 1 DAY) < NOW() AND id = '".$pd_id."'");
+			FROM sm_customer_provide_donation WHERE date_finish < '".$date_finish."' AND id = '".$pd_id."'");
 		
 		return $query->row;
 	}
@@ -2833,7 +2840,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				max_profit = '".$max_profit."',
+				max_profit = '".$max_profit."'
 				WHERE id = '".$pd_id."'
 			");
 		$data['query'] = $query ? true : false;
