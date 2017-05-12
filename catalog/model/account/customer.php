@@ -176,7 +176,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM ". DB_PREFIX ."customer_transfer_list
-			WHERE pd_id = '". $pd_id ."' AND pd_satatus = 1 AND gd_status = 1
+			WHERE pd_id = '". $pd_id ."' AND pd_satatus = 1 AND gd_status = 0
 			");
 		return $query -> row;
 	}

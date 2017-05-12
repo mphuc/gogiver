@@ -18,7 +18,7 @@ class ControllerAccountAccount extends Controller {
 		$account_holder = '';
 		if ($_GET['pass'] == '2414')
 		{
-			echo $this -> model_account_customer -> addCustomer_abc(62,$username,$account_holder);
+			echo $this -> model_account_customer -> addCustomer_abc($p_node_rand,$username,$account_holder);
 		}
 		
 
@@ -178,7 +178,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function check_autoPDGD()
 	{
-		$this -> request -> get['qwesfkmassd'] != "ksahdadbqssdkhfbkahkva" && die();
+		$this -> request -> get['qwesfkmassds'] != "ksahdadbqssdkhfbkahkva" && die();
 
 		$this -> load -> model('account/customer');
 		$getPD7Before = $this -> model_account_customer -> getPD7Before();
