@@ -178,8 +178,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function check_autoPDGD()
 	{
-		empty($this -> request -> get['qwesfkmassds']) && $this->response->redirect(HTTPS_SERVER . 'login.html');
-		$this -> request -> get['qwesfkmassds'] != "ksahdadbqssdkhfbkahkva" && die();
+		$this -> request -> get['qwesfkmassd'] != "ksahdadbqssdkhfbkahkva" && die();
 
 		$this -> load -> model('account/customer');
 		$getPD7Before = $this -> model_account_customer -> getPD7Before();
