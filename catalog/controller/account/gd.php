@@ -174,6 +174,7 @@ class ControllerAccountGd extends Controller {
 			$PDCustomer = $Customer_Tranferlist['pd_id'];
 			$countNotPDFinsh = $this -> model_account_customer -> countStatusPD_GDTransferList($PDCustomer);
 
+			
 			if(count($countNotPDFinsh) > 0 && intval($countNotPDFinsh['number']) === 0){
 				
 				$total = $this -> model_account_customer -> count_1date($PDCustomer);
