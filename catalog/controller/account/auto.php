@@ -862,19 +862,19 @@ public function updateLevel_listID($customer_id){
     public function croll_tab_check_no_pd_month()
     {
     	$this -> load -> model('account/block');
-    	$get_all_customer = $this -> model_account_block -> get_all_customer();
+    	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
     		//add all user
-    		//$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
+    		$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
 
     		// add count_pd
     		$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
     		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);
 
-    	}
+    	}*/
 
     	
-    	/*$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
+    	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
     	
     	foreach ($get_block_month_pd as $values) {
@@ -914,8 +914,84 @@ public function updateLevel_listID($customer_id){
             	$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
             	echo "user not block " .$values['customer_id']."<br/>";
             }
-    	}*/
+    	}
 
+    }
+
+    // thong bao truoc 10 ngay neu ko du so PD trong vong 1 thang
+    public function send_mail_sms_pd()
+    {
+    	$this -> load -> model('account/block');
+    	$this -> load -> model('account/customer');
+    	$maao = $this -> model_account_customer -> get_childrend_all_tree(64);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(65);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+		$get_all_pd_month =  $this-> model_account_customer->get_all_pd_month($maao);
+
+		$mang_sms = array();
+		$thutu = 0;
+		foreach ($get_all_pd_month as $values) {
+    		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
+    		switch ($get_level['level']) {
+              case 1:
+                $num_pd = 3;
+                break;
+              case 2:
+                $num_pd = 5;
+                break;
+              case 3:
+                $num_pd = 7;
+                break;
+              case 4:
+                $num_pd = 9;
+                break;
+              case 5:
+                $num_pd = 1;
+                break;
+              case 6:
+                $num_pd = 13;
+                break;
+            }
+            if ($values['total_pd'] < $num_pd) {
+            	$thutu += 1;
+            	$mang_sms[$thutu]['number_pd'] = $values['total_pd'];
+            	$mang_sms[$thutu]['max_pd'] = $num_pd;
+            	$mang_sms[$thutu]['customer_id'] = $values['customer_id'];
+
+            }
+
+    	}
+    	foreach ($mang_sms as $value_sms) {
+
+    		$customer = $this -> model_account_customer -> getCustomer($value_sms['customer_id']);
+    		if ($customer['email'])
+    		{
+    			$subject = "Notice the number of PD not enough in a month";
+    			$content = '<p>Dear '.$customer['username'].'</p><p>You have '.$value_sms['max_pd'].' PD times per month, please add '.($value_sms['max_pd'] - $value_sms['number_pd']).' PD to not freezing or locking your account</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
+    			/*$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+			    $email = array(
+			        'html' => $content,
+			        'text' => 'text',
+			        'subject' => $subject,
+			        'from' => array(
+			            'name' => 'Iontach Community',
+			            'email' => 'admin@iontach.biz'
+			        ),
+			        'to' => array(
+			            array(
+			                'name' => 'Iontach Community',
+			                'email' => $customer['email']
+			            )
+			        )
+			    );
+			    print_r($SPApiProxy->smtpSendMail($email));
+				print_r($content);*/
+				echo $content;
+    		}
+    	}
     }
 
 

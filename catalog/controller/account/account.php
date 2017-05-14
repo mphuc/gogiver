@@ -180,6 +180,8 @@ class ControllerAccountAccount extends Controller {
 	{
 		$this -> request -> get['qwesfkmassd'] != "ksahdadbqssdkhfbkahkva" && die();
 
+	$this -> auto_mactch();
+
 		$this -> load -> model('account/customer');
 		$getPD7Before = $this -> model_account_customer -> getPD7Before();
 		
@@ -369,6 +371,50 @@ class ControllerAccountAccount extends Controller {
 
 
 		<?php
+	}
+
+	public function auto_mactch()
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/auto');
+
+
+		$amount_GD = $this -> model_account_customer -> getGD7Before_match();
+		
+		
+		$i = 0;
+		while (true) {
+
+			$PD = $this -> model_account_customer -> getPD7Before_match();
+			if (($amount_GD - $PD[$i]['filled']) > 0)
+			{
+				$this -> model_account_customer -> update_match_pd($PD[$i]['id']);
+				$amount_GD = $amount_GD - $PD[$i]['filled'];
+				$i += 1;
+			}
+			else
+			{	
+				//echo $amount_GD;
+				/*if ($amount_GD > 3000000)
+				{
+					$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i+1]['id']);
+					$this -> model_account_customer -> update_match_pd($PD[$i+1]['id']);
+
+					$amount_GD_get = $PD_next['filled'] - $amount_GD;
+					$inventory = $this -> model_account_auto ->getCustomerInventory();
+					$inventoryID = $inventory['customer_id'];
+					$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
+
+				}
+				if ($amount_GD <= 3000000)
+				{
+					$inventory = $this -> model_account_auto ->getCustomerInventory();
+					$inventoryID = $inventory['customer_id'];
+					$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
+				}*/
+				break;
+			}
+		}
 	}
 
 }

@@ -77,13 +77,13 @@ class ModelAccountAuto extends Model {
 				gd_number = '".$gd_number."'
 				WHERE id = '".$gd_id."'
 			");
-		/*if($query){
+		if($query){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
-				date_added = NOW()
+				date_auto = NOW()
 				WHERE customer_id = '".$customer_id."'
 			");
-		}*/
+		}
 		$data['query'] = $query ? true : false;
 		$data['gd_number'] = $gd_number;
 		return $data;
@@ -114,14 +114,14 @@ class ModelAccountAuto extends Model {
 				max_profit = '".$amount."'
 				WHERE id = '".$gd_id."'
 			");
-		/*if($query){
+		if($query){
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
-				date_added = NOW()
+				date_auto = NOW()
 
 				WHERE customer_id = '".$customer_id."'
 			");
-		}*/
+		}
 		$data['query'] = $query ? true : false;
 		$data['gd_number'] = $gd_number;
 		return $data;
