@@ -3429,9 +3429,12 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function update_match_pd($pd_id){
 		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '-1 day' , strtotime ($date_added));
+		$date_finish = date('Y-m-d H:i:s',$date_finish) ;
+
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_provide_donation SET
-				date_finish = '".$date_added."'
+				date_finish = '".$date_finish."'
 				WHERE id = '".$pd_id."' AND status = 0
 			");
 		return $query;

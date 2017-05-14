@@ -386,7 +386,7 @@ class ControllerAccountAccount extends Controller {
 		
 		$sum_getPD7Before = $this -> model_account_customer -> sum_getPD7Before();
 
-		if ($sum_getPD7Before < $amount_GD)
+		if ($sum_getPD7Before < $amount_GD || 1==1)
 		{	
 			$i = 0;
 			while (true) {
