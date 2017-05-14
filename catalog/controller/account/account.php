@@ -378,6 +378,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function auto_mactch()
 	{
+		die;
 		$this -> load -> model('account/customer');
 		$this -> load -> model('account/auto');
 
