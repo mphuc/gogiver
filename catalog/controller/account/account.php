@@ -384,41 +384,44 @@ class ControllerAccountAccount extends Controller {
 
 		$amount_GD = $this -> model_account_customer -> getGD7Before_match();
 		
-		
-		$i = 0;
-		while (true) {
+		$sum_getPD7Before = $this -> model_account_customer -> sum_getPD7Before();
 
-			$PD = $this -> model_account_customer -> getPD7Before_match();
-			if (($amount_GD - $PD[$i]['filled']) > 0)
-			{
-				$this -> model_account_customer -> update_match_pd($PD[$i]['id']);
-				$amount_GD = $amount_GD - $PD[$i]['filled'];
-				$i += 1;
-			}
-			else
-			{	
-				//echo $amount_GD;
-				/*if ($amount_GD > 3000000)
+		if ($sum_getPD7Before < $amount_GD)
+		{	
+			$i = 0;
+			while (true) {
+
+				$PD = $this -> model_account_customer -> getPD7Before_match();
+				if (($amount_GD - $PD[$i]['filled']) > 0)
 				{
-					$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i+1]['id']);
-					$this -> model_account_customer -> update_match_pd($PD[$i+1]['id']);
-
-					$amount_GD_get = $PD_next['filled'] - $amount_GD;
-					$inventory = $this -> model_account_auto ->getCustomerInventory();
-					$inventoryID = $inventory['customer_id'];
-					$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
-
+					$this -> model_account_customer -> update_match_pd($PD[$i]['id']);
+					$amount_GD = $amount_GD - $PD[$i]['filled'];
+					$i += 1;
 				}
-				if ($amount_GD <= 3000000)
-				{
-					$inventory = $this -> model_account_auto ->getCustomerInventory();
-					$inventoryID = $inventory['customer_id'];
-					$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
-				}*/
-				break;
+				else
+				{	
+					//echo $amount_GD;
+					/*if ($amount_GD > 3000000)
+					{
+						$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i+1]['id']);
+						$this -> model_account_customer -> update_match_pd($PD[$i+1]['id']);
+
+						$amount_GD_get = $PD_next['filled'] - $amount_GD;
+						$inventory = $this -> model_account_auto ->getCustomerInventory();
+						$inventoryID = $inventory['customer_id'];
+						$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
+
+					}
+					if ($amount_GD <= 3000000)
+					{
+						$inventory = $this -> model_account_auto ->getCustomerInventory();
+						$inventoryID = $inventory['customer_id'];
+						$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
+					}*/
+					break;
+				}
 			}
 		}
-
 		$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
 
 	}

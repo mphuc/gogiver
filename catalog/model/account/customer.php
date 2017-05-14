@@ -3437,5 +3437,19 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query;
 	}
 
+	public function sum_getPD7Before(){
+		$date_added= date('Y-m-d H:i:s');
+		
+		$query = $this -> db -> query("
+			SELECT SUM(A.filled) as number
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
+			ON A.customer_id = B.customer_id
+			WHERE A.date_finish <= '".$date_added."' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			AND A.STATUS =0
+			ORDER BY A.amount,A.date_finish ASC
+		");
+		return $query -> row['number'];
+	}
+
 
 }
