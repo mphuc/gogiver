@@ -23,10 +23,11 @@
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <!-- <th>TT</th> -->
+                <th>TT</th>
                 <th>Username</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
+                <th>Date PD not match </th>
                 <th>Date Lock</th>
               </tr>
             </thead>
@@ -34,6 +35,7 @@
             <tbody id="result_date"> 
                     <?php $stt = 0;
                     $data_add = date('Y-m-d');
+                    $pd_nn = 0;
                     foreach ($pin as $value) { $stt ++?>
                       <?php $get_level = $seft -> get_level($value['customer_id']);
 
@@ -58,14 +60,26 @@
                                 break;
                       }
                       if ($value['total_pd'] < $num_pd) {
+                        $pd_nn += 1;
                        ?>
                       
                       <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
-                        <!-- <td><?php echo $stt; ?></td> -->
+                        <td><?php echo $pd_nn; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
+
+                        <td class="text-center">
+                          <?php 
+                            $get_pd_not_macth = $seft -> get_pd_not_macth($value['customer_id']);
+                            foreach ($get_pd_not_macth as $value_pd) { ?>
+                              <p class="label label-success"><?php echo date('d/m/Y H:i:s',strtotime($value_pd['date_added'])); ?> | <?php echo number_format($value_pd['filled']) ?> VNĐ
+                              </p><br>
+                           <?php }
+                          ?>
+                        </td>
+
                         <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
                         
                     </tr>  
@@ -81,10 +95,11 @@
             <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <!-- <th>TT</th> -->
+                <th>TT</th>
                 <th>Username</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
+                <th>Date PD not match </th>
                 <th>Date Lock</th>
               </tr>
             </thead>
@@ -92,6 +107,7 @@
             <tbody id="result_date"> 
                     <?php $stt = 0;
                     $data_add = date('Y-m-d');
+                    $tt_hd = 0;
                     foreach ($pd_user_all as $value) { $stt ++?>
                       <?php $get_level = $seft -> get_level($value['customer_id']);
 
@@ -116,14 +132,25 @@
                                 break;
                       }
                       if ($value['total_pd'] < $num_pd) {
+                        $tt_hd += 1;
                        ?>
                       
                       <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
-                        <!-- <td><?php echo $stt; ?></td> -->
+                        <td><?php echo $tt_hd; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
+                        <td class="text-center">
+                          <?php 
+                            $get_pd_not_macth = $seft -> get_pd_not_macth($value['customer_id']);
+                            foreach ($get_pd_not_macth as $value_pd) { ?>
+                              <p class="label label-success"><?php echo date('d/m/Y H:i:s',strtotime($value_pd['date_added'])); ?> | <?php echo number_format($value_pd['filled']) ?> VNĐ
+                              </p><br>
+                           <?php }
+                          ?>
+                        </td>
+                        
                         <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
                         
                     </tr>  
@@ -139,7 +166,7 @@
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <!-- <th>TT</th> -->
+                <th>TT</th>
                 <th>Username</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
@@ -148,7 +175,7 @@
             </thead>
                
             <tbody id="result_date"> 
-                    <?php $stt = 0;
+                    <?php $stt_none = 0;
                     $data_add = date('Y-m-d');
                     foreach ($pd_user_all_node as $value) { $stt ++?>
                       <?php $get_level = $seft -> get_level($value['customer_id']);
@@ -174,10 +201,11 @@
                                 break;
                       }
                       if ($value['total_pd'] < $num_pd) {
+                        $stt_none += 1;
                        ?>
                       
                       <tr style="background: <?php echo $data_add == date('Y-m-d',strtotime($value['date_added'])) ? "rgba(76, 175, 80, 0.36)" : "rgba(115, 115, 115, 0.74)" ; ?>">
-                        <!-- <td><?php echo $stt; ?></td> -->
+                        <td><?php echo $stt_none; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
                         <td><?php echo $value['total_pd'] ?></td>

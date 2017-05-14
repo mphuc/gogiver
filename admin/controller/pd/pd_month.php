@@ -41,6 +41,13 @@ class Controllerpdpdmonth extends Controller {
 		return $this -> model_sale_customer -> get_level($customer_id);
 	}
 
+
+	public function get_pd_not_macth($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_pd_not_macth($customer_id);
+	}
+
 	public function getaccount() {
 		if ($this -> request -> post['keyword']) {
 			$this->load->model('sale/customer');

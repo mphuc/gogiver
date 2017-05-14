@@ -162,7 +162,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function autoPDGD() {
 
-		//die;
+		die;
 
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
@@ -862,21 +862,21 @@ public function updateLevel_listID($customer_id){
     public function croll_tab_check_no_pd_month()
     {
     	$this -> load -> model('account/block');
-    	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
+    	$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
     		//add all user
-    		$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
+    		//$this -> model_account_block -> insert_block_id_pd_month($value['customer_id']);
 
     		// add count_pd
     		$get_count_pd = $this -> model_account_block -> get_count_pd($value['customer_id']);
     		$this -> model_account_block -> update_block_id_pd_month($value['customer_id'],$get_count_pd['count'],$get_count_pd['date_added']);
 
-    	}*/
+    	}
 
     	
-    	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
+    	/*$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
-    	//print_r($get_block_month_pd);die;
+    	
     	foreach ($get_block_month_pd as $values) {
     		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
     		switch ($get_level['level']) {
@@ -914,7 +914,7 @@ public function updateLevel_listID($customer_id){
             	$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
             	echo "user not block " .$values['customer_id']."<br/>";
             }
-    	}
+    	}*/
 
     }
 

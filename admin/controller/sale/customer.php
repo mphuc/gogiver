@@ -778,6 +778,7 @@ class ControllerSaleCustomer extends Controller {
 
 		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(62);
 		$maao = substr($maao, 1);
+
 		$customer_total = $this->model_sale_customer->getTotalCustomerssss($filter_data,$maao);
 
 		
@@ -1026,7 +1027,7 @@ class ControllerSaleCustomer extends Controller {
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
 		}
-
+		
 		$pagination = new Pagination();
 		$pagination->total = $customer_total;
 
