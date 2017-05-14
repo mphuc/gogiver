@@ -260,7 +260,7 @@
   -->
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">All</a></li>
-    <li><a data-toggle="tab" href="#menu1">User Lock</a></li>
+    <!-- <li><a data-toggle="tab" href="#menu1">User Lock</a></li> -->
     <li><a data-toggle="tab" href="#menu2">Special User</a></li>
     <li><a data-toggle="tab" href="#menu3">Lock user</a></li>
     <li><a data-toggle="tab" href="#menu4">Administrator User</a></li>

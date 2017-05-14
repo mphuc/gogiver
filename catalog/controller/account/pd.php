@@ -507,8 +507,6 @@ $block_id = $this -> check_block_id();
 				
 				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);		
 
-							
-
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- 1',
