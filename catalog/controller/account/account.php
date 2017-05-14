@@ -180,12 +180,15 @@ class ControllerAccountAccount extends Controller {
 	{
 		$this -> request -> get['qwesfkmassd'] != "ksahdadbqssdkhfbkahkva" && die();
 
-	$this -> auto_mactch();
-
 		$this -> load -> model('account/customer');
 		$getPD7Before = $this -> model_account_customer -> getPD7Before();
 		
 		?>
+		<a href="index.php?route=account/account/auto_mactch" style="float: right">
+			<button>
+				Auto Match
+			</button>
+		</a>
 		<h1 style="text-align: center;"><?php echo intval($this -> config -> get('config_percentcommission')); ?> KHOP</h1>
 		<table style="border: 1px solid #ccc; float: left;">
 			<thead>
@@ -415,6 +418,9 @@ class ControllerAccountAccount extends Controller {
 				break;
 			}
 		}
+
+		$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
+
 	}
 
 }
