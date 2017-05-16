@@ -336,7 +336,8 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">Amount</th>
 					<th style="border: 1px solid #ccc">Status PD</th>
 					<th style="border: 1px solid #ccc">Status GD</th>
-					<th style="border: 1px solid #ccc">Date Up Bill</th>
+					<th style="border: 1px solid #ccc">Date PD</th>
+					<th style="border: 1px solid #ccc">Date GD</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -362,6 +363,10 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
 					<td style="border: 1px solid #ccc">
 						<?php if ($value['pd_satatus'] == 1) echo date('d/m/Y H:i:s',strtotime($value['date_finish'])) ?>
+						
+					</td>
+					<td style="border: 1px solid #ccc">
+						<?php if ($value['gd_status'] == 1 || $value['gd_status'] == 2) echo date('d/m/Y H:i:s',strtotime($value['date_gd'])) ?>
 						
 					</td>
 				</tr>

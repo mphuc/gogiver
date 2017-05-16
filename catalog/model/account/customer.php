@@ -2546,23 +2546,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row;
 	}
 	public function updateStatusGDTransferList($transferID){
-
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_transfer_list SET
 				
-				gd_status = 1
-				
+				gd_status = 1,
+				date_gd = '".$date_added."'
 				WHERE id = '".$this->db->escape($transferID)."'
 		");
 		return $query;
 	}
 	public function updateStatusGDTransferList_report($transferID){
-
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_transfer_list SET
 				
-				gd_status = 2
-				
+				gd_status = 2,
+				date_gd = '".$date_added."'
 				WHERE id = '".$this->db->escape($transferID)."'
 		");
 		return $query;
