@@ -109,26 +109,25 @@
           <div class="clearfix"></div>
           <?php 
 
-                  if (count($repd) != 0 && 2==1) {
-                    
-                    $date_finish = $repd['date_finish'];
-                    //$date_finish= date('Y-m-d H:i:s',$date_finish) ;
-                    //echo $date_finish;die;
+                  if (count($repd) != 0) {
                   ?>
-                
+                  <?php 
+                    foreach ($repd as $value) { ?>
+                  
                   <?php if ($language=='english') { ?>
                     
                     <div class="alert alert-danger repd">
-                      You have <span data-countdown="<?php echo $date_finish ?>"></span> for RePD <a class="btn btn-success" href="provide-donation.html">RePD</a>
+                      You have <span data-countdown="<?php echo $value['date_finish'] ?>"></span> for RePD #GD<?php echo $value['gd_number'] ?> <a class="btn btn-success" href="index.php?route=account/pd/create">RePD</a>
                      </div>
                   <?php }else{ ?>
                   
                      <div class="alert alert-danger repd">
-                      Bạn còn <span data-countdown="<?php echo $date_finish ?>"></span> để RePD  <a class="btn btn-success" href="provide-donation.html">RePD</a>
+                      Bạn còn <span data-countdown="<?php echo $value['date_finish'] ?>"></span> để RePD #GD<?php echo $value['gd_number'] ?> <a class="btn btn-success" href="index.php?route=account/pd/create">RePD</a>
                      </div>
 
                   <?php
                    }
+                  }
                   }
                ?>
 

@@ -531,7 +531,7 @@ public function updateLevel_listID($customer_id){
 		foreach ($allPD as $key => $value) {
 				//check and update level
 		
-			//$this -> get_p_node($value['customer_id']);
+				$this -> get_p_node($value['customer_id']);
 				$this->model_account_auto->update_PD_finish_thuong($value['id']);
 				if ($tmp != $value['customer_id']) {
 
@@ -795,11 +795,11 @@ public function updateLevel_listID($customer_id){
 	// }
 	// sau 2 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
 	public function croll_tab_check_no_re_pd(){
-		die;
+		
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
-		 $this -> load -> model('account/block');
-		 //echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
+		$this -> load -> model('account/block');
+		//echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
 			$description ='You did not complete Re-PD';
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
@@ -808,7 +808,7 @@ public function updateLevel_listID($customer_id){
         	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
         	}
-
+        	echo $value['customer_id']."<br/>";
 		}
 	}
 
@@ -921,6 +921,7 @@ public function updateLevel_listID($customer_id){
     // thong bao truoc 10 ngay neu ko du so PD trong vong 1 thang
     public function send_mail_sms_pd()
     {
+    	die;
     	$this -> load -> model('account/block');
     	$this -> load -> model('account/customer');
     	$maao = $this -> model_account_customer -> get_childrend_all_tree(64);

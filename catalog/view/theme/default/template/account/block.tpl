@@ -37,7 +37,7 @@
                     
                     <p class="text-center s20">Deduct R-Wallet amount: <code><?php echo number_format($wallet['r_wallet']) ?> VND</code></p>
                     <p class="text-center s20">Deduct C-Wallet amount: <code><?php echo number_format($wallet['c_wallet']) ?> VND</code></p>
-                   
+                   <p class="text-center s20">Warning: Your account is blocked. To unblock, please contact <code>support@iontach.biz</code></p>
 
                     <div class="divider-dashed mb25"></div>
                     <div class="col-md-6 col-md-offset-3 mb10">

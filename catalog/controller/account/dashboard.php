@@ -122,7 +122,7 @@ class ControllerAccountDashboard extends Controller {
 		$getGD_user = $this -> model_account_customer -> getGD_user($this->session->data['customer_id']);
 		
 		if (intval($getGD_user) > 0 ){
-			$data['repd'] = $this->model_account_customer->repd($this->session->data['customer_id']);
+			$data['repd'] = $this-> model_account_customer ->repd($this->session->data['customer_id']);
 		}
 		
 		

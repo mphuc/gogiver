@@ -393,33 +393,35 @@ class ControllerAccountAccount extends Controller {
 				{
 					$this -> model_account_customer -> update_match_pd($PD[$i]['id']);
 					$amount_GD = $amount_GD - $PD[$i]['filled'];
-					$i += 1;
+					echo $i."<br/>";
 				}
 				else
 				{	
 					//echo $amount_GD;
 					if ($amount_GD > 3000000)
 					{
-						/*$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i+1]['id']);
-						$this -> model_account_customer -> update_match_pd($PD[$i+1]['id']);*/
+						echo $i."<br/>";
+						$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i]['id']);
+						$this -> model_account_customer -> update_match_pd($PD[$i]['id']);
 
-						/*$amount_GD_get = $PD_next['filled'] - $amount_GD;
+						$amount_GD_get = $PD_next['filled'] - $amount_GD;
 						$inventory = $this -> model_account_auto ->getCustomerInventory();
 						$inventoryID = $inventory['customer_id'];
-						$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);*/
+						$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
 
 					}
-					/*if ($amount_GD <= 3000000)
+					if ($amount_GD <= 3000000)
 					{
 						$inventory = $this -> model_account_auto ->getCustomerInventory();
 						$inventoryID = $inventory['customer_id'];
 						$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
-					}*/
+					}
 					break;
 				}
+				$i += 1;
 			}
 		}
-		$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
+		//$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
 
 	}
 

@@ -454,7 +454,7 @@ $block_id = $this -> check_block_id();
 				$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
 			}
 			
-			$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
+			//$json['checkCountDay']= $this -> model_account_customer ->Count10Day();
 			
 			//print_r($json['checkCountDay']);die;
 			$GDTMP = $this -> model_account_customer -> getPDByIdssss($this -> session -> data['customer_id'], 1, 0);
@@ -509,7 +509,7 @@ $block_id = $this -> check_block_id();
 
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
-					'- 1',
+					'- '.$ping,
 					$pd_query['pd_number'],
 					'PD',
 					$pd_query['pd_number']

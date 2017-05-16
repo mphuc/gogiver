@@ -2757,9 +2757,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 AND customer_id = ".$customer_id."
+			WHERE status = 2 AND show_gd = 1 AND check_gd = 0 AND customer_id = ".$customer_id."
 		");
-		return $query -> row;
+		return $query -> rows;
 	}
 
 	public function pd_user($customer_id){
@@ -2787,7 +2787,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_get_donation 
-			WHERE customer_id = '".$customer_id."' AND status = 2 AND date_finish <= '".$date_finish."' AND check_gd = 0 ORDER BY date_finish ASC LIMIT 1
+			WHERE customer_id = '".$customer_id."' AND status = 2 AND show_gd = 1 AND check_gd = 0 ORDER BY date_finish ASC LIMIT 1
 			
 		");
 		return $query -> row;
@@ -3385,8 +3385,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function update_show_gd(){
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+ 48 hour' , strtotime ( $date_added ) ) ;
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
 		$query = $this -> db -> query("
-			UPDATE ".DB_PREFIX."customer_get_donation SET show_gd = 1
+			UPDATE ".DB_PREFIX."customer_get_donation SET 
+			show_gd = 1,
+			date_finish	= '".$date_finish."'
 			WHERE status = 2
 		");
 	}
