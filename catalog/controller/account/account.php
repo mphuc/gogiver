@@ -336,7 +336,7 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">Amount</th>
 					<th style="border: 1px solid #ccc">Status PD</th>
 					<th style="border: 1px solid #ccc">Status GD</th>
-					<th style="border: 1px solid #ccc">M</th>
+					<th style="border: 1px solid #ccc">Date Up Bill</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -360,7 +360,10 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_satatus'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['send_mail'] ?></td>
+					<td style="border: 1px solid #ccc">
+						<?php if ($value['pd_satatus'] == 1) echo date('d/m/Y H:i:s',strtotime($value['date_finish'])) ?>
+						
+					</td>
 				</tr>
 			<?php } ?>
 			
@@ -421,7 +424,7 @@ class ControllerAccountAccount extends Controller {
 				$i += 1;
 			}
 		}
-		//$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
+		$this->response->redirect(HTTPS_SERVER . 'index.php?route=account/account/check_autoPDGD&qwesfkmassd=ksahdadbqssdkhfbkahkva');
 
 	}
 
