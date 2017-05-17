@@ -1831,16 +1831,17 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 	public function CountGDDay($number_pd_day,$number_pd_month){
 		$date = date('Y-m-d');
-		$date_month = date('Y-m'); 
+		$date_month = date('Y-m-17 00:00:00'); 
 		
+		$date_month_add = strtotime ( '+ 30 day' , strtotime ( $date_month ) ) ;
+		$date_month_add= date('Y-m-d 23:59:59',$date_month_add) ;
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
 			WHERE customer_id= '".$this -> session -> data['customer_id']."'
 			AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
 				WHERE customer_id= '".$this -> session -> data['customer_id']."' AND date_added >= '".$date." 00:00:00' AND date_added <= '".$date." 23:59:59') < ".$number_pd_day." AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
-				WHERE customer_id= '".$this -> session -> data['customer_id']."' AND date_added >= '".$date_month."-01 00:00:00' AND date_added <= '".$date_month."-30 23:59:59') < ".$number_pd_month."
-			
+				WHERE customer_id= '".$this -> session -> data['customer_id']."' AND date_added >= '".$date_month."' AND date_added <= '".$date_month_add."') < ".$number_pd_month."
 		");
 
 		return $query->row;
