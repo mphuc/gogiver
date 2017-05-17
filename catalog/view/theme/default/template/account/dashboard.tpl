@@ -71,19 +71,19 @@
                 $num_pd = 3;
                 break;
               case 2:
-                $num_pd = 5;
+                $num_pd = 4;
                 break;
               case 3:
-                $num_pd = 7;
+                $num_pd = 5;
                 break;
               case 4:
-                $num_pd = 9;
+                $num_pd = 7;
                 break;
               case 5:
-                $num_pd = 1;
+                $num_pd = 10;
                 break;
               case 6:
-                $num_pd = 13;
+                $num_pd = 12;
                 break;
             }
           ?>
