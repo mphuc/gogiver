@@ -591,10 +591,13 @@ $block_id = $this -> check_block_id();
 			$variablePasswd = $this -> model_account_customer -> getPasswdTransaction($this -> request -> get['Password2']);
 			
 			$json['password'] = $variablePasswd['number'] === '0' ? -1 : 1;
-			if($json['password'] === -1){
+			if($json['password'] === -1)
+			{
 				$json['ok'] = -1;
 				$this -> response -> setOutput(json_encode($json));
-			}else{
+			}
+			else
+			{
 				$customer = $this -> model_account_customer ->getCustomer($this -> session -> data['customer_id']);
 			
 				if(intval($customer['ping']) <= 5){
