@@ -225,7 +225,7 @@ class ModelAccountBlock extends Model {
 
 	public function get_count_pd($customer_id)
 	{
-		$date_now= date('Y-m-d H:i:s');
+		$date_now= date('Y-m-d 08:00:00');
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."customer_provide_donation
