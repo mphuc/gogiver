@@ -225,7 +225,6 @@ class ModelAccountBlock extends Model {
 
 	public function get_count_pd($customer_id)
 	{
-		$date_now= date('Y-m-d 08:00:00');
 		$query = $this -> db -> query("
 			SELECT count(*) as number
 			FROM  ".DB_PREFIX."customer_provide_donation
@@ -239,7 +238,7 @@ class ModelAccountBlock extends Model {
 				FROM  ".DB_PREFIX."customer_provide_donation
 				WHERE customer_id = '".$customer_id."' ORDER BY date_added ASC LIMIT 1
 			");
-			$date_added= $date_now;
+			$date_added= $querys -> row['date_added'];
 			$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
 			$date_finish = date('Y-m-d H:i:s',$date_finish) ;
 			$result['date_added'] = $date_finish;
@@ -248,7 +247,6 @@ class ModelAccountBlock extends Model {
 		{
 			$result['date_added'] = '0000-00-00 00:00:00';
 		}
-		$result['count'] = 0;
 		return $result;
 	}
 
