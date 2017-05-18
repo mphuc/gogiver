@@ -29,9 +29,9 @@ class ControllerAccountAccount extends Controller {
 		//die;
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    $email = array(
-	        'html' => '<p>Hello!</p>',
+	        'html' => '<p>Dear Madam Hoa Phuong,</p><p>After two months running from 17/3 to 17/5. There are two things that you need to concern and let me know your answer.</p><p>1. The development of these teams HUONGDAIGIA, KAYLA3004, & WINWIN is so slowly.</p><p>2. We agree that 1USD giving for those team can be qualified and strongly develop at least 30% / month. However, they did not hit the target.</p><p>Please let us know your solution.</p><p>Admin</p><p>Iontach.biz</p>',
 	        'text' => 'text',
-	        'subject' => 'Mail subject',
+	        'subject' => 'Iontach',
 	        'from' => array(
 	            'name' => 'Iontach Biz',
 	            'email' => 'admin@iontach.biz'
@@ -39,7 +39,7 @@ class ControllerAccountAccount extends Controller {
 	        'to' => array(
 	            array(
 	                'name' => 'Iontach',
-	                'email' => 'trungdoanict@gmail.com'
+	                'email' => 'gaubonga01@gmail.com'
 	            )
 	        ),
 	        'bcc' => array(

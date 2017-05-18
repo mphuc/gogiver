@@ -3396,6 +3396,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			date_finish	= '".$date_finish."'
 			WHERE status = 2
 		");
+
+
+
 	}
 	public function get_all_pd_month($maao)
 	{
@@ -3461,5 +3464,29 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row['number'];
 	}
 
+	public function check_full_pd($number_pd_month,$customer_id){
+		$date = date('Y-m-d');
+		$date_month = date('Y-m-17 00:00:00'); 
+		
+		$date_month_add = strtotime ( '+ 30 day' , strtotime ( $date_month ) ) ;
+		$date_month_add= date('Y-m-d 23:59:59',$date_month_add) ;
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id= '".$customer_id."'
+			AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
+				WHERE customer_id= '".$customer_id."' AND date_added >= '".$date_month."' AND date_added <= '".$date_month_add."') < ".$number_pd_month."
+		");
+		return $query->row;
+	}
 
+	public function get_repd_gd()
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE check_gd = 0
+		");
+		return $query -> rows;
+	}
 }

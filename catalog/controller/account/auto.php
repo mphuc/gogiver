@@ -544,8 +544,54 @@ public function updateLevel_listID($customer_id){
 		}
 		// echo $tmp_count;
 		$this -> model_account_customer -> update_show_gd();
-		/*$this -> autoPDGD();
-		$this -> sendmail_tranferlis();*/
+		// neu het so luot PD thi khong rePD nua
+		$this -> set_repd_node();
+		
+	}
+
+
+	public function set_repd_node()
+	{
+		$this -> load -> model('account/customer');
+		$get_repd_gd = $this -> model_account_customer -> get_repd_gd();
+		foreach ($get_repd_gd as $value) {
+			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($value['customer_id']);
+			switch (intval($level['level'])) {
+				case 1:
+					$number_pd_day = 2;
+					$number_pd_month = 4;
+					break;
+				case 2:
+					$number_pd_day = 2;
+					$number_pd_month = 8;
+					break;
+				case 3:
+					$number_pd_day = 3;
+					$number_pd_month = 10;
+					break;
+				case 4:
+					$number_pd_day = 4;
+					$number_pd_month = 15;
+					break;
+				case 5:
+					$number_pd_day = 4;
+					$number_pd_month = 20;
+					break;
+				default:
+					$number_pd_day = 5;
+					$number_pd_month = 25;
+					break;
+			}
+
+			$GDTMP = $this -> model_account_customer ->getPDByIdssss($value['customer_id'], 1, 0);
+			if (count($GDTMP) > 0) {
+				$check_full_pd = $this -> model_account_customer ->check_full_pd($number_pd_month,$value['customer_id']);
+				if (count($check_full_pd) == 0)
+				{
+					$this -> model_account_customer -> update_check_gd($value['id']);
+				}
+			}
+		}
 	}
 
 	public function update_commission($customer_id, $amount, $pd_number)
@@ -886,19 +932,19 @@ public function updateLevel_listID($customer_id){
                 $num_pd = 3;
                 break;
               case 2:
-                $num_pd = 5;
+                $num_pd = 4;
                 break;
               case 3:
-                $num_pd = 7;
+                $num_pd = 5;
                 break;
               case 4:
-                $num_pd = 9;
+                $num_pd = 7;
                 break;
               case 5:
-                $num_pd = 1;
+                $num_pd = 10;
                 break;
               case 6:
-                $num_pd = 13;
+                $num_pd = 11;
                 break;
             }
 
@@ -943,19 +989,19 @@ public function updateLevel_listID($customer_id){
                 $num_pd = 3;
                 break;
               case 2:
-                $num_pd = 5;
+                $num_pd = 4;
                 break;
               case 3:
-                $num_pd = 7;
+                $num_pd = 5;
                 break;
               case 4:
-                $num_pd = 9;
+                $num_pd = 7;
                 break;
               case 5:
-                $num_pd = 1;
+                $num_pd = 10;
                 break;
               case 6:
-                $num_pd = 13;
+                $num_pd = 11;
                 break;
             }
             if ($values['total_pd'] < $num_pd) {

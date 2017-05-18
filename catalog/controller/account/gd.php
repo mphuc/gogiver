@@ -625,7 +625,7 @@ $block_id = $this -> check_block_id();
 						$amount_gd = 177000000;
 						break;
 					case 6:
-						$amount_gd = 1332000000;
+						$amount_gd = 332000000;
 						break;
 				}
 
