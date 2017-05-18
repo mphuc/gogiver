@@ -433,4 +433,30 @@ class ControllerAccountAccount extends Controller {
 
 	}
 
+	public function get_account_horder()
+    {
+    	$this -> load -> model('account/block');
+    	$get_all_customer = $this -> model_account_block -> get_all_customer();
+    	foreach ($get_all_customer as $value) 
+    	{
+    		if($value['account_holder'])
+    		{
+    			$get_all_customers = $this -> model_account_block -> get_all_customer_none($value['customer_id']);
+    			foreach ($get_all_customers as $values) 
+    			{
+	    			if($values['account_holder'])
+	    			{
+	    				if ($value['account_holder'] == $values['account_holder'])
+	    				{
+	    					echo $value['username']." - ".$value['account_holder']." - ".$value['account_number']."<br/>";
+	    					echo $values['username']." - ".$values['account_holder']." - ".$values['account_number']."<br/>";
+	    					echo "<br/><hr/><br/>";
+	    				}
+	    			}
+	    		}
+    		}
+    	}
+
+    }
+
 }

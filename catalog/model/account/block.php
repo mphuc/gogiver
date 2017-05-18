@@ -207,6 +207,14 @@ class ModelAccountBlock extends Model {
 		return $query -> rows;
 	}
 
+	public function get_all_customer_none($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer WHERE customer_id <> '".$customer_id."'
+		");
+		return $query -> rows;
+	}
 
 	public function insert_block_id_pd_month($customer_id)
 	{
