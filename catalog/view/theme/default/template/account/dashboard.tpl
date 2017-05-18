@@ -117,12 +117,12 @@
                   <?php if ($language=='english') { ?>
                     
                     <div class="alert alert-danger repd">
-                      You have <span data-countdown="<?php echo $value['date_finish'] ?>"></span> for RePD #GD<?php echo $value['gd_number'] ?> <a class="btn btn-danger" href="index.php?route=account/pd/create"> RePD <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                      You have <span data-countdown="<?php echo $value['date_finish'] ?>"></span>  to repd for GD<?php echo $value['gd_number'] ?> <a class="btn btn-danger" href="index.php?route=account/pd/create"> RePD <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                      </div>
                   <?php }else{ ?>
                   
                      <div class="alert alert-danger repd">
-                      Bạn còn <span data-countdown="<?php echo $value['date_finish'] ?>"></span> để RePD #GD<?php echo $value['gd_number'] ?> <a class="btn btn-danger" href="index.php?route=account/pd/create"> RePD <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                      Bạn còn <span data-countdown="<?php echo $value['date_finish'] ?>"></span> để RePD  cho lệnh GD<?php echo $value['gd_number'] ?> <a class="btn btn-danger" href="index.php?route=account/pd/create"> RePD <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                      </div>
 
                   <?php
