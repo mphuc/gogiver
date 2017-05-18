@@ -441,7 +441,7 @@ class ControllerAccountAccount extends Controller {
     	{
     		if($value['account_holder'])
     		{
-    			$get_all_customers = $this -> model_account_block -> get_all_customer_none($value['customer_id']);
+    			$get_all_customers = $this -> model_account_block -> get_all_customer_none($value['account_holder'],$value['customer_id']);
     			foreach ($get_all_customers as $values) 
     			{
 	    			if($values['account_holder'])
@@ -450,11 +450,13 @@ class ControllerAccountAccount extends Controller {
 	    				{
 	    					echo $value['username']." - ".$value['account_holder']." - ".$value['account_number']."<br/>";
 	    					echo $values['username']." - ".$values['account_holder']." - ".$values['account_number']."<br/>";
-	    					echo "<br/><hr/><br/>";
 	    				}
 	    			}
+	    			
 	    		}
+	    		echo "<hr/>";
     		}
+
     	}
 
     }
