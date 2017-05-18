@@ -3133,6 +3133,15 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
+	public function get_count_repd(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_get_donation  WHERE show_gd = 1 AND check_gd = 0
+		");
+		return $query -> row;
+	}
+
 	public function get_count_ph_waiting(){
 
 		$query = $this -> db -> query("
@@ -3570,6 +3579,20 @@ $date_added= date('Y-m-d H:i:s') ;
 			SELECT A.*,(SELECT username FROM ". DB_PREFIX . "customer as K WHERE K.customer_id = A.gd_id_customer) as gd_username,(SELECT username FROM ". DB_PREFIX . "customer as M WHERE M.customer_id = A.pd_id_customer) as pd_username 
 			FROM  ".DB_PREFIX."customer_transfer_list A
 			WHERE A.gd_status = 2 OR A.pd_satatus = 2
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function get_all_repd_date_rp($limit,$offset)
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE A.show_gd = 1 AND A.check_gd = 0
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");
