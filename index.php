@@ -30,7 +30,7 @@ $registry->set('config', $config);
 // Database
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
-ini_set('date.timezone','America/Los_Angeles');
+ini_set('date.timezone','Asia/Ho_Chi_Minh');
 $db->query("SET time_zone = '" . date('P') . "'"); 
 // Store
 if (isset($_SERVER['HTTPS']) && (($_SERVER['HTTPS'] == 'on') || ($_SERVER['HTTPS'] == '1'))) {
