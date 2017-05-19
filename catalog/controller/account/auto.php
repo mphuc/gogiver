@@ -143,7 +143,8 @@ class ControllerAccountAuto extends Controller {
 			{
 				$subject = 'Your GD #'.$value['gd_number'].' has been matched';
 				$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>GD #'.$value['gd_number'].'</b> has been matched. Please log on to your account to review your bank account, ensure it correct. Please approve the transactions for sender whenever you recived money as soon as possible.</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
-				$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
+				//$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
+				echo $getCustomer_GD['email']." ";
 			}
 			$this -> model_account_auto -> update_customer_sendmail_finish_gd($value['id']);
 		}
