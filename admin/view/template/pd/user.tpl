@@ -25,6 +25,7 @@
                 <?php $stt = 0;
                 foreach ($pin as $value) { $stt ++?>
                   <tr>
+                    <?php if ($value['account_holder']) { ?>
                     <td><?php echo $stt; ?></td>
                     
                     <td>
@@ -37,7 +38,7 @@
                             
                         ?>    
                     </td>
-                    
+                    <?php } ?>
                 </tr>  
               
         
