@@ -3494,4 +3494,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> rows;
 	}
+
+	public function get_now(){
+		$query = $this -> db -> query("
+			SELECT NOW() as dates
+		");
+		return $query->row['dates'];
+	}
 }

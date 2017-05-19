@@ -2,6 +2,13 @@
 
 class ControllerAccountAccount extends Controller {
 	
+	public function datetime()
+	{
+		$this -> load-> model('account/customer');
+		$now = $this -> model_account_customer -> get_now();
+		echo " PHP ".date('d/m/Y H:i:s')."<br/>"."MSQL ".$now;
+	}
+
 	public function add_cus()
 	{
 		$this -> load-> model('account/customer');
