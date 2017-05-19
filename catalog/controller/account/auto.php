@@ -554,6 +554,7 @@ public function updateLevel_listID($customer_id){
 	{
 		$this -> load -> model('account/customer');
 		$get_repd_gd = $this -> model_account_customer -> get_repd_gd();
+		print_r($get_repd_gd); die;
 		foreach ($get_repd_gd as $value) {
 			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($value['customer_id']);
 			switch (intval($level['level'])) {
