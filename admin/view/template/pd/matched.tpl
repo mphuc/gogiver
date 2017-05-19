@@ -100,7 +100,7 @@
                     }
                    
                     if ($value['gd_status'] == 1) {
-                        echo "<span class='label label-success' >".$value['date_gd']." Finish</span>";
+                        echo "<span class='label label-success' >Finish ".date('d-m H:i:s', strtotime($value['date_gd']))."</span>";
                     } 
                     if ($value['gd_status'] == 2) {?> 
                         <span style="cursor: pointer;" class='label label-danger' data-toggle="modal" data-target="#myModalGD<?php echo $value['transfer_code'] ?>" ><?php echo $value['date_gd'] ?> Report</span> 
