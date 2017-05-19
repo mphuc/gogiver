@@ -587,7 +587,7 @@ public function updateLevel_listID($customer_id){
 			$GDTMP = $this -> model_account_customer ->getPDByIdssss($value['customer_id'], 1, 0);
 			if (count($GDTMP) > 0) {
 				$check_full_pd = $this -> model_account_customer ->check_full_pd($number_pd_month,$value['customer_id']);
-				print_r($check_full_pd); die;
+				//print_r($check_full_pd); die;
 				if (count($check_full_pd) == 0)
 				{
 					$this -> model_account_customer -> update_check_gd($value['id']);
