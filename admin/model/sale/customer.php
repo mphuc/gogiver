@@ -3652,7 +3652,7 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$query = $this -> db -> query("
 			SELECT A.account_holder,A.username,A.account_number,A.customer_id
-			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1 
+			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1 AND account_holder <> ''
 			LIMIT ".$limit."
 			OFFSET ".$start."
 		");
@@ -3662,7 +3662,7 @@ $date_added= date('Y-m-d H:i:s') ;
 
 		$query = $this -> db -> query("
 			SELECT count(*) as number
-			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1 
+			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1  AND account_holder <> ''
 		");
 		return $query -> row;
 	}
