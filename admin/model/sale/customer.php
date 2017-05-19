@@ -3658,7 +3658,6 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> rows;
 	}
-
 	public function get_count_customer_holder(){
 
 		$query = $this -> db -> query("
