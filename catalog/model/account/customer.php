@@ -3479,8 +3479,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			WHERE customer_id= '".$customer_id."'
 			AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
 				WHERE customer_id= '".$customer_id."' AND date_added >= '".$date_month."' AND date_added <= '".$date_month_add."') < ".$number_pd_month."
-			OR (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
-				WHERE customer_id= '".$customer_id."' AND DATE_ADD(date_added,INTERVAL + 7 DAY) > '".$now."') = 0
+			
 		");
 		return $query->row;
 	}
