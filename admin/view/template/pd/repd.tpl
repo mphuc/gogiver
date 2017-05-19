@@ -17,6 +17,7 @@
      			<tr>
      				<th>TT</th>
             <th>Username</th>
+            <th>GD</th>
      				<th>Date Re PD</th>
      			</tr>
      		</thead>
@@ -28,6 +29,7 @@
                     <td><?php echo $stt; ?></td>
                     
                     <td><?php echo $value['username'] ?></td>
+                    <td>GD<?php echo $value['gd_number'] ?></td>
                     <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
                      </span> </td>
                 </tr>  

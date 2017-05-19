@@ -17,7 +17,7 @@ class ControllerAccountToken extends Controller {
 		$block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
-$block_id_gd = $this -> check_block_id_gd();
+		$block_id_gd = $this -> check_block_id_gd();
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 		//language
@@ -471,7 +471,11 @@ $block_id = $this -> check_block_id();
 $block_id = $this -> check_block_id();
 		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
-		//method to call function
+
+		$block_id_gd = $this -> check_block_id_gd();
+
+		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
+
 		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
 		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
 		
