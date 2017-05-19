@@ -3393,8 +3393,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			UPDATE ".DB_PREFIX."customer_get_donation SET 
 			show_gd = 1,
-			date_finish	= '".$date_finish."'
-			WHERE status = 2
+			date_finish	= '".$date_finish."',
+			check_repd = 1
+			WHERE status = 2 AND check_repd = 0
 		");
 
 
@@ -3470,12 +3471,16 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		
 		$date_month_add = strtotime ( '+ 30 day' , strtotime ( $date_month ) ) ;
 		$date_month_add= date('Y-m-d 23:59:59',$date_month_add) ;
+
+		$now = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
 			WHERE customer_id= '".$customer_id."'
 			AND (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
 				WHERE customer_id= '".$customer_id."' AND date_added >= '".$date_month."' AND date_added <= '".$date_month_add."') < ".$number_pd_month."
+			OR (SELECT COUNT(*) FROM ". DB_PREFIX . "customer_provide_donation
+				WHERE customer_id= '".$customer_id."' AND DATE_ADD(date_added,INTERVAL + 7 DAY) > '".$now."') = 0
 		");
 		return $query->row;
 	}
@@ -3485,7 +3490,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE check_gd = 0
+			WHERE check_gd = 0 AND status = 2 AND check_repd = 1
 		");
 		return $query -> rows;
 	}
