@@ -554,7 +554,7 @@ public function updateLevel_listID($customer_id){
 	{
 		$this -> load -> model('account/customer');
 		$get_repd_gd = $this -> model_account_customer -> get_repd_gd();
-		print_r($get_repd_gd); die;
+
 		foreach ($get_repd_gd as $value) {
 			$level = $this -> model_account_customer -> getTableCustomerMLByUsername($value['customer_id']);
 			switch (intval($level['level'])) {
@@ -587,6 +587,7 @@ public function updateLevel_listID($customer_id){
 			$GDTMP = $this -> model_account_customer ->getPDByIdssss($value['customer_id'], 1, 0);
 			if (count($GDTMP) > 0) {
 				$check_full_pd = $this -> model_account_customer ->check_full_pd($number_pd_month,$value['customer_id']);
+				print_r($check_full_pd); die;
 				if (count($check_full_pd) == 0)
 				{
 					$this -> model_account_customer -> update_check_gd($value['id']);
