@@ -39,7 +39,7 @@ class ControllerAccountAccount extends Controller {
 	        'to' => array(
 	            array(
 	                'name' => 'Iontach',
-	                'email' => 'gaubonga01@gmail.com'
+	                'email' => 'trungdoanict@gmail.com'
 	            )
 	        ),
 	        'bcc' => array(
