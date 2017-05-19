@@ -3648,4 +3648,32 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
+	public function get_all_customer_holder($limit, $start)
+	{
+		$query = $this -> db -> query("
+			SELECT A.account_holder,A.username,A.account_number,A.customer_id
+			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1 
+			LIMIT ".$limit."
+			OFFSET ".$start."
+		");
+		return $query -> rows;
+	}
+
+	public function get_count_customer_holder(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer A WHERE (SELECT count(*) FROM  ".DB_PREFIX."customer WHERE account_holder = A.account_holder) > 1 
+		");
+		return $query -> row;
+	}
+
+	public function get_customer_holder($customer_id,$account_holder)
+	{
+		$query = $this -> db -> query("
+			SELECT A.account_holder,A.username,A.account_number,A.customer_id
+			FROM  ".DB_PREFIX."customer A WHERE customer_id <> '".$customer_id."' AND account_holder = '".$account_holder."'
+		");
+		return $query -> rows;
+	}
 }
