@@ -547,6 +547,8 @@ public function updateLevel_listID($customer_id){
 		// neu het so luot PD thi khong rePD nua
 		$this -> set_repd_node();
 		
+		// crontab ko repd sau 48 gio khoa tai khoan
+		$this -> croll_tab_check_no_re_pd();
 	}
 
 
