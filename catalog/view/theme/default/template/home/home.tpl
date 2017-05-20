@@ -96,7 +96,12 @@
                                  <a href="index.php?route=home/page/health" style="margin-top: 15px; float: left;">
                                   <img src="catalog/view/theme/default/images/health.png" style="border: 2px solid #fff">
                                  </a>
+
+                                <a href="index.php?route=home/page/successment" style="margin-top: 15px; float: left;">
+                                  <img src="catalog/view/theme/default/images/gttc1.png" style="border: 2px solid #fff">
+                                 </a>
                               </div>
+
                               <div class="col-md-10 col-sm-10 col-xs-8" style="float: left;">
                                 <!-- <p style="text-align: center;color: #fff; margin-bottom: 5px;">“Nếu là con chim, chiếc lá,</p>
                            <p style="text-align: center;color: #fff; margin-bottom: 5px;">Thì con chim phải hót, chiếc lá phải xanh,</p>
@@ -131,6 +136,8 @@ Xã hội sẽ nhân văn và ý vị hơn khi người người đều trân tr
 
                                  <img style="width: 100%" src="catalog/view/theme/default/images/gtcl1.png">
                               </div>
+
+                              
                            <?php } ?>
                         </article>
                        <!--  <article id="post-74236">

@@ -154,6 +154,18 @@ class ControllerHomePage extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/home/curentcy.tpl', $data));
 		}
 	}
+
+	public function successment() {
+
+		$data['base'] = HTTPS_SERVER;
+		$data['self'] = $this;
+		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/successment.tpl')) {
+			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/home/successment.tpl', $data));
+		} else {
+			$this -> response -> setOutput($this -> load -> view('default/template/home/successment.tpl', $data));
+		}
+	}
+
 	public function supportSubmit(){
 
 		$email = $this->request->post['Mail'];
