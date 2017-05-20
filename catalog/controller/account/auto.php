@@ -847,7 +847,7 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
 		$this -> load -> model('account/block');
-		echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
+		//echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
 		foreach ($re_pd as $value) {
 			$description ='You did not complete Re-PD';
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
