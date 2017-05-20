@@ -3,7 +3,7 @@
 <div id="content" class="site-content" style="background: #5472BA !important;">
   
   <div class="container" style="color: #fff">
-     <div class="" style="padding-top: 50px; padding-bottom: 100px">
+     <div class="content_p" style="padding-top: 50px; padding-bottom: 100px">
      
      <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
         <p style="margin-bottom: 5px;">Lời mở đầu,</p>
@@ -42,6 +42,9 @@
   .img_book img{
     width: 180px;
     height: 100px;
+  }
+  div.content_p{
+        font-size: 20px;
   }
 </style>
          <!-- #content -->

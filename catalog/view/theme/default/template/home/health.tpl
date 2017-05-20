@@ -3,7 +3,7 @@
 <div id="content" class="site-content" style="background: #5472BA !important;">
   
   <div class="container" style="color: #fff">
-     <div class="" style="padding-top: 50px; padding-bottom: 100px">
+     <div class="content_p" style="padding-top: 50px; padding-bottom: 100px">
      
      <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
       <i><p style="margin-bottom: 5px;">“Sức khỏe là mẹ thành công</p>
@@ -65,6 +65,9 @@
     width: 250px;
     height: 140px;
     margin-bottom: 20px;
+  }
+   div.content_p{
+        font-size: 20px;
   }
 </style>
          <!-- #content -->

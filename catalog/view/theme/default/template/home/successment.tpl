@@ -17,7 +17,7 @@
      <div class="" style="padding-top: 50px; padding-bottom: 100px; clear: both;">
      <?php if ($_SESSION['language_id'] == "vietnamese") { ?>
         <h3 style="color: #fff">Lời ngỏ,</h3>
-        <ul>
+        <ul class="content_p">
           <li>Trong cuộc sống, dù ở bất kỳ lĩnh vực nào, muốn thành công chúng ta đều phải trả một cái giá nhất định nào đó, phải mài mò, và tìm kiếm. Không phải ai cũng có may mắn được ở trong một gia đình tốt, một môi trường hoặc một người thầy tốt để phát huy khả năng của mình.</li>
           <li>Muốn thành công, chúng ta cần nỗ lực hết mình, luôn tiếp thu những kiến thức mới và hoàn thiện bản thân. </li>
           <li>Iontach mong muốn đem  những giá trị bổ ích và thiết thực từ những gương điển hình,  bài học thành công của những người  đi trước chia sẽ lại đến với thành viên Iontach và cộng đồng người Việt.</li>
@@ -57,6 +57,9 @@
     width: 250px;
     height: 140px;
     margin-bottom: 20px;
+  }
+  ul.content_p{
+        font-size: 20px;
   }
 </style>
 <script type="text/javascript">
