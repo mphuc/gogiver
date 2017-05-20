@@ -726,7 +726,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function createGD($amount){
 		$date_added= date('Y-m-d H:i:s');
 		$date_finish = strtotime ( '+144 hour' , strtotime ( $date_added ) ) ;
-		$date_finish= date('Y-m-d H:i:s',$date_finish) ;	
+		$date_finish= date('Y-m-d 09:00:00',$date_finish) ;	
 
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_get_donation SET
