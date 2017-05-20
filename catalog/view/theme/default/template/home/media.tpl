@@ -23,6 +23,9 @@
                   <?php if (isset($_SESSION['language_id'])) {
                if ($_SESSION['language_id'] == "vietnamese") { ?>
 
+               <img class="img-responsive" style="width: 100%;height: 100% !important" src="catalog/view/theme/default/images/aa0002.jpg" src="" alt="">
+               <hr style="margin-top: 30px; border: 1px solid #eee; height: 1px; width: 100%; float: left;">
+
                <img class="img-responsive" style="width: 100%;height: 100% !important" src="catalog/view/theme/default/images/media2.png" src="" alt="">
                <hr style="margin-top: 30px; border: 1px solid #eee; height: 1px; width: 100%; float: left;">
 
