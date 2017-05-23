@@ -271,6 +271,7 @@ class ControllerAccountAccount extends Controller {
 				</tr>
 				<tr>
 					<th style="border: 1px solid #ccc">TT</th>
+					<th style="border: 1px solid #ccc">Customer_id</th>
 					<th style="border: 1px solid #ccc">username</th>
 				</tr>
 			</thead>
@@ -278,7 +279,7 @@ class ControllerAccountAccount extends Controller {
 			<?php $i = 0; foreach ($getCustomer_quybaotro as $value) { $i++; ?>
 				<tr>
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
-					
+					<td style="border: 1px solid #ccc"><?php echo $value['customer_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['username'] ?></td>
 					
 				</tr>
