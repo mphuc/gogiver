@@ -166,11 +166,11 @@ class ControllerAccountAuto extends Controller {
 
 		$hour_run = date('H:i');
 
-		if ($hour_run > "08:05" && HTTP_SERVER != "http://localhost/iontach/")
+		if ( ($hour_run > "08:05" || $hour_run < "08:00") && HTTP_SERVER != "http://localhost/iontach/")
 		{
 			die("no run");
 		}
-		
+		die("1111111111111");
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
 		$this -> load -> model('account/pd');
