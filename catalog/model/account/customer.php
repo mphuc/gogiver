@@ -53,8 +53,15 @@ class ModelAccountCustomer extends Model {
 	public function getParrent($customer_id){
 		$query = $this->db->query("SELECT username
 			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
+		if (count($query->row) > 0)
+		{
+			return $query->row['username'];
+		}
+		else
+		{
+			return "";
+		}
 		
-		return $query->row['username'];
 	}
 	public function getPDLimit1($iod_customer){
 		$query = $this -> db -> query("
@@ -272,13 +279,28 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function getPhone($customer_id){
 		$query = $this->db->query("SELECT telephone
 			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
-		return $query -> row['telephone'];
+		if (count($query -> row) > 0)
+		{
+			return $query -> row['telephone'];
+		}
+		else
+		{
+			return "";
+		}
+		
 	}
 	public function getAccount_holder($customer_id){
 		
 		$query = $this->db->query("SELECT account_holder
 			FROM " . DB_PREFIX . "customer WHERE customer_id = ".$customer_id."");
-		return $query -> row['account_holder'];
+		if (count($query -> row) > 0)
+		{
+			return $query -> row['account_holder'];
+		}
+		else
+		{
+			return "";
+		}
 	}
 	public function getPdFromTransferList($pd_id){
 

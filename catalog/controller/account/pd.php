@@ -2,6 +2,7 @@
 class ControllerAccountPd extends Controller {
 
 	public function index() {
+		
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};
@@ -73,6 +74,7 @@ class ControllerAccountPd extends Controller {
 	public function getAccountHolder($customer_id){
 		$this -> load -> model('account/customer');
 		$parrent = $this -> model_account_customer ->getAccount_holder($customer_id);
+
 		return $parrent;
 	}
 	public function getParrent($customer_id){
