@@ -2,14 +2,14 @@
 <div id="content">
 <div class="page-header">
   <div class="container-fluid">
-    <h1>Số F1 kích pin</h1>
+    <h1>Danh sách nhắc nhở</h1>
 
   </div>
 </div>
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Số F1 kích pin</h3>
+      <h3 class="panel-title">Danh sách nhắc nhở</h3>
     </div>
     <div class="panel-body">
         <ul class="nav nav-tabs">
