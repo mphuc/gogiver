@@ -19,13 +19,19 @@
                     <th>Username</th>
                     <th>Số F1 kích pin</th>
      				<th>Thời gian bắt đầu kích pin</th>
+                    <th>Số ngày</th>
      			</tr>
      		</thead>
 
      		<tbody id="result_date"> 
                 <?php $stt = 0;
-                foreach ($pin as $value) { $stt ++;
-                    $get_account_pin = $selt -> get_account_pin($value['customer_id'])
+                $date_now = date('Y-m-d H:i:s');
+                foreach ($pin as $value) { 
+                    $get_account_pin = $selt -> get_account_pin($value['customer_id']);
+                    $day = strtotime($date_now) - strtotime($value['date_added']);
+                    $day = floor($day/86400);
+                    if ($day >= 45 && count($get_account_pin) == 0) {
+                        $stt ++;
                 ?>
                   <tr>
                     <td><?php echo $stt; ?></td>
@@ -34,7 +40,9 @@
                     <td><?php echo count($get_account_pin) ?></td>
                     <td><span> <?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])); ?>
                      </span> </td>
+                     <td><?php echo $day ?></td>
                 </tr>  
+                <?php } ?>
               
         
                 <?php } ?>
