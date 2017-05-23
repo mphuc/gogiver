@@ -165,6 +165,7 @@ class ControllerAccountAuto extends Controller {
 		//die;
 
 		$hour_run = date('H');
+		echo $hour_run;
 		$min_run = date('i');
 		if (intval($hour_run) != 8 && intval($min_run) <= 5 && HTTP_SERVER != "http://localhost/iontach/")
 		{
