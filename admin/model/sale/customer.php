@@ -3693,4 +3693,22 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> rows;
 	}
+
+	public function count_all_customer(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer WHERE customer_code <> '' AND account_holder <> '' GROUP BY customer_id ORDER BY date_added ASC
+			
+		");
+		return $query -> rows;
+	}
+
+	public function get_provine_16_04($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  " . DB_PREFIX . "customer_provide_donation WHERE customer_id = '".$customer_id."' AND date_added >= '2017-04-16 00:00:00'
+		");
+		return $query -> rows;
+	}
 }

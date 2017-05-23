@@ -12,42 +12,124 @@
       <h3 class="panel-title">Số F1 kích pin</h3>
     </div>
     <div class="panel-body">
-     	<table class="table table-bordered table-hover">
-     		<thead>
-     			<tr>
-     				<th>TT</th>
-                    <th>Username</th>
-                    <th>Số F1 kích pin</th>
-     				<th>Thời gian bắt đầu kích pin</th>
-                    <th>Số ngày</th>
-     			</tr>
-     		</thead>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Danh sách ID F1 không kích pin</a></li>
+          <li><a data-toggle="tab" href="#menu1">Danh sách ID chưa kích đủ pin từ 16/04</a></li>
+        </ul>
+        <div class="tab-content row" style="overflow-x: scroll;">
+          <div id="home" class="tab-pane fade in active">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Username</th>
+                        <th>Số F1 kích pin</th>
+                        <th>Thời gian bắt đầu kích pin</th>
+                        <th>Số ngày</th>
+                    </tr>
+                </thead>
 
-     		<tbody id="result_date"> 
-                <?php $stt = 0;
-                $date_now = date('Y-m-d H:i:s');
-                foreach ($pin as $value) { 
-                    $get_account_pin = $selt -> get_account_pin($value['customer_id']);
-                    $day = strtotime($date_now) - strtotime($value['date_added']);
-                    $day = floor($day/86400);
-                    if ($day >= 45 && count($get_account_pin) == 0) {
-                        $stt ++;
-                ?>
-                  <tr>
-                    <td><?php echo $stt; ?></td>
-                    
-                    <td><?php echo $value['username'] ?></td>
-                    <td><?php echo count($get_account_pin) ?></td>
-                    <td><span> <?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])); ?>
-                     </span> </td>
-                     <td><?php echo $day ?></td>
-                </tr>  
-                <?php } ?>
-              
-        
-                <?php } ?>
-     		</tbody>
-     	</table>
+                <tbody id="result_date"> 
+                    <?php $stt = 0;
+                    $date_now = date('Y-m-d H:i:s');
+                    foreach ($pin as $value) { 
+                        $get_account_pin = $selt -> get_account_pin($value['customer_id']);
+                        $day = strtotime($date_now) - strtotime($value['date_added']);
+                        $day = floor($day/86400);
+                        if ($day >= 45 && count($get_account_pin) == 0) {
+                            $stt ++;
+                    ?>
+                      <tr>
+                        <td><?php echo $stt; ?></td>
+                        
+                        <td><?php echo $value['username'] ?></td>
+                        <td><?php echo count($get_account_pin) ?></td>
+                        <td><span> <?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])); ?>
+                         </span> </td>
+                         <td><?php echo $day ?></td>
+                    </tr>  
+                    <?php } ?>
+                  
+            
+                    <?php } ?>
+                </tbody>
+            </table>
+          </div>
+          <div id="menu1" class="tab-pane fade">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Username</th>
+                        <th>Số PD đã kích</th>
+                        <th>PD tối thiểu</th>
+                        <th>Các PD đã kích</th>
+                    </tr>
+                </thead>
+
+                <tbody id="result_date"> 
+                    <?php $stt = 0;
+                    $date_now = date('Y-m-d H:i:s');
+                    $tt_hd = 0;
+                    foreach ($count_all_customer as $value) { ?>
+                    <?php $get_level = $selt -> get_level($value['customer_id']);
+
+                        switch ($get_level['level']) {
+                            case 1:
+                                $num_pd = 3;
+                                break;
+                              case 2:
+                                $num_pd = 4;
+                                break;
+                              case 3:
+                                $num_pd = 5;
+                                break;
+                              case 4:
+                                $num_pd = 7;
+                                break;
+                              case 5:
+                                $num_pd = 10;
+                                break;
+                              case 6:
+                                $num_pd = 11;
+                                break;
+                      }
+
+                      $get_provine_16_04 = $selt -> get_provine_16_04($value['customer_id']);
+
+                      if (count($get_provine_16_04) < $num_pd) {
+                        $tt_hd += 1;
+                       ?>
+
+
+                      <tr>
+                        <td><?php echo $tt_hd; ?></td>
+                        
+                        <td><?php echo $value['username'] ?></td>
+                        <td><?php echo count($get_provine_16_04) ?></td>
+                         </span> </td>
+                         <td><?php echo $num_pd ?></td>
+
+                         <td class="text-center">
+                          <?php 
+                            
+                            foreach ($get_provine_16_04 as $value_pd) { ?>
+                              <p class="label label-success"><?php echo date('d/m/Y H:i:s',strtotime($value_pd['date_added'])); ?> | <?php echo number_format($value_pd['filled']) ?> VNĐ
+                              </p><br>
+                           <?php }
+                          ?>
+                        </td>
+
+                    </tr>  
+                    <?php } ?>
+                  
+            
+                    <?php } ?>
+                </tbody>
+            </table>
+          </div>
+        </div>
+     	
       
     </div>
   </div>

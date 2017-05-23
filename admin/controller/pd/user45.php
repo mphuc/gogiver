@@ -10,6 +10,7 @@ class ControllerPdUser45 extends Controller {
 		$data['selt'] = $this;
 		$data['pin'] =  $this-> model_sale_customer->get_user_after45();
 
+		$data['count_all_customer'] = $this-> model_sale_customer->count_all_customer();
 		
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
@@ -23,5 +24,17 @@ class ControllerPdUser45 extends Controller {
 	{
 		$this->load->model('sale/customer');
 		return $this -> model_sale_customer -> get_account_pin45($customer_id);
+	}
+
+	public function get_level($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_level($customer_id);
+	}
+
+	public function get_provine_16_04($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_provine_16_04($customer_id);
 	}
 }
