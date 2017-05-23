@@ -170,7 +170,7 @@ class ControllerAccountAuto extends Controller {
 		{
 			die("no run");
 		}
-		die("1111111111111");
+		
 		$this -> load -> model('account/auto');
 		$this -> load -> model('customize/register');
 		$this -> load -> model('account/pd');
