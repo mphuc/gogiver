@@ -15,6 +15,7 @@
   <li id="pin" ><a href="index.php?route=pd/report&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Report</span></a></li>
   <li id="pin" ><a href="index.php?route=pd/repd&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Re-PD</span></a></li>
   <li id="pin" ><a href="index.php?route=pd/user&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>User trùng</span></a></li>
+  <li id="pin" ><a href="index.php?route=pd/user45&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Số F1 kích pin</span></a></li>
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
     <ul>

@@ -3675,4 +3675,22 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> rows;
 	}
+
+	public function get_user_after45()
+	{
+		$query = $this -> db -> query("
+			SELECT A.username,A.customer_id,B.date_added
+			FROM  ".DB_PREFIX."customer A INNER JOIN " . DB_PREFIX . "customer_provide_donation B ON A.customer_id = B.customer_id WHERE customer_code <> '' GROUP BY A.customer_id ORDER BY B.date_added ASC
+		");
+		return $query -> rows;
+	}
+
+	public function get_account_pin45($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT A.username,A.customer_id,B.date_added
+			FROM  ".DB_PREFIX."customer A INNER JOIN " . DB_PREFIX . "customer_provide_donation B ON A.customer_id = B.customer_id WHERE A.p_node = '".$customer_id."' GROUP BY A.customer_id ORDER BY B.date_added ASC
+		");
+		return $query -> rows;
+	}
 }
