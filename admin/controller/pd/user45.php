@@ -190,7 +190,7 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('F1', 'PD tối thiểu');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:F1')
         ->applyFromArray(
                 array(
                     'fill' => array(
