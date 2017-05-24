@@ -23,8 +23,9 @@
                     <tr>
                         <th>TT</th>
                         <th>Username</th>
-                        <th>Up line</th>
                         <th>SDT</th>
+                        <th>Up line</th>
+                        
                         <th>Số F1 kích pin</th>
                         <th>Thời gian bắt đầu kích pin</th>
                         <th>Số ngày</th>
@@ -45,8 +46,9 @@
                         <td><?php echo $stt; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
-                        <td><?php echo $value['upline'] ?></td>
                         <td><?php echo $value['telephone'] ?></td>
+                        <td><?php echo $value['upline'] ?></td>
+                        
                         <td><?php echo count($get_account_pin) ?></td>
                         <td><span> <?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])); ?>
                          </span> </td>
@@ -65,8 +67,9 @@
                     <tr>
                         <th>TT</th>
                         <th>Username</th>
-                        <th>Up line</th>
                         <th>SDT</th>
+                        <th>Up line</th>
+                        
                         <th>Số PD đã kích</th>
                         <th>PD tối thiểu</th>
                         <th>Các PD đã kích</th>
@@ -112,8 +115,9 @@
                         <td><?php echo $tt_hd; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
-                        <td><?php echo $value['upline'] ?></td>
                         <td><?php echo $value['telephone'] ?></td>
+                        <td><?php echo $value['upline'] ?></td>
+                        
                         <td><?php echo count($get_provine_16_04) ?></td>
                          </span> </td>
                          <td><?php echo $num_pd ?></td>
