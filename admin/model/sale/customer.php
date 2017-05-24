@@ -3679,8 +3679,8 @@ $date_added= date('Y-m-d H:i:s') ;
 	public function get_user_after45()
 	{
 		$query = $this -> db -> query("
-			SELECT A.username,A.customer_id,B.date_added
-			FROM  ".DB_PREFIX."customer A INNER JOIN " . DB_PREFIX . "customer_provide_donation B ON A.customer_id = B.customer_id WHERE customer_code <> '' GROUP BY A.customer_id ORDER BY B.date_added ASC
+			SELECT A.username,A.customer_id,B.date_added,A.telephone, (SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = A.p_node) as upline
+			FROM  ".DB_PREFIX."customer A INNER JOIN " . DB_PREFIX . "customer_provide_donation B ON A.customer_id = B.customer_id WHERE customer_code <> '' AND A.status <> 8 AND A.status <> 10 GROUP BY A.customer_id ORDER BY B.date_added ASC
 		");
 		return $query -> rows;
 	}
@@ -3696,8 +3696,8 @@ $date_added= date('Y-m-d H:i:s') ;
 
 	public function count_all_customer(){
 		$query = $this -> db -> query("
-			SELECT *
-			FROM  ".DB_PREFIX."customer WHERE customer_code <> '' AND account_holder <> '' GROUP BY customer_id ORDER BY date_added ASC
+			SELECT *,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = A.p_node) as upline
+			FROM  ".DB_PREFIX."customer A WHERE customer_code <> '' AND A.status <> 8 AND A.status <> 10 AND account_holder <> '' GROUP BY customer_id ORDER BY date_added ASC
 			
 		");
 		return $query -> rows;
