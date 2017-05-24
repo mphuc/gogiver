@@ -65,9 +65,36 @@
             </table>
           </div>
           <div id="menu1" class="tab-pane fade">
-            <a target="_bank" href="index.php?route=pd/user45/exportall_customer&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
-                <button class="btn btn-success">Export Excel</button>
-            </a>
+            <div class="form-group pull-right">
+                <div class="col-md-4"></div>
+                <?php 
+                    $date_added = date('d-m-Y');
+                    $date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
+                    $date_finish= date('d-m-Y',$date_finish) ;
+                ?>
+
+                <div class="col-sm-3 input-group date">
+                     <label class=" control-label" for="input-date_create">Start Data</label>
+                     <input style="margin-top: 5px;" type="text" id="start_date" name="date_create" value="<?php echo $date_finish ?>" data-date-format="DD-MM-YYYY" class="form-control">
+                     <span class="input-group-btn">
+                     <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                     </span>
+                </div>
+                <div class="col-sm-3 input-group date">
+                     <label class=" control-label" for="input-date_create">End Data</label>
+                     <input style="margin-top: 5px;" type="text" id="end_date" name="date_create" value="<?php echo $date_added ?>" data-date-format="DD-MM-YYYY" class="form-control">
+                     <span class="input-group-btn">
+                     <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                     </span>
+                </div>
+                <div class="col-sm-1 input-group date">
+                    
+                        <button id="submit_fillter" style="margin-top: 28px;" class="btn btn-success">Export Excel</button>
+                   
+
+                </div>
+            </div>
+            
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -153,6 +180,11 @@
   </div>
 </div>
 <script type="text/javascript">
+
+    $('#submit_fillter').on('click',function(){
+        window.location.replace("index.php?route=pd/user45/exportall_customer&token=<?php echo $_GET['token'] ?>&start_date="+jQuery('#start_date').val()+"&end_date="+jQuery('#end_date').val());
+    });
+
     jQuery('#username').on("input propertychang", function() {
         jQuery.ajax({
         type: "POST",
@@ -216,9 +248,7 @@
     $('.date').datetimepicker({
         pickTime: false
     });
-    jQuery('#submit_fillter').click(function(){
-        window.location.replace("<?php echo $export; ?>&start_date="+jQuery('#start_date').val()+"&end_date="+jQuery('#end_date').val());
-    });
+    
     
 </script>
 <style type="text/css">

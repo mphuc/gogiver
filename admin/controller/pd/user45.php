@@ -38,6 +38,12 @@ class ControllerPdUser45 extends Controller {
 		return $this -> model_sale_customer -> get_provine_16_04($customer_id);
 	}
 
+	public function get_provine_16_04_date($customer_id,$start_date,$end_date)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_provine_16_04_date($customer_id,$start_date,$end_date);
+	}
+
 	public function exportafter45(){
 		error_reporting(E_ALL);
 		ini_set('display_errors', TRUE);
@@ -168,8 +174,17 @@ class ControllerPdUser45 extends Controller {
 		$this->load->language('sale/customer');
 		$this->load->model('sale/customer');
 		//update time show button
+
+		$start_date = $this -> request -> get['start_date'];
+		$end_date = $this -> request -> get['end_date'];
+		$start_date = date('Y-m-d', strtotime($start_date));
+		$end_date = date('Y-m-d', strtotime($end_date));
+
 		$results = $this -> model_sale_customer -> count_all_customer();
 		//print_r($results); die;
+
+
+
 		!count($results) > 0 && die('no data!');
 
 		$objPHPExcel = new PHPExcel();
@@ -243,7 +258,7 @@ class ControllerPdUser45 extends Controller {
                     break;
           }
 
-          $get_provine_16_04 = $this -> get_provine_16_04($value['customer_id']);
+          $get_provine_16_04 = $this -> get_provine_16_04_date($value['customer_id'],$start_date,$end_date);
 
           if (count($get_provine_16_04) < $num_pd) {
            

@@ -3711,4 +3711,14 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> rows;
 	}
+
+
+	public function get_provine_16_04_date($customer_id,$start_date,$end_date)
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  " . DB_PREFIX . "customer_provide_donation WHERE customer_id = '".$customer_id."' AND date_added >= '".$start_date." 00:00:00' AND date_added <= '".$end_date." 23:59:59'
+		");
+		return $query -> rows;
+	}
 }
