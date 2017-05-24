@@ -218,6 +218,7 @@ class ControllerPdUser45 extends Controller {
 		$n = 2;
 		$stt=0;
 		$date_now = date('Y-m-d H:i:s');
+
 		foreach ($results as $value) {
 			$get_level = $this -> get_level($value['customer_id']);
 
@@ -245,14 +246,8 @@ class ControllerPdUser45 extends Controller {
           $get_provine_16_04 = $this -> get_provine_16_04($value['customer_id']);
 
           if (count($get_provine_16_04) < $num_pd) {
-            $stt += 1;
-
-
-
-			$get_account_pin = $this -> get_account_pin($value['customer_id']);
-            $day = strtotime($date_now) - strtotime($value['date_added']);
-            $day = floor($day/86400);
-            if ($day >= 45 && count($get_account_pin) == 0) {
+           
+			
                 $stt ++;
 			$objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$stt);
 			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$value['username']);
@@ -263,7 +258,7 @@ class ControllerPdUser45 extends Controller {
 
 			
 			$n++;
-			}
+			
 		}
 		}
 		
