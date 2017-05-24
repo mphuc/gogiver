@@ -18,6 +18,9 @@
         </ul>
         <div class="tab-content row" style="overflow-x: scroll;">
           <div id="home" class="tab-pane fade in active">
+            <a target="_bank" href="index.php?route=pd/user45/exportafter45&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
+                <button class="btn btn-success">Export Excel</button>
+            </a>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -62,6 +65,9 @@
             </table>
           </div>
           <div id="menu1" class="tab-pane fade">
+            <a target="_bank" href="index.php?route=pd/user45/exportall_customer&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
+                <button class="btn btn-success">Export Excel</button>
+            </a>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
