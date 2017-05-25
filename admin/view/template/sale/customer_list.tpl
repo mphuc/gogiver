@@ -269,16 +269,16 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
      <div class="row">
-        <form class="form-inline" style="margin: 0 auto; float: left;">
-          <div class="form-group">
-            <label for="email">Username</label>
-            <input type="text" placeholder="Search" name="username" id="key_username" class="form-control">
-          </div>
-         
-        </form>
-
+        
         <div class="form-group pull-right">
-                <div class="col-md-4"></div>
+        <div class="col-md-3">
+
+         <label class=" control-label" for="input-date_create">Username</label>
+         <input type="text" style="margin-top: 5px;" placeholder="Search" name="username" id="key_username" class="form-control">
+        </div>
+        <div class="col-md-1"></div>
+
+                
                 <?php 
                     $date_added = date('d-m-Y');
                     $date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
