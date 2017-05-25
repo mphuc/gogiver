@@ -330,7 +330,7 @@ class ControllerPdUser45 extends Controller {
 
 		
 
-		$results = $this -> model_sale_customer -> count_all_customer();
+		$results = $this -> model_sale_customer -> count_all_customers();
 		//print_r($results); die;
 
 

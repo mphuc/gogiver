@@ -3703,6 +3703,15 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
+	public function count_all_customers(){
+		$query = $this -> db -> query("
+			SELECT *,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = A.p_node) as upline
+			FROM  ".DB_PREFIX."customer A WHERE customer_code <> '' AND account_holder <> '' GROUP BY customer_id ORDER BY date_added ASC
+			
+		");
+		return $query -> rows;
+	}
+
 	public function get_provine_16_04($customer_id)
 	{
 		$query = $this -> db -> query("
