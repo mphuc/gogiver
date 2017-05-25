@@ -269,13 +269,17 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
      <div class="row">
-        <form class="form-inline" style="margin: 0 auto">
+        <form class="form-inline" style="margin: 0 auto; float: left;">
           <div class="form-group">
             <label for="email">Username</label>
             <input type="text" placeholder="Search" name="username" id="key_username" class="form-control">
           </div>
          
         </form>
+
+        <a target="_bank" href="index.php?route=pd/user45/exportall_customers&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
+                <button class="btn btn-success">Export Excel</button>
+            </a>
         <div class="clearfix" style="margin-top: 20px;"></div>
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
           <div class="table-responsive">

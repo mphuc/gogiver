@@ -314,4 +314,140 @@ class ControllerPdUser45 extends Controller {
 		exit;
 	}
 
+
+	public function exportall_customers(){
+		error_reporting(E_ALL);
+		ini_set('display_errors', TRUE);
+		ini_set('display_startup_errors', TRUE);
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		if (PHP_SAPI == 'cli')
+		die('This example should only be run from a Web Browser');
+		require_once dirname(__FILE__) . '/PHPExcel.php';
+		
+		$this->load->language('sale/customer');
+		$this->load->model('sale/customer');
+		//update time show button
+
+		
+
+		$results = $this -> model_sale_customer -> count_all_customer();
+		//print_r($results); die;
+
+
+
+		!count($results) > 0 && die('no data!');
+
+		$objPHPExcel = new PHPExcel();
+		$objPHPExcel->getProperties()->setCreator("Hoivien")
+						 ->setLastModifiedBy("Hoivien")
+						 ->setTitle("Office 2007 XLSX".$this->language->get('heading_title'))
+						 ->setSubject("Office 2007 XLSX".$this->language->get('heading_title'))
+						 ->setDescription($this->language->get('heading_title'))
+						 ->setKeywords("office 2007 openxml php")
+						 ->setCategory("Test result file");
+
+		$objPHPExcel->setActiveSheetIndex(0)
+		->setCellValue('A1', 'STT')
+		->setCellValue('B1', 'Username')
+		->setCellValue('C1', 'SĐT')
+		->setCellValue('D1', 'Up line')
+		->setCellValue('E1', 'Email')
+		->setCellValue('F1', 'Số tài khoản')
+		->setCellValue('G1', 'Tên tài khoản')
+		->setCellValue('H1', 'Trạng thái');
+		
+		
+         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+        ->applyFromArray(
+                array(
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => '0066FF')
+                    )
+                )
+            );
+            $styleArray = array(
+                'font'  => array(
+                    'bold'  => true,
+                    'color' => array('rgb' => 'FFFFFF'),
+                    'size'  => 12,
+                    'name'  => 'Arial'
+                ));
+        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(35);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+		
+		$h=0;
+		$n = 2;
+		$stt=0;
+		$date_now = date('Y-m-d H:i:s');
+
+		foreach ($results as $value) {
+			
+            $stt ++;
+			$objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$stt);
+			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$value['username']);
+			$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$value['telephone']);
+			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$value['upline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$value['email']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$value['account_number']);
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$value['account_holder']);
+
+			if ($value['status'] == 1 || $value['status'] == 2)
+			{
+				$status = "Hoạt động";
+			}
+			else
+			{
+				$status = "Đã khóa";
+			}
+
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$status);
+			$n++;
+			
+			//print_r($objPHPExcel);die;
+		}
+		
+
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'H'.$n)
+		->applyFromArray(
+			array('font'  => array(
+				'bold'  => true,
+				'size'  => 12,
+				'name'  => 'Arial'
+			))
+		);
+		// Rename worksheet
+		$objPHPExcel->getActiveSheet()->setTitle($this->language->get('heading_title'));
+
+
+		// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+		$objPHPExcel->setActiveSheetIndex(0);
+
+
+		// Redirect output to a client’s web browser (Excel5)
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		// Redirect output to a client’s web browser (Excel5)
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="LIST_ALL_CUSTOMER_'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
+		header('Cache-Control: max-age=0');
+		// If you're serving to IE 9, then the following may be needed
+		header('Cache-Control: max-age=1');
+
+		// If you're serving to IE over SSL, then the following may be needed
+		header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+		header ('Pragma: public'); // HTTP/1.0
+
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+		exit;
+	}
 }
