@@ -328,9 +328,12 @@ class ControllerPdUser45 extends Controller {
 		$this->load->model('sale/customer');
 		//update time show button
 
-		
+		$start_date = $this -> request -> get['start_date'];
+		$end_date = $this -> request -> get['end_date'];
+		$start_date = date('Y-m-d', strtotime($start_date));
+		$end_date = date('Y-m-d', strtotime($end_date));
 
-		$results = $this -> model_sale_customer -> count_all_customer();
+		$results = $this -> model_sale_customer -> count_all_customers($start_date,$end_date);
 		//print_r($results); die;
 
 
@@ -354,10 +357,11 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('E1', 'Email')
 		->setCellValue('F1', 'Số tài khoản')
 		->setCellValue('G1', 'Tên tài khoản')
-		->setCellValue('H1', 'Trạng thái');
+		->setCellValue('H1', 'Thời gian tạo')
+		->setCellValue('I1', 'Trạng thái');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -373,7 +377,7 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -381,7 +385,8 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(35);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
 		
 		$h=0;
 		$n = 2;
@@ -399,6 +404,8 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$value['account_number']);
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$value['account_holder']);
 
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
+
 			if ($value['status'] == 1 || $value['status'] == 2)
 			{
 				$status = "Hoạt động";
@@ -408,14 +415,14 @@ class ControllerPdUser45 extends Controller {
 				$status = "Đã khóa";
 			}
 
-			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$status);
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$status);
 			$n++;
 			
 			//print_r($objPHPExcel);die;
 		}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'H'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'I'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,

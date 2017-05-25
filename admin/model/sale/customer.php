@@ -3703,10 +3703,10 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
-	public function count_all_customers(){
+	public function count_all_customers($start_date,$end_date){
 		$query = $this -> db -> query("
 			SELECT *,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = A.p_node) as upline
-			FROM  ".DB_PREFIX."customer A WHERE customer_code <> '' AND account_holder <> '' GROUP BY customer_id ORDER BY date_added ASC
+			FROM  ".DB_PREFIX."customer A WHERE customer_code <> '' AND account_holder <> '' AND date_added >= '".$start_date." 00:00:00' AND date_added <= '".$end_date." 23:59:59' GROUP BY customer_id ORDER BY date_added ASC
 			
 		");
 		return $query -> rows;
