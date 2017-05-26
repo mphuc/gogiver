@@ -58,6 +58,7 @@
           <li class="active"><a data-toggle="tab" href="#home">Toàn bộ PD</a></li>
           <li><a data-toggle="tab" href="#menu1">PD không khớp</a></li>
           <li><a data-toggle="tab" href="#menu2">PD khớp ngày mai</a></li>
+          <li><a data-toggle="tab" href="#menu3">Thông tin khớp</a></li>
         </ul>
         <div class="tab-content row" style="overflow-x: scroll;">
           <div id="home" class="tab-pane fade in active">
@@ -215,6 +216,34 @@
             </tbody>
         </table>
           </div>
+
+          <div id="menu3" class="tab-pane fade">
+            <div class="pull-left row">
+            <div class="form-group">
+            <div class="col-md-3"></div>
+            
+            <div class="col-sm-2 input-group date">
+                 <label class=" control-label" for="input-date_create">Start Data</label>
+                 <input style="margin-top: 5px;" type="text" id="start_datett" name="date_create" value="<?php echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
+              <div class="col-sm-2 input-group date">
+                 <label class=" control-label" for="input-date_create">End Data</label>
+                 <input style="margin-top: 5px;" type="text" id="end_datett" name="date_create" value="<?php echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
+              <div class="col-sm-1">
+                <button id="submit_filltertt" style="margin-top: 28px;" type="button" class="btn btn-success">Export</button>
+                
+              </div>
+            </div>
+        </div>
+          </div>
+
         </div>
     </div>
   </div>
@@ -269,6 +298,10 @@
     }
     jQuery('#submit_fillter').click(function(){
         window.location.replace("<?php echo $export; ?>&start_date="+jQuery('#start_date').val()+"&end_date="+jQuery('#end_date').val());
+    });
+
+    jQuery('#submit_filltertt').click(function(){
+        window.location.replace("<?php echo $exporttt; ?>&start_date="+jQuery('#start_datett').val()+"&end_date="+jQuery('#end_datett').val());
     });
 </script>
 <?php echo $footer; ?>

@@ -3292,7 +3292,7 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		if ($start_date == $end_date)
 		{
-			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node
 			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B
 			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$start_date." 23:59:59' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			ORDER BY A.date_added DESC
@@ -3300,7 +3300,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		}
 		else
 		{
-			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node
 			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B
 			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59'
 			ORDER BY A.date_added DESC
@@ -3729,5 +3729,61 @@ $date_added= date('Y-m-d H:i:s') ;
 			FROM  " . DB_PREFIX . "customer_provide_donation WHERE customer_id = '".$customer_id."' AND date_added >= '".$start_date." 00:00:00' AND date_added <= '".$end_date." 23:59:59'
 		");
 		return $query -> rows;
+	}
+
+	public function getGD_bycustomer_watting($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0
+			ORDER BY date_added ASC LIMIT 1
+		");
+
+		return $query -> row;
+	}
+
+	public function getGD_bycustomer_finish($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
+			ORDER BY date_added DESC LIMIT 1
+		");
+
+		return $query -> row;
+	}
+
+	public function get_all_node($id_customer){
+		$mang = array();
+		$tam = true;
+		while (true) {
+			if ($tam)
+			{
+				$query = $this -> db -> query("
+					SELECT *
+					FROM  ".DB_PREFIX."customer_ml
+					WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+				");
+				
+				$tam = false;
+			}
+			else
+			{
+				$query = $this -> db -> query("
+					SELECT *
+					FROM  ".DB_PREFIX."customer_ml
+					WHERE customer_id = '".$query -> row['p_node']."'
+				");
+			}
+			
+			if (count($query -> row) == 0)
+			{
+				break;
+			}
+			$mang[] = $query -> row['customer_id'];
+		}
+
+
+		return $mang;
 	}
 }
