@@ -312,6 +312,10 @@ class ControllerAccountAccount extends Controller {
 			</thead>
 			<tbody>
 			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
+				<?php 	
+					$get_date_pd = $this -> get_date_pd($value['id']);
+				?>
+
 				<tr>
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
@@ -324,7 +328,10 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc">
 						<?php $get_gd_pd_finish = $this -> get_gd_pd_finish($value['id']);
 							echo "PD: ".$get_gd_pd_finish['PD']." - GD: ".$get_gd_pd_finish['GD'];
-						?>
+
+						?>	
+					</td>
+					<td>
 						
 					</td>
 				</tr>
@@ -500,5 +507,16 @@ class ControllerAccountAccount extends Controller {
 		}
 		return $join;
 	}	
+
+	public function get_date_pd($pd_id)
+	{
+		$this->load->language('account/customer');
+		$getPD_bycustomer = $this -> model_account_customer -> getPD_bycustomer($pd_id);
+		
+		$first_date = strtotime($getPD_bycustomer['date_added']);
+		$second_date = strtotime($getPD_bycustomer['date_finish']);
+		$datediff = abs($first_date - $second_date);
+		return floor($datediff / (60*60*24));
+	}
 
 }
