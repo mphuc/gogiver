@@ -3523,4 +3523,27 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query->row['dates'];
 	}
+
+	public function getPD_bycustomer($pd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_transfer_list
+			WHERE pd_id = '".$this -> db -> escape($pd_id)."' AND pd_satatus = 1
+			ORDER BY date_finish DESC LIMIT 1
+		");
+
+		return $query -> row;
+	}
+
+	public function getGD_bycustomer($pd_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_transfer_list
+			WHERE pd_id = '".$this -> db -> escape($pd_id)."' AND gd_status = 1
+			ORDER BY date_gd DESC LIMIT 1
+		");
+
+		return $query -> row;
+	}
+
 }

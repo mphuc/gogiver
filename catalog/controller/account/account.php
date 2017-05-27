@@ -321,7 +321,12 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo date('d/m/Y H:i:s' ,strtotime($value['date_finish'])) ?></td>
 					
 					<td style="border: 1px solid #ccc"><?php echo $value['status'] ?></td>
-					
+					<td style="border: 1px solid #ccc">
+						<?php $get_gd_pd_finish = $this -> get_gd_pd_finish($value['id']);
+							print_r($get_gd_pd_finish);
+						?>
+						
+					</td>
 				</tr>
 			<?php } ?>
 			
@@ -469,5 +474,17 @@ class ControllerAccountAccount extends Controller {
     	}
 
     }
+
+    public function get_gd_pd_finish($pd_id)
+	{
+		$this->load->language('account/customer');
+		$getGD_bycustomer = $this -> model_account_customer -> getGD_bycustomer($pd_id);
+		
+		$getPD_bycustomer = $this -> model_account_customer -> getPD_bycustomer($pd_id);
+
+		$join['GD'] = $getGD_bycustomer['date_gd'];
+		$join['PD'] = $getPD_bycustomer['date_finish'];
+		return $join;
+	}	
 
 }
