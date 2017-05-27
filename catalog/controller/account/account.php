@@ -314,6 +314,7 @@ class ControllerAccountAccount extends Controller {
 			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
 				<?php 	
 					$get_date_pd = $this -> get_date_pd($value['id']);
+					print_r($get_date_pd);
 				?>
 
 				<tr>
@@ -512,7 +513,7 @@ class ControllerAccountAccount extends Controller {
 	{
 		$this->load->language('account/customer');
 		$getPD_bycustomer = $this -> model_account_customer -> getPD_bycustomer($pd_id);
-		
+
 		$first_date = strtotime($getPD_bycustomer['date_added']);
 		$second_date = strtotime($getPD_bycustomer['date_finish']);
 		$datediff = abs($first_date - $second_date);
