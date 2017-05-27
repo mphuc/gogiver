@@ -482,8 +482,22 @@ class ControllerAccountAccount extends Controller {
 
 		$getPD_bycustomer = $this -> model_account_customer -> getPD_bycustomer($pd_id);
 
-		$join['GD'] = $getGD_bycustomer['date_gd'];
-		$join['PD'] = $getPD_bycustomer['date_finish'];
+		if (count($getGD_bycustomer) > 0)
+		{
+			$join['GD'] = $getGD_bycustomer['date_gd'];
+		}
+		else
+		{
+			$join['GD'] = "...";
+		}
+		if (count($getPD_bycustomer) > 0)
+		{
+			$join['PD'] = $getPD_bycustomer['date_finish'];
+		}
+		else
+		{
+			$join['PD'] = "...";
+		}
 		return $join;
 	}	
 
