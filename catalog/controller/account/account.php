@@ -312,11 +312,6 @@ class ControllerAccountAccount extends Controller {
 			</thead>
 			<tbody>
 			<?php $i = 0; foreach ($getDayFnPD as $value) { $i++; ?>
-				<?php 	
-					$get_date_pd = $this -> get_date_pd($value['id']);
-					print_r($get_date_pd);
-				?>
-
 				<tr>
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['id'] ?></td>
@@ -329,11 +324,13 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc">
 						<?php $get_gd_pd_finish = $this -> get_gd_pd_finish($value['id']);
 							echo "PD: ".$get_gd_pd_finish['PD']." - GD: ".$get_gd_pd_finish['GD'];
-
 						?>	
 					</td>
 					<td>
-						
+						<?php 	
+					$get_date_pd = $this -> get_date_pd($value['id']);
+					
+				?>
 					</td>
 				</tr>
 			<?php } ?>
