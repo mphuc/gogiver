@@ -361,7 +361,9 @@ error_reporting(-1);
 			
 			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
 
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".date('d/m/Y H:i:s',strtotime($customer['date_added_pd'])));
+			$get_pd_id = $this -> get_pd_id($customer['pd_id']);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".date('d/m/Y H:i:s',strtotime($get_pd_id['date_added'])));
 
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".date('d/m/Y H:i:s',strtotime($customer['date_added'])));
 			if ($customer['pd_satatus'] == 0) $status = "Đang chờp";
@@ -435,6 +437,11 @@ error_reporting(-1);
 		exit;
 	}
 
+	public function get_pd_id($id_pd)
+	{
+		$this->load->language('sale/customer');
+		return $this -> model_sale_customer -> get_pd_id($id_pd);
+	}
 	public function get_gd_watting_finish($customer_id)
 	{
 		$this->load->language('sale/customer');
