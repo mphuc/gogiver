@@ -244,6 +244,8 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">(amount)</th>
 					<th style="border: 1px solid #ccc">(filled)</th>
 					<th style="border: 1px solid #ccc">Date</th>
+					<th style="border: 1px solid #ccc"></th>
+					<th style="border: 1px solid #ccc"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -326,7 +328,7 @@ class ControllerAccountAccount extends Controller {
 							echo "PD: ".$get_gd_pd_finish['PD']." - GD: ".$get_gd_pd_finish['GD'];
 						?>	
 					</td>
-					<td>
+					<td style="border: 1px solid #ccc">
 						<?php 	
 						echo $get_date_pd = $this -> get_date_pd($value['id']);
 							
