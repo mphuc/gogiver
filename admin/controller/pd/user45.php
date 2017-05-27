@@ -20,6 +20,47 @@ class ControllerPdUser45 extends Controller {
 		$this->response->setOutput($this->load->view('pd/user45.tpl', $data));
 	}
 
+	/*public function big_upline($customer_id)
+	{
+		$this->load->language('sale/customer');
+		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
+
+		$count = count($big_upline);
+		
+		if (($count-3) > 0)
+		{
+			$value = $big_upline[$count-3];
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
+
+			return $bigupline['username'];
+		}
+		else
+		{
+			return "";
+		}
+		
+	}*/
+	public function big_upline($customer_id)
+	{
+		$this->load->language('sale/customer');
+		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
+
+		$count = count($big_upline);
+		
+		if (($count-3) > 0)
+		{
+			$value = $big_upline[$count-3];
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
+
+			return $bigupline['username'];
+		}
+		else
+		{
+			return "";
+		}
+		
+	}
+
 	public function get_account_pin($customer_id)
 	{
 		$this->load->model('sale/customer');
@@ -74,11 +115,12 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Số F1 kích pin')
-		->setCellValue('F1', 'Thời gian bắt đầu kích pin')
-		->setCellValue('G1', 'Số ngày chưa tạo ra F1');
+		->setCellValue('E1', 'Big Upline')
+		->setCellValue('F1', 'Số F1 kích pin')
+		->setCellValue('G1', 'Thời gian bắt đầu kích pin')
+		->setCellValue('H1', 'Số ngày chưa tạo ra F1');
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:G1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -94,14 +136,15 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
 		
 		$h=0;
 		$n = 2;
@@ -117,9 +160,14 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$value['username']);
 			$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$value['telephone']);
 			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$value['upline']);
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n,count($get_account_pin));
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$day);
+
+			$big_upline = $this -> big_upline($value['customer_id']);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,count($get_account_pin));
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$day);
 			
 			$n++;
 			}
@@ -201,11 +249,12 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Số PD đã kích')
-		->setCellValue('F1', 'PD tối thiểu');
+		->setCellValue('E1', 'Big Upline')
+		->setCellValue('F1', 'Số PD đã kích')
+		->setCellValue('G1', 'PD tối thiểu');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:F1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:G1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -226,8 +275,9 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(10);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(10);
 		
 		$h=0;
 		$n = 2;
@@ -268,8 +318,12 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$value['username']);
 			$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$value['telephone']);
 			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$value['upline']);
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n,count($get_provine_16_04));
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,$num_pd);
+
+			$big_upline = $this -> big_upline($value['customer_id']);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,count($get_provine_16_04));
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$num_pd);
 
 			
 			$n++;
