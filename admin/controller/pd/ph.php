@@ -310,7 +310,7 @@ error_reporting(-1);
 		->setCellValue('C1', 'Telephone')
 		->setCellValue('D1', 'Upline')
 		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Date create PD')
+		->setCellValue('F1', 'Date Matched PD')
 		->setCellValue('G1', 'Status PD')
 		->setCellValue('H1', 'Date GD Finish')
 		->setCellValue('I1', 'Date GD Watting');
