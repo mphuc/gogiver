@@ -291,7 +291,7 @@ error_reporting(-1);
 		$this->load->model('sale/customer');
 		//update time show button
 
-		$results = $this -> model_sale_customer -> getall_pd_date($start_date,$end_date);
+		$results = $this -> model_sale_customer -> getall_pd_datett($start_date,$end_date);
 		//print_r($results); die;
 		!count($results) > 0 && die('no data!');
 
@@ -359,9 +359,9 @@ error_reporting(-1);
 			
 			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
 			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".date('d/m/Y H:i:s',strtotime($customer['date_added'])));
-			if ($customer['status'] == 0) $status = "Đang chờ khớp";
-			if ($customer['status'] == 1) $status = "Đang khớp lệnh";
-			if ($customer['status'] == 2) $status = "Kết thúc";
+			if ($customer['pd_satatus'] == 0) $status = "Đang chờp";
+			if ($customer['pd_satatus'] == 1) $status = "Hoàn thành";
+			if ($customer['pd_satatus'] == 2) $status = "Báo cáo";
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$status);
 
 			$get_gd = $this -> get_gd_watting_finish($customer['customer_id']);
