@@ -328,9 +328,9 @@ class ControllerAccountAccount extends Controller {
 					</td>
 					<td>
 						<?php 	
-					$get_date_pd = $this -> get_date_pd($value['id']);
-					
-				?>
+						echo $get_date_pd = $this -> get_date_pd($value['id']);
+							
+						?>
 					</td>
 				</tr>
 			<?php } ?>
