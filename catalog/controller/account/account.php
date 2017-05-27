@@ -323,7 +323,7 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $value['status'] ?></td>
 					<td style="border: 1px solid #ccc">
 						<?php $get_gd_pd_finish = $this -> get_gd_pd_finish($value['id']);
-							print_r($get_gd_pd_finish);
+							echo "PD: ".$get_gd_pd_finish['PD']." - GD: ".$get_gd_pd_finish['GD'];
 						?>
 						
 					</td>
@@ -479,7 +479,7 @@ class ControllerAccountAccount extends Controller {
 	{
 		$this->load->language('account/customer');
 		$getGD_bycustomer = $this -> model_account_customer -> getGD_bycustomer($pd_id);
-		
+
 		$getPD_bycustomer = $this -> model_account_customer -> getPD_bycustomer($pd_id);
 
 		$join['GD'] = $getGD_bycustomer['date_gd'];
