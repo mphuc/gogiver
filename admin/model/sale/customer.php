@@ -3792,18 +3792,22 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		if ($start_date == $end_date)
 		{
-			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node,A.pd_id_customer as customer_id
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node,A.pd_id_customer as customer_id, C.date_added as date_added_pd
 			FROM ".DB_PREFIX."customer_transfer_list A LEFT JOIN ".DB_PREFIX."customer B
-			 ON B.customer_id = A.pd_id_customer WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$start_date." 23:59:59' AND A.pd_id_customer NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10) GROUP BY A.pd_id_customer
+			 ON B.customer_id = A.pd_id_customer INNER JOIN ".DB_PREFIX."customer_provide_donation C ON A.pd_id_customer = C.customer_id
+
+			WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$start_date." 23:59:59' AND A.pd_id_customer NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10) GROUP BY A.pd_id_customer
 			ORDER BY A.date_added DESC
 			
 		");
 		}
 		else
 		{
-			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node,A.pd_id_customer as customer_id
+			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node,A.pd_id_customer as customer_id, C.date_added as date_added_pd
 			FROM  ".DB_PREFIX."customer_transfer_list A LEFT JOIN ".DB_PREFIX."customer B
-			 ON B.customer_id = A.pd_id_customer WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59'  AND A.pd_id_customer NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10) GROUP BY A.pd_id_customer
+			 ON B.customer_id = A.pd_id_customer INNER JOIN ".DB_PREFIX."customer_provide_donation C ON A.pd_id_customer = C.customer_id
+
+			WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59'  AND A.pd_id_customer NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10) GROUP BY A.pd_id_customer
 			ORDER BY A.date_added DESC
 			
 		");
