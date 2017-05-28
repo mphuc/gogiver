@@ -3302,7 +3302,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		{
 			$query = $this -> db -> query("SELECT A.*,B.username,B.account_holder,B.account_number,B.telephone,B.p_node
 			FROM  ".DB_PREFIX."customer_provide_donation A LEFT JOIN ".DB_PREFIX."customer B
-			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59'
+			 ON B.customer_id = A.customer_id WHERE A.date_added >= '".$start_date." 00:00:00' AND A.date_added <= '".$end_date." 23:59:59' AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
 			ORDER BY A.date_added DESC
 		");
 		}
