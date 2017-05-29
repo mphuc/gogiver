@@ -251,10 +251,11 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('D1', 'Up line')
 		->setCellValue('E1', 'Big Upline')
 		->setCellValue('F1', 'Số PD đã kích')
-		->setCellValue('G1', 'PD tối thiểu');
+		->setCellValue('G1', 'PD tối thiểu')
+		->setCellValue('H1', 'Các PD đã kích');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:G1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -270,7 +271,7 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -278,6 +279,7 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(10);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(50);
 		
 		$h=0;
 		$n = 2;
@@ -324,6 +326,23 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
 			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,count($get_provine_16_04));
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$num_pd);
+
+			$get_provine_16_04 = $this -> get_provine_16_04($value['customer_id']);
+			//print_r($get_provine_16_04);die;
+			if (count($get_provine_16_04) == 0)
+			{
+				$chuoi_pd = "";
+			}
+			else
+			{
+				$chuoi_pd = "";
+				foreach ($get_provine_16_04 as $value_pd) { 
+					$chuoi_pd .= ",".date('d/m/Y H:i:s',strtotime($value_pd['date_added']));
+				}
+				$chuoi_pd = substr($chuoi_pd,1);
+			}
+			
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$chuoi_pd);
 
 			
 			$n++;
