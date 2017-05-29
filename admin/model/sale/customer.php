@@ -3137,7 +3137,7 @@ $date_added= date('Y-m-d H:i:s') ;
 
 		$query = $this -> db -> query("
 			SELECT count(*) as number
-			FROM  ".DB_PREFIX."customer_get_donation  WHERE show_gd = 1 AND check_gd = 0
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE A.show_gd = 1 AND A.check_gd = 0  AND B.status <> 8 AND B.status <> 10
 		");
 		return $query -> row;
 	}
@@ -3590,11 +3590,24 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
-			SELECT A.*,B.username
-			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE A.show_gd = 1 AND A.check_gd = 0
+			SELECT A.*,B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
+			WHERE A.show_gd = 1 AND A.check_gd = 0 AND B.status <> 8 AND B.status <> 10 
 			LIMIT ".$limit."
 			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
+
+	public function get_all_repd_date_rp_all()
+	{
+		$date= date('Y-m-d');
+		$query = $this -> db -> query("
+			SELECT A.*,B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
+			FROM  ".DB_PREFIX."customer_get_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id 
+			WHERE A.show_gd = 1 AND A.check_gd = 0 AND B.status <> 8 AND B.status <> 10 
+			
 		");
 
 		return $query -> rows;

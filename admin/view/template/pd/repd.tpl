@@ -11,13 +11,23 @@
     <div class="panel-heading">
       <h3 class="panel-title">List Re-PD</h3>
     </div>
+    <div class="col-md-2 pull-right">
+      <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
+            <a target="_blank" href="index.php?route=pd/repd/export&token=<?php echo $_GET['token'];?>">
+                <div class="btn btn-success pull-right">Export Excel</div>
+            </a>
+        </span>
+      </div>
     <div class="panel-body">
      	<table class="table table-bordered table-hover">
      		<thead>
      			<tr>
      				<th>TT</th>
-            <th>Username</th>
-            <th>GD</th>
+                    <th>Username</th>
+                    <th>Telephone</th>
+                    <th>Upline</th>
+                    <th>Big Upline</th>
+                    <th>GD</th>
      				<th>Date Re PD</th>
      			</tr>
      		</thead>
@@ -29,6 +39,9 @@
                     <td><?php echo $stt; ?></td>
                     
                     <td><?php echo $value['username'] ?></td>
+                    <td><?php echo $value['telephone'] ?></td>
+                    <td><?php echo $value['upline'] ?></td>
+                    <td><?php echo $seft -> big_upline($value['customer_id']) ?></td>
                     <td>GD<?php echo $value['gd_number'] ?></td>
                     <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
                      </span> </td>

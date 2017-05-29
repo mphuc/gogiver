@@ -108,5 +108,5 @@ $_['Other_reasons'] = 'Other reasons';
 $_['Idonotgetmoney'] = 'I do not get money';
 $_['Are_you_sure_to_Report'] = 'Are you sure to Report?';
 $_['Reasons'] = 'Reasons';
-
+$_['Date_Upload_Bill'] = 'Date Confirm';
 

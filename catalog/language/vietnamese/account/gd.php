@@ -105,3 +105,5 @@ $_['Other_reasons'] = 'Lý do khác';
 $_['Idonotgetmoney'] = 'Tôi chưa nhận được tiền';
 $_['Are_you_sure_to_Report'] = 'Bạn có chắc chắn Báo cáo?';
 $_['Reasons'] = 'Lý do';
+$_['Date_Upload_Bill'] = 'Thời gian xác nhận hóa đơn';
+

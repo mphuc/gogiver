@@ -421,7 +421,9 @@ class ControllerAccountGd extends Controller {
 			$status_gd = '<span class="label label-danger">Báo cáo</span>';
 		}*/
                $image = '<a href="'.$value['image'].'" target="_blank"><img style="max-width:35%" src="'.$value['image'].'" style="display:block ; margin-top:20px;" /></a>';
-        
+        		if (intval($value['gd_status']) === 1){
+					$image .= '<p>'.$lang['Date_Upload_Bill'].': '.date('d/m/Y H:i:s',strtotime($value['date_gd'])).'</p>';
+				}
 
 			$html .= '<div class="row">
    <div class="col-lg-12 col-sm-12 col-xs-12 height">

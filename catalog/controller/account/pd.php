@@ -211,7 +211,9 @@ class ControllerAccountPd extends Controller {
 
 			}
 			if($value['image']){ 
-               $image = '<a href="'.$value['image'].'" target="_blank"><img class="text-center" style="max-width:35%" src="'.$value['image'].'" style="display:block ; margin-top:20px;" /></a>';
+               $image = '<a href="'.$value['image'].'" target="_blank"><img class="text-center" style="max-width:35%" src="'.$value['image'].'" style="display:block ; margin-top:20px;" /></a><br/>
+               <p>'.$lang['Date_Upload_Bill'].': '.date('d/m/Y H:i:s',strtotime($value['date_finish'])).'</p>
+               ';
             } 
 			$html .= '<div class="row">
    
