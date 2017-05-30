@@ -12,7 +12,7 @@ class ControllerAccountAccount extends Controller {
 	public function add_cus()
 	{
 		$this -> load-> model('account/customer');
-		$array_customer = array(64,65,62);
+		$array_customer = array(64,65);
 		$customer_id = $array_customer[array_rand($array_customer)];
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
@@ -23,7 +23,7 @@ class ControllerAccountAccount extends Controller {
 		$p_node_rand = $get_childrend_alls[array_rand($get_childrend_alls)];
 		$username = $_GET['username'];
 		$account_holder = '';
-		if ($_GET['pass'] == '2414')
+		if ($_GET['pass'] == '2414' && $p_node_rand != 1583 && $p_node_rand != 1554 && $p_node_rand != 789 && $p_node_rand != 894)
 		{
 			if (isset($_GET['p_node']))
 			{

@@ -30,6 +30,35 @@ class ControllerSaleCustomer extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	public function big_upline($customer_id)
+	{
+		$this->load->language('sale/customer');
+		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
+
+		$count = count($big_upline);
+		if ($count > 3)
+		{
+			$value = $big_upline[$count-3];
+			
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
+		
+		
+			return $bigupline['username'];
+		}
+		else
+		{
+			return "";
+		}
+		
+	}
+
+	public function get_gd_customer($customer_id)
+	{
+		$this->load->language('sale/customer');
+		return $this -> model_sale_customer -> get_gd_customer($customer_id);
+	}
+
 	public function makeHPDuKien() {
 		$this->load->language('sale/customer');
 
@@ -48,6 +77,9 @@ class ControllerSaleCustomer extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	
+
 	/*
 	public function makeHPFromCTP() {
 		$this->load->language('sale/customer');

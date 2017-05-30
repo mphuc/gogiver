@@ -3833,4 +3833,22 @@ $date_added= date('Y-m-d H:i:s') ;
 		}
 		return $query -> rows;
 	}
+
+	public function get_gd_customer($id_customer)
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		$json['total'] = $query -> row['number'];
+
+		$querys = $this -> db -> query("
+			SELECT sum(amount) as number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		$json['sum'] = $querys -> row['number'];
+		return $json;
+	}
 }
