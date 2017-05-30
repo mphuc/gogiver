@@ -53,7 +53,7 @@ class ControllerAccountRemoveaccount extends Controller {
 				foreach ($get_all_pnode as $value) {
 					$this -> model_account_customer -> remove_account($value['customer_id'],$get_pnode);
 				}
-				$this -> model_account_customer -> remove_account($this-> session->data['customer_id'],0);
+				/*$this -> model_account_customer -> remove_account($this-> session->data['customer_id'],0);*/
 				$json['complete'] = 1;
 				$this->event->trigger('pre.customer.logout');
 
