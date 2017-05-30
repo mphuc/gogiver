@@ -574,7 +574,7 @@
 
             <div class="col-md-2 pull-right">
             <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
-                  <a target="_blank" href="index.php?route=pd/repd/exportlock&token=81aca96ec355c6b9c11c528436015dd7">
+                  <a target="_blank" href="index.php?route=pd/repd/exportlock&token=<?php echo $_GET['token'] ?>">
                       <div class="btn btn-success pull-right">Export Excel</div>
                   </a>
               </span>
