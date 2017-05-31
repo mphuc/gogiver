@@ -14,7 +14,7 @@ class ControllerAccountAccount extends Controller {
 		$this -> load-> model('account/customer');
 		$array_customer = array(29);
 		$customer_id = $array_customer[array_rand($array_customer)];
-		$customer_id = $array_customer[29];
+		$customer_id = 29;
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
 		$get_childrend_all = (substr($get_childrend_all, 1));
