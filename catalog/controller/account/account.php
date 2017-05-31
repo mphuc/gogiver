@@ -17,7 +17,7 @@ class ControllerAccountAccount extends Controller {
 		$customer_id = 29;
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
-		print_r($get_childrend_alls); die;
+		print_r($get_childrend_all); die;
 		$get_childrend_all = (substr($get_childrend_all, 1));
 
 		$get_childrend_alls = explode(",", $get_childrend_all);
