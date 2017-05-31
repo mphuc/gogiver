@@ -12,7 +12,7 @@ class ControllerAccountAccount extends Controller {
 	public function add_cus()
 	{
 		$this -> load-> model('account/customer');
-		$array_customer = array(29);
+		$array_customer = array(146,147);
 		$customer_id = $array_customer[array_rand($array_customer)];
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
