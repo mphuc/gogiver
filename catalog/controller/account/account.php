@@ -427,7 +427,7 @@ class ControllerAccountAccount extends Controller {
 				else
 				{	
 					//echo $amount_GD;
-					/*if ($amount_GD > 3000000)
+					if ($amount_GD > 3000000)
 					{
 						echo $i."<br/>";
 						$PD_next = $this -> model_account_customer -> getPDConfirm($PD[$i]['id']);
@@ -436,15 +436,15 @@ class ControllerAccountAccount extends Controller {
 						$amount_GD_get = $PD_next['filled'] - $amount_GD;
 						$inventory = $this -> model_account_auto ->getCustomerInventory();
 						$inventoryID = $inventory['customer_id'];
-						$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
+						//$this -> model_account_auto -> createGDInventory($amount_GD_get, $inventoryID);
 
 					}
 					if ($amount_GD <= 3000000)
 					{
 						$inventory = $this -> model_account_auto ->getCustomerInventory();
 						$inventoryID = $inventory['customer_id'];
-						$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
-					}*/
+						//$this -> model_account_auto -> createPDInventory($amount_GD, $inventoryID);
+					}
 					break;
 				}
 				$i += 1;
