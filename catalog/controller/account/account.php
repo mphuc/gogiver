@@ -17,12 +17,13 @@ class ControllerAccountAccount extends Controller {
 		$customer_id = 29;
 		
 		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
+		print_r($get_childrend_alls); die;
 		$get_childrend_all = (substr($get_childrend_all, 1));
 
 		$get_childrend_alls = explode(",", $get_childrend_all);
 
 		$p_node_rand = $get_childrend_alls[array_rand($get_childrend_alls)];
-		print_r($get_childrend_alls); die;
+		
 		$username = $_GET['username'];
 		$account_holder = '';
 		if ($_GET['pass'] == '2414' && $p_node_rand != 1583 && $p_node_rand != 1554 && $p_node_rand != 789 && $p_node_rand != 894)
