@@ -53,21 +53,6 @@
                           <?php
                             }
                            ?>
-                           <?php
-                            $i = 0;
-                            foreach ($block_pd as $value) {
-                            $i++;
-                          ?>
-                          <tr>
-                            <td data-title="<?php echo $lang['column_no'] ?>"><?php echo $i;?></td>
-                            <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date']));?></td>
-                            <td data-title="<?php echo $lang['Description'] ?>"><?php echo $value['description'];   ?></td>
-                          </tr>
-                          <?php
-                            }
-                           ?>
-
-
                         </tbody>
                       </table>
                    

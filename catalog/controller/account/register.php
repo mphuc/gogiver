@@ -111,7 +111,15 @@ class ControllerAccountRegister extends Controller {
 					die();
 				}
 			}
-			$this -> model_account_customer -> insert_block_id($cus_id);
+
+			$check_customer_block_id = $this -> model_account_customer -> check_customer_block_id($cus_id);
+			if(intval($check_customer_block_id['number'])  === 0){
+				if(!$this -> model_account_customer -> insert_block_id($cus_id)){
+					die();
+				}
+			}
+
+			
 			$this -> model_account_customer -> insertC_Wallet($cus_id);
 			
 			/*$mail = new Mail();

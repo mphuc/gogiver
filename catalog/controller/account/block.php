@@ -645,7 +645,7 @@ class ControllerAccountBlock extends Controller {
 		
 		$data['self'] = $this;
 		$data['block'] = $this -> model_account_block -> get_block_id_gd_list($this -> customer -> getId());
-		$data['block_pd'] = $this -> model_account_block -> get_block_id_pd_list($this -> customer -> getId());
+		//$data['block_pd'] = $this -> model_account_block -> get_block_id_pd_list($this -> customer -> getId());
 		
 
 

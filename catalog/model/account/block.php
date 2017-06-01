@@ -176,6 +176,7 @@ class ModelAccountBlock extends Model {
 
 	public function insert_block_id_gd($id_customer,$description,$id_gd){
 		$date_now= date('Y-m-d H:i:s');
+		
 		$query = $this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer_block_id_gd SET
 			customer_id = '".$this -> db -> escape($id_customer)."',

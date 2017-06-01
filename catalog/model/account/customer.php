@@ -529,6 +529,16 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row;
 	}
 
+
+	public function check_customer_block_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_block_id
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+
 	public function get_block_id($id_customer){
 		$query = $this -> db -> query("
 			SELECT *
