@@ -3556,4 +3556,26 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row;
 	}
 
+
+	public function lock_account_no_pd($customer_id){
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($customer_id)."'
+			
+		");
+		return $query -> row['number'];
+	}
+
+	public function updateStatusCustomer($customer_id){
+		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
+			status = 8 WHERE customer_id = '".$customer_id."'
+		");
+	}
+
+	public function updateStatusCustomer_31_05($customer_id){
+		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
+			status = 8 WHERE customer_id = '".$customer_id."' AND date_added > '2017-05-31 00:00:00'
+		");
+	}
 }

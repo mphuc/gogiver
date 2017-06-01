@@ -523,4 +523,30 @@ class ControllerAccountAccount extends Controller {
 		return floor($datediff / (60*60*24));
 	}
 
+	public function lock_account_no_pd()
+	{
+
+		$this->load->model('account/customer');
+		$maao = $this -> model_account_customer -> get_childrend_all_tree(5);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(3);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(1319);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(485);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(4);
+		$maao = substr($maao, 1);
+
+		$user = explode(",",$maao);
+		foreach ($user as $value) {
+			$count_PD = $this -> model_account_customer -> getPD($value);
+			if (count($count_PD) == 0)
+			{
+				$this -> model_account_customer -> updateStatusCustomer_31_05($value);
+				echo $value."<br/>";
+			}
+		}
+	}
+
 }

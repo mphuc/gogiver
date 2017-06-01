@@ -175,6 +175,10 @@ class ControllerAccountPersonal extends Controller {
 			{
 				$type = '#000';
 			}
+			if (intval($child['status_cus']) == 10)
+			{
+				$type = '#000';
+			}
 $childNode -> type = $type;
 			
 			

@@ -26,11 +26,17 @@ $(function() {
 		);
 	});*/
 
-	/*$("#amount").on('input propertychange', function() {
+	$("#amount").on('input propertychange', function() {
 	    if ($("#amount").val() > 10000000){
-	    	$("#amount").val(10000000);
+	    	if ($("#amount").val()%100000 != 0)
+	    	{
+	    		$("#amount").val($("#amount").val()-$("#amount").val()%100000);
+	    	}
+	    	
 	    }
-	});*/
+	});
+
+
 
 	$('#createGD').on('submit', function() {
 		$(this).ajaxSubmit({
