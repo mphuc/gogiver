@@ -223,7 +223,7 @@ class ControllerPdUser45 extends Controller {
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		// Redirect output to a client’s web browser (Excel5)
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="LIST_ID_F1_KHONG_KICH_PIN_'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
+		header('Content-Disposition: attachment;filename="TRANG_THAI_USER'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
 		header('Cache-Control: max-age=0');
 		// If you're serving to IE 9, then the following may be needed
 		header('Cache-Control: max-age=1');
