@@ -15,6 +15,7 @@
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Danh sách ID F1 không kích pin</a></li>
           <li><a data-toggle="tab" href="#menu1">Danh sách ID chưa kích đủ pin từ 16/04</a></li>
+          <li><a data-toggle="tab" href="#menu2">Trạng thái user</a></li>
         </ul>
         <div class="tab-content row" style="overflow-x: scroll;">
           <div id="home" class="tab-pane fade in active">
@@ -181,8 +182,74 @@
                 </tbody>
             </table>
           </div>
+
+
+        <div id="menu2" class="tab-pane fade">
+            
+            <a target="_bank" href="index.php?route=pd/user45/exportafter_all&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
+                <button class="btn btn-success">Export Excel</button>
+            </a>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Username</th>
+                        <th>SDT</th>
+                        <th>Up line</th>
+                        <th>Big Upline</th>
+                        <th>Trạng thái</th>
+                       
+                    </tr>
+                </thead>
+
+                <tbody id="result_date"> 
+                <?php $array = array(3,4,5,7,485,1319) ?>
+                <?php foreach ($array as  $item) { ?>
+                    
+                
+                    <?php 
+                        $user = $selt -> get_all_child($item);
+                        $user = explode(",",$user);
+                        $iii = 0;
+                        foreach ($user as $values) {
+                        $iii++; 
+                       $value = $selt -> get_user_customer($values);
+                    ?>
+                       
+                    <tr>
+                    <td><?php echo $iii; ?></td>
+                        
+                    <td><?php echo $value['username'] ?></td>
+                    <td><?php echo $value['telephone'] ?></td>
+                    <td><?php echo $value['upline'] ?></td>
+                    <td>
+                        <?php 
+                            echo $selt -> big_upline($value['customer_id']);
+                        ?>
+                    </td>
+                    <td>
+                        <?php if ($value['status'] == 1 || $value['status'] == 2) echo "Hoạt động";
+                            if ($value['status'] == 8)
+                            {
+                                echo "Bị khóa";
+                            }
+                            if ($value['status'] == 10)
+                            {
+                                echo "Đã xóa";
+                            }
+                        ?>
+                    </td>
+                    </tr>
+                    <?php }   ?>
+                    <tr><td></td><td></td><td></td><td></td></tr>
+
+                    <?php } ?>
+                      
+                </tbody>
+            </table>
         </div>
      	
+        </div>
       
     </div>
   </div>

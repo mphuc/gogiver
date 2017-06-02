@@ -3851,4 +3851,15 @@ $date_added= date('Y-m-d H:i:s') ;
 		$json['sum'] = $querys -> row['number'];
 		return $json;
 	}
+
+
+	public function get_user_customer($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT A.username,A.customer_id,A.telephone,A.status, (SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = A.p_node) as upline
+			FROM  ".DB_PREFIX."customer A WHERE A.customer_id = '".$customer_id."'
+		");
+		return $query -> row;
+	}
+
 }
