@@ -3575,7 +3575,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function updateStatusCustomer_31_05($customer_id){
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
-			status = 8 WHERE customer_id = '".$customer_id."' AND date_added > '2017-05-31 00:00:00'
+			status = 8 WHERE customer_id = '".$customer_id."' AND date_added < '2017-05-31 59:59:59'
 		");
 	}
 }

@@ -539,12 +539,16 @@ class ControllerAccountAccount extends Controller {
 		$maao = substr($maao, 1);
 
 		$user = explode(",",$maao);
+		$i= 0;
 		foreach ($user as $value) {
 			$count_PD = $this -> model_account_customer -> getPD($value);
 			if (count($count_PD) == 0)
 			{
-				$this -> model_account_customer -> updateStatusCustomer_31_05($value);
-				echo $value."<br/>";
+				/*$this -> model_account_customer -> updateStatusCustomer_31_05($value);*/
+				$i ++;
+				$getcustomer= $this -> model_account_customer -> getcustomer($value);
+
+				echo $getcustomer['username']."<br/>";
 			}
 		}
 	}
