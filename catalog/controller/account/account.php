@@ -525,7 +525,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function lock_account_no_pd()
 	{
-
+		die;
 		$this->load->model('account/customer');
 		$maao = $this -> model_account_customer -> get_childrend_all_tree(5);
 
