@@ -548,7 +548,7 @@ class ControllerAccountAccount extends Controller {
 				$i ++;
 				$getcustomer= $this -> model_account_customer -> getcustomer($value);
 
-				echo $getcustomer['username']."<br/>".$i ++;
+				echo $getcustomer['username']."<br/>".$i;
 			}
 		}
 	}
