@@ -903,12 +903,18 @@ public function updateLevel_listID($customer_id){
         foreach ($query_rp as $key => $value) {
         	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
         	$description ='You did not complete GD';
-        	$this -> model_account_block -> update_check_block_pd($value['gd_id_customer'], $description, $value['gd_id']);
+        	//$this -> model_account_block -> update_check_block_pd($value['gd_id_customer'], $description, $value['gd_id']);
+
+        	$this -> model_account_block -> insert_block_id_gd($value['gd_id_customer'], $description, $value['gd_number']);
+
         	$this -> model_account_block -> update_check_block_gd($value['gd_id']);
+
+
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['gd_id_customer']);
-        	if (intval($total) === 2) {
+        	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['gd_id_customer']);
         	}
+        	echo $value['gd_id_customer']."<br/>";
         }       
         die();
     }

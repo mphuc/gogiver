@@ -38,6 +38,7 @@ class ControllerAccountDashboard extends Controller {
 
 		$block_id = $this -> check_block_id();
 		
+		
 		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
 
 		$block_id_gd = $this -> check_block_id_gd();

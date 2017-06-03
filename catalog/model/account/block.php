@@ -166,7 +166,7 @@ class ModelAccountBlock extends Model {
 	{
 		$date_now= date('Y-m-d H:i:s');
 		$query_row = $this -> db -> query("
-			SELECT A.* 
+			SELECT A.* , B.gd_number
 			FROM ". DB_PREFIX . "customer_transfer_list A INNER JOIN ". DB_PREFIX . "customer_get_donation B ON A.gd_id = B.id
 			WHERE DATE_ADD(A.date_finish,INTERVAL 12 HOUR) <= '".$date_now."'
 				  AND A.pd_satatus = 1 AND A.gd_status = 0 AND B.check_request_block <> 1
