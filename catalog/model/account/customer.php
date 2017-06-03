@@ -3056,6 +3056,19 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 		return $query;
 	}
+
+
+	public function update_date_off($customer_id)
+	{
+		$date_added = date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer SET
+				date_off = '".$date_added."'
+				WHERE customer_id = '".$customer_id."'
+			");
+		return $query;
+	}
+
 	public function create_sendmail_account($customer_id, $title,$description){
 
 		$date_added= date('Y-m-d H:i:s');

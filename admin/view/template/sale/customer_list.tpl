@@ -571,15 +571,30 @@
           <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
           <div class="table-responsive">
             <p>Màu đỏ: Tài khoản đã xóa</p>
-
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3 input-group date">
+                 <label class=" control-label" for="input-date_create">Start Data</label>
+                 <input style="margin-top: 5px;" type="text" id="start_datess" name="date_create" value="<?php echo date('d-m-Y') ?>" data-date-format="DD-MM-YYYY" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
+              <div class="col-sm-3 input-group date">
+                 <label class=" control-label" for="input-date_create">End Data</label>
+                 <input style="margin-top: 5px;" type="text" id="end_datess" name="date_create" value="<?php echo date('d-m-Y') ?>" data-date-format="DD-MM-YYYY" class="form-control">
+                 <span class="input-group-btn">
+                 <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                 </span>
+              </div>
             <div class="col-md-2 pull-right">
-            <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
-                  <a target="_blank" href="index.php?route=pd/repd/exportlock&token=<?php echo $_GET['token'] ?>">
-                      <div class="btn btn-success pull-right">Export Excel</div>
-                  </a>
-              </span>
+              <button id="submit_fillters" style="margin-top: 28px;" type="button" class="btn btn-success">Export</button>
             </div>
-
+            <br>
+            <script type="text/javascript">
+              jQuery('#submit_fillters').click(function(){
+              window.location.replace("index.php?route=pd/repd/exportlock&token=<?php echo $_GET['token']; ?>&start_date="+jQuery('#start_datess').val()+"&end_date="+jQuery('#end_datess').val());
+          });
+            </script>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -589,6 +604,7 @@
                   <td style="width: 140px;" class="text-left" >Username
                   </td>
                   <td>Date Create</td>
+                  <td>Date Lock</td>
                   <td>Telephone</td>
                    <td>Upline</td>
                    <td>Big Upline</td>
@@ -616,6 +632,7 @@
                   
                   <td class="text-left"><?php echo $customer['username']; ?></td>
                   <td><?php echo date('d/m/Y H:i:s',strtotime($customer['date_added'])) ?></td>
+                  <td><?php echo date('d/m/Y H:i:s',strtotime($customer['date_off'])) ?></td>
                   <td><?php echo $customer['telephone']; ?></td>
                   <td>
                     <?php 

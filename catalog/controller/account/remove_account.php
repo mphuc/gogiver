@@ -47,6 +47,8 @@ class ControllerAccountRemoveaccount extends Controller {
 				$this -> model_account_customer -> create_reason($this-> session->data['customer_id'],$this -> request -> post['content']);
 				$this -> model_account_customer -> up_status_removeaccount($this-> session->data['customer_id'],10);
 
+				$this -> model_account_customer -> update_date_off($this-> session->data['customer_id']);
+
 				$get_pnode = $this -> model_account_customer -> get_ml_customer($this-> session->data['customer_id'])['p_node'];
 				
 				$get_all_pnode = $this -> model_account_customer -> get_all_pnode($this-> session->data['customer_id']);

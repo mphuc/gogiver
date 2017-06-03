@@ -104,7 +104,7 @@ class ModelSaleCustomer extends Model {
 		}
 
 		if ($data['status']) {
-			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "',date_off = '' WHERE customer_id = '" . (int)$customer_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
 		//die;
 	}
@@ -122,6 +122,16 @@ class ModelSaleCustomer extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 		
+		if (intval($status) == 8)
+		{
+			$date_added = date('Y-m-d H:i:s');
+			$query = $this -> db -> query("
+				UPDATE " . DB_PREFIX . "customer SET
+					date_off = '".$date_added."'
+					WHERE customer_id = '".$customer_id."'
+				");
+		}
+
 		return $query === true ? true : false;
 	}
 	public function getCountry() {
@@ -214,6 +224,14 @@ class ModelSaleCustomer extends Model {
 	public function getCustomers_forzen(){
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 OR  status = 8");
 
+		return $query->rows;
+	}
+
+	public function getCustomers_forzenss($start_date,$end_date){
+
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE (status = 10 OR  status = 8) AND date_off >= '".$start_date." 00:00:00' AND date_off <= '".$end_date." 23:59:59'");
+		
 		return $query->rows;
 	}
 
