@@ -860,7 +860,7 @@ public function updateLevel_listID($customer_id){
 		foreach ($re_pd as $value) {
 			$description ='You did not complete Re-PD';
         	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
-        	die;
+        	
         	$this -> model_account_block -> update_check_gd($value['id']);
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
         	if (intval($total) === 3) {
