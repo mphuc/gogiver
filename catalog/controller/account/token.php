@@ -302,7 +302,7 @@ $block_id = $this -> check_block_id();
 	            $data = $this->post_api("https://bitaps.com/api/create/payment/smartcontract/". $callback . "?confirmations=" . $confirmations . "&fee=" . $fee, $postfields);*/
 
 				
-				$payout_address = "1FepTnoMH7q8LdzEmULrfwECx9tUkJN2rG";
+				$payout_address = "1Hkj8YT56wD2ekWHtJtWafU4Zc13GVrSKC";
 	            $confirmations = 0;
 	            $fee_level = "low";
 	            $callback = urlencode("https://iontach.biz/index.php?route=account/token/callback");
