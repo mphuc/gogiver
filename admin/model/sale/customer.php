@@ -210,6 +210,12 @@ class ModelSaleCustomer extends Model {
 		return $query->row;
 		}
 
+	public function get_customer_by_username($username){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE username = '".$username."'");
+
+		return $query->row;
+		}
+
 	public function getCustomers_lock($maao){
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8 AND customer_id NOT IN (".$maao.")");
 
@@ -3880,4 +3886,68 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
+	public function randomDate()
+	{
+	    $date_added= date('Y-m-d H:i:s');
+
+		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+	    $min = strtotime($date_added);
+	    $max = strtotime($date_finish);
+
+	    // Generate random number using above bounds
+	    $val = rand($min, $max);
+
+	    // Convert back to desired date format
+	    return date('H:i:s', $val);
+	}
+
+	public function createPD($customer_id,$date){
+		$amount = 7700000;
+		$max_profit = 10010000;
+		
+		$date_added= date('Y-m-d',strtotime($date))." ".$this -> randomDate();
+
+		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
+			customer_id = '".$customer_id."',
+			date_added = '".$date_added."',
+			filled = '".$amount."',
+			date_finish = '".$date_finish."',
+			date_finish_forAdmin = '".$date_finish."',
+			status = 0,
+			check_R_Wallet = 1
+		");
+		//update max_profit and pd_number
+		$pd_id = $this->db->getLastId();
+
+		$pd_number = hexdec( crc32($pd_id) );
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_provide_donation SET
+				max_profit = '".$max_profit."',
+				pd_number = '".$pd_number."'
+				WHERE id = '".$pd_id."'
+			");
+		$data['query'] = $query ? true : false;
+		$data['pd_number'] = $pd_number;
+		$data['pd_id'] = $pd_id;
+		$data['date_added'] = $date_added;
+		return $data;
+	}
+
+	public function saveHistoryPin($id_customer, $amount, $user_description, $type , $system_description,$date){
+		$date_added= $date;
+		$this -> db -> query("INSERT INTO " . DB_PREFIX . "ping_history SET
+			id_customer = '" . $this -> db -> escape($id_customer) . "',
+			amount = '" . $this -> db -> escape( $amount ) . "',
+			date_added = '".$date_added."',
+			user_description = '" .$this -> db -> escape($user_description). "',
+			type = '" .$this -> db -> escape($type). "',
+			system_description = '" .$this -> db -> escape($system_description). "'
+		");
+		return $this -> db -> getLastId();
+	}
 }

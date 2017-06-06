@@ -3591,4 +3591,15 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			status = 8 WHERE customer_id = '".$customer_id."' AND date_added < '2017-05-25 59:59:59'
 		");
 	}
+
+
+	public function get_all_customer(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+		");
+		return $query -> rows;
+	}
+
+
 }

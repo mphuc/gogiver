@@ -553,4 +553,40 @@ class ControllerAccountAccount extends Controller {
 		}
 	}
 
+
+	public function convert_user_active()
+	{
+		$this->load->model('account/customer');
+
+		$get_all_customer = $this -> model_account_customer -> get_all_customer();
+		foreach ($get_all_customer as $value) {
+			$this -> model_account_customer -> insert_block_id_pd_month($value['customer_id']);
+
+			$checkR_Wallet = $this -> model_account_customer -> checkR_Wallet($value['customer_id']);
+			if(intval($checkR_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertR_WalletR(0, $value['customer_id'])){
+					die("qqqqq");
+				}
+			}
+
+
+			$checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($value['customer_id']);
+			if(intval($checkC_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertC_Wallet($value['customer_id'])){
+					die("11111111111");
+				}
+			}
+
+			$check_customer_block_id = $this -> model_account_customer -> check_customer_block_id($value['customer_id']);
+			if(intval($check_customer_block_id['number'])  === 0){
+				if(!$this -> model_account_customer -> insert_block_id($value['customer_id'])){
+					die("22222222");
+				}
+			}
+
+
+
+
+		}
+	}
 }

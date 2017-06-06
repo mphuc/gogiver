@@ -119,8 +119,15 @@ class ControllerAccountRegister extends Controller {
 				}
 			}
 
+			$checkC_Wallet = $this -> model_account_customer -> checkC_Wallet($cus_id);
+			if(intval($checkC_Wallet['number'])  === 0){
+				if(!$this -> model_account_customer -> insertC_Wallet($cus_id)){
+					die();
+				}
+			}
+
 			
-			$this -> model_account_customer -> insertC_Wallet($cus_id);
+			//$this -> model_account_customer -> insertC_Wallet($cus_id);
 			
 			/*$mail = new Mail();
 			$mail -> protocol = $this -> config -> get('config_mail_protocol');
