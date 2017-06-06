@@ -460,11 +460,19 @@ error_reporting(-1);
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
 
 		$count = count($big_upline);
-		$value = $big_upline[$count-3];
+		if ($count > 3)
+		{
+			$value = $big_upline[$count-3];
+			
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
 		
-		$bigupline = $this -> model_sale_customer -> get_customer($value);
-
-		return $bigupline['username'];
+		
+			return $bigupline['username'];
+		}
+		else
+		{
+			return "";
+		}
 		
 	}
 
