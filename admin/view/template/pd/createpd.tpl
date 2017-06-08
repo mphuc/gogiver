@@ -27,13 +27,13 @@
 
             <div class="col-md-12">
             <label class=" control-label" for="input-date_create">Send Pin</label>
-            <input style="margin-top: 5px;"  required="true" type="text" name="send_pin" id="" class="form-control" placeholder="Send Pin">
+            <input style="margin-top: 5px;"  required="true" type="text" name="send_pin" id="" class="form-control" placeholder="Send Pin" value="<?php if (isset($self -> session -> data['send_pin_pd'])) echo $self -> session -> data['send_pin_pd'];?>">
             </div>
-
+            
 
             <div class="col-sm-12 input-group date">
                  <label class=" control-label" for="input-date_create">Date</label>
-                 <input style="margin-top: 5px;" type="text" id="start_date" name="date" value="<?php echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
+                 <input style="margin-top: 5px;" type="text" id="start_date" name="date" value="<?php if (isset($self -> session -> data['date_create_pd'])) echo $self -> session -> data['date_create_pd']; else echo date('d-m-Y')?>" data-date-format="DD-MM-YYYY" id="date_create" class="form-control">
                  <span class="input-group-btn">
                  <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                  </span>

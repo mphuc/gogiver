@@ -7,6 +7,8 @@ class ControllerPdCreatepd extends Controller {
 		$this->document->setTitle('Provide Help');
 		$this->load->model('sale/customer');
 		
+		$data['self'] = $this;
+
 		$data['getaccount'] = $this->url->link('pd/ph/getaccount&token='.$this->session->data['token'], '', 'SSL');
 		$data['show_gh_username'] = $this -> url -> link('pd/create_pd/show_gh_username&token='.$this->session->data['token']);
 		$data['token'] = $this->session->data['token'];
@@ -60,7 +62,10 @@ class ControllerPdCreatepd extends Controller {
 				$send_pin,
 				$date_finish
 			);
-
+			$this -> session -> data['date_create_pd'] = $this -> request -> post['date'];
+			$this -> session -> data['send_pin_pd'] = $this -> request -> post['send_pin'];
+			$this -> session -> data['date_sussess'] = 1;
+			$this->response->redirect($this->url->link('pd/create_pd', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	}
 
