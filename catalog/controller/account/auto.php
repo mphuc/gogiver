@@ -559,6 +559,19 @@ public function updateLevel_listID($customer_id){
 	}
 
 
+	//khong mo khoa repd trong 48h thi khoa
+
+	public function lock_repd_48h()
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/auto');
+		$get_repd_gd = $this -> model_account_customer -> get_block_id_gd_all();
+		foreach ($get_repd_gd as $value) {
+			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+		}
+	}
+
+
 	public function set_repd_node()
 	{
 		$this -> load -> model('account/customer');

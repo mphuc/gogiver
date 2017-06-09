@@ -399,8 +399,9 @@ class ModelAccountAuto extends Model {
 	}
 
 	public function updateStatusCustomer($customer_id){
+		$date_added= date('Y-m-d H:i:s');
 		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
-			status = 8 WHERE customer_id = '".$customer_id."'
+			status = 8,date_off = '".$date_added."' WHERE customer_id = '".$customer_id."'
 		");
 	}
 	public function updateStatusPDTransferList($transferID){

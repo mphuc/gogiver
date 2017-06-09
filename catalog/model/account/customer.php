@@ -3601,5 +3601,17 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> rows;
 	}
 
+	public function get_block_id_gd_all()
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '- 2 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_block_id_gd
+			WHERE status = 1 AND date < '".$date_finish."'
+		");
+		return $query -> rows;
+	}
 }
