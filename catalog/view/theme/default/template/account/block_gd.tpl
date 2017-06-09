@@ -24,7 +24,19 @@
                                     
             <div class="block_panel text-center">
                 <!-- Start .panel -->
+              
+
                 <?php $wallet = $self -> return_wallet_gd(); ?>
+
+                <?php 
+                $date_added= $wallet['date'];
+                $date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
+                $date_finish= date('Y-m-d H:i:s',$date_finish) ;
+              ?>
+              <div class="alert alert-danger repd">
+                 You have <span data-countdown="<?php echo $date_finish ?>"><?php echo $date_finish ?></span> to reopen your account.
+              </div>
+
                 <div class="panel-body p0">
                     <h1 class="text-center">Account <?php echo ($wallet['total_block_id_gd'] == 0) ? "FROZEN" : "LOCK"; ?>  </h1>
                      

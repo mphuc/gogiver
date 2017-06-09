@@ -9,7 +9,8 @@ class ControllerAccountBlock extends Controller {
 
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
-			
+			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$self -> document -> addScript('catalog/view/javascript/setting/lock.js');
 		};
 		$block_id = $this -> check_block_id();
@@ -47,10 +48,12 @@ class ControllerAccountBlock extends Controller {
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};
-
+		$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+		$this -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
-			
+			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$self -> document -> addScript('catalog/view/javascript/setting/lock.js');
 		};
 		$block_id = $this -> check_block_id_gd();
@@ -84,7 +87,8 @@ class ControllerAccountBlock extends Controller {
 
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
-			
+			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+			$self -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 			$self -> document -> addScript('catalog/view/javascript/setting/lock.js');
 		};
 		$block_id = $this -> check_block_pd_month();
