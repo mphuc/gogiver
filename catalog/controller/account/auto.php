@@ -556,7 +556,7 @@ public function updateLevel_listID($customer_id){
 		
 		// crontab ko repd sau 48 gio khoa tai khoan
 		$this -> croll_tab_check_no_re_pd();
-		
+
 		//khong mo khoa repd trong 48h thi khoa
 		$this -> lock_repd_48h();
 	}
@@ -569,6 +569,7 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/customer');
 		$this -> load -> model('account/auto');
 		$get_repd_gd = $this -> model_account_customer -> get_block_id_gd_all();
+		print_r($get_repd_gd); die;
 		foreach ($get_repd_gd as $value) {
 			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
 			echo $value['customer_id']."<br/>";
