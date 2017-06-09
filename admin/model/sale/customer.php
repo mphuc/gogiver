@@ -228,7 +228,13 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function getCustomers_forzen(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 OR  status = 8 ORDER BY date_off DESC");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 8 ORDER BY date_off DESC");
+
+		return $query->rows;
+	}
+
+	public function getCustomers_forzenssss(){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 ORDER BY date_off DESC");
 
 		return $query->rows;
 	}
@@ -236,7 +242,15 @@ class ModelSaleCustomer extends Model {
 	public function getCustomers_forzenss($start_date,$end_date){
 
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE (status = 10 OR  status = 8) AND date_off >= '".$start_date." 00:00:00' AND date_off <= '".$end_date." 23:59:59'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE (status = 8) AND date_off >= '".$start_date." 00:00:00' AND date_off <= '".$end_date." 23:59:59'");
+		
+		return $query->rows;
+	}
+
+	public function getCustomers_forzen_ss($start_date,$end_date){
+
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE (status = 10) AND date_off >= '".$start_date." 00:00:00' AND date_off <= '".$end_date." 23:59:59'");
 		
 		return $query->rows;
 	}

@@ -821,6 +821,9 @@ class ControllerSaleCustomer extends Controller {
 
 
 		$data['getCustomers_forzen'] = $this-> model_sale_customer-> getCustomers_forzen();
+
+		$data['getCustomers_forzensss'] = $this-> model_sale_customer-> getCustomers_forzenssss();
+
 		$data['getCustomers_admin'] = $this-> model_sale_customer-> getCustomers_admin();
 		
  		//$all_hoivien_phi = 0;
