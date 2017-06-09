@@ -20,11 +20,23 @@
 
       <div class="tab-content row">
         <div id="home" class="tab-pane fade in active">
+
+          <div class="col-md-2 pull-right">
+      <span class="url_xuatpin" href="" style="margin-bottom:10px; float:right;margin-top: 28px;">
+            <a target="_blank" href="index.php?route=pd/pd_month/export_tab1&token=<?php echo $_GET['token'];?>">
+                <div class="btn btn-success pull-right">Export Excel</div>
+            </a>
+        </span>
+      </div>
+        
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th>TT</th>
                 <th>Username</th>
+                <th>SDT</th>
+                <th>Up line</th>
+                <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
                 <th>Date PD not match </th>
@@ -67,6 +79,14 @@
                         <td><?php echo $pd_nn; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['telephone'] ?></td>
+                        <td><?php echo $value['upline'] ?></td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id']);
+                            ?>
+                        </td>
+
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
 
@@ -97,6 +117,9 @@
               <tr>
                 <th>TT</th>
                 <th>Username</th>
+                 <th>SDT</th>
+                <th>Up line</th>
+                <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
                 <th>Date PD not match </th>
@@ -139,6 +162,14 @@
                         <td><?php echo $tt_hd; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['telephone'] ?></td>
+                        <td><?php echo $value['upline'] ?></td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id']);
+                            ?>
+                        </td>
+
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
                         <td class="text-center">
@@ -168,6 +199,9 @@
               <tr>
                 <th>TT</th>
                 <th>Username</th>
+                 <th>SDT</th>
+                <th>Up line</th>
+                <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
                 <th>Date Lock</th>
@@ -208,6 +242,14 @@
                         <td><?php echo $stt_none; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
+                        <td><?php echo $value['telephone'] ?></td>
+                        <td><?php echo $value['upline'] ?></td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id']);
+                            ?>
+                        </td>
+
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
                         <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">

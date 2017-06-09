@@ -3552,9 +3552,9 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
-			SELECT A.*,B.username
+			SELECT A.*,B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
-			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 8 DAY) < NOW() AND A.customer_id NOT IN (".$maao.")
+			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND DATE_ADD(date_block,INTERVAL - 8 DAY) < NOW() AND A.customer_id NOT IN (".$maao.") AND B.status <> 8 AND B.status <> 10
 			ORDER BY B.date_added ASC
 		");
 
@@ -3565,9 +3565,9 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
-			SELECT A.*,B.username
+			SELECT A.*,B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
-			ON A.customer_id = B.customer_id WHERE A.date_block = '0000-00-00 00:00:00' AND A.customer_id NOT IN (".$maao.")
+			ON A.customer_id = B.customer_id WHERE A.date_block = '0000-00-00 00:00:00' AND A.customer_id NOT IN (".$maao.") AND B.status <> 8 AND B.status <> 10
 			ORDER BY A.date_block ASC
 		");
 
@@ -3578,9 +3578,9 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$date= date('Y-m-d');
 		$query = $this -> db -> query("
-			SELECT A.*,B.username
+			SELECT A.*,B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B
-			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND A.customer_id NOT IN (".$maao.")
+			ON A.customer_id = B.customer_id WHERE A.date_block <> '0000-00-00 00:00:00' AND A.customer_id NOT IN (".$maao.") AND B.status <> 8 AND B.status <> 10
 			ORDER BY A.date_block ASC
 		");
 
