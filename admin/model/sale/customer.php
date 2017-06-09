@@ -228,7 +228,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function getCustomers_forzen(){
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 OR  status = 8");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 10 OR  status = 8 ORDER BY date_off DESC");
 
 		return $query->rows;
 	}
@@ -3909,7 +3909,7 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		$date_added= date('Y-m-d',strtotime($date))." ".$this -> randomDate();
 
-		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
+		$date_finish = strtotime ( '+ 50 day' , strtotime ($date_added));
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET
