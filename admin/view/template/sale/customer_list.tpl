@@ -647,7 +647,7 @@
                   </td>
                   <td>
                   <?php
-                    if ($customer['status'] <> 10)
+                    if (count($seft->get_pnode($customer['p_node'])) > 0)
                     {
                       echo $seft -> big_upline($customer['customer_id']);
                     }
