@@ -38,7 +38,7 @@
                 <th>Up line</th>
                 <th>Big Upline</th>
                 <th>Number PD</th>
-                <th>Max PD</th>
+                <th>Min PD</th>
                 <th>Date PD not match </th>
                 <th>Date Lock</th>
               </tr>
