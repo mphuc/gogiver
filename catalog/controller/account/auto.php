@@ -559,6 +559,9 @@ public function updateLevel_listID($customer_id){
 
 		//khong mo khoa repd trong 48h thi khoa
 		$this -> lock_repd_48h();
+
+		//dang ky qua 7 ngay ma ko kich pin khoa tai khoan
+		$this -> lock_user_regsister_7_day();
 	}
 
 
@@ -574,6 +577,21 @@ public function updateLevel_listID($customer_id){
 			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
 			echo $value['customer_id']."<br/>";
 		}
+	}
+
+	// dang ky qua 7 ngay ma ko kich pin khoa tai khoan
+	public function lock_user_regsister_7_day()
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/auto');
+
+		$user = $this -> model_account_auto -> lock_user_regsister_7_day();
+		
+		foreach ($user as $value) {
+			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+			echo $value['customer_id']."<br/>";
+		}
+
 	}
 
 

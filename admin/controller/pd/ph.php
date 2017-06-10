@@ -37,12 +37,28 @@ error_reporting(-1);
 
 		$data['exporttt'] = $this -> url -> link('pd/ph/exporttt&token='.$this->session->data['token']);
 
+		$data['self'] = $this;
+
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('pd/list_ph.tpl', $data));
+	}
+
+	public function get_block_repd($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_block_repd($customer_id);
+
+	}
+
+	public function get_no_regd($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_no_regd($customer_id);
+
 	}
 
 	public function getaccount() {

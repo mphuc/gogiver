@@ -71,17 +71,28 @@
      				<th>Username</th>
      				<th>Full name</th>
      				<th>Amount</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                     <th>Time-Remain</th>
+            <th>Status</th>
+            <th>Date</th>
+             <th>Time-Remain</th>
+            <th>Date Finish ReGD</th>
+            <th>Date Block ReGD</th>
      			</tr>
      		</thead>
      		<tbody id="result_date"> 
                
                 <?php $stt = 0;
-                foreach ($pin as $value) { $stt ++?>
-               
-                  <tr>
+                foreach ($pin as $value) { $stt ++;
+                    $style = "";
+                    $get_no_regd = $self -> get_no_regd($value['customer_id']);
+                      if (count($get_no_regd) > 0) { 
+                        $style = "background: rgba(255, 235, 59, 0.58)";
+                      }
+                      $get_block_repd = $self -> get_block_repd($value['customer_id']);
+                      if (count($get_block_repd) > 0) { 
+                        $style = "background: rgba(244, 67, 54, 0.52);";
+                      }
+                  ?>
+                  <tr style="<?php echo $style ?>">
                     <td><?php echo $stt; ?></td>
                     <!-- <td><?php echo $value['customer_id'] ?></td> -->
                     <td><?php echo $value['username'] ?></td>
@@ -107,6 +118,29 @@
                     <td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ?></td>
                     <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
                      </span> </td>
+                     <td>
+                       <?php 
+                        $get_no_regd = $self -> get_no_regd($value['customer_id']);
+                        if (count($get_no_regd) > 0) { ?>
+                         
+                       <span style="color:red; font-size:15px;" class="text-danger countdowns" data-countdowns="<?php echo $get_no_regd['date_finish']; ?>">
+                     </span> 
+                      <?php  } ?>
+                     </td>
+
+                     <td>
+                       <?php 
+                        $get_block_repd = $self -> get_block_repd($value['customer_id']);
+                        if (count($get_block_repd) > 0) { 
+                          $date_added= $get_block_repd['date'];
+                          $date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
+                          $date_finish= date('Y-m-d H:i:s',$date_finish) ;
+                        ?>
+                       
+                       <span style="color:red; font-size:15px;" class="text-danger countdownss" data-countdownss="<?php echo $date_finish; ?>">
+                     </span> 
+                     <?php  } ?>
+                     </td>
                 </tr>  
               
                 <?php } ?>

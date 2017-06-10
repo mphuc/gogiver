@@ -970,4 +970,25 @@ class ModelAccountAuto extends Model {
 		");
 		return $query -> rows;
 	}
+
+
+	public function lock_user_regsister_7_day(){
+		$maao = $this -> model_account_customer -> get_childrend_all_tree(64);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(65);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+		
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '- 7 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer
+			WHERE status <> 8 AND status <> 10 AND date_added < '".$date_finish."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer_provide_donation GROUP BY customer_id) AND customer_id NOT IN (".$maao.")
+		");
+		return $query -> rows;
+	}
 }

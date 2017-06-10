@@ -3973,4 +3973,26 @@ $date_added= date('Y-m-d H:i:s') ;
 		");
 		return $query -> rows;
 	}
+
+	
+	public function get_block_repd($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 1
+			
+		");
+
+		return $query -> row;
+	}
+	public function get_no_regd($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND check_gd = 0 AND status = 2
+			
+		");
+
+		return $query -> row;
+	}
 }
