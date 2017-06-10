@@ -8,8 +8,8 @@ error_reporting(-1);
 		$this->load->model('sale/customer');
 		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
 
-		$limit = 30;
-		$start = ($page - 1) * 30;
+		$limit = 60;
+		$start = ($page - 1) * 60;
 
 		$ts_history = $this -> model_sale_customer -> get_count_ph();
 
