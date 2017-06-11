@@ -284,6 +284,7 @@
 </div>
 <script type="text/javascript">
     $('#submit_date').click(function(){
+
         var date_day = $('#date_day').val();
         $.ajax({
             url : "<?php echo $load_pin_date ?>",
@@ -293,7 +294,29 @@
                 'date' : date_day
             },
             success : function (result){
+
                 jQuery('#result_date').html(result);
+                $('[data-countdown]').each(function() {
+                     var $this = $(this), finalDate = $(this).data('countdown');
+                        $this.countdown(finalDate, function(event) {
+                        $this.html(event.strftime('%D days %H:%M:%S'));
+                    });
+                });
+
+                 $('[data-countdowns]').each(function() {
+                     var $this = $(this), finalDate = $(this).data('countdowns');
+                        $this.countdown(finalDate, function(event) {
+                        $this.html(event.strftime('%D days %H:%M:%S'));
+                    });
+                });
+
+                 $('[data-countdownss]').each(function() {
+                     var $this = $(this), finalDate = $(this).data('countdownss');
+                        $this.countdown(finalDate, function(event) {
+                        $this.html(event.strftime('%D days %H:%M:%S'));
+                    });
+                });
+
             }
         });
     });

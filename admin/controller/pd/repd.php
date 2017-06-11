@@ -415,14 +415,9 @@ class ControllerPdRepd extends Controller {
 
 			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$upline);
 
-			if ($customer['status'] <> 10)
-            {
+			
               $big_upline =  $this -> big_uplines($customer['customer_id']);
-            }
-            else
-            {
-            	$big_upline = "";
-            }
+            
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$big_upline);
 
 			$get_gd_customer =($this -> get_gd_customer($customer['customer_id'])); 
