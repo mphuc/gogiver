@@ -112,6 +112,22 @@
 
 
         <div id="menu1" class="tab-pane fade">
+          <div class="col-sm-1 input-group date pull-right">
+                    
+            <button id="submit_fillters" style="margin-top: 22px;" class="btn btn-success submit_fillters">Export Excel</button>
+             
+
+          </div>
+          <div class="col-sm-3 input-group date pull-right">
+             <label class=" control-label" for="input-date_create">Số ngày còn lại để khóa</label>
+             <select id="num_day" class="form-control">
+              <?php for ($i=1; $i < 31; $i++) {  ?>
+                <option value="<?php echo $i ?>"><?php echo $i ?></option>
+              <?php } ?>
+               
+             </select>
+             
+          </div>
             <table class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -266,6 +282,9 @@
   </div>
 </div>
 <script type="text/javascript">
+    jQuery('.submit_fillters').click(function(){
+        window.location.replace("<?php echo $exports; ?>&num_day="+jQuery('#num_day').val());
+    });
     jQuery('#username').on("input propertychang", function() {
         jQuery.ajax({
         type: "POST",
@@ -332,6 +351,8 @@
     jQuery('#submit_fillter').click(function(){
         window.location.replace("<?php echo $export; ?>&start_date="+jQuery('#start_date').val()+"&end_date="+jQuery('#end_date').val());
     });
+
+    
     
 </script>
 <style type="text/css">

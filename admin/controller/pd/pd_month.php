@@ -24,6 +24,8 @@ class Controllerpdpdmonth extends Controller {
 		$data['show_gh_username'] = $this -> url -> link('pd/gh/show_gh_username&token='.$this->session->data['token']);
 		$data['export'] = $this -> url -> link('pd/gh/export&token='.$this->session->data['token']);
 
+		$data['exports'] = $this -> url -> link('pd/pd_month/export_tab2&token='.$this->session->data['token']);
+
 		$data['seft'] = $this;
 		
 		$data['getaccount'] = $this->url->link('pd/gh/getaccount&token='.$this->session->data['token'], '', 'SSL');
@@ -33,6 +35,172 @@ class Controllerpdpdmonth extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('pd/pd_month.tpl', $data));
+	}
+
+	public function subdate($date_lock)
+	{
+		$now = date('Y-m-d H:i:s');
+		$first_date = strtotime($now);
+		$second_date = strtotime($date_lock);
+		$datediff = abs($first_date - $second_date);
+		return floor($datediff / (60*60*24));
+	}
+
+	public function export_tab2(){
+		error_reporting(E_ALL);
+		ini_set('display_errors', TRUE);
+		ini_set('display_startup_errors', TRUE);
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		if (PHP_SAPI == 'cli')
+		die('This example should only be run from a Web Browser');
+		require_once dirname(__FILE__) . '/PHPExcel.php';
+		
+		$this->load->language('sale/customer');
+		$this->load->model('sale/customer');
+		//update time show button
+		$maao = $this -> model_sale_customer -> get_childrend_all_tree(64);
+
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(65);
+
+		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+
+		$num_date = intval($_GET['num_day']);
+		//echo $num_date; die;
+
+		$results = $this -> model_sale_customer -> pd_user_all($maao);
+		//print_r($results); die;
+		!count($results) > 0 && die('no data!');
+
+		$objPHPExcel = new PHPExcel();
+		$objPHPExcel->getProperties()->setCreator("Hoivien")
+						 ->setLastModifiedBy("Hoivien")
+						 ->setTitle("Office 2007 XLSX".$this->language->get('heading_title'))
+						 ->setSubject("Office 2007 XLSX".$this->language->get('heading_title'))
+						 ->setDescription($this->language->get('heading_title'))
+						 ->setKeywords("office 2007 openxml php")
+						 ->setCategory("Test result file");
+
+		$objPHPExcel->setActiveSheetIndex(0)
+		->setCellValue('A1', 'STT')
+		->setCellValue('B1', 'Username')
+		->setCellValue('C1', 'Telephone')
+		->setCellValue('D1', 'Upline')
+		->setCellValue('E1', 'Big Upline')
+		->setCellValue('F1', 'Number PD')
+		->setCellValue('G1', 'Max PD')
+		->setCellValue('H1', 'Date PD not match')	
+		->setCellValue('I1', 'Date Lock');		
+         $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
+        ->applyFromArray(
+                array(
+                    'fill' => array(
+                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                        'color' => array('rgb' => '0066FF')
+                    )
+                )
+            );
+            $styleArray = array(
+                'font'  => array(
+                    'bold'  => true,
+                    'color' => array('rgb' => 'FFFFFF'),
+                    'size'  => 12,
+                    'name'  => 'Arial'
+                ));
+        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(60);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+		$h=0;
+		$n = 2;
+		$i=0;
+		foreach ($results as $customer) {
+			if (intval($this -> subdate($customer['date_block'])) <= $num_date)
+			{
+			$get_level = $this -> get_level($customer['customer_id']);
+			switch ($get_level['level']) {
+              case 1:
+                $num_pd = 3;
+                break;
+              case 2:
+                $num_pd = 4;
+                break;
+              case 3:
+                $num_pd = 7;
+                break;
+              case 4:
+                $num_pd = 9;
+                break;
+              case 5:
+                $num_pd = 1;
+                break;
+              case 6:
+                $num_pd = 13;
+                break;
+            }
+            if ($customer['total_pd'] < $num_pd) {
+                       
+				$i++;
+				$objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$i);
+				$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$customer['username']);
+				$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$customer['telephone']);
+				$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$customer['upline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id']));
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$customer['total_pd']);
+				$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$num_pd);
+
+				$get_pd_not_macth = $this -> get_pd_not_macth($customer['customer_id']);
+				$mang = "";
+                foreach ($get_pd_not_macth as $value_pd) {
+                	$mang .= date('d/m/Y H:i:s',strtotime($value_pd['date_added']))." ,";
+                }
+
+				$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$mang);
+				$objPHPExcel->getActiveSheet()->setCellValue('I'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_block'])));
+				$n++;
+			}
+		}
+	}
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'I'.$n)
+		->applyFromArray(
+			array('font'  => array(
+				'bold'  => true,
+				'size'  => 12,
+				'name'  => 'Arial'
+			))
+		);
+		// Rename worksheet
+		$objPHPExcel->getActiveSheet()->setTitle($this->language->get('heading_title'));
+
+
+		// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+		$objPHPExcel->setActiveSheetIndex(0);
+
+
+		// Redirect output to a client’s web browser (Excel5)
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+		// Redirect output to a client’s web browser (Excel5)
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="LISH_REPD'.date('d').'_'.date('m').'_'.date('Y').'_'.date('H').'_'.date('i').'.xls"');
+		header('Cache-Control: max-age=0');
+		// If you're serving to IE 9, then the following may be needed
+		header('Cache-Control: max-age=1');
+
+		// If you're serving to IE over SSL, then the following may be needed
+		header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+		header ('Pragma: public'); // HTTP/1.0
+
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+		exit;
 	}
 
 	public function export_tab1(){
