@@ -330,6 +330,7 @@
                       <?php } ?> -->
                       Username
                   </td>
+                  <td>Big upline</td>
                    <td style="">Email</td>
                    <td style="width: 140px;"> Date</td>
                    <td>Images CMND</td>
@@ -382,6 +383,14 @@
                   
                   <td><?php echo $customer_id ;?></td>
                   <td class="text-left"><?php echo $customer['username']; ?></td>
+                  <td>
+                  <?php
+                    
+                      echo $seft -> big_upline($customer['customer_id']);
+                   
+                    
+                    ?>
+                    </td>
                  <td class="text-left"><?php echo $customer['email']; ?></td>
                  <td style="width: 180px;float: left; border-bottom: none;" class="text-left"><?php echo $customer['date_addeds']; ?></td>
                  <td class="text-center">
