@@ -114,7 +114,7 @@ class Controllerpdpdmonth extends Controller {
                 $num_pd = 3;
                 break;
               case 2:
-                $num_pd = 5;
+                $num_pd = 4;
                 break;
               case 3:
                 $num_pd = 7;
