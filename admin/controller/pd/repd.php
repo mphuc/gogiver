@@ -43,13 +43,36 @@ class ControllerPdRepd extends Controller {
 	{
 		$this->load->language('sale/customer');
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
-
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
-		$value = $big_upline[$count-3];
 		
-		$bigupline = $this -> model_sale_customer -> get_customer($value);
+		if (($count-3) > 0)
+		{
+			$value = $big_upline[$count-3];
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
 
-		return $bigupline['username'];
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
+		}
+		else
+		{
+			$json['bigupline'] = "";
+			return $json;
+		}
 		
 	}
 
@@ -83,10 +106,11 @@ class ControllerPdRepd extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'Telephone')
 		->setCellValue('D1', 'Upline')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'GD')
-		->setCellValue('G1', 'Date End Re PD');
-         $objPHPExcel->getActiveSheet()->getStyle('A1:G1')
+		->setCellValue('E1', 'Middle Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'GD')
+		->setCellValue('H1', 'Date End Re PD');
+         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -102,14 +126,15 @@ class ControllerPdRepd extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
 		
 		$h=0;
 		$n = 2;
@@ -121,10 +146,11 @@ class ControllerPdRepd extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$customer['username']);
 			$objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$customer['telephone']);
 			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$customer['upline']);
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id']));
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," GD#".($customer['gd_number']));
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id'])['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$this -> big_upline($customer['customer_id'])['bigupline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," GD#".($customer['gd_number']));
 			
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_finish'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_finish'])));
 			$n++;
 			}
 		

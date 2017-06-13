@@ -26,6 +26,7 @@
                     <th>Username</th>
                     <th>Telephone</th>
                     <th>Upline</th>
+                    <th>Middle Upline</th>
                     <th>Big Upline</th>
                     <th>GD</th>
      				<th>Date Re PD</th>
@@ -41,7 +42,8 @@
                     <td><?php echo $value['username'] ?></td>
                     <td><?php echo $value['telephone'] ?></td>
                     <td><?php echo $value['upline'] ?></td>
-                    <td><?php echo $seft -> big_upline($value['customer_id']) ?></td>
+                    <td><?php echo $seft -> big_upline($value['customer_id'])['middleline'] ?></td>
+                     <td><?php echo $seft -> big_upline($value['customer_id'])['bigupline'] ?></td>
                     <td>GD<?php echo $value['gd_number'] ?></td>
                     <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
                      </span> </td>
