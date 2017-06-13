@@ -25,6 +25,7 @@
                         <th>Username</th>
                         <th>SDT</th>
                         <th>Up line</th>
+                        <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Date lock</th>
                         <th>GD</th>
@@ -46,7 +47,12 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $selt -> big_upline($value['customer_id']);
+                                echo $selt -> big_upline($value['customer_id'])['middleline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $selt -> big_upline($value['customer_id'])['bigupline'];
                             ?>
                         </td>
                         <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>

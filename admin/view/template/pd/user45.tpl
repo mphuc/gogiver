@@ -29,6 +29,7 @@
                         <th>Username</th>
                         <th>SDT</th>
                         <th>Up line</th>
+                        <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Số F1 kích pin</th>
                         <th>Thời gian bắt đầu kích pin</th>
@@ -54,7 +55,12 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $selt -> big_upline($value['customer_id']);
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
                             ?>
                         </td>
                         <td><?php echo count($get_account_pin) ?></td>
@@ -107,6 +113,7 @@
                         <th>Username</th>
                         <th>SDT</th>
                         <th>Up line</th>
+                        <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Số PD đã kích</th>
                         <th>PD tối thiểu</th>
@@ -157,7 +164,12 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $selt -> big_upline($value['customer_id']);
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
                             ?>
                         </td>
                         <td><?php echo count($get_provine_16_04) ?></td>
@@ -196,6 +208,7 @@
                         <th>Username</th>
                         <th>SDT</th>
                         <th>Up line</th>
+                        <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Trạng thái</th>
                        
@@ -223,10 +236,15 @@
                     <td><?php echo $value['telephone'] ?></td>
                     <td><?php echo $value['upline'] ?></td>
                     <td>
-                        <?php 
-                            echo $selt -> big_upline($value['customer_id']);
-                        ?>
-                    </td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
+                            ?>
+                        </td>
                     <td>
                         <?php if ($value['status'] == 1 || $value['status'] == 2) echo "Hoạt động";
                             if ($value['status'] == 8)

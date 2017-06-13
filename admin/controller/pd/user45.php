@@ -8,6 +8,8 @@ class ControllerPdUser45 extends Controller {
 		$this->load->model('sale/customer');
 		
 		$data['selt'] = $this;
+		$data['seft'] = $this;
+
 		$data['pin'] =  $this-> model_sale_customer->get_user_after45();
 
 		$data['count_all_customer'] = $this-> model_sale_customer->count_all_customer();
@@ -59,7 +61,20 @@ class ControllerPdUser45 extends Controller {
 	{
 		$this->load->language('sale/customer');
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
-
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
 		if (($count-3) > 0)
@@ -67,11 +82,14 @@ class ControllerPdUser45 extends Controller {
 			$value = $big_upline[$count-3];
 			$bigupline = $this -> model_sale_customer -> get_customer($value);
 
-			return $bigupline['username'];
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
 		}
 		else
 		{
-			return "";
+			$json['bigupline'] = "";
+			return $json;
 		}
 		
 	}
@@ -131,10 +149,11 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Trạng thái');
+		->setCellValue('E1', 'Middle Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Trạng thái');
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:F1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:G1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -150,13 +169,14 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:F1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 		
 		$array = array(3,4,5,7,485,1319);
 		$h=0;
@@ -178,8 +198,8 @@ class ControllerPdUser45 extends Controller {
 
 				$big_upline = $this -> big_upline($value['customer_id']);
 
-				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
-
+				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline['middleline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$big_upline['bigupline']);
 				if ($value['status'] == 1 || $value['status'] == 2) $status =  "Hoạt động";
                 if ($value['status'] == 8)
                 {
@@ -189,7 +209,7 @@ class ControllerPdUser45 extends Controller {
                 {
                     $status = "Đã xóa";
                 }
-                $objPHPExcel->getActiveSheet()->setCellValue('F'.$n,$status);
+                $objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$status);
 	            $n++;
 	        }
 	        $n++;
@@ -199,6 +219,7 @@ class ControllerPdUser45 extends Controller {
 	        $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,"");
 	        $objPHPExcel->getActiveSheet()->setCellValue('E'.$n,"");
 	        $objPHPExcel->getActiveSheet()->setCellValue('F'.$n,"");
+	        $objPHPExcel->getActiveSheet()->setCellValue('G'.$n,"");
 		}
 		
 		
@@ -270,10 +291,11 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Số F1 kích pin')
-		->setCellValue('G1', 'Thời gian bắt đầu kích pin')
-		->setCellValue('H1', 'Số ngày chưa tạo ra F1');
+		->setCellValue('E1', 'Middle Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Số F1 kích pin')
+		->setCellValue('H1', 'Thời gian bắt đầu kích pin')
+		->setCellValue('I1', 'Số ngày chưa tạo ra F1');
 		
          $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
         ->applyFromArray(
@@ -291,15 +313,16 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
 		
 		$h=0;
 		$n = 2;
@@ -318,11 +341,11 @@ class ControllerPdUser45 extends Controller {
 
 			$big_upline = $this -> big_upline($value['customer_id']);
 
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
-
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,count($get_account_pin));
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
-			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$day);
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$big_upline['bigupline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,count($get_account_pin));
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$day);
 			
 			$n++;
 			}
@@ -404,13 +427,14 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Số PD đã kích')
-		->setCellValue('G1', 'PD tối thiểu')
-		->setCellValue('H1', 'Các PD đã kích');
+		->setCellValue('E1', 'Middle Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Số PD đã kích')
+		->setCellValue('H1', 'PD tối thiểu')
+		->setCellValue('I1', 'Các PD đã kích');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -426,15 +450,16 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(10);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(50);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(10);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(100);
 		
 		$h=0;
 		$n = 2;
@@ -478,9 +503,10 @@ class ControllerPdUser45 extends Controller {
 
 			$big_upline = $this -> big_upline($value['customer_id']);
 
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n,count($get_provine_16_04));
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$num_pd);
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$big_upline['bigupline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,count($get_provine_16_04));
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$num_pd);
 
 			$get_provine_16_04 = $this -> get_provine_16_04($value['customer_id']);
 			//print_r($get_provine_16_04);die;
@@ -497,7 +523,7 @@ class ControllerPdUser45 extends Controller {
 				$chuoi_pd = substr($chuoi_pd,1);
 			}
 			
-			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$chuoi_pd);
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$chuoi_pd);
 
 			
 			$n++;
@@ -582,15 +608,16 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'SĐT')
 		->setCellValue('D1', 'Up line')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Email')
-		->setCellValue('G1', 'Số tài khoản')
-		->setCellValue('H1', 'Tên tài khoản')
-		->setCellValue('I1', 'Thời gian tạo')
-		->setCellValue('J1', 'Trạng thái');
+		->setCellValue('E1', 'Middle Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Email')
+		->setCellValue('H1', 'Số tài khoản')
+		->setCellValue('I1', 'Tên tài khoản')
+		->setCellValue('J1', 'Thời gian tạo')
+		->setCellValue('K1', 'Trạng thái');
 		
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -606,17 +633,18 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(35);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(35);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(35);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(15);
 		
 		$h=0;
 		$n = 2;
@@ -634,12 +662,13 @@ class ControllerPdUser45 extends Controller {
 			$bigupline = $this -> big_upline($value['customer_id']);
 
 
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$bigupline);
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$value['email']);
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$value['account_number']);
-			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$value['account_holder']);
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$bigupline['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$bigupline['bigupline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$value['email']);
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$value['account_number']);
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n," ".$value['account_holder']);
 
-			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
 
 			if ($value['status'] == 1 || $value['status'] == 2)
 			{
@@ -650,14 +679,14 @@ class ControllerPdUser45 extends Controller {
 				$status = "Đã khóa";
 			}
 
-			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$status);
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,$status);
 			$n++;
 			
 			//print_r($objPHPExcel);die;
 		}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'I'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'K'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,

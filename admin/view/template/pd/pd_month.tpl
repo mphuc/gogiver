@@ -36,6 +36,7 @@
                 <th>Username</th>
                 <th>SDT</th>
                 <th>Up line</th>
+                <th>Middle line</th>
                 <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Min PD</th>
@@ -83,7 +84,12 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $seft -> big_upline($value['customer_id']);
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
                             ?>
                         </td>
 
@@ -135,6 +141,7 @@
                 <th>Username</th>
                  <th>SDT</th>
                 <th>Up line</th>
+                <th>Middle Line</th>
                 <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
@@ -182,10 +189,14 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $seft -> big_upline($value['customer_id']);
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
                             ?>
                         </td>
-
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
+                            ?>
+                        </td>
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
                         <td class="text-center">
@@ -217,6 +228,7 @@
                 <th>Username</th>
                  <th>SDT</th>
                 <th>Up line</th>
+                <th>Middle line</th>
                 <th>Big Upline</th>
                 <th>Number PD</th>
                 <th>Max PD</th>
@@ -262,7 +274,12 @@
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $seft -> big_upline($value['customer_id']);
+                                echo $seft -> big_upline($value['customer_id'])['bigupline'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $seft -> big_upline($value['customer_id'])['middleline'];
                             ?>
                         </td>
 

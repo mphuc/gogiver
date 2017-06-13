@@ -330,6 +330,7 @@
                       <?php } ?> -->
                       Username
                   </td>
+                  <td>Middle upline</td>
                   <td>Big upline</td>
                    <td style="">Email</td>
                    <td style="width: 140px;"> Date</td>
@@ -386,7 +387,15 @@
                   <td>
                   <?php
                     
-                      echo $seft -> big_upline($customer['customer_id']);
+                      echo $seft -> big_upline($customer['customer_id'])['middleline'];
+                   
+                    
+                    ?>
+                    </td>
+                    <td>
+                  <?php
+                    
+                      echo $seft -> big_upline($customer['customer_id'])['bigupline'];
                    
                     
                     ?>
@@ -620,6 +629,7 @@
                   <td>Date Lock</td>
                   <td>Telephone</td>
                    <td>Upline</td>
+                   <td>Middle Upline</td>
                    <td>Big Upline</td>
                    <td>Số lần đã GD</td>
                    <td>Số tiền đã GD</td>
@@ -658,11 +668,23 @@
                     ?>
                     
                   </td>
+
+
+
                   <td>
                   <?php
                     if (count($seft->get_pnode($customer['p_node'])) > 0)
                     {
-                      echo $seft -> big_upline($customer['customer_id']);
+                      echo $seft -> big_upline($customer['customer_id'])['middleline'];
+                    }
+                    
+                    ?>
+                  </td>
+                  <td>
+                  <?php
+                    if (count($seft->get_pnode($customer['p_node'])) > 0)
+                    {
+                      echo $seft -> big_upline($customer['customer_id'])['bigupline'];
                     }
                     
                     ?>
@@ -746,6 +768,7 @@
                   <td>Date Lock</td>
                   <td>Telephone</td>
                    <td>Upline</td>
+                   <td>Middle Upline</td>
                    <td>Big Upline</td>
                    <td>Số lần đã GD</td>
                    <td>Số tiền đã GD</td>
@@ -784,11 +807,20 @@
                     ?>
                     
                   </td>
+                   <td>
+                  <?php
+                    if (count($seft->get_pnode($customer['p_node'])) > 0)
+                    {
+                      echo $seft -> big_upline($customer['customer_id'])['middleline'];
+                    }
+                    
+                    ?>
+                  </td>
                   <td>
                   <?php
                     if (count($seft->get_pnode($customer['p_node'])) > 0)
                     {
-                      echo $seft -> big_upline($customer['customer_id']);
+                      echo $seft -> big_upline($customer['customer_id'])['bigupline'];
                     }
                     
                     ?>

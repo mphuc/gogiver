@@ -3969,7 +3969,7 @@ $date_added= date('Y-m-d H:i:s') ;
 	{
 		$query = $this -> db -> query("
 			SELECT A.*,B.telephone,B.username, (SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
-			FROM  ".DB_PREFIX."customer_block_id_gd A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE A.status = 1 ORDER BY A.date DESC
+			FROM  ".DB_PREFIX."customer_block_id_gd A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE A.status = 1 AND B.status <> 8 AND B.status <> 10 ORDER BY A.date DESC
 		");
 		return $query -> rows;
 	}

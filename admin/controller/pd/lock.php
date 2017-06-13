@@ -57,7 +57,20 @@ class ControllerPdLock extends Controller {
 	{
 		$this->load->language('sale/customer');
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
-
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
 		if (($count-3) > 0)
@@ -65,11 +78,14 @@ class ControllerPdLock extends Controller {
 			$value = $big_upline[$count-3];
 			$bigupline = $this -> model_sale_customer -> get_customer($value);
 
-			return $bigupline['username'];
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
 		}
 		else
 		{
-			return "";
+			$json['bigupline'] = "";
+			return $json;
 		}
 		
 	}

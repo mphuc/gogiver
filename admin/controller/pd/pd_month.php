@@ -86,12 +86,13 @@ class Controllerpdpdmonth extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'Telephone')
 		->setCellValue('D1', 'Upline')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Number PD')
-		->setCellValue('G1', 'Max PD')
-		->setCellValue('H1', 'Date PD not match')	
-		->setCellValue('I1', 'Date Lock');		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
+		->setCellValue('E1', 'Middle line')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Number PD')
+		->setCellValue('H1', 'Max PD')
+		->setCellValue('I1', 'Date PD not match')	
+		->setCellValue('J1', 'Date Lock');		
+         $objPHPExcel->getActiveSheet()->getStyle('A1:J1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -107,16 +108,17 @@ class Controllerpdpdmonth extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(60);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(60);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
 		$h=0;
 		$n = 2;
 		$i=0;
@@ -151,9 +153,10 @@ class Controllerpdpdmonth extends Controller {
 				$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$customer['username']);
 				$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$customer['telephone']);
 				$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$customer['upline']);
-				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id']));
-				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$customer['total_pd']);
-				$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$num_pd);
+				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id'])['middleline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$this -> big_upline($customer['customer_id'])['bigupline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$customer['total_pd']);
+				$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$num_pd);
 
 				$get_pd_not_macth = $this -> get_pd_not_macth($customer['customer_id']);
 				$mang = "";
@@ -161,8 +164,8 @@ class Controllerpdpdmonth extends Controller {
                 	$mang .= date('d/m/Y H:i:s',strtotime($value_pd['date_added']))." ,";
                 }
 
-				$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$mang);
-				$objPHPExcel->getActiveSheet()->setCellValue('I'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_block'])));
+				$objPHPExcel->getActiveSheet()->setCellValue('I'.$n," ".$mang);
+				$objPHPExcel->getActiveSheet()->setCellValue('J'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_block'])));
 				$n++;
 			}
 		}
@@ -240,11 +243,12 @@ class Controllerpdpdmonth extends Controller {
 		->setCellValue('B1', 'Username')
 		->setCellValue('C1', 'Telephone')
 		->setCellValue('D1', 'Upline')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Number PD')
-		->setCellValue('G1', 'Max PD')
-		->setCellValue('H1', 'Date PD not match')	
-		->setCellValue('I1', 'Date Lock');		
+		->setCellValue('E1', 'Middle line')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Number PD')
+		->setCellValue('H1', 'Max PD')
+		->setCellValue('I1', 'Date PD not match')	
+		->setCellValue('J1', 'Date Lock');		
          $objPHPExcel->getActiveSheet()->getStyle('A1:I1')
         ->applyFromArray(
                 array(
@@ -304,9 +308,10 @@ class Controllerpdpdmonth extends Controller {
 				$objPHPExcel->getActiveSheet()->setCellValue('B'.$n," ".$customer['username']);
 				$objPHPExcel->getActiveSheet()->setCellValue('C'.$n," ".$customer['telephone']);
 				$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$customer['upline']);
-				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id']));
-				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$customer['total_pd']);
-				$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$num_pd);
+				$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id'])['middleline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$this -> big_upline($customer['customer_id'])['bigupline']);
+				$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".$customer['total_pd']);
+				$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$num_pd);
 
 				$get_pd_not_macth = $this -> get_pd_not_macth($customer['customer_id']);
 				$mang = "";
@@ -314,8 +319,8 @@ class Controllerpdpdmonth extends Controller {
                 	$mang .= date('d/m/Y H:i:s',strtotime($value_pd['date_added']))." ,";
                 }
 
-				$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".$mang);
-				$objPHPExcel->getActiveSheet()->setCellValue('I'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_block'])));
+				$objPHPExcel->getActiveSheet()->setCellValue('I'.$n," ".$mang);
+				$objPHPExcel->getActiveSheet()->setCellValue('J'.$n, " ".date('d/m/Y H:i',strtotime($customer['date_block'])));
 				$n++;
 			}
 		}
@@ -361,7 +366,20 @@ class Controllerpdpdmonth extends Controller {
 	{
 		$this->load->language('sale/customer');
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
-
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
 		if (($count-3) > 0)
@@ -369,11 +387,14 @@ class Controllerpdpdmonth extends Controller {
 			$value = $big_upline[$count-3];
 			$bigupline = $this -> model_sale_customer -> get_customer($value);
 
-			return $bigupline['username'];
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
 		}
 		else
 		{
-			return "";
+			$json['bigupline'] = "";
+			return $json;
 		}
 		
 	}
