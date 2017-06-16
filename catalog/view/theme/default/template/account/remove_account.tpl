@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('Manual'); 
+   $self -> document -> setTitle('Remove account'); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>

@@ -3681,4 +3681,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	
 		return $json;
 	}
+
+
+	public function get_PD_customer_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT count(*) as numbers
+			FROM  ".DB_PREFIX."customer_provide_donation WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> row['numbers'];
+	}
 }

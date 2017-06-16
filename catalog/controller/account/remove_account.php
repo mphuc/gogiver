@@ -44,6 +44,9 @@ class ControllerAccountRemoveaccount extends Controller {
 			$variablePasswd = $this -> model_account_customer -> getPasswdTransaction($this -> request -> post['Password2']);
 			if ($variablePasswd['number'] != '0')
 			{
+
+				$customer = $this -> model_account_customer -> getCustomer($this-> session->data['customer_id']);
+
 				$this -> model_account_customer -> create_reason($this-> session->data['customer_id'],$this -> request -> post['content']);
 				$this -> model_account_customer -> up_status_removeaccount($this-> session->data['customer_id'],10);
 
@@ -51,11 +54,29 @@ class ControllerAccountRemoveaccount extends Controller {
 
 				$get_pnode = $this -> model_account_customer -> get_ml_customer($this-> session->data['customer_id'])['p_node'];
 				
+				$get_PD_customer_id = $this -> model_account_customer -> get_PD_customer_id($this-> session->data['customer_id']);
+
+				if (intval($get_PD_customer_id) == 0)
+				{
+					$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $get_pnode);
+
+					$this -> model_account_customer -> saveTranstionHistory(
+						$get_pnode, 
+						'C-wallet', 
+						'- ' . number_format(500000) . ' VND', 
+						"Reason: ".$customer['username']." Remove account",
+						"Deduct 500.000"
+					);
+				}
+
 				$get_all_pnode = $this -> model_account_customer -> get_all_pnode($this-> session->data['customer_id']);
 				foreach ($get_all_pnode as $value) {
 					$this -> model_account_customer -> remove_account($value['customer_id'],$get_pnode);
 				}
 				/*$this -> model_account_customer -> remove_account($this-> session->data['customer_id'],0);*/
+
+				
+
 				$json['complete'] = 1;
 				$this->event->trigger('pre.customer.logout');
 
