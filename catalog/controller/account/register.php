@@ -93,7 +93,11 @@ class ControllerAccountRegister extends Controller {
 			$data['has_register'] = true;
 			$cus_id= $tmp;
 
+			$this -> model_account_customer -> insert_45_block($this -> session -> data['customer_id'],$cus_id);
+
 			$file = $this -> avatar($this -> request -> files, $cus_id);
+
+
 
 			$amount = 0;
 			//$this -> model_account_customer -> updatePin_sub($this -> session -> data['customer_id'], 5 );

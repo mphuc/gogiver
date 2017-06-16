@@ -549,6 +549,14 @@ public function updateLevel_listID($customer_id){
 
 
 		}
+		
+	}
+
+
+	public function contab_auto()
+	{
+		$this -> load -> model('account/auto');
+		$this -> load -> model('account/customer');
 		// echo $tmp_count;
 		$this -> model_account_customer -> update_show_gd();
 		// neu het so luot PD thi khong rePD nua
@@ -563,7 +571,6 @@ public function updateLevel_listID($customer_id){
 		//dang ky qua 7 ngay ma ko kich pin khoa tai khoan
 		$this -> lock_user_regsister_7_day();
 	}
-
 
 	//khong mo khoa repd trong 48h thi khoa
 
@@ -588,7 +595,21 @@ public function updateLevel_listID($customer_id){
 		$user = $this -> model_account_auto -> lock_user_regsister_7_day();
 		
 		foreach ($user as $value) {
+			
+			$customer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+			//print_r($customer['p_node']); die;
 			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+
+			$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $customer['p_node']);
+
+			$this -> model_account_customer -> saveTranstionHistory(
+				$customer['p_node'], 
+				'C-wallet', 
+				'- ' . number_format(500000) . ' VND', 
+				"Reason: ".$customer['username']." did not create PD within 07 days",
+				"Deduct 500.000"
+			);
+
 			echo $value['customer_id']."<br/>";
 		}
 
@@ -1013,7 +1034,8 @@ public function updateLevel_listID($customer_id){
             }
             else
             {
-            	$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
+            	//$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
+            	$this -> model_account_block -> update_block_none($values['customer_id'],0);
             	echo "user not block " .$values['customer_id']."<br/>";
             }
     	}

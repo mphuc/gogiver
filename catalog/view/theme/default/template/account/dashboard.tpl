@@ -96,17 +96,34 @@
             <?php }else{ ?> 
             <div class="alert alert-danger repd">
                <?php echo $date_pd['count_pd'] ?> PD. Thời gian còn lại để tạo ra <?php echo $num_pd-$date_pd['count_pd'] ?> PD là <span data-countdown="<?php echo $date_pd['date_pd'] ?>"></span>
-               </div>
+            </div>
 
           <?php } } ?>
 
-      <?php } ?>
-          <!-- <div class="clearfix"></div>
-           <div class="pull-left"  style=" margin-bottom: 25px; font-size: 18px; font-weight: bold; line-height: 14px; color: red; list-style: none;  padding: 10px; background: #cecece;">
-          <strong>Your downline have <span data-countdown="2017-01-16 23:00:00"></span> <?php //echo "trungdoan";?></strong> to comple PD. Do you want to <a class="btn btn-success">Get PD</a></a> 
-          </div> -->
-          <!-- repd -->
+          <?php } ?>
+          
           <div class="clearfix"></div>
+
+
+          <!-- user 45 -->
+          <?php  
+           
+            if (intval($get_45_block['numbers']) == 0)
+            {
+              if ($language=='english') {  ?>
+              <div class="alert alert-danger repd">
+                You have  
+                  <span data-countdown="<?php echo $get_45_block['date_lock'] ?>"></span> 
+                to have 01 new member
+              </div>
+              <?php } else { ?> 
+                <div class="alert alert-danger repd">
+                  Bạn có  
+                  <span data-countdown="<?php echo $get_45_block['date_lock'] ?>"></span> để có thêm  01 thành viên mới
+              </div>
+              <?php } } ?> 
+            
+  
           <?php 
 
                   if (count($repd) != 0) {
@@ -134,7 +151,7 @@
           <div class="clearfix"></div>
           <!-- node pd -->
           <?php 
-              if (count($getPDfinish_child) > 0) {
+              if (count($getPDfinish_child) > 0 and 1==2) {
                  foreach ($getPDfinish_child as $value) {
               ?>
               <?php if ($language=='english') { ?>
@@ -154,7 +171,7 @@
            ?>
            <div class="clearfix"></div>
            <!-- 12h tb -->
-            <?php if (count($get_tranfer_12h) > 0) {?>
+            <?php if (count($get_tranfer_12h) > 0  and 1==2) {?>
            <?php foreach ($get_tranfer_12h as $value) { ?>
             <?php if ($language=='english') { ?>
               

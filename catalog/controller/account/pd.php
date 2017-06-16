@@ -511,6 +511,9 @@ $block_id = $this -> check_block_id();
 				
 				$pd_query = $this -> model_account_customer -> createPD($amount ,$max_profit);		
 
+				//update active pin user 45
+				$this -> model_account_customer -> update_child_active_pin($this -> session -> data['customer_id']);
+
 				$id_history = $this->model_account_customer->saveHistoryPin(
 					$this -> session -> data['customer_id'],  
 					'- '.$ping,

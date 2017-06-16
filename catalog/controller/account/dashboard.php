@@ -155,6 +155,11 @@ class ControllerAccountDashboard extends Controller {
 		$date_pd = $this -> model_account_customer -> date_pd($this->session->data['customer_id']);
 		$data['date_pd'] = ($date_pd); 
 		//print_r($data['date_pd']);die;
+
+		
+		// user 45 ngay block
+		$data['get_45_block'] = $this -> model_account_customer -> get_45_block($this->session->data['customer_id']);
+
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
 		} else {

@@ -3612,4 +3612,73 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> rows;
 	}
+
+	public function insert_45_block($id_customer,$customer_child){
+		$date_added = date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+45 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_45_block SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			customer_child = '".$this -> db -> escape($customer_child)."',
+			date_added = '".$date_added."',
+			date_finish = '".$date_finish."'
+		");
+		return $query;
+	}
+
+	public function update_child_active_pin($customer_child){
+		$date_added = date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_45_block SET
+			pin = pin + 1
+			WHERE customer_child = '".$this -> db -> escape($customer_child)."'
+		");
+		return $query;
+	}
+
+	public function get_45_block($id_customer)
+	{
+		$date_added = date('Y-m-d H:i:s');
+		$query = $this -> db -> query("
+			SELECT count(*) as numbers
+			FROM ". DB_PREFIX . "customer_45_block
+			WHERE customer_id = '".$id_customer."' AND pin > 0 AND date_finish > '".$date_added."'
+		");
+
+		$json['numbers'] = $query -> row['numbers'];
+
+		$customer = $this -> getCustomer($id_customer);
+		if ($customer['date_added'] < '2017-06-16 00:00:00')
+		{
+			$querys = $this -> db -> query("
+				SELECT *
+				FROM ". DB_PREFIX . "customer_45_block
+				WHERE customer_id = '".$id_customer."' AND pin > 0 ORDER BY date_finish DESC LIMIT 1
+			");
+			if (count($querys -> row) >0)
+			{
+				$date_addeds = $querys -> row['date_finish'];
+				$date_finishs = strtotime ( '+45 day' , strtotime ($date_addeds));
+				$date_finishs = date('Y-m-d H:i:s',$date_finishs) ;
+				$json['date_lock'] = $date_finishs;
+			}
+			else
+			{
+				$date_addeds = '2017-06-16 08:00:00';
+				$date_finishs = strtotime ( '+45 day' , strtotime ($date_addeds));
+				$date_finishs = date('Y-m-d H:i:s',$date_finishs) ;
+				$json['date_lock'] = $date_finishs;
+			}
+		}
+		else
+		{
+			$date_addeds = $customer['date_added'];
+			$date_finishs = strtotime ( '+45 day' , strtotime ($date_addeds));
+			$date_finishs = date('Y-m-d H:i:s',$date_finishs) ;
+			$json['date_lock'] = $date_finishs;
+		}
+	
+		return $json;
+	}
 }
