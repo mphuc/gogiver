@@ -103,9 +103,9 @@ class ModelSaleCustomer extends Model {
 			WHERE customer_id = '" . $this -> db -> escape($customer_id) . "'");
 		}
 
-		if ($data['status']) {
+		/*if ($data['status']) {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = '" . $data['status'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
-		}
+		}*/
 		//die;
 	}
 
@@ -116,20 +116,25 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function update_status($status,$customer_id){		
-		$query = $this -> db -> query("
-		UPDATE " . DB_PREFIX . "customer SET 
-			status =".$status."
-			WHERE customer_id = '".$customer_id."'
-		");
+		
 		
 		if (intval($status) == 8)
 		{
 			$date_added = date('Y-m-d H:i:s');
 			$query = $this -> db -> query("
 				UPDATE " . DB_PREFIX . "customer SET
-					date_off = '".$date_added."'
-					WHERE customer_id = '".$customer_id."'
+					date_off = '".$date_added."',
+					wallet = 'Amin Lock'
+					WHERE customer_id = '".$customer_id."' AND status <> 8 AND status <> 10
 				");
+		}
+		else
+		{
+			$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer SET 
+				status =".$status."
+				WHERE customer_id = '".$customer_id."'
+			");
 		}
 
 		return $query === true ? true : false;
@@ -3991,6 +3996,16 @@ $date_added= date('Y-m-d H:i:s') ;
 			FROM  ".DB_PREFIX."customer_get_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND check_gd = 0 AND status = 2
 			
+		");
+
+		return $query -> row;
+	}
+
+	public function getcustomer_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
 		");
 
 		return $query -> row;

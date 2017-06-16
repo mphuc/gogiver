@@ -3606,9 +3606,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 
 		$query = $this -> db -> query("
-			SELECT *
-			FROM ". DB_PREFIX . "customer_block_id_gd
-			WHERE status = 1 AND date < '".$date_finish."'
+			SELECT A.*
+			FROM ". DB_PREFIX . "customer_block_id_gd A INNER JOIN ". DB_PREFIX . "customer B ON A.customer_id = B.customer_id
+			WHERE A.status = 1 AND A.date < '".$date_finish."' AND B.status <> 10 AND B.status <> 8 
 		");
 		return $query -> rows;
 	}

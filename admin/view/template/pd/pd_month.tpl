@@ -221,6 +221,9 @@
 
 
         <div id="menu2" class="tab-pane fade">
+          <a target="_blank" href="index.php?route=pd/pd_month/export_tab3&token=<?php echo $_GET['token'];?>">
+                <div class="btn btn-success pull-right">Export Excel</div>
+            </a>
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -285,7 +288,7 @@
 
                         <td><?php echo $value['total_pd'] ?></td>
                         <td><?php echo $num_pd ?></td>
-                        <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_block']; ?>">
+                        <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $seft->get_date_add_customer($value['customer_id']); ?>">
                         
                     </tr>  
                     

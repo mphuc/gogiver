@@ -398,11 +398,20 @@ class ModelAccountAuto extends Model {
 		");
 	}
 
-	public function updateStatusCustomer($customer_id){
+	public function updateStatusCustomer($customer_id,$description = false){
 		$date_added= date('Y-m-d H:i:s');
-		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
-			status = 8,date_off = '".$date_added."' WHERE customer_id = '".$customer_id."' AND status <> 8 AND status <> 10
-		");
+		if ($description)
+		{
+			$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
+				status = 8,date_off = '".$date_added."', wallet = '".$description."' WHERE customer_id = '".$customer_id."' AND status <> 8 AND status <> 10
+			");
+		}
+		else
+		{
+			$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET
+				status = 8,date_off = '".$date_added."' WHERE customer_id = '".$customer_id."' AND status <> 8 AND status <> 10
+			");
+		}
 	}
 	public function updateStatusPDTransferList($transferID){
 		$query = $this -> db -> query("

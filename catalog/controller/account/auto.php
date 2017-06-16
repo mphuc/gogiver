@@ -581,7 +581,7 @@ public function updateLevel_listID($customer_id){
 		$get_repd_gd = $this -> model_account_customer -> get_block_id_gd_all();
 		//print_r($get_repd_gd); die;
 		foreach ($get_repd_gd as $value) {
-			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+			$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Lock RePD GD#".$value['id_gd']."");
 			echo $value['customer_id']."<br/>";
 		}
 	}
@@ -593,12 +593,12 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/auto');
 
 		$user = $this -> model_account_auto -> lock_user_regsister_7_day();
-		
+		//print_r($user);die;
 		foreach ($user as $value) {
 			
 			$customer = $this -> model_account_customer -> getCustomer($value['customer_id']);
 			//print_r($customer['p_node']); die;
-			$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+			$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"7 days without PD");
 
 			$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $customer['p_node']);
 
@@ -921,7 +921,7 @@ public function updateLevel_listID($customer_id){
         	$this -> model_account_block -> update_check_gd($value['id']);
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
         	if (intval($total) === 3) {
-        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không RePD 3 lần");
         	}
         	echo $value['customer_id']."<br/>";
 		}
@@ -941,7 +941,7 @@ public function updateLevel_listID($customer_id){
         	$this -> model_account_block -> update_check_block_pd($value['customer_id'],$description, $value['pd_number']);
         	 $total = $this -> model_account_block -> get_total_block_id_pd($value['customer_id']);
 		       	if (intval($total) === 2) {
-		        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id']);
+		        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Do not confirm PD 3 times");
 		        }
         }
         $this -> model_account_auto -> auto_find_pd_update_status_report();
@@ -969,7 +969,7 @@ public function updateLevel_listID($customer_id){
 
         	$total = $this -> model_account_block -> get_total_block_id_gd($value['gd_id_customer']);
         	if (intval($total) === 3) {
-        		$this -> model_account_auto -> updateStatusCustomer($value['gd_id_customer']);
+        		$this -> model_account_auto -> updateStatusCustomer($value['gd_id_customer'],"Không xác nhận GD 3 lần");
         	}
         	echo $value['gd_id_customer']."<br/>";
         }       
@@ -1029,7 +1029,7 @@ public function updateLevel_listID($customer_id){
             	$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
             	$this -> model_account_block -> update_block_pd_month($values['customer_id'],$description);
 	        	if (intval($values['total_block']) === 4) {
-	        		$this -> model_account_auto -> updateStatusCustomer($values['customer_id']);
+	        		$this -> model_account_auto -> updateStatusCustomer($values['customer_id'],"Không đủ PD/tháng 3 lần");
 	        	}
 	        	echo "user block ".$values['customer_id']."<br/>";
             }
