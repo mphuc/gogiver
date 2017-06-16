@@ -84,7 +84,8 @@ class ControllerAccountBlock extends Controller {
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};
-
+		$this -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
+		$this -> document -> addScript('catalog/view/javascript/pd/countdown.js');
 		function myConfig($self) {
 			$self -> load -> model('account/customer');
 			$self -> document -> addScript('catalog/view/javascript/countdown/jquery.countdown.min.js');
@@ -561,11 +562,12 @@ class ControllerAccountBlock extends Controller {
             $data['r_wallet'] = $r_wallet;
             $data['c_wallet'] = $c_wallet;
             $date_added= $block_id['date_block'];
-			$date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
+			$date_finish = strtotime ( '- 28 day' , strtotime ($date_added));
 			$date_finish = date('Y-m-d H:i:s',$date_finish) ;
            	$data['date'] = $date_finish;
            	$data['description'] = $block_id['description'];
            	$data['block_id'] = intval($block_id);
+           
            return $data;
         }
 	}

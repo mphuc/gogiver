@@ -24,7 +24,12 @@
                                     
             <div class="block_panel text-center">
                 <!-- Start .panel -->
-                <?php $wallet = $self -> return_wallet_month_pd(); ?>
+                <?php  $wallet = $self -> return_wallet_month_pd(); ?>
+
+                <div class="alert alert-danger repd">
+                   You have <span data-countdown="<?php echo $wallet['date'] ?>"><?php echo $wallet['date_finish'] ?></span> to reopen your account.
+                </div>
+
                 <div class="panel-body p0">
                     <h1 class="text-center">Account <?php echo ($wallet['block_id']['total_block'] == 1) ? "FROZEN" : "LOCK"; ?>  </h1>
                      

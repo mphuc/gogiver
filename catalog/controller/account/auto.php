@@ -982,7 +982,7 @@ public function updateLevel_listID($customer_id){
 
     public function croll_tab_check_no_pd_month()
     {
-    	die;
+    	//die;
     	$this -> load -> model('account/block');
     	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
@@ -999,6 +999,7 @@ public function updateLevel_listID($customer_id){
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
+
     	
     	foreach ($get_block_month_pd as $values) {
     		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
@@ -1036,7 +1037,7 @@ public function updateLevel_listID($customer_id){
             {
             	//$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
             	$this -> model_account_block -> update_block_none($values['customer_id'],0);
-            	echo "user not block " .$values['customer_id']."<br/>";
+            	//echo "user not block " .$values['customer_id']."<br/>";
             }
     	}
 
