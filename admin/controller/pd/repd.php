@@ -237,8 +237,9 @@ class ControllerPdRepd extends Controller {
 		->setCellValue('G1', 'Middle Upline')
 		->setCellValue('H1', 'Big Upline')
 		->setCellValue('I1', 'Số lần đã GD')
-		->setCellValue('J1', 'Số tiền đã GD');
-         $objPHPExcel->getActiveSheet()->getStyle('A1:J1')
+		->setCellValue('J1', 'Số tiền đã GD')
+		->setCellValue('K1', 'Lý do');
+         $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -254,7 +255,7 @@ class ControllerPdRepd extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -265,6 +266,7 @@ class ControllerPdRepd extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(60);
 		
 		$h=0;
 		$n = 2;
@@ -307,11 +309,12 @@ class ControllerPdRepd extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n," ".$get_gd_customer['total']);
 			
 			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n, " ".number_format($get_gd_customer['sum']));
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n, " ".($customer['wallet']));
 			$n++;
 			}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'J'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'K'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,
