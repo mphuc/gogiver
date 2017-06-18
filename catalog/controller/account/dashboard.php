@@ -90,8 +90,8 @@ class ControllerAccountDashboard extends Controller {
 		// getArticles
 		$page = isset($this->request->get['page']) ? $this->request->get['page'] : 1;      
 
-		$limit = 6;
-		$start = ($page - 1) * 6;
+		$limit = 5;
+		$start = ($page - 1) * 5;
 		$article_total = $this->model_simple_blog_article->getTotalArticle();
 
 		$pagination = new Pagination();

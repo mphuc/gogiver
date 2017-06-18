@@ -49,7 +49,7 @@
 					LEFT JOIN `sm_simple_blog_article_to_store` sbas ON ( sba.simple_blog_article_id = sbas.simple_blog_article_id ) 
 					LEFT JOIN `sm_simple_blog_author` sbau ON ( sba.simple_blog_author_id = sbau.simple_blog_author_id ) 
 					WHERE sba.status = 1 AND sbad.language_id = '".$this->db->escape($language_id)."'
-					ORDER BY sba.date_modified ASC LIMIT $start , $limit";
+					ORDER BY sba.date_modified DESC LIMIT $start , $limit";
 			$query = $this->db->query($sql);			
 			return $query->rows;
 		}
