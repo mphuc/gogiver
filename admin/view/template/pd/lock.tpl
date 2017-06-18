@@ -19,9 +19,9 @@
               <li><a data-toggle="tab" href="#menu1">Danh sách đã mở khóa</a></li>
             </ul>
           <div id="home" class="tab-pane fade in active">
-            <!-- <a target="_bank" href="index.php?route=pd/user45/exportafter45&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
+            <a target="_bank" href="index.php?route=pd/lock/exportlock&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
                 <button class="btn btn-success">Export Excel</button>
-            </a> -->
+            </a> 
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -32,7 +32,10 @@
                         <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Date lock</th>
-                        <th>GD</th>
+                        <th>Number lock</th>
+                        <th>C Wallet</th>
+                        <th>R Wallet</th>
+                        <th>Reason</th>
 
                     </tr>
                 </thead>
@@ -60,8 +63,10 @@
                             ?>
                         </td>
                         <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>
-                        
-                         <td><b>GD#<?php echo $value['id_gd'] ?></b></td>
+                        <td><?php echo $selt -> get_num_lock($value['customer_id']) ?></td>
+                        <td><?php echo number_format($value['c_wallet']) ?> VND</td>
+                        <td><?php echo number_format($value['r_wallet']) ?> VND</td>
+                        <td><?php echo $value['description'] ?></td>
                     </tr>  
                     
                     <?php } ?>
@@ -80,6 +85,8 @@
                         <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Date lock</th>
+                        <th>C Wallet</th>
+                        <th>R Wallet</th>
                         <th>Reason</th>
 
                     </tr>
@@ -108,7 +115,8 @@
                             ?>
                         </td>
                         <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>
-                        
+                        <td><?php echo number_format($value['c_wallet']) ?> VND</td>
+                        <td><?php echo number_format($value['c_wallet']) ?> VND</td>
                          <td><b><?php echo $value['description'] ?></b></td>
                     </tr>  
                     

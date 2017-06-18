@@ -570,6 +570,10 @@ public function updateLevel_listID($customer_id){
 
 		//dang ky qua 7 ngay ma ko kich pin khoa tai khoan
 		$this -> lock_user_regsister_7_day();
+
+		//khoa ko du pd/month
+		$this -> croll_tab_check_no_pd_month();
+
 	}
 
 	//khong mo khoa repd trong 48h thi khoa

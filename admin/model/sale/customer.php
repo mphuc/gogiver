@@ -4033,4 +4033,13 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
+	public function get_num_lock($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_block_id_gd WHERE customer_id = '".$customer_id."'
+		");
+		return $query -> row['number'];
+	}
+
 }
