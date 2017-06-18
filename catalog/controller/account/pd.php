@@ -15,14 +15,11 @@ class ControllerAccountPd extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.js');
 			$self -> document -> addStyle('catalog/view/javascript/bootstraptable/bootstrap-table-expandable.css');
 		};
-		$block_id = $this -> check_block_id();		
-		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		
 		$block_id_gd = $this -> check_block_id_gd();
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
-		//method to call function
-		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
-		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
+		
 		
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
@@ -342,9 +339,7 @@ $("#file").change(function(){
 			$self -> load -> model('account/customer');
 			
 		};
-$block_id = $this -> check_block_id();
-		
-		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+
 		$block_id_gd = $this -> check_block_id_gd();
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');

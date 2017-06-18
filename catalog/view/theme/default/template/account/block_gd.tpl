@@ -23,13 +23,9 @@
                                     <div class="panel-body">
                                     
             <div class="block_panel text-center">
-                <!-- Start .panel -->
-              
-
-                <?php $wallet = $self -> return_wallet_gd(); ?>
-
+               
                 <?php 
-                $date_added= $wallet['date'];
+                $date_added= $get_block['date'];
                 $date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
                 $date_finish= date('Y-m-d H:i:s',$date_finish) ;
               ?>
@@ -38,17 +34,17 @@
               </div>
 
                 <div class="panel-body p0">
-                    <h1 class="text-center">Account <?php echo ($wallet['total_block_id_gd'] == 0) ? "FROZEN" : "LOCK"; ?>  </h1>
+                    <h1 class="text-center">Account <?php echo ($get_block['total'] == 0) ? "FROZEN" : "LOCK"; ?>  </h1>
                      
-                    <p class="text-center s20">Your account has been locked at <code><?php echo date("d/m/Y", strtotime($wallet['date'])); ?></code>.</p>
+                    <p class="text-center s20">Your account has been locked at <code><?php echo date("d/m/Y", strtotime($get_block['date'])); ?></code>.</p>
 
-                    <p class="text-center s20">Status: Change from ACTIVE to <?php echo ($wallet['total_block_id_gd'] == 0) ? "FROZEN" : "LOCK"; ?></p>
+                    <p class="text-center s20">Status: Change from ACTIVE to <?php echo ($get_block['total'] == 0) ? "FROZEN" : "LOCK"; ?></p>
 
-                    <p class="text-center s20">Reason: <?php echo $wallet['description'] ?>.</p>
+                    <p class="text-center s20">Reason: <?php echo $get_block['description'] ?>.</p>
                     <p class="text-center s20">To unlock your account will be penalized as follows.</p>
                   
-                    <p class="text-center s20">Deduct R-Wallet amount: <code><?php echo number_format($wallet['r_wallet']) ?> VND</code></p>
-                    <p class="text-center s20">Deduct C-Wallet amount: <code><?php echo number_format($wallet['c_wallet']) ?> VND</code></p>
+                    <p class="text-center s20">Deduct R-Wallet amount: <code><?php echo number_format($get_block['r_wallet']) ?> VND</code></p>
+                    <p class="text-center s20">Deduct C-Wallet amount: <code><?php echo number_format($get_block['c_wallet']) ?> VND</code></p>
                     <p class="text-center s20">Warning: Your account is blocked. To unblock, please contact <code>support@iontach.biz</code></p>
 
                     <div class="divider-dashed mb25"></div>

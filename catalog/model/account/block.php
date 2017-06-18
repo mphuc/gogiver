@@ -174,7 +174,7 @@ class ModelAccountBlock extends Model {
 		return $query_row -> rows;
 	}
 
-	public function insert_block_id_gd($id_customer,$description,$id_gd){
+	public function insert_block_id_gd($id_customer,$description,$id_gd,$amount_c,$amount_r){
 		$date_now= date('Y-m-d H:i:s');
 		
 		$query = $this -> db -> query("
@@ -182,6 +182,8 @@ class ModelAccountBlock extends Model {
 			customer_id = '".$this -> db -> escape($id_customer)."',
 			status = 1,
 			description ='".$this -> db -> escape($description)."',
+			c_wallet = '".$amount_c."',
+			r_wallet = '".$amount_r."',
 			date = '".$date_now."',
 			id_gd ='" .$this -> db -> escape($id_gd). "'
 		");
@@ -275,7 +277,7 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			SELECT A.*
 			FROM  ".DB_PREFIX."customer_block_pd_month A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
-			WHERE A.date_block <= '".$date_added."' AND A.total_pd > 0 AND A.status = 0 AND B.status <> 8 AND B.status <> 10
+			WHERE A.date_block <= '".$date_added."' AND A.status = 0 AND B.status <> 8 AND B.status <> 10 AND date_block <> '0000-00-00 00:00:00'
 		");
 		return $query -> rows;
 	}
@@ -288,7 +290,7 @@ class ModelAccountBlock extends Model {
 		");
 		return $query -> row;
 	}
-	public function update_block_pd_month($customer_id,$description)
+	public function update_block_pd_month($customer_id)
 	{
 		$date_added= date('Y-m-d H:i:s');
 		$date_finish = strtotime ( '+ 30 day' , strtotime ($date_added));
@@ -297,10 +299,9 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			UPDATE  " . DB_PREFIX . "customer_block_pd_month SET
 			date_block = '".$date_finish."',
-			total_block = total_block + 1,
-			total_pd = 0,
-			description = '".$description."',
-			status = 1
+			
+			total_pd = 0
+			
 			WHERE customer_id = '".$customer_id."'
 			");
 		return $query;

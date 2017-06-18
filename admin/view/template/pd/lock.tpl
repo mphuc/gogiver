@@ -80,7 +80,7 @@
                         <th>Middle Upline</th>
                         <th>Big Upline</th>
                         <th>Date lock</th>
-                        <th>GD</th>
+                        <th>Reason</th>
 
                     </tr>
                 </thead>
@@ -109,7 +109,7 @@
                         </td>
                         <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>
                         
-                         <td><b>GD#<?php echo $value['id_gd'] ?></b></td>
+                         <td><b><?php echo $value['description'] ?></b></td>
                     </tr>  
                     
                     <?php } ?>

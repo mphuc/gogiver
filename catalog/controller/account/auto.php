@@ -581,7 +581,7 @@ public function updateLevel_listID($customer_id){
 		$get_repd_gd = $this -> model_account_customer -> get_block_id_gd_all();
 		//print_r($get_repd_gd); die;
 		foreach ($get_repd_gd as $value) {
-			$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Lock RePD GD#".$value['id_gd']."");
+			$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Can not open lock 48h".$value['id_gd']."");
 			echo $value['customer_id']."<br/>";
 		}
 	}
@@ -913,13 +913,22 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
 		$this -> load -> model('account/block');
-		//echo "<pre>"; print_r($re_pd); echo "</pre>"; die();
+		
 		foreach ($re_pd as $value) {
-			$description ='You did not complete Re-PD';
-        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number']);
-        	
-        	$this -> model_account_block -> update_check_gd($value['id']);
-        	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+
+			$this -> model_account_block -> update_check_block_gd($value['id']);
+
+			$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+			if (intval($total) < 3) {
+				$description ='You did not complete Re-PD';
+
+				$return_wallet_gd = $this -> return_wallet_gd($value['customer_id']);
+				//echo "<pre>"; print_r($return_wallet_gd); echo "</pre>"; die();
+
+	        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number'],$return_wallet_gd['c_wallet'],$return_wallet_gd['r_wallet']);
+	        	
+	        	$this -> model_account_block -> update_check_gd($value['id']);
+        	}
         	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không RePD 3 lần");
         	}
@@ -984,6 +993,7 @@ public function updateLevel_listID($customer_id){
     {
     	//die;
     	$this -> load -> model('account/block');
+    	$this -> load -> model('account/auto');
     	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
     		//add all user
@@ -999,10 +1009,9 @@ public function updateLevel_listID($customer_id){
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
-
     	
-    	foreach ($get_block_month_pd as $values) {
-    		$get_level = $this -> model_account_block -> get_level($values['customer_id']);
+    	foreach ($get_block_month_pd as $value) {
+    		$get_level = $this -> model_account_block -> get_level($value['customer_id']);
     		switch ($get_level['level']) {
               case 1:
                 $num_pd = 3;
@@ -1023,20 +1032,31 @@ public function updateLevel_listID($customer_id){
                 $num_pd = 11;
                 break;
             }
-
-            if ($values['total_pd'] < $num_pd)
+            
+            if ($value['total_pd'] < $num_pd)
             {
-            	$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
-            	$this -> model_account_block -> update_block_pd_month($values['customer_id'],$description);
-	        	if (intval($values['total_block']) === 4) {
-	        		$this -> model_account_auto -> updateStatusCustomer($values['customer_id'],"Không đủ PD/tháng 3 lần");
+            	$this -> model_account_block -> update_block_pd_month($value['customer_id']);
+            	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+				if (intval($total) < 3) {
+					$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
+
+					$return_wallet_gd = $this -> return_wallet_gd($value['customer_id']);
+					//echo "<pre>"; print_r($return_wallet_gd); echo "</pre>"; die();
+
+		        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, "",$return_wallet_gd['c_wallet'],$return_wallet_gd['r_wallet']);
+		        	
+		        	$this -> model_account_block -> update_check_gd($value['id']);
 	        	}
-	        	echo "user block ".$values['customer_id']."<br/>";
+	        	if (intval($total) === 3) {
+	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không đủ PD/tháng 3 lần");
+	        	}
+
+	        	echo "user block ".$value['customer_id']."<br/>";
             }
             else
             {
             	//$this -> model_account_block -> update_block_none($values['customer_id'],$values['total_pd']-$num_pd);
-            	$this -> model_account_block -> update_block_none($values['customer_id'],0);
+            	$this -> model_account_block -> update_block_none($value['customer_id'],0);
             	//echo "user not block " .$values['customer_id']."<br/>";
             }
     	}
@@ -1120,6 +1140,106 @@ public function updateLevel_listID($customer_id){
     	}
     }
 
+
+    public function return_wallet_gd($customer_id){
+		
+        $this -> load -> model('account/block');
+        $this -> load -> model('account/customer');
+     
+        $level = $this -> model_account_block ->getLevel_by_customerid($customer_id);
+        $total_block_id_gd = $this -> model_account_customer -> get_block_id_gd_total($customer_id);		
+        if (intval($total_block_id_gd) === 0) {
+        	switch (intval($level['level'])) {
+				case 1:
+					$r_wallet = 700000;
+					$c_wallet = 500000;
+					break;
+				case 2:
+					$r_wallet = 1400000;
+					$c_wallet = 1000000;
+					break;
+				case 3:
+					$r_wallet = 2800000;
+					$c_wallet = 2000000;
+					break;
+				case 4:
+					$r_wallet = 4200000;
+					$c_wallet = 4000000;
+					break;
+				case 5:
+					$r_wallet = 7000000;
+					$c_wallet = 8000000;
+					break;
+				case 6:
+					$r_wallet = 11200000;
+					$c_wallet = 16000000;
+					break;
+			}
+		}    
+        if (intval($total_block_id_gd) == 1) {
+        	switch (intval($level['level'])) {
+				case 1:
+					$r_wallet = 2000000;
+					$c_wallet = 2000000;
+					break;
+				case 2:
+					$r_wallet = 4000000;
+					$c_wallet = 4000000;
+					break;
+				case 3:
+					$r_wallet = 7000000;
+					$c_wallet = 8000000;
+					break;
+				case 4:
+					$r_wallet = 11000000;
+					$c_wallet = 16000000;
+					break;
+				case 5:
+					$r_wallet = 16000000;
+					$c_wallet = 32000000;
+					break;
+				case 6:
+					$r_wallet = 22000000;
+					$c_wallet = 64000000;
+					break;
+			}
+        }
+        if (intval($total_block_id_gd) == 2) {
+        	switch (intval($level['level'])) {
+				case 1:
+					$r_wallet = 4000000;
+					$c_wallet = 4000000;
+					break;
+				case 2:
+					$r_wallet = 8000000;
+					$c_wallet = 8000000;
+					break;
+				case 3:
+					$r_wallet = 14000000;
+					$c_wallet = 16000000;
+					break;
+				case 4:
+					$r_wallet = 22000000;
+					$c_wallet = 32000000;
+					break;
+				case 5:
+					$r_wallet = 32000000;
+					$c_wallet = 64000000;
+					break;
+				case 6:
+					$r_wallet = 44000000;
+					$c_wallet = 128000000;
+					break;
+			}
+        }
+        
+        // end status = 3
+        $data['r_wallet'] = $r_wallet;
+        $data['c_wallet'] = $c_wallet;
+       	$data['total_block_id_gd'] = intval($total_block_id_gd);
+       return $data;
+       
+	}
 
     // Did not get PD from your downline (THOATHOA)
 

@@ -555,6 +555,16 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row;
 	}
+
+	public function get_block_id_gd_lock($id_customer){
+		$query = $this -> db -> query("
+			SELECT *, (SELECT COUNT(*) as total FROM ".DB_PREFIX."customer_block_id_gd WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0) as total
+			FROM  ".DB_PREFIX."customer_block_id_gd
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 1 ORDER BY date ASC LIMIT 1
+		");
+		return $query -> row;
+	}
+
 	public function get_block_id_gd($id_customer){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) as total

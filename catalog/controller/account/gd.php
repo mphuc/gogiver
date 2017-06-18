@@ -16,14 +16,12 @@ class ControllerAccountGd extends Controller {
 		!call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		call_user_func_array("myConfig", array($this));
 
-		$block_id = $this -> check_block_id();		
-		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
+		
 		//language
 		$block_id_gd = $this -> check_block_id_gd();
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
-		$block_pd_month = $this -> load ->controller('account/block/check_block_pd_month');
-		if (intval($block_pd_month) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock_pdm.html');
+		
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);
 		$language -> load('account/gd');
@@ -534,9 +532,7 @@ class ControllerAccountGd extends Controller {
 			$self -> load -> model('account/customer');
 		};
 $block_id = $this -> check_block_id();		
-		if (intval($block_id) !== 0) $this->response->redirect(HTTPS_SERVER . 'lock.html');
-		//language
-		$block_id_gd = $this -> check_block_id_gd();
+		
 
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 

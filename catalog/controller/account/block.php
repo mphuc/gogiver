@@ -65,6 +65,7 @@ class ControllerAccountBlock extends Controller {
 		$data['lang'] = $language -> data;
 		$data['getLanguage'] = $getLanguage;
 
+		$data['get_block'] = $this -> model_account_customer -> get_block_id_gd_lock($this -> session -> data['customer_id']);
 
 		$server = $this -> request -> server['HTTPS'] ? $server = $this -> config -> get('config_ssl') : $server = $this -> config -> get('config_url');
 		$data['base'] = $server;
@@ -195,26 +196,26 @@ class ControllerAccountBlock extends Controller {
 		if( $this -> customer -> isLogged()){
             $this -> load -> model('account/block');         
          	$this->load->model('account/customer');
-            $wallet = $this -> return_wallet_gd();
-          
+            $wallet = $this -> model_account_customer -> get_block_id_gd_lock($this -> session -> data['customer_id']);;
+          	
             $getGD = $this -> model_account_block -> get_gd_cwallet_id($this -> customer -> getId());
           
             if (count($getGD) > 0 && doubleval($wallet['c_wallet']) < doubleval($getGD['amount'])) {
             	$this -> model_account_block -> update_GD_amount($wallet['c_wallet'], $this -> customer -> getId(), $getGD['id']);
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
             }else{
             	$this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
             }
 
             $getGD_R = $this -> model_account_block -> get_gd_rwallet_id($this -> customer -> getId());
           
             if (count($getGD_R) > 0 && doubleval($wallet['r_wallet']) < doubleval($getGD_R['amount'])) {
             	$this -> model_account_block -> update_GD_amount($wallet['r_wallet'], $this -> customer -> getId(), $getGD_R['id']);
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
             }else{
             	$this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: you did not complete GD", "Lock");
+            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
             }
             $this -> model_account_block -> update_block_status_gd($this -> customer -> getId());
             $json['link'] = HTTPS_SERVER.'dashboard.html';

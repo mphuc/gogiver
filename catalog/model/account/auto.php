@@ -836,7 +836,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_get_donation 
-			WHERE status = 2 AND date_finish <= '".$date_added."' AND check_gd = 0  
+			WHERE status = 2 AND date_finish <= '".$date_added."' AND check_gd = 0 AND check_request_block = 0
 			
 		");
 		return $query -> rows;
