@@ -1009,7 +1009,7 @@ public function updateLevel_listID($customer_id){
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
     	
-    	print_r($get_block_month_pd); die;
+    	//print_r($get_block_month_pd); die;
 
     	foreach ($get_block_month_pd as $value) {
     		$get_level = $this -> model_account_block -> get_level($value['customer_id']);
