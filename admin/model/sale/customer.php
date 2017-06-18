@@ -123,6 +123,7 @@ class ModelSaleCustomer extends Model {
 			$date_added = date('Y-m-d H:i:s');
 			$query = $this -> db -> query("
 				UPDATE " . DB_PREFIX . "customer SET
+					status =".$status.",
 					date_off = '".$date_added."',
 					wallet = 'Amin Lock'
 					WHERE customer_id = '".$customer_id."' AND status <> 8 AND status <> 10
