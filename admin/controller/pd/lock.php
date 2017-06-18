@@ -26,7 +26,7 @@ class ControllerPdLock extends Controller {
 		$pagination -> limit = $limit;
 		$pagination -> num_links = 5;
 		$pagination -> text = 'text'; 
-		$pagination -> url = $this -> url -> link('pd/gh', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+		$pagination -> url = $this -> url -> link('pd/lock', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
 		$data['pins'] =  $this-> model_sale_customer->get_lock_repd_finish_all($limit, $start);
 		$data['pagination'] = $pagination -> render();
 

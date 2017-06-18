@@ -115,7 +115,7 @@
                     <?php } ?>
                 </tbody>
             </table>
-            
+            <?php echo $pagination ?>
             
           </div>
 
