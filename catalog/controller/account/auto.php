@@ -906,11 +906,7 @@ public function updateLevel_listID($customer_id){
 		
 		
 	}
-	// public function array_intersect(){
-	// 	$array_child_node = $this -> get_max_level_child_node()
-
-	// 	array_intersect ($array1, $array2) 
-	// }
+	
 	// sau 2 ngày hoàn thành GH mà không tạo PH sẽ khóa tài khoản
 	public function croll_tab_check_no_re_pd(){
 		
@@ -949,47 +945,100 @@ public function updateLevel_listID($customer_id){
         $query_rp = $this -> model_account_auto -> get_rp_pd();
       
         foreach ($query_rp as $key => $value) {
-        	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
-        	$description ='You did not complete PD';
-        	$this -> model_account_block -> update_check_block_pd($value['customer_id'],$description, $value['pd_number']);
-        	 $total = $this -> model_account_block -> get_total_block_id_pd($value['customer_id']);
-		       	if (intval($total) === 2) {
-		        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Do not confirm PD 3 times");
-		        }
-        }
-        $this -> model_account_auto -> auto_find_pd_update_status_report();
-       
-        die();
+ 			$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+ 			if (intval($total) < 2) {
+	        	$return_wallet_pd = $this -> return_wallet_pd($value['customer_id']);
+	        	
+	        	$description ='You did not complete PD';
+
+	        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, "",$return_wallet_pd['c_wallet'],$return_wallet_pd['r_wallet']);
+
+	        	$this -> model_account_auto -> update_status_report_pd($value['id']);
+	        	echo $value['customer_id']."<br/>";
+	        }
+
+	        if (intval($total) >= 2) {
+	        	$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không xác nhận PD");
+	        }
+
+	    }
     }
 
     
     public function croll_tab_check_no_confirm_gd() {
 
-        //find and up status pd = 3
         $this -> load -> model('account/auto');
         $this -> load -> model('account/block');
         $query_rp = $this -> model_account_block -> get_confirm_gd_no();
       	//echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
         foreach ($query_rp as $key => $value) {
-        	 // $this -> model_account_auto -> update_lock2_customer($value['customer_id']);
-        	$description ='You did not complete GD';
-        	//$this -> model_account_block -> update_check_block_pd($value['gd_id_customer'], $description, $value['gd_id']);
+        	
+			$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+			if (intval($total) < 3) {
 
-        	$this -> model_account_block -> insert_block_id_gd($value['gd_id_customer'], $description, $value['gd_number']);
+				$description ='You did not complete GD';
+				$return_wallet_gd = $this -> return_wallet_gd($value['customer_id']);
+				
+	        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, $value['gd_number'],$return_wallet_gd['c_wallet'],$return_wallet_gd['r_wallet']);
 
-        	$this -> model_account_block -> update_check_block_gd($value['gd_id']);
-
-
-        	$total = $this -> model_account_block -> get_total_block_id_gd($value['gd_id_customer']);
-        	if (intval($total) === 3) {
-        		$this -> model_account_auto -> updateStatusCustomer($value['gd_id_customer'],"Không xác nhận GD 3 lần");
+	        	$this -> model_account_block -> update_check_block_gd($value['gd_id']);
         	}
-        	echo $value['gd_id_customer']."<br/>";
+        	if (intval($total) === 3) {
+        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không xác nhận GD 3 lần");
+        	}
+        	echo $value['customer_id']."<br/>";
         }       
-        die();
+       
     }
 
-    // khoa sau 45 ngay ko tao duoc f1
+    // khoa sau 45 ngay ko tao duoc f1 chay ngay 31/07/2017
+    public function lock_user45_day()
+    {
+    	$this -> load -> model('account/block');
+    	$this -> load -> model('account/auto');
+    	$this -> load -> model('account/customer');
+
+    	$maao = $this -> model_account_customer -> get_childrend_all_tree(64);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(65);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+
+		$get_user_45 = $this -> model_account_auto -> get_user_45_after($maao);
+
+
+
+		foreach ($get_user_45 as $value) {
+
+			$chec_lock_user45 = $this -> model_account_auto -> chec_lock_user45($value['customer_id']);
+
+
+
+			if (intval($chec_lock_user45) == 0)
+			{
+				
+				$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+				if (intval($total) < 3) {
+					$description ='Did not have a new member within 45 days';
+
+					$return_wallet_gd = $this -> return_wallet_gd($value['customer_id']);
+					
+
+		        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description, "",$return_wallet_gd['c_wallet'],$return_wallet_gd['r_wallet']);
+		        	
+		        	$this -> model_account_auto -> update_lock_user45($value['customer_id']);
+
+	        	}
+	        	if (intval($total) === 3) {
+	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không RePD 3 lần");
+	        	}
+	        	echo $value['customer_id']."<br/>";
+			}
+		}
+    }
+
+
 
     // khoa trong 1 tháng ko đạt đủ số lượng PD
 
@@ -1012,9 +1061,7 @@ public function updateLevel_listID($customer_id){
 
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
-    	
-    	//print_r($get_block_month_pd); die;
-
+    
     	foreach ($get_block_month_pd as $value) {
     		$get_level = $this -> model_account_block -> get_level($value['customer_id']);
     		switch ($get_level['level']) {
@@ -1244,6 +1291,80 @@ public function updateLevel_listID($customer_id){
        	$data['total_block_id_gd'] = intval($total_block_id_gd);
        return $data;
        
+	}
+
+	public function return_wallet_pd($customer_id){
+        $this -> load -> model('account/block');
+        $this -> load -> model('account/customer');
+        
+        $level = $this -> model_account_block ->getLevel_by_customerid($customer_id);
+       	$total_block_id_gd = $this -> model_account_customer -> get_block_id_gd_total($customer_id);
+        
+    	if (intval($total_block_id_gd) === 0) {
+    		switch (intval($level['level'])) {
+				case 1:
+					$r_wallet = 2000000;
+					$c_wallet = 2000000;
+					break;
+				case 2:
+					$r_wallet = 4000000;
+					$c_wallet = 4000000;
+					break;
+				case 3:
+					$r_wallet = 7000000;
+					$c_wallet = 8000000;
+					break;
+				case 4:
+					$r_wallet = 11000000;
+					$c_wallet = 16000000;
+					break;
+				case 5:
+					$r_wallet = 16000000;
+					$c_wallet = 32000000;
+					break;
+				case 6:
+					$r_wallet = 22000000;
+					$c_wallet = 64000000;
+					break;
+			}
+    	}
+    	if (intval($total_block_id_gd) === 1) {
+
+    		switch (intval($level['level'])) {
+				case 1:
+					$r_wallet = 4000000;
+					$c_wallet = 4000000;
+					break;
+				case 2:
+					$r_wallet = 8000000;
+					$c_wallet = 8000000;
+					break;
+				case 3:
+					$r_wallet = 14000000;
+					$c_wallet = 16000000;
+					break;
+				case 4:
+					$r_wallet = 22000000;
+					$c_wallet = 32000000;
+					break;
+				case 5:
+					$r_wallet = 32000000;
+					$c_wallet = 64000000;
+					break;
+				case 6:
+					$r_wallet = 44000000;
+					$c_wallet = 128000000;
+					break;
+			}
+    		
+    	}
+        	
+        // end status = 3
+        $data['r_wallet'] = $r_wallet;
+        $data['c_wallet'] = $c_wallet;
+        $data['total_block_id_gd'] = intval($total_block_id_gd);
+       	return $data;
+        
 	}
 
     // Did not get PD from your downline (THOATHOA)

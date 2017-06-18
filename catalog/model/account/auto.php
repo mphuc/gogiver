@@ -507,11 +507,23 @@ class ModelAccountAuto extends Model {
 		");
 		return $query === true ? true : false;
 	}
+
+	public function update_status_report_pd($id){
+		
+		$query = $this -> db -> query("
+			UPDATE ". DB_PREFIX . "customer_provide_donation SET
+			status = 3
+			WHERE id = '".$id."'
+		");
+		return $query === true ? true : false;
+	}
+
 	public function get_rp_pd(){
+		$date_added = date('Y-m-d H:i:s') ;
 		$query_row = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish <= NOW()
+			WHERE date_finish <= '".$date_added."'
 				  AND STATUS =1
 		");
 		return $query_row -> rows;
@@ -999,5 +1011,49 @@ class ModelAccountAuto extends Model {
 			WHERE status <> 8 AND status <> 10 AND date_added < '".$date_finish."' AND customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer_provide_donation GROUP BY customer_id) AND customer_id NOT IN (".$maao.")
 		");
 		return $query -> rows;
+	}
+
+	public function get_user_45_after($maao)
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '- 45 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer 
+			WHERE status <> 10 AND status  <> 10 AND date_added < '".$date_finish."' AND customer_id NOT IN (".$maao.")
+		");
+		return $query -> rows;
+	}
+
+
+	public function chec_lock_user45($customer_id)
+	{
+		$date_added = date('Y-m-d H:i:s');
+		
+		$query = $this -> db -> query("
+			SELECT count(*) as numbers
+			FROM ". DB_PREFIX . "customer_45_block
+			WHERE customer_id = '".$customer_id."' AND pin > 0 AND date_finish > '".$date_added."'
+		");
+
+		return $query -> row['numbers'];
+	}
+
+	public function update_lock_user45($customer_id)
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+ 45 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$query = $this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_45_block SET
+			customer_id = '".$customer_id."',
+			pin = 1,
+			date_added = '".$date_added."',
+			date_finish = '".$date_finish."'
+		");
+
+		return $query;
 	}
 }
