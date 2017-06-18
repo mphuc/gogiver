@@ -14,6 +14,10 @@
     <div class="panel-body">
         
         <div class="tab-content row" style="overflow-x: scroll;">
+            <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+              <li class="active"><a data-toggle="tab" href="#home">Danh sách bị phạt</a></li>
+              <li><a data-toggle="tab" href="#menu1">Danh sách đã mở khóa</a></li>
+            </ul>
           <div id="home" class="tab-pane fade in active">
             <!-- <a target="_bank" href="index.php?route=pd/user45/exportafter45&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
                 <button class="btn btn-success">Export Excel</button>
@@ -65,35 +69,6 @@
             </table>
           </div>
           <div id="menu1" class="tab-pane fade">
-            <div class="form-group pull-right">
-                <div class="col-md-4"></div>
-                <?php 
-                    $date_added = date('d-m-Y');
-                    $date_finish = strtotime ( '- 30 day' , strtotime ($date_added));
-                    $date_finish= date('d-m-Y',$date_finish) ;
-                ?>
-
-                <div class="col-sm-3 input-group date">
-                     <label class=" control-label" for="input-date_create">Start Data</label>
-                     <input style="margin-top: 5px;" type="text" id="start_date" name="date_create" value="<?php echo $date_finish ?>" data-date-format="DD-MM-YYYY" class="form-control">
-                     <span class="input-group-btn">
-                     <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                     </span>
-                </div>
-                <div class="col-sm-3 input-group date">
-                     <label class=" control-label" for="input-date_create">End Data</label>
-                     <input style="margin-top: 5px;" type="text" id="end_date" name="date_create" value="<?php echo $date_added ?>" data-date-format="DD-MM-YYYY" class="form-control">
-                     <span class="input-group-btn">
-                     <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                     </span>
-                </div>
-                <div class="col-sm-1 input-group date">
-                    
-                        <button id="submit_fillter" style="margin-top: 28px;" class="btn btn-success">Export Excel</button>
-                   
-
-                </div>
-            </div>
             
             <table class="table table-bordered table-hover">
                 <thead>
@@ -102,147 +77,50 @@
                         <th>Username</th>
                         <th>SDT</th>
                         <th>Up line</th>
+                        <th>Middle Upline</th>
                         <th>Big Upline</th>
-                        <th>Số PD đã kích</th>
-                        <th>PD tối thiểu</th>
-                        <th>Các PD đã kích</th>
+                        <th>Date lock</th>
+                        <th>GD</th>
+
                     </tr>
                 </thead>
 
                 <tbody id="result_date"> 
                     <?php $stt = 0;
                     $date_now = date('Y-m-d H:i:s');
-                    $tt_hd = 0;
-                    foreach ($count_all_customer as $value) { ?>
-                    <?php $get_level = $selt -> get_level($value['customer_id']);
-
-                        switch ($get_level['level']) {
-                            case 1:
-                                $num_pd = 3;
-                                break;
-                              case 2:
-                                $num_pd = 4;
-                                break;
-                              case 3:
-                                $num_pd = 5;
-                                break;
-                              case 4:
-                                $num_pd = 7;
-                                break;
-                              case 5:
-                                $num_pd = 10;
-                                break;
-                              case 6:
-                                $num_pd = 11;
-                                break;
-                      }
-
-                      $get_provine_16_04 = $selt -> get_provine_16_04($value['customer_id']);
-
-                      if (count($get_provine_16_04) < $num_pd) {
-                        $tt_hd += 1;
-                       ?>
-
-
+                    foreach ($pins as $value) { 
+                        $stt ++;
+                    ?>
                       <tr>
-                        <td><?php echo $tt_hd; ?></td>
+                        <td><?php echo $stt; ?></td>
                         
                         <td><?php echo $value['username'] ?></td>
                         <td><?php echo $value['telephone'] ?></td>
                         <td><?php echo $value['upline'] ?></td>
                         <td>
                             <?php 
-                                echo $selt -> big_upline($value['customer_id']);
+                                echo $selt -> big_upline($value['customer_id'])['middleline'];
                             ?>
                         </td>
-                        <td><?php echo count($get_provine_16_04) ?></td>
-                         </span> </td>
-                         <td><?php echo $num_pd ?></td>
-
-                         <td class="text-center">
-                          <?php 
-                            
-                            foreach ($get_provine_16_04 as $value_pd) { ?>
-                              <p class="label label-success"><?php echo date('d/m/Y H:i:s',strtotime($value_pd['date_added'])); ?> | <?php echo number_format($value_pd['filled']) ?> VNĐ
-                              </p><br>
-                           <?php }
-                          ?>
+                        <td>
+                            <?php 
+                                echo $selt -> big_upline($value['customer_id'])['bigupline'];
+                            ?>
                         </td>
-
+                        <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>
+                        
+                         <td><b>GD#<?php echo $value['id_gd'] ?></b></td>
                     </tr>  
-                    <?php } ?>
-                  
-            
+                    
                     <?php } ?>
                 </tbody>
             </table>
+            
+            
           </div>
 
 
-        <div id="menu2" class="tab-pane fade">
-            
-            <a target="_bank" href="index.php?route=pd/user45/exportafter_all&token=<?php echo $_GET['token'] ?>" class="pull-right" style="margin-bottom: 20px;">
-                <button class="btn btn-success">Export Excel</button>
-            </a>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>TT</th>
-                        <th>Username</th>
-                        <th>SDT</th>
-                        <th>Up line</th>
-                        <th>Big Upline</th>
-                        <th>Trạng thái</th>
-                       
-                    </tr>
-                </thead>
-
-                <tbody id="result_date"> 
-                <?php $array = array(3,4,5,7,485,1319) ?>
-                <?php foreach ($array as  $item) { ?>
-                    
-                
-                    <?php 
-                        $user = $selt -> get_all_child($item);
-                        $user = explode(",",$user);
-                        $iii = 0;
-                        foreach ($user as $values) {
-                        $iii++; 
-                       $value = $selt -> get_user_customer($values);
-                    ?>
-                       
-                    <tr>
-                    <td><?php echo $iii; ?></td>
-                        
-                    <td><?php echo $value['username'] ?></td>
-                    <td><?php echo $value['telephone'] ?></td>
-                    <td><?php echo $value['upline'] ?></td>
-                    <td>
-                        <?php 
-                            echo $selt -> big_upline($value['customer_id']);
-                        ?>
-                    </td>
-                    <td>
-                        <?php if ($value['status'] == 1 || $value['status'] == 2) echo "Hoạt động";
-                            if ($value['status'] == 8)
-                            {
-                                echo "Bị khóa";
-                            }
-                            if ($value['status'] == 10)
-                            {
-                                echo "Đã xóa";
-                            }
-                        ?>
-                    </td>
-                    </tr>
-                    <?php }   ?>
-                    <tr><td></td><td></td><td></td><td></td></tr>
-
-                    <?php } ?>
-                      
-                </tbody>
-            </table>
-        </div>
+        
      	
         </div>
       

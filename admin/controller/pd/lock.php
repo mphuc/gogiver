@@ -10,6 +10,27 @@ class ControllerPdLock extends Controller {
 		$data['selt'] = $this;
 		$data['pin'] =  $this-> model_sale_customer->user_lock_repd();
 
+
+		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
+
+		$limit = 30;
+		$start = ($page - 1) * 30;
+
+		$ts_history = $this -> model_sale_customer -> get_lock_repd_finish();
+
+		$ts_history = $ts_history['number'];
+
+		$pagination = new Pagination();
+		$pagination -> total = $ts_history;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text'; 
+		$pagination -> url = $this -> url -> link('pd/gh', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+		$data['pins'] =  $this-> model_sale_customer->get_lock_repd_finish_all($limit, $start);
+		$data['pagination'] = $pagination -> render();
+
+
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');

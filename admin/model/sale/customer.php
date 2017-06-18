@@ -4010,4 +4010,26 @@ $date_added= date('Y-m-d H:i:s') ;
 
 		return $query -> row;
 	}
+
+	public function get_lock_repd_finish()
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_block_id_gd A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE A.status = 0 AND B.status <> 8 AND B.status <> 10 ORDER BY A.date DESC
+		");
+		return $query -> row;
+	}
+
+
+	public function get_lock_repd_finish_all($limit, $start)
+	{
+		$query = $this -> db -> query("
+			SELECT A.*,B.telephone,B.username, (SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline
+			FROM  ".DB_PREFIX."customer_block_id_gd A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE A.status = 0 AND B.status <> 8 AND B.status <> 10 ORDER BY A.date DESC
+			LIMIT ".$limit."
+			OFFSET ".$start."
+		");
+		return $query -> rows;
+	}
+
 }
