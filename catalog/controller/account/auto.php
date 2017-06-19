@@ -2,77 +2,6 @@
 
 class ControllerAccountAuto extends Controller {
 
-	public function auto_create_pd_new_user(){
-		die;
-		$this -> load -> model('account/auto');
-		$this -> load -> model('account/customer');
-		$users = $this -> model_account_auto -> new_user_pd();
-
-		foreach ($users as $key => $value) {
-			$amount = 2000000;
-			$max_profit = 3000000;
-			$customer_id = $value['customer_id'];
-
-			$pd_ID = $this -> model_account_auto-> create_PD($amount, $value['customer_id'] , $max_profit);
-		
-			$pd_number = hexdec( crc32($pd_ID) );
-
-			$this -> model_account_auto-> update_pd_number($pd_ID, $pd_number);
-
-			$quy_bo_tro = $this -> model_account_auto ->get_gd_quy_bo_tro();
-
-			//update date quy_bao_tro theo vong
-
-			$this -> model_account_auto -> update_date_last(intval($quy_bo_tro['customer_id']));
-
-			$id_gd = $this -> model_account_auto -> create_GD($quy_bo_tro['customer_id'], $amount, $amount);
-
-			$getPD = $this -> model_account_auto -> getPD_all($customer_id);
-
-
-			$getGD = $this -> model_account_auto -> getGD_all($id_gd);
-
-			$this -> model_account_auto -> create_tranfer_list(
-				$getPD['id'],$getGD['id'],
-				$getPD['customer_id'],
-				$getGD['customer_id'],
-				$getPD['amount'],
-				$getPD['status'],
-				$getGD['status']
-			);
-
-			$this -> model_account_auto -> updateCryle($customer_id, 2);
-
-			$title = "PD - Cho Leader";
-			$sub = $value['username'] ." PD - Cho " .$quy_bo_tro['username'];
-
-			$mess = "ID [".$value['username'] ."] đã khớp lệnh với [". $quy_bo_tro['username']."] mời vào website để xem hóa đơn của người PH - Cho";
-
-			$this -> emailQuyBaoTro($title  , $sub , $mess);
-
-		}
-		
-	}
-
-
-	function emailQuyBaoTro($title ,$sub, $mess){
-		$mail = new Mail();
-		$mail->protocol = $this->config->get('config_mail_protocol');
-		$mail->parameter = $this->config->get('config_mail_parameter');
-		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-		$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-		$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-		$mail->setTo('phucnguyen@icsc.vn');
-		$mail->setFrom($this->config->get('config_email'));
-		$mail->setSender(html_entity_decode($title, ENT_QUOTES, 'UTF-8'));
-		$mail->setSubject($sub);
-		$mail->setText($mess);
-		$mail->send();
-	}
-
 	public function sendmail_khoplenh($emails,$subject,$content)
 	{
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
@@ -94,24 +23,6 @@ class ControllerAccountAuto extends Controller {
 	    print_r($SPApiProxy->smtpSendMail($email));
 		print_r($content);
 		
-		/*$mail = new Mail();
-		$mail -> protocol = $this -> config -> get('config_mail_protocol');
-		$mail -> parameter = $this -> config -> get('config_mail_parameter');
-		$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
-		$mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
-		$mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-		$mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
-		$mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
-
-		$mail->setTo($email);
-		$mail -> setFrom($this -> config -> get('config_email'));
-		$mail -> setSender(html_entity_decode("Iontach Community", ENT_QUOTES, 'UTF-8'));
-		$mail -> setSubject($subject);
-		$mail -> setHtml($content);
-		print_r($content);
-		
-		$mail->send();*/
-
 	}
 
 	public function sendmail_tranferlis()
@@ -517,11 +428,7 @@ public function updateLevel_listID($customer_id){
 		$arrId = $customer_id.','.substr($CustomerOfNode, 1);
 		
 		$this -> updateLevel_listID($arrId);
-	 	 // $this -> model_account_customer -> DeleteCustomer($arrUsername);
-	 	 // $this -> model_account_customer -> DeleteCustomerML($arrUsername);
-			
-		
-		
+	 	
 	}
 	public function autoAdd_R_walet() {
 
@@ -1366,20 +1273,6 @@ public function updateLevel_listID($customer_id){
        	return $data;
         
 	}
-
-    // Did not get PD from your downline (THOATHOA)
-
-	// public function thuongtructiep_bk(){
-	// 	$this -> load -> model('account/auto');
-	// 	$this -> load -> model('account/customer');
-	// 	$get_PD_finish = $this->model_account_auto -> get_PD_finish_thuong();
-	// 	foreach ($get_PD_finish as $key => $value) {
-	// 		$this->model_account_auto->update_PD_finish_thuong($value['id']);
-	// 		$p_node = $this -> model_account_auto -> getusername($value['customer_id']);
-	// 		$this -> model_account_customer -> update_C_Wallet(8800000*0.1, $p_node['p_node'], $add = true);
-	// 		$this -> model_account_customer -> saveTranstionHistory($p_node['p_node'], 'Thưởng trực tiếp', '+ ' . (number_format(8800000*0.1)) . ' VNĐ', "10% từ PD ".$p_node['username']." (".number_format(8800000)." VNĐ)");
-	// 	}
-	// }
 }
 
 

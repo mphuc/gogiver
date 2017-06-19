@@ -20,7 +20,21 @@ class ControllerCommonHeader extends Controller {
 			$pd_march = $this -> model_account_customer -> getAllTotalPD_Status($this -> session -> data['customer_id']);
 			$data['pd_march'] = intval($pd_march['number']);
 			$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
-		
+				
+			
+			
+			if ($data['customer']['customer_code'] == "")
+			{
+				if (isset($_GET['_route_']))
+				{
+					if ($_GET['_route_'] != "dashboard.html" && $_GET['_route_'] != "provide-donation.html" && $_GET['_route_'] != "getdonation.html" && $_GET['_route_'] != "setting.html" && $_GET['_route_'] != "support.html")
+					{
+						$this->response->redirect(HTTPS_SERVER . 'dashboard.html');
+					}	
+				}
+				
+			}
+
 			
 
 		}
