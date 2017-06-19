@@ -191,7 +191,7 @@ class ControllerAccountDashboard extends Controller {
 
 		$this->load->model('account/customer');
 		$data['customer'] = $customer = $this -> model_account_customer -> get_customer_by_code($_GET['token']);
-		count($customer) === 0 && die();
+		count($customer) === 0 && $this->response->redirect(HTTPS_SERVER . 'dashboard.html');;
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$language = new Language($getLanguage);
@@ -248,7 +248,7 @@ class ControllerAccountDashboard extends Controller {
 
 		$this->load->model('account/customer');
 		$data['customer'] = $customer = $this -> model_account_customer -> get_customer_by_code($_GET['token']);
-		count($customer) === 0 && die();
+		count($customer) === 0 && $this->response->redirect(HTTPS_SERVER . 'dashboard.html');;
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> customer -> getId());
 		$language = new Language($getLanguage);
