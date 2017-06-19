@@ -40,28 +40,28 @@ class ControllerPdCreatepd extends Controller {
 			$this->load->model('sale/customer');
 			$createPD = $this -> model_sale_customer -> createPD($customer_id,$date);
 
-			$this -> model_sale_customer -> saveHistoryPin(
+			/*$this -> model_sale_customer -> saveHistoryPin(
 				$customer_id,
 				'- 1',
 				$createPD['pd_number'],
 				'PD',
 				$createPD['pd_number'],
 				$createPD['date_added']
-			);
+			);*/
 
 			$date_added = date('Y-m-d',strtotime($date))." ".$this -> randomDate();;
 			$randdate = rand(1,5);
 			$date_finish = strtotime ( '- '.$randdate.' day' , strtotime ($date_added));
 			$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 
-			$this -> model_sale_customer -> saveHistoryPin(
+			/*$this -> model_sale_customer -> saveHistoryPin(
 				$customer_id,
 				'+ 1', 
 				'hidden description', 
 				'Transfer', 
 				$send_pin,
 				$date_finish
-			);
+			);*/
 			$this -> session -> data['date_create_pd'] = $this -> request -> post['date'];
 			$this -> session -> data['send_pin_pd'] = $this -> request -> post['send_pin'];
 			$this -> session -> data['date_sussess'] = 1;
