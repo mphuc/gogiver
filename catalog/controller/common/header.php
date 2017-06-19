@@ -21,7 +21,7 @@ class ControllerCommonHeader extends Controller {
 			$data['pd_march'] = intval($pd_march['number']);
 			$data['get_mail_admin'] = $this -> model_account_customer -> get_mail_admin($this -> session -> data['customer_id']);
 				
-			
+			//print_r($_GET['route']); die;
 			
 			if ($data['customer']['customer_code'] == "")
 			{
@@ -31,6 +31,14 @@ class ControllerCommonHeader extends Controller {
 					{
 						$this->response->redirect(HTTPS_SERVER . 'dashboard.html');
 					}	
+				}
+
+				if (isset($_GET['route']))
+				{
+					if ($_GET['route'] == "account/commission" || $_GET['route'] == "account/commissionhistory")
+					{
+						$this->response->redirect(HTTPS_SERVER . 'dashboard.html');
+					}
 				}
 				
 			}
