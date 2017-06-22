@@ -26,7 +26,7 @@ $_['text_Repeat_Transaction_Password']            = 'Repeat Transaction Password
 $_['text_email'] = 'Email';
 $_['text_Agree_Transaction_Password']            = 'Agree to our Terms and Condition';
 $_['text_Submit']            = 'Submit';
-$_['buy_more_pin']            = 'Please buy more pin to continue!';
+$_['buy_more_pin']            = 'Need 03 PINs to register a new account!';
 
 $_['err_text_username']            = 'Please check user name, or user is already exists';
 
