@@ -108,8 +108,8 @@
           <!-- user 45 -->
           <?php  
            
-            if (intval($get_45_block['numbers']) == 0)
-            {
+            /*if (intval($get_45_block['numbers']) == 0)
+            {*/
               if ($language=='english') {  ?>
               <div class="alert alert-danger repd">
                 You have  
@@ -121,7 +121,7 @@
                   Bạn có  
                   <span data-countdown="<?php echo $get_45_block['date_lock'] ?>"></span> để có thêm  01 thành viên mới
               </div>
-              <?php } } ?> 
+              <?php } //} ?> 
             
   
           <?php 

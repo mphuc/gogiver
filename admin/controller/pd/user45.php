@@ -43,6 +43,12 @@ class ControllerPdUser45 extends Controller {
 		
 	}*/
 
+	public function get_gd_customer($customer_id)
+	{
+		$this->load->language('sale/customer');
+		return $this -> model_sale_customer -> get_gd_customer($customer_id);
+	}
+
 	public function get_all_child($customer_id)
 	{
 		$this->load->language('sale/customer');
@@ -295,9 +301,11 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('F1', 'Big Upline')
 		->setCellValue('G1', 'Số F1 kích pin')
 		->setCellValue('H1', 'Thời gian bắt đầu kích pin')
-		->setCellValue('I1', 'Số ngày chưa tạo ra F1');
+		->setCellValue('I1', 'Số ngày chưa tạo ra F1')
+		->setCellValue('J1', 'Số lần đã GD')
+		->setCellValue('K1', 'Số tiền đã GD');
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -313,7 +321,7 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -323,6 +331,8 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(20);
 		
 		$h=0;
 		$n = 2;
@@ -346,13 +356,15 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n,count($get_account_pin));
 			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
 			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$day);
-			
+			$get_gd_customer =($this -> get_gd_customer($value['customer_id'])); 
+			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$get_gd_customer['total']);
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,number_format($get_gd_customer['sum']));
 			$n++;
 			}
 		}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'H'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'K'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,

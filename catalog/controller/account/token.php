@@ -365,7 +365,7 @@ $block_id = $this -> check_block_id();
 			$num = str_replace(".","",$num);
 			
 			$amount = $num;
-			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 0 && $amount >= 1) {
+			if (is_numeric($num) && intval($num) !== 0 && ($pin - $amount) >= 0 && $amount >= 3) {
 				$json['pin'] = 1;
 			} else {
 				$json['pin'] = -1;

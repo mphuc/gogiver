@@ -901,6 +901,7 @@ public function updateLevel_listID($customer_id){
     // khoa sau 45 ngay ko tao duoc f1 chay ngay 31/07/2017
     public function lock_user45_day()
     {
+    	die;
     	$this -> load -> model('account/block');
     	$this -> load -> model('account/auto');
     	$this -> load -> model('account/customer');
@@ -919,7 +920,6 @@ public function updateLevel_listID($customer_id){
 		foreach ($get_user_45 as $value) {
 
 			$chec_lock_user45 = $this -> model_account_auto -> chec_lock_user45($value['customer_id']);
-
 
 
 			if (intval($chec_lock_user45) == 0)

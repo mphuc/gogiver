@@ -1022,7 +1022,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer 
-			WHERE status <> 10 AND status  <> 10 AND date_added < '".$date_finish."' AND customer_id NOT IN (".$maao.")
+			WHERE status <> 10 AND status  <> 8 AND date_added < '".$date_finish."' AND customer_id NOT IN (".$maao.")
 		");
 		return $query -> rows;
 	}

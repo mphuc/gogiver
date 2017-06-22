@@ -3,6 +3,7 @@
    echo $self -> load -> controller('common/header');
    echo $self -> load -> controller('common/column_left');
    ?>
+<div class="clearfix"></div>
 <div class="main-content">
 <!-- Start .content -->
 
@@ -10,22 +11,10 @@
    <?php 
         $pin = $self -> check_pin(); 
     ?>
-    <?php /*if ($pin < 10) { ?>
-
-   
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="text-center">
-             
-              <h2><?php echo $lang['buy_more_pin'] ?></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-<?php die(); } */ ?>
+    <?php if ($pin < 3) { ?>
+      <h2><?php echo $lang['buy_more_pin'] ?></h2>
+            
+  <?php die(); }  ?>
      <div class="row">
         <!-- .row start -->
         <div class="col-md-12">
@@ -35,6 +24,8 @@
               <div class="panel-heading">
                  <h4 class="panel-title"><i class="fa fa-align-justify"></i><?php echo $lang['heading_title'] ?></h4>
               </div>
+
+
               <div class="panel-body form-horizontal group-border stripped">
                  <div class="form-group">
                     <div class="">

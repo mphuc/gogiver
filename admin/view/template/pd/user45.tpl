@@ -34,6 +34,8 @@
                         <th>Số F1 kích pin</th>
                         <th>Thời gian bắt đầu kích pin</th>
                         <th>Số ngày</th>
+                        <th>Số lần đã GD</th>
+                        <th>Số tiền đã GD</th>
                     </tr>
                 </thead>
 
@@ -67,6 +69,17 @@
                         <td><span> <?php echo date('d/m/Y H:i:s',strtotime($value['date_added'])); ?>
                          </span> </td>
                          <td><?php echo $day ?></td>
+                         <td>
+                            <?php 
+                              $get_gd_customer =($seft -> get_gd_customer($value['customer_id'])); 
+                              echo $get_gd_customer['total'];
+                            ?>
+                          </td>
+                          <td>
+                            <?php 
+                             echo number_format($get_gd_customer['sum']);
+                            ?>
+                          </td>
                     </tr>  
                     <?php } ?>
                   

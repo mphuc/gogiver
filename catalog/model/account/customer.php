@@ -3639,9 +3639,12 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function update_child_active_pin($customer_child){
 		$date_added = date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '+45 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_45_block SET
-			pin = pin + 1
+			pin = pin + 1,
+			date_finish = '".$date_finish."'
 			WHERE customer_child = '".$this -> db -> escape($customer_child)."'
 		");
 		return $query;
@@ -3649,14 +3652,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function get_45_block($id_customer)
 	{
-		$date_added = date('Y-m-d H:i:s');
+		/*$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			SELECT count(*) as numbers
 			FROM ". DB_PREFIX . "customer_45_block
 			WHERE customer_id = '".$id_customer."' AND pin > 0 AND date_finish > '".$date_added."'
 		");
 
-		$json['numbers'] = $query -> row['numbers'];
+		$json['numbers'] = $query -> row['numbers'];*/
 
 		$customer = $this -> getCustomer($id_customer);
 		if ($customer['date_added'] < '2017-06-16 00:00:00')
@@ -3668,9 +3671,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			");
 			if (count($querys -> row) >0)
 			{
-				$date_addeds = $querys -> row['date_finish'];
-				$date_finishs = strtotime ( '+45 day' , strtotime ($date_addeds));
-				$date_finishs = date('Y-m-d H:i:s',$date_finishs) ;
+				$date_finishs = $querys -> row['date_finish'];
 				$json['date_lock'] = $date_finishs;
 			}
 			else
@@ -3696,7 +3697,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function get_PD_customer_id($id_customer){
 		$query = $this -> db -> query("
 			SELECT count(*) as numbers
-			FROM  ".DB_PREFIX."customer_provide_donation WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+			FROM  ".DB_PREFIX."customer_provide_donation WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
 		");
 
 		return $query -> row['numbers'];
