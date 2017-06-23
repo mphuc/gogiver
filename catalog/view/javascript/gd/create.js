@@ -27,7 +27,7 @@ $(function() {
 	});*/
 
 	$("#amount").on('input propertychange', function() {
-	    if ($("#amount").val() > 1000000){
+	    if ($("#amount").val() > 5000000){
 	    	if ($("#amount").val()%100000 != 0)
 	    	{
 	    		$("#amount").val($("#amount").val()-$("#amount").val()%100000);
