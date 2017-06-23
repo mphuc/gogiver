@@ -4042,4 +4042,14 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row['number'];
 	}
 
+	public function update_check_gd($id)
+	{
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."customer_get_donation SET
+			check_gd = 1
+			WHERE id = '".$id."'
+		");
+		return $query;
+	}
+
 }

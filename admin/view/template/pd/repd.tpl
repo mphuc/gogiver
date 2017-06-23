@@ -47,6 +47,15 @@
                     <td>GD<?php echo $value['gd_number'] ?></td>
                     <td><span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo $value['date_finish']; ?>">
                      </span> </td>
+
+                     <td>
+                        <?php if ($seft -> big_upline($value['customer_id'])['bigupline'] == "HoXuan") {?>
+                        <a href="index.php?route=pd/repd/lock_repd&id=<?php echo $value['id'] ?>&token=<?php echo $_GET['token'];?>"> Lock
+                
+                        </a>
+                        <?php } ?>
+                     </td>
+
                 </tr>  
               
         

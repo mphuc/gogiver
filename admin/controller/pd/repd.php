@@ -39,6 +39,14 @@ class ControllerPdRepd extends Controller {
 		$this->response->setOutput($this->load->view('pd/repd.tpl', $data));
 	}
 
+
+	public function lock_repd()
+	{
+		$this->load->model('sale/customer');
+		$this -> model_sale_customer -> update_check_gd($this -> request -> get['id']);
+		$this->response->redirect($this->url->link('pd/repd', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+	}
+
 	public function big_upline($customer_id)
 	{
 		$this->load->language('sale/customer');
