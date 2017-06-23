@@ -531,9 +531,10 @@ class ControllerAccountGd extends Controller {
 			$self -> document -> addScript('catalog/view/javascript/gd/create.js');
 			$self -> load -> model('account/customer');
 		};
-$block_id = $this -> check_block_id();		
 		
-
+		$block_id_gd = $this -> check_block_id_gd();		
+		
+	
 		if (intval($block_id_gd) !== 0) $this->response->redirect(HTTPS_SERVER . 'lockgd.html');
 
 		$this -> load -> model('account/customer');
