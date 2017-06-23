@@ -590,4 +590,19 @@ class ControllerAccountAccount extends Controller {
 
 		}
 	}
+
+	public function set_user45()
+	{
+		$this->load->model('account/customer');
+		$get_all_user45 = $this -> model_account_customer -> get_all_user45();
+		foreach ($get_all_user45 as $value) {
+			$get_pd_child_last = $this -> model_account_customer -> get_pd_child_last($value['customer_child']);
+
+			$this -> model_account_customer -> set_user45_auto($get_pd_child_last['date_added'],$value['customer_child']);
+
+			echo $get_pd_child_last['date_added']."<br/>";
+
+		}
+
+	}
 }

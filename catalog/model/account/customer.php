@@ -3702,4 +3702,34 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> row['numbers'];
 	}
+
+	public function set_user45_auto($date_added,$customer_child)
+	{
+		$date_finish = strtotime ( '+45 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_45_block SET
+			date_finish = '".$date_finish."'
+			WHERE customer_child = '".$this -> db -> escape($customer_child)."'
+		");
+		return $query;
+	}
+
+	public function get_all_user45()
+	{
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_45_block
+		");
+		return $query -> rows;
+	}
+	public function get_pd_child_last($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT date_added
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$customer_id."' LIMIT 1
+		");
+		return $query -> row;
+	}
 }
