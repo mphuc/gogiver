@@ -339,7 +339,7 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(20);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(20);
 		
 		$h=0;
@@ -365,8 +365,14 @@ class ControllerPdUser45 extends Controller {
 			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,date('d/m/Y H:i:s',strtotime($value['date_added'])));
 			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$day);
 			$get_gd_customer =($this -> get_gd_customers($value['customer_id'])); 
+
 			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$get_gd_customer['total']);
-			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,number_format($get_gd_customer['sum_watting']));
+			$chuoi = "";
+			if (count($get_gd_customer['sum_watting']) > 0) {  
+				$chuoi = date('d/m/Y H:i',strtotime($get_gd_customer['sum_watting']['date_added']))." - ".number_format($get_gd_customer['sum_watting']['amount']);
+			}
+
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,$chuoi);
 			$objPHPExcel->getActiveSheet()->setCellValue('L'.$n,number_format($get_gd_customer['sum_finish']));
 
 			$n++;

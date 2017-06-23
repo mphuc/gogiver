@@ -3906,11 +3906,11 @@ $date_added= date('Y-m-d H:i:s') ;
 		$json['total'] = $query -> row['number'];
 
 		$querys = $this -> db -> query("
-			SELECT sum(amount) as number
+			SELECT date_added, amount
 			FROM  ".DB_PREFIX."customer_get_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0 LIMIT 1
 		");
-		$json['sum_watting'] = $querys -> row['number'];
+		$json['sum_watting'] = $querys -> row;
 
 		$queryss = $this -> db -> query("
 			SELECT sum(amount) as number
@@ -3918,6 +3918,8 @@ $date_added= date('Y-m-d H:i:s') ;
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
 		");
 		$json['sum_finish'] = $queryss -> row['number'];
+
+
 		return $json;
 	}
 

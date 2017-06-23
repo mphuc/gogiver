@@ -78,7 +78,9 @@
                           </td>
                           <td>
                             <?php 
-                             echo number_format($get_gd_customer['sum_watting']);
+                            if (count($get_gd_customer['sum_watting']) > 0) {  
+                             echo date('d/m/Y H:i',strtotime($get_gd_customer['sum_watting']['date_added']))." - ".number_format($get_gd_customer['sum_watting']['amount']);
+                            }
                             ?>
                           </td>
                           <td>
