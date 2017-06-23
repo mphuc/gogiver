@@ -104,7 +104,7 @@ class ControllerAccountRegister extends Controller {
 				'- 3',
 				'Use Pin for register '.$_POST['username'],
 				'Register',
-				'Use Pin for register '.$_POST['username']
+				''.$_POST['username']
 			);
 
 			$this -> model_account_customer -> updatePin($cus_id, 3);
