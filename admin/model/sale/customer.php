@@ -4079,4 +4079,13 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query;
 	}
 
+	public function getPD_last($id_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0 ORDER BY date_added ASC LIMIT 1
+		");
+		
+		return $query -> row;
+	}
 }

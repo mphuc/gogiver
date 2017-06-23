@@ -37,6 +37,7 @@
                         <th>Số lần đã GD</th>
                         <th>GD đang chờ</th>
                         <th>GD kết thúc</th>
+                        <th>PD lâu nhất chưa khớp </th>
                     </tr>
                 </thead>
 
@@ -87,6 +88,13 @@
                             <?php 
                              echo number_format($get_gd_customer['sum_finish']);
                             ?>
+                          </td>
+                          <td>
+                                <?php 
+                                    if (count($seft -> getPD_last($value['customer_id'])) > 0) {
+                                        echo date('d/m/Y H:i:s',strtotime($seft -> getPD_last($value['customer_id'])['date_added']));
+                                    }
+                                ?>
                           </td>
                     </tr>  
                     <?php } ?>

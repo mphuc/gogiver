@@ -130,6 +130,11 @@ class ControllerPdUser45 extends Controller {
 		return $this -> model_sale_customer -> get_provine_16_04_date($customer_id,$start_date,$end_date);
 	}
 
+	public function getPD_last($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> getPD_last($customer_id);
+	}
 
 	public function exportafter_all(){
 		error_reporting(E_ALL);
@@ -310,9 +315,10 @@ class ControllerPdUser45 extends Controller {
 		->setCellValue('I1', 'Số ngày chưa tạo ra F1')
 		->setCellValue('J1', 'Số lần đã GD')
 		->setCellValue('K1', 'GD đang chờ')
-		->setCellValue('L1', 'GD kết thúc');
+		->setCellValue('L1', 'GD kết thúc')
+		->setCellValue('M1', 'PD lâu nhất chưa khớp');
 		
-         $objPHPExcel->getActiveSheet()->getStyle('A1:L1')
+         $objPHPExcel->getActiveSheet()->getStyle('A1:M1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -328,7 +334,7 @@ class ControllerPdUser45 extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:L1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:M1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -341,7 +347,7 @@ class ControllerPdUser45 extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(20);
-		
+		$objPHPExcel->getActiveSheet()->getColumnDimension('M')->setWidth(30);
 		$h=0;
 		$n = 2;
 		$stt=0;
@@ -374,6 +380,13 @@ class ControllerPdUser45 extends Controller {
 
 			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,$chuoi);
 			$objPHPExcel->getActiveSheet()->setCellValue('L'.$n,number_format($get_gd_customer['sum_finish']));
+
+			$string = "";
+			if (count($this -> getPD_last($value['customer_id'])) > 0) {
+                $string = date('d/m/Y H:i:s',strtotime($this -> getPD_last($value['customer_id'])['date_added']));
+            }
+
+			$objPHPExcel->getActiveSheet()->setCellValue('M'.$n,$string);
 
 			$n++;
 			}
