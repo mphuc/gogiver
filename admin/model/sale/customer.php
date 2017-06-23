@@ -3896,6 +3896,31 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $json;
 	}
 
+	public function get_gd_customers($id_customer)
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		$json['total'] = $query -> row['number'];
+
+		$querys = $this -> db -> query("
+			SELECT sum(amount) as number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0
+		");
+		$json['sum_watting'] = $querys -> row['number'];
+
+		$queryss = $this -> db -> query("
+			SELECT sum(amount) as number
+			FROM  ".DB_PREFIX."customer_get_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
+		");
+		$json['sum_finish'] = $queryss -> row['number'];
+		return $json;
+	}
+
 
 	public function get_user_customer($customer_id)
 	{

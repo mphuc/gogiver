@@ -35,7 +35,8 @@
                         <th>Thời gian bắt đầu kích pin</th>
                         <th>Số ngày</th>
                         <th>Số lần đã GD</th>
-                        <th>Số tiền đã GD</th>
+                        <th>GD đang chờ</th>
+                        <th>GD kết thúc</th>
                     </tr>
                 </thead>
 
@@ -71,13 +72,18 @@
                          <td><?php echo $day ?></td>
                          <td>
                             <?php 
-                              $get_gd_customer =($seft -> get_gd_customer($value['customer_id'])); 
+                              $get_gd_customer =($seft -> get_gd_customers($value['customer_id'])); 
                               echo $get_gd_customer['total'];
                             ?>
                           </td>
                           <td>
                             <?php 
-                             echo number_format($get_gd_customer['sum']);
+                             echo number_format($get_gd_customer['sum_watting']);
+                            ?>
+                          </td>
+                          <td>
+                            <?php 
+                             echo number_format($get_gd_customer['sum_finish']);
                             ?>
                           </td>
                     </tr>  
