@@ -116,7 +116,7 @@
                         </td>
                         <td><?php echo date('d/m/Y H:i:s',strtotime($value['date'])); ?></td>
                         <td><?php echo number_format($value['c_wallet']) ?> VND</td>
-                        <td><?php echo number_format($value['c_wallet']) ?> VND</td>
+                        <td><?php echo number_format($value['r_wallet']) ?> VND</td>
                          <td><b><?php echo $value['description'] ?></b></td>
                     </tr>  
                     
