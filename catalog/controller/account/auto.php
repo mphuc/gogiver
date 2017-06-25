@@ -1024,7 +1024,7 @@ public function updateLevel_listID($customer_id){
     }
 
 
-    // f1 sau 55 ngay ko tao PD bi khoa
+    // f1 sau 55 ngay ko tao PD bi khoa   
     public function f1_50_pd(){
     	$this -> load -> model('account/block');
     	$this -> load -> model('account/auto');
@@ -1060,7 +1060,7 @@ public function updateLevel_listID($customer_id){
 	        	if (intval($total) === 3) {
 	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Did not have a new member within 45 days 3");
 	        	}
-	        	
+
 	        	echo $value['customer_id']."<br/>";
 	        	
 			}
