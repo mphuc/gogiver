@@ -3752,4 +3752,22 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row;
 	}
 
+	public function getGD_none_finish($customer_id){
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE customer_id = ".$customer_id." AND (status = 2 OR status = 1) AND show_gd = 0
+		");
+		return $query -> row['number'];
+	}
+
+	public function getPD_none_finish($customer_id){
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id = ".$customer_id." AND (status = 2 OR status = 1) AND check_return_profit = 0
+		");
+		return $query -> row['number'];
+	}
+
 }

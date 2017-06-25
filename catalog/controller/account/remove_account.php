@@ -21,6 +21,14 @@ class ControllerAccountRemoveaccount extends Controller {
 		$data['lang'] = $language -> data;
 		$data['getLanguage'] = $getLanguage;
 
+		$getGD_none_finish = $this -> model_account_customer -> getGD_none_finish($this -> session -> data['customer_id']);
+
+		$getPD_none_finish = $this -> model_account_customer -> getPD_none_finish($this -> session -> data['customer_id']);
+
+		if (intval($getGD_none_finish) == 1 || intval($getPD_none_finish) == 1) 
+		{
+			$this->response->redirect(HTTPS_SERVER . 'dashboard.html');
+		}
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/remove_account.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/remove_account.tpl', $data));
