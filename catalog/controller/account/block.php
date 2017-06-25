@@ -45,6 +45,7 @@ class ControllerAccountBlock extends Controller {
 	}
 
 	public function lock_gd(){
+		
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};
@@ -73,7 +74,7 @@ class ControllerAccountBlock extends Controller {
 
 		//language
 		$this -> load -> model('account/customer');
-		
+
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/block_gd.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/block_gd.tpl', $data));
 		} else {

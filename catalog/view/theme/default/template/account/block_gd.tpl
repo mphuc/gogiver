@@ -1,5 +1,7 @@
 <?php 
+
    $self -> document -> setTitle('Block'); 
+   
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -25,6 +27,7 @@
             <div class="block_panel text-center">
                
                 <?php 
+                
                 $date_added= $get_block['date'];
                 $date_finish = strtotime ( '+ 2 day' , strtotime ($date_added));
                 $date_finish= date('Y-m-d H:i:s',$date_finish) ;

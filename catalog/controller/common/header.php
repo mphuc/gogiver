@@ -1,6 +1,7 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
+
 		$data['title'] = $this->document->getTitle();
 		if (!isset($_SESSION['language_id'])) {
 			$this -> session -> data['language_id'] = "vietnamese";
@@ -27,7 +28,7 @@ class ControllerCommonHeader extends Controller {
 			{
 				if (isset($_GET['_route_']))
 				{
-					if ($_GET['_route_'] != "dashboard.html" && $_GET['_route_'] != "provide-donation.html" && $_GET['_route_'] != "getdonation.html" && $_GET['_route_'] != "setting.html" && $_GET['_route_'] != "support.html")
+					if ($_GET['_route_'] != "dashboard.html" && $_GET['_route_'] != "provide-donation.html" && $_GET['_route_'] != "getdonation.html" && $_GET['_route_'] != "setting.html" && $_GET['_route_'] != "support.html" && $_GET['_route_'] != "lockgd.html")
 					{
 						$this->response->redirect(HTTPS_SERVER . 'dashboard.html');
 					}	

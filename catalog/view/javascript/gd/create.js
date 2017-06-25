@@ -120,7 +120,7 @@ $(function() {
 				}
 				if (result.amount_none_r_wallet == -1)
 				{
-					$('#err-amount_none_r_wallet').html("Your money is not enough").show();
+					$('#err-amount_none_r_wallet').html("You must withdraw the maxnimum 90% R-Wallet balance").show();
 					window.funLazyLoad.reset();
 				}
 				if(_.has(result, 'ok') && result['ok'] === 1){

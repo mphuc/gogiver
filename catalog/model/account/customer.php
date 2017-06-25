@@ -149,8 +149,8 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 	public function getPNode($customer_id){
 		$query = $this -> db -> query("
-			SELECT * FROM sm_customer_provide_donation pd JOIN sm_customer_get_donation gd on pd.customer_id = gd.customer_id WHERE pd.customer_id in
-			(SELECT customer_id FROM sm_customer WHERE p_node = ".$customer_id.") AND pd.status = 2 AND gd.status = 2 GROUP BY pd.customer_id");
+			SELECT * FROM sm_customer_provide_donation pd JOIN sm_customer_get_donation gd on pd.customer_id = gd.customer_id INNER JOIN sm_customer cs ON pd.customer_id = cs.customer_id WHERE pd.customer_id in
+			(SELECT customer_id FROM sm_customer WHERE p_node = ".$customer_id.") AND pd.status = 2 AND gd.status = 2 AND cs.status <> 8 AND cs.status <> 10  GROUP BY pd.customer_id");
 		return $query -> rows;
 	}
 
@@ -3732,4 +3732,24 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		");
 		return $query -> row;
 	}
+
+	public function sum_PD_finish($id_customer){
+
+		$query = $this -> db -> query("
+			SELECT sum(filled) as number
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2 
+		");
+		return $query -> row['number'];
+	}
+
+	public function getGD_last($customer_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_get_donation
+			WHERE customer_id = ".$customer_id." AND status = 0 ORDER BY date_added ASC LIMIT 1
+		");
+		return $query -> row;
+	}
+
 }

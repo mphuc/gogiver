@@ -820,6 +820,7 @@ public function updateLevel_listID($customer_id){
 		$this -> load -> model('account/auto');
 		$re_pd = $this-> model_account_auto -> re_pd();
 		$this -> load -> model('account/block');
+		$this -> load -> model('account/customer');
 		
 		foreach ($re_pd as $value) {
 
@@ -838,6 +839,25 @@ public function updateLevel_listID($customer_id){
         	}
         	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không RePD 3 lần");
+
+        		$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($value['customer_id']);
+
+        		$getCustomer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+
+				if (floatval($get_sub_cwallet_parent) > 0)
+				{
+					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> model_account_customer -> saveTranstionHistory(
+						$getCustomer['p_node'], 
+						'C-wallet', 
+						'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+						"Reason: ".$getCustomer['username']." Locked account",
+						"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
+					);
+				}
+
+
         	}
         	echo $value['customer_id']."<br/>";
 		}
@@ -848,7 +868,8 @@ public function updateLevel_listID($customer_id){
 
         //find and up status pd = 3
         $this -> load -> model('account/auto');
-         $this -> load -> model('account/block');
+        $this -> load -> model('account/block');
+        $this -> load -> model('account/customer');
         $query_rp = $this -> model_account_auto -> get_rp_pd();
       
         foreach ($query_rp as $key => $value) {
@@ -866,6 +887,24 @@ public function updateLevel_listID($customer_id){
 
 	        if (intval($total) >= 2) {
 	        	$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không xác nhận PD");
+
+	        	$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($value['customer_id']);
+
+        		$getCustomer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+
+				if (floatval($get_sub_cwallet_parent) > 0)
+				{
+					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> model_account_customer -> saveTranstionHistory(
+						$getCustomer['p_node'], 
+						'C-wallet', 
+						'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+						"Reason: ".$getCustomer['username']." Locked account",
+						"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
+					);
+				}
+	        	
 	        }
 
 	    }
@@ -876,6 +915,7 @@ public function updateLevel_listID($customer_id){
 
         $this -> load -> model('account/auto');
         $this -> load -> model('account/block');
+        $this -> load -> model('account/customer');
         $query_rp = $this -> model_account_block -> get_confirm_gd_no();
       	//echo "<pre>"; print_r($query_rp); echo "</pre>"; die();
         foreach ($query_rp as $key => $value) {
@@ -892,6 +932,24 @@ public function updateLevel_listID($customer_id){
         	}
         	if (intval($total) === 3) {
         		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không xác nhận GD 3 lần");
+
+        		$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($value['customer_id']);
+
+        		$getCustomer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+
+				if (floatval($get_sub_cwallet_parent) > 0)
+				{
+					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> model_account_customer -> saveTranstionHistory(
+						$getCustomer['p_node'], 
+						'C-wallet', 
+						'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+						"Reason: ".$getCustomer['username']." Locked account",
+						"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
+					);
+				}
+
         	}
         	echo $value['customer_id']."<br/>";
         }       
@@ -939,12 +997,76 @@ public function updateLevel_listID($customer_id){
 	        	}
 	        	if (intval($total) === 3) {
 	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không RePD 3 lần");
+
+
+	        		$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($value['customer_id']);
+
+	        		$getCustomer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+
+					if (floatval($get_sub_cwallet_parent) > 0)
+					{
+						$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+						$this -> model_account_customer -> saveTranstionHistory(
+							$getCustomer['p_node'], 
+							'C-wallet', 
+							'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+							"Reason: ".$getCustomer['username']." Locked account",
+							"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
+						);
+					}
+
+
 	        	}
 	        	echo $value['customer_id']."<br/>";
 			}
 		}
     }
 
+
+    // f1 sau 55 ngay ko tao PD bi khoa
+    public function f1_50_pd(){
+    	$this -> load -> model('account/block');
+    	$this -> load -> model('account/auto');
+    	$this -> load -> model('account/customer');
+
+    	$maao = $this -> model_account_customer -> get_childrend_all_tree(64);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(65);
+
+		$maao .= $this -> model_account_customer -> get_childrend_all_tree(62);
+		$maao = substr($maao, 1);
+
+		$f1_50_pd = $this -> model_account_auto -> f1_50_pd($maao);
+		
+		foreach ($f1_50_pd as $value) {
+
+			$check_f1_customer_id = $this -> model_account_auto -> check_f1_customer_id($value['customer_id']);
+			
+			if (intval($check_f1_customer_id) == 0 && $value['customer_id'] != 1474)
+			{
+
+				
+				$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
+				if (intval($total) < 3) {
+					$description ='Did not have a new member within 45 days';
+
+					$return_wallet_gd = $this -> return_wallet_gd($value['customer_id']);
+					
+
+		        	$this -> model_account_block -> insert_block_id_gd($value['customer_id'], $description,$value['customer_id'],$return_wallet_gd['c_wallet'],$return_wallet_gd['r_wallet']);
+		        	
+	        	}
+	        	if (intval($total) === 3) {
+	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Did not have a new member within 45 days 3");
+	        	}
+	        	
+	        	echo $value['customer_id']."<br/>";
+	        	
+			}
+
+		}
+    }
 
 
     // khoa trong 1 tháng ko đạt đủ số lượng PD
@@ -954,6 +1076,7 @@ public function updateLevel_listID($customer_id){
     	//die;
     	$this -> load -> model('account/block');
     	$this -> load -> model('account/auto');
+    	$this -> load -> model('account/customer');
     	/*$get_all_customer = $this -> model_account_block -> get_all_customer();
     	foreach ($get_all_customer as $value) {
     		//add all user
@@ -968,7 +1091,9 @@ public function updateLevel_listID($customer_id){
 
     	
     	$get_block_month_pd = $this -> model_account_block -> get_block_month_pd();
-    
+    	
+
+
     	foreach ($get_block_month_pd as $value) {
     		$get_level = $this -> model_account_block -> get_level($value['customer_id']);
     		switch ($get_level['level']) {
@@ -995,6 +1120,20 @@ public function updateLevel_listID($customer_id){
             if ($value['total_pd'] < $num_pd)
             {
             	$this -> model_account_block -> update_block_pd_month($value['customer_id']);
+
+            	//phat thang cha 500 vnd
+            	$customer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+				
+				$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $customer['p_node']);
+
+				$this -> model_account_customer -> saveTranstionHistory(
+					$customer['p_node'], 
+					'C-wallet', 
+					'- ' . number_format(500000) . ' VND', 
+					"Reason: ".$customer['username']." Did not complete minimum PD within a month",
+					"Deduct 500.000"
+				);
+
             	$total = $this -> model_account_block -> get_total_block_id_gd($value['customer_id']);
 				if (intval($total) < 3) {
 					$description ='Change status from ACTIVE to FROZEN Reason: Did not complete minimum PD within a month';
@@ -1008,6 +1147,24 @@ public function updateLevel_listID($customer_id){
 	        	}
 	        	if (intval($total) === 3) {
 	        		$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"Không đủ PD/tháng 3 lần");
+
+	        		$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($value['customer_id']);
+
+	        		$getCustomer = $this -> model_account_customer -> getCustomer($value['customer_id']);
+
+					if (floatval($get_sub_cwallet_parent) > 0)
+					{
+						$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+						$this -> model_account_customer -> saveTranstionHistory(
+							$getCustomer['p_node'], 
+							'C-wallet', 
+							'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+							"Reason: ".$getCustomer['username']." Locked account",
+							"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
+						);
+					}
+
 	        	}
 
 	        	echo "user block ".$value['customer_id']."<br/>";
@@ -1272,6 +1429,12 @@ public function updateLevel_listID($customer_id){
         $data['total_block_id_gd'] = intval($total_block_id_gd);
        	return $data;
         
+	}
+
+	public function get_sub_cwallet_parent($customer_id)
+	{
+		$this -> load -> model('account/customer');
+		return $this -> model_account_customer -> sum_PD_finish($customer_id);
 	}
 }
 

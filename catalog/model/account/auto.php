@@ -1056,4 +1056,31 @@ class ModelAccountAuto extends Model {
 
 		return $query;
 	}
+
+	public function f1_50_pd($maao)
+	{
+		$date_added= date('Y-m-d H:i:s');
+		$date_finish = strtotime ( '- 55 day' , strtotime ($date_added));
+		$date_finish= date('Y-m-d H:i:s',$date_finish) ;
+
+		$query = $this -> db -> query("
+			SELECT A.*
+			FROM ". DB_PREFIX . "customer A 
+			WHERE A.status <> 10 AND A.status  <> 8 AND A.date_added < '".$date_finish."' AND A.customer_id NOT IN (".$maao.") AND customer_id NOT IN (SELECT id_gd FROM ". DB_PREFIX . "customer_block_id_gd WHERE customer_id = A.customer_id)
+		");
+		return $query -> rows;
+	}
+
+	public function check_f1_customer_id($p_node)
+	{
+		$query = $this -> db -> query("
+			SELECT count(*) as numbers
+			FROM ". DB_PREFIX . "customer A INNER JOIN ". DB_PREFIX . "customer_provide_donation B ON A.customer_id = B.customer_id
+			WHERE A.p_node = '".$p_node."'
+		");
+
+		return $query -> row['numbers'];
+	
+	}
+
 }

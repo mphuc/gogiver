@@ -29,6 +29,47 @@ class ControllerAccountRemoveaccount extends Controller {
 		}
 	}
 
+	public function get_sub_cwallet_parent($customer_id)
+	{
+		$this -> load -> model('account/customer');
+		return $this -> model_account_customer -> sum_PD_finish($customer_id);
+	}
+
+	public function update_wallet_full($customer_id,$amount)
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/block');
+		
+		$getC_Wallet = $this -> model_account_customer -> getC_Wallet($customer_id);
+		if (doubleval($getC_Wallet['amount']) >= $amount)
+		{
+			$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
+		}
+		else
+		{
+
+			$getR_Wallet = $this -> model_account_customer -> getR_Wallet($customer_id);
+			if (doubleval($getR_Wallet['amount']) >= $amount)
+			{
+
+				$this -> model_account_customer -> update_R_Wallet($amount, $customer_id);
+			}
+			else
+			{
+				$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
+				if (count($getGD_last) > 0)
+				{
+					$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
+				}
+				else
+				{
+					$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
+				}
+			}
+		}
+		
+	}
+
 	public function submit(){
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
@@ -66,6 +107,22 @@ class ControllerAccountRemoveaccount extends Controller {
 						'- ' . number_format(500000) . ' VND', 
 						"Reason: ".$customer['username']." Remove account",
 						"Deduct 500.000"
+					);
+				}
+
+				$get_sub_cwallet_parent = $this -> get_sub_cwallet_parent($this-> session->data['customer_id']);
+
+				if (floatval($get_sub_cwallet_parent) > 0)
+				{
+
+					$this -> update_wallet_full($get_pnode,$get_sub_cwallet_parent*0.1);
+					
+					$this -> model_account_customer -> saveTranstionHistory(
+						$get_pnode, 
+						'C-wallet', 
+						'- ' . number_format($get_sub_cwallet_parent*0.1) . ' VND', 
+						"Reason: ".$customer['username']." Remove account",
+						"Deduct ".number_format($get_sub_cwallet_parent*0.1).""
 					);
 				}
 
