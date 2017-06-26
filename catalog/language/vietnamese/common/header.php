@@ -24,4 +24,5 @@ $_['text_all']           = 'Xem tất cả';
 $_['Manual']           = 'Tài liệu Iontach';
 $_['C-Wallet']           = 'Ví C';
 $_['R-Wallet']           = 'Ví R';
+$_['regulation']           = 'Quy chế';
 ?>

@@ -144,6 +144,7 @@
                         <h2 id="title_page"></h2>
                     </li>
                      <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="manual.html"> <span class="nav-item-text btn btn-success"><?php echo $lang['Manual'] ?></span></a>
+                     <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="regulation.html"> <span class="nav-item-text btn btn-warning"><?php echo $lang['regulation'] ?></span></a>
 
                      <a style="margin-top: 12px; float: left; font-size: 16px; margin-left: 10px;"  href="video.html"> <span class="nav-item-text btn btn-info">Video</span></a>
                 </ul>

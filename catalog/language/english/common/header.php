@@ -17,3 +17,4 @@ $_['text_all']           = 'Show All';
 $_['Manual']           = 'Manual';
 $_['C-Wallet']           = 'C-Wallet';
 $_['R-Wallet']           = 'R-Wallet';
+$_['regulation']           = 'Regulation';
