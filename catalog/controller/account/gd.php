@@ -753,7 +753,7 @@ class ControllerAccountGd extends Controller {
 
 						$r_wallet = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
 						
-						$r_wallet = floatval($r_wallet['amount'])*0.9;
+						$r_wallet = floatval($r_wallet['amount']);
 
 						if(($r_wallet < $amount) && ($amount < 5000000)){
 							die();
