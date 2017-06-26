@@ -3487,7 +3487,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 			SELECT A.* ,B.username
 			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B
 			ON A.customer_id = B.customer_id
-			WHERE A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10)
+			WHERE A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer WHERE status = 8 OR status = 10) AND A.customer_id NOT IN (SELECT customer_id FROM ". DB_PREFIX . "customer_block_id_gd WHERE status = 1 GROUP BY customer_id)
 			AND A.status =0  ORDER BY A.date_added ASC
 		");
 		return $query -> rows;
