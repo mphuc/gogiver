@@ -511,8 +511,8 @@ public function updateLevel_listID($customer_id){
 			//print_r($customer['p_node']); die;
 			$this -> model_account_auto -> updateStatusCustomer($value['customer_id'],"7 days without PD");
 
-			$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $customer['p_node']);
-
+			$this -> update_c_wallet_full($customer['p_node'],500000);
+			
 			$this -> model_account_customer -> saveTranstionHistory(
 				$customer['p_node'], 
 				'C-wallet', 
@@ -846,7 +846,8 @@ public function updateLevel_listID($customer_id){
 
 				if (floatval($get_sub_cwallet_parent) > 0)
 				{
-					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> update_c_wallet_full($getCustomer['p_node'],$get_sub_cwallet_parent*0.1);
 
 					$this -> model_account_customer -> saveTranstionHistory(
 						$getCustomer['p_node'], 
@@ -894,7 +895,8 @@ public function updateLevel_listID($customer_id){
 
 				if (floatval($get_sub_cwallet_parent) > 0)
 				{
-					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> update_c_wallet_full($getCustomer['p_node'],$get_sub_cwallet_parent*0.1);
 
 					$this -> model_account_customer -> saveTranstionHistory(
 						$getCustomer['p_node'], 
@@ -939,7 +941,8 @@ public function updateLevel_listID($customer_id){
 
 				if (floatval($get_sub_cwallet_parent) > 0)
 				{
-					$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+
+					$this -> update_c_wallet_full($getCustomer['p_node'],$get_sub_cwallet_parent*0.1);
 
 					$this -> model_account_customer -> saveTranstionHistory(
 						$getCustomer['p_node'], 
@@ -1005,7 +1008,9 @@ public function updateLevel_listID($customer_id){
 
 					if (floatval($get_sub_cwallet_parent) > 0)
 					{
-						$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+						
+
+						$this -> update_c_wallet_full($getCustomer['p_node'],$get_sub_cwallet_parent*0.1);
 
 						$this -> model_account_customer -> saveTranstionHistory(
 							$getCustomer['p_node'], 
@@ -1126,6 +1131,9 @@ public function updateLevel_listID($customer_id){
 				
 				$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $customer['p_node']);
 
+				$this -> update_c_wallet_full($customer['p_node'],500000);
+
+
 				$this -> model_account_customer -> saveTranstionHistory(
 					$customer['p_node'], 
 					'C-wallet', 
@@ -1154,7 +1162,8 @@ public function updateLevel_listID($customer_id){
 
 					if (floatval($get_sub_cwallet_parent) > 0)
 					{
-						$returnDate = $this -> model_account_customer -> update_C_Wallet($get_sub_cwallet_parent*0.1, $getCustomer['p_node']);
+						
+						$this -> update_c_wallet_full($getCustomer['p_node'],$get_sub_cwallet_parent*0.1);
 
 						$this -> model_account_customer -> saveTranstionHistory(
 							$getCustomer['p_node'], 
@@ -1435,6 +1444,24 @@ public function updateLevel_listID($customer_id){
 	{
 		$this -> load -> model('account/customer');
 		return $this -> model_account_customer -> sum_PD_finish($customer_id);
+	}
+
+	public function update_c_wallet_full($customer_id,$amount)
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/block');
+
+		$getC_Wallet = $this -> model_account_customer -> getC_Wallet($customer_id);
+		$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
+
+		if (count($getGD_last) > 0 && doubleval($getC_Wallet['amount']) < $amount && doubleval($getGD_last['amount']) > $amount)
+		{
+			$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
+		}
+		else
+		{
+			$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
+		}
 	}
 }
 

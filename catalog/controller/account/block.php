@@ -191,6 +191,43 @@ class ControllerAccountBlock extends Controller {
         }
         $this->response->setOutput(json_encode($json));
 	}
+
+	public function update_c_wallet_full($customer_id,$amount)
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/block');
+
+		$getC_Wallet = $this -> model_account_customer -> getC_Wallet($customer_id);
+		$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
+
+		if (count($getGD_last) > 0 && doubleval($getC_Wallet['amount']) < $amount && doubleval($getGD_last['amount']) > $amount)
+		{
+			$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
+		}
+		else
+		{
+			$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
+		}
+	}
+
+	public function update_r_wallet_full($customer_id,$amount)
+	{
+		$this -> load -> model('account/customer');
+		$this -> load -> model('account/block');
+
+		$getR_Wallet = $this -> model_account_customer -> getR_Wallet($customer_id);
+		$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
+
+		if (count($getGD_last) > 0 && doubleval($getR_Wallet['amount']) < $amount && doubleval($getGD_last['amount']) > $amount)
+		{
+			$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
+		}
+		else
+		{
+			$this -> model_account_customer -> update_R_Wallet($amount, $customer_id);
+		}
+	}
+
 	public function unlock_gd(){
 		
 
@@ -199,25 +236,14 @@ class ControllerAccountBlock extends Controller {
          	$this->load->model('account/customer');
             $wallet = $this -> model_account_customer -> get_block_id_gd_lock($this -> session -> data['customer_id']);;
           	
-            $getGD = $this -> model_account_block -> get_gd_cwallet_id($this -> customer -> getId());
-          
-            if (count($getGD) > 0 && doubleval($wallet['c_wallet']) < doubleval($getGD['amount'])) {
-            	$this -> model_account_block -> update_GD_amount($wallet['c_wallet'], $this -> customer -> getId(), $getGD['id']);
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
-            }else{
-            	$this -> model_account_block -> update_C_Wallet($wallet['c_wallet'],$this -> customer -> getId());
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
-            }
+            $this -> update_c_wallet_full($this -> customer -> getId(),$wallet['c_wallet']);
 
-            $getGD_R = $this -> model_account_block -> get_gd_rwallet_id($this -> customer -> getId());
-          
-            if (count($getGD_R) > 0 && doubleval($wallet['r_wallet']) < doubleval($getGD_R['amount'])) {
-            	$this -> model_account_block -> update_GD_amount($wallet['r_wallet'], $this -> customer -> getId(), $getGD_R['id']);
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
-            }else{
-            	$this -> model_account_block -> updateRWallet($wallet['r_wallet'],$this -> customer -> getId());
-            	$this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
-            }
+            $this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'C-wallet', '- ' . number_format($wallet['c_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
+            
+          	$this -> update_r_wallet_full($this -> customer -> getId(),$wallet['r_wallet']);
+
+            $this -> model_account_customer -> saveTranstionHistory($this -> customer -> getId(), 'R-wallet', '- ' . number_format($wallet['r_wallet']) . ' VND', "Reason: ".$wallet['description']."", "Lock");
+            
             $this -> model_account_block -> update_block_status_gd($this -> customer -> getId());
             $json['link'] = HTTPS_SERVER.'dashboard.html';
             $json['ok'] = 1;

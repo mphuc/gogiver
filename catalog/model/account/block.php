@@ -13,7 +13,7 @@ class ModelAccountBlock extends Model {
 		$query = $this -> db -> query("
 			SELECT amount, id
 			FROM  ".DB_PREFIX."customer_get_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0 AND type = 0
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 0 ORDER BY date_added ASC
 		");
 		return $query -> row;
 	}

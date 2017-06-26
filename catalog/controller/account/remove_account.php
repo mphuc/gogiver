@@ -43,39 +43,22 @@ class ControllerAccountRemoveaccount extends Controller {
 		return $this -> model_account_customer -> sum_PD_finish($customer_id);
 	}
 
-	public function update_wallet_full($customer_id,$amount)
+	public function update_c_wallet_full($customer_id,$amount)
 	{
 		$this -> load -> model('account/customer');
 		$this -> load -> model('account/block');
-		
+
 		$getC_Wallet = $this -> model_account_customer -> getC_Wallet($customer_id);
-		if (doubleval($getC_Wallet['amount']) >= $amount)
+		$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
+
+		if (count($getGD_last) > 0 && doubleval($getC_Wallet['amount']) < $amount && doubleval($getGD_last['amount']) > $amount)
 		{
-			$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
+			$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
 		}
 		else
 		{
-
-			$getR_Wallet = $this -> model_account_customer -> getR_Wallet($customer_id);
-			if (doubleval($getR_Wallet['amount']) >= $amount)
-			{
-
-				$this -> model_account_customer -> update_R_Wallet($amount, $customer_id);
-			}
-			else
-			{
-				$getGD_last = $this -> model_account_customer -> getGD_last($customer_id);
-				if (count($getGD_last) > 0)
-				{
-					$this -> model_account_block -> update_GD_amount($amount , $customer_id, $getGD_last['id']);
-				}
-				else
-				{
-					$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
-				}
-			}
+			$this -> model_account_customer -> update_C_Wallet($amount, $customer_id);
 		}
-		
 	}
 
 	public function submit(){
@@ -107,7 +90,7 @@ class ControllerAccountRemoveaccount extends Controller {
 
 				if (intval($get_PD_customer_id) == 0)
 				{
-					$returnDate = $this -> model_account_customer -> update_C_Wallet(500000, $get_pnode);
+					$returnDate = $this -> update_c_wallet_full($get_pnode,500000);
 
 					$this -> model_account_customer -> saveTranstionHistory(
 						$get_pnode, 
@@ -123,8 +106,7 @@ class ControllerAccountRemoveaccount extends Controller {
 				if (floatval($get_sub_cwallet_parent) > 0)
 				{
 
-					$this -> update_wallet_full($get_pnode,$get_sub_cwallet_parent*0.1);
-					
+					$this -> update_c_wallet_full($get_pnode,$get_sub_cwallet_parent*0.1);
 					$this -> model_account_customer -> saveTranstionHistory(
 						$get_pnode, 
 						'C-wallet', 
