@@ -86,23 +86,26 @@ class ControllerAccountAccount extends Controller {
 		$mail -> setHtml('Test crontab gogiver 8h00
 			');*/
 		
+
+
 		$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
-			$mail->parameter = 'administrator@iontach.biz';
-			$mail->smtp_hostname = 'smtp.zoho.com';
-			$mail->smtp_username = 'administrator@iontach.biz';
-			$mail->smtp_password = 'egmI8XQ7Kjx6';
-			$mail->smtp_port = '587';
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-			
-			$mail->setTo('trungdoanict@gmail.com');
-			$mail->setFrom('trungdoanict@gmail.com');
-			$mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject('Ví '.date('d/m/Y H:i:s').'');
-			$mail->setText(date('d/m/Y H:i:s'));
-			//echo "<pre>"; print_r($mail); echo "</pre>"; die();
-			$mail->send();
+		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail->parameter = 'iontach.noreply@gmail.com';
+		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
+		$mail->smtp_username = 'iontach.noreply@gmail.com';
+		$mail->smtp_password = 'ihghzqlhbalcmyqc';
+		$mail->smtp_port = '465';
+		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 		
+		$mail->setTo('trungdoanict@gmail.com');
+		
+		$mail->setFrom($this->config->get('config_email'));
+		$mail->setSender("Iontach Backup DB");
+		$mail->setSubject('Backup DB '.DB_USERNAME.' '.date('d/m/Y H:i:s').'');
+		$mail->setText(date('d/m/Y H:i:s'));
+		$mail->send();
+
+		print_r($mail);
 		
 	}
 
