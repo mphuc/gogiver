@@ -30,7 +30,7 @@
                     <?php } else { ?>
                     
                      <?php for ($i=1;$i<4;$i++) { ?>
-                       <!-- <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/qc/00<?php echo $i;?>.jpg" src="" alt="">  -->
+                       <img style="margin-top: 10px;" class="img-responsive" src="catalog/view/theme/default/images/qc/en/000<?php echo $i;?>.jpg" src="" alt=""> 
                      <?php  }?>
                      <?php  } ?>
 
