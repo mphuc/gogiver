@@ -356,7 +356,7 @@ class ControllerAccountAccount extends Controller {
 					<th style="border: 1px solid #ccc">TT</th>
 					<th style="border: 1px solid #ccc">ID_PD</th>
 					<th style="border: 1px solid #ccc">ID_GD</th>
-					<th style="border: 1px solid #ccc">User PD</th>
+					<th style="border: 1px solid #ccc; ">User PD</th>
 					<th style="border: 1px solid #ccc">User GD</th>
 					<th style="border: 1px solid #ccc">Amount</th>
 					<th style="border: 1px solid #ccc">Status PD</th>
@@ -381,8 +381,25 @@ class ControllerAccountAccount extends Controller {
 					<td style="border: 1px solid #ccc"><?php echo $i ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_id'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_id'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['pd_username'] ?></td>
-					<td style="border: 1px solid #ccc"><?php echo $value['gd_username'] ?></td>
+				<?php 
+					$background_pd = "none";
+					if ($value['pd_id_customer'] == 77 || $value['pd_id_customer'] == 100 || $value['pd_id_customer'] == 462 || $value['pd_id_customer'] == 1494 || $value['pd_id_customer'] == 598 || $value['pd_id_customer'] == 87 || $value['pd_id_customer'] == 206 || $value['pd_id_customer'] == 443 || $value['pd_id_customer'] == 1318 || $value['pd_id_customer'] == 145 || $value['pd_id_customer'] == 147 || $value['pd_id_customer'] == 83 || $value['pd_id_customer'] == 144 || $value['pd_id_customer'] == 675 || $value['pd_id_customer'] == 74 || $value['pd_id_customer'] == 179)
+					{
+						$background_pd = '#FFEB3B';
+					}
+				?>
+
+					<td style="border: 1px solid #ccc; background: <?php echo $background_pd ?>"><?php echo $value['pd_username'] ?></td>
+
+				<?php 
+					$background_gd = "none";
+					if ($value['gd_id_customer'] == 77 || $value['gd_id_customer'] == 100 || $value['gd_id_customer'] == 462 || $value['gd_id_customer'] == 1494 || $value['gd_id_customer'] == 598 || $value['gd_id_customer'] == 87 || $value['gd_id_customer'] == 206 || $value['gd_id_customer'] == 443 || $value['gd_id_customer'] == 1318 || $value['gd_id_customer'] == 145 || $value['gd_id_customer'] == 147 || $value['gd_id_customer'] == 83 || $value['gd_id_customer'] == 144 || $value['gd_id_customer'] == 675 || $value['gd_id_customer'] == 74 || $value['gd_id_customer'] == 179)
+					{
+						$background_gd = '#FFEB3B';
+					}
+				?>
+
+					<td style="border: 1px solid #ccc; background: <?php echo $background_gd ?>"><?php echo $value['gd_username'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo number_format($value['amount']) ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['pd_satatus'] ?></td>
 					<td style="border: 1px solid #ccc"><?php echo $value['gd_status'] ?></td>
