@@ -60,14 +60,14 @@ class ControllerAccountForgotten extends Controller {
 			
 			$mail->send();*/
 
-			/*$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+			$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 		    $email = array(
 		        'html' => $message,
 		        'text' => 'text',
 		        'subject' => $subject,
 		        'from' => array(
 		            'name' => 'Iontach Community',
-		            'email' => 'admin@iontach.biz'
+		            'email' => 'noreply@iontach.biz'
 		        ),
 		        'to' => array(
 		            array(
@@ -76,10 +76,10 @@ class ControllerAccountForgotten extends Controller {
 		            )
 		        )
 		    );
-		    $SPApiProxy->smtpSendMail($email);*/
+		    $SPApiProxy->smtpSendMail($email);
 
 
-		    $mail = new Mail();
+		    /*$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
 			$mail->parameter = 'iontach.noreply@gmail.com';
 			$mail->smtp_hostname = 'ssl://smtp.gmail.com';
@@ -94,7 +94,7 @@ class ControllerAccountForgotten extends Controller {
 			$mail->setSender("Iontach Community");
 			$mail->setSubject($subject);
 			$mail->setHtml($message);
-			$mail->send();
+			$mail->send();*/
 
 
 			$this->session->data['success'] = $this->language->get('text_success');
