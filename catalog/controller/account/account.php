@@ -15,8 +15,9 @@ class ControllerAccountAccount extends Controller {
 		$array_customer = array(146,147);
 		$customer_id = $array_customer[array_rand($array_customer)];
 		
-		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree($customer_id);
+		$get_childrend_all = $this -> model_account_customer -> get_childrend_all_tree(43);
 		$get_childrend_all = (substr($get_childrend_all, 1));
+
 
 		$get_childrend_alls = explode(",", $get_childrend_all);
 

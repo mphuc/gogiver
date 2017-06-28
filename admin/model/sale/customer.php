@@ -4088,4 +4088,46 @@ $date_added= date('Y-m-d H:i:s') ;
 		
 		return $query -> row;
 	}
+
+	public function getusername_customer($username){
+		$query = $this -> db -> query("
+			SELECT customer_id
+			FROM  ".DB_PREFIX."customer
+			WHERE username = '".$username."'
+		");
+		return $query -> row['customer_id'];
+	}
+
+	public function getCustomerss($customer_id)
+	{
+		
+		$query = $this -> db -> query("
+			SELECT B.username,B.telephone,(SELECT username FROM  ".DB_PREFIX."customer WHERE customer_id = B.p_node) as upline, account_holder,status
+			FROM  ".DB_PREFIX."customer B WHERE customer_id = '".$customer_id."'
+		");
+
+		return $query -> row;
+	}
+
+	public function get_gd_customer_id($id_customer,$status){
+		if ($status == 1)
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer_get_donation
+				WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 1 OR status = 0)
+			");
+		}
+		else
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer_get_donation
+				WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
+			");
+		}
+
+		return $query -> rows;
+	}
+
 }
