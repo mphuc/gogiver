@@ -42,7 +42,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function send_mail_test()
 	{
-		
+		die;
 		
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    //print_r($SPApiProxy); die;
@@ -57,7 +57,7 @@ class ControllerAccountAccount extends Controller {
 	        'to' => array(
 	            array(
 	                'name' => 'Iontach',
-	                'email' => 'trungict1994@gmail.com'
+	                'email' => 'trungdoanict@gmail.com'
 	            )
 	        )
 	    );
