@@ -202,6 +202,14 @@ error_reporting(-1);
                      </span> 
                      <?php  } ?>
                      </td>
+                     <td>
+                       <?php 
+                        if (count($this -> get_last_gd_customer($value['customer_id'])))
+                        {
+                          echo date('d/m/Y H:s',strtotime($this -> get_last_gd_customer($value['customer_id'])['date_added']))." | ".number_format($this -> get_last_gd_customer($value['customer_id'])['amount']);
+                        }
+                       ?>
+                     </td>
 			</tr>
 	               
 		<?php 
