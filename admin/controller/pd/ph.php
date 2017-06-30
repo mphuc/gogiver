@@ -54,6 +54,12 @@ error_reporting(-1);
 
 	}
 
+	public function get_last_gd_customer($customer_id)
+	{
+		$this->load->model('sale/customer');
+		return $this -> model_sale_customer -> get_last_gd_customer($customer_id);
+	}
+
 	public function get_no_regd($customer_id)
 	{
 		$this->load->model('sale/customer');

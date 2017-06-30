@@ -76,6 +76,7 @@
              <th>Time-Remain</th>
             <th>Date Finish ReGD</th>
             <th>Date Block ReGD</th>
+            <th>GD</th>
      			</tr>
      		</thead>
      		<tbody id="result_date"> 
@@ -140,6 +141,14 @@
                        <span style="color:red; font-size:15px;" class="text-danger countdownss" data-countdownss="<?php echo $date_finish; ?>">
                      </span> 
                      <?php  } ?>
+                     </td>
+                     <td>
+                       <?php 
+                        if (count($self -> get_last_gd_customer($value['customer_id'])))
+                        {
+                          echo date('d/m/Y H:s',strtotime($self -> get_last_gd_customer($value['customer_id'])['date_added']))." | ".number_format($self -> get_last_gd_customer($value['customer_id'])['amount']);
+                        }
+                       ?>
                      </td>
                 </tr>  
               
