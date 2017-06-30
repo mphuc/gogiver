@@ -4130,4 +4130,25 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> rows;
 	}
 
+	public function get_pd_customer_id($id_customer,$status){
+		if ($status == 1)
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer_provide_donation
+				WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (status = 1 OR status = 0)
+			");
+		}
+		else
+		{
+			$query = $this -> db -> query("
+				SELECT *
+				FROM  ".DB_PREFIX."customer_provide_donation
+				WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2
+			");
+		}
+
+		return $query -> rows;
+	}
+
 }

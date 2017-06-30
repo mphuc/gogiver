@@ -121,8 +121,10 @@ class ControllerPdCreatepd extends Controller {
 		->setCellValue('E1', 'Status')
 		->setCellValue('F1', 'Upline')
 		->setCellValue('G1', 'GD Finish')
-		->setCellValue('H1', 'GD Watting');
-         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')
+		->setCellValue('H1', 'GD Watting')
+		->setCellValue('I1', 'PD Finish')
+		->setCellValue('J1', 'PD Watting');
+         $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -138,7 +140,7 @@ class ControllerPdCreatepd extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -147,7 +149,8 @@ class ControllerPdCreatepd extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(185);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(115);
-		
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(185);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(155);
 		$h=0;
 		$n = 2;
 		$i=0;
@@ -190,11 +193,27 @@ class ControllerPdCreatepd extends Controller {
 
 			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$get_wt);
 
+			$get_pd_fn = $this -> model_sale_customer -> get_pd_customer_id($val,2);
+			$pd_fn = "";
+			foreach ($get_pd_fn as $value) {
+				$pd_fn .= number_format($value['filled'])." - ".date('d/m/Y H:i',strtotime($value['date_added']))."        ";
+			}
+
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$pd_fn);
+
+			$get_pd_wt = $this -> model_sale_customer -> get_pd_customer_id($val,1);
+			$get_pwt = "";
+			foreach ($get_pd_wt as $value) {
+				$get_pwt .= number_format($value['filled'])." - ".date('d/m/Y H:i',strtotime($value['date_added']))."        ";
+			}
+
+			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$get_pwt);
+
 				$n++;
 			}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'H'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'J'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,
