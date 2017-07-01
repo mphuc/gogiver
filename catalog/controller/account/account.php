@@ -47,9 +47,9 @@ class ControllerAccountAccount extends Controller {
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    //print_r($SPApiProxy); die;
 	    $email = array(
-	        'html' => '<p>Dear Duc Dang,</p><p>You need a sponsor to guide you how to join in Iontach, We will let a member contact with you. </p><p>Your sincerely,</p><p>Iontach.biz</p>',
+	        'html' => '<p>Dear beandang - ID 2319,</p><p>We considered your case and decided that you and all your downlines don"t qualify to join Iontach. The reason is that you were not to serious.  </p><p>Iontach are looking for members to build the community.</p><p>We are not welcome people who come here to take money without any responsibility.</p><p>You and your downline will be locked on 01/07/2017</p><p>You may refer to the attached document for details</p><p>Your sincerely,</p><p>Iontach.biz</p>',
 	        'text' => 'text',
-	        'subject' => 'Iontach',
+	        'subject' => 'Beandang and all your downlines will be locked on 01/07/2017',
 	        'from' => array(
 	            'name' => 'Iontach Biz',
 	            'email' => 'noreply@iontach.biz'
@@ -57,7 +57,7 @@ class ControllerAccountAccount extends Controller {
 	        'to' => array(
 	            array(
 	                'name' => 'Iontach',
-	                'email' => 'ducdc.bidico@gmail.com'
+	                'email' => 'trungdoanict@gmail.com'
 	            )
 	        )
 	    );

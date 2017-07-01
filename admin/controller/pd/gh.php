@@ -73,16 +73,16 @@ class ControllerPdGh extends Controller {
 		        <td><?php echo number_format($value['filled']) ?> VNĐ</td>
 		        <td><?php 
 		         if ($value['status'] == 0) {
-                        echo "<span class='label label-default'>Đang chờ</span>";
+                        echo "<span class='label label-default'>Watting</span>";
                     }
                     if ($value['status'] == 1) {
-                        echo "<span class='label label-info'>Khớp lệnh</span>";
+                        echo "<span class='label label-info'>Matching</span>";
                     }
                     if ($value['status'] == 2) {
-                        echo "<span class='label label-success'>Hoàn thành</span>";
+                        echo "<span class='label label-success'>Finish</span>";
                     }
                     if ($value['status'] == 3) {
-                        echo "<span class='label label-danger'>Báo cáo</span>";
+                        echo "<span class='label label-danger'>Report</span>";
                     }
 		         ?></td>
 		       
@@ -98,7 +98,7 @@ class ControllerPdGh extends Controller {
 		else
 		{
 		?>
-		<tr><td colspan="6" class="text-center">Không có dữ liệu</td> </tr>
+		<tr><td colspan="6" class="text-center">No data</td> </tr>
 		<?php
 		}
 	}
