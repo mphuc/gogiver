@@ -4162,5 +4162,12 @@ $date_added= date('Y-m-d H:i:s') ;
 		return $query -> row;
 	}
 
+	public function delete_lock_customer($id_customer){
+		$query = $this -> db -> query("
+			UPDATE  ".DB_PREFIX."customer_block_id_gd SET status = 0
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' 
+		");
+	}
+	
 
 }

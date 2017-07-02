@@ -62,6 +62,19 @@ class ControllerPdCreatepd extends Controller {
 				$send_pin,
 				$date_finish
 			);*/
+
+			//update xoa lock
+			$this -> model_sale_customer -> delete_lock_customer($customer_id);
+
+			// update c_wallet
+			$this -> model_sale_customer -> update_C_Wallet(0,$customer_id);
+
+			// update r_wallet
+			$this -> model_sale_customer -> update_R_Wallet(0,$customer_id);
+
+			// update status
+			$this -> model_sale_customer -> update_status(1,$customer_id);
+			
 			$this -> session -> data['date_create_pd'] = $this -> request -> post['date'];
 			$this -> session -> data['send_pin_pd'] = $this -> request -> post['send_pin'];
 			$this -> session -> data['date_sussess'] = 1;
