@@ -151,6 +151,7 @@ class ModelCustomizeRegister extends Model {
 			account_number = '" . $this -> db -> escape($data['account_number']) . "', 
 			transaction_password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password2'])))) . "',
 			date_added = '".$date_added."',
+			date_birth = '".$date_added."',
 			check_Newuser = 0,
 			language = 'vietnamese',
 			account_holder = '".$this -> db -> escape($data['account_holder'])."'

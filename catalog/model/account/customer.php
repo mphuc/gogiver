@@ -3044,9 +3044,11 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	}
 
 	public function remove_account($customer_id, $p_node){
+		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer SET
-				p_node = '".$p_node."'
+				p_node = '".$p_node."',
+				date_birth = '".$date_added."'
 				WHERE customer_id = '".$customer_id."'
 			");
 		$query = $this -> db -> query("
@@ -3738,9 +3740,9 @@ public function getCustomerFloor($arrId, $limit, $offset){
 	public function sum_PD_finish($id_customer){
 
 		$query = $this -> db -> query("
-			SELECT sum(filled) as number
-			FROM  ".DB_PREFIX."customer_provide_donation
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND status = 2 
+			SELECT sum(A.filled) as number
+			FROM  ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id
+			WHERE A.customer_id = '".$this -> db -> escape($id_customer)."' AND A.status = 2 AND A.date_added >= B.date_birth 
 		");
 		return $query -> row['number'];
 	}
