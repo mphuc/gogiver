@@ -49,7 +49,7 @@
                      </span> </td>
 
                      <td>
-                        <?php if ($seft -> big_upline($value['customer_id'])['bigupline'] == "HoXuan") {?>
+                        <?php if ($seft -> big_upline($value['customer_id'])['bigupline'] == "HoXuan" || $seft -> big_upline($value['customer_id'])['bigupline'] == "NgocMinh") {?>
                         <a href="index.php?route=pd/repd/lock_repd&id=<?php echo $value['id'] ?>&token=<?php echo $_GET['token'];?>"> Lock
                 
                         </a>
