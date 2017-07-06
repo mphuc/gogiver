@@ -376,13 +376,14 @@ error_reporting(-1);
 		->setCellValue('B1', 'Username PD')
 		->setCellValue('C1', 'Telephone')
 		->setCellValue('D1', 'Upline')
-		->setCellValue('E1', 'Big Upline')
-		->setCellValue('F1', 'Date Create PD')	
-		->setCellValue('G1', 'Date Matched PD')	
-		->setCellValue('H1', 'Status PD')
-		->setCellValue('I1', 'Date GD Finish')
-		->setCellValue('J1', 'Date GD Watting');
-         $objPHPExcel->getActiveSheet()->getStyle('A1:J1')
+		->setCellValue('E1', 'Mid Upline')
+		->setCellValue('F1', 'Big Upline')
+		->setCellValue('G1', 'Date Create PD')	
+		->setCellValue('H1', 'Date Matched PD')	
+		->setCellValue('I1', 'Status PD')
+		->setCellValue('J1', 'Date GD Finish')
+		->setCellValue('K1', 'Date GD Watting');
+         $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
                     'fill' => array(
@@ -398,7 +399,7 @@ error_reporting(-1);
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -409,6 +410,7 @@ error_reporting(-1);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(30);
 		$h=0;
 		$n = 2;
 		$i=0;
@@ -424,19 +426,19 @@ error_reporting(-1);
 
 			$objPHPExcel->getActiveSheet()->setCellValue('D'.$n," ".$p_node['username']);
 
-			$big_upline = $this -> big_upline($customer['customer_id']);
 			
-			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$big_upline);
+			$objPHPExcel->getActiveSheet()->setCellValue('E'.$n," ".$this -> big_upline($customer['customer_id'])['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".$this -> big_upline($customer['customer_id'])['bigupline']);
 
 			$get_pd_id = $this -> get_pd_id($customer['pd_id']);
 
-			$objPHPExcel->getActiveSheet()->setCellValue('F'.$n," ".date('d/m/Y H:i:s',strtotime($get_pd_id['date_added'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".date('d/m/Y H:i:s',strtotime($get_pd_id['date_added'])));
 
-			$objPHPExcel->getActiveSheet()->setCellValue('G'.$n," ".date('d/m/Y H:i:s',strtotime($customer['date_added'])));
+			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n," ".date('d/m/Y H:i:s',strtotime($customer['date_added'])));
 			if ($customer['pd_satatus'] == 0) $status = "Đang chờp";
 			if ($customer['pd_satatus'] == 1) $status = "Hoàn thành";
 			if ($customer['pd_satatus'] == 2) $status = "Báo cáo";
-			$objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$status);
+			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$status);
 
 			$get_gd = $this -> get_gd_watting_finish($customer['customer_id']);
 			
@@ -449,7 +451,7 @@ error_reporting(-1);
 				$finish = date('d/m/Y H:i:s',strtotime($get_gd['finish']['date_added']));
 			}
 
-			$objPHPExcel->getActiveSheet()->setCellValue('I'.$n," ".$finish);
+			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n," ".$finish);
 
 
 			if (count($get_gd['watting']) == 0)
@@ -461,14 +463,14 @@ error_reporting(-1);
 				$watting = date('d/m/Y H:i:s',strtotime($get_gd['watting']['date_added']));
 			}
 
-			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n, " ".$watting);
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n, " ".$watting);
 
 			
 			$n++;
 			}
 		
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'J'.$n)
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$n.':'.'K'.$n)
 		->applyFromArray(
 			array('font'  => array(
 				'bold'  => true,
@@ -525,20 +527,35 @@ error_reporting(-1);
 	{
 		$this->load->language('sale/customer');
 		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
-
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
-		if ($count > 3)
+		
+		if (($count-3) > 0)
 		{
 			$value = $big_upline[$count-3];
-			
 			$bigupline = $this -> model_sale_customer -> get_customer($value);
-		
-		
-			return $bigupline['username'];
+
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
 		}
 		else
 		{
-			return "";
+			$json['bigupline'] = "";
+			return $json;
 		}
 		
 	}
