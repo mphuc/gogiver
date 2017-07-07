@@ -43,7 +43,30 @@ class ControllerAccountAccount extends Controller {
 	public function send_mail_test()
 	{
 		die;
+		$subject = $content = "12312";
+		$mail = new Mail();
+		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail->parameter = 'iontach.noreply@gmail.com';
+		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
+		$mail->smtp_username = 'iontach.noreply@gmail.com';
+		$mail->smtp_password = 'ihghzqlhbalcmyqc';
+		$mail->smtp_port = '465';
+		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 		
+		$emails = array('trungdoanict@gmail.com','noreply.iontach@gmail.com');
+
+		$mail->setTo($emails);
+		
+		$mail->setFrom($this->config->get('config_email'));
+		$mail->setSender("Iontach Community");
+		$mail->setSubject($subject);
+		$mail->setHtml($content);
+		$mail->send();
+		print_r($mail); 
+
+
+		die;
+
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    //print_r($SPApiProxy); die;
 	    $email = array(
@@ -634,4 +657,711 @@ class ControllerAccountAccount extends Controller {
 		}
 
 	}
+
+	public function big_uplinesss($customer_id)
+	{
+		$this->load->language('account/customer');
+		$big_upline = $this -> model_account_customer -> get_all_node($customer_id);
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
+		$count = count($big_upline);
+		
+		if (($count-3) > 0)
+		{
+			$value = $big_upline[$count-3];
+			$bigupline = $this -> model_account_customer -> get_customer($value);
+
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
+		}
+		else
+		{
+			$json['bigupline'] = "";
+			return $json;
+		}
+	}
+
+	public function big_upline($customer_id)
+	{
+
+		
+		$this->load->model('account/customer');
+		$big_upline = $this -> model_account_customer-> get_all_node($customer_id);
+		$middle_line = "";
+		
+		if (in_array(5, $big_upline))
+		{
+		  	$middle_line = "HUONGDAIGIA";
+		}
+
+		if (in_array(4, $big_upline))
+		{
+		  	$middle_line = "winwin";
+		}
+
+		if (in_array(485, $big_upline))
+		{
+		  	$middle_line = "thanhhai";
+		}
+
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+
+		return $middle_line;
+	}
+
+	public function sendmail_upline($emails,$subject,$content)
+	{
+		/*$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+	    $email = array(
+	        'html' => $content,
+	        'text' => 'text',
+	        'subject' => $subject,
+	        'from' => array(
+	            'name' => 'Iontach Community',
+	            'email' => 'noreply@iontach.biz'
+	        ),
+	        'to' => array(
+	            array(
+	                'name' => 'Iontach Community',
+	                'email' => $emails
+	            )
+	        )
+	    );
+	    print_r($SPApiProxy->smtpSendMail($email));*/
+
+	    $mail = new Mail();
+		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail->parameter = 'iontach.noreply@gmail.com';
+		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
+		$mail->smtp_username = 'iontach.noreply@gmail.com';
+		$mail->smtp_password = 'ihghzqlhbalcmyqc';
+		$mail->smtp_port = '465';
+		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+		$emails = "gaubonga01@gmail.com";
+		$emailsssss = array('trungdoanict@gmail.com',$emails);
+
+		$mail->setTo($emailsssss);
+		
+		$mail->setFrom($this->config->get('config_email'));
+		$mail->setSender("Iontach Community");
+		$mail->setSubject($subject);
+		$mail->setHtml($content);
+		$mail->send();
+		print_r($mail); 
+		echo "<br/>-------------------------------------<br/>";
+
+	}
+
+	public function sendmail_upine()
+	{
+		$this -> load -> model ('account/customer');
+		$getPDmat_all = $this -> model_account_customer -> getPDmat_all();
+		$HUONGDAIGIA = "";
+		$winwin = "";
+		$thanhhai = "";
+		$NUONGDO = "";
+		$Rose = "";
+		$Manhnhanthinh = "";
+		foreach ($getPDmat_all as $value) {
+
+			if ($this -> big_upline($value['customer_id']) == "HUONGDAIGIA")
+			{
+				$HUONGDAIGIA .= ",".$value['customer_id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "winwin")
+			{
+				$winwin .= ",".$value['customer_id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "thanhhai")
+			{
+				$thanhhai .= ",".$value['customer_id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "NUONGDO")
+			{
+				$NUONGDO .= ",".$value['customer_id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "Rose")
+			{
+				$Rose .= ",".$value['customer_id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "Manhnhanthinh")
+			{
+				$Manhnhanthinh .= ",".$value['customer_id'];
+			}
+		}
+
+		$HUONGDAIGIA = explode(",",substr($HUONGDAIGIA,1));
+		$winwin = explode(",",substr($winwin,1));
+		$thanhhai = explode(",",substr($thanhhai,1));
+		$NUONGDO = explode(",",substr($NUONGDO,1));
+		$Rose = explode(",",substr($Rose,1));
+		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1));
+
+		if (count($HUONGDAIGIA) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_HUONGDAIGIA = "";
+			$i = 0;
+			foreach ($HUONGDAIGIA as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_HUONGDAIGIA .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+
+		}
+
+
+		if (count($winwin) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_winwin = "";
+			$i = 0;
+			foreach ($winwin as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_winwin .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		if (count($thanhhai) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_thanhhai = "";
+			$i = 0;
+			foreach ($thanhhai as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_thanhhai .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		if (count($NUONGDO) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_NUONGDO = "";
+			$i = 0;
+			foreach ($NUONGDO as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_NUONGDO .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		if (count($Rose) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_Rose = "";
+			$i = 0;
+			foreach ($Rose as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_Rose .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		if (count($Manhnhanthinh) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_Manhnhanthinh = "";
+			$i = 0;
+			foreach ($Manhnhanthinh as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_Manhnhanthinh .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		$subject = "PD MATCH ".date('d/m/Y')."";
+		if (count($HUONGDAIGIA) > 1)
+		{
+			$content = '<p>Dear HUONGDAIGIA</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_HUONGDAIGIA.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "tiensdiuhuong@gmail.com";
+
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($winwin) > 1)
+		{
+			$content = '<p>Dear winwin</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_winwin.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "nguyentuthoan86@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($thanhhai) > 1)
+		{
+			$content = '<p>Dear thanhhai</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_thanhhai.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "lethihaithanh6@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($NUONGDO) > 1)
+		{
+			$content = '<p>Dear NUONGDO</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_NUONGDO.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "dothinuong123456@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($Rose) > 1)
+		{
+			$content = '<p>Dear Rose</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_Rose.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "Lelenhi210177@yahoo.com.vn";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($Manhnhanthinh) > 1)
+		{
+			$content = '<p>Dear Manhnhanthinh</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_Manhnhanthinh.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "Manhchixdyahoo@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+
+			//print_r($content);
+		}
+		
+
+ 	}
+
+
+ 	public function sendmail_regd()
+ 	{
+ 		$this -> load -> model ('account/customer');
+		$getregd_all = $this -> model_account_customer -> getregd_all();
+		$HUONGDAIGIA = "";
+		$winwin = "";
+		$thanhhai = "";
+		$NUONGDO = "";
+		$Rose = "";
+		$Manhnhanthinh = "";
+		foreach ($getregd_all as $value) {
+
+			if ($this -> big_upline($value['customer_id']) == "HUONGDAIGIA")
+			{
+				$HUONGDAIGIA .= ",".$value['id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "winwin")
+			{
+				$winwin .= ",".$value['id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "thanhhai")
+			{
+				$thanhhai .= ",".$value['id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "NUONGDO")
+			{
+				$NUONGDO .= ",".$value['id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "Rose")
+			{
+				$Rose .= ",".$value['id'];
+			}
+
+			if ($this -> big_upline($value['customer_id']) == "Manhnhanthinh")
+			{
+				$Manhnhanthinh .= ",".$value['id'];
+			}
+		}
+
+		
+		$HUONGDAIGIA = explode(",",substr($HUONGDAIGIA,1));
+		$winwin = explode(",",substr($winwin,1));
+		$thanhhai = explode(",",substr($thanhhai,1));
+		$NUONGDO = explode(",",substr($NUONGDO,1));
+		$Rose = explode(",",substr($Rose,1));
+		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1)); 
+
+
+
+		if (count($HUONGDAIGIA) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_HUONGDAIGIA = "";
+			$i = 0;
+			foreach ($HUONGDAIGIA as $item) {
+				$i++;
+
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_HUONGDAIGIA .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+
+		}
+
+
+		if (count($winwin) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_winwin = "";
+			$i = 0;
+			foreach ($winwin as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_winwin .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+		if (count($thanhhai) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_thanhhai = "";
+			$i = 0;
+			foreach ($thanhhai as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_thanhhai .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+		if (count($NUONGDO) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_NUONGDO = "";
+			$i = 0;
+			foreach ($NUONGDO as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_NUONGDO .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+		if (count($Rose) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_Rose = "";
+			$i = 0;
+			foreach ($Rose as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_Rose .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+		if (count($Manhnhanthinh) > 1)
+		{
+			//mail HUONGDAIGIA
+			$string_Manhnhanthinh = "";
+			$i = 0;
+			foreach ($Manhnhanthinh as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_Manhnhanthinh .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+		$subject = "RePD ".date('d/m/Y')."";
+		if (count($HUONGDAIGIA) > 1)
+		{
+			$content = '<p>Dear HUONGDAIGIA</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th></th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_HUONGDAIGIA.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "tiensdiuhuong@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($winwin) > 1)
+		{
+			$content = '<p>Dear winwin</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_winwin.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "nguyentuthoan86@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($thanhhai) > 1)
+		{
+			$content = '<p>Dear thanhhai</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_thanhhai.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "lethihaithanh6@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($NUONGDO) > 1)
+		{
+			$content = '<p>Dear NUONGDO</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="6">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_NUONGDO.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "dothinuong123456@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($Rose) > 1)
+		{
+			$content = '<p>Dear Rose</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_Rose.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "lelenhi210177@yahoo.com.vn";
+			$this -> sendmail_upline($emails,$subject,$content);
+			//print_r($content);
+		}
+
+		if (count($Manhnhanthinh) > 1)
+		{
+			$content = '<p>Dear Manhnhanthinh</p>
+			<table border="1|0">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_Manhnhanthinh.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "Manhchixdyahoo@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+
+			//print_r($content);
+		}
+
+ 	}
+
+
 }

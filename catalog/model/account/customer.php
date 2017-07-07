@@ -3774,4 +3774,69 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query -> row['number'];
 	}
 
+	public function get_all_node($id_customer){
+		$mang = array();
+		$tam = true;
+		while (true) {
+			if ($tam)
+			{
+				$query = $this -> db -> query("
+					SELECT *
+					FROM  ".DB_PREFIX."customer_ml
+					WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+				");
+				
+				$tam = false;
+			}
+			else
+			{
+				$query = $this -> db -> query("
+					SELECT *
+					FROM  ".DB_PREFIX."customer_ml
+					WHERE customer_id = '".$query -> row['p_node']."'
+				");
+			}
+			
+			if (count($query -> row) == 0)
+			{
+				break;
+			}
+			$mang[] = $query -> row['customer_id'];
+		}
+
+
+		return $mang;
+	}
+
+	public function get_customer($customer_id){
+		
+		$query = $this->db->query("SELECT A.customer_id,A.telephone,A.username,(SELECT username
+			FROM " . DB_PREFIX . "customer
+			WHERE customer_id = A.p_node) as upline
+			FROM " . DB_PREFIX . "customer A
+			WHERE A.customer_id = ".$customer_id."");
+
+		return $query->row;
+	}
+
+	public function getPDmat_all(){
+		$query = $this -> db -> query("
+			SELECT A.*
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B 
+			ON A.customer_id = B.customer_id
+			WHERE A.status = 1 AND B.status <> 8 AND B.status <> 10
+		");
+		return $query -> rows;
+	}
+
+
+	public function getregd_all(){
+		$query = $this -> db -> query("
+			SELECT A.*
+			FROM ". DB_PREFIX . "customer_get_donation A INNER JOIN ". DB_PREFIX . "customer B 
+			ON A.customer_id = B.customer_id
+			WHERE A.check_gd = 0 AND A.status = 2 AND B.status <> 8 AND B.status <> 10 
+		");
+		return $query -> rows;
+	}
 }

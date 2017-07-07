@@ -103,7 +103,6 @@ class ControllerPdUser45 extends Controller {
 			$json['bigupline'] = "";
 			return $json;
 		}
-		
 	}
 
 	public function get_account_pin($customer_id)

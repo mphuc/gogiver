@@ -4,7 +4,7 @@ class ControllerAccountAuto extends Controller {
 
 	public function sendmail_khoplenh($emails,$subject,$content)
 	{
-		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+		/*$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    $email = array(
 	        'html' => $content,
 	        'text' => 'text',
@@ -21,9 +21,9 @@ class ControllerAccountAuto extends Controller {
 	        )
 	    );
 	    print_r($SPApiProxy->smtpSendMail($email));
-		print_r($content);
+		print_r($content);*/
 		
-		/*$mail = new Mail();
+		$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
 		$mail->parameter = 'iontach.noreply@gmail.com';
 		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
@@ -39,7 +39,7 @@ class ControllerAccountAuto extends Controller {
 		$mail->setSubject($subject);
 		$mail->setHtml($content);
 		$mail->send();
-		print_r($mail); */
+		print_r($mail); 
 		
 	}
 
