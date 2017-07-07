@@ -98,7 +98,41 @@ class ControllerPdCreatepd extends Controller {
 	    // Convert back to desired date format
 	    return date('H:i:s', $val);
 	}
+	public function big_upline($customer_id)
+	{
+		$this->load->language('sale/customer');
+		$big_upline = $this -> model_sale_customer -> get_all_node($customer_id);
+		$middle_line = "";
+		if (in_array(9, $big_upline))
+		{
+		  	$middle_line = "NUONGDO";
+		}
+		if (in_array(148, $big_upline))
+		{
+		  	$middle_line = "Rose";
+		}
+		if (in_array(1785, $big_upline))
+		{
+		  	$middle_line = "Manhnhanthinh";
+		}
+		$json['middleline'] = $middle_line;
+		$count = count($big_upline);
+		
+		if (($count-3) > 0)
+		{
+			$value = $big_upline[$count-3];
+			$bigupline = $this -> model_sale_customer -> get_customer($value);
 
+			$json['bigupline'] = $bigupline['username'];
+
+			return $json;
+		}
+		else
+		{
+			$json['bigupline'] = "";
+			return $json;
+		}
+	}
 	public function downline_all()
 	{
 		$this->load->model('sale/customer');
@@ -136,7 +170,10 @@ class ControllerPdCreatepd extends Controller {
 		->setCellValue('G1', 'GD Finish')
 		->setCellValue('H1', 'GD Watting')
 		->setCellValue('I1', 'PD Finish')
-		->setCellValue('J1', 'PD Watting');
+		->setCellValue('J1', 'PD Watting')
+		->setCellValue('K1', 'Mid Upline')
+		->setCellValue('L1', 'Big Upline')
+		;
          $objPHPExcel->getActiveSheet()->getStyle('A1:K1')
         ->applyFromArray(
                 array(
@@ -153,7 +190,7 @@ class ControllerPdCreatepd extends Controller {
                     'size'  => 12,
                     'name'  => 'Arial'
                 ));
-        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:L1')->applyFromArray($styleArray);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
@@ -164,6 +201,8 @@ class ControllerPdCreatepd extends Controller {
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(115);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(185);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(155);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(26);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(20);
 		$h=0;
 		$n = 2;
 		$i=0;
@@ -221,6 +260,11 @@ class ControllerPdCreatepd extends Controller {
 			}
 
 			$objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$get_pwt);
+
+			$big_upline = $this -> big_upline($val);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('K'.$n,$big_upline['middleline']);
+			$objPHPExcel->getActiveSheet()->setCellValue('L'.$n,$big_upline['bigupline']);
 
 				$n++;
 			}
