@@ -753,7 +753,7 @@ class ControllerAccountAccount extends Controller {
 	            )
 	        )
 	    );
-	    die;
+	    
 	    print_r($SPApiProxy->smtpSendMail($email));
 	    print_r($content); 
 		echo "<br/>-------------------------------------<br/>";
@@ -830,29 +830,8 @@ class ControllerAccountAccount extends Controller {
 		$Rose = explode(",",substr($Rose,1));
 		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1));
 
-		print_r($HUONGDAIGIA); 
-		echo "<br/>";
-		print_r($winwin);
-		echo "<br/>";
-		print_r($thanhhai);
-		echo "<br/>";
-		print_r($NUONGDO);
-		echo "<br/>";
-		print_r($Rose);
-		echo "<br/>";
-		print_r($Manhnhanthinh);
-
+		
 		if ($HUONGDAIGIA[0])
-		{
-			echo "11111111111111";
-		}
-		if ($Manhnhanthinh[0])
-		{
-			echo "22222222222222";
-		}
-
-		die;
-		if (count($HUONGDAIGIA) > 0)
 		{
 			//mail HUONGDAIGIA
 			$string_HUONGDAIGIA = "";
@@ -874,7 +853,7 @@ class ControllerAccountAccount extends Controller {
 		}
 
 
-		if (count($winwin) > 0)
+		if ($winwin[0])
 		{
 			//mail HUONGDAIGIA
 			$string_winwin = "";
@@ -894,7 +873,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($thanhhai) > 0)
+		if ($thanhhai[0])
 		{
 			//mail HUONGDAIGIA
 			$string_thanhhai = "";
@@ -914,7 +893,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($NUONGDO) > 0)
+		if ($NUONGDO[0])
 		{
 			//mail HUONGDAIGIA
 			$string_NUONGDO = "";
@@ -934,7 +913,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($Rose) > 0)
+		if ($Rose[0])
 		{
 			//mail HUONGDAIGIA
 			$string_Rose = "";
@@ -954,7 +933,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($Manhnhanthinh) > 0)
+		if ($Manhnhanthinh[0])
 		{
 			//mail HUONGDAIGIA
 			$string_Manhnhanthinh = "";
@@ -975,7 +954,7 @@ class ControllerAccountAccount extends Controller {
 		}
 
 		$subject = "PD MATCH ".date('d/m/Y')."";
-		if (count($HUONGDAIGIA) > 0)
+		if ($HUONGDAIGIA[0])
 		{
 			$content = '<p>Dear HUONGDAIGIA</p>
 			<table border="1|0" cellpadding="7">
@@ -994,7 +973,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($winwin) > 0)
+		if ($winwin[0])
 		{
 			$content = '<p>Dear winwin</p>
 			<table border="1|0" cellpadding="7">
@@ -1012,7 +991,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($thanhhai) > 0)
+		if ($thanhhai[0])
 		{
 			$content = '<p>Dear thanhhai</p>
 			<table border="1|0" cellpadding="7">
@@ -1030,7 +1009,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($NUONGDO) > 0)
+		if ($NUONGDO[0])
 		{
 			$content = '<p>Dear NUONGDO</p>
 			<table border="1|0" cellpadding="7">
@@ -1048,7 +1027,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($Rose) > 0)
+		if ($Rose[0])
 		{
 			$content = '<p>Dear Rose</p>
 			<table border="1|0" cellpadding="7">
@@ -1066,7 +1045,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($Manhnhanthinh) > 0)
+		if ($Manhnhanthinh[0])
 		{
 			$content = '<p>Dear Manhnhanthinh</p>
 			<table border="1|0" cellpadding="7">
