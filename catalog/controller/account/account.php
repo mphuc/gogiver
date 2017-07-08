@@ -959,7 +959,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_HUONGDAIGIA.'
 				</table>
@@ -978,7 +978,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_winwin.'
 				</table>
@@ -996,7 +996,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_thanhhai.'
 				</table>
@@ -1014,7 +1014,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_NUONGDO.'
 				</table>
@@ -1032,7 +1032,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_Rose.'
 				</table>
@@ -1050,7 +1050,7 @@ class ControllerAccountAccount extends Controller {
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
 				</tr>
 				'.$string_Manhnhanthinh.'
 				</table>
@@ -1261,8 +1261,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th></th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th></th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_HUONGDAIGIA.'
 				</table>
@@ -1279,8 +1279,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_winwin.'
 				</table>
@@ -1297,8 +1297,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_thanhhai.'
 				</table>
@@ -1315,8 +1315,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_NUONGDO.'
 				</table>
@@ -1333,8 +1333,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_Rose.'
 				</table>
@@ -1351,8 +1351,8 @@ class ControllerAccountAccount extends Controller {
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
-				<tr style="background: #4caf50; color: #fff">
-					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
 				</tr>
 				'.$string_Manhnhanthinh.'
 				</table>
