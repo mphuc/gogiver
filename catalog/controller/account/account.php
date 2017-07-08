@@ -954,7 +954,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($HUONGDAIGIA) > 1)
 		{
 			$content = '<p>Dear HUONGDAIGIA</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -973,7 +973,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($winwin) > 1)
 		{
 			$content = '<p>Dear winwin</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -991,7 +991,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($thanhhai) > 1)
 		{
 			$content = '<p>Dear thanhhai</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -1009,7 +1009,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($NUONGDO) > 1)
 		{
 			$content = '<p>Dear NUONGDO</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -1027,7 +1027,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($Rose) > 1)
 		{
 			$content = '<p>Dear Rose</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -1045,7 +1045,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($Manhnhanthinh) > 1)
 		{
 			$content = '<p>Dear Manhnhanthinh</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
 				</tr>
@@ -1257,7 +1257,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($HUONGDAIGIA) > 1)
 		{
 			$content = '<p>Dear HUONGDAIGIA</p>
-			<table border="1|0">
+			<table border="1|0"  cellpadding="7">
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
@@ -1275,7 +1275,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($winwin) > 1)
 		{
 			$content = '<p>Dear winwin</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
@@ -1293,7 +1293,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($thanhhai) > 1)
 		{
 			$content = '<p>Dear thanhhai</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
@@ -1311,9 +1311,9 @@ class ControllerAccountAccount extends Controller {
 		if (count($NUONGDO) > 1)
 		{
 			$content = '<p>Dear NUONGDO</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
-					<th colspan="6">RePD '.date('d/m/Y').'</th>
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
 				<tr style="background: #4caf50; color: #fff">
 					<th>ID</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
@@ -1329,7 +1329,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($Rose) > 1)
 		{
 			$content = '<p>Dear Rose</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
@@ -1347,7 +1347,7 @@ class ControllerAccountAccount extends Controller {
 		if (count($Manhnhanthinh) > 1)
 		{
 			$content = '<p>Dear Manhnhanthinh</p>
-			<table border="1|0">
+			<table border="1|0" cellpadding="7">
 				<tr>	
 					<th colspan="7">RePD '.date('d/m/Y').'</th>
 				</tr>
