@@ -43,19 +43,18 @@ class ControllerAccountAccount extends Controller {
 	public function send_mail_test()
 	{
 		//die;
-		$subject = $content = "12312";
+		/*$subject = $content = "12312";
 		$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
 		$mail->parameter = 'iontach.noreply@gmail.com';
 		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
 		$mail->smtp_username = 'iontach.noreply@gmail.com';
-		$mail->smtp_password = 'ihghzqlhbalcmyqc';
+		$mail->smtp_password = 'hliueydfhodvjyxs';
 		$mail->smtp_port = '465';
 		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 		
-		$emails = array('trungdoanict@gmail.com','noreply.iontach@gmail.com');
-
-		$mail->setTo($emails);
+		
+		$mail->setTo('trungdoanict@gmail.com');
 		
 		$mail->setFrom($this->config->get('config_email'));
 		$mail->setSender("Iontach Community");
@@ -65,7 +64,7 @@ class ControllerAccountAccount extends Controller {
 		print_r($mail); 
 
 
-		die;
+		die;*/
 
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    //print_r($SPApiProxy); die;
@@ -735,7 +734,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function sendmail_upline($emails,$subject,$content)
 	{
-		/*$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
+		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    $email = array(
 	        'html' => $content,
 	        'text' => 'text',
@@ -751,9 +750,9 @@ class ControllerAccountAccount extends Controller {
 	            )
 	        )
 	    );
-	    print_r($SPApiProxy->smtpSendMail($email));*/
+	    print_r($SPApiProxy->smtpSendMail($email));
 
-	    $mail = new Mail();
+	    /*$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
 		$mail->parameter = 'iontach.noreply@gmail.com';
 		$mail->smtp_hostname = 'ssl://smtp.gmail.com';
@@ -772,7 +771,7 @@ class ControllerAccountAccount extends Controller {
 		$mail->setHtml($content);
 		$mail->send();
 		print_r($mail); 
-		echo "<br/>-------------------------------------<br/>";
+		echo "<br/>-------------------------------------<br/>";*/
 
 	}
 
