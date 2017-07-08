@@ -1121,7 +1121,7 @@ class ControllerAccountAccount extends Controller {
 
 
 
-		if (count($HUONGDAIGIA) > 1)
+		if ($HUONGDAIGIA[0])
 		{
 			//mail HUONGDAIGIA
 			$string_HUONGDAIGIA = "";
@@ -1146,7 +1146,7 @@ class ControllerAccountAccount extends Controller {
 		}
 
 
-		if (count($winwin) > 1)
+		if ($winwin[0])
 		{
 			//mail HUONGDAIGIA
 			$string_winwin = "";
@@ -1168,7 +1168,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($thanhhai) > 1)
+		if ($thanhhai[0])
 		{
 			//mail HUONGDAIGIA
 			$string_thanhhai = "";
@@ -1190,7 +1190,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($NUONGDO) > 1)
+		if ($NUONGDO[0])
 		{
 			//mail HUONGDAIGIA
 			$string_NUONGDO = "";
@@ -1212,7 +1212,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($Rose) > 1)
+		if ($Rose[0])
 		{
 			//mail HUONGDAIGIA
 			$string_Rose = "";
@@ -1234,7 +1234,7 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
-		if (count($Manhnhanthinh) > 1)
+		if ($Manhnhanthinh[0])
 		{
 			//mail HUONGDAIGIA
 			$string_Manhnhanthinh = "";
@@ -1257,7 +1257,7 @@ class ControllerAccountAccount extends Controller {
 		}
 
 		$subject = "RePD ".date('d/m/Y')."";
-		if (count($HUONGDAIGIA) > 1)
+		if ($HUONGDAIGIA[0])
 		{
 			$content = '<p>Dear HUONGDAIGIA</p>
 			<table border="1|0"  cellpadding="7">
@@ -1275,7 +1275,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($winwin) > 1)
+		if ($winwin[0])
 		{
 			$content = '<p>Dear winwin</p>
 			<table border="1|0" cellpadding="7">
@@ -1293,7 +1293,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($thanhhai) > 1)
+		if ($thanhhai[0])
 		{
 			$content = '<p>Dear thanhhai</p>
 			<table border="1|0" cellpadding="7">
@@ -1311,7 +1311,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($NUONGDO) > 1)
+		if ($NUONGDO[0])
 		{
 			$content = '<p>Dear NUONGDO</p>
 			<table border="1|0" cellpadding="7">
@@ -1329,7 +1329,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($Rose) > 1)
+		if ($Rose[0])
 		{
 			$content = '<p>Dear Rose</p>
 			<table border="1|0" cellpadding="7">
@@ -1347,7 +1347,7 @@ class ControllerAccountAccount extends Controller {
 			//print_r($content);
 		}
 
-		if (count($Manhnhanthinh) > 1)
+		if ($Manhnhanthinh[0])
 		{
 			$content = '<p>Dear Manhnhanthinh</p>
 			<table border="1|0" cellpadding="7">
