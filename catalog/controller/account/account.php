@@ -42,7 +42,7 @@ class ControllerAccountAccount extends Controller {
 
 	public function send_mail_test()
 	{
-		//die;
+		die;
 		/*$subject = $content = "12312";
 		$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
@@ -734,6 +734,9 @@ class ControllerAccountAccount extends Controller {
 
 	public function sendmail_upline($emails,$subject,$content)
 	{
+
+		$emails = 'gaubonga01@gmail.com';
+
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    $email = array(
 	        'html' => $content,
