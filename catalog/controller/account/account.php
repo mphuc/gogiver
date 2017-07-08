@@ -841,6 +841,16 @@ class ControllerAccountAccount extends Controller {
 		print_r($Rose);
 		echo "<br/>";
 		print_r($Manhnhanthinh);
+
+		if ($HUONGDAIGIA[0])
+		{
+			echo "11111111111111";
+		}
+		if ($Manhnhanthinh[0])
+		{
+			echo "22222222222222";
+		}
+
 		die;
 		if (count($HUONGDAIGIA) > 0)
 		{
