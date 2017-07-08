@@ -830,17 +830,17 @@ class ControllerAccountAccount extends Controller {
 		$Rose = explode(",",substr($Rose,1));
 		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1));
 
-		echo $HUONGDAIGIA; 
+		print_r($HUONGDAIGIA); 
 		echo "<br/>";
-		echo $winwin;
+		print_r($winwin);
 		echo "<br/>";
-		echo $thanhhai;
+		print_r($thanhhai);
 		echo "<br/>";
-		echo $NUONGDO;
+		print_r($NUONGDO);
 		echo "<br/>";
-		echo $Rose;
+		print_r($Rose);
 		echo "<br/>";
-		echo $Manhnhanthinh;
+		print_r($Manhnhanthinh);
 		die;
 		if (count($HUONGDAIGIA) > 0)
 		{
