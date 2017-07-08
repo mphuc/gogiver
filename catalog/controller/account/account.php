@@ -754,7 +754,8 @@ class ControllerAccountAccount extends Controller {
 	        )
 	    );
 	    print_r($SPApiProxy->smtpSendMail($email));
-
+	    print_r($content); 
+		echo "<br/>-------------------------------------<br/>";
 	    /*$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
 		$mail->parameter = 'iontach.noreply@gmail.com';
