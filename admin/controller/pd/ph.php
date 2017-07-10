@@ -540,6 +540,11 @@ error_reporting(-1);
 		{
 		  	$middle_line = "Manhnhanthinh";
 		}
+		if (in_array(34, $big_upline))
+		{
+		  	$middle_line = "nhiem63";
+		}
+		
 		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		

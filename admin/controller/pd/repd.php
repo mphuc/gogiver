@@ -64,6 +64,10 @@ class ControllerPdRepd extends Controller {
 		{
 		  	$middle_line = "Manhnhanthinh";
 		}
+		if (in_array(34, $big_upline))
+		{
+		  	$middle_line = "nhiem63";
+		}
 		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
@@ -526,6 +530,10 @@ class ControllerPdRepd extends Controller {
 		if (in_array(1785, $big_upline))
 		{
 		  	$middle_line = "Manhnhanthinh";
+		}
+		if (in_array(34, $big_upline))
+		{
+		  	$middle_line = "nhiem63";
 		}
 		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
