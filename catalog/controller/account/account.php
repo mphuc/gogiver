@@ -674,6 +674,7 @@ class ControllerAccountAccount extends Controller {
 		{
 		  	$middle_line = "Manhnhanthinh";
 		}
+
 		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
@@ -728,7 +729,10 @@ class ControllerAccountAccount extends Controller {
 		{
 		  	$middle_line = "Manhnhanthinh";
 		}
-
+		if (in_array(34, $big_upline))
+		{
+		  	$middle_line = "nhiem63";
+		}
 		return $middle_line;
 	}
 
@@ -821,6 +825,11 @@ class ControllerAccountAccount extends Controller {
 			{
 				$Manhnhanthinh .= ",".$value['customer_id'];
 			}
+
+			if ($this -> big_upline($value['customer_id']) == "nhiem63")
+			{
+				$nhiem63 .= ",".$value['customer_id'];
+			}
 		}
 
 		$HUONGDAIGIA = explode(",",substr($HUONGDAIGIA,1));
@@ -829,7 +838,7 @@ class ControllerAccountAccount extends Controller {
 		$NUONGDO = explode(",",substr($NUONGDO,1));
 		$Rose = explode(",",substr($Rose,1));
 		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1));
-
+		$nhiem63 = explode(",",substr($nhiem63,1));
 		
 		if ($HUONGDAIGIA[0])
 		{
@@ -943,6 +952,26 @@ class ControllerAccountAccount extends Controller {
 				$big_uplinesss = $this -> big_uplinesss($item);
 				$get_customer = $this -> model_account_customer -> get_customer($item);
 				$string_Manhnhanthinh .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+				</tr>';
+			}
+		}
+
+		if ($nhiem63[0])
+		{
+			//mail HUONGDAIGIA
+			$string_nhiem63 = "";
+			$i = 0;
+			foreach ($nhiem63 as $item) {
+				$i++;
+				$big_uplinesss = $this -> big_uplinesss($item);
+				$get_customer = $this -> model_account_customer -> get_customer($item);
+				$string_nhiem63 .= '<tr>
 					<td>'.$i.'</td>
 					<td>'.$get_customer['username'].'</td>
 					<td>'.$get_customer['telephone'].'</td>
@@ -1063,6 +1092,26 @@ class ControllerAccountAccount extends Controller {
 
 			//print_r($content);
 		}
+
+
+		if ($nhiem63[0])
+		{
+			$content = '<p>Dear nhiem63</p>
+			<table border="1|0" cellpadding="7">
+				<tr>	
+					<th colspan="6">PD MATCH '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: #4caf50; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th>
+				</tr>
+				'.$string_nhiem63.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "duongthinhiem74@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+
+			//print_r($content);
+		}
 		
 
  	}
@@ -1109,6 +1158,10 @@ class ControllerAccountAccount extends Controller {
 			{
 				$Manhnhanthinh .= ",".$value['id'];
 			}
+			if ($this -> big_upline($value['customer_id']) == "nhiem63")
+			{
+				$nhiem63 .= ",".$value['id'];
+			}
 		}
 
 		
@@ -1118,6 +1171,7 @@ class ControllerAccountAccount extends Controller {
 		$NUONGDO = explode(",",substr($NUONGDO,1));
 		$Rose = explode(",",substr($Rose,1));
 		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1)); 
+		$nhiem63 = explode(",",substr($nhiem63,1)); 
 
 
 
@@ -1256,6 +1310,31 @@ class ControllerAccountAccount extends Controller {
 			}
 		}
 
+		if ($nhiem63[0])
+		{
+			//mail HUONGDAIGIA
+			$string_nhiem63 = "";
+			$i = 0;
+			foreach ($nhiem63 as $item) {
+				$i++;
+				$getgd = $this -> model_account_customer -> getAllGDByTranferID($item);
+				$big_uplinesss = $this -> big_uplinesss($getgd['customer_id']);
+				$get_customer = $this -> model_account_customer -> get_customer($getgd['customer_id']);
+				$string_nhiem63 .= '<tr>
+					<td>'.$i.'</td>
+					<td>'.$get_customer['username'].'</td>
+					<td>'.$get_customer['telephone'].'</td>
+					<td>'.$get_customer['upline'].'</td>
+					<td>'.$big_uplinesss['middleline'].'</td>
+					<td>'.$big_uplinesss['bigupline'].'</td>
+					<td>'.date('d/m/Y H:i',strtotime($getgd['date_finish'])).'</td>
+				</tr>';
+			}
+		}
+
+
+
+
 		$subject = "RePD ".date('d/m/Y')."";
 		if ($HUONGDAIGIA[0])
 		{
@@ -1361,6 +1440,26 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "Manhchixdyahoo@gmail.com";
+			$this -> sendmail_upline($emails,$subject,$content);
+
+			//print_r($content);
+		}
+
+
+		if ($nhiem63[0])
+		{
+			$content = '<p>Dear nhiem63</p>
+			<table border="1|0" cellpadding="7">
+				<tr>	
+					<th colspan="7">RePD '.date('d/m/Y').'</th>
+				</tr>
+				<tr style="background: red; color: #fff">
+					<th>No</th><th>Username PD</th><th>Telephone</th><th>Upline</th><th>Mid Upline</th><th>Big Upline</th><th>Date Finish ReGD</th>
+				</tr>
+				'.$string_nhiem63.'
+				</table>
+				<p>Best regards,</p><p>iontach.biz.</p>';
+			$emails = "duongthinhiem74@gmail.com";
 			$this -> sendmail_upline($emails,$subject,$content);
 
 			//print_r($content);
