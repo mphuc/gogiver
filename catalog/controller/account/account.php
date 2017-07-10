@@ -761,7 +761,7 @@ class ControllerAccountAccount extends Controller {
 	            )
 	        )
 	    );
-	    die;
+	    //die;
 	    print_r($SPApiProxy->smtpSendMail($email));
 	    print_r($content); 
 		echo "<br/>-------------------------------------<br/>";
@@ -1006,7 +1006,7 @@ class ControllerAccountAccount extends Controller {
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "tiensdiuhuong@gmail.com";
 
-			//$this -> sendmail_upline($emails,$subject,$content);
+			$this -> sendmail_upline($emails,$subject,$content);
 			//print_r($content);
 		}
 
@@ -1024,7 +1024,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "nguyentuthoan86@gmail.com";
-			//$this -> sendmail_upline($emails,$subject,$content);
+			$this -> sendmail_upline($emails,$subject,$content);
 			//print_r($content);
 		}
 
@@ -1042,7 +1042,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "lethihaithanh6@gmail.com";
-			//$this -> sendmail_upline($emails,$subject,$content);
+			$this -> sendmail_upline($emails,$subject,$content);
 			//print_r($content);
 		}
 
@@ -1060,8 +1060,8 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "dothinuong123456@gmail.com";
-			//$this -> sendmail_upline($emails,$subject,$content);
-			print_r($content);
+			$this -> sendmail_upline($emails,$subject,$content);
+			
 		}
 
 		if ($Rose[0])
@@ -1078,7 +1078,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "Lelenhi210177@yahoo.com.vn";
-			//$this -> sendmail_upline($emails,$subject,$content);
+			$this -> sendmail_upline($emails,$subject,$content);
 			//print_r($content);
 		}
 
@@ -1096,7 +1096,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "Manhchixdyahoo@gmail.com";
-			//$this -> sendmail_upline($emails,$subject,$content);
+			$this -> sendmail_upline($emails,$subject,$content);
 
 			//print_r($content);
 		}
@@ -1116,7 +1116,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "duongthinhiem74@gmail.com";
-			print_r($content);die;
+			//print_r($content);die;
 			$this -> sendmail_upline($emails,$subject,$content);
 
 			//print_r($content);
