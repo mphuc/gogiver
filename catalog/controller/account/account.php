@@ -678,7 +678,7 @@ class ControllerAccountAccount extends Controller {
 		{
 		  	$middle_line = "nhiem63";
 		}
-		
+
 		$json['middleline'] = $middle_line;
 		$count = count($big_upline);
 		
@@ -1061,7 +1061,7 @@ class ControllerAccountAccount extends Controller {
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "dothinuong123456@gmail.com";
 			//$this -> sendmail_upline($emails,$subject,$content);
-			//print_r($content);
+			print_r($content);
 		}
 
 		if ($Rose[0])
