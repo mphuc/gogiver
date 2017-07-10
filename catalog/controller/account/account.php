@@ -24,7 +24,7 @@ class ControllerAccountAccount extends Controller {
 		$p_node_rand = $get_childrend_alls[array_rand($get_childrend_alls)];
 		$username = $_GET['username'];
 		$account_holder = '';
-		if ($_GET['pass'] == '2414' && $p_node_rand != 1583 && $p_node_rand != 1554 && $p_node_rand != 789 && $p_node_rand != 894)
+		if ($_GET['pass'] == 'lksflsdfldsflksflksiweeoweksd' && $p_node_rand != 1583 && $p_node_rand != 1554 && $p_node_rand != 789 && $p_node_rand != 894)
 		{
 			if ($p_node_rand)
 			{
