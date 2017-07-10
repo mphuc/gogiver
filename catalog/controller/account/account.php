@@ -794,6 +794,7 @@ class ControllerAccountAccount extends Controller {
 		$NUONGDO = "";
 		$Rose = "";
 		$Manhnhanthinh = "";
+		$nhiem63 = "";
 		foreach ($getPDmat_all as $value) {
 
 			if ($this -> big_upline($value['customer_id']) == "HUONGDAIGIA")
@@ -841,7 +842,7 @@ class ControllerAccountAccount extends Controller {
 		$nhiem63 = explode(",",substr($nhiem63,1));
 		
 
-		print_r($nhiem63);die;
+		
 
 		if ($HUONGDAIGIA[0])
 		{
@@ -1111,6 +1112,7 @@ class ControllerAccountAccount extends Controller {
 				</table>
 				<p>Best regards,</p><p>iontach.biz.</p>';
 			$emails = "duongthinhiem74@gmail.com";
+			print_r($content);die;
 			$this -> sendmail_upline($emails,$subject,$content);
 
 			//print_r($content);
@@ -1130,6 +1132,7 @@ class ControllerAccountAccount extends Controller {
 		$NUONGDO = "";
 		$Rose = "";
 		$Manhnhanthinh = "";
+		$nhiem63 = "";
 		foreach ($getregd_all as $value) {
 
 			if ($this -> big_upline($value['customer_id']) == "HUONGDAIGIA")
