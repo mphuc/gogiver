@@ -757,7 +757,7 @@ class ControllerAccountAccount extends Controller {
 	            )
 	        )
 	    );
-	    
+	    die;
 	    print_r($SPApiProxy->smtpSendMail($email));
 	    print_r($content); 
 		echo "<br/>-------------------------------------<br/>";
@@ -840,6 +840,9 @@ class ControllerAccountAccount extends Controller {
 		$Manhnhanthinh = explode(",",substr($Manhnhanthinh,1));
 		$nhiem63 = explode(",",substr($nhiem63,1));
 		
+
+		print_r($nhiem63);die;
+
 		if ($HUONGDAIGIA[0])
 		{
 			//mail HUONGDAIGIA
