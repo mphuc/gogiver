@@ -22,7 +22,7 @@ class ControllerAccountAuto extends Controller {
 	        )
 	    );
 	    $SPApiProxy->smtpSendMail($email);
-		return $SPApiProxy->smtpSendMail($email)->result;
+		print_r($SPApiProxy->smtpSendMail($email));
 		
 		/*$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
