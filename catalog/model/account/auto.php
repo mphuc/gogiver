@@ -921,7 +921,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE sendmail = 0 AND status = 1
+			WHERE sendmail = 0 AND status = 1 LIMIT 10
 		");
 		return $query -> rows;
 	}
@@ -931,7 +931,7 @@ class ModelAccountAuto extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_get_donation
-			WHERE sendmail = 0 AND status = 1
+			WHERE sendmail = 0 AND status = 1 LIMIT 10
 		");
 		return $query -> rows;
 	}
