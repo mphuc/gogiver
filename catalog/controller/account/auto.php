@@ -4,7 +4,6 @@ class ControllerAccountAuto extends Controller {
 
 	public function sendmail_khoplenh($emails,$subject,$content)
 	{
-		$emails = 'trungdoanict@gmail.com';
 		$SPApiProxy = new SendpulseApi( API_USER_ID, API_SECRET, TOKEN_STORAGE );
 	    $email = array(
 	        'html' => $content,
