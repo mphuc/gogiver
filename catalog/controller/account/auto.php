@@ -21,8 +21,8 @@ class ControllerAccountAuto extends Controller {
 	            )
 	        )
 	    );
-	    return $SPApiProxy->smtpSendMail($email);
-		
+	    $SPApiProxy->smtpSendMail($email);
+		return $SPApiProxy->smtpSendMail($email)->result;
 		
 		/*$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
@@ -60,8 +60,8 @@ class ControllerAccountAuto extends Controller {
 				$content = '<p>Dear '.$getCustomer_PD['username'].'</p><p>Congratulations, Your <b>PD #'.$value['pd_number'].'</b> has been matched. Please log on to your account and complete this PD within 72 hours</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
 
 				$send_mail = $this -> sendmail_khoplenh($getCustomer_PD['email'],$subject,$content);
-				print_r($send_mail); die;
-				if($send_mail->result)
+
+				if($send_mail)
 			    {
 			    	$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['id']);
 
