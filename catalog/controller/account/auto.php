@@ -21,14 +21,20 @@ class ControllerAccountAuto extends Controller {
 	            )
 	        )
 	    );
-	    print_r($email);
+	    
 	    $SPApiProxy->smtpSendMail($email);
 	    if (isset($SPApiProxy->smtpSendMail($email)->result))
 	    {
+	    	print_r($email);
+	    	echo "<br/>";
+	    	echo "<h1>THANH CONG</h1>";
 	    	$result = 1;
 	    }
 	    else
 	    {
+	    	print_r($email);
+	    	echo "<br/>";
+	    	echo "<h1>THAT BAI</h1>";
 	    	$result = 0;
 	    }
 		return $result;
