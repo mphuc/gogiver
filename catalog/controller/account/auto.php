@@ -21,8 +21,17 @@ class ControllerAccountAuto extends Controller {
 	            )
 	        )
 	    );
+	    print_r($email);
 	    $SPApiProxy->smtpSendMail($email);
-		print_r($SPApiProxy->smtpSendMail($email));
+	    if (isset($SPApiProxy->smtpSendMail($email)->result))
+	    {
+	    	$result = 1;
+	    }
+	    else
+	    {
+	    	$result = 0;
+	    }
+		return $result;
 		
 		/*$mail = new Mail();
 		$mail->protocol = $this->config->get('config_mail_protocol');
@@ -61,13 +70,15 @@ class ControllerAccountAuto extends Controller {
 
 				$send_mail = $this -> sendmail_khoplenh($getCustomer_PD['email'],$subject,$content);
 
-				if($send_mail)
+				if($send_mail == 1)
 			    {
 			    	$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['id']);
-
-			    	die("111111111111");
 			    }
 
+			}
+			else
+			{
+				$this -> model_account_auto -> update_customer_sendmail_finish_pd($value['id']);
 			}
 			
 		}
@@ -81,9 +92,17 @@ class ControllerAccountAuto extends Controller {
 			{
 				$subject = 'Your GD #'.$value['gd_number'].' has been matched';
 				$content = '<p>Dear '.$getCustomer_GD['username'].'</p><p>Congratulations, Your <b>GD #'.$value['gd_number'].'</b> has been matched. Please log on to your account to review your bank account, ensure it correct. Please approve the transactions for sender whenever you recived money as soon as possible.</p><p>If you have any question please email <a>admin@iontach.biz</a></p><p>Best regards,</p><p>iontach.biz.</p>';
-				$this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
+				$send_mail = $this -> sendmail_khoplenh($getCustomer_GD['email'],$subject,$content);
+				if($send_mail == 1)
+				{
+					$this -> model_account_auto -> update_customer_sendmail_finish_gd($value['id']);
+				}
 			}
-			$this -> model_account_auto -> update_customer_sendmail_finish_gd($value['id']);
+			else
+			{
+				$this -> model_account_auto -> update_customer_sendmail_finish_gd($value['id']);
+			}
+			
 		}
 	}
 
