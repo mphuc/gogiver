@@ -8,7 +8,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('sale/customer');
-
+		
 		$this->getList();
 	}
 	
@@ -382,13 +382,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->document->addScript('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js');
 		$this->document->addScript('view/javascript/validatecustomerform.js');
 		
-		if (isset($this -> request -> get['username']))
-		{
-			
-			$customer_username = $this -> model_sale_customer -> get_customer_by_username($this -> request -> get['username']);
-			$this->response->redirect($this->url->link('sale/customer/edit', 'token=' . $this->session->data['token'].'&customer_id='.$customer_username['customer_id'], 'SSL'));
-
-		}
+		
 
 	//
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {

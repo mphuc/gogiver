@@ -16,6 +16,14 @@ class ControllerPdCreatepd extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
+		if (isset($this -> request -> get['username']))
+		{
+			
+			$customer_username = $this -> model_sale_customer -> get_customer_by_username($this -> request -> get['username']);
+			$this->response->redirect($this->url->link('sale/customer/edit', 'token=' . $this->session->data['token'].'&customer_id='.$customer_username['customer_id'], 'SSL'));
+
+		}
+
 		$this->response->setOutput($this->load->view('pd/createpd.tpl', $data));
 	}
 
