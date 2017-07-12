@@ -275,7 +275,7 @@ class ModelSaleCustomer extends Model {
 		 $sql = "SELECT c.*,c.date_added as date_addeds,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
 		 FROM " . DB_PREFIX . "customer c
 		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
-		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id) WHERE c.customer_id NOT IN(".$maao.") AND c.status <> 10 AND c.status <> 8";
+		 LEFT JOIN " . DB_PREFIX . "customer_get_donation gd ON (c.customer_id= gd.customer_id) WHERE c.customer_code <> '' AND c.status <> 10 AND c.status <> 8";
 
 		$implode = array();
 
@@ -673,7 +673,7 @@ class ModelSaleCustomer extends Model {
 			$sql .= " WHERE " . implode(" AND ", $implode);
 		}
 		//$sql .= " GROUP BY c.customer_id ";
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c WHERE c.customer_id NOT IN (".$maao.") AND c.status <> 8 AND c.status <> 10");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c WHERE c.customer_code <> '' AND c.status <> 8 AND c.status <> 10");
 
 		return $query->row['total'];
 	}

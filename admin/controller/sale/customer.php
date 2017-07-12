@@ -382,6 +382,14 @@ class ControllerSaleCustomer extends Controller {
 		$this->document->addScript('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js');
 		$this->document->addScript('view/javascript/validatecustomerform.js');
 		
+		if (isset($this -> request -> get['username']))
+		{
+			
+			$customer_username = $this -> model_sale_customer -> get_customer_by_username($this -> request -> get['username']);
+			$this->response->redirect($this->url->link('sale/customer/edit', 'token=' . $this->session->data['token'].'&customer_id='.$customer_username['customer_id'], 'SSL'));
+
+		}
+
 	//
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {
 			
@@ -819,18 +827,18 @@ class ControllerSaleCustomer extends Controller {
 			'limit'                    => $this->config->get('config_limit_admin')
 		);
 
-		$maao = $this -> model_sale_customer -> get_childrend_all_tree(64);
+		/*$maao = $this -> model_sale_customer -> get_childrend_all_tree(64);
 
 		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(65);
 
 		$maao .= $this -> model_sale_customer -> get_childrend_all_tree(62);
-		$maao = substr($maao, 1);
-
+		$maao = substr($maao, 1);*/
+		$maao = "";
 		$customer_total = $this->model_sale_customer->getTotalCustomerssss($filter_data,$maao);
 
 		
 		$results = $this->model_sale_customer->getCustomers($filter_data,$maao);
-		$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock($maao);
+		/*$data['customer_lock'] = $this-> model_sale_customer-> getCustomers_lock($maao);
 
 		$data['customer_spicel'] = $this-> model_sale_customer-> getCustomers_spicel($maao);
 
@@ -839,7 +847,7 @@ class ControllerSaleCustomer extends Controller {
 
 		$data['getCustomers_forzensss'] = $this-> model_sale_customer-> getCustomers_forzenssss();
 
-		$data['getCustomers_admin'] = $this-> model_sale_customer-> getCustomers_admin();
+		$data['getCustomers_admin'] = $this-> model_sale_customer-> getCustomers_admin();*/
 		
  		//$all_hoivien_phi = 0;
 		//$all_congtac_phi = 0;

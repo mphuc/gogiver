@@ -111,6 +111,7 @@
   </li>
   <?php */?>
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a></li>
+  <li id="pin" ><a href="index.php?route=pd/user_spicel&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Customer Special</span></a></li>
    <!-- <li id="sale"><a href="<?php echo $gd_menu; ?>"><i class="fa fa-user fa-fw"></i> <span>Get Donation</span></a></li> -->
      <?php /*?>
     <ul>
